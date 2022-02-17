@@ -1,0 +1,4 @@
+1- Création de la fenêtre ModePlanMarche dans les paramètres marchés
+2-Création de la fenêtre ResponsableEtape dans les paramètres marchés
+3-Création de la fenêtre AjoutRespoEtape dans les paramètres marchés
+4-Création de la fenêtre SaisiePPM dans les paramètres marchés
