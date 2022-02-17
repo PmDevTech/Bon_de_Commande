@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root Type="DevExpress.CodeRush.Foundation.Markers.SolutionBookmarksContainer">
+  <Options Language="Neutral">
+    <Items>
+      <Item Id="{96fd3049-056b-4057-a509-bafebed53699}">
+        <Id>1</Id>
+        <File>Source\DxClearProject\Modules\Comptabilité générale\Ajout_piece.vb</File>
+        <Line>1236</Line>
+        <Character>70</Character>
+        <ViewportLeft>320</ViewportLeft>
+        <ViewportTop>1217</ViewportTop>
+        <ViewportTopMax>2276</ViewportTopMax>
+        <TopLine>1217</TopLine>
+      </Item>
+    </Items>
+  </Options>
+</Root>

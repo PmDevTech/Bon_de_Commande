@@ -1,0 +1,2412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9E47F222-FA40-4C26-9DB2-4F14D26B0D93}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>ClearProject.My.MyApplication</StartupObject>
+    <RootNamespace>ClearProject</RootNamespace>
+    <AssemblyName>ClearProject</AssemblyName>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>ClearProject.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>ClearProject.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Logo_ClearProject_Valide.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxInterop.AcroPDFLib">
+      <HintPath>..\..\..\GestFianciere\Source\ClearProject\bin\Debug\AxInterop.AcroPDFLib.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.Framework">
+      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC\CrystalDecisions.Enterprise.Framework\10.5.3700.0__692fbea5521e1304\CrystalDecisions.Enterprise.Framework.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.Enterprise.InfoStore">
+      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC\CrystalDecisions.Enterprise.InfoStore\10.5.3700.0__692fbea5521e1304\CrystalDecisions.Enterprise.InfoStore.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="DevExpress.BonusSkins.v11.2, Version=11.2.11.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC_MSIL\DevExpress.BonusSkins.v11.2\11.2.11.0__95fc6c5621878f0a\DevExpress.BonusSkins.v11.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v11.2.Core, Version=11.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v11.2, Version=11.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC_MSIL\DevExpress.Data.v11.2\11.2.11.0__b88d1754d700e49a\DevExpress.Data.v11.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.PivotGrid.v11.2.Core, Version=11.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v11.2.Core, Version=11.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC_MSIL\DevExpress.Printing.v11.2.Core\11.2.11.0__b88d1754d700e49a\DevExpress.Printing.v11.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v11.2.Core, Version=11.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.SpellChecker.v11.2.Core, Version=11.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v11.2, Version=11.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC_MSIL\DevExpress.Utils.v11.2\11.2.11.0__b88d1754d700e49a\DevExpress.Utils.v11.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v11.2, Version=11.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v11.2, Version=11.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC_MSIL\DevExpress.XtraBars.v11.2\11.2.11.0__b88d1754d700e49a\DevExpress.XtraBars.v11.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v11.2, Version=11.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v11.2.UI, Version=11.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v11.2, Version=11.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC_MSIL\DevExpress.XtraEditors.v11.2\11.2.11.0__b88d1754d700e49a\DevExpress.XtraEditors.v11.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v11.2, Version=11.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC_MSIL\DevExpress.XtraGrid.v11.2\11.2.11.0__b88d1754d700e49a\DevExpress.XtraGrid.v11.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v11.2, Version=11.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC_MSIL\DevExpress.XtraLayout.v11.2\11.2.11.0__b88d1754d700e49a\DevExpress.XtraLayout.v11.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v11.2, Version=11.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC_MSIL\DevExpress.XtraNavBar.v11.2\11.2.11.0__b88d1754d700e49a\DevExpress.XtraNavBar.v11.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPivotGrid.v11.2, Version=11.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v11.2, Version=11.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraRichEdit.v11.2, Version=11.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraRichEdit.v11.2.Extensions, Version=11.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v11.2, Version=11.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v11.2.Core, Version=11.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraSpellChecker.v11.2, Version=11.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v11.2, Version=11.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v11.2, Version=11.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Interop.AxEmail">
+      <HintPath>..\..\..\..\..\..\..\Program Files\ActiveXperts\Email Component\Samples\Visual Basic.NET\Forms Applications\Demo\obj\Debug\Interop.AxEmail.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.AxSms">
+      <HintPath>..\..\..\..\..\..\..\Program Files\ActiveXperts\SMS Component\Samples\Visual VB.NET\Forms Applications\Demo\obj\Debug\Interop.AxSms.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="KS.Gantt">
+      <HintPath>..\..\..\..\..\..\..\Program Files\ProjectPlanner\KS.Gantt.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\MultiProjet\ClearProject\bin\Debug\Microsoft.VisualBasic.PowerPacks.Vs.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.3.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization">
+      <HintPath>bin\Debug\System.Windows.Forms.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Class\EvalProjet.vb" />
+    <Compile Include="Class\ListeResponsable.vb" />
+    <Compile Include="Class\PassationMarche.vb" />
+    <Compile Include="Class\PlanComptableClass.vb" />
+    <Compile Include="Database\BD.vb" />
+    <Compile Include="Class\GestBudgetaire.vb" />
+    <Compile Include="Class\GestComptable.vb" />
+    <Compile Include="Class\RessourcesHumaines.vb" />
+    <Compile Include="Modules\Passation des marchés\AMI\DepotAMI.Designer.vb">
+      <DependentUpon>DepotAMI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\AMI\DepotAMI.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\DepotDP.Designer.vb">
+      <DependentUpon>DepotDP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\DepotDP.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\ImpressionPlan.Designer.vb">
+      <DependentUpon>ImpressionPlan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\ImpressionPlan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\ModifMethode.Designer.vb">
+      <DependentUpon>ModifMethode.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\ModifMethode.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\PMPochetteV1.designer.vb">
+      <DependentUpon>PMPochetteV1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\PMPochetteV1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\ReportDate.Designer.vb">
+      <DependentUpon>ReportDate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\ReportDate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\AjoutMontantSousLot.Designer.vb">
+      <DependentUpon>AjoutMontantSousLot.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\AjoutMontantSousLot.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\AutreResponsable.Designer.vb">
+      <DependentUpon>AutreResponsable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\AutreResponsable.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\CalculOffreFinanciere.Designer.vb">
+      <DependentUpon>CalculOffreFinanciere.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\CalculOffreFinanciere.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\EvalOffreFinanciereFinal.Designer.vb">
+      <DependentUpon>EvalOffreFinanciereFinal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\EvalOffreFinanciereFinal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\EvalOffreFinanciereCopie.Designer.vb">
+      <DependentUpon>EvalOffreFinanciereCopie.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\EvalOffreFinanciereCopie.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\EvaluationConsultantsCopies.Designer.vb">
+      <DependentUpon>EvaluationConsultantsCopies.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\EvaluationConsultantsCopies.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\JugementOffresCOJO.Designer.vb">
+      <DependentUpon>JugementOffresCOJO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\JugementOffresCOJO.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\AMI\ListeRestreindreAMI.designer.vb">
+      <DependentUpon>ListeRestreindreAMI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\AMI\ListeRestreindreAMI.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\ApercuDAO.Designer.vb">
+      <DependentUpon>ApercuDAO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\ApercuDAO.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\OuvertureOffres.Designer.vb">
+      <DependentUpon>OuvertureOffres.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\OuvertureOffres.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\OuvertureOffresOld.Designer.vb">
+      <DependentUpon>OuvertureOffresOld.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\OuvertureOffresOld.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\PlanMarcheSuite.Designer.vb">
+      <DependentUpon>PlanMarcheSuite.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\PlanMarcheSuite.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\ModifLignePPM.Designer.vb">
+      <DependentUpon>ModifLignePPM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\ModifLignePPM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\SaisiePPM.Designer.vb">
+      <DependentUpon>SaisiePPM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\SaisiePPM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\ValiderAttributionMarche .Designer.vb">
+      <DependentUpon>ValiderAttributionMarche .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\ValiderAttributionMarche .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\AMI\VisualiserAnnonceAMI.Designer.vb">
+      <DependentUpon>VisualiserAnnonceAMI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\AMI\VisualiserAnnonceAMI.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\AMI\RapportEvaluationMI.Designer.vb">
+      <DependentUpon>RapportEvaluationMI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\AMI\RapportEvaluationMI.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Autre\AccesEtOperateur.Designer.vb">
+      <DependentUpon>AccesEtOperateur.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\AccesEtOperateur.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\AccordCommentaire.Designer.vb">
+      <DependentUpon>AccordCommentaire.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\AccordCommentaire.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Autre\afficherCG.Designer.vb">
+      <DependentUpon>afficherCG.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\afficherCG.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\ModifCriterEvaluationDP.Designer.vb">
+      <DependentUpon>ModifCriterEvaluationDP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\ModifCriterEvaluationDP.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Autre\LierCompteEmploye.Designer.vb">
+      <DependentUpon>LierCompteEmploye.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\LierCompteEmploye.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Autre\LicenceUtilisateur.designer.vb">
+      <DependentUpon>LicenceUtilisateur.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\LicenceUtilisateur.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Base\DeviseVersion1.Designer.vb">
+      <DependentUpon>DeviseVersion1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Base\DeviseVersion1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Marché\ResponsablePM.Designer.vb">
+      <DependentUpon>ResponsablePM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Marché\ResponsablePM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Comptable\Comparation_SigFip.designer.vb">
+      <DependentUpon>Comparation_SigFip.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Comptable\Comparation_SigFip.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Comptable\TypeTiers.designer.vb">
+      <DependentUpon>TypeTiers.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Comptable\TypeTiers.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Document Projet\Afficher_doc.Designer.vb">
+      <DependentUpon>Afficher_doc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Document Projet\Afficher_doc.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\AjoutCritereConsult.Designer.vb">
+      <DependentUpon>AjoutCritereConsult.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\AjoutCritereConsult.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\AjoutSousCritereConsult.Designer.vb">
+      <DependentUpon>AjoutSousCritereConsult.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\AjoutSousCritereConsult.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Exercice comptable\Equilibrer_Cloture.Designer.vb">
+      <DependentUpon>Equilibrer_Cloture.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Exercice comptable\Equilibrer_Cloture.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Exercice comptable\Exercice_Par_Defaut.Designer.vb">
+      <DependentUpon>Exercice_Par_Defaut.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Exercice comptable\Exercice_Par_Defaut.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Marché\CompteA_MarcheEtTypeMarcheOld.Designer.vb">
+      <DependentUpon>CompteA_MarcheEtTypeMarcheOld.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Marché\CompteA_MarcheEtTypeMarcheOld.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Marché\AjoutRespoEtape.designer.vb">
+      <DependentUpon>AjoutRespoEtape.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Marché\AjoutRespoEtape.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Marché\ModePlanMarche.Designer.vb">
+      <DependentUpon>ModePlanMarche.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Marché\ModePlanMarche.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Marché\AjoutSignataire.designer.vb">
+      <DependentUpon>AjoutSignataire.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Marché\AjoutSignataire.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Marché\ListesSignataires.designer.vb">
+      <DependentUpon>ListesSignataires.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Marché\ListesSignataires.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Marché\ResponsbleEtape.designer.vb">
+      <DependentUpon>ResponsbleEtape.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Marché\ResponsbleEtape.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Projet\Bailleur.Designer.vb">
+      <DependentUpon>Bailleur.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Projet\Bailleur.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\CalculDetaille.Designer.vb">
+      <DependentUpon>CalculDetaille.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\CalculDetaille.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Projet\CategorieDepense.Designer.vb">
+      <DependentUpon>CategorieDepense.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Projet\CategorieDepense.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Evaluation de projet\ChangerEmplacement.Designer.vb">
+      <DependentUpon>ChangerEmplacement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Evaluation de projet\ChangerEmplacement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\ChoixBienOuPersonne.Designer.vb">
+      <DependentUpon>ChoixBienOuPersonne.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\ChoixBienOuPersonne.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Evaluation de projet\ChoixFrequenceCollecte.Designer.vb">
+      <DependentUpon>ChoixFrequenceCollecte.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Evaluation de projet\ChoixFrequenceCollecte.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Class\TiersClass.vb" />
+    <Compile Include="ClearLicense.Designer.vb">
+      <DependentUpon>ClearLicense.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ClearLicense.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClearMdi.Designer.vb">
+      <DependentUpon>ClearMdi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ClearMdi.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Exercice comptable\Cloture_Exercice.Designer.vb">
+      <DependentUpon>Cloture_Exercice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Exercice comptable\Cloture_Exercice.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Exercice comptable\Cloture_journaux.designer.vb">
+      <DependentUpon>Cloture_journaux.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Exercice comptable\Cloture_journaux.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CodeAcces.Designer.vb">
+      <DependentUpon>CodeAcces.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CodeAcces.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Comptable\Comparaison_Etats_Financier.Designer.vb">
+      <DependentUpon>Comparaison_Etats_Financier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Comptable\Comparaison_Etats_Financier.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Projet\Composante.Designer.vb">
+      <DependentUpon>Composante.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Projet\Composante.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Marché\CompteA_MarcheEtTypeMarche.Designer.vb">
+      <DependentUpon>CompteA_MarcheEtTypeMarche.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Marché\CompteA_MarcheEtTypeMarche.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Projet\ParametreTauxAppli.Designer.vb">
+      <DependentUpon>ParametreTauxAppli.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Projet\ParametreTauxAppli.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Projet\RessourcesRSF.Designer.vb">
+      <DependentUpon>RessourcesRSF.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Projet\RessourcesRSF.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Projet\CompteBailleur.Designer.vb">
+      <DependentUpon>CompteBailleur.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Projet\CompteBailleur.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Autre\Compte_Classe.designer.vb">
+      <DependentUpon>Compte_Classe.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\Compte_Classe.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Comptable\compte_general.designer.vb">
+      <DependentUpon>compte_general.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Comptable\compte_general.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Courrier\ConfigMail.Designer.vb">
+      <DependentUpon>ConfigMail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Courrier\ConfigMail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Courrier\ConfigSms.Designer.vb">
+      <DependentUpon>ConfigSms.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Courrier\ConfigSms.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Autre\BonCommande.Designer.vb">
+      <DependentUpon>BonCommande.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\BonCommande.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\Liste_boncommande.Designer.vb">
+      <DependentUpon>Liste_boncommande.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\Liste_boncommande.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Evaluation de projet\Etat_EngBail.Designer.vb">
+      <DependentUpon>Etat_EngBail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Evaluation de projet\Etat_EngBail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Autre\LaisonEtat.Designer.vb">
+      <DependentUpon>LaisonEtat.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\LaisonEtat.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Autre\Maps.Designer.vb">
+      <DependentUpon>Maps.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\Maps.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Marché\PMPochetteDocument.Designer.vb">
+      <DependentUpon>PMPochetteDocument.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Marché\PMPochetteDocument.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\PMPochette.designer.vb">
+      <DependentUpon>PMPochette.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\PMPochette.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\AMI\EvalConsult_PtsFortFaibleAMI.Designer.vb">
+      <DependentUpon>EvalConsult_PtsFortFaibleAMI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\AMI\EvalConsult_PtsFortFaibleAMI.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\AMI\EvalValidationMoyenneAMI.Designer.vb">
+      <DependentUpon>EvalValidationMoyenneAMI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\AMI\EvalValidationMoyenneAMI.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\AMI\OuvertureAmi.Designer.vb">
+      <DependentUpon>OuvertureAmi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\AMI\OuvertureAmi.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\EvaluationTDR.Designer.vb">
+      <DependentUpon>EvaluationTDR.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\EvaluationTDR.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\AMI\NewAmi.Designer.vb">
+      <DependentUpon>NewAmi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\AMI\NewAmi.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Gestion budgetaire\Etat_engPai.Designer.vb">
+      <DependentUpon>Etat_engPai.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Gestion budgetaire\Etat_engPai.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Gestion budgetaire\Etat_engFac.Designer.vb">
+      <DependentUpon>Etat_engFac.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Gestion budgetaire\Etat_engFac.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Gestion budgetaire\Etat_eng.Designer.vb">
+      <DependentUpon>Etat_eng.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Gestion budgetaire\Etat_eng.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Gestion budgetaire\Modif_engagement.Designer.vb">
+      <DependentUpon>Modif_engagement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Gestion budgetaire\Modif_engagement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Gestion budgetaire\Liste_engagement.Designer.vb">
+      <DependentUpon>Liste_engagement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Gestion budgetaire\Liste_engagement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Autre\Etat_sigfip.Designer.vb">
+      <DependentUpon>Etat_sigfip.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\Etat_sigfip.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Autre\Etat_parametres.Designer.vb">
+      <DependentUpon>Etat_parametres.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\Etat_parametres.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Autre\Etat_plancomptable.Designer.vb">
+      <DependentUpon>Etat_plancomptable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\Etat_plancomptable.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Document Projet\Manuels.Designer.vb">
+      <DependentUpon>Manuels.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Document Projet\Manuels.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\NewDao.Designer.vb">
+      <DependentUpon>NewDao.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\NewDao.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\OuvertureOffresTest.Designer.vb">
+      <DependentUpon>OuvertureOffresTest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\OuvertureOffresTest.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\PlanMarche.Designer.vb">
+      <DependentUpon>PlanMarche.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\PlanMarche.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Base\ProjetClear.Designer.vb">
+      <DependentUpon>ProjetClear.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Base\ProjetClear.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Autre\jour_ferie.Designer.vb">
+      <DependentUpon>jour_ferie.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\jour_ferie.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Gestion budgetaire\Saisie_engagement.Designer.vb">
+      <DependentUpon>Saisie_engagement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Gestion budgetaire\Saisie_engagement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Base\SuiteProjet.Designer.vb">
+      <DependentUpon>SuiteProjet.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Base\SuiteProjet.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Comptable\Creer_compte_tier.designer.vb">
+      <DependentUpon>Creer_compte_tier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Comptable\Creer_compte_tier.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataSet1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet1.vb">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DecalageActivites.Designer.vb">
+      <DependentUpon>DecalageActivites.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DecalageActivites.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Demarrage.Designer.vb">
+      <DependentUpon>Demarrage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Demarrage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Base\Devise.Designer.vb">
+      <DependentUpon>Devise.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Base\Devise.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DiagChoixMarche.Designer.vb">
+      <DependentUpon>DiagChoixMarche.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DiagChoixMarche.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DiagChoixMarcheConsult.Designer.vb">
+      <DependentUpon>DiagChoixMarcheConsult.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DiagChoixMarcheConsult.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DiagChoixTypeFourniture.Designer.vb">
+      <DependentUpon>DiagChoixTypeFourniture.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DiagChoixTypeFourniture.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DiagDelai.designer.vb">
+      <DependentUpon>DiagDelai.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DiagDelai.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Evaluation de projet\DiagrammeGantt.Designer.vb">
+      <DependentUpon>DiagrammeGantt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Evaluation de projet\DiagrammeGantt.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Autre\DialogDate.Designer.vb">
+      <DependentUpon>DialogDate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\DialogDate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DialogMethodeConsult.Designer.vb">
+      <DependentUpon>DialogMethodeConsult.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DialogMethodeConsult.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DialogSeuil.designer.vb">
+      <DependentUpon>DialogSeuil.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DialogSeuil.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Projet\DivisionAdministrative.Designer.vb">
+      <DependentUpon>DivisionAdministrative.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Projet\DivisionAdministrative.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Autre\EchBailleur.designer.vb">
+      <DependentUpon>EchBailleur.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\EchBailleur.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Evaluation de projet\EditionBudgetaire.Designer.vb">
+      <DependentUpon>EditionBudgetaire.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Evaluation de projet\EditionBudgetaire.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Marché\EtapeMarche.Designer.vb">
+      <DependentUpon>EtapeMarche.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Marché\EtapeMarche.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Projet\EtsBancaire.Designer.vb">
+      <DependentUpon>EtsBancaire.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Projet\EtsBancaire.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\EvalConsult_PtsFortFaible.Designer.vb">
+      <DependentUpon>EvalConsult_PtsFortFaible.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\EvalConsult_PtsFortFaible.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\EvalConsult_TexteGeneralites.Designer.vb">
+      <DependentUpon>EvalConsult_TexteGeneralites.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\EvalConsult_TexteGeneralites.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\EvaluateurPresent.Designer.vb">
+      <DependentUpon>EvaluateurPresent.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\EvaluateurPresent.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\EvaluationConsultants.Designer.vb">
+      <DependentUpon>EvaluationConsultants.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\EvaluationConsultants.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\EvalValidationMoyenne.Designer.vb">
+      <DependentUpon>EvalValidationMoyenne.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\EvalValidationMoyenne.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\ExamenDetaille.Designer.vb">
+      <DependentUpon>ExamenDetaille.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\ExamenDetaille.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\ExamPostQualif.Designer.vb">
+      <DependentUpon>ExamPostQualif.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\ExamPostQualif.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\ExceptionRevue.designer.vb">
+      <DependentUpon>ExceptionRevue.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\ExceptionRevue.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Evaluation de projet\FicheActivite.Designer.vb">
+      <DependentUpon>FicheActivite.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Evaluation de projet\FicheActivite.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\FicheEvaluation.Designer.vb">
+      <DependentUpon>FicheEvaluation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\FicheEvaluation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Evaluation de projet\FichesActivitesEtape1.Designer.vb">
+      <DependentUpon>FichesActivitesEtape1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Evaluation de projet\FichesActivitesEtape1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Evaluation de projet\FichesActivitesEtape2.Designer.vb">
+      <DependentUpon>FichesActivitesEtape2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Evaluation de projet\FichesActivitesEtape2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Evaluation de projet\FichesActivitesEtape3.Designer.vb">
+      <DependentUpon>FichesActivitesEtape3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Evaluation de projet\FichesActivitesEtape3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Gestion budgetaire\Fiche_annuelle.designer.vb">
+      <DependentUpon>Fiche_annuelle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Gestion budgetaire\Fiche_annuelle.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Projet\Fonction.Designer.vb">
+      <DependentUpon>Fonction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Projet\Fonction.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FullScreenReport.Designer.vb">
+      <DependentUpon>FullScreenReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FullScreenReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Autre\GroupUtils.Designer.vb">
+      <DependentUpon>GroupUtils.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\GroupUtils.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Projet\IndicateursEtUnites.Designer.vb">
+      <DependentUpon>IndicateursEtUnites.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Projet\IndicateursEtUnites.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Comptable\Journal.designer.vb">
+      <DependentUpon>Journal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Comptable\Journal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\JugementOffres.Designer.vb">
+      <DependentUpon>JugementOffres.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\JugementOffres.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Autre\Liste_parametre.designer.vb">
+      <DependentUpon>Liste_parametre.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\Liste_parametre.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\MarcheSigne.Designer.vb">
+      <DependentUpon>MarcheSigne.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\MarcheSigne.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Class\MesFonctions.vb" />
+    <Compile Include="Paramètres\Comptable\Modif_PlanTiers.designer.vb">
+      <DependentUpon>Modif_PlanTiers.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Comptable\Modif_PlanTiers.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Class\ModuleVariables.vb" />
+    <Compile Include="Paramètres\Autre\MonMotDePasse.Designer.vb">
+      <DependentUpon>MonMotDePasse.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\MonMotDePasse.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\NewDp.Designer.vb">
+      <DependentUpon>NewDp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\NewDp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Notification\NotificationAttributionRejet.Designer.vb">
+      <DependentUpon>NotificationAttributionRejet.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Notification\NotificationAttributionRejet.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Notification\Notification_EnvoiMail.Designer.vb">
+      <DependentUpon>Notification_EnvoiMail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Notification\Notification_EnvoiMail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\NouveauGroupeCriterePostQ.Designer.vb">
+      <DependentUpon>NouveauGroupeCriterePostQ.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\NouveauGroupeCriterePostQ.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Autre\NouveauProjetClear.Designer.vb">
+      <DependentUpon>NouveauProjetClear.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\NouveauProjetClear.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Exercice comptable\Nouvel_exercice.designer.vb">
+      <DependentUpon>Nouvel_exercice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Exercice comptable\Nouvel_exercice.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Autre\OrdreDeDemarrage.Designer.vb">
+      <DependentUpon>OrdreDeDemarrage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\OrdreDeDemarrage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\OuverturePropositions.Designer.vb">
+      <DependentUpon>OuverturePropositions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\DP\OuverturePropositions.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Comptable\Parametrage.designer.vb">
+      <DependentUpon>Parametrage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Comptable\Parametrage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Autre\ParametreConnexion.Designer.vb">
+      <DependentUpon>ParametreConnexion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\ParametreConnexion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Autre\Parametre_Sigfip.designer.vb">
+      <DependentUpon>Parametre_Sigfip.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\Parametre_Sigfip.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Autre\paramètre.Designer.vb">
+      <DependentUpon>paramètre.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\paramètre.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Evaluation de projet\PlanDecaissement.Designer.vb">
+      <DependentUpon>PlanDecaissement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Evaluation de projet\PlanDecaissement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Comptable\Plan_tiers.designer.vb">
+      <DependentUpon>Plan_tiers.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Comptable\Plan_tiers.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintRibbonControllerResources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrintRibbonControllerResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\ProgEtape.Designer.vb">
+      <DependentUpon>ProgEtape.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\ProgEtape.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Class\Program.vb" />
+    <Compile Include="Paramètres\Autre\RaisonAttribuerSuivant.Designer.vb">
+      <DependentUpon>RaisonAttribuerSuivant.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\RaisonAttribuerSuivant.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Notification\RattrapFournisseur.Designer.vb">
+      <DependentUpon>RattrapFournisseur.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Notification\RattrapFournisseur.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Notification\RattrapReglement.Designer.vb">
+      <DependentUpon>RattrapReglement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Notification\RattrapReglement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Projet\RepartitionMontantConvention.Designer.vb">
+      <DependentUpon>RepartitionMontantConvention.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Projet\RepartitionMontantConvention.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\RetraitEtDepotDAO.Designer.vb">
+      <DependentUpon>RetraitEtDepotDAO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\RetraitEtDepotDAO.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Autre\RsmBailleurDevise.Designer.vb">
+      <DependentUpon>RsmBailleurDevise.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\RsmBailleurDevise.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Marché\SaisieMethodes.designer.vb">
+      <DependentUpon>SaisieMethodes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Marché\SaisieMethodes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\SaisieOffres.Designer.vb">
+      <DependentUpon>SaisieOffres.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\SaisieOffres.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\SaisieTexte.Designer.vb">
+      <DependentUpon>SaisieTexte.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\SaisieTexte.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\SelectConsultant.Designer.vb">
+      <DependentUpon>SelectConsultant.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\SelectConsultant.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Projet\Service.Designer.vb">
+      <DependentUpon>Service.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Projet\Service.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Marché\SeuilRevue.designer.vb">
+      <DependentUpon>SeuilRevue.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Marché\SeuilRevue.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SkinShop.Designer.vb">
+      <DependentUpon>SkinShop.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SkinShop.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Projet\SourceFinancement.Designer.vb">
+      <DependentUpon>SourceFinancement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Projet\SourceFinancement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Projet\SousComposante.Designer.vb">
+      <DependentUpon>SousComposante.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Projet\SousComposante.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashScreen1.Designer.vb">
+      <DependentUpon>SplashScreen1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SplashScreen1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashScreen2.Designer.vb">
+      <DependentUpon>SplashScreen2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SplashScreen2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Gestion budgetaire\Suivibugetaire_Sigfip.designer.vb">
+      <DependentUpon>Suivibugetaire_Sigfip.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Gestion budgetaire\Suivibugetaire_Sigfip.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Class\SuperModule.vb" />
+    <Compile Include="Paramètres\Projet\TypeRepartitionBudget.Designer.vb">
+      <DependentUpon>TypeRepartitionBudget.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Projet\TypeRepartitionBudget.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\ValiderAttributionMarche_Old.Designer.vb">
+      <DependentUpon>ValiderAttributionMarche_Old.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\ValiderAttributionMarche_Old.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visionneuse.Designer.vb">
+      <DependentUpon>Visionneuse.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visionneuse.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WaitForm1.Designer.vb">
+      <DependentUpon>WaitForm1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WaitForm1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XRDesignRibbonControllerResources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XRDesignRibbonControllerResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Gestion budgetaire\SuiviBudgetCompte.Designer.vb">
+      <DependentUpon>SuiviBudgetCompte.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Gestion budgetaire\SuiviBudgetCompte.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Etats\Imprim_ferier.Designer.vb">
+      <DependentUpon>Imprim_ferier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Etats\Imprim_ferier.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Autre\HeureTravail.Designer.vb">
+      <DependentUpon>HeureTravail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\HeureTravail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Autre\ModifEcriture.Designer.vb">
+      <DependentUpon>ModifEcriture.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Autre\ModifEcriture.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Base\Zonegeo.Designer.vb">
+      <DependentUpon>Zonegeo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Base\Zonegeo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\Passation des marchés\AMI\DepotAMI.resx">
+      <DependentUpon>DepotAMI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\DP\DepotDP.resx">
+      <DependentUpon>DepotDP.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\ImpressionPlan.resx">
+      <DependentUpon>ImpressionPlan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\ModifMethode.resx">
+      <DependentUpon>ModifMethode.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\PMPochetteV1.resx">
+      <DependentUpon>PMPochetteV1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\ReportDate.resx">
+      <DependentUpon>ReportDate.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\AjoutMontantSousLot.resx">
+      <DependentUpon>AjoutMontantSousLot.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\AutreResponsable.resx">
+      <DependentUpon>AutreResponsable.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\DP\CalculOffreFinanciere.resx">
+      <DependentUpon>CalculOffreFinanciere.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\DP\EvalOffreFinanciereFinal.resx">
+      <DependentUpon>EvalOffreFinanciereFinal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\DP\EvalOffreFinanciereCopie.resx">
+      <DependentUpon>EvalOffreFinanciereCopie.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\DP\EvaluationConsultantsCopies.resx">
+      <DependentUpon>EvaluationConsultantsCopies.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\JugementOffresCOJO.resx">
+      <DependentUpon>JugementOffresCOJO.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\AMI\ListeRestreindreAMI.resx">
+      <DependentUpon>ListeRestreindreAMI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\ApercuDAO.fr.resx">
+      <DependentUpon>ApercuDAO.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\ApercuDAO.resx">
+      <DependentUpon>ApercuDAO.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\OuvertureOffres.resx">
+      <DependentUpon>OuvertureOffres.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\OuvertureOffresOld.resx">
+      <DependentUpon>OuvertureOffresOld.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\PlanMarcheSuite.resx">
+      <DependentUpon>PlanMarcheSuite.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\ModifLignePPM.resx">
+      <DependentUpon>ModifLignePPM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\SaisiePPM.resx">
+      <DependentUpon>SaisiePPM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\ValiderAttributionMarche .resx">
+      <DependentUpon>ValiderAttributionMarche .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\AMI\VisualiserAnnonceAMI.resx">
+      <DependentUpon>VisualiserAnnonceAMI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\AMI\RapportEvaluationMI.resx">
+      <DependentUpon>RapportEvaluationMI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="Paramètres\Autre\AccesEtOperateur.resx">
+      <DependentUpon>AccesEtOperateur.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\AccordCommentaire.resx">
+      <DependentUpon>AccordCommentaire.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\afficherCG.resx">
+      <DependentUpon>afficherCG.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\DP\ModifCriterEvaluationDP.resx">
+      <DependentUpon>ModifCriterEvaluationDP.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\LierCompteEmploye.resx">
+      <DependentUpon>LierCompteEmploye.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\LicenceUtilisateur.resx">
+      <DependentUpon>LicenceUtilisateur.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Base\DeviseVersion1.resx">
+      <DependentUpon>DeviseVersion1.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Marché\ResponsablePM.resx">
+      <DependentUpon>ResponsablePM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Comptable\Comparation_SigFip.resx">
+      <DependentUpon>Comparation_SigFip.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Comptable\TypeTiers.resx">
+      <DependentUpon>TypeTiers.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Document Projet\Afficher_doc.resx">
+      <DependentUpon>Afficher_doc.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\DP\AjoutCritereConsult.resx">
+      <DependentUpon>AjoutCritereConsult.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\DP\AjoutSousCritereConsult.resx">
+      <DependentUpon>AjoutSousCritereConsult.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Exercice comptable\Equilibrer_Cloture.resx">
+      <DependentUpon>Equilibrer_Cloture.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Exercice comptable\Exercice_Par_Defaut.resx">
+      <DependentUpon>Exercice_Par_Defaut.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Marché\CompteA_MarcheEtTypeMarcheOld.resx">
+      <DependentUpon>CompteA_MarcheEtTypeMarcheOld.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Marché\AjoutRespoEtape.resx">
+      <DependentUpon>AjoutRespoEtape.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Marché\ModePlanMarche.resx">
+      <DependentUpon>ModePlanMarche.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Marché\AjoutSignataire.resx">
+      <DependentUpon>AjoutSignataire.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Marché\ListesSignataires.resx">
+      <DependentUpon>ListesSignataires.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Marché\ResponsbleEtape.resx">
+      <DependentUpon>ResponsbleEtape.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Projet\Bailleur.resx">
+      <DependentUpon>Bailleur.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\CalculDetaille.resx">
+      <DependentUpon>CalculDetaille.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Projet\CategorieDepense.resx">
+      <DependentUpon>CategorieDepense.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Evaluation de projet\ChangerEmplacement.resx">
+      <DependentUpon>ChangerEmplacement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\ChoixBienOuPersonne.resx">
+      <DependentUpon>ChoixBienOuPersonne.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Evaluation de projet\ChoixFrequenceCollecte.resx">
+      <DependentUpon>ChoixFrequenceCollecte.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClearLicense.resx">
+      <DependentUpon>ClearLicense.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClearMdi.resx">
+      <DependentUpon>ClearMdi.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Exercice comptable\Cloture_Exercice.resx">
+      <DependentUpon>Cloture_Exercice.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Exercice comptable\Cloture_journaux.resx">
+      <DependentUpon>Cloture_journaux.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CodeAcces.resx">
+      <DependentUpon>CodeAcces.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Comptable\Comparaison_Etats_Financier.resx">
+      <DependentUpon>Comparaison_Etats_Financier.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Projet\Composante.resx">
+      <DependentUpon>Composante.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Marché\CompteA_MarcheEtTypeMarche.resx">
+      <DependentUpon>CompteA_MarcheEtTypeMarche.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Projet\ParametreTauxAppli.resx">
+      <DependentUpon>ParametreTauxAppli.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Projet\RessourcesRSF.resx">
+      <DependentUpon>RessourcesRSF.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Projet\CompteBailleur.resx">
+      <DependentUpon>CompteBailleur.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\Compte_Classe.resx">
+      <DependentUpon>Compte_Classe.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Comptable\compte_general.resx">
+      <DependentUpon>compte_general.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Courrier\ConfigMail.resx">
+      <DependentUpon>ConfigMail.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Courrier\ConfigSms.resx">
+      <DependentUpon>ConfigSms.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\BonCommande.resx">
+      <DependentUpon>BonCommande.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\Liste_boncommande.resx">
+      <DependentUpon>Liste_boncommande.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Evaluation de projet\Etat_EngBail.resx">
+      <DependentUpon>Etat_EngBail.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\LaisonEtat.resx">
+      <DependentUpon>LaisonEtat.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\Maps.resx">
+      <DependentUpon>Maps.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Marché\PMPochetteDocument.resx">
+      <DependentUpon>PMPochetteDocument.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\PMPochette.resx">
+      <DependentUpon>PMPochette.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\AMI\EvalConsult_PtsFortFaibleAMI.resx">
+      <DependentUpon>EvalConsult_PtsFortFaibleAMI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\AMI\EvalValidationMoyenneAMI.resx">
+      <DependentUpon>EvalValidationMoyenneAMI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\AMI\OuvertureAmi.resx">
+      <DependentUpon>OuvertureAmi.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\DP\EvaluationTDR.resx">
+      <DependentUpon>EvaluationTDR.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\AMI\NewAmi.resx">
+      <DependentUpon>NewAmi.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Gestion budgetaire\Etat_engPai.resx">
+      <DependentUpon>Etat_engPai.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Gestion budgetaire\Etat_engFac.resx">
+      <DependentUpon>Etat_engFac.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Gestion budgetaire\Etat_eng.resx">
+      <DependentUpon>Etat_eng.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Gestion budgetaire\Modif_engagement.resx">
+      <DependentUpon>Modif_engagement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Gestion budgetaire\Liste_engagement.resx">
+      <DependentUpon>Liste_engagement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\Etat_sigfip.resx">
+      <DependentUpon>Etat_sigfip.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\Etat_parametres.resx">
+      <DependentUpon>Etat_parametres.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\Etat_plancomptable.resx">
+      <DependentUpon>Etat_plancomptable.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Document Projet\Manuels.resx">
+      <DependentUpon>Manuels.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\NewDao.fr.resx">
+      <DependentUpon>NewDao.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\NewDao.resx">
+      <DependentUpon>NewDao.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\OuvertureOffresTest.resx">
+      <DependentUpon>OuvertureOffresTest.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\PlanMarche.resx">
+      <DependentUpon>PlanMarche.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Base\ProjetClear.resx">
+      <DependentUpon>ProjetClear.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\jour_ferie.resx">
+      <DependentUpon>jour_ferie.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Gestion budgetaire\Saisie_engagement.resx">
+      <DependentUpon>Saisie_engagement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Base\SuiteProjet.resx">
+      <DependentUpon>SuiteProjet.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Comptable\Creer_compte_tier.resx">
+      <DependentUpon>Creer_compte_tier.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\DecalageActivites.resx">
+      <DependentUpon>DecalageActivites.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Demarrage.resx">
+      <DependentUpon>Demarrage.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Base\Devise.resx">
+      <DependentUpon>Devise.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\DiagChoixMarche.resx">
+      <DependentUpon>DiagChoixMarche.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\DiagChoixMarcheConsult.resx">
+      <DependentUpon>DiagChoixMarcheConsult.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\DiagChoixTypeFourniture.resx">
+      <DependentUpon>DiagChoixTypeFourniture.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\DiagDelai.resx">
+      <DependentUpon>DiagDelai.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Evaluation de projet\DiagrammeGantt.resx">
+      <DependentUpon>DiagrammeGantt.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\DialogDate.resx">
+      <DependentUpon>DialogDate.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\DialogMethodeConsult.resx">
+      <DependentUpon>DialogMethodeConsult.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\DialogSeuil.resx">
+      <DependentUpon>DialogSeuil.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Projet\DivisionAdministrative.resx">
+      <DependentUpon>DivisionAdministrative.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\EchBailleur.resx">
+      <DependentUpon>EchBailleur.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Evaluation de projet\EditionBudgetaire.resx">
+      <DependentUpon>EditionBudgetaire.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Marché\EtapeMarche.resx">
+      <DependentUpon>EtapeMarche.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Projet\EtsBancaire.resx">
+      <DependentUpon>EtsBancaire.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\DP\EvalConsult_PtsFortFaible.resx">
+      <DependentUpon>EvalConsult_PtsFortFaible.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\DP\EvalConsult_TexteGeneralites.resx">
+      <DependentUpon>EvalConsult_TexteGeneralites.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\EvaluateurPresent.resx">
+      <DependentUpon>EvaluateurPresent.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\DP\EvaluationConsultants.resx">
+      <DependentUpon>EvaluationConsultants.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\DP\EvalValidationMoyenne.resx">
+      <DependentUpon>EvalValidationMoyenne.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\ExamenDetaille.resx">
+      <DependentUpon>ExamenDetaille.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\ExamPostQualif.resx">
+      <DependentUpon>ExamPostQualif.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\ExceptionRevue.resx">
+      <DependentUpon>ExceptionRevue.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Evaluation de projet\FicheActivite.resx">
+      <DependentUpon>FicheActivite.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\DP\FicheEvaluation.resx">
+      <DependentUpon>FicheEvaluation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Evaluation de projet\FichesActivitesEtape1.resx">
+      <DependentUpon>FichesActivitesEtape1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Evaluation de projet\FichesActivitesEtape2.resx">
+      <DependentUpon>FichesActivitesEtape2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Evaluation de projet\FichesActivitesEtape3.resx">
+      <DependentUpon>FichesActivitesEtape3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Gestion budgetaire\Fiche_annuelle.resx">
+      <DependentUpon>Fiche_annuelle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Projet\Fonction.resx">
+      <DependentUpon>Fonction.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FullScreenReport.resx">
+      <DependentUpon>FullScreenReport.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\GroupUtils.resx">
+      <DependentUpon>GroupUtils.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Projet\IndicateursEtUnites.resx">
+      <DependentUpon>IndicateursEtUnites.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Comptable\Journal.resx">
+      <DependentUpon>Journal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\JugementOffres.resx">
+      <DependentUpon>JugementOffres.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\Liste_parametre.resx">
+      <DependentUpon>Liste_parametre.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\MarcheSigne.resx">
+      <DependentUpon>MarcheSigne.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Comptable\Modif_PlanTiers.resx">
+      <DependentUpon>Modif_PlanTiers.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\MonMotDePasse.resx">
+      <DependentUpon>MonMotDePasse.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\DP\NewDp.resx">
+      <DependentUpon>NewDp.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Notification\NotificationAttributionRejet.resx">
+      <DependentUpon>NotificationAttributionRejet.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Notification\Notification_EnvoiMail.resx">
+      <DependentUpon>Notification_EnvoiMail.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\NouveauGroupeCriterePostQ.resx">
+      <DependentUpon>NouveauGroupeCriterePostQ.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\NouveauProjetClear.resx">
+      <DependentUpon>NouveauProjetClear.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Exercice comptable\Nouvel_exercice.resx">
+      <DependentUpon>Nouvel_exercice.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\OrdreDeDemarrage.resx">
+      <DependentUpon>OrdreDeDemarrage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\DP\OuverturePropositions.resx">
+      <DependentUpon>OuverturePropositions.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Comptable\Parametrage.resx">
+      <DependentUpon>Parametrage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\ParametreConnexion.resx">
+      <DependentUpon>ParametreConnexion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\Parametre_Sigfip.resx">
+      <DependentUpon>Parametre_Sigfip.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\paramètre.resx">
+      <DependentUpon>paramètre.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Evaluation de projet\PlanDecaissement.resx">
+      <DependentUpon>PlanDecaissement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Comptable\Plan_tiers.resx">
+      <DependentUpon>Plan_tiers.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintRibbonControllerResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PrintRibbonControllerResources.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\ProgEtape.resx">
+      <DependentUpon>ProgEtape.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\RaisonAttribuerSuivant.resx">
+      <DependentUpon>RaisonAttribuerSuivant.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Notification\RattrapFournisseur.resx">
+      <DependentUpon>RattrapFournisseur.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Notification\RattrapReglement.resx">
+      <DependentUpon>RattrapReglement.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Projet\RepartitionMontantConvention.resx">
+      <DependentUpon>RepartitionMontantConvention.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\RetraitEtDepotDAO.resx">
+      <DependentUpon>RetraitEtDepotDAO.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\RsmBailleurDevise.resx">
+      <DependentUpon>RsmBailleurDevise.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Marché\SaisieMethodes.resx">
+      <DependentUpon>SaisieMethodes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\SaisieOffres.resx">
+      <DependentUpon>SaisieOffres.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\SaisieTexte.resx">
+      <DependentUpon>SaisieTexte.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\SelectConsultant.resx">
+      <DependentUpon>SelectConsultant.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Projet\Service.resx">
+      <DependentUpon>Service.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Marché\SeuilRevue.resx">
+      <DependentUpon>SeuilRevue.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SkinShop.resx">
+      <DependentUpon>SkinShop.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Projet\SourceFinancement.resx">
+      <DependentUpon>SourceFinancement.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Projet\SousComposante.resx">
+      <DependentUpon>SousComposante.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashScreen1.resx">
+      <DependentUpon>SplashScreen1.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashScreen2.resx">
+      <DependentUpon>SplashScreen2.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Gestion budgetaire\Suivibugetaire_Sigfip.resx">
+      <DependentUpon>Suivibugetaire_Sigfip.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Projet\TypeRepartitionBudget.resx">
+      <DependentUpon>TypeRepartitionBudget.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\ValiderAttributionMarche_Old.resx">
+      <DependentUpon>ValiderAttributionMarche_Old.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visionneuse.resx">
+      <DependentUpon>Visionneuse.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WaitForm1.resx">
+      <DependentUpon>WaitForm1.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XRDesignRibbonControllerResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>XRDesignRibbonControllerResources.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Gestion budgetaire\SuiviBudgetCompte.resx">
+      <DependentUpon>SuiviBudgetCompte.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Etats\Imprim_ferier.resx">
+      <DependentUpon>Imprim_ferier.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\HeureTravail.resx">
+      <DependentUpon>HeureTravail.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Autre\ModifEcriture.resx">
+      <DependentUpon>ModifEcriture.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Base\Zonegeo.resx">
+      <DependentUpon>Zonegeo.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cote_divoire.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\espace-globe-87.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo Template - RE_Logo_1616.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogoNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\licorne_030.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClearpNew8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClearpNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NvFond.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo Template - RE_Logo_16161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cote_divoire1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Error.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enregistrer1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\annuler.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\supprimer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\modifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ajouter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Globe-1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\binding_retour.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CadenatNew.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_Save_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RevenueSplit_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Employee_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Revenue_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Group_KPI.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Home_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Period_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Preview_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Group_Catalog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CustomersKPI_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Categories_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Group_Administrator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Preview_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_New_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_New_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_Open_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_Open_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_Save_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imprimer_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imprimer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Return_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Resources\CustomersByDate_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>6</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spo_athletisme_040.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CloseDetails_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Group_Rental.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Previous_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ExportToPDF_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ExportToExcel_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ExportToRTF_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ExportToTXT_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ExportToIMG_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TopCustomers_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CustomerRevenue_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\308.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Navigation_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserKey_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Revenue_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\338.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Order_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\View_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Period_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Mail_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Outbox_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\USD.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlancSepar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Group_Reports.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\View_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ActiveRents_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sale_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ManageItems_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CloseDetails_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CustomerRevenue_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Scheduler_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RevenueSplit_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Budget.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Budget2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Marches.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Marches2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Immob.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Missions.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ParcAuto.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SuiviEval2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SuiviEval.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ComptaGle.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ResHum2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ResHum.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ResHum3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CourrierInt.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CourrierInt2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ComptaAnal.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GestFin.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Home_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Trash_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vert-rafraichir-icone-4826-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_Find_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\actualiser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vieux-rafraichir-vue-icone-4185-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disque-editer-fichier-enregistrez-icone-4226-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mathematiques-bureau-ouvert-icone-5766-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fleche-modifier-vieux-defaire-icone-5639-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Order_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MediaPerformance_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fermer-croix-supprimer-erreurs-sortie-icone-4368-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Ribbon_Info_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Ribbon_Info_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Ribbon_Content_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Ribbon_SaveAs_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Drafts_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Inbox_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Organizer_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Ribbon_SaveAs_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Logos\ClearIcone.ico" />
+    <Content Include="Logos\logo.ico" />
+    <Content Include="Logos\logo48.ico" />
+    <None Include="Resources\abc-Del-16.png" />
+    <None Include="Resources\abc-Del-161.png" />
+    <None Include="Resources\abc-16.png" />
+    <None Include="Resources\Logo_ClearProject_Valide.ico" />
+    <None Include="Resources\LogoClearProject.ico" />
+    <None Include="Resources\LogoNew.ico" />
+    <None Include="Resources\chat-bubbles-icon 16x16.png" />
+    <None Include="Resources\chat-bubbles-icon 24x24.png" />
+    <None Include="Resources\chat-bubbles-icon 48x48.png" />
+    <None Include="Resources\chat-bubbles-icon 96x96.png" />
+    <None Include="Resources\Chat-icon 128x128.png" />
+    <None Include="Resources\Chat-icon 32x32.png" />
+    <None Include="Resources\Chat-icon 24x24.png" />
+    <None Include="Resources\Chat-icon 16x16.png" />
+    <None Include="Resources\033.png" />
+    <Content Include="Resources\176.png" />
+    <Content Include="Resources\177.png" />
+    <Content Include="Resources\185.png" />
+    <None Include="Resources\fleche-modifier-vieux-defaire-icone-5639-16.png" />
+    <None Include="Resources\fleche-modifier-vieux-defaire-icone-5639-16.jpg" />
+    <None Include="Resources\dk-aqua_ball_red-128x128.png" />
+    <None Include="Resources\kf-network-wireless-100-128x128.png" />
+    <None Include="Resources\kf-network-wireless-75-128x128.png" />
+    <None Include="Resources\kf-network-wireless-50-128x128.png" />
+    <None Include="Resources\kf-network-wireless-25-128x128.png" />
+    <None Include="Resources\cc-ktalkd-128x128.png" />
+    <None Include="Resources\Chat.png" />
+    <None Include="Resources\mail.png" />
+    <None Include="Resources\ClearPlay.png" />
+    <None Include="Resources\vide.png" />
+    <None Include="Resources\employe.png" />
+    <None Include="Resources\versLeBas.png" />
+    <None Include="Resources\paramMail.png" />
+    <None Include="Resources\Delete32.png" />
+    <None Include="Resources\kf-ejecter-128x128.png" />
+    <None Include="Resources\DownLoad32.png" />
+    <None Include="Resources\DownLoad.png" />
+    <None Include="Resources\cc-log2-128x128.png" />
+    <None Include="Resources\dk-barcode-128x128.png" />
+    <None Include="Resources\dk-email_download-01-128x128.png" />
+    <None Include="Resources\kf-mail-mark-important-128x128.png" />
+    <None Include="Resources\looknfeel-128x128.png" />
+    <None Include="Resources\access-128x128.png" />
+    <None Include="Resources\cp-car-128x128.png" />
+    <None Include="Resources\hp-mycomputer-128x128.png" />
+    <None Include="Resources\kfm_home-128x128.png" />
+    <None Include="Resources\file-manager-128x128.png" />
+    <None Include="Resources\cc-tar2-128x128.png" />
+    <None Include="Resources\cc-kthememgr-128x128.png" />
+    <None Include="Resources\dk-mail-128x128.png" />
+    <None Include="Resources\kf-applications-mail-128x128.png" />
+    <None Include="Resources\kf-gtg-128x128.png" />
+    <None Include="Resources\kf-edit-web-search-128x128.png" />
+    <None Include="Resources\kf-certificate-server-128x128.png" />
+    <None Include="Resources\cc-os-support-128x128.png" />
+    <None Include="Resources\kf-applications-other-128x128.png" />
+    <None Include="Resources\dk-coinstack-128x128.png" />
+    <None Include="Resources\kf-gnumeric-128x128.png" />
+    <None Include="Resources\cc-kcmpartitions2-128x128.png" />
+    <None Include="Resources\kf-badge-small-128x128.png" />
+    <None Include="Resources\dk-calculator-01-128x128.png" />
+    <None Include="Resources\kf-applications-development-128x128.png" />
+    <None Include="Resources\dk-contract-128x128.png" />
+    <None Include="Resources\kf-grisbi-128x128.png" />
+    <None Include="Resources\kf-emblem-sales-128x128.png" />
+    <None Include="Resources\dk-money-128x128.png" />
+    <None Include="Resources\Ribbon_Exit_32x32.png" />
+    <None Include="Resources\style-icone-9607-161.png" />
+    <None Include="Resources\style-icone-9607-16.png" />
+    <None Include="Resources\sac-tresorerie-argent-icone-5930-16.png" />
+    <None Include="Resources\rapport-sur-le-disque-icone-5417-161.png" />
+    <None Include="Resources\rapport-sur-le-disque-icone-5417-16.png" />
+    <None Include="Resources\parametres-icone-8967-16.png" />
+    <None Include="Resources\maison-maison-icone-4368-16.png" />
+    <None Include="Resources\maison-maison-icone-3843-16.png" />
+    <None Include="Resources\maison-maison-icone-3710-16.png" />
+    <None Include="Resources\livre-icone-5468-16.png" />
+    <None Include="Resources\livre-document-icone-5270-16.png" />
+    <None Include="Resources\la-morue-fisc-icone-8891-16.png" />
+    <None Include="Resources\document-modifier-papier-stylo-ecrire-icone-4325-161.png" />
+    <None Include="Resources\document-modifier-papier-stylo-ecrire-icone-4325-16.png" />
+    <None Include="Resources\design-graphisme-stylo-ecrire-icone-9549-16.png" />
+    <None Include="Resources\ajouter-bouton-plus-icone-9620-16.png" />
+    <None Include="Resources\ajouter-a-entree-icone-6285-16.png" />
+    <None Include="Resources\justice-balance-icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Modules\Passation des marchés\Services Autres\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

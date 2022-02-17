@@ -1,0 +1,6 @@
+server=localhost
+DB=LIKE 'bdpdm%'
+PORT=3306
+USERNAME=UserAdmin
+PWD=zSH2CU66Jd1vkeZB
+ODBCNAME=ClearODBC

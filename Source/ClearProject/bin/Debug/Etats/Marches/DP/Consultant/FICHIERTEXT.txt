@@ -1,0 +1,11 @@
+DP12/2012/PFCTCAL/CONSULT
+
+Pm-DAO.NumeroDp
+
+SELECT * FROM T_ConsultPourDAO
+
+SELECT * FROM T_Consultant WHERE NumeroDP = '{?Pm-DAO.NumeroDp}' and DateDepot <> ''
+
+SELECT * FROM T_ConsultPourDAO where NumeroDP = '{?Pm-DAO.NumeroDp}'
+
+Pm-NbreDepotConsultant.Expr1000
