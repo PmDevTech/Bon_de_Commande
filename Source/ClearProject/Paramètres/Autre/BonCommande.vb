@@ -3,9 +3,9 @@ Imports MySql.Data.MySqlClient
 
 Public Class BonCommande
 
+    Inherits DevExpress.XtraEditors.XtraForm
     Dim tauxDollar As Decimal = 1
     Dim CfaGere As Boolean = True
-    Dim dtboncommande = New DataTable
 
     Private Sub ChargerService()
         CmbService.Properties.Items.Clear()
@@ -152,5 +152,67 @@ Public Class BonCommande
 
     Private Sub BtAnnuler_Click(sender As Object, e As EventArgs) Handles BtAnnuler.Click
         Initialiser()
+    End Sub
+
+    Private Sub BtEnregistrer_Click(sender As Object, e As EventArgs) Handles BtEnregistrer.Click
+
+        'vérification des champs texts
+        If Dateboncmde.Text = "" Then
+            FailMsg("Renseigner la date du bon de commande")
+            Dateboncmde.Select()
+            Exit Sub
+        End If
+        If Txtboncmde.Text = "" Then
+            SuccesMsg("Renseignez le numéro du bon de commande")
+            Txtboncmde.Select()
+            Exit Sub
+        End If
+        If TxtMarche.Text = "" Then
+            SuccesMsg("Saisissez le marché")
+            TxtMarche.Select()
+            Exit Sub
+        End If
+        If CmbService.SelectedIndex = -1 Then
+            SuccesMsg("Choississez un service")
+            CmbService.Select()
+            Exit Sub
+        End If
+        If Cmbctfour.SelectedIndex = -1 Then
+            SuccesMsg("Choississez un fournisseur")
+            Cmbctfour.Select()
+            Exit Sub
+        End If
+        If CmbActivite.SelectedIndex = -1 Then
+            SuccesMsg("Choississez une activité")
+            CmbActivite.Select()
+            Exit Sub
+        End If
+        If TxtDesignation.Text = "" Then
+            SuccesMsg("Saisissez la designation")
+            TxtDesignation.Select()
+            Exit Sub
+        End If
+        If TxtQte.Text = "" Or TxtQte.Text = "0" Then
+            SuccesMsg("Saisissez une quantité")
+            TxtQte.Select()
+            Exit Sub
+        End If
+        If TxtPu.Text = "" Or TxtPu.Text = "0" Then
+            SuccesMsg("Saisissez un prix unitaire")
+            TxtPu.Select()
+            Exit Sub
+        End If
+        'Vérification du bon de commande dans la base de données
+        If Val(ExecuteScallar("select count(numero) from t_bon_commandes where numero='" & EnleverApost(Txtboncmde.Text) & "'")) > 0 Then
+            SuccesMsg("Le bon de commande existe déjà.")
+            Exit Sub
+        End If
+
+
+        ExecuteNonQuery("insert into t_bon_commandes values (NULL,'','" & CDate(Dateboncmde.Text) & "','" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(TxtMarche.Text) & "','" & EnleverApost(CmbService.Text) & "','" & EnleverApost(Cmbctfour.Text) & "','" & EnleverApost(CmbActivite.Text) & "','" & CDec(TxtQte.Text) & "','" & AfficherMonnaie(TxtPu.Text) & "','" & AfficherMonnaie(TxtNewMont.Text) & "','" & (ProjetEnCours) & "')")
+        SuccesMsg("Enregistrement éffectué avec succès !")
+
+
+
     End Sub
 End Class

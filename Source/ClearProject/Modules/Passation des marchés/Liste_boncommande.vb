@@ -2,18 +2,81 @@
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraReports.UI
 Imports Microsoft.Office.Interop
+Imports System.Math
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
 
 Public Class Liste_boncommande
     Dim drx As DataRow
     Dim dtdoc = New DataTable()
+    Dim dtboncommande = New DataTable()
+
+    Private Sub RemplirBonCommande()
+        Try
+            dtboncommande.Columns.Clear()
+            dtboncommande.Columns.Add("Code", Type.GetType("System.Boolean"))
+            dtboncommande.Columns.Add("Date", Type.GetType("System.String"))
+            dtboncommande.Columns.Add("Numéro", Type.GetType("System.String"))
+            dtboncommande.Columns.Add("Description du marché", Type.GetType("System.String"))
+            dtboncommande.Columns.Add("Demandeur", Type.GetType("System.String"))
+            dtboncommande.Columns.Add("Fournisseur", Type.GetType("System.String"))
+            dtboncommande.Columns.Add("Activité(s)", Type.GetType("System.String"))
+            dtboncommande.Columns.Add("Montant", Type.GetType("System.String"))
+            dtboncommande.Rows.Clear()
+
+            Dim cptr As Integer = 0
+            query = "select * from t_bon_commandes"
+            Dim dt = ExcecuteSelectQuery(query)
+            For Each rw As DataRow In dt.Rows
+                cptr += 1
+                Dim drs = dtboncommande.NewRow()
+                drs("Code") = TabTrue(cptr - 1)
+                drs("Date") = rw(2).ToString
+                drs("Numéro") = rw(3).ToString
+                drs("Description du marché") = MettreApost(rw(4).ToString)
+                drs("Demandeur") = rw(5).ToString
+                drs("Fournisseur") = rw(6).ToString
+                drs("Activité(s)") = MettreApostrophe(rw(7).ToString)
+                drs("Montant") = AfficherMonnaie(Round(CDbl(rw(10).ToString)))
+                dtboncommande.Rows.Add(drs)
+            Next
+
+            LgListBoncommande.DataSource = dtboncommande
+
+            ViewBoncommande.Columns("Date").OptionsColumn.AllowEdit = False
+            ViewBoncommande.Columns("Numéro").OptionsColumn.AllowEdit = False
+            ViewBoncommande.Columns("Description du marché").OptionsColumn.AllowEdit = False
+            ViewBoncommande.Columns("Demandeur").OptionsColumn.AllowEdit = False
+            ViewBoncommande.Columns("Fournisseur").OptionsColumn.AllowEdit = False
+            ViewBoncommande.Columns("Activité(s)").OptionsColumn.AllowEdit = False
+            ViewBoncommande.Columns("Montant").OptionsColumn.AllowEdit = False
+
+            ViewBoncommande.Appearance.Row.Font = New Font("Times New Roman", 10, FontStyle.Regular)
+            ViewBoncommande.OptionsView.ColumnAutoWidth = True
+            ViewBoncommande.OptionsBehavior.AutoExpandAllGroups = True
+            ViewBoncommande.VertScrollVisibility = True
+            ViewBoncommande.HorzScrollVisibility = True
+            ViewBoncommande.BestFitColumns()
+
+            ViewBoncommande.Columns("Date").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+            ViewBoncommande.Columns("Numéro").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+            'grid.Columns("Description du marché").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+            ViewBoncommande.Columns("Demandeur").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+            ViewBoncommande.Columns("Fournisseur").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+            ViewBoncommande.Columns("Activité(s)").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+            ViewBoncommande.Columns("Montant").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+            ViewBoncommande.Appearance.Row.Font = New Font("Times New Roman", 10, FontStyle.Regular)
+        Catch ex As Exception
+            FailMsg("Erreur : Information non disponible : " & ex.ToString())
+        End Try
+    End Sub
 
     Private Sub Liste_boncommande_Load(ByVal sender As System.Object, ByVal e As System.EventArgs)  Handles MyBase.Load
         Me.Icon = My.Resources.Logo_ClearProject_Valide
         Try
-            query = "select * from t_boncommande where CodeProjet='" & ProjetEnCours & "'" ' ORDER BY length(CodeBon), CodeBon"
-            remplirDataGridBoncommande(query, LgListBoncommande, LblNombre, ViewBoncommande)
+            'query = "select * from t_boncommande where CodeProjet='" & ProjetEnCours & "'" ' ORDER BY length(CodeBon), CodeBon"
+            'remplirDataGridBoncommande(query, LgListBoncommande, LblNombre, ViewBoncommande)
+            RemplirBonCommande()
         Catch ex As Exception
             Failmsg("Erreur : Information non disponible : " & ex.ToString())
         End Try
@@ -161,7 +224,8 @@ Public Class Liste_boncommande
     Private Sub BtActualiser_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtActualiser.Click
         Try
             query = "select * from t_boncommande where CodeProjet='" & ProjetEnCours & "'" ' ORDER BY length(CodeBon), CodeBon"
-            remplirDataGridBoncommande(query, LgListBoncommande, LblNombre, ViewBoncommande)
+            'remplirDataGridBoncommande(query, LgListBoncommande, LblNombre, ViewBoncommande)
+            RemplirBonCommande()
         Catch ex As Exception
             Failmsg("Erreur : Information non disponible : " & ex.ToString())
         End Try
