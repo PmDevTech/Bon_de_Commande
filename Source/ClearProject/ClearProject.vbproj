@@ -1363,6 +1363,7 @@
     <EmbeddedResource Include="Modules\Passation des marchés\AMI\RapportEvaluationMI.resx">
       <DependentUpon>RapportEvaluationMI.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="Paramètres\Autre\AccesEtOperateur.resx">
       <DependentUpon>AccesEtOperateur.vb</DependentUpon>
       <SubType>Designer</SubType>
