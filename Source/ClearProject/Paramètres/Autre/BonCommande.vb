@@ -182,7 +182,7 @@ Public Class BonCommande
                 Exit Sub
             End If
 
-            query = "INSERT INTO  t_boncommande values ('1','1','1','" & CDate(Dateboncmde.Text) & "','','1','1','" & AfficherMonnaie(TxtNewMont.Text) & "','" & ProjetEnCours & "')"
+            query = "INSERT INTO  t_boncommande values ('" & Txtboncmde.Text & "','1','1','" & CDate(Dateboncmde.Text) & "','','1','1','" & AfficherMonnaie(TxtNewMont.Text) & "','" & ProjetEnCours & "')"
             ExecuteNonQuery(query)
             SuccesMsg("Enregistrement effectué avec succès.")
             Me.Close()
