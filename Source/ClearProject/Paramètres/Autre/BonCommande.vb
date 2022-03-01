@@ -153,4 +153,68 @@ Public Class BonCommande
     Private Sub BtAnnuler_Click(sender As Object, e As EventArgs) Handles BtAnnuler.Click
         Initialiser()
     End Sub
+
+    Private Sub BtEnregistrer_Click(sender As Object, e As EventArgs) Handles BtEnregistrer.Click
+        Try
+            'vérification des champs texts
+            Dim erreur As String = ""
+            If Dateboncmde.Text = "" Then
+                erreur += "- Date du bon de commande" + ControlChars.CrLf
+            End If
+            If Txtboncmde.Text = "" Then
+                erreur += "- Numéro du bon de commande" + ControlChars.CrLf
+            End If
+            If Cmbctfour.SelectedIndex = -1 Then
+                erreur += "- L'attributaire" + ControlChars.CrLf
+            End If
+            If TxtDesignation.Text = "" Then
+                erreur += "- Libellé de l'activité" + ControlChars.CrLf
+            End If
+            If TxtQte.Text = "" Then
+                erreur += "- Quantité" + ControlChars.CrLf
+            End If
+            If TxtPu.Text = "" Then
+                erreur += "- Prix unitaire " + ControlChars.CrLf
+            End If
+
+            If erreur <> "" Then
+                SuccesMsg("Veuillez renseigner correctement le(s) champ(s) suivant(s) :" & vbNewLine & erreur)
+                Exit Sub
+            End If
+
+            query = "INSERT INTO  t_boncommande values ('1','1','1','" & CDate(Dateboncmde.Text) & "','','1','1','" & AfficherMonnaie(TxtNewMont.Text) & "','" & ProjetEnCours & "')"
+            ExecuteNonQuery(query)
+            SuccesMsg("Enregistrement effectué avec succès.")
+            Me.Close()
+            remplirDataGridBoncommande(Liste_boncommande.LgListBoncommande, Liste_boncommande.ViewBoncommande)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Catch ex As Exception
+            FailMsg("Erreur : Information non disponible : " & vbNewLine & ex.ToString())
+        End Try
+    End Sub
 End Class

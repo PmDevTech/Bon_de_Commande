@@ -5515,7 +5515,6 @@ C:\Users\wilfr\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\Cl
 C:\Users\wilfr\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\ClearProject.ApercuDAO.fr.resources
 C:\Users\wilfr\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\ClearProject.NewDao.fr.resources
 C:\Users\wilfr\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\ClearProject.vbproj.GenerateResource.cache
-C:\Users\wilfr\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\ClearProject.exe.licenses
 C:\Users\wilfr\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\ClearProject.vbproj.CoreCompileInputs.cache
 C:\Users\wilfr\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\fr\ClearProject.resources.dll
 C:\Users\wilfr\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\ClearProject.vbproj.CopyComplete

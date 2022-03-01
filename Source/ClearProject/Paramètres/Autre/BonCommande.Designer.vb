@@ -126,9 +126,9 @@ Partial Class BonCommande
         Me.Label11.AutoSize = True
         Me.Label11.Location = New System.Drawing.Point(8, 351)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(63, 13)
+        Me.Label11.Size = New System.Drawing.Size(62, 13)
         Me.Label11.TabIndex = 10
-        Me.Label11.Text = "Fournisseur"
+        Me.Label11.Text = "Attributaire"
         '
         'Label10
         '
@@ -138,6 +138,7 @@ Partial Class BonCommande
         Me.Label10.Size = New System.Drawing.Size(62, 13)
         Me.Label10.TabIndex = 9
         Me.Label10.Text = "Demandeur"
+        Me.Label10.Visible = False
         '
         'Cmbctfour
         '
@@ -156,6 +157,7 @@ Partial Class BonCommande
         Me.CmbService.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.CmbService.Size = New System.Drawing.Size(352, 20)
         Me.CmbService.TabIndex = 7
+        Me.CmbService.Visible = False
         '
         'Txtboncmde
         '
@@ -182,6 +184,7 @@ Partial Class BonCommande
         Me.TxtMarche.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.TxtMarche.Size = New System.Drawing.Size(353, 186)
         Me.TxtMarche.TabIndex = 5
+        Me.TxtMarche.Visible = False
         '
         'Panel1
         '
@@ -235,6 +238,7 @@ Partial Class BonCommande
         Me.Label3.Size = New System.Drawing.Size(41, 14)
         Me.Label3.TabIndex = 14
         Me.Label3.Text = "Activité"
+        Me.Label3.Visible = False
         '
         'Label9
         '
@@ -254,6 +258,7 @@ Partial Class BonCommande
         Me.CmbActivite.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.CmbActivite.Size = New System.Drawing.Size(283, 20)
         Me.CmbActivite.TabIndex = 13
+        Me.CmbActivite.Visible = False
         '
         'TxtMontLettre
         '
@@ -332,7 +337,7 @@ Partial Class BonCommande
         Me.GroupControl3.Name = "GroupControl3"
         Me.GroupControl3.Size = New System.Drawing.Size(307, 418)
         Me.GroupControl3.TabIndex = 23
-        Me.GroupControl3.Text = "Historique des besoins"
+        Me.GroupControl3.Text = "Borderaux de prix"
         '
         'ListBonCmde
         '
