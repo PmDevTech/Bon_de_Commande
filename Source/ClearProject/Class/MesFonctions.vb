@@ -615,11 +615,11 @@ Module CONNEXION
     Sub remplirDataGridBoncommande(ByVal mondg As DevExpress.XtraGrid.GridControl, ByVal grid As DevExpress.XtraGrid.Views.Grid.GridView)
         Try
             dtimmo.Columns.Clear()
-            'dtimmo.Columns.Add("Code", Type.GetType("System.Boolean"))
+            dtimmo.Columns.Add("Code", Type.GetType("System.Boolean"))
             dtimmo.Columns.Add("Numéro", Type.GetType("System.String"))
             dtimmo.Columns.Add("Date", Type.GetType("System.String"))
             dtimmo.Columns.Add("Description du marché", Type.GetType("System.String"))
-            'dtimmo.Columns.Add("Demandeur", Type.GetType("System.String"))
+            dtimmo.Columns.Add("Demandeur", Type.GetType("System.String"))
             dtimmo.Columns.Add("Fournisseur", Type.GetType("System.String"))
             dtimmo.Columns.Add("Activité(s)", Type.GetType("System.String"))
             dtimmo.Columns.Add("Montant", Type.GetType("System.String"))
@@ -645,11 +645,11 @@ Module CONNEXION
             For Each rw As DataRow In dt.Rows
                 cptr += 1
                 Dim drS = dtimmo.NewRow()
-                'drS("Code") = TabTrue(cptr - 1)
+                drS("Code") = TabTrue(cptr - 1)
                 drS("Numéro") = rw(0).ToString
                 drS("Date") = rw(3).ToString
                 drS("Description du marché") = MettreApost(rw(2).ToString)
-                'drS("Demandeur") = rw(5).ToString
+                drS("Demandeur") = rw(5).ToString
                 drS("Fournisseur") = rw(4).ToString
                 drS("Activité(s)") = ""
                 drS("Montant") = AfficherMonnaie(Round(CDbl(rw(7).ToString)))
@@ -662,14 +662,14 @@ Module CONNEXION
             Dim edit As RepositoryItemCheckEdit = New RepositoryItemCheckEdit()
             edit.ValueChecked = True
             edit.ValueUnchecked = False
-            'grid.Columns("Code").ColumnEdit = edit
+            grid.Columns("Code").ColumnEdit = edit
             mondg.RepositoryItems.Add(edit)
             grid.OptionsBehavior.Editable = True
 
             grid.Columns("Numéro").OptionsColumn.AllowEdit = False
             grid.Columns("Date").OptionsColumn.AllowEdit = False
             grid.Columns("Description du marché").OptionsColumn.AllowEdit = False
-            'grid.Columns("Demandeur").OptionsColumn.AllowEdit = False
+            grid.Columns("Demandeur").OptionsColumn.AllowEdit = False
             grid.Columns("Fournisseur").OptionsColumn.AllowEdit = False
             grid.Columns("Activité(s)").OptionsColumn.AllowEdit = False
             grid.Columns("Montant").OptionsColumn.AllowEdit = False
@@ -3993,5 +3993,35 @@ Erreur:
             FailMsg(ex.ToString)
         End Try
         Return CodeRetounrer
+    End Function
+
+    Public Function GenerateOPNumber(IdExercice As Integer) As String
+
+        Dim NumberBC As String = ""
+        Try
+            Dim AnneeExercice As Integer = CDate(ExerciceComptable.Rows(0).Item("datedebut")).Year
+            query = "SELECT numero FROM t_bon_commande WHERE id_Exercice='" & IdExercice & "' ORDER BY date DESC LIMIT 1"
+            Dim OldNumeroBC = ExecuteScallar(query)
+            If OldNumeroBC.Length = 0 Then
+                Return "0001" & "/" & AnneeExercice
+            Else
+                Dim Number As Decimal = Val(OldNumeroBC.Split("/"c)(0))
+                Dim NewNumber As Decimal = Number + 1
+                If NewNumber.ToString().Length >= 4 Then
+                    Return NewNumber & "/" & AnneeExercice
+                ElseIf NewNumber.ToString().Length = 3 Then
+                    Return "0" & NewNumber & "/" & AnneeExercice
+                ElseIf NewNumber.ToString().Length = 2 Then
+                    Return "00" & NewNumber & "/" & AnneeExercice
+                ElseIf NewNumber.ToString().Length >= 1 Then
+                    Return "000" & NewNumber & "/" & AnneeExercice
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox("Erreur : Information non disponible : " & ex.ToString(), MsgBoxStyle.Exclamation, "ClearProject")
+        End Try
+
+        Return NumberBC
+
     End Function
 End Module
