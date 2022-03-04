@@ -152,7 +152,22 @@ Public Class Liste_boncommande
         If (ViewBoncommande.RowCount > 0) Then
             drx = ViewBoncommande.GetDataRow(ViewBoncommande.FocusedRowHandle)
 
+            Dim IDl = drx("Numéro").ToString
+
+            ColorRowGrid(ViewBoncommande, "[Numéro]='x'", Color.White, "Times New Roman", 10, FontStyle.Regular, Color.Black)
+            ColorRowGridAnal(ViewBoncommande, "[Numéro]='" & IDl & "'", Color.Navy, "Times New Roman", 10, FontStyle.Bold, Color.White, True)
+
+            'CmbSource.Text = drx("Bailleur").ToString
+            'CmbType.Text = drx("Type").ToString
+            'TxtNumConvention.Text = MettreApost(drx("Numéro").ToString)
+            'TxtCFA.Focus()
+            'TxtCFA.Text = drx("Montant").ToString.Replace(" ", "")
+            'DTDateSignature.Text = CDate(drx("Signature")).ToShortDateString
+            'DTEntreeVigueur.Text = CDate(drx("Ouverture")).ToShortDateString
+            'DTCloture.Text = CDate(drx("Clôture")).ToShortDateString
+
             Dim EditForm As New BonCommande
+            EditForm.idBon = drx("RefBon")
 
             Dialog_form(EditForm)
         End If

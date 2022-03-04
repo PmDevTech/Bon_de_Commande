@@ -4,6 +4,8 @@ Imports MySql.Data.MySqlClient
 
 Public Class BonCommande
 
+    Public idBon As Decimal = -1
+
     Dim tauxDollar As Decimal = 1
     Dim CfaGere As Boolean = True
     Dim dtboncommande = New DataTable
@@ -42,7 +44,7 @@ Public Class BonCommande
         Next
     End Sub
 
-    Private Sub BonCommande_Load(sender As System.Object, e As System.EventArgs)  Handles MyBase.Load
+    Private Sub BonCommande_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Me.Icon = My.Resources.Logo_ClearProject_Valide
         ChargerService()
         Chargertiers()
@@ -269,7 +271,7 @@ Public Class BonCommande
     End Sub
 
     Private Sub BonCommande_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
-        Txtboncmde.Text = GenerateOPNumber(IdExercice)
+        Txtboncmde.Text = GenerateOPNumber(idExercice)
     End Sub
 
 
