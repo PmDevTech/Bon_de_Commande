@@ -212,6 +212,7 @@ Public Class BonCommande
 
             Dim cptr As Decimal = 0
             query = "SELECT RefBon,
+                            id_Exercice,
                             numero,
                             date,
                             attributaire,

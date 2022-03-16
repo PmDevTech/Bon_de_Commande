@@ -165,11 +165,11 @@ Public Class Liste_boncommande
             'DTDateSignature.Text = CDate(drx("Signature")).ToShortDateString
             'DTEntreeVigueur.Text = CDate(drx("Ouverture")).ToShortDateString
             'DTCloture.Text = CDate(drx("Clôture")).ToShortDateString
-
             Dim EditForm As New BonCommande
             EditForm.idBon = drx("RefBon")
 
             Dialog_form(EditForm)
+
         End If
 
 

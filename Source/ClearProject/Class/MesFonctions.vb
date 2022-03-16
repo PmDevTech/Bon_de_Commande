@@ -4000,7 +4000,7 @@ Erreur:
         Dim NumberBC As String = ""
         Try
             Dim AnneeExercice As Integer = CDate(ExerciceComptable.Rows(0).Item("datedebut")).Year
-            query = "SELECT numero FROM t_bon_commande WHERE id_Exercice='" & IdExercice & "' ORDER BY date DESC LIMIT 1"
+            query = "SELECT numero FROM t_bon_commande WHERE id_Exercice='" & IdExercice & "' ORDER BY DateAdd DESC LIMIT 1"
             Dim OldNumeroBC = ExecuteScallar(query)
             If OldNumeroBC.Length = 0 Then
                 Return "0001" & "/" & AnneeExercice
