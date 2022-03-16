@@ -5225,6 +5225,7 @@ C:\Users\honor\Documents\PassationMarche\Source\ClearProject\obj\Debug\ClearProj
 C:\Users\honor\Documents\GitHub\PassationMarche\Source\ClearProject\obj\Debug\ClearProject.ImpressionPlan.resources
 C:\Users\honor\Documents\GitHub\PassationMarche\Source\ClearProject\obj\Debug\ClearProject.ModifMethode.resources
 C:\Users\honor\Documents\PassationMarche\Source\ClearProject\obj\Debug\ClearProject.exe.licenses
+<<<<<<< Updated upstream
 C:\Users\wilfr\Documents\GitHub\Bon_de_Commande\Source\ClearProject\bin\Debug\ClearProject.exe.config
 C:\Users\wilfr\Documents\GitHub\Bon_de_Commande\Source\ClearProject\bin\Debug\ClearProject.exe
 C:\Users\wilfr\Documents\GitHub\Bon_de_Commande\Source\ClearProject\bin\Debug\ClearProject.pdb
@@ -5521,6 +5522,8 @@ C:\Users\wilfr\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\Cl
 C:\Users\wilfr\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\ClearProject.exe
 C:\Users\wilfr\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\ClearProject.xml
 C:\Users\wilfr\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\ClearProject.pdb
+=======
+>>>>>>> Stashed changes
 C:\Users\BEDE\Documents\GitHub\Bon_de_Commande\Source\ClearProject\bin\Debug\ClearProject.exe.config
 C:\Users\BEDE\Documents\GitHub\Bon_de_Commande\Source\ClearProject\bin\Debug\ClearProject.exe
 C:\Users\BEDE\Documents\GitHub\Bon_de_Commande\Source\ClearProject\bin\Debug\ClearProject.pdb
@@ -5811,6 +5814,10 @@ C:\Users\BEDE\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\Cle
 C:\Users\BEDE\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\ClearProject.ApercuDAO.fr.resources
 C:\Users\BEDE\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\ClearProject.NewDao.fr.resources
 C:\Users\BEDE\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\ClearProject.vbproj.GenerateResource.cache
+<<<<<<< Updated upstream
+=======
+C:\Users\BEDE\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\ClearProject.exe.licenses
+>>>>>>> Stashed changes
 C:\Users\BEDE\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\ClearProject.vbproj.CoreCompileInputs.cache
 C:\Users\BEDE\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\fr\ClearProject.resources.dll
 C:\Users\BEDE\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\ClearProject.vbproj.CopyComplete
