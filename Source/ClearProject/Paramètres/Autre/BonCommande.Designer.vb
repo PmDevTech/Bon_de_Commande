@@ -164,7 +164,6 @@ Partial Class BonCommande
         Me.Txtboncmde.Location = New System.Drawing.Point(130, 89)
         Me.Txtboncmde.Margin = New System.Windows.Forms.Padding(2)
         Me.Txtboncmde.Name = "Txtboncmde"
-        Me.Txtboncmde.Properties.ReadOnly = True
         Me.Txtboncmde.Size = New System.Drawing.Size(229, 20)
         Me.Txtboncmde.TabIndex = 6
         '
