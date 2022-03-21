@@ -1,0 +1,2120 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+ClearProject
+</name>
+</assembly>
+<members>
+<member name="T:ClearProject.My.Resources.Resources">
+<summary>
+  Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.ResourceManager">
+<summary>
+  Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Culture">
+<summary>
+  Remplace la propriété CurrentUICulture du thread actuel pour toutes
+  les recherches de ressources à l'aide de cette classe de ressource fortement typée.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources._033">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources._176">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources._177">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources._185">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources._308">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources._338">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources._Error">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.abc_16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.abc_Del_16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.access_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.ActiveRents_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.actualiser">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Add_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Add_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.ajouter">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.ajouter_a_entree_icone_6285_16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.ajouter_bouton_plus_icone_9620_16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.annuler">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.binding_retour">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.BlancSepar">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Budget">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Budget2">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.CadenatNew">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Categories_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.cc_kcmpartitions2_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.cc_ktalkd_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.cc_kthememgr_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.cc_log2_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.cc_os_support_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.cc_tar2_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Chat">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.chat_bubbles_icon_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.chat_bubbles_icon_24x24">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.chat_bubbles_icon_48x48">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.chat_bubbles_icon_96x96">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Chat_icon_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Chat_icon_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Chat_icon_24x24">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Chat_icon_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.ClearPlay">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.ClearpNew">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.ClearpNew8">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Close_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Close_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.CloseDetails_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.CloseDetails_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.ComptaAnal">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.ComptaGle">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.cote_divoire">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.cote_divoire1">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.CourrierInt">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.CourrierInt2">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.cp_car_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.CustomerRevenue_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.CustomerRevenue_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.CustomersByDate_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.CustomersKPI_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Delete_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Delete32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.design_graphisme_stylo_ecrire_icone_9549_16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.disque_editer_fichier_enregistrez_icone_4226_16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.dk_administrator_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.dk_aqua_ball_red_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.dk_barcode_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.dk_calculator_01_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.dk_coinstack_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.dk_contract_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.dk_email_download_01_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.dk_mail_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.dk_money_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.document_modifier_papier_stylo_ecrire_icone_4325_16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.document_modifier_papier_stylo_ecrire_icone_4325_161">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.DownLoad">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.DownLoad32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Drafts_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Edit_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Edit_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.employe">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Employee_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.enregistrer1">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.espace_globe_87">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.ExportToExcel_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.ExportToIMG_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.ExportToPDF_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.ExportToRTF_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.ExportToTXT_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.fermer_croix_supprimer_erreurs_sortie_icone_4368_48">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.file_manager_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.fleche_modifier_vieux_defaire_icone_5639_16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.fleche_modifier_vieux_defaire_icone_5639_161">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.fleche_modifier_vieux_defaire_icone_5639_32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.GestFin">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Globe_1">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Group_Administrator">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Group_Catalog">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Group_KPI">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Group_Rental">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Group_Reports">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Home_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Home_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.hp_mycomputer_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Immob">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.imprimer">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.imprimer_16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Inbox_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.justice_balance_icon1">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.kf_applications_development_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.kf_applications_mail_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.kf_applications_other_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.kf_badge_small_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.kf_certificate_server_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.kf_edit_web_search_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.kf_ejecter_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.kf_emblem_sales_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.kf_gnome_contacts_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.kf_gnumeric_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.kf_grisbi_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.kf_gtg_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.kf_mail_mark_important_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.kf_network_wireless_100_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.kf_network_wireless_25_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.kf_network_wireless_50_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.kf_network_wireless_75_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.kfm_home_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.la_morue_fisc_icone_8891_16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.licorne_030">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.livre_document_icone_5270_16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.livre_icone_5468_16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Logo_ClearProject_Valide">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icon).
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Logo_Template___RE_Logo_1616">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Logo_Template___RE_Logo_16161">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.LogoNew">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.looknfeel_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.mail">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Mail_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Mail_16x161">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.maison_maison_icone_3710_16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.maison_maison_icone_3843_16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.maison_maison_icone_4368_16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.ManageItems_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Marches">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Marches2">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.mathematiques_bureau_ouvert_icone_5766_16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.MediaPerformance_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Missions">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.modifier">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Navigation_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.NvFond">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Order_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Order_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Organizer_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Outbox_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Outbox_16x161">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.parametres_icone_8967_16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.paramMail">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.ParcAuto">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Period_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Period_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Preview_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Preview_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Previous_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.rapport_sur_le_disque_icone_5417_16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.rapport_sur_le_disque_icone_5417_161">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.ResHum">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.ResHum2">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.ResHum3">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Return_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Revenue_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Revenue_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.RevenueSplit_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.RevenueSplit_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Ribbon_Content_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Ribbon_Exit_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Ribbon_Find_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Ribbon_Info_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Ribbon_Info_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Ribbon_New_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Ribbon_New_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Ribbon_OPEN_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Ribbon_OPEN_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Ribbon_Save_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Ribbon_Save_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Ribbon_SaveAs_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Ribbon_SaveAs_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.sac_tresorerie_argent_icone_5930_16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Sale_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Scheduler_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.spo_athletisme_040">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.style_icone_9607_16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.style_icone_9607_161">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.SuiviEval">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.SuiviEval2">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.supprimer">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.ti_contact_128x128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.TopCustomers_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Trash_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.USD">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.UserKey_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.versLeBas">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.vert_rafraichir_icone_4826_16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.vide">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.vieux_rafraichir_vue_icone_4185_16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.View_16x16">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.View_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="M:ClearProject.RessourcesHumaines.GetEmpInfo(System.Double)">
+ <summary>
+ Permet d'obtenir les IDs du contrat, du poste, du service, du supérieur hiérachique en cours de l'employé passé en paramètre
+ CONTRAT_ID
+ FONCTION_ID
+ SERVICE_ID
+ TRAV_ID
+ CodeBoss
+ </summary>
+ <param name="EMP_ID">ID de l'employé</param>
+ <returns>CONTRAT_ID, FONCTION_ID, SERVICE_ID, TRAV_ID, CodeBoss</returns>
+</member>
+<member name="T:ClearProject.DataSet1">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:ClearProject.DataSet1.T_OperateurSkinDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:ClearProject.DataSet1.rp_groupeDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:ClearProject.DataSet1.T_OperateurSkinRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:ClearProject.DataSet1.rp_groupeRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:ClearProject.DataSet1.T_OperateurSkinRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:ClearProject.DataSet1.rp_groupeRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:ClearProject.DataSet1TableAdapters.T_OperateurSkinTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:ClearProject.DataSet1TableAdapters.rp_groupeTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:ClearProject.DataSet1TableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:ClearProject.DataSet1TableAdapters.TableAdapterManager.UpdateUpdatedRows(ClearProject.DataSet1,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:ClearProject.DataSet1TableAdapters.TableAdapterManager.UpdateInsertedRows(ClearProject.DataSet1,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:ClearProject.DataSet1TableAdapters.TableAdapterManager.UpdateDeletedRows(ClearProject.DataSet1,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:ClearProject.DataSet1TableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:ClearProject.DataSet1TableAdapters.TableAdapterManager.UpdateAll(ClearProject.DataSet1)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:ClearProject.DataSet1TableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:ClearProject.DataSet1TableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:ClearProject.PrintRibbonControllerResources">
+<summary>
+  Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.ResourceManager">
+<summary>
+  Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.Culture">
+<summary>
+  Remplace la propriété CurrentUICulture du thread actuel pour toutes
+  les recherches de ressources à l'aide de cette classe de ressource fortement typée.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ClosePreview">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ClosePreviewLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_Customize">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_CustomizeLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_Document">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_DocumentMap">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_DocumentMapLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_EditPageHF">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_EditPageHFLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ExportCsv">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ExportCsvLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ExportFile">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ExportFileLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ExportGraphic">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ExportGraphicLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ExportHtm">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ExportHtmLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ExportMht">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ExportMhtLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ExportPdf">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ExportPdfLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ExportRtf">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ExportRtfLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ExportTxt">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ExportTxtLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ExportXls">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ExportXlsLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ExportXlsx">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ExportXlsxLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_FillBackground">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_FillBackgroundLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_Find">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_FindLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_HandTool">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_Magnifier">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_MultiplePages">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_MultiplePagesLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_Open">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_OpenLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PageMargins">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PageMarginsLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PageMarginsModerate">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PageMarginsNarrow">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PageMarginsNormal">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PageMarginsWide">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PageOrientation">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PageOrientationLandscape">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PageOrientationLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PageOrientationPortrait">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PageSetupDialog">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PaperKind_A3">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PaperKind_A4">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PaperKind_A5">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PaperKind_A6">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PaperKind_Executive">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PaperKind_Legal">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PaperKind_Letter">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PaperKind_Tabloid">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PaperSize">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PaperSizeLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_Parameters">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ParametersLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_Pointer">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_Print">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PrintDirect">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PrintDirectLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PrintLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PrintSetup">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_PrintSetupLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_Save">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_SaveLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_Scale">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ScaleLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_SendCsv">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_SendCsvLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_SendFile">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_SendFileLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_SendGraphic">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_SendGraphicLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_SendMht">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_SendMhtLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_SendPdf">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_SendPdfLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_SendRtf">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_SendRtfLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_SendTxt">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_SendTxtLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_SendXls">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_SendXlsLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_SendXlsx">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_SendXlsxLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ShowFirstPage">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ShowFirstPageLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ShowLastPage">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ShowLastPageLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ShowNextPage">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ShowNextPageLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ShowPrevPage">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ShowPrevPageLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_Watermark">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_WatermarkLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_Zoom">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ZoomIn">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ZoomInLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ZoomLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ZoomOut">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.PrintRibbonControllerResources.RibbonPrintPreview_ZoomOutLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="M:ClearProject.ClearProject.Program.#ctor">
+ <summary>
+ The main entry point for the application.
+ </summary>
+</member>
+<member name="T:ClearProject.XRDesignRibbonControllerResources">
+<summary>
+  Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.ResourceManager">
+<summary>
+  Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.Culture">
+<summary>
+  Remplace la propriété CurrentUICulture du thread actuel pour toutes
+  les recherches de ressources à l'aide de cette classe de ressource fortement typée.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_AlignBottom">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_AlignHorizontalCenters">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_AlignLeft">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_AlignRight">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_AlignToGrid">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_AlignTop">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_AlignVerticalCenters">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_BackColor">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_BringToFront">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_CenterHorizontally">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_CenterVertically">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_Copy">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_CopyLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_Cut">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_CutLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_Edit">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_Exit">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_ExitLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_Font">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_FontBold">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_FontItalic">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_FontUnderline">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_ForeColor">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_HorizSpaceConcatenate">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_HorizSpaceDecrease">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_HorizSpaceIncrease">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_HorizSpaceMakeEqual">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_HtmlBackward">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_HtmlBackwardLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_HtmlFind">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_HtmlFindLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_HtmlForward">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_HtmlForwardLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_HtmlHome">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_HtmlHomeLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_HtmlRefresh">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_HtmlRefreshLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_HtmlStop">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_HtmlStopLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_JustifyCenter">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_JustifyJustify">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_JustifyLeft">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_JustifyRight">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_NewReport">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_NewReportLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_NewReportWizard">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_NewReportWizardLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_OpenFile">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_OpenFileLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_Paste">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_PasteLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_Redo">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_RedoLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_Report">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_SaveAll">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_SaveAllLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_SaveFile">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_SaveFileAs">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_SaveFileAsLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_SaveFileLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_Scripts">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_ScriptsLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_SendToBack">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_SizeToControl">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_SizeToControlHeight">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_SizeToControlWidth">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_SizeToGrid">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_Undo">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_UndoLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_VertSpaceConcatenate">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_VertSpaceDecrease">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_VertSpaceIncrease">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_VertSpaceMakeEqual">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_Windows">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_WindowsLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_Zoom">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_ZoomIn">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_ZoomInLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_ZoomLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_ZoomOut">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.XRDesignRibbonControllerResources.RibbonUserDesigner_ZoomOutLarge">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+</members>
+</doc>
