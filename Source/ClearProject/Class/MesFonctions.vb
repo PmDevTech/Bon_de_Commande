@@ -615,12 +615,7 @@ Module CONNEXION
     Sub remplirDataGridBoncommande(ByVal mondg As DevExpress.XtraGrid.GridControl, ByVal grid As DevExpress.XtraGrid.Views.Grid.GridView)
         Try
             dtimmo.Columns.Clear()
-<<<<<<< Updated upstream
             dtimmo.Columns.Add("Code", Type.GetType("System.Boolean"))
-=======
-            'dtimmo.Columns.Add("Code", Type.GetType("System.Boolean"))
-            dtimmo.Columns.Add("Date", Type.GetType("System.String"))
->>>>>>> Stashed changes
             dtimmo.Columns.Add("Numéro", Type.GetType("System.String"))
             dtimmo.Columns.Add("Date", Type.GetType("System.String"))
             dtimmo.Columns.Add("Description du marché", Type.GetType("System.String"))
@@ -650,12 +645,8 @@ Module CONNEXION
             For Each rw As DataRow In dt.Rows
                 cptr += 1
                 Dim drS = dtimmo.NewRow()
-<<<<<<< Updated upstream
                 drS("Code") = TabTrue(cptr - 1)
                 drS("Numéro") = rw(0).ToString
-=======
-                'drS("Code") = TabTrue(cptr - 1)
->>>>>>> Stashed changes
                 drS("Date") = rw(3).ToString
                 drS("Description du marché") = MettreApost(rw(2).ToString)
                 drS("Demandeur") = rw(5).ToString
@@ -671,7 +662,7 @@ Module CONNEXION
             Dim edit As RepositoryItemCheckEdit = New RepositoryItemCheckEdit()
             edit.ValueChecked = True
             edit.ValueUnchecked = False
-            'grid.Columns("Code").ColumnEdit = edit
+            grid.Columns("Code").ColumnEdit = edit
             mondg.RepositoryItems.Add(edit)
             grid.OptionsBehavior.Editable = True
 
