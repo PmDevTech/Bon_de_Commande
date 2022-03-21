@@ -141,7 +141,6 @@
                                     AjoutRespoEtape.txtPortable.Text = MettreApost(rwx("Portable").ToString)
                                     AjoutRespoEtape.txtFax.Text = MettreApost(rwx("Fax").ToString)
                                     AjoutRespoEtape.txtMail.Text = MettreApost(rwx("Email").ToString)
-
                                 Next
 
                                 Dialog_form(AjoutRespoEtape)

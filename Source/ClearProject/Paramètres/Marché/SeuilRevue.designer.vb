@@ -110,7 +110,7 @@ Partial Class SeuilRevue
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.SeuilGrid.DefaultCellStyle = DataGridViewCellStyle2
         Me.SeuilGrid.GridColor = System.Drawing.Color.White
-        Me.SeuilGrid.Location = New System.Drawing.Point(0, 28)
+        Me.SeuilGrid.Location = New System.Drawing.Point(0, 29)
         Me.SeuilGrid.MultiSelect = False
         Me.SeuilGrid.Name = "SeuilGrid"
         Me.SeuilGrid.ReadOnly = True
@@ -124,7 +124,7 @@ Partial Class SeuilRevue
         Me.SeuilGrid.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.SeuilGrid.RowHeadersWidth = 4
         Me.SeuilGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.SeuilGrid.Size = New System.Drawing.Size(706, 294)
+        Me.SeuilGrid.Size = New System.Drawing.Size(706, 287)
         Me.SeuilGrid.TabIndex = 6
         '
         'Column1

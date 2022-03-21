@@ -74,6 +74,7 @@ Partial Class RapportEvaluationMI
         Me.GroupDossier = New DevExpress.XtraEditors.GroupControl()
         Me.WebBrowser1 = New System.Windows.Forms.WebBrowser()
         Me.Bar3 = New DevExpress.XtraBars.Bar()
+        Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         CType(Me.PanelExecuter, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelExecuter.SuspendLayout()
         CType(Me.CmbDossier.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -179,7 +180,7 @@ Partial Class RapportEvaluationMI
         ToolTipTitleItem5.Appearance.Image = Global.ClearProject.My.Resources.Resources.View_16x16
         ToolTipTitleItem5.Appearance.Options.UseImage = True
         ToolTipTitleItem5.Image = Global.ClearProject.My.Resources.Resources.View_16x16
-        ToolTipTitleItem5.Text = "Gérnérer"
+        ToolTipTitleItem5.Text = "Générer"
         ToolTipItem3.LeftIndent = 6
         ToolTipItem3.Text = "Cliquez pour générer le rapport"
         ToolTipTitleItem6.LeftIndent = 6
@@ -314,9 +315,9 @@ Partial Class RapportEvaluationMI
         ToolTipTitleItem15.Appearance.Image = Global.ClearProject.My.Resources.Resources.Delete_16x16
         ToolTipTitleItem15.Appearance.Options.UseImage = True
         ToolTipTitleItem15.Image = Global.ClearProject.My.Resources.Resources.Delete_16x16
-        ToolTipTitleItem15.Text = "Rejetter"
+        ToolTipTitleItem15.Text = "Rejeter"
         ToolTipItem8.LeftIndent = 6
-        ToolTipItem8.Text = "Cliquez pour rejetter le rapport"
+        ToolTipItem8.Text = "Cliquez pour rejeter le rapport"
         ToolTipTitleItem16.LeftIndent = 6
         ToolTipTitleItem16.Text = "Rapport d'évaluation technique"
         SuperToolTip8.Items.Add(ToolTipTitleItem15)
@@ -410,4 +411,5 @@ Partial Class RapportEvaluationMI
     Friend WithEvents BtRejetterRapports As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents BtActualisers As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SaveFileDialog1 As SaveFileDialog
 End Class

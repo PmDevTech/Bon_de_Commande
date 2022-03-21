@@ -445,6 +445,8 @@ Partial Class NewDp
         Me.LabelControl5 = New DevExpress.XtraEditors.LabelControl()
         Me.TxtLibDp = New DevExpress.XtraEditors.MemoEdit()
         Me.GroupCaracteristique = New DevExpress.XtraEditors.GroupControl()
+        Me.DateRecpDossConsult = New DevExpress.XtraEditors.DateEdit()
+        Me.LabelControl52 = New DevExpress.XtraEditors.LabelControl()
         Me.CmbTypeRemune = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LabelControl41 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl40 = New DevExpress.XtraEditors.LabelControl()
@@ -489,6 +491,7 @@ Partial Class NewDp
         Me.Objet1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Action1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupSection = New DevExpress.XtraEditors.GroupControl()
+        Me.BtSupSection = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupBoxSection = New System.Windows.Forms.GroupBox()
         Me.TxtSection = New DevExpress.XtraEditors.MemoEdit()
         Me.CombSection = New DevExpress.XtraEditors.ComboBoxEdit()
@@ -535,6 +538,11 @@ Partial Class NewDp
         Me.Action2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupControl11 = New DevExpress.XtraEditors.GroupControl()
         Me.GCDepotOuverture = New DevExpress.XtraEditors.GroupControl()
+        Me.GroupBox8 = New System.Windows.Forms.GroupBox()
+        Me.LabelControl55 = New DevExpress.XtraEditors.LabelControl()
+        Me.SourceOfficielle = New DevExpress.XtraEditors.TextEdit()
+        Me.LabelControl57 = New DevExpress.XtraEditors.LabelControl()
+        Me.DateSource = New DevExpress.XtraEditors.DateEdit()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.PaysOuvertur = New DevExpress.XtraEditors.TextEdit()
         Me.VillelieuOuvr = New DevExpress.XtraEditors.TextEdit()
@@ -544,6 +552,10 @@ Partial Class NewDp
         Me.LabelControl48 = New DevExpress.XtraEditors.LabelControl()
         Me.AdresslieuOuvr = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl56 = New DevExpress.XtraEditors.LabelControl()
+        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.PrecedurVoiElectronic = New DevExpress.XtraEditors.MemoEdit()
+        Me.Coutencourus = New DevExpress.XtraEditors.CheckEdit()
+        Me.CheckVoiElectro = New DevExpress.XtraEditors.CheckEdit()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.ProcedurOvrPropoFinLine = New DevExpress.XtraEditors.MemoEdit()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -632,15 +644,16 @@ Partial Class NewDp
         Me.ModifieCritererItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SupprimerCritereItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
+        Me.PanelScrTechFin = New System.Windows.Forms.Panel()
+        Me.NumPoidsFin = New DevExpress.XtraEditors.SpinEdit()
+        Me.NumPoidsTech = New DevExpress.XtraEditors.SpinEdit()
+        Me.LabelControl28 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl29 = New DevExpress.XtraEditors.LabelControl()
         Me.BtModifierCritere = New DevExpress.XtraEditors.SimpleButton()
         Me.BtAjoutSousCritere = New DevExpress.XtraEditors.SimpleButton()
         Me.BtAjoutCritere = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl30 = New DevExpress.XtraEditors.LabelControl()
         Me.TxtTotPts = New DevExpress.XtraEditors.TextEdit()
-        Me.NumPoidsFin = New DevExpress.XtraEditors.SpinEdit()
-        Me.LabelControl29 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl28 = New DevExpress.XtraEditors.LabelControl()
-        Me.NumPoidsTech = New DevExpress.XtraEditors.SpinEdit()
         Me.TxtScoreMinimum = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl25 = New DevExpress.XtraEditors.LabelControl()
         Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
@@ -733,6 +746,8 @@ Partial Class NewDp
         CType(Me.TxtLibDp.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupCaracteristique, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupCaracteristique.SuspendLayout()
+        CType(Me.DateRecpDossConsult.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateRecpDossConsult.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CmbTypeRemune.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LibellePublication.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LieuRemiseProposition.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -789,11 +804,19 @@ Partial Class NewDp
         Me.GroupControl11.SuspendLayout()
         CType(Me.GCDepotOuverture, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GCDepotOuverture.SuspendLayout()
+        Me.GroupBox8.SuspendLayout()
+        CType(Me.SourceOfficielle.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateSource.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateSource.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
         CType(Me.PaysOuvertur.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VillelieuOuvr.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BuroOuver.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AdresslieuOuvr.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox7.SuspendLayout()
+        CType(Me.PrecedurVoiElectronic.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Coutencourus.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CheckVoiElectro.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         CType(Me.ProcedurOvrPropoFinLine.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -863,9 +886,10 @@ Partial Class NewDp
         Me.ContextMenuStrip1.SuspendLayout()
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl2.SuspendLayout()
-        CType(Me.TxtTotPts.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelScrTechFin.SuspendLayout()
         CType(Me.NumPoidsFin.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumPoidsTech.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TxtTotPts.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TxtScoreMinimum.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PageTDR.SuspendLayout()
@@ -2799,7 +2823,7 @@ Partial Class NewDp
         Me.PageDonneesBase.Image = Global.ClearProject.My.Resources.Resources.ManageItems_16x16
         Me.PageDonneesBase.Name = "PageDonneesBase"
         Me.PageDonneesBase.Size = New System.Drawing.Size(968, 540)
-        Me.PageDonneesBase.Text = "Données de base"
+        Me.PageDonneesBase.Text = "Donnée de base"
         '
         'XtraScrollableControl3
         '
@@ -2981,7 +3005,7 @@ Partial Class NewDp
         Me.TxtMail.Name = "TxtMail"
         Me.TxtMail.Properties.Mask.EditMask = "[a-z,0-9,.]{1,80}[@]{1}[a-z,0-9-]{1,80}[.]{1}[a-z]{2,25}"
         Me.TxtMail.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx
-        Me.TxtMail.Size = New System.Drawing.Size(763, 20)
+        Me.TxtMail.Size = New System.Drawing.Size(746, 20)
         Me.TxtMail.TabIndex = 26
         '
         'LabelControl12
@@ -3047,7 +3071,7 @@ Partial Class NewDp
         Me.TxtAdresse.MenuManager = Me.RibbonDP
         Me.TxtAdresse.Name = "TxtAdresse"
         Me.TxtAdresse.Properties.MaxLength = 200
-        Me.TxtAdresse.Size = New System.Drawing.Size(277, 24)
+        Me.TxtAdresse.Size = New System.Drawing.Size(260, 24)
         Me.TxtAdresse.TabIndex = 25
         '
         'CmbPays
@@ -3058,7 +3082,7 @@ Partial Class NewDp
         Me.CmbPays.MenuManager = Me.RibbonDP
         Me.CmbPays.Name = "CmbPays"
         Me.CmbPays.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.CmbPays.Size = New System.Drawing.Size(763, 20)
+        Me.CmbPays.Size = New System.Drawing.Size(746, 20)
         Me.CmbPays.TabIndex = 22
         '
         'LabelControl3
@@ -3080,7 +3104,7 @@ Partial Class NewDp
         Me.TxtNomConsult.Name = "TxtNomConsult"
         Me.TxtNomConsult.Properties.Appearance.Options.UseTextOptions = True
         Me.TxtNomConsult.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
-        Me.TxtNomConsult.Size = New System.Drawing.Size(763, 20)
+        Me.TxtNomConsult.Size = New System.Drawing.Size(746, 20)
         Me.TxtNomConsult.TabIndex = 21
         '
         'GroupControl7
@@ -3545,6 +3569,8 @@ Partial Class NewDp
         '
         Me.GroupCaracteristique.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupCaracteristique.Controls.Add(Me.DateRecpDossConsult)
+        Me.GroupCaracteristique.Controls.Add(Me.LabelControl52)
         Me.GroupCaracteristique.Controls.Add(Me.CmbTypeRemune)
         Me.GroupCaracteristique.Controls.Add(Me.LabelControl41)
         Me.GroupCaracteristique.Controls.Add(Me.LabelControl40)
@@ -3558,9 +3584,34 @@ Partial Class NewDp
         Me.GroupCaracteristique.TabIndex = 7
         Me.GroupCaracteristique.Text = "Caractéristiques"
         '
+        'DateRecpDossConsult
+        '
+        Me.DateRecpDossConsult.EditValue = Nothing
+        Me.DateRecpDossConsult.Location = New System.Drawing.Point(159, 24)
+        Me.DateRecpDossConsult.MenuManager = Me.RibbonDP
+        Me.DateRecpDossConsult.Name = "DateRecpDossConsult"
+        Me.DateRecpDossConsult.Properties.Appearance.Options.UseTextOptions = True
+        Me.DateRecpDossConsult.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.DateRecpDossConsult.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateRecpDossConsult.Properties.CloseUpKey = New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None)
+        Me.DateRecpDossConsult.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret
+        Me.DateRecpDossConsult.Properties.VistaTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.DateRecpDossConsult.Size = New System.Drawing.Size(120, 20)
+        Me.DateRecpDossConsult.TabIndex = 41
+        '
+        'LabelControl52
+        '
+        Me.LabelControl52.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl52.LineVisible = True
+        Me.LabelControl52.Location = New System.Drawing.Point(5, 28)
+        Me.LabelControl52.Name = "LabelControl52"
+        Me.LabelControl52.Size = New System.Drawing.Size(148, 13)
+        Me.LabelControl52.TabIndex = 42
+        Me.LabelControl52.Text = "Date de reception des dossiers"
+        '
         'CmbTypeRemune
         '
-        Me.CmbTypeRemune.Location = New System.Drawing.Point(102, 25)
+        Me.CmbTypeRemune.Location = New System.Drawing.Point(102, 49)
         Me.CmbTypeRemune.MenuManager = Me.RibbonDP
         Me.CmbTypeRemune.Name = "CmbTypeRemune"
         Me.CmbTypeRemune.Properties.Appearance.Options.UseTextOptions = True
@@ -3574,7 +3625,7 @@ Partial Class NewDp
         '
         Me.LabelControl41.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl41.LineVisible = True
-        Me.LabelControl41.Location = New System.Drawing.Point(3, 53)
+        Me.LabelControl41.Location = New System.Drawing.Point(3, 77)
         Me.LabelControl41.Name = "LabelControl41"
         Me.LabelControl41.Size = New System.Drawing.Size(149, 13)
         Me.LabelControl41.TabIndex = 38
@@ -3584,7 +3635,7 @@ Partial Class NewDp
         '
         Me.LabelControl40.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl40.LineVisible = True
-        Me.LabelControl40.Location = New System.Drawing.Point(3, 78)
+        Me.LabelControl40.Location = New System.Drawing.Point(3, 99)
         Me.LabelControl40.Name = "LabelControl40"
         Me.LabelControl40.Size = New System.Drawing.Size(105, 13)
         Me.LabelControl40.TabIndex = 22
@@ -3594,7 +3645,7 @@ Partial Class NewDp
         '
         Me.LabelControl4.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl4.LineVisible = True
-        Me.LabelControl4.Location = New System.Drawing.Point(3, 26)
+        Me.LabelControl4.Location = New System.Drawing.Point(3, 50)
         Me.LabelControl4.Name = "LabelControl4"
         Me.LabelControl4.Size = New System.Drawing.Size(91, 13)
         Me.LabelControl4.TabIndex = 20
@@ -3604,18 +3655,18 @@ Partial Class NewDp
         '
         Me.LibellePublication.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LibellePublication.Location = New System.Drawing.Point(114, 78)
+        Me.LibellePublication.Location = New System.Drawing.Point(114, 100)
         Me.LibellePublication.MenuManager = Me.RibbonDP
         Me.LibellePublication.Name = "LibellePublication"
         Me.LibellePublication.Properties.MaxLength = 500
-        Me.LibellePublication.Size = New System.Drawing.Size(169, 68)
+        Me.LibellePublication.Size = New System.Drawing.Size(169, 46)
         Me.LibellePublication.TabIndex = 20
         '
         'LieuRemiseProposition
         '
         Me.LieuRemiseProposition.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LieuRemiseProposition.Location = New System.Drawing.Point(158, 51)
+        Me.LieuRemiseProposition.Location = New System.Drawing.Point(158, 75)
         Me.LieuRemiseProposition.MenuManager = Me.RibbonDP
         Me.LieuRemiseProposition.Name = "LieuRemiseProposition"
         Me.LieuRemiseProposition.Properties.MaxLength = 200
@@ -3913,9 +3964,9 @@ Partial Class NewDp
         '
         Me.LabelControl71.Location = New System.Drawing.Point(132, 24)
         Me.LabelControl71.Name = "LabelControl71"
-        Me.LabelControl71.Size = New System.Drawing.Size(44, 13)
+        Me.LabelControl71.Size = New System.Drawing.Size(39, 13)
         Me.LabelControl71.TabIndex = 47
-        Me.LabelControl71.Text = "Adsresse"
+        Me.LabelControl71.Text = "Adresse"
         '
         'AdresseNego
         '
@@ -4050,17 +4101,29 @@ Partial Class NewDp
         Me.GroupSection.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupSection.Controls.Add(Me.BtSupSection)
         Me.GroupSection.Controls.Add(Me.GroupBoxSection)
         Me.GroupSection.Controls.Add(Me.CombSection)
         Me.GroupSection.Controls.Add(Me.BtAjoutSection)
         Me.GroupSection.Controls.Add(Me.LabelControl42)
         Me.GroupSection.Controls.Add(Me.GridSection)
         Me.GroupSection.Controls.Add(Me.CheckEdit2)
-        Me.GroupSection.Location = New System.Drawing.Point(5, 814)
+        Me.GroupSection.Location = New System.Drawing.Point(5, 812)
         Me.GroupSection.Name = "GroupSection"
         Me.GroupSection.Size = New System.Drawing.Size(524, 0)
         Me.GroupSection.TabIndex = 23
         Me.GroupSection.Text = "Note d'information aux consultants"
+        '
+        'BtSupSection
+        '
+        Me.BtSupSection.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BtSupSection.Image = Global.ClearProject.My.Resources.Resources.Delete_16x16
+        Me.BtSupSection.Location = New System.Drawing.Point(432, 101)
+        Me.BtSupSection.Name = "BtSupSection"
+        Me.BtSupSection.Size = New System.Drawing.Size(78, 25)
+        Me.BtSupSection.TabIndex = 36
+        Me.BtSupSection.Text = "Supprimer"
+        Me.BtSupSection.ToolTip = "Supprimer de la liste"
         '
         'GroupBoxSection
         '
@@ -4091,7 +4154,7 @@ Partial Class NewDp
         Me.CombSection.Location = New System.Drawing.Point(91, 26)
         Me.CombSection.Name = "CombSection"
         Me.CombSection.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.CombSection.Properties.Items.AddRange(New Object() {"Section 1.4", "Section 3.3", "Section 3.6", "Section 3.7", "Section 5.6"})
+        Me.CombSection.Properties.Items.AddRange(New Object() {"Section 1(c)", "Section 1(l)", "Section 2.4", "Section 4.1", "Section 16.3", "Section 19.2"})
         Me.CombSection.Size = New System.Drawing.Size(419, 20)
         Me.CombSection.TabIndex = 34
         Me.CombSection.ToolTip = "Veuillez selectionnez une clause"
@@ -4102,7 +4165,7 @@ Partial Class NewDp
         Me.BtAjoutSection.Image = Global.ClearProject.My.Resources.Resources.Add_16x16
         Me.BtAjoutSection.Location = New System.Drawing.Point(431, 70)
         Me.BtAjoutSection.Name = "BtAjoutSection"
-        Me.BtAjoutSection.Size = New System.Drawing.Size(78, 52)
+        Me.BtAjoutSection.Size = New System.Drawing.Size(78, 27)
         Me.BtAjoutSection.TabIndex = 35
         Me.BtAjoutSection.Text = "Ajouter"
         Me.BtAjoutSection.ToolTip = "Ajouter à la liste"
@@ -4130,12 +4193,12 @@ Partial Class NewDp
         Me.GridSection.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GridSection.ColumnHeadersVisible = False
         Me.GridSection.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.RefSection, Me.CodeSection, Me.Description, Me.LigneModif})
-        Me.GridSection.Location = New System.Drawing.Point(9, 132)
+        Me.GridSection.Location = New System.Drawing.Point(5, 135)
         Me.GridSection.MultiSelect = False
         Me.GridSection.Name = "GridSection"
         Me.GridSection.ReadOnly = True
         Me.GridSection.RowHeadersVisible = False
-        Me.GridSection.Size = New System.Drawing.Size(501, 0)
+        Me.GridSection.Size = New System.Drawing.Size(513, 0)
         Me.GridSection.TabIndex = 1
         '
         'RefSection
@@ -4213,9 +4276,9 @@ Partial Class NewDp
         Me.RetirerCojo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RetirerCojo.Image = Global.ClearProject.My.Resources.Resources.CloseDetails_16x16
         Me.RetirerCojo.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.RetirerCojo.Location = New System.Drawing.Point(438, 68)
+        Me.RetirerCojo.Location = New System.Drawing.Point(438, 81)
         Me.RetirerCojo.Name = "RetirerCojo"
-        Me.RetirerCojo.Size = New System.Drawing.Size(83, 31)
+        Me.RetirerCojo.Size = New System.Drawing.Size(83, 26)
         Me.RetirerCojo.TabIndex = 22
         Me.RetirerCojo.Text = "Retirer"
         Me.RetirerCojo.ToolTip = "Retirer de la liste"
@@ -4234,7 +4297,7 @@ Partial Class NewDp
         '
         Me.CmbTitreCojo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.CmbTitreCojo.Location = New System.Drawing.Point(245, 53)
+        Me.CmbTitreCojo.Location = New System.Drawing.Point(245, 57)
         Me.CmbTitreCojo.Name = "CmbTitreCojo"
         Me.CmbTitreCojo.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.CmbTitreCojo.Properties.Items.AddRange(New Object() {"Président", "Membre", "Observateur", "Rapporteur"})
@@ -4243,7 +4306,7 @@ Partial Class NewDp
         '
         'LabelControl31
         '
-        Me.LabelControl31.Location = New System.Drawing.Point(219, 56)
+        Me.LabelControl31.Location = New System.Drawing.Point(219, 60)
         Me.LabelControl31.Name = "LabelControl31"
         Me.LabelControl31.Size = New System.Drawing.Size(22, 13)
         Me.LabelControl31.TabIndex = 18
@@ -4253,16 +4316,16 @@ Partial Class NewDp
         '
         Me.BtAjoutCojo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BtAjoutCojo.Image = Global.ClearProject.My.Resources.Resources.Add_16x16
-        Me.BtAjoutCojo.Location = New System.Drawing.Point(438, 27)
+        Me.BtAjoutCojo.Location = New System.Drawing.Point(438, 52)
         Me.BtAjoutCojo.Name = "BtAjoutCojo"
-        Me.BtAjoutCojo.Size = New System.Drawing.Size(83, 35)
+        Me.BtAjoutCojo.Size = New System.Drawing.Size(83, 26)
         Me.BtAjoutCojo.TabIndex = 33
         Me.BtAjoutCojo.Text = "Ajouter"
         Me.BtAjoutCojo.ToolTip = "Ajouter à la liste"
         '
         'LabelControl38
         '
-        Me.LabelControl38.Location = New System.Drawing.Point(9, 56)
+        Me.LabelControl38.Location = New System.Drawing.Point(9, 60)
         Me.LabelControl38.Name = "LabelControl38"
         Me.LabelControl38.Size = New System.Drawing.Size(51, 13)
         Me.LabelControl38.TabIndex = 16
@@ -4270,7 +4333,7 @@ Partial Class NewDp
         '
         'TxtFonctionCojo
         '
-        Me.TxtFonctionCojo.Location = New System.Drawing.Point(63, 53)
+        Me.TxtFonctionCojo.Location = New System.Drawing.Point(63, 57)
         Me.TxtFonctionCojo.Name = "TxtFonctionCojo"
         Me.TxtFonctionCojo.Size = New System.Drawing.Size(144, 20)
         Me.TxtFonctionCojo.TabIndex = 29
@@ -4279,7 +4342,7 @@ Partial Class NewDp
         '
         Me.TxtMailCojo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TxtMailCojo.Location = New System.Drawing.Point(245, 79)
+        Me.TxtMailCojo.Location = New System.Drawing.Point(245, 86)
         Me.TxtMailCojo.Name = "TxtMailCojo"
         Me.TxtMailCojo.Properties.Mask.EditMask = "[a-z,0-9,.]{1,80}[@]{1}[a-z,0-9-]{1,80}[.]{1}[a-z]{2,25}"
         Me.TxtMailCojo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx
@@ -4288,7 +4351,7 @@ Partial Class NewDp
         '
         'LabelControl37
         '
-        Me.LabelControl37.Location = New System.Drawing.Point(213, 82)
+        Me.LabelControl37.Location = New System.Drawing.Point(213, 89)
         Me.LabelControl37.Name = "LabelControl37"
         Me.LabelControl37.Size = New System.Drawing.Size(28, 13)
         Me.LabelControl37.TabIndex = 13
@@ -4296,7 +4359,7 @@ Partial Class NewDp
         '
         'LabelControl36
         '
-        Me.LabelControl36.Location = New System.Drawing.Point(5, 82)
+        Me.LabelControl36.Location = New System.Drawing.Point(5, 89)
         Me.LabelControl36.Name = "LabelControl36"
         Me.LabelControl36.Size = New System.Drawing.Size(55, 13)
         Me.LabelControl36.TabIndex = 12
@@ -4304,12 +4367,10 @@ Partial Class NewDp
         '
         'TxtContactCojo
         '
-        Me.TxtContactCojo.Location = New System.Drawing.Point(63, 79)
+        Me.TxtContactCojo.Location = New System.Drawing.Point(63, 86)
         Me.TxtContactCojo.Name = "TxtContactCojo"
         Me.TxtContactCojo.Properties.Appearance.Options.UseTextOptions = True
         Me.TxtContactCojo.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.TxtContactCojo.Properties.Mask.EditMask = "\d{2} \d{3} \d{3} \d{2}"
-        Me.TxtContactCojo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx
         Me.TxtContactCojo.Size = New System.Drawing.Size(144, 20)
         Me.TxtContactCojo.TabIndex = 31
         '
@@ -4345,12 +4406,12 @@ Partial Class NewDp
         Me.GridCojo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GridCojo.ColumnHeadersVisible = False
         Me.GridCojo.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Refcojo, Me.Civilitecojo, Me.Nomcojo, Me.Fonctioncojo, Me.Telephonecojo, Me.Emailcojo, Me.Organismecojo, Me.Typecojo, Me.Actioncojo})
-        Me.GridCojo.Location = New System.Drawing.Point(3, 104)
+        Me.GridCojo.Location = New System.Drawing.Point(3, 111)
         Me.GridCojo.MultiSelect = False
         Me.GridCojo.Name = "GridCojo"
         Me.GridCojo.ReadOnly = True
         Me.GridCojo.RowHeadersVisible = False
-        Me.GridCojo.Size = New System.Drawing.Size(517, 127)
+        Me.GridCojo.Size = New System.Drawing.Size(517, 120)
         Me.GridCojo.TabIndex = 1
         '
         'Refcojo
@@ -4409,6 +4470,7 @@ Partial Class NewDp
         Me.Typecojo.HeaderText = "Type"
         Me.Typecojo.Name = "Typecojo"
         Me.Typecojo.ReadOnly = True
+        Me.Typecojo.Visible = False
         '
         'Actioncojo
         '
@@ -4430,7 +4492,8 @@ Partial Class NewDp
         '
         Me.ChkEvaluateur.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ChkEvaluateur.EditValue = True
-        Me.ChkEvaluateur.Location = New System.Drawing.Point(527, 28)
+        Me.ChkEvaluateur.Enabled = False
+        Me.ChkEvaluateur.Location = New System.Drawing.Point(438, 26)
         Me.ChkEvaluateur.MenuManager = Me.RibbonDP
         Me.ChkEvaluateur.Name = "ChkEvaluateur"
         Me.ChkEvaluateur.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -4438,6 +4501,7 @@ Partial Class NewDp
         Me.ChkEvaluateur.Properties.Caption = "Evaluateur"
         Me.ChkEvaluateur.Size = New System.Drawing.Size(81, 20)
         Me.ChkEvaluateur.TabIndex = 20
+        Me.ChkEvaluateur.Visible = False
         '
         'GbEltsFournis
         '
@@ -4542,16 +4606,77 @@ Partial Class NewDp
         '
         'GCDepotOuverture
         '
+        Me.GCDepotOuverture.Controls.Add(Me.GroupBox8)
         Me.GCDepotOuverture.Controls.Add(Me.GroupBox3)
+        Me.GCDepotOuverture.Controls.Add(Me.GroupBox7)
+        Me.GCDepotOuverture.Controls.Add(Me.Coutencourus)
+        Me.GCDepotOuverture.Controls.Add(Me.CheckVoiElectro)
         Me.GCDepotOuverture.Controls.Add(Me.GroupBox2)
         Me.GCDepotOuverture.Controls.Add(Me.GroupBox1)
         Me.GCDepotOuverture.Controls.Add(Me.OuvrProFinLine)
         Me.GCDepotOuverture.Controls.Add(Me.OuverturePropTechLine)
         Me.GCDepotOuverture.Location = New System.Drawing.Point(4, 723)
         Me.GCDepotOuverture.Name = "GCDepotOuverture"
-        Me.GCDepotOuverture.Size = New System.Drawing.Size(423, 281)
+        Me.GCDepotOuverture.Size = New System.Drawing.Size(423, 445)
         Me.GCDepotOuverture.TabIndex = 38
         Me.GCDepotOuverture.Text = "Dépôt, ouverture et évaluation des Propositions"
+        '
+        'GroupBox8
+        '
+        Me.GroupBox8.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox8.Controls.Add(Me.LabelControl55)
+        Me.GroupBox8.Controls.Add(Me.SourceOfficielle)
+        Me.GroupBox8.Controls.Add(Me.LabelControl57)
+        Me.GroupBox8.Controls.Add(Me.DateSource)
+        Me.GroupBox8.Location = New System.Drawing.Point(3, 390)
+        Me.GroupBox8.Name = "GroupBox8"
+        Me.GroupBox8.Size = New System.Drawing.Size(414, 46)
+        Me.GroupBox8.TabIndex = 50
+        Me.GroupBox8.TabStop = False
+        Me.GroupBox8.Text = "La source officielle pour les cours de change"
+        '
+        'LabelControl55
+        '
+        Me.LabelControl55.Location = New System.Drawing.Point(132, 24)
+        Me.LabelControl55.Name = "LabelControl55"
+        Me.LabelControl55.Size = New System.Drawing.Size(36, 13)
+        Me.LabelControl55.TabIndex = 47
+        Me.LabelControl55.Text = "Source "
+        '
+        'SourceOfficielle
+        '
+        Me.SourceOfficielle.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.SourceOfficielle.Location = New System.Drawing.Point(179, 20)
+        Me.SourceOfficielle.MenuManager = Me.RibbonDP
+        Me.SourceOfficielle.Name = "SourceOfficielle"
+        Me.SourceOfficielle.Size = New System.Drawing.Size(231, 20)
+        Me.SourceOfficielle.TabIndex = 48
+        '
+        'LabelControl57
+        '
+        Me.LabelControl57.Location = New System.Drawing.Point(5, 24)
+        Me.LabelControl57.Name = "LabelControl57"
+        Me.LabelControl57.Size = New System.Drawing.Size(23, 13)
+        Me.LabelControl57.TabIndex = 46
+        Me.LabelControl57.Text = "Date"
+        '
+        'DateSource
+        '
+        Me.DateSource.EditValue = Nothing
+        Me.DateSource.Location = New System.Drawing.Point(33, 21)
+        Me.DateSource.MenuManager = Me.RibbonDP
+        Me.DateSource.Name = "DateSource"
+        Me.DateSource.Properties.Appearance.Options.UseTextOptions = True
+        Me.DateSource.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.DateSource.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateSource.Properties.DisplayFormat.FormatString = "dd/MM/yy"
+        Me.DateSource.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.DateSource.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret
+        Me.DateSource.Properties.VistaTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.DateSource.Size = New System.Drawing.Size(90, 20)
+        Me.DateSource.TabIndex = 49
         '
         'GroupBox3
         '
@@ -4637,6 +4762,50 @@ Partial Class NewDp
         Me.LabelControl56.TabIndex = 3
         Me.LabelControl56.Text = "Pays"
         '
+        'GroupBox7
+        '
+        Me.GroupBox7.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox7.Controls.Add(Me.PrecedurVoiElectronic)
+        Me.GroupBox7.Location = New System.Drawing.Point(3, 329)
+        Me.GroupBox7.Name = "GroupBox7"
+        Me.GroupBox7.Size = New System.Drawing.Size(414, 55)
+        Me.GroupBox7.TabIndex = 36
+        Me.GroupBox7.TabStop = False
+        Me.GroupBox7.Text = "Decrivez la procédure de remise de la Proposition par voie électronique"
+        '
+        'PrecedurVoiElectronic
+        '
+        Me.PrecedurVoiElectronic.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PrecedurVoiElectronic.Enabled = False
+        Me.PrecedurVoiElectronic.Location = New System.Drawing.Point(3, 17)
+        Me.PrecedurVoiElectronic.MenuManager = Me.RibbonDP
+        Me.PrecedurVoiElectronic.Name = "PrecedurVoiElectronic"
+        Me.PrecedurVoiElectronic.Size = New System.Drawing.Size(408, 35)
+        Me.PrecedurVoiElectronic.TabIndex = 33
+        '
+        'Coutencourus
+        '
+        Me.Coutencourus.Location = New System.Drawing.Point(3, 282)
+        Me.Coutencourus.MenuManager = Me.RibbonDP
+        Me.Coutencourus.Name = "Coutencourus"
+        Me.Coutencourus.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Coutencourus.Properties.Appearance.Options.UseFont = True
+        Me.Coutencourus.Properties.Caption = "La Proposition financière doit indiquer les coûts encourus"
+        Me.Coutencourus.Size = New System.Drawing.Size(397, 22)
+        Me.Coutencourus.TabIndex = 37
+        '
+        'CheckVoiElectro
+        '
+        Me.CheckVoiElectro.Location = New System.Drawing.Point(3, 306)
+        Me.CheckVoiElectro.MenuManager = Me.RibbonDP
+        Me.CheckVoiElectro.Name = "CheckVoiElectro"
+        Me.CheckVoiElectro.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckVoiElectro.Properties.Appearance.Options.UseFont = True
+        Me.CheckVoiElectro.Properties.Caption = "Remise de proposition par voie électronique."
+        Me.CheckVoiElectro.Size = New System.Drawing.Size(327, 22)
+        Me.CheckVoiElectro.TabIndex = 37
+        '
         'GroupBox2
         '
         Me.GroupBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -4656,7 +4825,6 @@ Partial Class NewDp
         Me.ProcedurOvrPropoFinLine.Location = New System.Drawing.Point(3, 17)
         Me.ProcedurOvrPropoFinLine.MenuManager = Me.RibbonDP
         Me.ProcedurOvrPropoFinLine.Name = "ProcedurOvrPropoFinLine"
-        Me.ProcedurOvrPropoFinLine.Properties.MaxLength = 100
         Me.ProcedurOvrPropoFinLine.Size = New System.Drawing.Size(408, 35)
         Me.ProcedurOvrPropoFinLine.TabIndex = 33
         '
@@ -4679,7 +4847,6 @@ Partial Class NewDp
         Me.ProcedurProTechLine.Location = New System.Drawing.Point(3, 17)
         Me.ProcedurProTechLine.MenuManager = Me.RibbonDP
         Me.ProcedurProTechLine.Name = "ProcedurProTechLine"
-        Me.ProcedurProTechLine.Properties.MaxLength = 100
         Me.ProcedurProTechLine.Size = New System.Drawing.Size(405, 34)
         Me.ProcedurProTechLine.TabIndex = 33
         '
@@ -4886,6 +5053,7 @@ Partial Class NewDp
         '
         'TitreConference
         '
+        Me.TitreConference.Enabled = False
         Me.TitreConference.Location = New System.Drawing.Point(32, 123)
         Me.TitreConference.MenuManager = Me.RibbonDP
         Me.TitreConference.Name = "TitreConference"
@@ -4977,7 +5145,7 @@ Partial Class NewDp
         Me.CmbModalite.Location = New System.Drawing.Point(269, 47)
         Me.CmbModalite.Name = "CmbModalite"
         Me.CmbModalite.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.CmbModalite.Properties.Items.AddRange(New Object() {"PTC (Proposition Technique Complexe)", "PTS (Proposition Technique Simplifier"})
+        Me.CmbModalite.Properties.Items.AddRange(New Object() {"PTC (Proposition Technique Complexe)", "PTS (Proposition Technique Simplifiée)"})
         Me.CmbModalite.Size = New System.Drawing.Size(146, 20)
         Me.CmbModalite.TabIndex = 5
         '
@@ -5073,7 +5241,7 @@ Partial Class NewDp
         Me.TypAssociation.Properties.Appearance.Options.UseTextOptions = True
         Me.TypAssociation.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.TypAssociation.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.TypAssociation.Properties.Items.AddRange(New Object() {"Un (des) consultant(s) ne figurant pas sur la liste restreinte ", "Tout autre consultant figurant sur la liste restreinte"})
+        Me.TypAssociation.Properties.Items.AddRange(New Object() {"Un (des) consultant(s) ne figurant pas sur la liste restreinte", "Tout autre consultant figurant sur la liste restreinte"})
         Me.TypAssociation.Size = New System.Drawing.Size(189, 20)
         Me.TypAssociation.TabIndex = 35
         '
@@ -5453,7 +5621,7 @@ Partial Class NewDp
         '
         'CaleDonneParticuliere
         '
-        Me.CaleDonneParticuliere.Location = New System.Drawing.Point(895, 1071)
+        Me.CaleDonneParticuliere.Location = New System.Drawing.Point(895, 1151)
         Me.CaleDonneParticuliere.MenuManager = Me.RibbonDP
         Me.CaleDonneParticuliere.Name = "CaleDonneParticuliere"
         Me.CaleDonneParticuliere.Properties.Appearance.Options.UseTextOptions = True
@@ -5500,6 +5668,7 @@ Partial Class NewDp
         Me.GridEvaluation.Name = "GridEvaluation"
         Me.GridEvaluation.ReadOnly = True
         Me.GridEvaluation.RowHeadersVisible = False
+        Me.GridEvaluation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.GridEvaluation.Size = New System.Drawing.Size(968, 422)
         Me.GridEvaluation.TabIndex = 7
         '
@@ -5575,15 +5744,12 @@ Partial Class NewDp
         '
         'PanelControl2
         '
+        Me.PanelControl2.Controls.Add(Me.PanelScrTechFin)
         Me.PanelControl2.Controls.Add(Me.BtModifierCritere)
         Me.PanelControl2.Controls.Add(Me.BtAjoutSousCritere)
         Me.PanelControl2.Controls.Add(Me.BtAjoutCritere)
         Me.PanelControl2.Controls.Add(Me.LabelControl30)
         Me.PanelControl2.Controls.Add(Me.TxtTotPts)
-        Me.PanelControl2.Controls.Add(Me.NumPoidsFin)
-        Me.PanelControl2.Controls.Add(Me.LabelControl29)
-        Me.PanelControl2.Controls.Add(Me.LabelControl28)
-        Me.PanelControl2.Controls.Add(Me.NumPoidsTech)
         Me.PanelControl2.Controls.Add(Me.TxtScoreMinimum)
         Me.PanelControl2.Controls.Add(Me.LabelControl25)
         Me.PanelControl2.Dock = System.Windows.Forms.DockStyle.Top
@@ -5591,6 +5757,71 @@ Partial Class NewDp
         Me.PanelControl2.Name = "PanelControl2"
         Me.PanelControl2.Size = New System.Drawing.Size(968, 90)
         Me.PanelControl2.TabIndex = 2
+        '
+        'PanelScrTechFin
+        '
+        Me.PanelScrTechFin.Controls.Add(Me.NumPoidsFin)
+        Me.PanelScrTechFin.Controls.Add(Me.NumPoidsTech)
+        Me.PanelScrTechFin.Controls.Add(Me.LabelControl28)
+        Me.PanelScrTechFin.Controls.Add(Me.LabelControl29)
+        Me.PanelScrTechFin.Location = New System.Drawing.Point(2, 51)
+        Me.PanelScrTechFin.Name = "PanelScrTechFin"
+        Me.PanelScrTechFin.Size = New System.Drawing.Size(369, 34)
+        Me.PanelScrTechFin.TabIndex = 9
+        '
+        'NumPoidsFin
+        '
+        Me.NumPoidsFin.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.NumPoidsFin.Enabled = False
+        Me.NumPoidsFin.Location = New System.Drawing.Point(289, 5)
+        Me.NumPoidsFin.MenuManager = Me.RibbonDP
+        Me.NumPoidsFin.Name = "NumPoidsFin"
+        Me.NumPoidsFin.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NumPoidsFin.Properties.Appearance.Options.UseFont = True
+        Me.NumPoidsFin.Properties.Appearance.Options.UseTextOptions = True
+        Me.NumPoidsFin.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.NumPoidsFin.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.NumPoidsFin.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
+        Me.NumPoidsFin.Properties.MaxValue = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.NumPoidsFin.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        Me.NumPoidsFin.Size = New System.Drawing.Size(75, 22)
+        Me.NumPoidsFin.TabIndex = 3
+        '
+        'NumPoidsTech
+        '
+        Me.NumPoidsTech.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.NumPoidsTech.Enabled = False
+        Me.NumPoidsTech.Location = New System.Drawing.Point(114, 5)
+        Me.NumPoidsTech.MenuManager = Me.RibbonDP
+        Me.NumPoidsTech.Name = "NumPoidsTech"
+        Me.NumPoidsTech.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NumPoidsTech.Properties.Appearance.Options.UseFont = True
+        Me.NumPoidsTech.Properties.Appearance.Options.UseTextOptions = True
+        Me.NumPoidsTech.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.NumPoidsTech.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.NumPoidsTech.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
+        Me.NumPoidsTech.Properties.MaxValue = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.NumPoidsTech.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        Me.NumPoidsTech.Size = New System.Drawing.Size(66, 22)
+        Me.NumPoidsTech.TabIndex = 2
+        '
+        'LabelControl28
+        '
+        Me.LabelControl28.Appearance.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl28.Location = New System.Drawing.Point(7, 7)
+        Me.LabelControl28.Name = "LabelControl28"
+        Me.LabelControl28.Size = New System.Drawing.Size(104, 19)
+        Me.LabelControl28.TabIndex = 4
+        Me.LabelControl28.Text = "Poids technique"
+        '
+        'LabelControl29
+        '
+        Me.LabelControl29.Appearance.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl29.Location = New System.Drawing.Point(188, 7)
+        Me.LabelControl29.Name = "LabelControl29"
+        Me.LabelControl29.Size = New System.Drawing.Size(98, 19)
+        Me.LabelControl29.TabIndex = 5
+        Me.LabelControl29.Text = "Poids financier"
         '
         'BtModifierCritere
         '
@@ -5654,60 +5885,6 @@ Partial Class NewDp
         Me.TxtTotPts.Properties.ReadOnly = True
         Me.TxtTotPts.Size = New System.Drawing.Size(80, 22)
         Me.TxtTotPts.TabIndex = 1
-        '
-        'NumPoidsFin
-        '
-        Me.NumPoidsFin.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-        Me.NumPoidsFin.Enabled = False
-        Me.NumPoidsFin.Location = New System.Drawing.Point(283, 63)
-        Me.NumPoidsFin.MenuManager = Me.RibbonDP
-        Me.NumPoidsFin.Name = "NumPoidsFin"
-        Me.NumPoidsFin.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.NumPoidsFin.Properties.Appearance.Options.UseFont = True
-        Me.NumPoidsFin.Properties.Appearance.Options.UseTextOptions = True
-        Me.NumPoidsFin.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.NumPoidsFin.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
-        Me.NumPoidsFin.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
-        Me.NumPoidsFin.Properties.MaxValue = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.NumPoidsFin.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.NumPoidsFin.Size = New System.Drawing.Size(75, 22)
-        Me.NumPoidsFin.TabIndex = 3
-        '
-        'LabelControl29
-        '
-        Me.LabelControl29.Appearance.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl29.Location = New System.Drawing.Point(182, 65)
-        Me.LabelControl29.Name = "LabelControl29"
-        Me.LabelControl29.Size = New System.Drawing.Size(98, 19)
-        Me.LabelControl29.TabIndex = 5
-        Me.LabelControl29.Text = "Poids financier"
-        '
-        'LabelControl28
-        '
-        Me.LabelControl28.Appearance.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl28.Location = New System.Drawing.Point(1, 65)
-        Me.LabelControl28.Name = "LabelControl28"
-        Me.LabelControl28.Size = New System.Drawing.Size(104, 19)
-        Me.LabelControl28.TabIndex = 4
-        Me.LabelControl28.Text = "Poids technique"
-        '
-        'NumPoidsTech
-        '
-        Me.NumPoidsTech.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-        Me.NumPoidsTech.Enabled = False
-        Me.NumPoidsTech.Location = New System.Drawing.Point(108, 63)
-        Me.NumPoidsTech.MenuManager = Me.RibbonDP
-        Me.NumPoidsTech.Name = "NumPoidsTech"
-        Me.NumPoidsTech.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.NumPoidsTech.Properties.Appearance.Options.UseFont = True
-        Me.NumPoidsTech.Properties.Appearance.Options.UseTextOptions = True
-        Me.NumPoidsTech.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.NumPoidsTech.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
-        Me.NumPoidsTech.Properties.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
-        Me.NumPoidsTech.Properties.MaxValue = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.NumPoidsTech.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.NumPoidsTech.Size = New System.Drawing.Size(66, 22)
-        Me.NumPoidsTech.TabIndex = 2
         '
         'TxtScoreMinimum
         '
@@ -6174,6 +6351,8 @@ Partial Class NewDp
         CType(Me.GroupCaracteristique, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupCaracteristique.ResumeLayout(False)
         Me.GroupCaracteristique.PerformLayout()
+        CType(Me.DateRecpDossConsult.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateRecpDossConsult.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CmbTypeRemune.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LibellePublication.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LieuRemiseProposition.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -6235,12 +6414,21 @@ Partial Class NewDp
         Me.GroupControl11.ResumeLayout(False)
         CType(Me.GCDepotOuverture, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GCDepotOuverture.ResumeLayout(False)
+        Me.GroupBox8.ResumeLayout(False)
+        Me.GroupBox8.PerformLayout()
+        CType(Me.SourceOfficielle.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateSource.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateSource.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         CType(Me.PaysOuvertur.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VillelieuOuvr.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BuroOuver.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AdresslieuOuvr.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox7.ResumeLayout(False)
+        CType(Me.PrecedurVoiElectronic.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Coutencourus.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CheckVoiElectro.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         CType(Me.ProcedurOvrPropoFinLine.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
@@ -6316,9 +6504,11 @@ Partial Class NewDp
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl2.ResumeLayout(False)
         Me.PanelControl2.PerformLayout()
-        CType(Me.TxtTotPts.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelScrTechFin.ResumeLayout(False)
+        Me.PanelScrTechFin.PerformLayout()
         CType(Me.NumPoidsFin.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumPoidsTech.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TxtTotPts.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TxtScoreMinimum.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PageTDR.ResumeLayout(False)
@@ -6798,15 +6988,6 @@ Partial Class NewDp
     Friend WithEvents Ref As DataGridViewTextBoxColumn
     Friend WithEvents Details As DataGridViewTextBoxColumn
     Friend WithEvents Points As DataGridViewTextBoxColumn
-    Friend WithEvents Refcojo As DataGridViewTextBoxColumn
-    Friend WithEvents Civilitecojo As DataGridViewTextBoxColumn
-    Friend WithEvents Nomcojo As DataGridViewTextBoxColumn
-    Friend WithEvents Fonctioncojo As DataGridViewTextBoxColumn
-    Friend WithEvents Telephonecojo As DataGridViewTextBoxColumn
-    Friend WithEvents Emailcojo As DataGridViewTextBoxColumn
-    Friend WithEvents Organismecojo As DataGridViewTextBoxColumn
-    Friend WithEvents Typecojo As DataGridViewTextBoxColumn
-    Friend WithEvents Actioncojo As DataGridViewTextBoxColumn
     Friend WithEvents GroupMarche As DevExpress.XtraEditors.GroupControl
     Friend WithEvents LabelControl34 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents CombMarche As DevExpress.XtraEditors.ComboBoxEdit
@@ -6925,4 +7106,26 @@ Partial Class NewDp
     Friend WithEvents VillelieuOuvr As DevExpress.XtraEditors.TextEdit
     Friend WithEvents BuroOuver As DevExpress.XtraEditors.TextEdit
     Friend WithEvents TitreConference As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents DateRecpDossConsult As DevExpress.XtraEditors.DateEdit
+    Friend WithEvents LabelControl52 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents CheckVoiElectro As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents GroupBox7 As GroupBox
+    Friend WithEvents PrecedurVoiElectronic As DevExpress.XtraEditors.MemoEdit
+    Friend WithEvents GroupBox8 As GroupBox
+    Friend WithEvents LabelControl55 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents SourceOfficielle As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LabelControl57 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents DateSource As DevExpress.XtraEditors.DateEdit
+    Friend WithEvents Coutencourus As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents PanelScrTechFin As Panel
+    Friend WithEvents BtSupSection As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents Refcojo As DataGridViewTextBoxColumn
+    Friend WithEvents Civilitecojo As DataGridViewTextBoxColumn
+    Friend WithEvents Nomcojo As DataGridViewTextBoxColumn
+    Friend WithEvents Fonctioncojo As DataGridViewTextBoxColumn
+    Friend WithEvents Telephonecojo As DataGridViewTextBoxColumn
+    Friend WithEvents Emailcojo As DataGridViewTextBoxColumn
+    Friend WithEvents Organismecojo As DataGridViewTextBoxColumn
+    Friend WithEvents Typecojo As DataGridViewTextBoxColumn
+    Friend WithEvents Actioncojo As DataGridViewTextBoxColumn
 End Class

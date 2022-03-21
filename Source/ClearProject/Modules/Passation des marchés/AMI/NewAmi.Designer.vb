@@ -346,6 +346,7 @@ Partial Class NewAmi
         Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
         Me.SupprimerLeDossier = New System.Windows.Forms.ToolStripMenuItem()
         Me.ValiderLeDossierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AnnulerLAMIToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LayoutViewAMI = New DevExpress.XtraGrid.Views.Layout.LayoutView()
         Me.LayoutViewCard1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewCard()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -2206,9 +2207,9 @@ Partial Class NewAmi
         '
         'ContextMenuStrip4
         '
-        Me.ContextMenuStrip4.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AfficherLeDossier, Me.ToolStripSeparator4, Me.ExporterLeDossier, Me.ImprimerLeDossier, Me.ToolStripSeparator5, Me.ModifierLeDossier, Me.ToolStripSeparator6, Me.SupprimerLeDossier, Me.ValiderLeDossierToolStripMenuItem})
+        Me.ContextMenuStrip4.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AfficherLeDossier, Me.ToolStripSeparator4, Me.ExporterLeDossier, Me.ImprimerLeDossier, Me.ToolStripSeparator5, Me.ModifierLeDossier, Me.ToolStripSeparator6, Me.SupprimerLeDossier, Me.ValiderLeDossierToolStripMenuItem, Me.AnnulerLAMIToolStripMenuItem})
         Me.ContextMenuStrip4.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip4.Size = New System.Drawing.Size(161, 154)
+        Me.ContextMenuStrip4.Size = New System.Drawing.Size(161, 176)
         '
         'AfficherLeDossier
         '
@@ -2268,6 +2269,13 @@ Partial Class NewAmi
         Me.ValiderLeDossierToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
         Me.ValiderLeDossierToolStripMenuItem.Text = "Valider l'AMI"
         '
+        'AnnulerLAMIToolStripMenuItem
+        '
+        Me.AnnulerLAMIToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.Close_16x16
+        Me.AnnulerLAMIToolStripMenuItem.Name = "AnnulerLAMIToolStripMenuItem"
+        Me.AnnulerLAMIToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.AnnulerLAMIToolStripMenuItem.Text = "Annuler l'AMI"
+        '
         'LayoutViewAMI
         '
         Me.LayoutViewAMI.Appearance.HeaderPanel.Options.UseImage = True
@@ -2320,7 +2328,7 @@ Partial Class NewAmi
         Me.PageDonneesBase.Name = "PageDonneesBase"
         Me.PageDonneesBase.PageEnabled = False
         Me.PageDonneesBase.Size = New System.Drawing.Size(886, 462)
-        Me.PageDonneesBase.Text = "Données de base"
+        Me.PageDonneesBase.Text = "Donnée de base"
         '
         'Panel2
         '
@@ -2693,6 +2701,7 @@ Partial Class NewAmi
         '
         Me.ChkEvaluateur.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ChkEvaluateur.EditValue = True
+        Me.ChkEvaluateur.Enabled = False
         Me.ChkEvaluateur.Location = New System.Drawing.Point(328, 19)
         Me.ChkEvaluateur.MenuManager = Me.RibbonDP
         Me.ChkEvaluateur.Name = "ChkEvaluateur"
@@ -2701,6 +2710,7 @@ Partial Class NewAmi
         Me.ChkEvaluateur.Properties.Caption = "Evaluateur"
         Me.ChkEvaluateur.Size = New System.Drawing.Size(81, 20)
         Me.ChkEvaluateur.TabIndex = 20
+        Me.ChkEvaluateur.Visible = False
         '
         'GrpctrolCritere
         '
@@ -3146,11 +3156,11 @@ Partial Class NewAmi
         '
         Me.LabelControl46.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl46.LineVisible = True
-        Me.LabelControl46.Location = New System.Drawing.Point(50, 72)
+        Me.LabelControl46.Location = New System.Drawing.Point(62, 72)
         Me.LabelControl46.Name = "LabelControl46"
-        Me.LabelControl46.Size = New System.Drawing.Size(92, 13)
+        Me.LabelControl46.Size = New System.Drawing.Size(80, 13)
         Me.LabelControl46.TabIndex = 40
-        Me.LabelControl46.Text = "Delai de publication"
+        Me.LabelControl46.Text = "Delai de publicité"
         '
         'LabelControl40
         '
@@ -3373,6 +3383,7 @@ Partial Class NewAmi
         Me.MontantMarche.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.MontantMarche.Properties.Mask.EditMask = "n0"
         Me.MontantMarche.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        Me.MontantMarche.Properties.ReadOnly = True
         Me.MontantMarche.Size = New System.Drawing.Size(154, 20)
         Me.MontantMarche.TabIndex = 11
         '
@@ -4038,4 +4049,5 @@ Partial Class NewAmi
     Friend WithEvents LabelControl6 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents MontantMarche As DevExpress.XtraEditors.TextEdit
     Friend WithEvents BtModifAnnonce As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents AnnulerLAMIToolStripMenuItem As ToolStripMenuItem
 End Class

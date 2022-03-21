@@ -54,13 +54,13 @@ Public Class DepotDP
                     My.Computer.Audio.PlaySystemSound(Media.SystemSounds.Exclamation)
                     BtAfficheInfos.Text = "FERMETURE DEPOT EN COURS"
                 Else
-                    InterText = "Clôture des propositions dans " & vbNewLine & InterText
+                    InterText = "Clôture des dépôts de propositions dans " & vbNewLine & InterText
                     BtAfficheInfos.Text = InterText.ToString
                 End If
 
             Else
                 BtAfficheInfos.ForeColor = Color.Black
-                BtAfficheInfos.Text = "Délai expiré !"
+                BtAfficheInfos.Text = "Dépôt des propositions clôturé !"
             End If
         Else
             If (CmbNumDp.Text <> "") Then
@@ -73,7 +73,7 @@ Public Class DepotDP
     Private Sub RemplirCmbNumDp()
         CmbNumDp.Properties.Items.Clear()
         CmbNumDp.Text = ""
-        query = "select NumeroDp from T_DP where DossValider='Valider' and DateEnvoiDp<='" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "' and Statut<>'Annuler' and CodeProjet='" & ProjetEnCours & "' order by NumeroDp"
+        query = "select NumeroDp from T_DP where DossValider='Valider' and DateEnvoiDp<='" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "' and Statut<>'Annulé' and CodeProjet='" & ProjetEnCours & "' ORDER BY DateEdition DESC"
         Dim dt0 As DataTable = ExcecuteSelectQuery(query)
         For Each rw As DataRow In dt0.Rows
             CmbNumDp.Properties.Items.Add(MettreApost(rw("NumeroDp").ToString))
@@ -253,7 +253,7 @@ Public Class DepotDP
     Private Sub BtEnrgDepot_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtEnrgDepot.Click
         If (ProcessusEnCours = True And CodeConsult <> "") Then
 
-            If TxtNomRep.IsRequiredControl("Veuillez saisir le nom du répresentatnt") Then
+            If TxtNomRep.IsRequiredControl("Veuillez saisir le nom du répresentant") Then
                 TxtNomRep.Focus()
                 Exit Sub
             End If

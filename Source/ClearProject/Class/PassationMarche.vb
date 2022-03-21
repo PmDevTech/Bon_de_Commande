@@ -25,13 +25,28 @@ Public Class PassationMarche
 
     Public Shared Function VerifierTraiterMethode(CodeMethod As String) As Boolean
         Try
-            Dim ListeMethode As New List(Of String) From {"SFQC", "SCBD", "SMC", "3CV", "SFQ", "SQC", "SD", "ED"}
+            Dim ListeMethode As New List(Of String) From {"SFQC", "SCBD", "SMC", "SFQ", "SQC"}
             For i = 0 To ListeMethode.Count - 1
                 If ListeMethode(i) = CodeMethod.ToString.ToUpper Then
                     Return True
                 End If
             Next
             Return False
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Function
+
+    Public Shared Function VerifiersMetohd(AbregeMethode As String) As Boolean
+        Try
+            'Return false Cas des methodes SFQ, SQC ******************
+            'Ignorer TxtMethode.Text.ToUpper = "3CV" 
+            If AbregeMethode.ToUpper = "SFQ" Or AbregeMethode.ToUpper = "SQC" Then
+                Return False
+                'Return true Cas des methodes  SFQC, SCBD, SMC ******************
+            ElseIf AbregeMethode.ToUpper = "SFQC" Or AbregeMethode.ToUpper = "SCBD" Or AbregeMethode.ToUpper = "SMC" Then
+                Return True
+            End If
         Catch ex As Exception
             FailMsg(ex.ToString)
         End Try
@@ -48,13 +63,13 @@ Public Class PassationMarche
         Dim MontantMarcheConsome As Decimal = 0
         Try
             'Marche utiliser pour elaborer un ami
-            MontantMarcheConsome = Val(ExecuteScallar("SELECT SUM(MontantMarche) FROM t_ami where RefMarche='" & RefMarche & "' and CodeProjet='" & ProjetEnCours & "'"))
+            MontantMarcheConsome = Val(ExecuteScallar("SELECT SUM(MontantMarche) FROM t_ami where RefMarche='" & RefMarche & "' and StatutDoss<>'Annulé' and CodeProjet='" & ProjetEnCours & "' and NumeroDAMI NOT IN (SELECT NumeroDAO FROM t_marchesigne WHERE CodeProjet='" & ProjetEnCours & "' and TypeMarche='Consultants')"))
 
             'Tous les marches elaborer a partir de la DP, qui ne proviennent pas d'un AMI. et qui ne sont pas engagé c'est-à-dire en cours d'execution
-            MontantMarcheConsome += Val(ExecuteScallar("SELECT SUM(MontantMarche) FROM T_DP where RefMarche='" & RefMarche & "' and NumeroAMI='' and CodeProjet='" & ProjetEnCours & "' and Statut='En cours' and NumeroDp NOT IN (SELECT NumeroDAO FROM t_marchesigne WHERE CodeProjet='" & ProjetEnCours & "' and TypeMarche='Consultants')"))
+            MontantMarcheConsome += Val(ExecuteScallar("Select SUM(MontantMarche) FROM T_DP where RefMarche='" & RefMarche & "' and NumeroAMI='' and CodeProjet='" & ProjetEnCours & "' and Statut<>'Annulé' and NumeroDp NOT IN (SELECT NumeroDAO FROM t_marchesigne WHERE CodeProjet='" & ProjetEnCours & "' and TypeMarche='Consultants')"))
 
             'Sum des montant des marches engagés
-            MontantMarcheConsome += Val(ExecuteScallar("SELECT SUM(MontantHT) FROM t_marchesigne where RefMarche='" & RefMarche & "' and TypeMarche='Consultants' and EtatMarche<>'Annuler'"))
+            MontantMarcheConsome += Val(ExecuteScallar("SELECT SUM(MontantHT) FROM t_marchesigne where RefMarche='" & RefMarche & "' and TypeMarche='Consultants' and EtatMarche<>'Annulé'"))
 
             Return MontantMarcheConsome
         Catch ex As Exception
@@ -79,38 +94,117 @@ Public Class PassationMarche
                 Return False
             End If
 
+
             If rwDossDPAMISA.Rows(0)("RevuePrioPost").ToString = "" Then
                 FailMsg("Veuillez definir la revu")
                 Return False
             End If
 
             If ControlsProcessus = True Then
-                If rwDossDPAMISA.Rows(0)("RevuePrioPost").ToString = "Postériori" Then
-                    SuccesMsg("Le dossier étant à posteriori le bailleur de fond intervient à la fin du processus")
+                If Mid(rwDossDPAMISA.Rows(0)("RevuePrioPost").ToString, 1, 4).ToLower = "post" Then
+                    SuccesMsg("Le dossier étant à postériori le bailleur de fonds intervient à la fin du processus.")
                     Return False
                 End If
             End If
 
             If rwDossDPAMISA.Rows(0)("MailTTL").ToString = "" Then
-                SuccesMsg("L'email du bailleur de fond est vide")
+                SuccesMsg("L'email du bailleur de fonds est vide")
                 Return False
             End If
 
             'email responsable Passation de marche
             If EmailResponsablePM.ToString = "" Then
-                FailMsg("L'email de reponse [responsable de la passation de marché] est vide")
+                FailMsg("L'email de réponse [responsable de la passation de marché] est vide")
                 Return False
             End If
 
             'email coordinateur
             If EmailCoordinateurProjet.ToString = "" Then
-                FailMsg("L'email de reponse [coordinateur] est vide")
+                FailMsg("L'email de réponse [coordinateur] est vide")
                 Return False
             End If
 
             NomBailleurRetenu = MettreApost(rwDossDPAMISA.Rows(0)("TitreTTL").ToString) & " " & MettreApost(rwDossDPAMISA.Rows(0)("NomTTL").ToString) & " " & MettreApost(rwDossDPAMISA.Rows(0)("PrenomTTL").ToString)
             EmailDestinatauer = MettreApost(rwDossDPAMISA.Rows(0)("MailTTL").ToString)
 
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+        Return True
+    End Function
+
+    Public Shared Function ExporterPDF(CheminRapportaExporter As String, NomFileDefaut As String) As Boolean
+        Try
+            Dim dlg As New SaveFileDialog
+            'Type du document a sauveagarde'
+            dlg.Filter = "Documents Word (*.pdf)|*.pdf"
+            dlg.DefaultExt = ".pdf"
+            dlg.Title = "Exportation en pdf"
+            dlg.FileName = NomFileDefaut.ToString
+            If dlg.FileName.ToString.Trim = "" Then Return False
+            If (dlg.ShowDialog() = DialogResult.OK) Then
+                Dim Extension As String = Mid(dlg.FileName, dlg.FileName.Length - 3) 'Obtenir l'extension du fichier
+                If Extension.ToString.ToLower <> ".pdf" Then
+                    FailMsg("Impossible d'exporter ce fichier à l'extension [" & Extension.ToString & "]")
+                    Return False
+                End If
+                File.Copy(CheminRapportaExporter.ToString, dlg.FileName.ToString, True)
+            End If
+        Catch exs As IOException
+            SuccesMsg("Un exemplaire du fichier à exporté est utiliser par une autre application" & vbNewLine & "Veuillez le fermer svp.")
+            Return False
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+            Return False
+        End Try
+        Return True
+    End Function
+
+    Public Shared Function ExporterWORDfOrmatDocx(CheminRapportaExporter As String, NomFileDefauts As String) As Boolean
+        Try
+            Dim dlg As New SaveFileDialog
+            dlg.Filter = "Documents Word (*.docx)|*.docx"
+            dlg.DefaultExt = ".docx"
+            dlg.Title = "Exportation en word"
+            dlg.FileName = NomFileDefauts.ToString
+            If dlg.FileName.ToString.Trim = "" Then Return False
+            If (dlg.ShowDialog() = DialogResult.OK) Then
+                Dim Extension As String = Mid(dlg.FileName, dlg.FileName.Length - 4) 'Obtenir l'extension du fichier
+                If Extension.ToString.ToLower <> ".docx" Then
+                    FailMsg("Impossible d'exporter ce fichier à l'extension [" & Extension.ToString & "]")
+                    Return False
+                End If
+                File.Copy(CheminRapportaExporter.ToString, dlg.FileName.ToString, True)
+            End If
+        Catch exs As IOException
+            SuccesMsg("Un exemplaire du fichier à exporter est utiliser par une autre application" & vbNewLine & "Veuillez le fermer svp.")
+            Return False
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+        Return True
+    End Function
+
+    Public Shared Function ExporterWORD(CheminRapportaExporter As String, NomFileDefauts As String) As Boolean
+        Try
+            Dim dlg As New SaveFileDialog
+            ' dlg.Filter = "Documents |*doc;"
+            dlg.Filter = "Documents Word (*.doc)|*.doc"
+            dlg.DefaultExt = ".doc"
+            dlg.Title = "Exportation en word"
+            dlg.FileName = NomFileDefauts.ToString
+            If dlg.FileName.ToString.Trim = "" Then Return False
+            If (dlg.ShowDialog() = DialogResult.OK) Then
+                Dim Extension As String = Mid(dlg.FileName, dlg.FileName.Length - 3) 'Obtenir l'extension du fichier
+                If Extension.ToString.ToLower <> ".doc" Then
+                    FailMsg("Impossible d'exporter ce fichier à l'extension [" & Extension.ToString & "]")
+                    Return False
+                End If
+                File.Copy(CheminRapportaExporter.ToString, dlg.FileName.ToString, True)
+            End If
+        Catch exs As IOException
+            SuccesMsg("Un exemplaire du fichier à exporté est utiliser par une autre application" & vbNewLine & "Veuillez le fermer svp.")
+            Return False
         Catch ex As Exception
             FailMsg(ex.ToString)
         End Try
@@ -154,6 +248,7 @@ Public Class PassationMarche
         Return Val(ExecuteScallar(query))
     End Function
 #End Region
+
     Public Shared Function GetKeyFromPassword(ByVal password As String, ByVal salt As Byte()) As Byte()
         Dim derivator As Rfc2898DeriveBytes = New Rfc2898DeriveBytes(password, salt, 100)
         Return derivator.GetBytes(32)
@@ -239,7 +334,7 @@ Public Class PassationMarche
         Dim MailExp As String = "support@clearproject.online"
         Dim ModpassExp As String = "D9akt36*"
 
-        Dim content As String = "Bonjour " & nomPrenom.ToString & "<br><br> Vous êtes invité (es) à intégrer une commission d'ouverture sur ClearProject. <br><br> Votre clé d'authenfication est le suivant: <br> <b>" & AuthKey & "</b>"
+        Dim content As String = "Bonjour " & nomPrenom.ToString & "<br><br> Vous êtes invité (e) s à intégrer une commission d'ouverture sur ClearProject. <br><br> Votre clé d'authenfication est le suivant: <br> <b>" & AuthKey & "</b>"
         Dim MailDesti As String = EmailDestinateur.ToString
 
         Dim objets As String = "Invitation ClearProject"
@@ -335,32 +430,22 @@ Public Class PassationMarche
     End Sub
 
 
-    Public Shared Sub EnvoiMailRapport(ByVal nomEntreprise As String, ByVal NumeroAMI_DP As String, ByVal EmailDestinateur As String, ByVal CheminDoc As String, ByVal EmailCoordinateur As String, ByVal EmailResponsablePM As String, ByVal TypeDoc As String)
+    Public Shared Function EnvoiMailRapport(ByVal nomEntreprise As String, ByVal NumeroAMI_DP As String, ByVal EmailDestinateur As String, ByVal CheminDoc As String, ByVal EmailCoordinateur As String, ByVal EmailResponsablePM As String, ByVal TexteMessageDoc As String, Optional TypeDoc As Boolean = False) As Boolean
         Dim mail As MailMessage = New MailMessage()
         Dim MailExp As String = "support@clearproject.online"
         Dim ModpassExp As String = "D9akt36*"
         Dim content As String = ""
 
         'TypeDoc permet de personnaliser le message
-        If TypeDoc = "RapportEvalTechAMI" Then
-            content = "Bonjour " & nomEntreprise.ToString & ", <br><br> Veuillez recevoir en fichier joint le rapport d'évaluation technique de l'avis à manifestation d'intérêt N° " & NumeroAMI_DP & ".  <br><br>  Pour toutes modifications veuillez télécharger le fichier joint. <br><br> Après avoir appliqué vos modifications, veuillez envoyer le fichier aux adresses suivantes: <b>" & EmailCoordinateur.ToString & "</b>, <b>" & EmailResponsablePM.ToString & "</b>"
-        ElseIf TypeDoc = "ConsultantsDP" Then
-            content = "Bonjour " & nomEntreprise.ToString & ", <br><br> Veuillez recevoir en fichier joint le dossier de la demande de proposition N° " & NumeroAMI_DP & ". <br><br> Pour toutes modifications veuillez télécharger le fichier joint."
-        ElseIf TypeDoc = "RapportEvalTechDP" Then
-            content = "Bonjour " & nomEntreprise.ToString & ", <br><br> Veuillez recevoir en fichier joint le rapport d'évaluation technique de la demande de proposition N° " & NumeroAMI_DP & ". <br><br> Pour toutes modifications veuillez télécharger le fichier joint. <br><br> Après avoir appliqué vos modifications, veuillez envoyer le fichier aux adresses suivantes: <b>" & EmailCoordinateur.ToString & "</b>, <b>" & EmailResponsablePM.ToString & "</b>"
-        ElseIf TypeDoc = "DossierDP" Then
-            content = "Bonjour " & nomEntreprise.ToString & ", <br><br> Veuillez recevoir en fichier joint le dossier de la demande de proposition N° " & NumeroAMI_DP & ". <br><br> Pour toutes modifications veuillez télécharger le fichier joint. <br><br> Après avoir appliqué vos modifications, veuillez envoyer le fichier aux adresses suivantes: <b>" & EmailCoordinateur.ToString & "</b>, <b>" & EmailResponsablePM.ToString & "</b>"
+        If TypeDoc = True Then
+            content = "Bonjour " & nomEntreprise.ToString & ", <br><br> Veuillez recevoir en fichier joint le " & TexteMessageDoc.ToLower & " de la demande de proposition N° " & NumeroAMI_DP & ". <br><br> Pour toutes modifications veuillez télécharger le fichier joint."
+        Else
+            content = "Bonjour " & nomEntreprise.ToString & ", <br><br> Veuillez recevoir en fichier joint le " & TexteMessageDoc.ToLower & " de la demande de proposition N° " & NumeroAMI_DP & ". <br><br> Pour toutes modifications veuillez télécharger le fichier joint. <br><br> Après avoir appliqué vos modifications, veuillez envoyer le fichier aux adresses suivantes: <b>" & EmailCoordinateur.ToString & "</b>, <b>" & EmailResponsablePM.ToString & "</b>"
         End If
 
         Dim MailDesti As String = EmailDestinateur.ToString
 
-        Dim objets As String = ""
-        If TypeDoc = "DossierDP" Or TypeDoc = "ConsultantsDP" Then
-            objets = "Demande de proposition"
-        Else
-            objets = "Rapport d'évaluation technique"
-        End If
-
+        Dim objets As String = TexteMessageDoc.ToString & " de la demande de proposition N° " & NumeroAMI_DP
         Dim PieceJointe As New System.Net.Mail.Attachment(CheminDoc)
 
         'ENVOI D'EMAIL A L'EXTERIEUR
@@ -376,7 +461,7 @@ Public Class PassationMarche
             Message.From = New Net.Mail.MailAddress(MailExp)
 
             'le corps du message'
-            Message.Body = content & "<br><b>Le service passation des marchés</b><br><br> "
+            Message.Body = content & "<br><b> Le service passation des marchés</b><br><br> "
 
             'joindre le reçu'
             Message.Attachments.Add(PieceJointe)
@@ -397,10 +482,12 @@ Public Class PassationMarche
             'l'envoie du message'
             Smtp.Send(Message)
             Message.Dispose()
+            Return True
         Catch ex As Exception
-            FailMsg("Echec d'envoie de l'email.")
+            FailMsg("Echec d'envoi de l'email.")
+            Return False
         End Try
-    End Sub
+    End Function
 End Class
 
 Public Class DaoSpecTechLot
@@ -457,6 +544,7 @@ Public Class DaoSpecTechLot
         End Get
     End Property
 End Class
+
 Public Class DaoSpecTechSousLot
     Private _LibSousLot As String
     Private _RefSousLot As String

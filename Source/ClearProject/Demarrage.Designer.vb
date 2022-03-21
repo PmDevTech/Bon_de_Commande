@@ -20,60 +20,60 @@ Partial Class Demarrage
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim TileItemElement133 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemElement134 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemElement135 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemElement136 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemFrame81 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
-        Dim TileItemElement137 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemFrame82 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
-        Dim TileItemElement138 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemElement34 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemElement35 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemElement36 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemElement37 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemFrame21 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
+        Dim TileItemElement38 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemFrame22 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
+        Dim TileItemElement39 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Demarrage))
-        Dim TileItemElement139 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemFrame83 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
-        Dim TileItemElement140 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemFrame84 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
-        Dim TileItemElement141 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemElement142 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemFrame85 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
-        Dim TileItemElement143 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemFrame86 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
-        Dim TileItemElement144 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemElement145 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemFrame87 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
-        Dim TileItemElement146 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemFrame88 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
-        Dim TileItemElement147 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemFrame89 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
-        Dim TileItemElement148 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemElement149 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemFrame90 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
-        Dim TileItemElement150 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemFrame91 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
-        Dim TileItemElement151 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemElement152 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemElement153 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemFrame92 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
-        Dim TileItemElement154 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemFrame93 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
-        Dim TileItemElement155 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemElement156 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemFrame94 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
-        Dim TileItemElement157 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemFrame95 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
-        Dim TileItemElement158 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemFrame96 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
-        Dim TileItemElement159 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemElement160 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemFrame97 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
-        Dim TileItemElement161 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemFrame98 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
-        Dim TileItemElement162 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemElement163 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemFrame99 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
-        Dim TileItemElement164 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
-        Dim TileItemFrame100 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
-        Dim TileItemElement165 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemElement40 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemFrame23 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
+        Dim TileItemElement41 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemFrame24 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
+        Dim TileItemElement42 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemElement43 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemFrame25 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
+        Dim TileItemElement44 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemFrame26 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
+        Dim TileItemElement45 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemElement46 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemFrame27 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
+        Dim TileItemElement47 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemFrame28 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
+        Dim TileItemElement48 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemFrame29 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
+        Dim TileItemElement49 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemElement50 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemFrame30 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
+        Dim TileItemElement51 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemFrame31 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
+        Dim TileItemElement52 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemElement53 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemElement54 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemFrame32 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
+        Dim TileItemElement55 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemFrame33 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
+        Dim TileItemElement56 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemElement57 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemFrame34 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
+        Dim TileItemElement58 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemFrame35 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
+        Dim TileItemElement59 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemFrame36 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
+        Dim TileItemElement60 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemElement61 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemFrame37 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
+        Dim TileItemElement62 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemFrame38 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
+        Dim TileItemElement63 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemElement64 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemFrame39 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
+        Dim TileItemElement65 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
+        Dim TileItemFrame40 As DevExpress.XtraEditors.TileItemFrame = New DevExpress.XtraEditors.TileItemFrame()
+        Dim TileItemElement66 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
         Me.TileGroup1 = New DevExpress.XtraEditors.TileGroup()
         Me.TileItem10 = New DevExpress.XtraEditors.TileItem()
         Me.TileItem11 = New DevExpress.XtraEditors.TileItem()
@@ -111,6 +111,11 @@ Partial Class Demarrage
         Me.BtServiceAutres = New DevExpress.XtraEditors.SimpleButton()
         Me.btConsultant = New DevExpress.XtraEditors.SimpleButton()
         Me.btFournitureTravaux = New DevExpress.XtraEditors.SimpleButton()
+        Me.BtsaAnalyJugemet = New DevExpress.XtraEditors.SimpleButton()
+        Me.BtsaSaiOffres = New DevExpress.XtraEditors.SimpleButton()
+        Me.BtSerAutrOuvertureOffre = New DevExpress.XtraEditors.SimpleButton()
+        Me.BtSerAutRetraiDOA = New DevExpress.XtraEditors.SimpleButton()
+        Me.BtSerElaDAO = New DevExpress.XtraEditors.SimpleButton()
         Me.BtEvalConsult = New DevExpress.XtraEditors.SimpleButton()
         Me.BtOuvertureProposition = New DevExpress.XtraEditors.SimpleButton()
         Me.BtDepotDP = New DevExpress.XtraEditors.SimpleButton()
@@ -171,11 +176,6 @@ Partial Class Demarrage
         Me.TileMarches = New DevExpress.XtraEditors.TileItem()
         Me.TilePortefeuille = New DevExpress.XtraEditors.TileItem()
         Me.TuileDemarrage = New DevExpress.XtraEditors.TileControl()
-        Me.BtSerElaDAO = New DevExpress.XtraEditors.SimpleButton()
-        Me.BtSerAutRetraiDOA = New DevExpress.XtraEditors.SimpleButton()
-        Me.BtSerAutrOuvertureOffre = New DevExpress.XtraEditors.SimpleButton()
-        Me.BtsaSaiOffres = New DevExpress.XtraEditors.SimpleButton()
-        Me.BtsaAnalyJugemet = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.SplitEvaluation, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitEvaluation.SuspendLayout()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -222,10 +222,10 @@ Partial Class Demarrage
         '
         Me.TileItem10.AppearanceItem.Normal.Font = New System.Drawing.Font("Segoe Print", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TileItem10.AppearanceItem.Normal.Options.UseFont = True
-        TileItemElement133.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement133.Text = "TileItem6"
-        TileItemElement133.TextLocation = New System.Drawing.Point(0, 0)
-        Me.TileItem10.Elements.Add(TileItemElement133)
+        TileItemElement34.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement34.Text = "TileItem6"
+        TileItemElement34.TextLocation = New System.Drawing.Point(0, 0)
+        Me.TileItem10.Elements.Add(TileItemElement34)
         Me.TileItem10.Id = 5
         Me.TileItem10.IsLarge = True
         Me.TileItem10.Name = "TileItem10"
@@ -234,10 +234,10 @@ Partial Class Demarrage
         '
         Me.TileItem11.AppearanceItem.Normal.Font = New System.Drawing.Font("Segoe Print", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TileItem11.AppearanceItem.Normal.Options.UseFont = True
-        TileItemElement134.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement134.Text = "TileItem7"
-        TileItemElement134.TextLocation = New System.Drawing.Point(0, 0)
-        Me.TileItem11.Elements.Add(TileItemElement134)
+        TileItemElement35.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement35.Text = "TileItem7"
+        TileItemElement35.TextLocation = New System.Drawing.Point(0, 0)
+        Me.TileItem11.Elements.Add(TileItemElement35)
         Me.TileItem11.Id = 6
         Me.TileItem11.IsLarge = True
         Me.TileItem11.Name = "TileItem11"
@@ -246,10 +246,10 @@ Partial Class Demarrage
         '
         Me.TileItem12.AppearanceItem.Normal.Font = New System.Drawing.Font("Segoe Print", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TileItem12.AppearanceItem.Normal.Options.UseFont = True
-        TileItemElement135.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement135.Text = "TileItem8"
-        TileItemElement135.TextLocation = New System.Drawing.Point(0, 0)
-        Me.TileItem12.Elements.Add(TileItemElement135)
+        TileItemElement36.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement36.Text = "TileItem8"
+        TileItemElement36.TextLocation = New System.Drawing.Point(0, 0)
+        Me.TileItem12.Elements.Add(TileItemElement36)
         Me.TileItem12.Id = 7
         Me.TileItem12.IsLarge = True
         Me.TileItem12.Name = "TileItem12"
@@ -342,26 +342,26 @@ Partial Class Demarrage
         Me.TileItem5.AppearanceItem.Selected.Options.UseBackColor = True
         Me.TileItem5.AppearanceItem.Selected.Options.UseBorderColor = True
         Me.TileItem5.AppearanceItem.Selected.Options.UseFont = True
-        TileItemElement136.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement136.TextLocation = New System.Drawing.Point(0, 0)
-        Me.TileItem5.Elements.Add(TileItemElement136)
-        TileItemFrame81.AnimateText = True
-        TileItemElement137.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement137.TextLocation = New System.Drawing.Point(0, 0)
-        TileItemFrame81.Elements.Add(TileItemElement137)
-        TileItemFrame81.Interval = 30000
-        TileItemFrame81.UseText = True
-        TileItemFrame82.AnimateText = True
-        TileItemElement138.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement138.Text = "Il s'agit de déterminer la pertinence des objectifs et leur degré de réalisation," &
+        TileItemElement37.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement37.TextLocation = New System.Drawing.Point(0, 0)
+        Me.TileItem5.Elements.Add(TileItemElement37)
+        TileItemFrame21.AnimateText = True
+        TileItemElement38.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement38.TextLocation = New System.Drawing.Point(0, 0)
+        TileItemFrame21.Elements.Add(TileItemElement38)
+        TileItemFrame21.Interval = 30000
+        TileItemFrame21.UseText = True
+        TileItemFrame22.AnimateText = True
+        TileItemElement39.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement39.Text = "Il s'agit de déterminer la pertinence des objectifs et leur degré de réalisation," &
     " l'efficience au regard du développement, l'efficacité, l'impact et la viabilité" &
     ""
-        TileItemElement138.TextLocation = New System.Drawing.Point(0, 0)
-        TileItemFrame82.Elements.Add(TileItemElement138)
-        TileItemFrame82.Interval = 30000
-        TileItemFrame82.UseText = True
-        Me.TileItem5.Frames.Add(TileItemFrame81)
-        Me.TileItem5.Frames.Add(TileItemFrame82)
+        TileItemElement39.TextLocation = New System.Drawing.Point(0, 0)
+        TileItemFrame22.Elements.Add(TileItemElement39)
+        TileItemFrame22.Interval = 30000
+        TileItemFrame22.UseText = True
+        Me.TileItem5.Frames.Add(TileItemFrame21)
+        Me.TileItem5.Frames.Add(TileItemFrame22)
         Me.TileItem5.Id = 0
         Me.TileItem5.Name = "TileItem5"
         '
@@ -643,30 +643,30 @@ Partial Class Demarrage
         Me.TileItem1.AppearanceItem.Selected.Options.UseBackColor = True
         Me.TileItem1.AppearanceItem.Selected.Options.UseBorderColor = True
         Me.TileItem1.AppearanceItem.Selected.Options.UseFont = True
-        TileItemElement139.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement139.Text = ""
-        TileItemElement139.TextLocation = New System.Drawing.Point(0, 0)
-        Me.TileItem1.Elements.Add(TileItemElement139)
-        TileItemFrame83.AnimateText = True
-        TileItemElement140.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement140.Text = "de l'élaboration des dossiers d'appel d'offres et de demande de propositions, de " &
+        TileItemElement40.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement40.Text = ""
+        TileItemElement40.TextLocation = New System.Drawing.Point(0, 0)
+        Me.TileItem1.Elements.Add(TileItemElement40)
+        TileItemFrame23.AnimateText = True
+        TileItemElement41.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement41.Text = "de l'élaboration des dossiers d'appel d'offres et de demande de propositions, de " &
     "l'ouverture et l'évaluation des offres et propositions et enfin de l'attribution" &
     " des marchés et signature des contrats."
-        TileItemElement140.TextLocation = New System.Drawing.Point(0, 0)
-        TileItemFrame83.Elements.Add(TileItemElement140)
-        TileItemFrame83.Interval = 20000
-        TileItemFrame83.UseText = True
-        TileItemFrame84.AnimateText = True
-        TileItemElement141.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement141.Text = "Vous avez la possiblité de faire une prévision de marché, de définir tous les act" &
+        TileItemElement41.TextLocation = New System.Drawing.Point(0, 0)
+        TileItemFrame23.Elements.Add(TileItemElement41)
+        TileItemFrame23.Interval = 20000
+        TileItemFrame23.UseText = True
+        TileItemFrame24.AnimateText = True
+        TileItemElement42.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement42.Text = "Vous avez la possiblité de faire une prévision de marché, de définir tous les act" &
     "eurs, besoins et documents relatifs, et de suivre l'évolution du marché jusqu'à " &
     "son attribution et sa signature."
-        TileItemElement141.TextLocation = New System.Drawing.Point(0, 0)
-        TileItemFrame84.Elements.Add(TileItemElement141)
-        TileItemFrame84.Interval = 20000
-        TileItemFrame84.UseText = True
-        Me.TileItem1.Frames.Add(TileItemFrame83)
-        Me.TileItem1.Frames.Add(TileItemFrame84)
+        TileItemElement42.TextLocation = New System.Drawing.Point(0, 0)
+        TileItemFrame24.Elements.Add(TileItemElement42)
+        TileItemFrame24.Interval = 20000
+        TileItemFrame24.UseText = True
+        Me.TileItem1.Frames.Add(TileItemFrame23)
+        Me.TileItem1.Frames.Add(TileItemFrame24)
         Me.TileItem1.Id = 0
         Me.TileItem1.Name = "TileItem1"
         '
@@ -797,6 +797,71 @@ Partial Class Demarrage
         Me.btFournitureTravaux.TabIndex = 30
         Me.btFournitureTravaux.Text = "Fournitures \ Travaux"
         '
+        'BtsaAnalyJugemet
+        '
+        Me.BtsaAnalyJugemet.Appearance.Font = New System.Drawing.Font("Segoe Print", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtsaAnalyJugemet.Appearance.Options.UseFont = True
+        Me.BtsaAnalyJugemet.Dock = System.Windows.Forms.DockStyle.Top
+        Me.BtsaAnalyJugemet.Image = CType(resources.GetObject("BtsaAnalyJugemet.Image"), System.Drawing.Image)
+        Me.BtsaAnalyJugemet.Location = New System.Drawing.Point(0, 456)
+        Me.BtsaAnalyJugemet.Name = "BtsaAnalyJugemet"
+        Me.BtsaAnalyJugemet.Size = New System.Drawing.Size(225, 24)
+        Me.BtsaAnalyJugemet.TabIndex = 41
+        Me.BtsaAnalyJugemet.Text = "Analyse et Jugement des offres"
+        Me.BtsaAnalyJugemet.Visible = False
+        '
+        'BtsaSaiOffres
+        '
+        Me.BtsaSaiOffres.Appearance.Font = New System.Drawing.Font("Segoe Print", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtsaSaiOffres.Appearance.Options.UseFont = True
+        Me.BtsaSaiOffres.Dock = System.Windows.Forms.DockStyle.Top
+        Me.BtsaSaiOffres.Image = CType(resources.GetObject("BtsaSaiOffres.Image"), System.Drawing.Image)
+        Me.BtsaSaiOffres.Location = New System.Drawing.Point(0, 432)
+        Me.BtsaSaiOffres.Name = "BtsaSaiOffres"
+        Me.BtsaSaiOffres.Size = New System.Drawing.Size(225, 24)
+        Me.BtsaSaiOffres.TabIndex = 40
+        Me.BtsaSaiOffres.Text = "Saisie des offres techniques"
+        Me.BtsaSaiOffres.Visible = False
+        '
+        'BtSerAutrOuvertureOffre
+        '
+        Me.BtSerAutrOuvertureOffre.Appearance.Font = New System.Drawing.Font("Segoe Print", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtSerAutrOuvertureOffre.Appearance.Options.UseFont = True
+        Me.BtSerAutrOuvertureOffre.Dock = System.Windows.Forms.DockStyle.Top
+        Me.BtSerAutrOuvertureOffre.Image = CType(resources.GetObject("BtSerAutrOuvertureOffre.Image"), System.Drawing.Image)
+        Me.BtSerAutrOuvertureOffre.Location = New System.Drawing.Point(0, 408)
+        Me.BtSerAutrOuvertureOffre.Name = "BtSerAutrOuvertureOffre"
+        Me.BtSerAutrOuvertureOffre.Size = New System.Drawing.Size(225, 24)
+        Me.BtSerAutrOuvertureOffre.TabIndex = 39
+        Me.BtSerAutrOuvertureOffre.Text = "Ouverture des offres"
+        Me.BtSerAutrOuvertureOffre.Visible = False
+        '
+        'BtSerAutRetraiDOA
+        '
+        Me.BtSerAutRetraiDOA.Appearance.Font = New System.Drawing.Font("Segoe Print", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtSerAutRetraiDOA.Appearance.Options.UseFont = True
+        Me.BtSerAutRetraiDOA.Dock = System.Windows.Forms.DockStyle.Top
+        Me.BtSerAutRetraiDOA.Image = CType(resources.GetObject("BtSerAutRetraiDOA.Image"), System.Drawing.Image)
+        Me.BtSerAutRetraiDOA.Location = New System.Drawing.Point(0, 384)
+        Me.BtSerAutRetraiDOA.Name = "BtSerAutRetraiDOA"
+        Me.BtSerAutRetraiDOA.Size = New System.Drawing.Size(225, 24)
+        Me.BtSerAutRetraiDOA.TabIndex = 38
+        Me.BtSerAutRetraiDOA.Text = "Retrait de DAO et dépôt d'offres"
+        Me.BtSerAutRetraiDOA.Visible = False
+        '
+        'BtSerElaDAO
+        '
+        Me.BtSerElaDAO.Appearance.Font = New System.Drawing.Font("Segoe Print", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtSerElaDAO.Appearance.Options.UseFont = True
+        Me.BtSerElaDAO.Dock = System.Windows.Forms.DockStyle.Top
+        Me.BtSerElaDAO.Image = CType(resources.GetObject("BtSerElaDAO.Image"), System.Drawing.Image)
+        Me.BtSerElaDAO.Location = New System.Drawing.Point(0, 360)
+        Me.BtSerElaDAO.Name = "BtSerElaDAO"
+        Me.BtSerElaDAO.Size = New System.Drawing.Size(225, 24)
+        Me.BtSerElaDAO.TabIndex = 37
+        Me.BtSerElaDAO.Text = "Elaboration Dossier Appel d'Offres"
+        Me.BtSerElaDAO.Visible = False
+        '
         'BtEvalConsult
         '
         Me.BtEvalConsult.Appearance.Font = New System.Drawing.Font("Segoe Print", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -860,7 +925,6 @@ Partial Class Demarrage
         Me.btEvalMI.Size = New System.Drawing.Size(225, 24)
         Me.btEvalMI.TabIndex = 28
         Me.btEvalMI.Text = "Rapport d'evaluation MI"
-        Me.btEvalMI.ToolTip = "Evaluation Manisfestation d'intérêt "
         Me.btEvalMI.Visible = False
         '
         'ListeRestrindre
@@ -886,7 +950,7 @@ Partial Class Demarrage
         Me.btDepotAMI.Name = "btDepotAMI"
         Me.btDepotAMI.Size = New System.Drawing.Size(225, 24)
         Me.btDepotAMI.TabIndex = 29
-        Me.btDepotAMI.Text = "Dépôt de l'AMI"
+        Me.btDepotAMI.Text = "Dépôt des MI"
         Me.btDepotAMI.Visible = False
         '
         'btOuvrirAMI
@@ -899,7 +963,7 @@ Partial Class Demarrage
         Me.btOuvrirAMI.Name = "btOuvrirAMI"
         Me.btOuvrirAMI.Size = New System.Drawing.Size(225, 24)
         Me.btOuvrirAMI.TabIndex = 27
-        Me.btOuvrirAMI.Text = "Ouverture de l'AMI"
+        Me.btOuvrirAMI.Text = "Ouverture des MI"
         Me.btOuvrirAMI.Visible = False
         '
         'btNewAMI
@@ -1094,28 +1158,28 @@ Partial Class Demarrage
         Me.TileItem3.AppearanceItem.Selected.Options.UseBackColor = True
         Me.TileItem3.AppearanceItem.Selected.Options.UseBorderColor = True
         Me.TileItem3.AppearanceItem.Selected.Options.UseFont = True
-        TileItemElement142.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement142.TextLocation = New System.Drawing.Point(0, 0)
-        Me.TileItem3.Elements.Add(TileItemElement142)
-        TileItemFrame85.AnimateText = True
-        TileItemElement143.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement143.Text = "Ce module représente la loupe administrative du projet car comme son nom l'indiqu" &
+        TileItemElement43.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement43.TextLocation = New System.Drawing.Point(0, 0)
+        Me.TileItem3.Elements.Add(TileItemElement43)
+        TileItemFrame25.AnimateText = True
+        TileItemElement44.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement44.Text = "Ce module représente la loupe administrative du projet car comme son nom l'indiqu" &
     "e, il permet de suivre et d'évaluer toutes les activités du projet dans tout le " &
     "sens du terme."
-        TileItemElement143.TextLocation = New System.Drawing.Point(0, 0)
-        TileItemFrame85.Elements.Add(TileItemElement143)
-        TileItemFrame85.Interval = 30000
-        TileItemFrame85.UseText = True
-        TileItemFrame86.AnimateText = True
-        TileItemElement144.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement144.Text = "Aussi est-il le bureau d'édition de rapports d'activités sanctionnant chaque étap" &
+        TileItemElement44.TextLocation = New System.Drawing.Point(0, 0)
+        TileItemFrame25.Elements.Add(TileItemElement44)
+        TileItemFrame25.Interval = 30000
+        TileItemFrame25.UseText = True
+        TileItemFrame26.AnimateText = True
+        TileItemElement45.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement45.Text = "Aussi est-il le bureau d'édition de rapports d'activités sanctionnant chaque étap" &
     "e de l'exécution physique de toutes les tâches définies pour le projet."
-        TileItemElement144.TextLocation = New System.Drawing.Point(0, 0)
-        TileItemFrame86.Elements.Add(TileItemElement144)
-        TileItemFrame86.Interval = 30000
-        TileItemFrame86.UseText = True
-        Me.TileItem3.Frames.Add(TileItemFrame85)
-        Me.TileItem3.Frames.Add(TileItemFrame86)
+        TileItemElement45.TextLocation = New System.Drawing.Point(0, 0)
+        TileItemFrame26.Elements.Add(TileItemElement45)
+        TileItemFrame26.Interval = 30000
+        TileItemFrame26.UseText = True
+        Me.TileItem3.Frames.Add(TileItemFrame25)
+        Me.TileItem3.Frames.Add(TileItemFrame26)
         Me.TileItem3.Id = 0
         Me.TileItem3.Name = "TileItem3"
         '
@@ -1287,37 +1351,37 @@ Partial Class Demarrage
         Me.TileItem4.AppearanceItem.Selected.Options.UseBackColor = True
         Me.TileItem4.AppearanceItem.Selected.Options.UseBorderColor = True
         Me.TileItem4.AppearanceItem.Selected.Options.UseFont = True
-        TileItemElement145.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement145.Text = ""
-        TileItemElement145.TextLocation = New System.Drawing.Point(0, 0)
-        Me.TileItem4.Elements.Add(TileItemElement145)
-        TileItemFrame87.AnimateText = True
-        TileItemElement146.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement146.TextLocation = New System.Drawing.Point(0, 0)
-        TileItemFrame87.Elements.Add(TileItemElement146)
-        TileItemFrame87.Interval = 20000
-        TileItemFrame87.UseText = True
-        TileItemFrame88.AnimateText = True
-        TileItemElement147.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement147.Text = "de l'élaboration des dossiers d'appel d'offres et de demande de propositions, de " &
+        TileItemElement46.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement46.Text = ""
+        TileItemElement46.TextLocation = New System.Drawing.Point(0, 0)
+        Me.TileItem4.Elements.Add(TileItemElement46)
+        TileItemFrame27.AnimateText = True
+        TileItemElement47.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement47.TextLocation = New System.Drawing.Point(0, 0)
+        TileItemFrame27.Elements.Add(TileItemElement47)
+        TileItemFrame27.Interval = 20000
+        TileItemFrame27.UseText = True
+        TileItemFrame28.AnimateText = True
+        TileItemElement48.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement48.Text = "de l'élaboration des dossiers d'appel d'offres et de demande de propositions, de " &
     "l'ouverture et l'évaluation des offres et propositions et enfin de l'attribution" &
     " des marchés et signature des contrats."
-        TileItemElement147.TextLocation = New System.Drawing.Point(0, 0)
-        TileItemFrame88.Elements.Add(TileItemElement147)
-        TileItemFrame88.Interval = 20000
-        TileItemFrame88.UseText = True
-        TileItemFrame89.AnimateText = True
-        TileItemElement148.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement148.Text = "Vous avez la possiblité de faire une prévision de marché, de définir tous les act" &
+        TileItemElement48.TextLocation = New System.Drawing.Point(0, 0)
+        TileItemFrame28.Elements.Add(TileItemElement48)
+        TileItemFrame28.Interval = 20000
+        TileItemFrame28.UseText = True
+        TileItemFrame29.AnimateText = True
+        TileItemElement49.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement49.Text = "Vous avez la possiblité de faire une prévision de marché, de définir tous les act" &
     "eurs, besoins et documents relatifs, et de suivre l'évolution du marché jusqu'à " &
     "son attribution et sa signature."
-        TileItemElement148.TextLocation = New System.Drawing.Point(0, 0)
-        TileItemFrame89.Elements.Add(TileItemElement148)
-        TileItemFrame89.Interval = 20000
-        TileItemFrame89.UseText = True
-        Me.TileItem4.Frames.Add(TileItemFrame87)
-        Me.TileItem4.Frames.Add(TileItemFrame88)
-        Me.TileItem4.Frames.Add(TileItemFrame89)
+        TileItemElement49.TextLocation = New System.Drawing.Point(0, 0)
+        TileItemFrame29.Elements.Add(TileItemElement49)
+        TileItemFrame29.Interval = 20000
+        TileItemFrame29.UseText = True
+        Me.TileItem4.Frames.Add(TileItemFrame27)
+        Me.TileItem4.Frames.Add(TileItemFrame28)
+        Me.TileItem4.Frames.Add(TileItemFrame29)
         Me.TileItem4.Id = 0
         Me.TileItem4.Name = "TileItem4"
         '
@@ -1408,23 +1472,23 @@ Partial Class Demarrage
         Me.TileItem17.AppearanceItem.Selected.Options.UseBackColor = True
         Me.TileItem17.AppearanceItem.Selected.Options.UseBorderColor = True
         Me.TileItem17.AppearanceItem.Selected.Options.UseFont = True
-        TileItemElement149.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement149.TextLocation = New System.Drawing.Point(0, 0)
-        Me.TileItem17.Elements.Add(TileItemElement149)
-        TileItemFrame90.AnimateText = True
-        TileItemElement150.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement150.TextLocation = New System.Drawing.Point(0, 0)
-        TileItemFrame90.Elements.Add(TileItemElement150)
-        TileItemFrame90.Interval = 30000
-        TileItemFrame90.UseText = True
-        TileItemFrame91.AnimateText = True
-        TileItemElement151.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement151.TextLocation = New System.Drawing.Point(0, 0)
-        TileItemFrame91.Elements.Add(TileItemElement151)
-        TileItemFrame91.Interval = 30000
-        TileItemFrame91.UseText = True
-        Me.TileItem17.Frames.Add(TileItemFrame90)
-        Me.TileItem17.Frames.Add(TileItemFrame91)
+        TileItemElement50.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement50.TextLocation = New System.Drawing.Point(0, 0)
+        Me.TileItem17.Elements.Add(TileItemElement50)
+        TileItemFrame30.AnimateText = True
+        TileItemElement51.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement51.TextLocation = New System.Drawing.Point(0, 0)
+        TileItemFrame30.Elements.Add(TileItemElement51)
+        TileItemFrame30.Interval = 30000
+        TileItemFrame30.UseText = True
+        TileItemFrame31.AnimateText = True
+        TileItemElement52.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement52.TextLocation = New System.Drawing.Point(0, 0)
+        TileItemFrame31.Elements.Add(TileItemElement52)
+        TileItemFrame31.Interval = 30000
+        TileItemFrame31.UseText = True
+        Me.TileItem17.Frames.Add(TileItemFrame30)
+        Me.TileItem17.Frames.Add(TileItemFrame31)
         Me.TileItem17.Id = 0
         Me.TileItem17.Name = "TileItem17"
         '
@@ -1596,11 +1660,11 @@ Partial Class Demarrage
         Me.TileItem6.AppearanceItem.Selected.Options.UseBackColor = True
         Me.TileItem6.AppearanceItem.Selected.Options.UseBorderColor = True
         Me.TileItem6.AppearanceItem.Selected.Options.UseFont = True
-        TileItemElement152.Image = Global.ClearProject.My.Resources.Resources.RevenueSplit_32x32
-        TileItemElement152.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement152.Text = ""
-        TileItemElement152.TextLocation = New System.Drawing.Point(0, 0)
-        Me.TileItem6.Elements.Add(TileItemElement152)
+        TileItemElement53.Image = Global.ClearProject.My.Resources.Resources.RevenueSplit_32x32
+        TileItemElement53.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement53.Text = ""
+        TileItemElement53.TextLocation = New System.Drawing.Point(0, 0)
+        Me.TileItem6.Elements.Add(TileItemElement53)
         Me.TileItem6.Id = 1
         Me.TileItem6.Name = "TileItem6"
         '
@@ -1623,47 +1687,47 @@ Partial Class Demarrage
         Me.TileEvaluation.AppearanceItem.Normal.Options.UseFont = True
         Me.TileEvaluation.BackgroundImage = Global.ClearProject.My.Resources.Resources.CustomerRevenue_16x16
         Me.TileEvaluation.BackgroundImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomRight
-        TileItemElement153.Image = Global.ClearProject.My.Resources.Resources.kf_emblem_sales_128x128
-        TileItemElement153.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
-        TileItemElement153.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement153.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
-        TileItemElement153.Text = "EVALUATION DU PROJET"
-        TileItemElement153.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
-        TileItemElement153.TextLocation = New System.Drawing.Point(0, 0)
-        Me.TileEvaluation.Elements.Add(TileItemElement153)
-        TileItemFrame92.AnimateBackgroundImage = True
-        TileItemFrame92.AnimateImage = True
-        TileItemFrame92.AnimateText = True
-        TileItemFrame92.BackgroundImage = Global.ClearProject.My.Resources.Resources.CustomerRevenue_16x16
-        TileItemElement154.Image = Global.ClearProject.My.Resources.Resources.kf_grisbi_128x128
-        TileItemElement154.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
-        TileItemElement154.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement154.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
-        TileItemElement154.Text = "EVALUATION DU PROJET"
-        TileItemElement154.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
-        TileItemElement154.TextLocation = New System.Drawing.Point(0, 0)
-        TileItemFrame92.Elements.Add(TileItemElement154)
-        TileItemFrame92.Image = Global.ClearProject.My.Resources.Resources.kf_grisbi_128x128
-        TileItemFrame92.Interval = 13000
-        TileItemFrame92.UseBackgroundImage = True
-        TileItemFrame92.UseImage = True
-        TileItemFrame92.UseText = True
-        TileItemFrame93.AnimateImage = True
-        TileItemFrame93.BackgroundImage = Global.ClearProject.My.Resources.Resources.CustomerRevenue_16x16
-        TileItemElement155.Image = Global.ClearProject.My.Resources.Resources.kf_emblem_sales_128x128
-        TileItemElement155.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
-        TileItemElement155.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement155.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
-        TileItemElement155.Text = "EVALUATION DU PROJET"
-        TileItemElement155.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
-        TileItemElement155.TextLocation = New System.Drawing.Point(0, 0)
-        TileItemFrame93.Elements.Add(TileItemElement155)
-        TileItemFrame93.Image = Global.ClearProject.My.Resources.Resources.kf_emblem_sales_128x128
-        TileItemFrame93.Interval = 13000
-        TileItemFrame93.UseImage = True
-        TileItemFrame93.UseText = True
-        Me.TileEvaluation.Frames.Add(TileItemFrame92)
-        Me.TileEvaluation.Frames.Add(TileItemFrame93)
+        TileItemElement54.Image = Global.ClearProject.My.Resources.Resources.kf_emblem_sales_128x128
+        TileItemElement54.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
+        TileItemElement54.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement54.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
+        TileItemElement54.Text = "EVALUATION DU PROJET"
+        TileItemElement54.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
+        TileItemElement54.TextLocation = New System.Drawing.Point(0, 0)
+        Me.TileEvaluation.Elements.Add(TileItemElement54)
+        TileItemFrame32.AnimateBackgroundImage = True
+        TileItemFrame32.AnimateImage = True
+        TileItemFrame32.AnimateText = True
+        TileItemFrame32.BackgroundImage = Global.ClearProject.My.Resources.Resources.CustomerRevenue_16x16
+        TileItemElement55.Image = Global.ClearProject.My.Resources.Resources.kf_grisbi_128x128
+        TileItemElement55.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
+        TileItemElement55.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement55.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
+        TileItemElement55.Text = "EVALUATION DU PROJET"
+        TileItemElement55.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
+        TileItemElement55.TextLocation = New System.Drawing.Point(0, 0)
+        TileItemFrame32.Elements.Add(TileItemElement55)
+        TileItemFrame32.Image = Global.ClearProject.My.Resources.Resources.kf_grisbi_128x128
+        TileItemFrame32.Interval = 13000
+        TileItemFrame32.UseBackgroundImage = True
+        TileItemFrame32.UseImage = True
+        TileItemFrame32.UseText = True
+        TileItemFrame33.AnimateImage = True
+        TileItemFrame33.BackgroundImage = Global.ClearProject.My.Resources.Resources.CustomerRevenue_16x16
+        TileItemElement56.Image = Global.ClearProject.My.Resources.Resources.kf_emblem_sales_128x128
+        TileItemElement56.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
+        TileItemElement56.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement56.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
+        TileItemElement56.Text = "EVALUATION DU PROJET"
+        TileItemElement56.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
+        TileItemElement56.TextLocation = New System.Drawing.Point(0, 0)
+        TileItemFrame33.Elements.Add(TileItemElement56)
+        TileItemFrame33.Image = Global.ClearProject.My.Resources.Resources.kf_emblem_sales_128x128
+        TileItemFrame33.Interval = 13000
+        TileItemFrame33.UseImage = True
+        TileItemFrame33.UseText = True
+        Me.TileEvaluation.Frames.Add(TileItemFrame32)
+        Me.TileEvaluation.Frames.Add(TileItemFrame33)
         Me.TileEvaluation.Id = 45
         Me.TileEvaluation.IsLarge = True
         Me.TileEvaluation.Name = "TileEvaluation"
@@ -1680,57 +1744,57 @@ Partial Class Demarrage
         Me.TileBudget.BackgroundImage = Global.ClearProject.My.Resources.Resources.RevenueSplit_16x16
         Me.TileBudget.BackgroundImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomRight
         Me.TileBudget.BackgroundImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze
-        TileItemElement156.Image = Global.ClearProject.My.Resources.Resources.dk_money_128x128
-        TileItemElement156.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
-        TileItemElement156.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement156.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
-        TileItemElement156.Text = "GESTION BUDGETAIRE"
-        TileItemElement156.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
-        TileItemElement156.TextLocation = New System.Drawing.Point(0, 0)
-        Me.TileBudget.Elements.Add(TileItemElement156)
-        TileItemFrame94.AnimateImage = True
-        TileItemElement157.Image = Global.ClearProject.My.Resources.Resources.dk_money_128x128
-        TileItemElement157.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
-        TileItemElement157.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement157.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
-        TileItemElement157.Text = "GESTION BUDGETAIRE"
-        TileItemElement157.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
-        TileItemElement157.TextLocation = New System.Drawing.Point(0, 0)
-        TileItemFrame94.Elements.Add(TileItemElement157)
-        TileItemFrame94.Image = Global.ClearProject.My.Resources.Resources.dk_money_128x128
-        TileItemFrame94.Interval = 10000
-        TileItemFrame94.UseImage = True
-        TileItemFrame94.UseText = True
-        TileItemFrame95.AnimateImage = True
-        TileItemElement158.Image = Global.ClearProject.My.Resources.Resources.kf_emblem_sales_128x128
-        TileItemElement158.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
-        TileItemElement158.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement158.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
-        TileItemElement158.Text = "GESTION BUDGETAIRE"
-        TileItemElement158.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
-        TileItemElement158.TextLocation = New System.Drawing.Point(0, 0)
-        TileItemFrame95.Elements.Add(TileItemElement158)
-        TileItemFrame95.Image = Global.ClearProject.My.Resources.Resources.kf_emblem_sales_128x128
-        TileItemFrame95.Interval = 10000
-        TileItemFrame95.UseImage = True
-        TileItemFrame95.UseText = True
-        TileItemFrame96.AnimateImage = True
-        TileItemFrame96.BackgroundImage = Global.ClearProject.My.Resources.Resources.RevenueSplit_16x16
-        TileItemElement159.Image = Global.ClearProject.My.Resources.Resources.kf_grisbi_128x128
-        TileItemElement159.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
-        TileItemElement159.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement159.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
-        TileItemElement159.Text = "GESTION BUDGETAIRE"
-        TileItemElement159.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
-        TileItemElement159.TextLocation = New System.Drawing.Point(0, 0)
-        TileItemFrame96.Elements.Add(TileItemElement159)
-        TileItemFrame96.Image = Global.ClearProject.My.Resources.Resources.kf_grisbi_128x128
-        TileItemFrame96.Interval = 10000
-        TileItemFrame96.UseImage = True
-        TileItemFrame96.UseText = True
-        Me.TileBudget.Frames.Add(TileItemFrame94)
-        Me.TileBudget.Frames.Add(TileItemFrame95)
-        Me.TileBudget.Frames.Add(TileItemFrame96)
+        TileItemElement57.Image = Global.ClearProject.My.Resources.Resources.dk_money_128x128
+        TileItemElement57.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
+        TileItemElement57.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement57.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
+        TileItemElement57.Text = "GESTION BUDGETAIRE"
+        TileItemElement57.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
+        TileItemElement57.TextLocation = New System.Drawing.Point(0, 0)
+        Me.TileBudget.Elements.Add(TileItemElement57)
+        TileItemFrame34.AnimateImage = True
+        TileItemElement58.Image = Global.ClearProject.My.Resources.Resources.dk_money_128x128
+        TileItemElement58.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
+        TileItemElement58.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement58.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
+        TileItemElement58.Text = "GESTION BUDGETAIRE"
+        TileItemElement58.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
+        TileItemElement58.TextLocation = New System.Drawing.Point(0, 0)
+        TileItemFrame34.Elements.Add(TileItemElement58)
+        TileItemFrame34.Image = Global.ClearProject.My.Resources.Resources.dk_money_128x128
+        TileItemFrame34.Interval = 10000
+        TileItemFrame34.UseImage = True
+        TileItemFrame34.UseText = True
+        TileItemFrame35.AnimateImage = True
+        TileItemElement59.Image = Global.ClearProject.My.Resources.Resources.kf_emblem_sales_128x128
+        TileItemElement59.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
+        TileItemElement59.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement59.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
+        TileItemElement59.Text = "GESTION BUDGETAIRE"
+        TileItemElement59.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
+        TileItemElement59.TextLocation = New System.Drawing.Point(0, 0)
+        TileItemFrame35.Elements.Add(TileItemElement59)
+        TileItemFrame35.Image = Global.ClearProject.My.Resources.Resources.kf_emblem_sales_128x128
+        TileItemFrame35.Interval = 10000
+        TileItemFrame35.UseImage = True
+        TileItemFrame35.UseText = True
+        TileItemFrame36.AnimateImage = True
+        TileItemFrame36.BackgroundImage = Global.ClearProject.My.Resources.Resources.RevenueSplit_16x16
+        TileItemElement60.Image = Global.ClearProject.My.Resources.Resources.kf_grisbi_128x128
+        TileItemElement60.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
+        TileItemElement60.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement60.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
+        TileItemElement60.Text = "GESTION BUDGETAIRE"
+        TileItemElement60.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
+        TileItemElement60.TextLocation = New System.Drawing.Point(0, 0)
+        TileItemFrame36.Elements.Add(TileItemElement60)
+        TileItemFrame36.Image = Global.ClearProject.My.Resources.Resources.kf_grisbi_128x128
+        TileItemFrame36.Interval = 10000
+        TileItemFrame36.UseImage = True
+        TileItemFrame36.UseText = True
+        Me.TileBudget.Frames.Add(TileItemFrame34)
+        Me.TileBudget.Frames.Add(TileItemFrame35)
+        Me.TileBudget.Frames.Add(TileItemFrame36)
         Me.TileBudget.Id = 2
         Me.TileBudget.IsLarge = True
         Me.TileBudget.Name = "TileBudget"
@@ -1746,42 +1810,42 @@ Partial Class Demarrage
         Me.TileMarches.AppearanceItem.Normal.Options.UseFont = True
         Me.TileMarches.BackgroundImage = Global.ClearProject.My.Resources.Resources.Group_Catalog
         Me.TileMarches.BackgroundImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomRight
-        TileItemElement160.Image = Global.ClearProject.My.Resources.Resources.kf_applications_development_128x128
-        TileItemElement160.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
-        TileItemElement160.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement160.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
-        TileItemElement160.Text = "PASSATION DES MARCHES"
-        TileItemElement160.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
-        TileItemElement160.TextLocation = New System.Drawing.Point(0, 0)
-        Me.TileMarches.Elements.Add(TileItemElement160)
-        TileItemFrame97.AnimateImage = True
-        TileItemElement161.Image = Global.ClearProject.My.Resources.Resources.dk_contract_128x128
-        TileItemElement161.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
-        TileItemElement161.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement161.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
-        TileItemElement161.Text = "PASSATION DES MARCHES"
-        TileItemElement161.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
-        TileItemElement161.TextLocation = New System.Drawing.Point(0, 0)
-        TileItemFrame97.Elements.Add(TileItemElement161)
-        TileItemFrame97.Image = Global.ClearProject.My.Resources.Resources.dk_contract_128x128
-        TileItemFrame97.Interval = 8000
-        TileItemFrame97.UseImage = True
-        TileItemFrame97.UseText = True
-        TileItemFrame98.AnimateImage = True
-        TileItemElement162.Image = Global.ClearProject.My.Resources.Resources.kf_applications_development_128x128
-        TileItemElement162.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
-        TileItemElement162.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement162.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
-        TileItemElement162.Text = "PASSATION DES MARCHES"
-        TileItemElement162.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
-        TileItemElement162.TextLocation = New System.Drawing.Point(0, 0)
-        TileItemFrame98.Elements.Add(TileItemElement162)
-        TileItemFrame98.Image = Global.ClearProject.My.Resources.Resources.kf_applications_development_128x128
-        TileItemFrame98.Interval = 8000
-        TileItemFrame98.UseImage = True
-        TileItemFrame98.UseText = True
-        Me.TileMarches.Frames.Add(TileItemFrame97)
-        Me.TileMarches.Frames.Add(TileItemFrame98)
+        TileItemElement61.Image = Global.ClearProject.My.Resources.Resources.kf_applications_development_128x128
+        TileItemElement61.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
+        TileItemElement61.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement61.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
+        TileItemElement61.Text = "PASSATION DES MARCHES"
+        TileItemElement61.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
+        TileItemElement61.TextLocation = New System.Drawing.Point(0, 0)
+        Me.TileMarches.Elements.Add(TileItemElement61)
+        TileItemFrame37.AnimateImage = True
+        TileItemElement62.Image = Global.ClearProject.My.Resources.Resources.dk_contract_128x128
+        TileItemElement62.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
+        TileItemElement62.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement62.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
+        TileItemElement62.Text = "PASSATION DES MARCHES"
+        TileItemElement62.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
+        TileItemElement62.TextLocation = New System.Drawing.Point(0, 0)
+        TileItemFrame37.Elements.Add(TileItemElement62)
+        TileItemFrame37.Image = Global.ClearProject.My.Resources.Resources.dk_contract_128x128
+        TileItemFrame37.Interval = 8000
+        TileItemFrame37.UseImage = True
+        TileItemFrame37.UseText = True
+        TileItemFrame38.AnimateImage = True
+        TileItemElement63.Image = Global.ClearProject.My.Resources.Resources.kf_applications_development_128x128
+        TileItemElement63.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
+        TileItemElement63.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement63.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
+        TileItemElement63.Text = "PASSATION DES MARCHES"
+        TileItemElement63.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
+        TileItemElement63.TextLocation = New System.Drawing.Point(0, 0)
+        TileItemFrame38.Elements.Add(TileItemElement63)
+        TileItemFrame38.Image = Global.ClearProject.My.Resources.Resources.kf_applications_development_128x128
+        TileItemFrame38.Interval = 8000
+        TileItemFrame38.UseImage = True
+        TileItemFrame38.UseText = True
+        Me.TileMarches.Frames.Add(TileItemFrame37)
+        Me.TileMarches.Frames.Add(TileItemFrame38)
         Me.TileMarches.Id = 11
         Me.TileMarches.IsLarge = True
         Me.TileMarches.Name = "TileMarches"
@@ -1797,43 +1861,43 @@ Partial Class Demarrage
         Me.TilePortefeuille.AppearanceItem.Normal.Options.UseFont = True
         Me.TilePortefeuille.BackgroundImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomRight
         Me.TilePortefeuille.BackgroundImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
-        TileItemElement163.Image = Global.ClearProject.My.Resources.Resources.cc_log2_128x128
-        TileItemElement163.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
-        TileItemElement163.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement163.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
-        TileItemElement163.Text = "TABLEAUX DE BORD"
-        TileItemElement163.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
-        TileItemElement163.TextLocation = New System.Drawing.Point(0, 0)
-        Me.TilePortefeuille.Elements.Add(TileItemElement163)
-        TileItemFrame99.AnimateImage = True
-        TileItemElement164.Image = Global.ClearProject.My.Resources.Resources.cc_log2_128x128
-        TileItemElement164.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
-        TileItemElement164.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement164.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
-        TileItemElement164.Text = "TABLEAUX DE BORD"
-        TileItemElement164.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
-        TileItemElement164.TextLocation = New System.Drawing.Point(0, 0)
-        TileItemFrame99.Elements.Add(TileItemElement164)
-        TileItemFrame99.Image = Global.ClearProject.My.Resources.Resources.cc_log2_128x128
-        TileItemFrame99.Interval = 12000
-        TileItemFrame99.UseImage = True
-        TileItemFrame99.UseText = True
-        TileItemFrame100.AnimateImage = True
-        TileItemElement165.Image = Global.ClearProject.My.Resources.Resources.dk_money_128x128
-        TileItemElement165.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
-        TileItemElement165.ImageLocation = New System.Drawing.Point(0, 0)
-        TileItemElement165.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
-        TileItemElement165.Text = "TABLEAUX DE BORD"
-        TileItemElement165.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
-        TileItemElement165.TextLocation = New System.Drawing.Point(0, 0)
-        TileItemFrame100.Elements.Add(TileItemElement165)
-        TileItemFrame100.Image = Global.ClearProject.My.Resources.Resources.dk_money_128x128
-        TileItemFrame100.Interval = 12000
-        TileItemFrame100.UseBackgroundImage = True
-        TileItemFrame100.UseImage = True
-        TileItemFrame100.UseText = True
-        Me.TilePortefeuille.Frames.Add(TileItemFrame99)
-        Me.TilePortefeuille.Frames.Add(TileItemFrame100)
+        TileItemElement64.Image = Global.ClearProject.My.Resources.Resources.cc_log2_128x128
+        TileItemElement64.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
+        TileItemElement64.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement64.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
+        TileItemElement64.Text = "TABLEAUX DE BORD"
+        TileItemElement64.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
+        TileItemElement64.TextLocation = New System.Drawing.Point(0, 0)
+        Me.TilePortefeuille.Elements.Add(TileItemElement64)
+        TileItemFrame39.AnimateImage = True
+        TileItemElement65.Image = Global.ClearProject.My.Resources.Resources.cc_log2_128x128
+        TileItemElement65.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
+        TileItemElement65.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement65.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
+        TileItemElement65.Text = "TABLEAUX DE BORD"
+        TileItemElement65.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
+        TileItemElement65.TextLocation = New System.Drawing.Point(0, 0)
+        TileItemFrame39.Elements.Add(TileItemElement65)
+        TileItemFrame39.Image = Global.ClearProject.My.Resources.Resources.cc_log2_128x128
+        TileItemFrame39.Interval = 12000
+        TileItemFrame39.UseImage = True
+        TileItemFrame39.UseText = True
+        TileItemFrame40.AnimateImage = True
+        TileItemElement66.Image = Global.ClearProject.My.Resources.Resources.dk_money_128x128
+        TileItemElement66.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight
+        TileItemElement66.ImageLocation = New System.Drawing.Point(0, 0)
+        TileItemElement66.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside
+        TileItemElement66.Text = "TABLEAUX DE BORD"
+        TileItemElement66.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft
+        TileItemElement66.TextLocation = New System.Drawing.Point(0, 0)
+        TileItemFrame40.Elements.Add(TileItemElement66)
+        TileItemFrame40.Image = Global.ClearProject.My.Resources.Resources.dk_money_128x128
+        TileItemFrame40.Interval = 12000
+        TileItemFrame40.UseBackgroundImage = True
+        TileItemFrame40.UseImage = True
+        TileItemFrame40.UseText = True
+        Me.TilePortefeuille.Frames.Add(TileItemFrame39)
+        Me.TilePortefeuille.Frames.Add(TileItemFrame40)
         Me.TilePortefeuille.Id = 46
         Me.TilePortefeuille.IsLarge = True
         Me.TilePortefeuille.Name = "TilePortefeuille"
@@ -1855,71 +1919,6 @@ Partial Class Demarrage
         Me.TuileDemarrage.Size = New System.Drawing.Size(1065, 528)
         Me.TuileDemarrage.TabIndex = 0
         Me.TuileDemarrage.Text = "TileControl1"
-        '
-        'BtSerElaDAO
-        '
-        Me.BtSerElaDAO.Appearance.Font = New System.Drawing.Font("Segoe Print", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtSerElaDAO.Appearance.Options.UseFont = True
-        Me.BtSerElaDAO.Dock = System.Windows.Forms.DockStyle.Top
-        Me.BtSerElaDAO.Image = CType(resources.GetObject("BtSerElaDAO.Image"), System.Drawing.Image)
-        Me.BtSerElaDAO.Location = New System.Drawing.Point(0, 360)
-        Me.BtSerElaDAO.Name = "BtSerElaDAO"
-        Me.BtSerElaDAO.Size = New System.Drawing.Size(225, 24)
-        Me.BtSerElaDAO.TabIndex = 37
-        Me.BtSerElaDAO.Text = "Elaboration Dossier Appel d'Offres"
-        Me.BtSerElaDAO.Visible = False
-        '
-        'BtSerAutRetraiDOA
-        '
-        Me.BtSerAutRetraiDOA.Appearance.Font = New System.Drawing.Font("Segoe Print", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtSerAutRetraiDOA.Appearance.Options.UseFont = True
-        Me.BtSerAutRetraiDOA.Dock = System.Windows.Forms.DockStyle.Top
-        Me.BtSerAutRetraiDOA.Image = CType(resources.GetObject("BtSerAutRetraiDOA.Image"), System.Drawing.Image)
-        Me.BtSerAutRetraiDOA.Location = New System.Drawing.Point(0, 384)
-        Me.BtSerAutRetraiDOA.Name = "BtSerAutRetraiDOA"
-        Me.BtSerAutRetraiDOA.Size = New System.Drawing.Size(225, 24)
-        Me.BtSerAutRetraiDOA.TabIndex = 38
-        Me.BtSerAutRetraiDOA.Text = "Retrait de DAO et dépôt d'offres"
-        Me.BtSerAutRetraiDOA.Visible = False
-        '
-        'BtSerAutrOuvertureOffre
-        '
-        Me.BtSerAutrOuvertureOffre.Appearance.Font = New System.Drawing.Font("Segoe Print", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtSerAutrOuvertureOffre.Appearance.Options.UseFont = True
-        Me.BtSerAutrOuvertureOffre.Dock = System.Windows.Forms.DockStyle.Top
-        Me.BtSerAutrOuvertureOffre.Image = CType(resources.GetObject("BtSerAutrOuvertureOffre.Image"), System.Drawing.Image)
-        Me.BtSerAutrOuvertureOffre.Location = New System.Drawing.Point(0, 408)
-        Me.BtSerAutrOuvertureOffre.Name = "BtSerAutrOuvertureOffre"
-        Me.BtSerAutrOuvertureOffre.Size = New System.Drawing.Size(225, 24)
-        Me.BtSerAutrOuvertureOffre.TabIndex = 39
-        Me.BtSerAutrOuvertureOffre.Text = "Ouverture des offres"
-        Me.BtSerAutrOuvertureOffre.Visible = False
-        '
-        'BtsaSaiOffres
-        '
-        Me.BtsaSaiOffres.Appearance.Font = New System.Drawing.Font("Segoe Print", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtsaSaiOffres.Appearance.Options.UseFont = True
-        Me.BtsaSaiOffres.Dock = System.Windows.Forms.DockStyle.Top
-        Me.BtsaSaiOffres.Image = CType(resources.GetObject("BtsaSaiOffres.Image"), System.Drawing.Image)
-        Me.BtsaSaiOffres.Location = New System.Drawing.Point(0, 432)
-        Me.BtsaSaiOffres.Name = "BtsaSaiOffres"
-        Me.BtsaSaiOffres.Size = New System.Drawing.Size(225, 24)
-        Me.BtsaSaiOffres.TabIndex = 40
-        Me.BtsaSaiOffres.Text = "Saisie des offres techniques"
-        Me.BtsaSaiOffres.Visible = False
-        '
-        'BtsaAnalyJugemet
-        '
-        Me.BtsaAnalyJugemet.Appearance.Font = New System.Drawing.Font("Segoe Print", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtsaAnalyJugemet.Appearance.Options.UseFont = True
-        Me.BtsaAnalyJugemet.Dock = System.Windows.Forms.DockStyle.Top
-        Me.BtsaAnalyJugemet.Image = CType(resources.GetObject("BtsaAnalyJugemet.Image"), System.Drawing.Image)
-        Me.BtsaAnalyJugemet.Location = New System.Drawing.Point(0, 456)
-        Me.BtsaAnalyJugemet.Name = "BtsaAnalyJugemet"
-        Me.BtsaAnalyJugemet.Size = New System.Drawing.Size(225, 24)
-        Me.BtsaAnalyJugemet.TabIndex = 41
-        Me.BtsaAnalyJugemet.Text = "Analyse et Jugement des offres"
-        Me.BtsaAnalyJugemet.Visible = False
         '
         'Demarrage
         '

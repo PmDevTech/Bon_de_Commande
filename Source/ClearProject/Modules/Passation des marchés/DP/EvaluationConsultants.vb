@@ -1,32 +1,22 @@
-﻿Imports MySql.Data.MySqlClient
-Imports CrystalDecisions.CrystalReports.Engine
-Imports System.IO
+﻿Imports System.IO
 Imports System.Math
-Imports CrystalDecisions.Shared
-Imports Microsoft.Office.Interop
 Imports ClearProject.PassationMarche
+Imports CrystalDecisions.CrystalReports.Engine
+Imports CrystalDecisions.Shared
+Imports DevExpress.XtraEditors.Repository
+Imports Microsoft.Office.Interop
+Imports MySql.Data.MySqlClient
 
 Public Class EvaluationConsultants
 
     Dim dtComm As DataTable = New DataTable()
     Dim dtMoy As DataTable = New DataTable()
-    Dim dtFinance As DataTable = New DataTable()
-    Dim dtBilanCons As DataTable = New DataTable()
 
-    Dim ActiverNote As Boolean = False
-    Dim DernierEval As String = ""
-    Public CodeEvaluateur As String = ""
-    Dim SoumisEnCours As String = ""
+    Dim ListeCodeDoss As New List(Of String)
+    Dim CurrenRefMarche As Decimal = 0
+
     Dim DrX As DataRow
     Public MonnaieEvaluation As String = ""
-
-    'Variable contrat
-    Dim RefSoumisRetenuContrat As String = ""
-    Dim RefConsults As String = ""
-    Dim DejaEnregistrer As Boolean = False
-    Dim TypeConvention As String = ""
-    Dim dtAnnexe As New DataTable()
-    Dim IndexLignArticle As Integer = 0
 
     'varaible rapportd'évaluation technique
     Dim RapportModif As Boolean = False
@@ -38,14 +28,31 @@ Public Class EvaluationConsultants
     'varaible evaluation financiere
     Dim rwDossOffreFin As DataRow
 
+    'Variable rapport combine
+    Dim rwDossRapCombine As DataRow
+    Dim ModifRapCombine As Boolean = False
+
     'Varieble negociation
     Dim DejaSaveNego As Boolean = False
     Dim DoubleClicks As Boolean = False
     Dim NomGridView As String = ""
     Dim LignModif As Decimal = 0
 
-    'Table a mettre a jour Index 0= raport tech, 1=eval fin, 2=rapport combine, 3=negociation, 4=contrat
-    Dim TablBoutonClik As Boolean() = {False, False, False, False, False}
+    'Variable contrat
+    Dim RefSoumisRetenuContrat As String = ""
+    Dim RefConsults As String = ""
+    Dim DejaEnregistrer As Boolean = False
+    Dim TypeConvention As String = ""
+    Dim dtAnnexe As New DataTable()
+    Dim IndexLignArticle As Integer = 0
+
+    'Variable Impremer contrat
+    Dim ModifsContrats As Boolean = False
+    Dim CheminContrat As String = ""
+    Dim TypeRenumerationContrat As String = ""
+
+    'Table a mettre a jour Index 0= raport tech, 1=eval fin, 2=rapport combine, 3=negociation, 4=contrat ImpContrat
+    Dim TablBoutonClik As Boolean() = {False, False, False, False, False, False}
 
     Private Sub EvaluationConsultants_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.Icon = My.Resources.Logo_ClearProject_Valide
@@ -56,58 +63,47 @@ Public Class EvaluationConsultants
 #Region "Action de base"
 
     Private Sub ChargerDossier()
-        query = "select NumeroDp from T_DP where EvalTechnique<>'' and Statut<>'Annuler' and CodeProjet='" & ProjetEnCours & "' order by NumeroDp ASC"
+        query = "select NumeroDp from T_DP where EvalTechnique<>'' and Statut<>'Annulé' and CodeProjet='" & ProjetEnCours & "' ORDER BY DateEdition DESC"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         CmbNumDoss.Properties.Items.Clear()
         CmbNumDoss.Text = ""
         For Each rw As DataRow In dt.Rows
             CmbNumDoss.Properties.Items.Add(MettreApost(rw("NumeroDp").ToString))
         Next
+
+        'Ajout des AMI de methode 3CV
+        query = "select NumeroDAMI from t_ami where StatutDoss <>'Annuler' and MethodeSelection='3CV' and EvalTechnique IS NOT NULL order by NumeroDAMI ASC"
+        Dim dt1 As DataTable = ExcecuteSelectQuery(query)
+        For Each rw As DataRow In dt1.Rows
+            CmbNumDoss.Properties.Items.Add(MettreApost(rw("NumeroDAMI").ToString))
+            ListeCodeDoss.Add(MettreApost(rw("NumeroDAMI").ToString))
+        Next
     End Sub
 
     Private Sub GetVisiblePanel(ByVal value As Boolean, Optional Affich As String = "")
-        If Affich = "Combine" Then
-            PanelRapportEvaluationTech.Visible = Not value
-            PanelNegociation.Visible = Not value
-            PanelOffreFinanciere.Visible = Not value
-            PanelAccueilEvalTech.Visible = Not value
-            PanelEditionMarche.Visible = Not value
-            PanelRapportCombinet.Visible = value
+        'Cacher eux tous et afficher le concerner
+        PanelRapportEvaluationTech.Visible = Not value
+        PanelOffreFinanciere.Visible = Not value
+        PanelRapportCombinet.Visible = Not value
+        PanelNegociation.Visible = Not value
+        PanelAccueilEvalTech.Visible = Not value
+        PanelImpressionContrat.Visible = Not value
+        PanelEditionMarche.Visible = Not value
+
+        If Affich = "Accueil" Then
+            PanelAccueilEvalTech.Visible = value
         ElseIf Affich = "EvalTech" Then
             PanelRapportEvaluationTech.Visible = value
-            PanelOffreFinanciere.Visible = Not value
-            PanelNegociation.Visible = Not value
-            PanelAccueilEvalTech.Visible = Not value
-            PanelEditionMarche.Visible = Not value
-            PanelRapportCombinet.Visible = Not value
         ElseIf Affich = "OffreFinance" Then
             PanelOffreFinanciere.Visible = value
-            PanelAccueilEvalTech.Visible = Not value
-            PanelNegociation.Visible = Not value
-            PanelEditionMarche.Visible = Not value
-            PanelRapportEvaluationTech.Visible = Not value
-            PanelRapportCombinet.Visible = Not value
-        ElseIf Affich = "Accueil" Then
-            PanelAccueilEvalTech.Visible = value
-            PanelRapportEvaluationTech.Visible = Not value
-            PanelOffreFinanciere.Visible = Not value
-            PanelEditionMarche.Visible = Not value
-            PanelRapportCombinet.Visible = Not value
-            PanelNegociation.Visible = Not value
-        ElseIf Affich = "Marche" Then
-            PanelRapportEvaluationTech.Visible = Not value
-            PanelOffreFinanciere.Visible = Not value
-            PanelRapportCombinet.Visible = Not value
-            PanelNegociation.Visible = Not value
-            PanelAccueilEvalTech.Visible = Not value
-            PanelEditionMarche.Visible = value
+        ElseIf Affich = "Combine" Then
+            PanelRapportCombinet.Visible = value
         ElseIf Affich = "Negociation" Then
-            PanelRapportEvaluationTech.Visible = Not value
-            PanelOffreFinanciere.Visible = Not value
-            PanelRapportCombinet.Visible = Not value
-            PanelAccueilEvalTech.Visible = Not value
-            PanelEditionMarche.Visible = Not value
             PanelNegociation.Visible = value
+        ElseIf Affich = "Marche" Then
+            PanelEditionMarche.Visible = value
+        ElseIf Affich = "ImprimerContrat" Then
+            PanelImpressionContrat.Visible = value
         End If
     End Sub
 
@@ -116,8 +112,8 @@ Public Class EvaluationConsultants
         BtEvalautionFinanciere.Enabled = value
         BtRapportCombinet.Enabled = value
         BtEditionContrat.Enabled = value
-        BtImpContrat.Enabled = value
         BtNegociation.Enabled = value
+        BtImprimerContrat.Enabled = value
     End Sub
 
     Private Sub NewInitialiserDonne()
@@ -127,19 +123,32 @@ Public Class EvaluationConsultants
 
         'Initialiser Info rapport evaluation technique
         RapportModif = False
+        CurrenRefMarche = 0
         CheminRapportEvalTech = ""
         ExisteTexteGeneralites = False
         RaportEvalTechValider = ""
         DateEnvoiRapport = {"", ""}
+        TypeRenumerationContrat = ""
 
         'Evaluation financières
         'Negociation
-        TablBoutonClik = {False, False, False, False}
+        TablBoutonClik = {False, False, False, False, False, False}
     End Sub
 
-    Private Sub EvaluationConsultants_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Me.Paint
+    Private Sub EvaluationConsultants_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles MyBase.Paint
         FinChargement()
     End Sub
+
+    Private Function TypeDossier(NumDoss As String) As String
+        If ListeCodeDoss.Count > 0 Then
+            For i = 0 To ListeCodeDoss.Count - 1
+                If ListeCodeDoss.Item(i).ToString = NumDoss.ToString Then
+                    Return "AMI"
+                End If
+            Next
+        End If
+        Return "DP"
+    End Function
 
     Private Sub CmbNumDoss_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CmbNumDoss.SelectedValueChanged
 
@@ -159,62 +168,108 @@ Public Class EvaluationConsultants
 
             DebutChargement(True, "Chargement des données en cours...")
 
-            query = "select * from T_DP where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and CodeProjet='" & ProjetEnCours & "'"
-            Dim dt As DataTable = ExcecuteSelectQuery(query)
-            For Each rw As DataRow In dt.Rows
+            If TypeDossier(CmbNumDoss.Text) = "AMI" Then
+                query = "select * from t_ami where NumeroDAMI='" & EnleverApost(CmbNumDoss.Text) & "' and CodeProjet='" & ProjetEnCours & "'"
+                Dim dt As DataTable = ExcecuteSelectQuery(query)
 
-                TxtLibelleDoss.Text = MettreApost(rw("LibelleMiss").ToString)
-                TxtDateOuvert.Text = CDate(rw("DateOuvertureEffective").ToString).ToShortDateString
-                TxtMethode.Text = rw("MethodeSelection").ToString
-                'Monnaie
-                MonnaieEvaluation = rw("MonnaieEval").ToString
-                EtapeTechnique.ImageIndex = 0
-                EtapeTechnique.ForeColor = Color.Black
+                For Each rw As DataRow In dt.Rows
+                    TxtLibelleDoss.Text = MettreApost(rw("LibelleMiss").ToString)
+                    TxtDateOuvert.Text = CDate(rw("DateOuvertureEffective").ToString).ToShortDateString
+                    TxtMethode.Text = rw("MethodeSelection").ToString
+                    CurrenRefMarche = rw("RefMarche").ToString
+                    TypeRenumerationContrat = rw("TypeRemune").ToString
 
-                'Activer le bouton rapport d'eval tech
-                BtRapportEvalTech.Enabled = True
+                    EtapeTechnique.ImageIndex = 0
+                    EtapeTechnique.ForeColor = Color.Black
 
-                'Cas de ses methode après l'evaluation
-                'SFQC, SCBD, ********* SMC, 3CV, SFQ, SQC 
-
-                'Cas evaluation financière
-                If rw("RaportEvalTechBailleur").ToString = "Valider" Then BtEvalautionFinanciere.Enabled = True
-
-                'Savoir si l'evaluation financières est terminer
-                rwDossOffreFin = ExcecuteSelectQuery("select * from T_SoumissionConsultant where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and EvalTechOk='OUI' ORDER BY RangConsult ASC LIMIT 1").Rows(0)
-
-                If rwDossOffreFin("FinEvalFinanciere").ToString <> "" Then
-                    EtapeFinanciere.ImageIndex = 0
-                    EtapeFinanciere.ForeColor = Color.Black
-
-                    'Active le bouton rapport combinet et negociation
-                    BtRapportCombinet.Enabled = True
+                    'Activiver le bouton de la negociation
                     BtNegociation.Enabled = True
-
-                    'Cas de negociation
-                    'Verifier si les negociation ont eux lieux
                     query = "select count(*) from t_dp_negociation where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and CodeProjet='" & ProjetEnCours & "'"
                     If Val(ExecuteScallar(query)) > 0 Then
                         'Active le bouton du contrat
                         BtEditionContrat.Enabled = True
+                        If Val(ExecuteScallar("select count(*) From t_dp_contrat where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "'")) > 0 Then
+                            BtImprimerContrat.Enabled = True
+                        End If
                     End If
-                Else
-                    EtapeFinanciere.ImageIndex = 2
-                    EtapeFinanciere.ForeColor = Color.Black
-                End If
+                Next
+            Else
+                query = "select * from T_DP where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and CodeProjet='" & ProjetEnCours & "'"
+                Dim dt As DataTable = ExcecuteSelectQuery(query)
+                For Each rw As DataRow In dt.Rows
 
-                'Donnée rapport evaluation technique
-                CheminRapportEvalTech = rw("CheminRapportEvalTech").ToString
-                If rw("TexteGeneralites").ToString <> "" Then ExisteTexteGeneralites = True
-                RaportEvalTechValider = rw("RaportEvalTechBailleur").ToString
-                DateEnvoiRapport(0) = rw("DateSoumRapTechBail").ToString
-                DateEnvoiRapport(1) = rw("DateAviObjectionRapTech").ToString
-            Next
+                    TxtLibelleDoss.Text = MettreApost(rw("LibelleMiss").ToString)
+                    TxtDateOuvert.Text = CDate(rw("DateOuvertureEffective").ToString).ToShortDateString
+                    TxtMethode.Text = rw("MethodeSelection").ToString
+                    TypeRenumerationContrat = rw("TypeRemune").ToString
 
+                    'Monnaie
+                    MonnaieEvaluation = rw("MonnaieEval").ToString
+                    EtapeTechnique.ImageIndex = 0
+                    EtapeTechnique.ForeColor = Color.Black
+
+                    'Activer le bouton rapport d'eval tech
+                    BtRapportEvalTech.Enabled = True
+
+                    'Verifier s'il y a des consultants retenu
+                    Dim dtDoss As DataTable = ExcecuteSelectQuery("select * from T_SoumissionConsultant where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and EvalTechOk='OUI' ORDER BY RangConsult ASC")
+                    If dtDoss.Rows.Count > 0 Then
+
+                        'Cas evaluation financière
+                        rwDossOffreFin = dtDoss.Rows(0)
+                        If rw("RaportEvalTechBailleur").ToString = "Valider" Then
+                            BtEvalautionFinanciere.Enabled = True
+
+                            'Savoir si l'evaluation financières est terminer
+                            If rwDossOffreFin("FinEvalFinanciere").ToString <> "" Then
+                                EtapeFinanciere.ImageIndex = 0
+                                EtapeFinanciere.ForeColor = Color.Black
+                                'Active le bouton rapport combinet
+                                BtRapportCombinet.Enabled = True
+
+                                'Rechercher le rapport combinet d'un consultant valider pour activer le bouton
+                                'de la negociation
+
+                                Dim Cpte As Integer = 0
+                                For Each rw1 In dtDoss.Rows
+                                    If rw1("EtatRapportCombine").ToString = "Valider" Then
+                                        'Cas de negociation
+                                        BtNegociation.Enabled = True
+
+                                        'Verifier si les negociation ont eux lieux
+                                        query = "select count(*) from t_dp_negociation where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and CodeProjet='" & ProjetEnCours & "'"
+                                        If Val(ExecuteScallar(query)) > 0 Then
+                                            'Active le bouton du contrat
+                                            BtEditionContrat.Enabled = True
+                                            If Val(ExecuteScallar("select count(*) From t_dp_contrat where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "'")) > 0 Then
+                                                BtImprimerContrat.Enabled = True
+                                            End If
+                                        End If
+                                        'Sortir de la boucle
+                                        Exit For
+                                    End If
+                                Next
+                            End If
+                        End If
+                    Else
+                        EtapeFinanciere.ImageIndex = 2
+                        EtapeFinanciere.ForeColor = Color.Black
+                    End If
+
+                    'Donnée rapport evaluation technique
+                    CheminRapportEvalTech = rw("CheminRapportEvalTech").ToString
+                    If rw("TexteGeneralites").ToString <> "" Then ExisteTexteGeneralites = True
+                    RaportEvalTechValider = rw("RaportEvalTechBailleur").ToString
+                    DateEnvoiRapport(0) = rw("DateSoumRapTechBail").ToString
+                    DateEnvoiRapport(1) = rw("DateAviObjectionRapTech").ToString
+
+                Next
+            End If
+            FinChargement()
             RemplirCojo()
             RemplirMoyenne()
             FinChargement()
-        End If
+            End If
     End Sub
 
     Private Sub RemplirCojo()
@@ -222,7 +277,7 @@ Public Class EvaluationConsultants
             dtComm.Columns.Clear()
             dtComm.Columns.Add("Commission", Type.GetType("System.String"))
             dtComm.Rows.Clear()
-            query = "select NomMem,TitreMem,CodeMem from T_Commission where NumeroDAO='" & EnleverApost(CmbNumDoss.Text) & "' ORDER BY NomMem ASC" 'and TypeComm='EVAC' and Evaluation<>''"
+            query = "select NomMem, TitreMem, CodeMem from T_Commission where NumeroDAO='" & EnleverApost(CmbNumDoss.Text) & "' ORDER BY NomMem ASC" 'and TypeComm='EVAC' and Evaluation<>''"
             Dim dt As DataTable = ExcecuteSelectQuery(query)
             For Each rw As DataRow In dt.Rows
                 Dim drS = dtComm.NewRow()
@@ -238,13 +293,17 @@ Public Class EvaluationConsultants
         dtMoy.Columns.Clear()
         dtMoy.Columns.Add("Code", Type.GetType("System.String"))
         dtMoy.Columns.Add("CodeX", Type.GetType("System.String"))
-        dtMoy.Columns.Add("Consultant(cabinet)", Type.GetType("System.String"))
+        dtMoy.Columns.Add("Consultant", Type.GetType("System.String"))
         dtMoy.Columns.Add("Score technique(moyenne)", Type.GetType("System.String"))
         dtMoy.Columns.Add("Rang", Type.GetType("System.String"))
         dtMoy.Columns.Add("Décision", Type.GetType("System.String"))
         dtMoy.Rows.Clear()
 
-        query = "select S.RefSoumis,C.NomConsult,S.NoteConsult,S.ReferenceNote,S.RangConsult,S.EvalTechOk from T_Consultant as C,T_SoumissionConsultant as S where S.RefConsult=C.RefConsult and S.NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and S.NoteConsult IS NOT NULL order by S.RangConsult,C.NomConsult"
+        If TypeDossier(CmbNumDoss.Text) = "AMI" Then 'Cas de la Methode 3CV
+            query = "select S.RefSoumis,C.NomConsult,S.NoteConsult,S.ReferenceNote,S.RangConsult,S.EvalTechOk from T_Consultant as C,T_SoumissionConsultant as S where S.RefConsult=C.RefConsult and S.NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and S.NoteConsult IS NOT NULL and S.EvalTechOk='OUI' ORDER BY S.RangConsult ASC LIMIT 3"
+        Else
+            query = "select S.RefSoumis,C.NomConsult,S.NoteConsult,S.ReferenceNote,S.RangConsult,S.EvalTechOk from T_Consultant as C,T_SoumissionConsultant as S where S.RefConsult=C.RefConsult and S.NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and S.NoteConsult IS NOT NULL ORDER BY S.RangConsult ASC"
+        End If
         dt = ExcecuteSelectQuery(query)
         Dim cpt2 As Integer = 0
         For Each rw As DataRow In dt.Rows
@@ -253,7 +312,7 @@ Public Class EvaluationConsultants
 
             DrE("Code") = rw("RefSoumis").ToString
             DrE("CodeX") = IIf(CDec(cpt2 / 2) = CDec(cpt2 \ 2), "x", "")
-            DrE("Consultant(cabinet)") = MettreApost(rw("NomConsult").ToString)
+            DrE("Consultant") = MettreApost(rw("NomConsult").ToString)
 
             DrE("Score technique(moyenne)") = IIf(rw("NoteConsult").ToString.Replace(".", ",") <> "", rw("NoteConsult").ToString.Replace(".", ","), "0").ToString & " / " & IIf(rw("ReferenceNote").ToString <> "", rw("ReferenceNote").ToString, "0").ToString
             DrE("Rang") = IIf(rw("RangConsult").ToString <> "0", rw("RangConsult").ToString & IIf(rw("RangConsult").ToString = "1", "er", "ème").ToString, "-").ToString
@@ -385,13 +444,13 @@ Public Class EvaluationConsultants
     Private Sub BtNoter_Click(ByVal sender As Object, ByVal e As System.EventArgs)
 
         If (GridViewComJugmt.RowCount = 1) Then
-            CodeEvaluateur = DernierEval
+            'CodeEvaluateur = DernierEval
             'MsgBox("Eval=" & CodeEvaluateur, MsgBoxStyle.Information)
         Else
             ReponseDialog = ""
             ExceptRevue = ""
             ExceptRevue2 = ""
-            CodeEvaluateur = ""
+            ' CodeEvaluateur = ""
             Dim EvTrouve As Boolean = False
             While (EvTrouve = False)
 
@@ -408,7 +467,7 @@ Public Class EvaluationConsultants
                     For k As Integer = 0 To GridViewComJugmt.RowCount - 1
                         If (dtComm.Rows(k).Item(0).ToString = NomEv) Then
                             EvTrouve = True
-                            CodeEvaluateur = dt.Rows(0).Item(2).ToString
+                            '  CodeEvaluateur = dt.Rows(0).Item(2).ToString
                             ReponseDialog = ""
                             Exit For
                         Else
@@ -427,7 +486,7 @@ Public Class EvaluationConsultants
 
         End If
 
-        ActiverNote = True
+        'ActiverNote = True
         ' BtNoter.Visible = False
 
         AfficherGrid()
@@ -898,14 +957,14 @@ Public Class EvaluationConsultants
 
     Private Sub DateSoumRapTech_LostFocus(sender As Object, e As EventArgs) Handles DateSoumRapTech.LostFocus
         If DateSoumRapTech.Text <> "" Then
-            DateEnvoiRapport(0) = dateconvert(DateSoumRapTech.Text)
-            ExecuteNonQuery("Update t_dp set DateSoumRapTechBail='" & dateconvert(DateSoumRapTech.Text) & "' where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "'")
+            DateEnvoiRapport(0) = DateSoumRapTech.Text
+            ExecuteNonQuery("Update t_dp set DateSoumRapTechBail='" & DateSoumRapTech.Text & "' where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "'")
         End If
     End Sub
     Private Sub DateAviObj_LostFocus(sender As Object, e As EventArgs) Handles DateAviObj.LostFocus
         If DateAviObj.Text <> "" Then
-            DateEnvoiRapport(1) = dateconvert(DateAviObj.Text)
-            ExecuteNonQuery("Update t_dp set DateAviObjectionRapTech='" & dateconvert(DateAviObj.Text) & "' where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "'")
+            DateEnvoiRapport(1) = DateAviObj.Text
+            ExecuteNonQuery("Update t_dp set DateAviObjectionRapTech='" & DateAviObj.Text & "' where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "'")
         End If
     End Sub
 
@@ -947,7 +1006,7 @@ Public Class EvaluationConsultants
         Try
 
             If CheminRapportEvalTech.ToString = "" Then
-                FailMsg("Aucun rapport à actualisé")
+                FailMsg("Aucun rapport à actualiser")
                 Exit Sub
             End If
 
@@ -987,7 +1046,7 @@ Public Class EvaluationConsultants
                     RapportModif = False
                     CheminRapportEvalTech = NewCheminpdf
                 Else
-                    SuccesMsg("Le chemin spécifier n'existe pas")
+                    SuccesMsg("Le chemin spécifié n'existe pas")
                 End If
             ElseIf RapportModif = False Then
                 SuccesMsg("Veuillez modifier le rapport avant d'actualiser")
@@ -1003,7 +1062,7 @@ Public Class EvaluationConsultants
 
     Private Sub BtEnvoieBailleurs_Click(sender As Object, e As EventArgs) Handles BtEnvoieBailleurs.Click
         If CheminRapportEvalTech.ToString = "" Then
-            FailMsg("Aucun rapport à envoyé au bailleur")
+            FailMsg("Aucun rapport à envoyer au bailleur")
             Exit Sub
         End If
 
@@ -1021,13 +1080,13 @@ Public Class EvaluationConsultants
                         DebutChargement(True, "Envoi du rapport d'évaluation technique au bailleur...")
 
                         'Envoi du rapport au bailleur
-                        EnvoiMailRapport(NomBailleurRetenu, CmbNumDoss.Text, EmailDestinatauer, CheminDoc, EmailCoordinateurProjet, EmailResponsablePM, "RapportEvalTechDP")
+                        If EnvoiMailRapport(NomBailleurRetenu, CmbNumDoss.Text, EmailDestinatauer, CheminDoc, EmailCoordinateurProjet, EmailResponsablePM, "Rapport d'évaluation technique") = False Then Exit Sub
 
                         SuccesMsg("Le rapport d'évaluation technique a été envoye avec succès")
                         FinChargement()
                     Else
                         FinChargement()
-                        SuccesMsg("Le rapport à envoyer n'existe pas ou a été supprimer")
+                        SuccesMsg("Le rapport à envoyer n'existe pas ou a été supprimé")
                     End If
                 Catch ep As IO.IOException
                     SuccesMsg("Le fichier est utilisé par une autre application" & vbNewLine & "Veuillez le fermer svp.")
@@ -1052,13 +1111,16 @@ Public Class EvaluationConsultants
 
             If ConfirmMsg("Confirmez-vous la validation du rapport ?") = DialogResult.Yes Then
                 ExecuteNonQuery("Update t_dp set RaportEvalTechBailleur='Valider' where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and CodeProjet='" & ProjetEnCours & "'")
-                SuccesMsg("Rapport d'evalution technique validé")
-                RaportEvalTechValider = "Valider"
+                SuccesMsg("Rapport d'évaluation technique validé")
                 BoutonEvalTech(False)
                 DateSoumRapTech.Enabled = False
                 DateAviObj.Enabled = False
+                RaportEvalTechValider = "Valider"
+                'Verifier s'il y a des consultant retenu sur la liste pour activer le bouton de l'evaluation fin
                 'Etape evaluation financières
-                BtEvalautionFinanciere.Enabled = True
+                If Val(ExecuteScallar("select count(*) from t_soumissionconsultant where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and EvalTechOk='OUI'")) > 0 Then
+                    BtEvalautionFinanciere.Enabled = True
+                End If
             End If
         Catch ex As Exception
             FailMsg(ex.ToString)
@@ -1076,7 +1138,7 @@ Public Class EvaluationConsultants
 
                 DebutChargement(True, "Rejete du rapport d'évaluation en cours...")
 
-                ExecuteNonQuery("Update t_dp set EvalTechnique=NULL, RaportEvalTechBailleur='Rejeter'  where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "'")
+                ExecuteNonQuery("Update t_dp set TexteGeneralites=NULL,CheminRapportEvalTech=NULL, EvalTechnique=NULL, RaportEvalTechBailleur='Rejeter'  where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "'")
                 ExecuteNonQuery("Update t_soumi_note_consultant_parcriteresdp set ValidationNote='' where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and CodeProjet='" & ProjetEnCours & "'")
                 ExecuteNonQuery("Update t_soumissionconsultant set NoteConsult=NULL, ReferenceNote=NULL, RangConsult=NULL, EvalTechOk=NULL where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "'")
 
@@ -1092,29 +1154,42 @@ Public Class EvaluationConsultants
     End Sub
 
     Private Sub Btpdf_Click(sender As Object, e As EventArgs) Handles Btpdf.Click
-        If CheminRapportEvalTech.ToString = "" Then
-            FailMsg("Il n'existe aucun rapport d'évaluation technique")
-            Exit Sub
-        End If
-        Dim CheminDoss As String = line & "\DP\" & FormatFileName(CmbNumDoss.Text, "_") & "\Evaluation_Technique\" & CheminRapportEvalTech.ToString
-        If File.Exists(CheminDoss.ToString) Then
-            Process.Start(CheminDoss.ToString)
-        Else
-            FailMsg("Le rapport n'existe pas ou a été supprimer")
-        End If
+        Try
+
+            If CheminRapportEvalTech.ToString = "" Then
+                FailMsg("Il n'existe aucun rapport d'évaluation technique")
+                Exit Sub
+            End If
+            Dim CheminDoss As String = line & "\DP\" & FormatFileName(CmbNumDoss.Text, "_") & "\Evaluation_Technique\" & CheminRapportEvalTech.ToString
+            If File.Exists(CheminDoss.ToString) Then
+                If ExporterPDF(CheminDoss.ToString, "RapportEvalTechnique.pdf") = False Then
+                    Exit Sub
+                End If
+            Else
+                FailMsg("La version du rapport à exporter" & vbNewLine & "n'existe pas ou a été supprimé")
+            End If
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
     End Sub
 
     Private Sub BtWord_Click(sender As Object, e As EventArgs) Handles BtWord.Click
-        If CheminRapportEvalTech.ToString = "" Then
-            FailMsg("Il n'existe aucun rapport d'évaluation technique")
-            Exit Sub
-        End If
-        Dim CheminDoss As String = line & "\DP\" & FormatFileName(CmbNumDoss.Text, "_") & "\Evaluation_Technique\RapportEvaluationTechnique.doc"
-        If File.Exists(CheminDoss.ToString) Then
-            Process.Start(CheminDoss.ToString)
-        Else
-            FailMsg("Le rapport n'existe pas ou a été supprimer")
-        End If
+        Try
+            If CheminRapportEvalTech.ToString = "" Then
+                FailMsg("Il n'existe aucun rapport d'évaluation technique")
+                Exit Sub
+            End If
+            Dim CheminDoss As String = line & "\DP\" & FormatFileName(CmbNumDoss.Text, "_") & "\Evaluation_Technique\RapportEvaluationTechnique.doc"
+            If File.Exists(CheminDoss.ToString) Then
+                If ExporterWORD(CheminDoss.ToString, "Rapport_Evaluation_Technique.doc") = False Then
+                    Exit Sub
+                End If
+            Else
+                FailMsg("La version du rapport à exporter" & vbNewLine & "n'existe pas ou a été supprimé")
+            End If
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
     End Sub
 
     Private Sub EnregistreNometRangCons()
@@ -1281,7 +1356,7 @@ Public Class EvaluationConsultants
             CheminRapportEvalTech = NewCheminpdf.ToString
             FinChargement()
 
-            DebutChargement(True, "Chargement du rapport d'évaluation technique en cours...")
+            DebutChargement(True, "Chargement du rapport d'évaluation technique...")
             WebBrowser2.Navigate(NewCheminpdf2.ToString)
             Threading.Thread.Sleep(5000)
             FinChargement()
@@ -1301,12 +1376,14 @@ Public Class EvaluationConsultants
     Private Sub BtEvalautionFinanciere_Click(sender As Object, e As EventArgs) Handles BtEvalautionFinanciere.Click
         Try
             If TablBoutonClik(1) = False Then 'Bouton deja cliquer
+                'Verifier s'il y a des consultants retenu
+                Dim dtDoss As DataTable = ExcecuteSelectQuery("select * from T_SoumissionConsultant where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and EvalTechOk='OUI' ORDER BY RangConsult ASC")
+                If dtDoss.Rows.Count > 0 Then rwDossOffreFin = dtDoss.Rows(0)
 
-                DebutChargement()
-
-                'Cas des methodes ***************  3CV, SFQ, SQC 
+                'Cas des methodes *************** SFQ, SQC 
                 'Seul l'offres du premier est ouvert
-                If TxtMethode.Text.ToUpper = "3CV" Or TxtMethode.Text.ToUpper = "SFQ" Or TxtMethode.Text.ToUpper = "SQC" Then
+
+                If VerifiersMetohd(TxtMethode.Text) = False Then
                     GroupBoxOuvertureOffres.Visible = True 'afficher le groupBox des overtures
                     RemplirListeOuverture() 'Remplir la liste des ouverture effectué
 
@@ -1318,14 +1395,16 @@ Public Class EvaluationConsultants
                     End If
 
                     ' Cas des methodes *************** SFQC SCBD SMC
-                ElseIf TxtMethode.Text.ToUpper = "SFQC" Or TxtMethode.Text.ToUpper = "SCBD" Or TxtMethode.Text.ToUpper = "SMC" Then
-                    'dans le datarow *******  rwDossOffreFin
+                ElseIf VerifiersMetohd(TxtMethode.Text) = True Then
                     GroupBoxOuvertureOffres.Visible = False
                     If rwDossOffreFin("FinEvalFinanciere").ToString <> "" Then
                         RemplirBilanEvalConsult()
                     Else
                         RemplirOffreFinanciere()
                     End If
+                Else
+                    FailMsg("Impossible d'accéder à ce bouton" & vbNewLine & "Aucun traitement prévu pour la méthode [" & TxtMethode.Text & "]")
+                    Exit Sub
                 End If
 
                 PersonaliserTexte()
@@ -1377,7 +1456,7 @@ Public Class EvaluationConsultants
 
             MonnaieEvalOffre = MonnaieEvaluation.ToString
             ExceptRevue = DrX("RefSoumis").ToString
-            ReponseDialog = DrX("Consultant(cabinet)").ToString
+            ReponseDialog = DrX("Consultant").ToString
             Dim NewOffreFinanciere As New EvalOffreFinanciereFinal
             NewOffreFinanciere.NumDossDp = CmbNumDoss.Text
             NewOffreFinanciere.ShowDialog()
@@ -1403,7 +1482,7 @@ Public Class EvaluationConsultants
             End If
             NewCalculOffrs.NumDos = CmbNumDoss.Text
             NewCalculOffrs.MethodeMarches = TxtMethode.Text
-            NewCalculOffrs.TxtNomSoumis.Text = DrX("Consultant(cabinet)").ToString
+            NewCalculOffrs.TxtNomSoumis.Text = DrX("Consultant").ToString
             NewCalculOffrs.ShowDialog()
         End If
     End Sub
@@ -1424,12 +1503,12 @@ Public Class EvaluationConsultants
                 ContextMenuStrip2.Items(1).Enabled = False
                 ContextMenuStrip2.Items(2).Enabled = False
             ElseIf DrX("Statut de l'offre").ToString = "A calculer" And rwDossOffreFin("DateFinOuvertEvalFin").ToString <> "" Then 'Fin ouverture des offres terminer
-                ContextMenuStrip2.Items(0).Text = "Saisir Offre terminé"
+                ContextMenuStrip2.Items(0).Text = "Saisir Offre terminée"
                 ContextMenuStrip2.Items(0).Enabled = False
                 ContextMenuStrip2.Items(1).Enabled = True
                 ContextMenuStrip2.Items(2).Enabled = False
             ElseIf DrX("Statut de l'offre").ToString = "Calculé" Then
-                ContextMenuStrip2.Items(0).Text = "l'Ofrre de " & DrX("Consultant(cabinet)").ToString & " a été saisie et calculé"
+                ContextMenuStrip2.Items(0).Text = "L'ofrre de " & DrX("Consultant").ToString & " a été saisie et calculée"
                 ContextMenuStrip2.Items(0).Enabled = False
                 ContextMenuStrip2.Items(1).Enabled = False
                 ContextMenuStrip2.Items(2).Enabled = True
@@ -1437,59 +1516,36 @@ Public Class EvaluationConsultants
         End If
     End Sub
 
-    'rwDossOffreFin DateOuvertureEvalFin DateFinOuvertEvalFin
-
     Private Sub ContextMenuStrip2_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip2.Opening
         If (ViewSaisiOffreFinance.RowCount = 0 Or rwDossOffreFin("DateOuvertureEvalFin").ToString = "") Then
             e.Cancel = True
         End If
     End Sub
 
-    Private Function VerifiersMetohd() As Boolean
-
-        'Return false Cas des methodes SFQ, 3CV, SQC ******************
-        'Return true Cas des methodes  SFQC, SCBD, SMC ******************
-        If TxtMethode.Text.ToUpper = "3CV" Or TxtMethode.Text.ToUpper = "SFQ" Or TxtMethode.Text.ToUpper = "SQC" Then
-            Return False
-        ElseIf TxtMethode.Text.ToUpper = "SFQC" Or TxtMethode.Text.ToUpper = "SCBD" Or TxtMethode.Text.ToUpper = "SMC" Then
-            Return True
-        End If
-    End Function
-
     Private Sub RemplirBilanEvalConsult(Optional RefSoumis As String = "")
+        Dim dtBilanCons As DataTable = New DataTable()
         dtBilanCons.Columns.Clear()
         dtBilanCons.Columns.Add("Code", Type.GetType("System.String"))
         dtBilanCons.Columns.Add("CodeX", Type.GetType("System.String"))
-        dtBilanCons.Columns.Add("Consultant(cabinet)", Type.GetType("System.String"))
+        dtBilanCons.Columns.Add("Consultant", Type.GetType("System.String"))
         dtBilanCons.Columns.Add("Score Technique (T)", Type.GetType("System.String"))
         dtBilanCons.Columns.Add("Offre financière", Type.GetType("System.String"))
+        dtBilanCons.Columns.Add("Score Financier (F)", Type.GetType("System.String"))
 
-        'Colone a ajouter cas de SFQC
         Dim NewAddColum As String = ""
-        If TxtMethode.Text.ToUpper = "SFQC" Then
-            dtBilanCons.Columns.Add("Score Financier (F)", Type.GetType("System.String"))
-
-            'Les coefficients
-            Dim CoefTech As String = ""
-            Dim CoefFin As String = ""
-            query = "select PoidsTech,PoidsFin from T_DP where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and CodeProjet='" & ProjetEnCours & "'"
-            dt = ExcecuteSelectQuery(query)
-            For Each rw As DataRow In dt.Rows
-                CoefTech = rw("PoidsTech").ToString
-                CoefFin = rw("PoidsFin").ToString
-            Next
-
-            NewAddColum = "Score Pondéré (P=T x " & CoefTech & " & F x " & CoefFin & ")"
-            dtBilanCons.Columns.Add(NewAddColum, Type.GetType("System.String"))
-        End If
-
-        'Cas de SFQC, SCBD, SMC ******************
-        Dim MethodTraiter As Boolean = VerifiersMetohd()
-        If MethodTraiter = True Then
-            dtBilanCons.Columns.Add("Rang", Type.GetType("System.String"))
-            dtBilanCons.Columns.Add("Décision", Type.GetType("System.String"))
-        End If
-
+        'Les coefficients
+        Dim CoefTech As String = ""
+        Dim CoefFin As String = ""
+        query = "select PoidsTech,PoidsFin from T_DP where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and CodeProjet='" & ProjetEnCours & "'"
+        dt = ExcecuteSelectQuery(query)
+        For Each rw As DataRow In dt.Rows
+            CoefTech = rw("PoidsTech").ToString
+            CoefFin = rw("PoidsFin").ToString
+        Next
+        NewAddColum = "Score Pondéré (P=T x " & CoefTech & " & F x " & CoefFin & ")"
+        dtBilanCons.Columns.Add(NewAddColum, Type.GetType("System.String"))
+        dtBilanCons.Columns.Add("Rang", Type.GetType("System.String"))
+        dtBilanCons.Columns.Add("Décision", Type.GetType("System.String"))
         dtBilanCons.Rows.Clear()
 
         If RefSoumis.ToString = "" Then
@@ -1506,74 +1562,68 @@ Public Class EvaluationConsultants
 
             DrE("Code") = rw("RefSoumis").ToString
             DrE("CodeX") = IIf(CDec(cpt2 / 2) = CDec(cpt2 \ 2), "x", "")
-            DrE("Consultant(cabinet)") = MettreApost(rw("NomConsult").ToString)
+            DrE("Consultant") = MettreApost(rw("NomConsult").ToString)
             DrE("Score Technique (T)") = rw("NoteConsult").ToString.Replace(".", ",")
             DrE("Offre financière") = AfficherMonnaie(rw("MontantAjusterLocal").ToString) & " " & MonnaieEvaluation.ToString
-
-            ' ************ Cas de SFQC, SCBD, SMC ******************
-            If MethodTraiter = True Then
-                DrE("Rang") = rw("RangFinal").ToString & IIf(rw("RangFinal").ToString = "1", "er", "ème").ToString
-                DrE("Décision") = IIf(rw("EvalFinOk").ToString <> "", IIf(rw("EvalFinOk").ToString = "OUI", "ACCEPTE", "REFUSE").ToString, "-").ToString
-            End If
-
-            'Colone a ajouter cas de SFQC
-            If TxtMethode.Text.ToUpper = "SFQC" Then
-                DrE("Score Financier (F)") = rw("ScoreFinancier").ToString
-                DrE(NewAddColum) = rw("MoyPonderee").ToString
-            End If
-
+            DrE("Rang") = rw("RangFinal").ToString & IIf(rw("RangFinal").ToString = "1", "er", "ème").ToString
+            DrE("Décision") = IIf(rw("EvalFinOk").ToString <> "", IIf(rw("EvalFinOk").ToString = "OUI", "ACCEPTE", "REFUSE").ToString, "-").ToString
+            DrE("Score Financier (F)") = rw("ScoreFinancier").ToString
+            DrE(NewAddColum) = rw("MoyPonderee").ToString
             dtBilanCons.Rows.Add(DrE)
         Next
 
         GridBilanOffreFinancier.DataSource = dtBilanCons
         ViewBilanOffre.Columns("Code").Visible = False
         ViewBilanOffre.Columns("CodeX").Visible = False
-
-        ViewBilanOffre.OptionsView.ColumnAutoWidth = True
-
+        ViewBilanOffre.Columns("Décision").Width = 50
+        ViewBilanOffre.Columns("Rang").Width = 50
         ViewBilanOffre.Columns("Offre financière").Width = 150
         ViewBilanOffre.Columns("Score Technique (T)").Width = 100
+        ViewBilanOffre.Columns("Score Financier (F)").Width = 100
+        ViewBilanOffre.Columns(NewAddColum).Width = 100
+
+        ViewBilanOffre.OptionsView.ColumnAutoWidth = True
         ViewBilanOffre.Columns("Offre financière").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         ViewBilanOffre.Columns("Score Technique (T)").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         ViewBilanOffre.Columns("Offre financière").AppearanceCell.Font = New Font("Tahoma", 8, FontStyle.Bold)
 
-        ' ************ Cas de SFQC, SCBD, SMC ******************
-        If MethodTraiter = True Then
-            ViewBilanOffre.Columns("Rang").Width = 50
-            ViewBilanOffre.Columns("Décision").Width = 50
-            ViewBilanOffre.Columns("Rang").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-            ViewBilanOffre.Columns("Décision").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-            ViewBilanOffre.Columns("Rang").AppearanceCell.Font = New Font("Tahoma", 8, FontStyle.Bold)
-        End If
+        ViewBilanOffre.Columns("Rang").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        ViewBilanOffre.Columns("Décision").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        ViewBilanOffre.Columns("Rang").AppearanceCell.Font = New Font("Tahoma", 8, FontStyle.Bold)
 
-        'Colone a ajouter cas de SFQC
-        If TxtMethode.Text.ToUpper = "SFQC" Then
-            ViewBilanOffre.Columns("Score Financier (F)").Width = 100
-            ViewBilanOffre.Columns("Score Financier (F)").AppearanceCell.Font = New Font("Tahoma", 8, FontStyle.Bold)
-            ViewBilanOffre.Columns("Score Financier (F)").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-
-            ViewBilanOffre.Columns(NewAddColum).Width = 100
-            ViewBilanOffre.Columns(NewAddColum).AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        End If
-
+        ViewBilanOffre.Columns("Score Financier (F)").AppearanceCell.Font = New Font("Tahoma", 8, FontStyle.Bold)
+        ViewBilanOffre.Columns("Score Financier (F)").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        ViewBilanOffre.Columns(NewAddColum).AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         ColorRowGrid(ViewBilanOffre, "[CodeX]='x'", Color.LightGray, "Tahoma", 10, FontStyle.Regular, Color.Black)
+        ColorRowGridAnal(ViewBilanOffre, "[Décision]='REFUSE'", Color.White, "Tahoma", 10, FontStyle.Regular, Color.Red, False)
 
-        If MethodTraiter = True Then
-            ColorRowGridAnal(ViewBilanOffre, "[Décision]='REFUSE'", Color.White, "Tahoma", 10, FontStyle.Regular, Color.Red, False)
+        Dim MethodsTraites As Boolean = VerifiersMetohd(TxtMethode.Text)
+        'Cas de SFQC, SCBD, SMC ******************
+        If TxtMethode.Text.ToUpper = "SFQC" Then
+            ViewBilanOffre.Columns("Décision").Visible = True
+            ViewBilanOffre.Columns("Rang").Visible = True
+            ViewBilanOffre.Columns(6).Visible = True
+            ViewBilanOffre.Columns("Score Financier (F)").Visible = True
+        ElseIf MethodsTraites = True And TxtMethode.Text.ToUpper <> "SFQC" Then
+            ViewBilanOffre.Columns("Score Financier (F)").Visible = False
+            ViewBilanOffre.Columns(6).Visible = False
+        ElseIf MethodsTraites = False Then
+            'Cas de SFQ, SQC ******************
+            ViewBilanOffre.Columns("Score Financier (F)").Visible = False
+            ViewBilanOffre.Columns(6).Visible = False
+            ViewBilanOffre.Columns("Rang").Visible = False
+            ViewBilanOffre.Columns("Décision").Visible = False
         End If
 
         If ViewBilanOffre.RowCount > 0 Then
             BtOuvertureOffre.Text = "Etat PV d'ouverture" & vbNewLine & "des offres financières"
             'Active le bouton du rapport combinet et negociation
             BtRapportCombinet.Enabled = True
-            BtNegociation.Enabled = True
-
-            'Personnalisation du text du bouton Type examen
             'Cas de SFQC
             If TxtMethode.Text.ToUpper = "SFQC" Then
-                TxtTypeExamen.Text = "SCORES PONDERES DES EVALUATIONS TECHNIQUE ET FINANCIERE"
+                TxtTypeExamen.Text = "SCORES PONDERES DES EVALUATIONS TECHNIQUES ET FINANCIERES"
             Else
-                TxtTypeExamen.Text = "RESULTATS DES EVALUATIONS TECHNIQUE ET FINANCIERE"
+                TxtTypeExamen.Text = "RESULTATS DES EVALUATIONS TECHNIQUES ET FINANCIERES"
             End If
         End If
 
@@ -1585,27 +1635,25 @@ Public Class EvaluationConsultants
     End Sub
 
     Public Sub RemplirOffreFinanciere(Optional RefSoumis As String = "")
+        Dim dtFinance As DataTable = New DataTable()
         dtFinance.Columns.Clear()
         dtFinance.Columns.Add("RefSoumis", Type.GetType("System.String"))
         dtFinance.Columns.Add("CodeX", Type.GetType("System.String"))
-        dtFinance.Columns.Add("Consultant(cabinet)", Type.GetType("System.String"))
+        dtFinance.Columns.Add("Consultant", Type.GetType("System.String"))
         dtFinance.Columns.Add("Offre financière", Type.GetType("System.String"))
         dtFinance.Columns.Add("Statut de l'offre", Type.GetType("System.String"))
-
-        'Colone a ajouter Cas de SFQC
-        If TxtMethode.Text.ToUpper = "SFQC" Then dtFinance.Columns.Add("Score financier", Type.GetType("System.String"))
+        dtFinance.Columns.Add("Score financier", Type.GetType("System.String"))
+        dtFinance.Rows.Clear()
 
         ''Requette a executer Cas de SFQC, SCBD, SMC ******************
         If RefSoumis.ToString = "" Then
             query = "select S.RefSoumis, C.NomConsult, S.MontantProposeDevise, S.MontantOffresLocal, S.MontantAjusterDevise, S.MontantAjusterLocal, S.ScoreFinancier, S.TauxJournalierLocal, S.Monnaie, S.NbreJrsTravail from T_Consultant as C,T_SoumissionConsultant as S where S.RefConsult=C.RefConsult and C.NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and S.EvalTechOk='OUI' order by C.NomConsult"
         Else
-            ''Requette a executer Cas de SFQ * 3CV * SQC ******************
+            ''Requette a executer Cas de SFQ * -- * SQC ******************
             query = "select S.RefSoumis, C.NomConsult, S.MontantProposeDevise, S.MontantOffresLocal, S.MontantAjusterDevise, S.MontantAjusterLocal, S.ScoreFinancier, S.TauxJournalierLocal, S.Monnaie, S.NbreJrsTravail from T_Consultant as C,T_SoumissionConsultant as S where S.RefConsult=C.RefConsult and C.NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and S.EvalTechOk='OUI' and S.RefSoumis='" & RefSoumis & "'"
         End If
 
         Dim dt As DataTable = ExcecuteSelectQuery(query)
-
-        dtFinance.Rows.Clear()
         Dim cpt2 As Decimal = 0
 
         For Each rw As DataRow In dt.Rows
@@ -1614,7 +1662,7 @@ Public Class EvaluationConsultants
             DrE("CodeX") = IIf(CDec(cpt2 / 2) = CDec(cpt2 \ 2), "x", "")
             DrE("RefSoumis") = rw("RefSoumis").ToString
             DrE("Statut de l'offre") = IIf(rw("MontantOffresLocal").ToString = "", "...", IIf(rw("MontantAjusterLocal").ToString <> "", "Calculé", "A calculer").ToString).ToString
-            DrE("Consultant(cabinet)") = MettreApost(rw("NomConsult").ToString)
+            DrE("Consultant") = MettreApost(rw("NomConsult").ToString)
 
             If rw("MontantOffresLocal").ToString <> "" Then
                 If rw("MontantAjusterLocal").ToString <> "" Then
@@ -1626,28 +1674,25 @@ Public Class EvaluationConsultants
                 DrE("Offre financière") = "0"
             End If
 
-            'Cas de SFQC
-            If TxtMethode.Text.ToUpper = "SFQC" Then DrE("Score financier") = IIf(rw("ScoreFinancier").ToString <> "", rw("ScoreFinancier").ToString, "-").ToString
+            DrE("Score financier") = IIf(rw("ScoreFinancier").ToString <> "", rw("ScoreFinancier").ToString, "-").ToString
             dtFinance.Rows.Add(DrE)
         Next
         GridSaisieOffreFinance.DataSource = dtFinance
 
         ViewSaisiOffreFinance.Columns("RefSoumis").Visible = False
         ViewSaisiOffreFinance.Columns("CodeX").Visible = False
-        ViewSaisiOffreFinance.Columns("Consultant(cabinet)").Width = GridSaisieOffreFinance.Width - 368
+        ViewSaisiOffreFinance.Columns("Consultant").Width = GridSaisieOffreFinance.Width - 368
         ViewSaisiOffreFinance.Columns("Offre financière").Width = 230
         ViewSaisiOffreFinance.Columns("Statut de l'offre").Width = 100
+        ViewSaisiOffreFinance.Columns("Score financier").Width = 150
         ViewSaisiOffreFinance.Columns("Offre financière").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         ViewSaisiOffreFinance.Columns("Statut de l'offre").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        ViewSaisiOffreFinance.Columns("Score financier").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
 
         'A mettre en forme Cas de SFQC
-        If TxtMethode.Text.ToUpper = "SFQC" Then
-            ViewSaisiOffreFinance.Columns("Score financier").Width = 150
-            ViewSaisiOffreFinance.Columns("Score financier").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        End If
+        ViewSaisiOffreFinance.Columns("Score financier").Visible = IIf(TxtMethode.Text.ToUpper <> "SFQC", False, True).ToString
 
         ColorRowGrid(ViewSaisiOffreFinance, "[CodeX]='x'", Color.LightGray, "Tahoma", 10, FontStyle.Regular, Color.Black)
-
         GridBilanOffreFinancier.Visible = False
         GridSaisieOffreFinance.Visible = True
         TxtTypeExamen.Text = "EVALUATION FINANCIERE (SAISIE DES OFFRES)"
@@ -1657,7 +1702,7 @@ Public Class EvaluationConsultants
         Try
             DebutChargement(True, "Chargement des offres en cours...")
             If GroupBoxOuvertureOffres.Visible = True Then
-                'Requette a executer Cas de SFQ * 3CV * SQC ******************
+                'Requette a executer Cas de SFQ * -- * SQC ******************
                 RemplirOffreFinanciere(rwDossOffreFin("RefSoumis"))
             Else
                 'Requette a executer Cas de SFQC, SCBD, SMC ******************
@@ -1676,7 +1721,7 @@ Public Class EvaluationConsultants
         Try
             DebutChargement(True, "Chargement des resultats de l'evaluation financière...")
             If GroupBoxOuvertureOffres.Visible = True Then
-                'Requette a executer Cas de SFQ * 3CV * SQC ******************
+                'Requette a executer Cas de SFQ * --- * SQC ******************
                 Dim RefSoumis As String = ""
                 If CmbNumOuvertureOffre.SelectedIndex <> -1 Then
                     RefSoumis = CInt(CmbNumOuvertureOffre.Text.Split("_")(0))
@@ -1700,7 +1745,7 @@ Public Class EvaluationConsultants
         Try
             If GroupBoxOuvertureOffres.Visible = True Then
                 If CmbNumOuvertureOffre.SelectedIndex <> -1 Then
-                    ''Requette a executer Cas de SFQ * 3CV * SQC ******************
+                    ''Requette a executer Cas de SFQ * --- * SQC ******************
                     DebutChargement()
                     rwDossOffreFin = ExcecuteSelectQuery("select * from t_soumissionconsultant where RefSoumis='" & CInt(CmbNumOuvertureOffre.Text.Split("_")(0)) & "' and NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "'").Rows(0)
                     RemplirOffreFinanciere(rwDossOffreFin("RefSoumis"))
@@ -1718,14 +1763,54 @@ Public Class EvaluationConsultants
     Private Sub NouvelOuvertureOffres_Click(sender As Object, e As EventArgs) Handles NouvelOuvertureOffres.Click
         Try
             If GroupBoxOuvertureOffres.Visible = True Then
-                Dim dt As DataTable = ExcecuteSelectQuery("select * from T_SoumissionConsultant where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and EvalTechOk='OUI' and DateOuvertureEvalFin IS NULL ORDER BY RangConsult ASC LIMIT 1")
+                Dim dt As DataTable = ExcecuteSelectQuery("select S.*, C.NomConsult from T_SoumissionConsultant as S, t_consultant as C where S.RefConsult=C.RefConsult and S.NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and S.EvalTechOk='OUI' and S.RangConsult IS NOT NULL ORDER BY S.RangConsult ASC")
                 If dt.Rows.Count > 0 Then
+                    Dim NbrsDisqualifier As Integer = 0
+                    Dim Cpte As Integer = 0
+                    For Each rw In dt.Rows
+                        'Verifier si l'ouverture de l'offre est dejà effectué
+                        If IsDBNull(rw("DateOuvertureEvalFin")) Then
+                            rwDossOffreFin = dt.Rows(Cpte)
+                            Exit For
+                        End If
+                        Cpte += 1
+
+                        'Verifier si l'ouverture est termié et l'on a valider l'evaluation financière
+                        If IsDBNull(rw("DateFinOuvertEvalFin")) Or IsDBNull(rw("FinEvalFinanciere")) Then 'Une evaluation est en cours
+                            SuccesMsg("Veuillez terminer l'évaluation en cours")
+                            Exit Sub
+                        End If
+
+                        'Verifier si le soumissionnaire est disqualifier
+                        If IsDBNull(rw("MotifDisqualification")) Then
+                            ReponseDialog = ""
+                            Dim NewMotifDias As New MotifDisqualification
+                            NewMotifDias.TxtNomConslt.Text = MettreApost(rw("NomConsult").ToString)
+                            NewMotifDias.ShowDialog()
+                            If ReponseDialog.ToString = "" Then
+                                Exit Sub
+                            End If
+
+                            ExecuteNonQuery("update t_soumissionconsultant set ConsultDisqualifie='OUI', MotifDisqualification='" & EnleverApost(ReponseDialog.ToString) & "' where RefSoumis='" & rw("RefSoumis") & "' and NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "'")
+                            SuccesMsg("Disqualification effectuée avec succès")
+                            NbrsDisqualifier += 1
+                        Else
+                            'Consultant disqualifier
+                            NbrsDisqualifier += 1
+                        End If
+                    Next
+
+                    'Tous les consultant de la liste restriente ont été disqualifier
+                    If NbrsDisqualifier = dt.Rows.Count Then
+                        FailMsg("Tous les consultants retenus après l'évaluation" & vbNewLine & "technique pour ce dossier sont disqualifiés")
+                        Exit Sub
+                    End If
+
                     CmbNumOuvertureOffre.Text = ""
-                    rwDossOffreFin = dt.Rows(0)
                     RemplirOffreFinanciere(rwDossOffreFin("RefSoumis"))
                     PersonaliserTexte()
                 Else
-                    FailMsg("Impossible de faire une nouvel ouverture sur cette demande de proposition")
+                    FailMsg("Impossible de faire une ouverture car" & vbNewLine & "aucun consultant n'est retenu sur cette DP")
                 End If
             End If
         Catch ex As Exception
@@ -1737,7 +1822,7 @@ Public Class EvaluationConsultants
 
     Private Sub BtValiderEvalOffresFin_Click(sender As Object, e As EventArgs) Handles BtValiderEvalOffresFin.Click
         Try
-            ''Requette a executer Cas de SFQ * 3CV * SQC ******************
+            ''Requette a executer Cas de SFQ * --- * SQC ******************
             Dim RefSoumi As String = ""
             If GroupBoxOuvertureOffres.Visible = True Then
                 If CmbNumOuvertureOffre.SelectedIndex <> -1 Then
@@ -1763,12 +1848,17 @@ Public Class EvaluationConsultants
                     If CalculerScoreFinancier(RefSoumi) = True Then
                         ExecuteNonQuery("Update t_soumissionconsultant set FinEvalFinanciere='" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "' where  RefSoumis='" & RefSoumi & "'")
                         RemplirBilanEvalConsult(RefSoumi)
+
+                        Dim NomConsulat As String = ExecuteScallar("select C.NomConsult from T_SoumissionConsultant as S, t_consultant as C where S.RefConsult=C.RefConsult and S.NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and S.EvalTechOk='OUI' AND S.RefSoumis='" & RefSoumi & "'")
+                        'Ajout dans la liste de selection des generation des rapport combines
+                        CombRapport.Properties.Items.Add(GetNewCode(RefSoumi) & " | " & EnleverApost(NomConsulat.ToString))
                     End If
                 ElseIf CalculerScoreFinancier() = True Then
                     ExecuteNonQuery("Update t_soumissionconsultant set FinEvalFinanciere='" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "' where  NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' AND EvalTechOk='OUI'")
                     RemplirBilanEvalConsult()
                 End If
                 rwDossOffreFin("FinEvalFinanciere") = dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString
+                BtRapportCombinet.Enabled = True
                 EtapeFinanciere.ImageIndex = 0
                 EtapeFinanciere.ForeColor = Color.Black
                 FinChargement()
@@ -1780,14 +1870,14 @@ Public Class EvaluationConsultants
     End Sub
 
     Private Sub BtOuvertureOffre_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtOuvertureOffre.Click
-        If ViewSaisiOffreFinance.RowCount > 0 Then
+        If ViewSaisiOffreFinance.RowCount > 0 Or ViewBilanOffre.RowCount > 0 Then
             Try
                 'Update Ouverture des offres financières
                 If Mid(BtOuvertureOffre.Text, 1, 3) = "Dém" Then
                     If rwDossOffreFin("DateOuvertureEvalFin").ToString = "" Then
                         Dim DateOuverture As String = dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString
 
-                        If GroupBoxOuvertureOffres.Visible = True Then 'Cas des methodes SFQ * 3CV * SQC ******************
+                        If GroupBoxOuvertureOffres.Visible = True Then 'Cas des methodes SFQ * --- * SQC ******************
                             Dim RefOuvr As String = DateOuverture.ToString.Replace("-", "").Replace(" ", "").Replace(":", "")
                             RefOuvr = GetNewCode(rwDossOffreFin("RefSoumis")) & "_" & RefOuvr.ToString
 
@@ -1803,8 +1893,8 @@ Public Class EvaluationConsultants
                     BtOuvertureOffre.Text = "Fin ouverture" & vbNewLine & "des offres financières"
                 ElseIf Mid(BtOuvertureOffre.Text, 1, 3) = "Fin" Then
 
-                    'Cas des methodes SFQ * 3CV * SQC ******************  
-                    If GroupBoxOuvertureOffres.Visible = True Then 'Cas des methodes SFQ * 3CV * SQC ******************  
+                    'Cas des methodes SFQ * --- * SQC ******************  
+                    If GroupBoxOuvertureOffres.Visible = True Then 'Cas des methodes SFQ * --- * SQC ******************  
                         query = "SELECT COUNT(*) FROM t_soumissionconsultant WHERE RefSoumis='" & rwDossOffreFin("RefSoumis") & "' and NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and EvalTechOk='OUI' AND MontantOffresLocal IS NULL"
                     Else
                         query = "SELECT COUNT(*) FROM t_soumissionconsultant WHERE NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and EvalTechOk='OUI' AND MontantOffresLocal IS NULL"
@@ -1815,10 +1905,10 @@ Public Class EvaluationConsultants
                         Exit Sub
                     End If
 
-                    If ConfirmMsg("Confirmez-vous la clôture de l'ouverture des offres financières ?") = DialogResult.Yes Then
+                    If ConfirmMsg("Confirmez-vous la clôture de l'ouverture" & vbNewLine & "des offres financières ?") = DialogResult.Yes Then
 
-                        'Cas des methodes SFQ * 3CV * SQC ****************** 
-                        If GroupBoxOuvertureOffres.Visible = True Then 'Cas des methodes SFQ * 3CV * SQC ******************  
+                        'Cas des methodes SFQ * --- * SQC ****************** 
+                        If GroupBoxOuvertureOffres.Visible = True Then 'Cas des methodes SFQ * -- * SQC ******************  
                             ExecuteNonQuery("Update t_soumissionconsultant set DateFinOuvertEvalFin='" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "' where RefSoumis='" & rwDossOffreFin("RefSoumis") & "' and NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "'")
                         Else
                             ExecuteNonQuery("Update t_soumissionconsultant set DateFinOuvertEvalFin='" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "' where  NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' AND EvalTechOk='OUI'")
@@ -1843,14 +1933,13 @@ Public Class EvaluationConsultants
 
                         Dim DatSet = New DataSet
 
-                        Dim Chemin As String = ""
-                        'Cas des methodes SFQ * 3CV * SQC ****************** 
-                        If GroupBoxOuvertureOffres.Visible = True Then 'Cas des methodes SFQ * 3CV * SQC ******************  
-                            Chemin = lineEtat & "\Marches\DP\PV Ouverture Offres financieres\PvOuverture_OffresFinanciere_3CV_SFQ_SQC.rpt"
+                        Dim Chemin As String = lineEtat & "\\Marches\DP\PV Ouverture Offres financieres\"
+                        'Cas des methodes SFQ * -- * SQC ****************** 
+                        If GroupBoxOuvertureOffres.Visible = True Then
+                            RapportPVOffres.Load(Chemin & "PvOuverture_OffresFinanciere_3CV_SFQ_SQC.rpt")
                         Else
-                            Chemin = lineEtat & "\Marches\DP\PV Ouverture Offres financieres\PvOuverture_OffresFinanciere_SFQC_SCBD_SMC.rpt"
+                            RapportPVOffres.Load(Chemin & "PvOuverture_OffresFinanciere_SFQC_SCBD_SMC.rpt")
                         End If
-                        RapportPVOffres.Load(Chemin)
 
                         With crConnectionInfo
                             .ServerName = ODBCNAME
@@ -1873,8 +1962,8 @@ Public Class EvaluationConsultants
                         Dim DateFinOuverture As String = ""
                         Dim NbConsultRetenu As Integer = 0
 
-                        'Cas des methodes SFQ * 3CV * SQC ******************  
-                        If GroupBoxOuvertureOffres.Visible = True Then 'Cas des methodes SFQ * 3CV * SQC ******************  
+                        'Cas des methodes SFQ * --- * SQC ******************  
+                        If GroupBoxOuvertureOffres.Visible = True Then
                             If CmbNumOuvertureOffre.SelectedIndex <> -1 Then
                                 RefSoumis = CInt(CmbNumOuvertureOffre.Text.Split("_")(0))
                             Else
@@ -1934,25 +2023,25 @@ Public Class EvaluationConsultants
             '    Return False
             'End If
 
-            'Recup des infos
-            Dim LesScore(20) As String
-            Dim LesRef(20) As String
-            Dim LesMont(20) As Decimal
-            Dim LesNote(20) As Decimal
-            Dim LesMoyPond(20) As Decimal
-            Dim Tamp As String = ""
-            Dim TampDec As Decimal = 0
-
-            ' Cas des methodes SFQC, SCBD, SMC ******************
+            'Cas des methodes SFQC, SCBD, SMC ******************
             If RefSoumis.ToString = "" Then
 
                 'Cas de la methode SFQC ********** Classement **************************
                 If TxtMethode.Text.ToUpper = "SFQC" Then
+
+                    'Recup des infos
+                    Dim LesScore(20) As String
+                    Dim LesRef(20) As String
+                    Dim LesMont(20) As Decimal
+                    Dim LesNote(20) As Decimal
+                    Dim LesMoyPond(20) As Decimal
+                    Dim Tamp As String = ""
+                    Dim TampDec As Decimal = 0
+
                     query = "select RefSoumis, MontantAjusterLocal, NoteConsult from T_SoumissionConsultant where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and EvalTechOk='OUI'"
                     dt = ExcecuteSelectQuery(query)
 
                     Dim NbRef As Decimal = 0
-
                     For Each rw As DataRow In dt.Rows
                         LesRef(NbRef) = rw("RefSoumis").ToString
                         LesMont(NbRef) = CDec(rw("MontantAjusterLocal"))
@@ -2014,8 +2103,7 @@ Public Class EvaluationConsultants
                     Next
 
                     'Cas de la methode ***  SMC ******************** Classements *****************
-                    'Note minimal rspecter *********** les consultants sont classe selon leurs montantS
-                    'du Min au Maxi des montants
+                    'Classé du Min au Maxi des montants
                 ElseIf TxtMethode.Text.ToUpper = "SMC" Then
                     query = "select RefSoumis, MontantAjusterLocal from T_SoumissionConsultant where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and EvalTechOk='OUI' ORDER BY MontantAjusterLocal ASC"
                     dt = ExcecuteSelectQuery(query)
@@ -2026,20 +2114,52 @@ Public Class EvaluationConsultants
                     Next
 
                     'Cas de la methode SCBD *********** 
+                    'Seul ceux qui entre dans le budgé sont retenu
                 ElseIf TxtMethode.Text.ToUpper = "SCBD" Then
+                    Dim dt As DataTable = ExcecuteSelectQuery("Select RefSoumis, MontantAjusterLocal, RangConsult from T_SoumissionConsultant where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and EvalTechOk='OUI' ORDER BY RangConsult ASC")
+                    Dim MontantMarche As Decimal = CDec(ExecuteScallar("select MontantMarche from t_dp where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and CodeProjet='" & ProjetEnCours & "'"))
+                    Dim ListFinal(20, 1) As String
+                    Dim ListNonRetenu(20, 1) As String
+                    Dim NbrLigne As Integer = 0
+                    Dim Nbrs As Integer = 0
+
                     For Each rw In dt.Rows
-                        'EvalFinOk ='OUI'
-                        'TampDec += 1
-                        ' ExecuteNonQuery("Update T_SoumissionConsultant set RangFinal='" & TampDec.ToString & "' where RefSoumis='" & rw("RefSoumis").ToString & "'")
+                        If CDec(rw("MontantAjusterLocal")) <= MontantMarche Then
+                            'Consultant retenu
+                            ListFinal(NbrLigne, 0) = rw("RefSoumis")
+                            ListFinal(NbrLigne, 1) = "OUI"
+                            NbrLigne += 1
+                        Else
+                            'Consultant non retenu
+                            ListNonRetenu(Nbrs, 0) = rw("RefSoumis")
+                            ListNonRetenu(Nbrs, 1) = "NON"
+                            Nbrs += 1
+                        End If
+                    Next
+
+                    If Nbrs > 0 Then
+                        For i = 0 To Nbrs - 1
+                            'Ramener les consultants non retenu dans la liste fianle
+                            ListFinal(NbrLigne, 0) = ListNonRetenu(i, 0)
+                            ListFinal(NbrLigne, 1) = ListNonRetenu(i, 1)
+                            NbrLigne += 1
+                        Next
+                    End If
+
+                    'MJRS
+                    Dim RangCon As Decimal = 0
+                    For j = 0 To NbrLigne - 1
+                        RangCon += 1
+                        ExecuteNonQuery("Update T_SoumissionConsultant set RangFinal='" & RangCon.ToString & "', EvalFinOk='" & ListFinal(j, 1).ToString & "' where RefSoumis='" & ListFinal(j, 0) & "'")
                     Next
                 End If
 
-                'Cas des methodes 3CV, SQC, SFQ  '*****************************************************************************
+                'Cas des methodes ---, SQC, SFQ  '*****************************************************************************
                 'Validation et classement evaluation financières 
                 'Seul l'offre fiancières du premier consultant après l'évaluation technique est ouvert.
             Else
-                Dim RangConsult As String = ExecuteScallar("SELECT RangConsult from t_soumissionconsultant where RefSoumis='" & RefSoumis & "' and EvalTechOk='OUI'")
-                ExecuteNonQuery("UPDATE t_soumissionconsultant set RangFinal='" & RangConsult & "', EvalFinOk='OUI' where RefSoumis='" & RefSoumis & "'")
+                ' Dim RangConsult As String = ExecuteScallar("SELECT RangConsult from t_soumissionconsultant where RefSoumis='" & RefSoumis & "' and EvalTechOk='OUI'")
+                ExecuteNonQuery("UPDATE t_soumissionconsultant set RangFinal=RangConsult, EvalFinOk='OUI' where RefSoumis='" & RefSoumis & "'")
             End If
             Return True
         Catch ex As Exception
@@ -2050,121 +2170,257 @@ Public Class EvaluationConsultants
 #End Region
 
 #Region "Rapport combine"
-    Private Sub BtRapportCombinet_Click(sender As Object, e As EventArgs) Handles BtRapportCombinet.Click
+
+    Private Sub EnebledBoutonRapCombine()
+        If rwDossRapCombine("EtatRapportCombine").ToString = "Valider" Then
+            modifierrc.Enabled = False
+            Actualiserrc.Enabled = False
+            Envoibailleurrc.Enabled = False
+            Validerrc.Enabled = False
+            Rejeterrc.Enabled = False
+            DateSoumiRC.Enabled = False
+            DateReponRC.Enabled = False
+            pdfrc.Enabled = True
+            Wordrc.Enabled = True
+        Else
+            modifierrc.Enabled = True
+            Actualiserrc.Enabled = True
+            Envoibailleurrc.Enabled = True
+            Validerrc.Enabled = True
+            Rejeterrc.Enabled = True
+            DateSoumiRC.Enabled = True
+            DateReponRC.Enabled = True
+            pdfrc.Enabled = True
+            Wordrc.Enabled = True
+        End If
+    End Sub
+
+    'Private Sub RemplirNumRapCombine()
+    '    ' CombRapport.Text = ""
+    '    'CombRapport.Properties.Items.Clear()
+    '    'Dim dt As DataTable = ExcecuteSelectQuery("select NumRapportCombine from t_soumissionconsultant where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' AND EvalTechOk='OUI' and NumRapportCombine IS NOT NULL")
+    '    'For Each rw In dt.Rows
+    '    '    CombRapport.Properties.Items.Add(rw("NumRapportCombine").ToString)
+    '    'Next
+    'End Sub
+
+    Private Sub RemplirListeRapport()
         Try
-            If TablBoutonClik(1) = False Then
+            Dim dtDoss As DataTable = ExcecuteSelectQuery("select S.RefSoumis, C.NomConsult from T_SoumissionConsultant as S, t_consultant as C where S.RefConsult=C.RefConsult and S.NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and S.EvalTechOk='OUI' AND S.FinEvalFinanciere IS NOT NULL and S.RangFinal IS NOT NULL ORDER BY S.RangConsult ASC")
+            CombRapport.Text = ""
+            CombRapport.Properties.Items.Clear()
+            For Each rw In dtDoss.Rows
+                CombRapport.Properties.Items.Add(GetNewCode(rw("RefSoumis")) & " | " & EnleverApost(rw("NomConsult").ToString))
+            Next
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
 
-                DebutChargement(True, "Chargement du rapport combine en cours...")
+    Private Sub BtRapportCombinet_Click(sender As Object, e As EventArgs) Handles BtRapportCombinet.Click
 
-                '***** Info du rapport d'evaluation technique *********************
-                ExecuteNonQuery("delete from t_tamp_consultrangtech")
-                ExecuteNonQuery("delete from t_noteconsultparcritere")
-                'Enregistrement des noms et des rangs
-                EnregistreNometRangCons()
-                'Enregistrement des notes et des moyennes
-                Dim NbrConsult As Decimal = EnregistreMoyenneetNote()
+        Try
+            If TablBoutonClik(2) = False Then 'Verifier si le bouton à été cliquer
 
-                '****   rapport combine
-                ExecuteNonQuery("delete from t_noteevalparcritereperscle")
-                ExecuteNonQuery("delete from t_noteevalparconsult")
-                ExecuteNonQuery("delete from t_tampevalnom")
+                If VerifiersMetohd(TxtMethode.Text) = True Then
 
-                'Afficharge de l'etat
-                Dim NumDoss As String = EnleverApost(CmbNumDoss.Text)
-                Dim TotalPtsCriterePersCle As Decimal = 0
-                ' ***** Noms des membres de la commission
-                Dim NomCojo As DataTable = EnregistrerNomCojo(NumDoss)
-                Dim TableEval As DataTable = ExcecuteSelectQuery("SELECT RefSoumis, CodeMem, RefCritere, NoteConsult from t_soumi_note_consultant_parcriteresdp where NumeroDp='" & NumDoss & "' and CodeProjet='" & ProjetEnCours & "'")
-                Dim TableSoumi As DataTable = ExcecuteSelectQuery("SELECT RefSoumis, RangConsult, RangFinal from t_soumissionconsultant where NumeroDp='" & NumDoss & "' and EvalTechOk='OUI' and RangFinal IS NOT NULL")
-                ' ******* t_noteevalparconsult *************  t_noteevalparcritereperscle ************
-                ' Enregistrement des differentes notes
+                    Dim dtDoss As DataTable = ExcecuteSelectQuery("select * from T_SoumissionConsultant where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and EvalTechOk='OUI' and FinEvalFinanciere IS NOT NULL AND RangFinal IS NOT NULL ORDER BY RangConsult ASC")
+                    If dtDoss.Rows.Count > 0 Then rwDossRapCombine = dtDoss.Rows(0)
 
-                Dim dt0 As DataTable = ExcecuteSelectQuery("select RefCritere, CriterePersonnelCle,PointCritere from T_DP_CritereEval where NumeroDp='" & NumDoss & "' and CritereParent='0' and CodeProjet='" & ProjetEnCours & "'")
-                ' 1eme niveau ********************************
-                For Each rw As DataRow In dt0.Rows
-                    SaveDifferenteNoteEval(TableSoumi, NomCojo, rw("RefCritere"), TableEval)
-                    If rw("CriterePersonnelCle").ToString = "OUI" Then SaveDifferenteNoteEval1(TableSoumi, NomCojo, rw("RefCritere"), TableEval)
-                    If rw("CriterePersonnelCle").ToString = "OUI" Then TotalPtsCriterePersCle += CDbl(rw("PointCritere").ToString.Replace(".", ",").Replace(" ", ""))
+                    DateSoumiRC.Text = rwDossRapCombine("DateEnvoiRapComb").ToString
+                    DateReponRC.Text = rwDossRapCombine("DateRepoRapComb").ToString
+                    DateSoumiRC.Enabled = True
+                    DateReponRC.Enabled = True
 
-                    ' 2eme niveau ********************************
-                    Dim dt1 As DataTable = ExcecuteSelectQuery("Select RefCritere from T_DP_CritereEval where NumeroDp='" & NumDoss & "' and CritereParent='" & rw("RefCritere").ToString & "' and TypeCritere<>'Bareme' And CodeProjet='" & ProjetEnCours & "'")
-                    For Each rw1 As DataRow In dt1.Rows
-                        SaveDifferenteNoteEval(TableSoumi, NomCojo, rw1("RefCritere"), TableEval)
-                        If rw("CriterePersonnelCle").ToString = "OUI" Then SaveDifferenteNoteEval1(TableSoumi, NomCojo, rw1("RefCritere"), TableEval)
+                    Dim CheminDoss As String = line & "\DP\" & FormatFileName(CmbNumDoss.Text, "_") & "\Rapport_Combine\"
 
-                        ' 3eme niveau **************************************
-                        Dim dt2 As DataTable = ExcecuteSelectQuery("Select RefCritere from T_DP_CritereEval where NumeroDp='" & NumDoss & "' and CritereParent='" & rw1("RefCritere").ToString & "' and TypeCritere<>'Bareme' And CodeProjet='" & ProjetEnCours & "'")
-                        For Each rw2 As DataRow In dt2.Rows
-                            SaveDifferenteNoteEval(TableSoumi, NomCojo, rw2("RefCritere"), TableEval)
-                            If rw("CriterePersonnelCle").ToString = "OUI" Then SaveDifferenteNoteEval1(TableSoumi, NomCojo, rw2("RefCritere"), TableEval)
-                        Next
-                    Next
-                Next
+                    If rwDossRapCombine("CheminRapportCombine").ToString = "" Then
+                        'Gereartion du rapport *** on arrete en cas d'eurreur
+                        If GenererLoadRapCombinet() = False Then Exit Sub
+                    ElseIf Not File.Exists(CheminDoss & rwDossRapCombine("CheminRapportCombine").ToString) Then
+                        If ConfirmMsg("Le rapport n'existe pas ou a été supprimer" & vbNewLine & "Voulez-vous le généré à nouveau ?") = DialogResult.Yes Then
+                            If GenererLoadRapCombinet() = False Then Exit Sub
+                        End If
+                    ElseIf (File.Exists(CheminDoss & rwDossRapCombine("CheminRapportCombine").ToString)) Then
+                        DebutChargement(True, "Chargement du rapport combiné en cours...")
+                        WebBrowser1.Navigate(CheminDoss & rwDossRapCombine("CheminRapportCombine").ToString)
+                        Threading.Thread.Sleep(5000)
+                        FinChargement()
+                    End If
 
-                Dim RapportsCombine As New ReportDocument
-                Dim crtableLogoninfos As New TableLogOnInfos
-                Dim crtableLogoninfo As New TableLogOnInfo
-                Dim crConnectionInfo As New ConnectionInfo
-                Dim CrTables As Tables
-                Dim CrTable As Table
+                    GroupBoxRapportCombine.Visible = False
+                    PanelControl11.Size = New Point(974, 68)
+                    EnebledBoutonRapCombine() 'Activer ou desactiver les boutons
 
-                Dim DatSet = New DataSet
+                Else 'cas de SQC ET SFQ
+                    PanelControl11.Size = New Point(974, 118)
+                    GroupBoxRapportCombine.Visible = True
+                    RemplirListeRapport()
+                    DateSoumiRC.Enabled = False
+                    DateReponRC.Enabled = False
+                End If
 
-                RapportsCombine.Load(lineEtat & "\Marches\DP\Rapport Evaluation Consultant\RapportConsolide.rpt")
-                ' RapportsCombine.Load(lineEtat & "\Marches\DP\Rapport Evaluation Consultant\RapportCombine.rpt")
-
-                With crConnectionInfo
-                    .ServerName = ODBCNAME
-                    .DatabaseName = DB
-                    .UserID = USERNAME
-                    .Password = PWD
-                End With
-
-                CrTables = RapportsCombine.Database.Tables
-                For Each CrTable In CrTables
-                    crtableLogoninfo = CrTable.LogOnInfo
-                    crtableLogoninfo.ConnectionInfo = crConnectionInfo
-                    CrTable.ApplyLogOnInfo(crtableLogoninfo)
-                Next
-
-                RapportsCombine.SetDataSource(DatSet)
-
-                '***** Paramettre evaluation technique *****************
-                RapportsCombine.SetParameterValue("CodeProjet", ProjetEnCours)
-                RapportsCombine.SetParameterValue("NumDP", NumDoss)
-                Dim ScoreTechMin As Decimal = Val(ExecuteScallar("select ScoreTechMin from t_dp where NumeroDp='" & NumDoss & "'"))
-                RapportsCombine.SetParameterValue("ScoreTechMin", ScoreTechMin.ToString)
-
-                '***** Paramettre rapport combine
-                Dim NbrePropoRecu As Decimal = Val(ExecuteScallar("SELECT COUNT(*) from t_consultant where NumeroDp='" & NumDoss & "' and DateDepot<>''"))
-                Dim NbreConsultantRetenu As Decimal = Val(ExecuteScallar("SELECT COUNT(*) from t_consultant where NumeroDp='" & NumDoss & "'"))
-
-                RapportsCombine.SetParameterValue("NbreEvaluateur", NomCojo.Rows.Count)
-                RapportsCombine.SetParameterValue("NbreConsultant", NbrConsult)
-                RapportsCombine.SetParameterValue("NbrePropositionRecues", NbrePropoRecu)
-                RapportsCombine.SetParameterValue("NbreConsultantRetenu", NbreConsultantRetenu)
-                RapportsCombine.SetParameterValue("ModifRangParMontant", VerifierModifRang(TableSoumi))
-                ' RapportsCombine.SetParameterValue("TotalPtsCriterePersCle", AfficherMonnaie(TotalPtsCriterePersCle))
-                'Dim CheminDoss = line & "\DP\" & FormatFileName(CmbNumDoss.Text, "_")
-                'If (Directory.Exists(CheminDoss) = False) Then
-                '    Directory.CreateDirectory(CheminDoss)
-                'End If
-                'RapportsCombine.ExportToDisk(ExportFormatType.PortableDocFormat, CheminDoss & "\RapportsCombinet.pdf")
-                FinChargement()
-                '  RapportCombinet = RapportsCombine
-                ' ViewRapCombine.ReportSource = RapportsCombine
-                'TablBoutonClik(1) = True
+                TablBoutonClik(2) = True
             End If
-            GetVisiblePanel(True, "Combine")
 
+            GetVisiblePanel(True, "Combine")
         Catch ex As Exception
             FailMsg(ex.ToString)
             FinChargement()
         End Try
     End Sub
 
-    Private Function VerifierModifRang(ByVal TableRang As DataTable) As Boolean
+    Private Function GenererLoadRapCombinet() As Boolean
+        Try
+            DebutChargement(True, "Génération du rapport combiné en cours...")
 
+            '***** Info du rapport d'evaluation technique *********************
+            ExecuteNonQuery("delete from t_tamp_consultrangtech")
+            ExecuteNonQuery("delete from t_noteconsultparcritere")
+            'Enregistrement des noms et des rangs
+            EnregistreNometRangCons()
+            'Enregistrement des notes et des moyennes
+            Dim NbrConsult As Decimal = EnregistreMoyenneetNote()
+
+            '****   rapport combine
+            ExecuteNonQuery("delete from t_noteevalparcritereperscle")
+            ExecuteNonQuery("delete from t_noteevalparconsult")
+            ExecuteNonQuery("delete from t_tampevalnom")
+
+            'Afficharge de l'etat
+            Dim NumDoss As String = EnleverApost(CmbNumDoss.Text)
+            Dim TotalPtsCriterePersCle As Decimal = 0
+            ' ***** Noms des membres de la commission
+            Dim NomCojo As DataTable = EnregistrerNomCojo(NumDoss)
+            Dim TableEval As DataTable = ExcecuteSelectQuery("SELECT RefSoumis, CodeMem, RefCritere, NoteConsult from t_soumi_note_consultant_parcriteresdp where NumeroDp='" & NumDoss & "' and CodeProjet='" & ProjetEnCours & "'")
+            Dim TableSoumi As DataTable = ExcecuteSelectQuery("SELECT RefSoumis, RangConsult, RangFinal from t_soumissionconsultant where NumeroDp='" & NumDoss & "' and EvalTechOk='OUI' and RangFinal IS NOT NULL")
+            'Dim TableSoumi As DataTable = ExcecuteSelectQuery("SELECT RefSoumis, RangConsult, RangFinal from t_soumissionconsultant where NumeroDp='" & NumDoss & "' and EvalFinOk='OUI' and RangFinal IS NOT NULL")
+            ' ******* t_noteevalparconsult *************  t_noteevalparcritereperscle ************
+            ' Enregistrement des differentes notes
+
+            Dim dt0 As DataTable = ExcecuteSelectQuery("select RefCritere, CriterePersonnelCle,PointCritere from T_DP_CritereEval where NumeroDp='" & NumDoss & "' and CritereParent='0' and CodeProjet='" & ProjetEnCours & "'")
+            ' 1eme niveau ********************************
+            For Each rw As DataRow In dt0.Rows
+                SaveDifferenteNoteEval(TableSoumi, NomCojo, rw("RefCritere"), TableEval)
+                If rw("CriterePersonnelCle").ToString = "OUI" Then SaveDifferenteNoteEval1(TableSoumi, NomCojo, rw("RefCritere"), TableEval)
+                If rw("CriterePersonnelCle").ToString = "OUI" Then TotalPtsCriterePersCle += CDbl(rw("PointCritere").ToString.Replace(".", ",").Replace(" ", ""))
+
+                ' 2eme niveau ********************************
+                Dim dt1 As DataTable = ExcecuteSelectQuery("Select RefCritere from T_DP_CritereEval where NumeroDp='" & NumDoss & "' and CritereParent='" & rw("RefCritere").ToString & "' and TypeCritere<>'Bareme' And CodeProjet='" & ProjetEnCours & "'")
+                For Each rw1 As DataRow In dt1.Rows
+                    SaveDifferenteNoteEval(TableSoumi, NomCojo, rw1("RefCritere"), TableEval)
+                    If rw("CriterePersonnelCle").ToString = "OUI" Then SaveDifferenteNoteEval1(TableSoumi, NomCojo, rw1("RefCritere"), TableEval)
+
+                    ' 3eme niveau **************************************
+                    Dim dt2 As DataTable = ExcecuteSelectQuery("Select RefCritere from T_DP_CritereEval where NumeroDp='" & NumDoss & "' and CritereParent='" & rw1("RefCritere").ToString & "' and TypeCritere<>'Bareme' And CodeProjet='" & ProjetEnCours & "'")
+                    For Each rw2 As DataRow In dt2.Rows
+                        SaveDifferenteNoteEval(TableSoumi, NomCojo, rw2("RefCritere"), TableEval)
+                        If rw("CriterePersonnelCle").ToString = "OUI" Then SaveDifferenteNoteEval1(TableSoumi, NomCojo, rw2("RefCritere"), TableEval)
+                    Next
+                Next
+            Next
+
+            Dim RapportsCombine As New ReportDocument
+            Dim crtableLogoninfos As New TableLogOnInfos
+            Dim crtableLogoninfo As New TableLogOnInfo
+            Dim crConnectionInfo As New ConnectionInfo
+            Dim CrTables As Tables
+            Dim CrTable As Table
+
+            Dim DatSet = New DataSet
+
+            RapportsCombine.Load(lineEtat & "\Marches\DP\Rapport Evaluation Consultant\RapportConsolide.rpt")
+
+            With crConnectionInfo
+                .ServerName = ODBCNAME
+                .DatabaseName = DB
+                .UserID = USERNAME
+                .Password = PWD
+            End With
+
+            CrTables = RapportsCombine.Database.Tables
+            For Each CrTable In CrTables
+                crtableLogoninfo = CrTable.LogOnInfo
+                crtableLogoninfo.ConnectionInfo = crConnectionInfo
+                CrTable.ApplyLogOnInfo(crtableLogoninfo)
+            Next
+
+            RapportsCombine.SetDataSource(DatSet)
+
+            '***** Paramettre evaluation technique *****************
+            RapportsCombine.SetParameterValue("CodeProjet", ProjetEnCours)
+            RapportsCombine.SetParameterValue("NumDP", NumDoss)
+            Dim ScoreTechMin As Decimal = Val(ExecuteScallar("select ScoreTechMin from t_dp where NumeroDp='" & NumDoss & "'"))
+            RapportsCombine.SetParameterValue("ScoreTechMin", ScoreTechMin.ToString)
+
+            '***** Paramettre rapport combine
+            Dim NbrePropoRecu As Decimal = Val(ExecuteScallar("SELECT COUNT(*) from t_consultant where NumeroDp='" & NumDoss & "' and DateDepot<>''"))
+            Dim NbreConsultantRetenu As Decimal = Val(ExecuteScallar("SELECT COUNT(*) from t_consultant where NumeroDp='" & NumDoss & "'"))
+
+            RapportsCombine.SetParameterValue("NbreEvaluateur", NomCojo.Rows.Count)
+            RapportsCombine.SetParameterValue("NbreConsultant", NbrConsult)
+            RapportsCombine.SetParameterValue("NbrePropositionRecues", NbrePropoRecu)
+            RapportsCombine.SetParameterValue("NbreConsultantRetenu", NbreConsultantRetenu)
+            RapportsCombine.SetParameterValue("ModifRangParMontant", VerifierModifRang(TableSoumi))
+            RapportsCombine.SetParameterValue("TotalPtsCriterePersCle", AfficherMonnaie(TotalPtsCriterePersCle))
+
+            RapportsCombine.SetParameterValue("RefSoumis", rwDossRapCombine("RefSoumis"))
+            RapportsCombine.SetParameterValue("DateSoumRapCombFinal", rwDossRapCombine("DateEnvoiRapComb").ToString)
+            RapportsCombine.SetParameterValue("DateAvisNOBanque", rwDossRapCombine("DateRepoRapComb").ToString)
+            RapportsCombine.SetParameterValue("DateOuvPropoFinanciere", CDate(rwDossRapCombine("DateOuvertureEvalFin").ToString).ToShortDateString)
+            RapportsCombine.SetParameterValue("DateOuvPropoFinHeure", CDate(rwDossRapCombine("DateOuvertureEvalFin").ToString).ToLongTimeString)
+
+            Dim CheminDoss = line & "\DP\" & FormatFileName(CmbNumDoss.Text, "_") & "\Rapport_Combine"
+            If (Directory.Exists(CheminDoss) = False) Then
+                Directory.CreateDirectory(CheminDoss)
+            End If
+
+            Dim NomRapportword As String = "RapportCombine.doc"
+            Dim NomRapportpdf As String = "RapportCombine_" & FormatFileName(Now.ToString.Replace(" ", ""), "") & ".pdf"
+
+            'Cas des methodes 3CV SFQ SQC
+            Dim TraitMethod As Boolean = VerifiersMetohd(TxtMethode.Text)
+            If TraitMethod = False Then
+                NomRapportword = rwDossRapCombine("RefSoumis").ToString & "_RapportCombine\" & NomRapportword.ToString
+                NomRapportpdf = rwDossRapCombine("RefSoumis").ToString & "_RapportCombine\" & NomRapportpdf.ToString
+
+                If (Directory.Exists(CheminDoss & "\" & rwDossRapCombine("RefSoumis").ToString & "_RapportCombine") = False) Then
+                    Directory.CreateDirectory(CheminDoss & "\" & rwDossRapCombine("RefSoumis").ToString & "_RapportCombine")
+                End If
+            End If
+
+            RapportsCombine.ExportToDisk(ExportFormatType.WordForWindows, CheminDoss & "\" & NomRapportword.ToString)
+            RapportsCombine.ExportToDisk(ExportFormatType.PortableDocFormat, CheminDoss & "\" & NomRapportpdf.ToString)
+            rwDossRapCombine("CheminRapportCombine") = NomRapportpdf.ToString
+
+            If TraitMethod = False Then
+                'CombRapport.Text = ""
+                Dim NumRapport As String = GetNewCode(rwDossRapCombine("RefSoumis").ToString) & "_" & FormatFileName(Now.ToString.Replace(" ", ""), "")
+                ExecuteNonQuery("Update t_soumissionconsultant set NumRapportCombine='" & NumRapport.ToString & "', CheminRapportCombine='" & rwDossRapCombine("CheminRapportCombine").ToString.Replace("\", "\\") & "' where RefSoumis='" & rwDossRapCombine("RefSoumis") & "'")
+                'RemplirNumRapCombine()
+            Else
+                ExecuteNonQuery("Update t_soumissionconsultant set CheminRapportCombine='" & rwDossRapCombine("CheminRapportCombine").ToString.Replace("\", "\\") & "' where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and EvalTechOk='OUI' and RangFinal IS NOT NULL")
+            End If
+            FinChargement()
+
+            DebutChargement(True, "Chargement du rapport combine en cours...")
+            WebBrowser1.Navigate(CheminDoss & "\" & NomRapportpdf.ToString)
+            Threading.Thread.Sleep(5000)
+            FinChargement()
+
+        Catch exs As IO.IOException
+            FinChargement()
+            SuccesMsg("Un exemplaire du rapport est ouvert dans une autre application" & vbNewLine & "Veuillez le fermer svp")
+            Return False
+        Catch ex As Exception
+            FinChargement()
+            FailMsg(ex.ToString)
+            Return False
+        End Try
+        Return True
+    End Function
+
+    Private Function VerifierModifRang(ByVal TableRang As DataTable) As Boolean
         Try
             For Each rw In TableRang.Rows
                 If rw("RangConsult") <> rw("RangFinal") Then
@@ -2211,7 +2467,6 @@ Public Class EvaluationConsultants
             FailMsg(ex.ToString)
         End Try
     End Sub
-
 
     Private Sub SaveDifferenteNoteEval(ByVal TableSoumi As DataTable, ByVal TableCojo As DataTable, ByVal RefCritere As Decimal, ByVal TableEval As DataTable)
         Try
@@ -2289,27 +2544,365 @@ Public Class EvaluationConsultants
         Return NomCojo
     End Function
 
-    Private Sub SimpleButton5_Click(sender As Object, e As EventArgs)
-        With FullScreenReport
-            '.FullView.ReportSource = RapportCombinet
-            '.FullView.ReportSource = RapportPV
-            .Text = "RAPPORT COMBINE N°" & EnleverApost(CmbNumDoss.Text)
-            .ShowDialog()
-        End With
+
+    'Private Sub BtNewRapport_Click(sender As Object, e As EventArgs) Handles BtNewRapport.Click
+    '    Try
+    '        If GroupBoxRapportCombine.Visible = True Then
+    '            Dim dt As DataTable = ExcecuteSelectQuery("select * from T_SoumissionConsultant where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and EvalTechOk='OUI' and FinEvalFinanciere IS NOT NULL and RangFinal IS NOT NULL and CheminRapportCombine IS NULL ORDER BY RangFinal ASC LIMIT 1")
+    '            If dt.Rows.Count > 0 Then
+    '                CombRapport.Text = ""
+    '                WebBrowser1.Navigate("")
+    '                rwDossRapCombine = dt.Rows(0)
+
+    '                'Generation du rapport **** arreter en cas d'erreur
+    '                If GenererLoadRapCombinet() = False Then
+    '                    Exit Sub
+    '                End If
+
+    '                DebutChargement()
+    '                DateSoumiRC.Text = rwDossRapCombine("DateEnvoiRapComb").ToString
+    '                DateReponRC.Text = rwDossRapCombine("DateRepoRapComb").ToString
+    '                EnebledBoutonRapCombine()
+    '                FinChargement()
+    '            Else
+    '                FailMsg("Impossible de faire un autre rapport" & vbNewLine & "car tous les rapports des consultants" & vbNewLine & "sur la liste restriente ont été générés")
+    '            End If
+    '        End If
+    '    Catch ex As Exception
+    '        FinChargement()
+    '        FailMsg(ex.ToString)
+    '    End Try
+    'End Sub
+
+    Private Sub CombRapport_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CombRapport.SelectedIndexChanged
+        If GroupBoxRapportCombine.Visible = True Then
+            If CombRapport.SelectedIndex <> -1 Then
+                Try
+                    rwDossRapCombine = ExcecuteSelectQuery("select * from t_soumissionconsultant where RefSoumis='" & CInt(CombRapport.Text.Split("|")(0)) & "' and NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "'").Rows(0)
+
+                    DateSoumiRC.Text = rwDossRapCombine("DateEnvoiRapComb").ToString
+                    DateReponRC.Text = rwDossRapCombine("DateRepoRapComb").ToString
+
+                    DateSoumiRC.Enabled = True
+                    DateReponRC.Enabled = True
+                    Dim CheminDoss As String = line & "\DP\" & FormatFileName(CmbNumDoss.Text, "_") & "\Rapport_Combine\"
+
+                    If rwDossRapCombine("CheminRapportCombine").ToString = "" Then
+                        'Gereartion du rapport *** on arrete en cas d'eurreur
+                        If GenererLoadRapCombinet() = False Then Exit Sub
+                    ElseIf Not File.Exists(CheminDoss & rwDossRapCombine("CheminRapportCombine").ToString) Then
+                        If ConfirmMsg("Le rapport n'existe pas ou a été supprimer" & vbNewLine & "Voulez-vous le généré à nouveau ?") = DialogResult.Yes Then
+                            If GenererLoadRapCombinet() = False Then Exit Sub
+                        End If
+                    ElseIf (File.Exists(CheminDoss & rwDossRapCombine("CheminRapportCombine").ToString)) Then
+                        DebutChargement(True, "Chargement du rapport combiné en cours...")
+                        WebBrowser1.Navigate(CheminDoss & rwDossRapCombine("CheminRapportCombine").ToString)
+                        Threading.Thread.Sleep(3000)
+                        FinChargement()
+                    End If
+                    EnebledBoutonRapCombine()
+
+                Catch ex As Exception
+                    FinChargement()
+                    FailMsg(ex.ToString)
+                End Try
+            End If
+        End If
+    End Sub
+
+    Private Sub Actualiserrc_Click(sender As Object, e As EventArgs) Handles Actualiserrc.Click
+        Try
+            If rwDossRapCombine("CheminRapportCombine").ToString = "" Then
+                FailMsg("Aucun rapport à actualiser")
+                Exit Sub
+            End If
+
+            If ModifRapCombine = False Then
+                SuccesMsg("Veuillez modifier le rapport avant d'actualiser")
+                Exit Sub
+            End If
+
+            Dim CheminDoss As String = line & "\DP\" & FormatFileName(CmbNumDoss.Text, "_") & "\Rapport_Combine"
+            Dim NomRapportword As String = "RapportCombine.doc"
+            Dim SaveRapportpdf As String = "RapportCombine_" & FormatFileName(Now.ToString.Replace(" ", ""), "") & ".pdf"
+
+            Dim TraitMethod As Boolean = VerifiersMetohd(TxtMethode.Text)
+            If TraitMethod = False Then
+                NomRapportword = rwDossRapCombine("RefSoumis").ToString & "_RapportCombine\" & NomRapportword.ToString
+                SaveRapportpdf = rwDossRapCombine("RefSoumis").ToString & "_RapportCombine\" & SaveRapportpdf.ToString
+            End If
+
+            If Not File.Exists(CheminDoss.ToString & "\" & NomRapportword) Then
+                SuccesMsg("Le rapport à actualisé n'existe pas ou a été supprimé")
+            ElseIf File.Exists(CheminDoss.ToString & "\" & NomRapportword) Then
+                DebutChargement(True, "Actualisation du rapport combine en cours...")
+
+                If Directory.Exists(CheminDoss) = False Then Directory.CreateDirectory(CheminDoss)
+                If TraitMethod = False Then
+                    If (Directory.Exists(CheminDoss & "\" & rwDossRapCombine("RefSoumis").ToString & "_RapportCombine") = False) Then Directory.CreateDirectory(CheminDoss & "\" & rwDossRapCombine("RefSoumis").ToString & "_RapportCombine")
+                End If
+
+                Dim WdApp As New Word.Application
+                Dim WdDoc As New Word.Document
+
+                Try
+                    WdDoc = WdApp.Documents.Add(CheminDoss.ToString & "\" & NomRapportword)
+                    WdDoc.SaveAs2(FileName:=CheminDoss.ToString & "\" & SaveRapportpdf.ToString, FileFormat:=Word.WdSaveFormat.wdFormatPDF)
+                    WdDoc.Close(True)
+                    WdApp.Quit(SaveChanges:=Word.WdSaveOptions.wdDoNotSaveChanges)
+                Catch ep As IO.IOException
+                    FinChargement()
+                    SuccesMsg("Un exemplaire du rapport est ouvert dans une autre application" & vbNewLine & "Veuillez le fermer svp.")
+                    WdDoc.Close(True)
+                    WdApp.Quit(SaveChanges:=Word.WdSaveOptions.wdDoNotSaveChanges)
+                    Exit Sub
+                Catch ex As Exception
+                    FinChargement()
+                    FailMsg(ex.ToString)
+                    WdDoc.Close(True)
+                    WdApp.Quit(SaveChanges:=Word.WdSaveOptions.wdDoNotSaveChanges)
+                    Exit Sub
+                End Try
+                FinChargement()
+
+                rwDossRapCombine("CheminRapportCombine") = SaveRapportpdf.ToString
+                If TraitMethod = False Then
+                    ExecuteNonQuery("Update t_soumissionconsultant set CheminRapportCombine='" & SaveRapportpdf.ToString.Replace("\", "\\") & "' where RefSoumis='" & rwDossRapCombine("RefSoumis") & "'")
+                Else
+                    ExecuteNonQuery("Update t_soumissionconsultant set CheminRapportCombine='" & SaveRapportpdf.ToString.Replace("\", "\\") & "' where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and RangFinal IS NOT NULL")
+                End If
+
+                DebutChargement(True, "Chargement du rapport en cours...")
+                WebBrowser1.Navigate(CheminDoss.ToString & "\" & rwDossRapCombine("CheminRapportCombine").ToString)
+                Threading.Thread.Sleep(5000)
+                ModifRapCombine = False
+                FinChargement()
+            End If
+        Catch exs As IOException
+            FinChargement()
+            SuccesMsg("Le fichier est utiliser dans une autre application" & vbNewLine & "Veuillez le fermer svp.")
+        Catch ex As Exception
+            FinChargement()
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+
+    Private Sub Envoibailleurrc_Click(sender As Object, e As EventArgs) Handles Envoibailleurrc.Click
+        Try
+            If rwDossRapCombine("CheminRapportCombine").ToString = "" Then
+                FailMsg("Aucun rapport à envoyé au bailleur")
+                Exit Sub
+            End If
+
+            Dim CheminDoss As String = line & "\DP\" & FormatFileName(CmbNumDoss.Text, "_") & "\Rapport_Combine"
+            Dim NomRapportword As String = "RapportCombine.doc"
+            'Cas des methodes 3CV SFQ SQC
+            Dim TraitMethod As Boolean = VerifiersMetohd(TxtMethode.Text)
+            If TraitMethod = False Then
+                NomRapportword = rwDossRapCombine("RefSoumis").ToString & "_RapportCombine\RapportCombine.doc"
+            End If
+            CheminDoss = CheminDoss & "\" & NomRapportword
+
+            If Not File.Exists(CheminDoss.ToString) Then
+                FailMsg("Le rapport n'existe pas ou à été supprimé")
+            ElseIf File.Exists(CheminDoss.ToString) Then
+
+                If ChargerLesDonneEmail_AMI_DP_SERVICEAUTRES(CmbNumDoss.Text, "DP") = False Then
+                    Exit Sub
+                End If
+
+                'Info de l'envoi de l'email
+                If ConfirmMsg("Confirmez-vous l'envoi du rapport combiné" & vbNewLine & "au bailleur [ " & MettreApost(rwDossDPAMISA.Rows(0)("InitialeBailleur").ToString) & " ]") = DialogResult.Yes Then
+                    DebutChargement(True, "Envoi du rapport combine au bailleur...")
+                    'Envoi du rapport au bailleur
+                    If EnvoiMailRapport(NomBailleurRetenu, CmbNumDoss.Text, EmailDestinatauer, CheminDoss.ToString, EmailCoordinateurProjet, EmailResponsablePM, "Rapport combiné") = False Then Exit Sub
+                    SuccesMsg("Le rapport combiné a été envoye avec succès")
+                    FinChargement()
+                End If
+            End If
+        Catch exs As IOException
+            FinChargement()
+            FailMsg("Un exemplaire du rapport est ouvert dans une autre application" & vbNewLine & "Veuillez le fermer svp")
+        Catch ex As Exception
+            FinChargement()
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+
+    Private Sub Validerrc_Click(sender As Object, e As EventArgs) Handles Validerrc.Click
+        Try
+            If rwDossRapCombine("CheminRapportCombine").ToString = "" Then
+                FailMsg("Aucun rapport à valider")
+                Exit Sub
+            End If
+
+            Dim CheminDoss As String = line & "\DP\" & FormatFileName(CmbNumDoss.Text, "_") & "\Rapport_Combine\"
+            If Not File.Exists(CheminDoss & rwDossRapCombine("CheminRapportCombine").ToString) Then
+                FailMsg("Le rapport que vous avez essayer de valider" & vbNewLine & "n'existe pas ou a été supprimé")
+            ElseIf ConfirmMsg("La validation du rapport empêchera sa modification" & vbNewLine & "Voulez-vous continuez ?") = DialogResult.Yes Then
+                Dim TraitMethod As Boolean = VerifiersMetohd(TxtMethode.Text)
+                    If TraitMethod = False Then
+                        ExecuteNonQuery("Update t_soumissionconsultant set EtatRapportCombine='Valider' where RefSoumis='" & rwDossRapCombine("RefSoumis") & "'")
+                    Else
+                        ExecuteNonQuery("Update t_soumissionconsultant set EtatRapportCombine='Valider' where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and EvalTechOk='OUI' and RangFinal IS NOT NULL")
+                    End If
+
+                    SuccesMsg("Rapport validé avec succès")
+                    rwDossRapCombine("EtatRapportCombine") = "Valider"
+                    EnebledBoutonRapCombine()
+                    'Activer la bouton de la negociation
+                    BtNegociation.Enabled = True
+                End If
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+
+    Private Sub modifierrc_Click(sender As Object, e As EventArgs) Handles modifierrc.Click
+        Try
+            If rwDossRapCombine("CheminRapportCombine").ToString = "" Then
+                FailMsg("Aucun rapport à modifier")
+                Exit Sub
+            End If
+            DebutChargement()
+
+            Dim CheminDoss As String = line & "\DP\" & FormatFileName(CmbNumDoss.Text, "_") & "\Rapport_Combine\"
+            Dim CheminRapport As String = ""
+
+            Dim TraitMethod As Boolean = VerifiersMetohd(TxtMethode.Text)
+            If TraitMethod = False Then
+                CheminRapport = rwDossRapCombine("RefSoumis").ToString & "_RapportCombine\RapportCombine.doc"
+            Else
+                CheminRapport = "RapportCombine.doc"
+            End If
+
+            If File.Exists(CheminDoss & CheminRapport.ToString) Then
+                Process.Start(CheminDoss & CheminRapport.ToString)
+                ModifRapCombine = True
+                FinChargement()
+            Else
+                FinChargement()
+                FailMsg("Le rapport à modifier n'existe pas ou à été supprimé")
+            End If
+        Catch ex As Exception
+            FinChargement()
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+
+    Private Sub pdfrc_Click(sender As Object, e As EventArgs) Handles pdfrc.Click
+        Try
+            If GetExportationRapport("pdf") = False Then Exit Sub
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+
+    Private Sub Wordrc_Click(sender As Object, e As EventArgs) Handles Wordrc.Click
+        Try
+            If GetExportationRapport("word") = False Then Exit Sub
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+
+    Private Function GetExportationRapport(TypeExportation As String) As Boolean
+        Try
+            If rwDossRapCombine("CheminRapportCombine").ToString = "" Then
+                FailMsg("Aucun rapport à exporter")
+                Return False
+            End If
+
+            Dim CheminDoss As String = line & "\DP\" & FormatFileName(CmbNumDoss.Text, "_") & "\Rapport_Combine\"
+            Dim CheminRapport As String = ""
+
+            Dim TraitMethod As Boolean = VerifiersMetohd(TxtMethode.Text)
+            If TraitMethod = False Then
+                CheminRapport = IIf(TypeExportation = "pdf", rwDossRapCombine("CheminRapportCombine").ToString, rwDossRapCombine("RefSoumis").ToString & "_RapportCombine\RapportCombine.doc").ToString
+            Else
+                CheminRapport = IIf(TypeExportation = "pdf", rwDossRapCombine("CheminRapportCombine").ToString, "RapportCombine.doc").ToString
+            End If
+
+            If File.Exists(CheminDoss & CheminRapport.ToString) Then
+                If TypeExportation = "pdf" Then
+                    Return ExporterPDF(CheminDoss & CheminRapport.ToString, "RapportCombine.pdf")
+                Else
+                    Return ExporterWORD(CheminDoss & CheminRapport.ToString, "Rapport_Combine.doc")
+                End If
+            Else
+                FailMsg("La version du rapport à exporter" & vbNewLine & " n'existe pas ou à été supprimé")
+                Return False
+            End If
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+            Return False
+        End Try
+    End Function
+
+    Private Sub SimpleButton2_Click(sender As Object, e As EventArgs) Handles SimpleButton2.Click
+        GetVisiblePanel(True, "Accueil")
+    End Sub
+
+    Private Sub DateSoumiRC_LostFocus(sender As Object, e As EventArgs) Handles DateSoumiRC.LostFocus
+        If DateSoumiRC.Text <> "" Then
+            rwDossRapCombine("DateEnvoiRapComb") = DateSoumiRC.Text
+
+            If GroupBoxRapportCombine.Visible = True Then
+                Dim RefSoumis As Decimal = 0
+                If CombRapport.SelectedIndex <> -1 Then
+                    RefSoumis = CInt(CombRapport.Text.Split("|")(0))
+                End If
+                query = "Update t_soumissionconsultant set DateEnvoiRapComb='" & DateSoumiRC.Text & "' where RefSoumis ='" & RefSoumis & "'"
+            Else
+                query = "Update t_soumissionconsultant set DateEnvoiRapComb='" & DateSoumiRC.Text & "' where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and RangFinal IS NOT NULL"
+            End If
+            ExecuteNonQuery(query)
+        End If
+    End Sub
+
+    Private Sub DateReponRC_LostFocus(sender As Object, e As EventArgs) Handles DateReponRC.LostFocus
+        If DateReponRC.Text <> "" Then
+            rwDossRapCombine("DateRepoRapComb") = DateReponRC.Text
+
+            If GroupBoxRapportCombine.Visible = True Then
+                Dim RefSoumis As Decimal = 0
+                If CombRapport.SelectedIndex <> -1 Then
+                    RefSoumis = CInt(CombRapport.Text.Split("|")(0))
+                End If
+                query = "Update t_soumissionconsultant set DateRepoRapComb='" & DateReponRC.Text & "' where RefSoumis ='" & RefSoumis & "'"
+            Else
+                query = "Update t_soumissionconsultant set DateRepoRapComb='" & DateReponRC.Text & "' where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and RangFinal IS NOT NULL"
+            End If
+            ExecuteNonQuery(query)
+        End If
     End Sub
 #End Region
 
 #Region "Negociation"
 
     Private Sub BtNegociation_Click(sender As Object, e As EventArgs) Handles BtNegociation.Click
-        If TablBoutonClik(2) = False Then
+        If TablBoutonClik(3) = False Then
+            'Cas de trois 3CV *** verifier s'il ya des consult retenu
+            If TypeDossier(CmbNumDoss.Text) = "AMI" Then
+                If Val(ExecuteScallar("select count(*) from t_soumissionconsultant where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and EvalTechOk='OUI' and RangConsult IS NOT NULL")) = 0 Then
+                    FailMsg("Impossible d'accédé au contenu de ce bouton car aucun" & vbNewLine & "consultant n'est reteneu après l'évaluation technique")
+                    Exit Sub
+                End If
+                CmbDevise.Visible = True
+                LabelDevise.Visible = True
+                RemplirCombo2(CmbDevise, "T_Devise", "AbregeDevise")
+            Else
+                CmbDevise.Visible = False
+                LabelDevise.Visible = False
+            End If
+
             InitialiserlesDonnesNego(True)
             ChargerlesNegociation()
             ChargerComiteMembre()
             'Bouton de la negociation cliquer
-            TablBoutonClik(2) = True
-        End If
-        GetVisiblePanel(True, "Negociation")
+            TablBoutonClik(3) = True
+            End If
+            GetVisiblePanel(True, "Negociation")
     End Sub
 
     Private Sub ChargerlesNegociation()
@@ -2350,6 +2943,7 @@ Public Class EvaluationConsultants
         Contconsultnego.ResetText()
         Adressnego.ResetText()
         EmailCnsNego.ResetText()
+        TxtStatut.ResetText()
     End Sub
 
     Private Sub InitInfoNego()
@@ -2359,6 +2953,7 @@ Public Class EvaluationConsultants
         MontantNego.ResetText()
         MoyenNego.ResetText()
         LieuNego.ResetText()
+        CmbDevise.ResetText()
     End Sub
 
     Private Sub GetReadOnlyInifonego(value As Boolean)
@@ -2368,6 +2963,7 @@ Public Class EvaluationConsultants
         MontantNego.Properties.ReadOnly = value
         MoyenNego.Properties.ReadOnly = value
         LieuNego.Properties.ReadOnly = value
+        CmbDevise.Properties.ReadOnly = value
     End Sub
 
     Private Sub InitialiserComite()
@@ -2402,29 +2998,62 @@ Public Class EvaluationConsultants
 
     Private Sub NewNego_Click(sender As Object, e As EventArgs) Handles NewNego.Click
         Try
-
-            query = "select C.RefConsult, C.NomConsult, C.TelConsult, C.AdressConsult, C.EmailConsult, S.RefSoumis from t_consultant as C, t_soumissionconsultant as S where C.RefConsult=S.RefConsult and S.RangFinal IS NOT NULL and S.NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and S.EvalFinOk='OUI' and S.MontantAjusterLocal IS NOT NULL and S.Negociation IS NULL ORDER BY S.RangFinal ASC LIMIT 1"
-            Dim dt As DataTable = ExcecuteSelectQuery(query)
-            If dt.Rows.Count > 0 Then
-                CmbNegoEdite.Text = ""
-                DebutChargement(True, "Initialisation des données en cours...")
-                InitialiserlesDonnesNego(False)
-
-                For Each rw In dt.Rows
-                    TxtRefSoumis.Text = rw("RefSoumis").ToString
-                    NomConsultnego.Text = MettreApost(rw("NomConsult").ToString)
-                    Contconsultnego.Text = MettreApost(rw("TelConsult").ToString)
-                    Adressnego.Text = MettreApost(rw("AdressConsult").ToString)
-                    EmailCnsNego.Text = MettreApost(rw("EmailConsult").ToString)
-                Next
-                DejaSaveNego = False
-                FinChargement()
-                DoubleClicks = False
-                NomGridView = ""
+            Dim MessageTest As String = ""
+            If TypeDossier(CmbNumDoss.Text) = "AMI" Then 'Cas de la methode 3CV
+                query = "select C.RefConsult, C.NomConsult, C.TelConsult, C.AdressConsult, C.EmailConsult, S.RefSoumis, S.Negociation from t_consultant as C, t_soumissionconsultant as S where C.RefConsult=S.RefConsult and S.RangConsult IS NOT NULL and S.NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and S.EvalTechOk='OUI' and S.ConsultDisqualifie IS NULL ORDER BY S.RangConsult ASC LIMIT 3"
+                MessageTest = "Tous les consultants retenus après l'évaluation" & vbNewLine & "technique pour ce dossier sont disqualifiés"
             Else
-                FailMsg("Impossible de faire une autre négociation sur cette Dp")
+                query = "select C.RefConsult, C.NomConsult, C.TelConsult, C.AdressConsult, C.EmailConsult, S.RefSoumis, S.Negociation from t_consultant as C, t_soumissionconsultant as S where C.RefConsult=S.RefConsult and S.RangFinal IS NOT NULL and S.NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and S.EvalFinOk='OUI' and S.MontantAjusterLocal IS NOT NULL and S.EtatRapportCombine='Valider' and S.ConsultDisqualifie IS NULL ORDER BY S.RangFinal ASC"
+                MessageTest = "Impossible de faire une négociation sur cette DP" & vbNewLine & "Raison, soit:" & vbNewLine & "- Aucun consultant n'est retenu après l'évaluation financière" & vbNewLine & "- Tous les rapports combinés des consultants retenus" & vbNewLine & "   non disqualifié n'ont pas été validés" & vbNewLine & "- Tous les consultants retenus pour ce dossier sont" & vbNewLine & "   disqualifiés"
             End If
 
+            Dim dt As DataTable = ExcecuteSelectQuery(query)
+            If dt.Rows.Count > 0 Then
+
+                Dim NbrsDisqualifier As Integer = 0
+                Dim Cpte As Integer = 0
+                For Each rw In dt.Rows
+
+                    'Négociation non efefectué
+                    If IsDBNull(rw("Negociation")) Then
+                        CmbNegoEdite.Text = ""
+                        InitialiserlesDonnesNego(False)
+                        TxtRefSoumis.Text = rw("RefSoumis").ToString
+                        NomConsultnego.Text = MettreApost(rw("NomConsult").ToString)
+                        Contconsultnego.Text = MettreApost(rw("TelConsult").ToString)
+                        Adressnego.Text = MettreApost(rw("AdressConsult").ToString)
+                        EmailCnsNego.Text = MettreApost(rw("EmailConsult").ToString)
+                        TxtStatut.Text = "Consultant non disqualifié"
+                        DejaSaveNego = False
+                        DoubleClicks = False
+                        NomGridView = ""
+                        Exit For
+                    Else
+                        'Consultant en cours de disqualification
+                        ReponseDialog = ""
+                        Dim NewMotifDias As New MotifDisqualification
+                        NewMotifDias.TxtNomConslt.Text = MettreApost(rw("NomConsult").ToString)
+                        NewMotifDias.ShowDialog()
+                        If ReponseDialog.ToString = "" Then
+                            Exit Sub
+                        End If
+                        ExecuteNonQuery("update t_soumissionconsultant set ConsultDisqualifie='OUI', MotifDisqualification='" & EnleverApost(ReponseDialog.ToString) & "' where RefSoumis='" & rw("RefSoumis") & "' and NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "'")
+                        SuccesMsg("Disqualification effectuée avec succès")
+                        NbrsDisqualifier += 1
+                    End If
+                Next
+                'Tous les consultant de la liste restriente ont été disqualifier
+                If NbrsDisqualifier = dt.Rows.Count Then
+                    If TypeDossier(CmbNumDoss.Text) = "AMI" Then
+                        FailMsg("Tous les consultants retenus après l'évaluation" & vbNewLine & "technique pour ce dossier sont disqualifiés")
+                    Else
+                        FailMsg("Tous les consultants retenus après l'évaluation" & vbNewLine & "financière dont le rapport combiné est validé" & vbNewLine & "pour ce dossier sont disqualifiés")
+                    End If
+                    Exit Sub
+                End If
+            Else
+                SuccesMsg(MessageTest.ToString)
+            End If
         Catch ex As Exception
             FailMsg(ex.ToString)
         End Try
@@ -2437,8 +3066,13 @@ Public Class EvaluationConsultants
             Exit Sub
         End If
         If CmbNegoEdite.SelectedIndex = -1 Then
-            SuccesMsg("Veuillez selectionnez un dossier")
+            SuccesMsg("Veuillez selectionner un dossier")
             CmbNegoEdite.Select()
+            Exit Sub
+        End If
+
+        If TxtStatut.Text = "Consultant disqualifié" Then
+            SuccesMsg("Impossible de modifier les informations" & vbNewLine & "d'un consultant disqualifié")
             Exit Sub
         End If
 
@@ -2485,25 +3119,43 @@ Public Class EvaluationConsultants
                 Exit Sub
             End If
 
-            'Verification pourcentage 100%
-            Dim TotalPct As Decimal = 0
-            If GridPctNego.RowCount > 0 Then
-                For i = 0 To GridPctNego.RowCount - 1
-                    TotalPct += CDec(GridPctNego.Rows.Item(i).Cells("Pourcentage").Value.ToString.Replace(".", ","))
-                Next
-            End If
-            TotalPct += CDec(PctNego.Text.Replace(".", ","))
-            If TotalPct > 100 Then
-                FailMsg("Le pourcentage ne doit pas exceder 100%")
-                Exit Sub
-            End If
-
             Dim n As Integer
+            Dim TotalPct As Decimal = 0
+
             If DoubleClicks = True And NomGridView = "P" Then
                 'Index du tabaleau de la ligne  selectionné
+
+                'Verification pourcentage 100%
+                If GridPctNego.RowCount > 0 Then
+                    For i = 0 To GridPctNego.RowCount - 1
+                        If i <> LignModif Then
+                            TotalPct += CDec(GridPctNego.Rows.Item(i).Cells("Pourcentage").Value.ToString.Replace(".", ","))
+                        End If
+                    Next
+                End If
+
+                TotalPct += CDec(PctNego.Text.Replace(".", ","))
+                If TotalPct > 100 Then
+                    FailMsg("Le pourcentage ne doit pas exceder 100%")
+                    Exit Sub
+                End If
+
                 n = LignModif
                 GridPctNego.Rows.Item(n).Cells("Modifpct").Value = "Modifier"
             Else
+                'Verification pourcentage 100%
+                If GridPctNego.RowCount > 0 Then
+                    For i = 0 To GridPctNego.RowCount - 1
+                        TotalPct += CDec(GridPctNego.Rows.Item(i).Cells("Pourcentage").Value.ToString.Replace(".", ","))
+                    Next
+                End If
+
+                TotalPct += CDec(PctNego.Text.Replace(".", ","))
+                If TotalPct > 100 Then
+                    FailMsg("Le pourcentage ne doit pas exceder 100%")
+                    Exit Sub
+                End If
+
                 n = GridPctNego.Rows.Add()
                 GridPctNego.Rows.Item(n).Cells("Refpct").Value = ""
 
@@ -2518,7 +3170,7 @@ Public Class EvaluationConsultants
         End If
     End Sub
 
-    Private Sub NomPrenom_KeyDown(sender As Object, e As KeyEventArgs) Handles NomPrenom.KeyDown, ContactNego.KeyDown, Organismenego.KeyDown, FonctionNego.KeyDown
+    Private Sub NomPrenom_KeyDown(sender As Object, e As KeyEventArgs) Handles Organismenego.KeyDown, NomPrenom.KeyDown, FonctionNego.KeyDown, ContactNego.KeyDown
         If e.KeyCode = Keys.Enter Then
             If NomPrenom.IsRequiredControl("Veuillez saisir le nom") Then
                 NomPrenom.Select()
@@ -2646,16 +3298,20 @@ Public Class EvaluationConsultants
                         ExecuteNonQuery("delete from t_dp_comitenegociation where RefComite='" & GridComite.Rows.Item(Index).Cells("Refcmte").Value & "'")
                     End If
                     GridComite.Rows.RemoveAt(Index)
+                    DoubleClicks = False
+                    NomGridView = ""
                 End If
             End If
         ElseIf NomGridView = "P" Then
             If GridPctNego.RowCount > 0 Then
                 Dim Index As Integer = GridPctNego.CurrentRow.Index
-                If ConfirmMsg("Voulez-vous supprimer ce mêmbre ?") = DialogResult.Yes Then
+                If ConfirmMsg("Êtes-vous sûrs de vouloir supprimer ?") = DialogResult.Yes Then
                     If GridPctNego.Rows.Item(Index).Cells("Refpct").Value <> "" Then
                         ExecuteNonQuery("delete from t_dp_modalitenegociation where RefModalite='" & GridPctNego.Rows.Item(Index).Cells("Refpct").Value & "'")
                     End If
                     GridPctNego.Rows.RemoveAt(Index)
+                    DoubleClicks = False
+                    NomGridView = ""
                 End If
             End If
         End If
@@ -2669,7 +3325,11 @@ Public Class EvaluationConsultants
 
     Private Sub Btsavenego_Click(sender As Object, e As EventArgs) Handles Btsavenego.Click
         'Aucune action effectué
-        If NumeroNego.Properties.ReadOnly = True Then Exit Sub
+        If NumeroNego.Properties.ReadOnly = True Or TxtStatut.Text = "Consultant disqualifié" Then Exit Sub
+        'If TxtStatut.Text = "Consultant disqualifié" Then
+        '    SuccesMsg("Impossible de modifier les informations" & vbNewLine & "d'un consultant disqualifié")
+        '    Exit Sub
+        'End If
 
         Try
             If NumeroNego.IsRequiredControl("Veuillez saisir le numero de la négociation") Then
@@ -2703,6 +3363,13 @@ Public Class EvaluationConsultants
                 Exit Sub
             End If
 
+            If CmbDevise.Visible = True Then
+                If CmbDevise.IsRequiredControl("Veuillez selectionné la devise") Then
+                    CmbDevise.Select()
+                    Exit Sub
+                End If
+            End If
+
             'Verification pourcentage 100%
             Dim TotalPct As Decimal = 0
             If GridPctNego.RowCount > 0 Then
@@ -2717,6 +3384,7 @@ Public Class EvaluationConsultants
 
             DebutChargement(True, "Enregistrement en cours...")
 
+            Dim Devise As String = IIf(CmbDevise.Visible = True, EnleverApost(CmbDevise.Text), "").ToString
             Dim RefNego As Decimal = 0
             'Nouvo nego
             If DejaSaveNego = False Then
@@ -2725,13 +3393,13 @@ Public Class EvaluationConsultants
                     Exit Sub
                 End If
 
-                ExecuteNonQuery("INSERT INTO t_dp_negociation VALUES(NULL,'" & EnleverApost(NumeroNego.Text) & "', '" & EnleverApost(CmbNumDoss.Text) & "', '" & TxtRefSoumis.Text & "', '" & dateconvert(DateNego.Text) & " " & HeureNegos.Text & "', '" & MontantNego.Text.Replace(" ", "").Replace(",", ".") & "', '" & EnleverApost(MoyenNego.Text) & "', '" & EnleverApost(LieuNego.Text) & "', '" & ProjetEnCours & "', '" & CodeOperateurEnCours & "')")
+                ExecuteNonQuery("INSERT INTO t_dp_negociation VALUES(NULL,'" & EnleverApost(NumeroNego.Text) & "', '" & EnleverApost(CmbNumDoss.Text) & "', '" & TxtRefSoumis.Text & "', '" & dateconvert(DateNego.Text) & " " & HeureNegos.Text & "', '" & MontantNego.Text.Replace(" ", "").Replace(",", ".") & "', '" & EnleverApost(MoyenNego.Text) & "', '" & EnleverApost(LieuNego.Text) & "', '" & ProjetEnCours & "', '" & CodeOperateurEnCours & "', '" & Devise.ToString & "')")
                 ExecuteNonQuery("Update t_soumissionconsultant set Negociation='OUI' where RefSoumis='" & TxtRefSoumis.Text & "'")
 
                 RefNego = ExecuteScallar("SELECT MAX(RefNego) from t_dp_negociation")
             ElseIf DejaSaveNego = True Then
                 RefNego = CInt(CmbNegoEdite.Text.Split("|")(0))
-                ExecuteNonQuery("UPDATE t_dp_negociation SET DateHeureNego='" & dateconvert(DateNego.Text) & " " & HeureNegos.Text & "', MontantNego='" & MontantNego.Text.Replace(" ", "").Replace(",", ".") & "', MoyenNego='" & EnleverApost(MoyenNego.Text) & "', LieuNego='" & EnleverApost(LieuNego.Text) & "', Operateur='" & CodeOperateurEnCours & "' where RefNego='" & RefNego & "'")
+                ExecuteNonQuery("UPDATE t_dp_negociation SET DateHeureNego='" & dateconvert(DateNego.Text) & " " & HeureNegos.Text & "', MontantNego='" & MontantNego.Text.Replace(" ", "").Replace(",", ".") & "', MoyenNego='" & EnleverApost(MoyenNego.Text) & "', LieuNego='" & EnleverApost(LieuNego.Text) & "', Operateur='" & CodeOperateurEnCours & "', AbregeDevise='" & Devise.ToString & "' where RefNego='" & RefNego & "'")
                 DejaSaveNego = True
             End If
 
@@ -2750,10 +3418,12 @@ Public Class EvaluationConsultants
 
             FinChargement()
             SuccesMsg("Enregistrement effectué avec succès")
+            'Activer le bouton de l'edition du contrat
+            BtEditionContrat.Enabled = True
         Catch ex As Exception
             FinChargement()
             FailMsg(ex.ToString)
-            End Try
+        End Try
 
     End Sub
 
@@ -2767,6 +3437,7 @@ Public Class EvaluationConsultants
                 MontantNego.Text = AfficherMonnaie(rw("MontantNego").ToString.Replace(".00", "").Replace(",00", ""))
                 MoyenNego.Text = MettreApost(rw("MoyenNego").ToString)
                 LieuNego.Text = MettreApost(rw("LieuNego").ToString)
+                CmbDevise.Text = MettreApost(rw("AbregeDevise").ToString)
 
                 InfoConsultRetenu(rw("RefSoumis").ToString)
             Next
@@ -2777,7 +3448,7 @@ Public Class EvaluationConsultants
 
     Private Sub InfoConsultRetenu(RefSoumis As String)
         Try
-            query = "select C.RefConsult, C.NomConsult, C.TelConsult, C.AdressConsult, C.EmailConsult, S.RefSoumis from t_consultant as C, t_soumissionconsultant as S where C.RefConsult=S.RefConsult and S.RefSoumis='" & RefSoumis & "' and S.NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "'"
+            query = "select C.RefConsult, C.NomConsult, C.TelConsult, C.AdressConsult, C.EmailConsult, S.RefSoumis, S.ConsultDisqualifie from t_consultant as C, t_soumissionconsultant as S where C.RefConsult=S.RefConsult and S.RefSoumis='" & RefSoumis & "' and S.NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "'"
             Dim dt As DataTable = ExcecuteSelectQuery(query)
             If dt.Rows.Count > 0 Then
                 For Each rw In dt.Rows
@@ -2786,6 +3457,7 @@ Public Class EvaluationConsultants
                     Contconsultnego.Text = MettreApost(rw("TelConsult").ToString)
                     Adressnego.Text = MettreApost(rw("AdressConsult").ToString)
                     EmailCnsNego.Text = MettreApost(rw("EmailConsult").ToString)
+                    TxtStatut.Text = IIf(IsDBNull(rw("ConsultDisqualifie")), "Consultant non disqualifié", "Consultant disqualifié").ToString
                 Next
             End If
         Catch ex As Exception
@@ -2877,7 +3549,7 @@ Public Class EvaluationConsultants
                 Exit Sub
             End If
             If CmbNegoEdite.SelectedIndex = -1 Then
-                SuccesMsg("Veuillez selectionnez un dossier")
+                SuccesMsg("Veuillez selectionner un dossier")
                 CmbNegoEdite.Select()
                 Exit Sub
             End If
@@ -2893,7 +3565,12 @@ Public Class EvaluationConsultants
             Dim DatSet = New DataSet
 
             Dim Chemin As String = lineEtat & "\Marches\DP\PV Ouverture Offres financieres\"
-            RapportPVNego.Load(Chemin & "PvNegociation.rpt")
+            If TypeDossier(CmbNumDoss.Text) = "AMI" Then 'Cas de la methode 3CV
+                RapportPVNego.Load(Chemin & "PvNegociation_Methode_3CV.rpt")
+            Else
+                RapportPVNego.Load(Chemin & "PvNegociation.rpt")
+            End If
+
             With crConnectionInfo
                 .ServerName = ODBCNAME
                 .DatabaseName = DB
@@ -2909,14 +3586,14 @@ Public Class EvaluationConsultants
             Next
             RapportPVNego.SetDataSource(DatSet)
 
-            RapportPVNego.SetParameterValue("NumNegociation", EnleverApost(CmbNegoEdite.Text.Split("|")(1)))
+            RapportPVNego.SetParameterValue("NumNegociation", EnleverApost(EnleverApost(CmbNegoEdite.Text.Split("|")(1).Trim)))
             RapportPVNego.SetParameterValue("NumDP", EnleverApost(CmbNumDoss.Text))
             RapportPVNego.SetParameterValue("CodeProjet", ProjetEnCours)
 
             FinChargement()
             With FullScreenReport
                 .FullView.ReportSource = RapportPVNego
-                .Text = "PV DE NEGOCIATION N°" & EnleverApost(CmbNegoEdite.Text.Split("|")(1))
+                .Text = "PV DE NEGOCIATION N° " & EnleverApost(CmbNegoEdite.Text.Split("|")(1).Trim)
                 .ShowDialog()
             End With
         Catch ex As Exception
@@ -2926,32 +3603,47 @@ Public Class EvaluationConsultants
     End Sub
 #End Region
 
-
 #Region "Edition du marche"
 
-    Private Sub ChargerListeContrat()
-        query = "Select NumeroMarche from t_marchesigne where TypeMarche='Consultants' and TypeMarche1='Consultants' and RefSoumis IS NOT NULL and CodeProjet='" & ProjetEnCours & "'"
+    Private Sub ChargerListeContrat(Controls As DevExpress.XtraEditors.ComboBoxEdit)
+        'query = "Select NumeroMarche from t_marchesigne where TypeMarche='Consultants' and TypeMarche1='Consultants' and RefSoumis IS NOT NULL and CodeProjet='" & ProjetEnCours & "'"
+        query = "Select NumContrat from t_dp_contrat where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and CodeProjet='" & ProjetEnCours & "'"
         Dim dtt As DataTable = ExcecuteSelectQuery(query)
-        CmbContrat.Text = ""
-        CmbContrat.Properties.Items.Clear()
+        Controls.Text = ""
+        Controls.Properties.Items.Clear()
         Dim i As Integer = 0
         For Each rw In dtt.Rows
-            CmbContrat.Properties.Items.Add(MettreApost(rw("NumeroMarche").ToString))
+            Controls.Properties.Items.Add(MettreApost(rw("NumContrat").ToString))
         Next
     End Sub
 
     Private Sub BtEditionContrat_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtEditionContrat.Click
         If CmbNumDoss.SelectedIndex <> -1 Then
             'Bouton du contrat non contrat
-            If TablBoutonClik(3) = False Then
+            If TablBoutonClik(4) = False Then
                 DebutChargement()
                 'Verification
                 GetInitialiserContrat()
-                ChargerListeContrat()
+                ChargerListeContrat(CmbContrat)
                 NewLoadAnnexe()
                 NewReadOnly(True)
                 'Changement de l'etat
-                TablBoutonClik(3) = True
+                TablBoutonClik(4) = True
+                If TxtMethode.Text.ToUpper = "3CV" Then
+                    TypeRenumeration.Visible = True
+                    LabelControl40.Visible = True
+                    LabelControl39.Visible = True
+                    GroupControlRepresenLegal.Enabled = False
+                    NomChefFil.Enabled = False
+                    Representantcheffil.Enabled = False
+                Else
+                    GroupControlRepresenLegal.Enabled = True
+                    NomChefFil.Enabled = True
+                    Representantcheffil.Enabled = True
+                    TypeRenumeration.Visible = False
+                    LabelControl40.Visible = False
+                    LabelControl39.Visible = False
+                End If
                 FinChargement()
             End If
             GetVisiblePanel(True, "Marche")
@@ -2959,35 +3651,127 @@ Public Class EvaluationConsultants
     End Sub
 
     Private Sub BtSaveContrat_Click(sender As Object, e As EventArgs) Handles BtSaveContrat.Click
-        If NumContrat.IsRequiredControl("Veuillez saisie le numéro du contrat") Then
+        'Aucune action effectuer
+        If (ViewRepartion.OptionsBehavior.Editable = False) Then
+            FailMsg("Aucune action effectuée")
+            Exit Sub
+        End If
+        If StatutConsult.Text = "Disqualifié" Then
+            SuccesMsg("Impossible d'enregister les informations" & vbNewLine & "d'un consultant disqualifié")
+            Exit Sub
+        End If
+
+        If NumContrat.IsRequiredControl("Veuillez saisir le numéro du contrat") Then
             NumContrat.Focus()
             Exit Sub
         End If
 
-        If TxtNomRepLegal.IsRequiredControl("Veuillez saisie le nom du representant") Then
-            TxtNomRepLegal.Focus()
-            Exit Sub
+        If TypeRenumeration.Visible = True Then
+            If TypeRenumeration.IsRequiredControl("Veuillez selectionner le type de rénumération") Then
+                TypeRenumeration.Select()
+                Exit Sub
+            End If
         End If
-        If TxtBpRepLegal.IsRequiredControl("Veuillez saisie la boîte postale du representant") Then
-            TxtBpRepLegal.Focus()
+
+        If GroupControlRepresenLegal.Enabled = True Then 'A ignorer cas de 3CV consultant individuel
+            If TxtNomRepLegal.IsRequiredControl("Veuillez saisir le nom du répresentant") Then
+                TxtNomRepLegal.Focus()
+                Exit Sub
+            End If
+            'If TxtBpRepLegal.IsRequiredControl("Veuillez saisir la boîte postale du representant") Then
+            '    TxtBpRepLegal.Focus()
+            '    Exit Sub
+            'End If
+
+            If TxtContactRepLegal.IsRequiredControl("Veuillez saisir le contact du répresentant") Then
+                TxtContactRepLegal.Focus()
+                Exit Sub
+            End If
+        End If
+
+
+        If delairesiliation.Text = "" And cmbdelairesi.Text <> "" Then
+            SuccesMsg("Veuillez saisir le délai de resiliation")
+            delairesiliation.Select()
             Exit Sub
         End If
 
-        If TxtContactRepLegal.IsRequiredControl("Veuillez saisie le contact du representant") Then
-            TxtContactRepLegal.Focus()
+        If delairesiliation.Text <> "" And cmbdelairesi.Text = "" Then
+            SuccesMsg("Saisir incorrect.")
+            cmbdelairesi.Select()
+            Exit Sub
+        End If
+        If (DateAchev1.Text = "" And DateAchev2.Text <> "") Or (DateAchev1.Text <> "" And DateAchev2.Text = "") Then
+            SuccesMsg("La période d'achèvement du contrat est incorrect")
+            DateAchev1.Select()
+            Exit Sub
+        End If
+        If (DateAchev1.Text <> "" And DateAchev2.Text <> "") Then
+            If DateTime.Compare(CDate(DateAchev1.Text), CDate(DateAchev2.Text)) > 0 Then
+                SuccesMsg("La période d'achèvement du contrat est incorrect")
+                DateAchev1.Select()
+                Exit Sub
+            End If
+        End If
+
+        If Disqualification.Checked = True And MotifDisqualif.Text = "" Then
+            SuccesMsg("Veuillez saisir le motif de disqualification")
+            MotifDisqualif.Select()
             Exit Sub
         End If
 
-        If (NbrExecution.Text <> "" And JoursExecution.Text = "") Or (JoursExecution.Text <> "" And NbrExecution.Text = "") Then
-            SuccesMsg("Veuillez selectionné le delai d'execution")
-            If NbrExecution.Text = "" Then NbrExecution.Select()
-            If JoursExecution.Text = "" Then JoursExecution.Select()
+        If (NbrExecution.Text.Trim = "") Then
+            SuccesMsg("Veuillez saisir le délai d'execution")
+            NbrExecution.Select()
             Exit Sub
         End If
 
-        If TxtTotalReparti.Text <> TxtMontantMarche.Text Then
+        If JoursExecution.IsRequiredControl("Veuillez selectionné un element dans la liste") Then
+            JoursExecution.Select()
+            Exit Sub
+        End If
+
+        If ViewRepartion.RowCount = 0 Then
+            SuccesMsg("Faite la repartion du montant du contrat")
+            Exit Sub
+        End If
+
+        Dim MontantRepartion As Decimal = 0
+        Dim BienRenseigner As Boolean = False
+        Dim NombrConvenVide As Integer = 0
+        Dim Cpte As Integer = 0
+        If ViewRepartion.RowCount > 0 Then
+            For i = 0 To ViewRepartion.RowCount - 1 'Parcourir les ligne
+                NombrConvenVide = 0
+                Cpte = 0
+                For j = 2 To ViewRepartion.Columns.Count - 1 'Parcourir les colonnes des conventions
+                    Cpte += 1
+                    'Bien renseigner
+                    If (ViewRepartion.GetDataRow(i).Item(j).ToString) = "" Then
+                        NombrConvenVide += 1
+                    End If
+                    If ViewRepartion.GetDataRow(i).Item(j).ToString <> "" And (Not IsNumeric(ViewRepartion.GetDataRow(i).Item(j).ToString)) Then
+                        BienRenseigner = True
+                    End If
+
+                    If IsNumeric(ViewRepartion.GetDataRow(i).Item(j).ToString) Then
+                        MontantRepartion += CDec(ViewRepartion.GetDataRow(i).Item(j).ToString)
+                    End If
+                Next
+
+                If (ViewRepartion.GetDataRow(i).Item(1).ToString = "") Or (NombrConvenVide = Cpte) Then
+                    BienRenseigner = True
+                End If
+            Next
+        End If
+
+        If BienRenseigner = True Then
+            SuccesMsg("Veuillez bien renseigné le tableau" & vbNewLine & "de la repartition du montant du contrat")
+            Exit Sub
+        End If
+
+        If CDec(MontantRepartion) <> CDec(TxtMontantMarche.Text) Then
             SuccesMsg("La repartition du montant du marche est incorrect")
-            TxtMontAnne1.Focus()
             Exit Sub
         End If
 
@@ -3016,12 +3800,12 @@ Public Class EvaluationConsultants
             DatRow("NumeroMarche") = EnleverApost(NumContrat.Text)
             DatRow("NumeroDAO") = EnleverApost(CmbNumDoss.Text)
             DatRow("DateMarche") = CDate(Now.ToString).ToShortDateString
-            'DatRow("RefMarche") = RefMarche
+            DatRow("DateMarche") = CDate(Now.ToString).ToShortDateString
+            DatRow("EtatMarche") = "En cours"
             DatRow("TypeMarche") = "Consultants"
-            DatRow("TypeMarche1") = "Consultants"
-            DatRow("MontantHT") = TxtMontantMarche.Text.Replace(" ", "")
-            DatRow("PrctCautionDef") = TxtPrctCautionDef.Text
-            DatRow("PrctAvance") = TxtPrctAvance.Text
+            DatRow("MontantHT") = Round(CDbl(TxtMontantMarche.Text))
+            If TxtPrctCautionDef.Text <> "" Then DatRow("PrctCautionDef") = TxtPrctCautionDef.Text '.Replace(",", "").Replace(".00", "")
+            If TxtPrctAvance.Text <> "" Then DatRow("PrctAvance") = TxtPrctAvance.Text '.Replace(",00", "").Replace(".00", "")
             DatRow("ImputBudgetaire") = EnleverApost(TxtImputBudgetaire.Text)
             DatRow("CodeProjet") = ProjetEnCours
             DatSet.Tables("t_marchesigne").Rows.Add(DatRow)
@@ -3032,7 +3816,6 @@ Public Class EvaluationConsultants
 
             EnregistreRepartition(NumContrat.Text)
             Save_LesInfoContrat(NumContrat.Text)
-
             'Enregistrement
             Save_ChargerLesArticles(NumContrat.Text)
             EnregistretePiece(NumContrat.Text)
@@ -3045,12 +3828,14 @@ Public Class EvaluationConsultants
             FinChargement()
             SuccesMsg("Contrat enregistré avec succès")
             DejaEnregistrer = True
+            TablBoutonClik(5) = False
+            BtImprimerContrat.Enabled = True
 
         ElseIf DejaEnregistrer = True Then
 
             DebutChargement(True, "Modification du contrat en cours...")
-
-            ExecuteNonQuery("Update t_marchesigne Set MontantHT ='" & TxtMontantMarche.Text.Replace(" ", "") & "', PrctCautionDef= '" & TxtPrctCautionDef.Text & "', PrctAvance='" & TxtPrctAvance.Text & "', ImputBudgetaire='" & EnleverApost(TxtImputBudgetaire.Text) & "' where NumeroMarche='" & EnleverApost(NumContrat.Text) & "'")
+            Dim d As String = ""
+            ExecuteNonQuery("Update t_marchesigne Set MontantHT ='" & Val(TxtMontantMarche.Text.Replace(" ", "")) & "', PrctCautionDef= '" & IIf(TxtPrctCautionDef.Text <> "", TxtPrctCautionDef.Text.Replace(",", "."), 0).ToString & "', PrctAvance='" & IIf(TxtPrctAvance.Text <> "", TxtPrctAvance.Text.Replace(",", "."), 0).ToString & "', ImputBudgetaire='" & EnleverApost(TxtImputBudgetaire.Text) & "' where NumeroMarche='" & EnleverApost(NumContrat.Text) & "'")
 
             Save_ChargerLesArticles(NumContrat.Text)
             EnregistreRepartition(NumContrat.Text)
@@ -3059,94 +3844,72 @@ Public Class EvaluationConsultants
             FinChargement()
             SuccesMsg("Contrat modifié avec succès")
         End If
+
+        If TypeRenumeration.Visible = True Then
+            ExecuteNonQuery("update t_ami set TypeRemune='" & EnleverApost(TypeRenumeration.Text) & "' where NumeroDAMI='" & EnleverApost(CmbNumDoss.Text) & "'")
+            ExecuteNonQuery("update t_marche set Forfait_TpsPasse='" & EnleverApost(TypeRenumeration.Text) & "' where RefMarche='" & CurrenRefMarche & "'")
+        End If
     End Sub
 
-    Private Sub EnregistreRepartition(ByVal NumeroContrat As String, Optional Afficher As String = "")
+    Private Sub EnregistreRepartition(ByVal NumeroContrat As String)
         Try
-            If Afficher.ToString = "" Then
+            ExecuteNonQuery("delete from t_dp_repartition_montant_contrat where NumeroContrat='" & EnleverApost(NumeroContrat.ToString) & "' and CodeProjet='" & ProjetEnCours & "'")
 
-                Dim TypeFinance As String = ""
-                If TypeConvention.ToString = "Prêt" Then TypeFinance = "Emprunt"
-                If TypeConvention.ToString = "Don" Then TypeFinance = "Don"
-                If TypeConvention.ToString = "Contrepartie" Then TypeFinance = "Tresor"
+            If ViewRepartion.RowCount > 0 Then
+                Dim Ligne As Integer = 0
 
-                query = "Update t_dp_marche_repartition Set AnneeCourante='" & LabelAnne1.Text & "', MontantAnneCourante=NULL, AnnePlus1='" & LabelAnne2.Text & "', MontantAnnePlus1=NULL, AnneePlus2='" & LabelAnne3.Text & "', MontantAnnePlus2=NULL, SujetImputation='" & TypeFinance.ToString & "' where NumeroContrat='" & EnleverApost(NumeroContrat) & "'"
-                Dim query1 As String = "INSERT INTO t_dp_marche_repartition VALUES(NULL,'" & EnleverApost(NumeroContrat) & "', '" & LabelAnne1.Text & "', NULL, '" & LabelAnne2.Text & "', NULL, '" & LabelAnne3.Text & "', NULL, '" & TypeFinance.ToString & "')"
+                Dim DatSet = New DataSet
+                query = "select * from t_dp_repartition_montant_contrat"
+                Dim sqlconn As New MySqlConnection
+                BDOPEN(sqlconn)
+                Dim Cmd As MySqlCommand = New MySqlCommand(query, sqlconn)
+                Dim DatAdapt = New MySqlDataAdapter(Cmd)
+                DatAdapt.Fill(DatSet, "t_dp_repartition_montant_contrat")
+                Dim DatTable = DatSet.Tables("t_dp_repartition_montant_contrat")
 
-                If Val(TxtMontAnne1.Text) > 0 And Val(TxtMontAnne2.Text) > 0 And Val(TxtMontAnne3.Text) > 0 Then
-                    query = "Update t_dp_marche_repartition Set AnneeCourante='" & LabelAnne1.Text & "', MontantAnneCourante='" & CDec(TxtMontAnne1.Text) & "', AnnePlus1='" & LabelAnne2.Text & "', MontantAnnePlus1='" & CDec(TxtMontAnne2.Text) & "', AnneePlus2='" & LabelAnne3.Text & "', MontantAnnePlus2='" & CDec(TxtMontAnne3.Text) & "', SujetImputation='" & TypeFinance.ToString & "' where NumeroContrat='" & EnleverApost(NumeroContrat) & "'"
-                    query1 = "INSERT INTO t_dp_marche_repartition VALUES(NULL,'" & EnleverApost(NumeroContrat) & "', '" & LabelAnne1.Text & "', '" & CDec(TxtMontAnne1.Text) & "', '" & LabelAnne2.Text & "', '" & CDec(TxtMontAnne2.Text) & "', '" & LabelAnne3.Text & "', '" & CDec(TxtMontAnne3.Text) & "', '" & TypeFinance.ToString & "')"
+                For i = 0 To ViewRepartion.RowCount - 1
+                    Dim DatRow = DatSet.Tables("t_dp_repartition_montant_contrat").NewRow()
 
-                ElseIf Val(TxtMontAnne1.Text) > 0 And Val(TxtMontAnne2.Text) > 0 And Val(TxtMontAnne3.Text) = 0 Then
-                    query = "Update t_dp_marche_repartition Set AnneeCourante='" & LabelAnne1.Text & "', MontantAnneCourante='" & CDec(TxtMontAnne1.Text) & "', AnnePlus1='" & LabelAnne2.Text & "', MontantAnnePlus1='" & CDec(TxtMontAnne2.Text) & "', AnneePlus2='" & LabelAnne3.Text & "', MontantAnnePlus2=NULL, SujetImputation='" & TypeFinance.ToString & "' where NumeroContrat='" & EnleverApost(NumeroContrat) & "'"
-                    query1 = "INSERT INTO t_dp_marche_repartition VALUES(NULL,'" & EnleverApost(NumeroContrat) & "', '" & LabelAnne1.Text & "', '" & CDec(TxtMontAnne1.Text) & "', '" & LabelAnne2.Text & "', '" & CDec(TxtMontAnne2.Text) & "', '" & LabelAnne3.Text & "', NULL, '" & TypeFinance.ToString & "')"
+                    DatRow("NumeroContrat") = EnleverApost(NumeroContrat.ToString)
+                    DatRow("CodeProjet") = ProjetEnCours
+                    DatRow("Annee") = ViewRepartion.GetRowCellValue(i, "Année").ToString
+                    Ligne = 0
 
-                ElseIf Val(TxtMontAnne1.Text) > 0 And Val(TxtMontAnne2.Text) = 0 And Val(TxtMontAnne3.Text) = 0 Then
-                    query = "Update t_dp_marche_repartition Set AnneeCourante='" & LabelAnne1.Text & "', MontantAnneCourante='" & CDec(TxtMontAnne1.Text) & "', AnnePlus1='" & LabelAnne2.Text & "', MontantAnnePlus1=NULL, AnneePlus2='" & LabelAnne3.Text & "', MontantAnnePlus2=NULL, SujetImputation='" & TypeFinance.ToString & "' where NumeroContrat='" & EnleverApost(NumeroContrat) & "'"
-                    query1 = "INSERT INTO t_dp_marche_repartition VALUES(NULL,'" & EnleverApost(NumeroContrat) & "', '" & LabelAnne1.Text & "', '" & CDec(TxtMontAnne1.Text) & "', '" & LabelAnne2.Text & "', NULL, '" & LabelAnne3.Text & "', NULL, '" & TypeFinance.ToString & "')"
+                    For j = 2 To ViewRepartion.Columns.Count - 1
+                        Ligne += 1
+                        DatRow("CodeConvention" & Ligne) = MettreApost(ViewRepartion.Columns(j).GetTextCaption)
+                        DatRow("MontantConvention" & Ligne) = ViewRepartion.GetDataRow(i).Item(j).ToString.Replace(" ", "")
+                    Next
 
-                ElseIf Val(TxtMontAnne1.Text) > 0 And Val(TxtMontAnne2.Text) = 0 And Val(TxtMontAnne3.Text) > 0 Then
-                    query = "Update t_dp_marche_repartition Set AnneeCourante='" & LabelAnne1.Text & "', MontantAnneCourante='" & CDec(TxtMontAnne1.Text) & "', AnnePlus1='" & LabelAnne2.Text & "', MontantAnnePlus1=NULL, AnneePlus2='" & LabelAnne3.Text & "', MontantAnnePlus2='" & CDec(TxtMontAnne3.Text) & "', SujetImputation='" & TypeFinance.ToString & "' where NumeroContrat='" & EnleverApost(NumeroContrat) & "'"
-                    query1 = "INSERT INTO t_dp_marche_repartition VALUES(NULL,'" & EnleverApost(NumeroContrat) & "', '" & LabelAnne1.Text & "', '" & CDec(TxtMontAnne1.Text) & "', '" & LabelAnne2.Text & "', NULL, '" & LabelAnne3.Text & "', '" & CDec(TxtMontAnne3.Text) & "', '" & TypeFinance.ToString & "')"
-
-                ElseIf Val(TxtMontAnne1.Text) = 0 And Val(TxtMontAnne2.Text) > 0 And Val(TxtMontAnne3.Text) > 0 Then
-                    query = "Update t_dp_marche_repartition Set AnneeCourante='" & LabelAnne1.Text & "', MontantAnneCourante=NULL, AnnePlus1='" & LabelAnne2.Text & "', MontantAnnePlus1='" & CDec(TxtMontAnne2.Text) & "', AnneePlus2='" & LabelAnne3.Text & "', MontantAnnePlus2='" & CDec(TxtMontAnne3.Text) & "', SujetImputation='" & TypeFinance.ToString & "' where NumeroContrat='" & EnleverApost(NumeroContrat) & "'"
-                    query1 = "INSERT INTO t_dp_marche_repartition VALUES(NULL,'" & EnleverApost(NumeroContrat) & "', '" & LabelAnne1.Text & "', NULL, '" & LabelAnne2.Text & "', '" & CDec(TxtMontAnne2.Text) & "', '" & LabelAnne3.Text & "', '" & CDec(TxtMontAnne3.Text) & "', '" & TypeFinance.ToString & "')"
-
-                ElseIf Val(TxtMontAnne1.Text) = 0 And Val(TxtMontAnne2.Text) = 0 And Val(TxtMontAnne3.Text) > 0 Then
-                    query = "Update t_dp_marche_repartition Set AnneeCourante='" & LabelAnne1.Text & "', MontantAnneCourante=NULL, AnnePlus1='" & LabelAnne2.Text & "', MontantAnnePlus1=NULL, AnneePlus2='" & LabelAnne3.Text & "', MontantAnnePlus2='" & CDec(TxtMontAnne3.Text) & "', SujetImputation='" & TypeFinance.ToString & "' where NumeroContrat='" & EnleverApost(NumeroContrat) & "'"
-                    query1 = "INSERT INTO t_dp_marche_repartition VALUES(NULL," & EnleverApost(NumeroContrat) & "', '" & LabelAnne1.Text & "', NULL, '" & LabelAnne2.Text & "', NULL, '" & LabelAnne3.Text & "', '" & CDec(TxtMontAnne3.Text) & "', '" & TypeFinance.ToString & "')"
-
-                ElseIf Val(TxtMontAnne1.Text) = 0 And Val(TxtMontAnne2.Text) > 0 And Val(TxtMontAnne3.Text) = 0 Then
-                    query = "Update t_dp_marche_repartition Set AnneeCourante='" & LabelAnne1.Text & "', MontantAnneCourante=NULL, AnnePlus1='" & LabelAnne2.Text & "', MontantAnnePlus1='" & CDec(TxtMontAnne2.Text) & "', AnneePlus2='" & LabelAnne3.Text & "', MontantAnnePlus2=NULL, SujetImputation='" & TypeFinance.ToString & "' where NumeroContrat='" & EnleverApost(NumeroContrat) & "'"
-                    query1 = "INSERT INTO t_dp_marche_repartition VALUES(NULL,'" & EnleverApost(NumeroContrat) & "', '" & LabelAnne1.Text & "', NULL, '" & LabelAnne2.Text & "', '" & CDec(TxtMontAnne2.Text) & "', '" & LabelAnne3.Text & "', NULL, '" & TypeFinance.ToString & "')"
-                End If
-
-                If Val(ExecuteScallar("SELECT COUNT(*) from t_dp_marche_repartition where NumeroContrat='" & EnleverApost(NumeroContrat) & "'")) > 0 Then
-                    ExecuteNonQuery(query)
-                Else
-                    ExecuteNonQuery(query1)
-                End If
-
-            ElseIf Afficher.ToString = "Load" Then
-                Dim dt As DataTable = ExcecuteSelectQuery("select * from t_dp_marche_repartition where NumeroContrat='" & EnleverApost(NumeroContrat) & "'")
-                For Each rwMarche In dt.Rows
-                    If rwMarche("MontantAnneCourante").ToString <> "" Then LabelAnne1.Text = rwMarche("AnneeCourante").ToString
-                    If rwMarche("MontantAnneCourante").ToString <> "" Then TxtMontAnne1.Text = AfficherMonnaie(rwMarche("MontantAnneCourante"))
-
-                    If rwMarche("MontantAnnePlus1").ToString <> "" Then LabelAnne2.Text = rwMarche("AnnePlus1").ToString
-                    If rwMarche("MontantAnnePlus1").ToString <> "" Then TxtMontAnne2.Text = AfficherMonnaie(rwMarche("MontantAnnePlus1"))
-
-                    If rwMarche("MontantAnnePlus2").ToString <> "" Then LabelAnne3.Text = rwMarche("AnneePlus2").ToString
-                    If rwMarche("MontantAnnePlus2").ToString <> "" Then TxtMontAnne3.Text = AfficherMonnaie(rwMarche("MontantAnnePlus2"))
+                    DatSet.Tables("t_dp_repartition_montant_contrat").Rows.Add(DatRow)
                 Next
+
+                Dim CmdBuilder = New MySqlCommandBuilder(DatAdapt)
+                DatAdapt.Update(DatSet, "t_dp_repartition_montant_contrat")
+                DatSet.Clear()
+                BDQUIT(sqlconn)
+
+                LoadRepartionMontantMarche("Load")
             End If
         Catch ex As Exception
             FailMsg(ex.ToString)
         End Try
     End Sub
 
-    Private Sub NewInitAnne(ByVal Montatnt As String)
-        Dim Anne As Decimal = Now.Year
-        LabelAnne1.Text = Anne
-        LabelAnne2.Text = Anne + 1
-        LabelAnne3.Text = Anne + 2
-
-        TxtMontAnne1.Properties.MaxLength = Len(Montatnt)
-        TxtMontAnne2.Properties.MaxLength = Len(Montatnt)
-        TxtMontAnne3.Properties.MaxLength = Len(Montatnt)
-    End Sub
 
     Private Sub Save_LesInfoContrat(ByVal NumeroContrat As String, Optional Afficher As String = "")
         Try
             Dim DelaiExecution As String = IIf(NbrExecution.Text <> "", NbrExecution.Text & " " & JoursExecution.Text, "").ToString
+            Dim delairesiliations As String = IIf(delairesiliation.Text <> "", delairesiliation.Text & " " & cmbdelairesi.Text, "").ToString
+            Dim DateAchev As String = IIf(DateAchev1.Text <> "", DateAchev1.Text & " " & DateAchev2.Text, "").ToString
+
             If Afficher.ToString = "" Then
-                query = "INSERT INTO t_dp_contrat values(NULL, '" & EnleverApost(NumeroContrat.ToString) & "', '" & EnleverApost(CmbNumDoss.Text) & "', '" & EnleverApost(TxtNomRepLegal.Text) & "', '" & EnleverApost(TxtBpRepLegal.Text) & "', '" & TxtContactRepLegal.Text & "', '" & EnleverApost(EmailRepresentant.Text) & "',  '" & EnleverApost(TxtContribuable.Text) & "', '" & EnleverApost(TxtRegCommerce.Text) & "', '" & EnleverApost(TxtNomBanqueFournis.Text) & "', '" & EnleverApost(TxtNumCompteConsult.Text) & "', '" & EnleverApost(NumCptedevise.Text) & "', '" & EnleverApost(NumCpteLocal.Text) & "', '" & EnleverApost(TxtBailleurMarche.Text) & "', '" & EnleverApost(TxtConventionMarche.Text) & "', '" & DelaiExecution.ToString & "', '" & dateconvert(Now.ToShortDateString) & " " & Now.ToShortTimeString & "', '" & dateconvert(Now.ToShortDateString) & " " & Now.ToShortTimeString & "', '" & CodeUtilisateur & "', '" & ProjetEnCours & "')"
+                query = "INSERT INTO t_dp_contrat values(NULL, '" & EnleverApost(NumeroContrat.ToString) & "', '" & EnleverApost(CmbNumDoss.Text) & "', '" & EnleverApost(TxtNomRepLegal.Text) & "', '" & EnleverApost(TxtBpRepLegal.Text) & "', '" & TxtContactRepLegal.Text & "', '" & EnleverApost(EmailRepresentant.Text) & "', '" & EnleverApost(TxtContribuable.Text) & "', '" & EnleverApost(TxtRegCommerce.Text) & "', '" & EnleverApost(TxtNomBanqueFournisDevise.Text) & "', '" & EnleverApost(NomBanqMonaiLocal.Text) & "', '" & EnleverApost(NumCptedevise.Text) & "', '" & EnleverApost(NumCpteLocal.Text) & "', '" & EnleverApost(TxtBailleurMarche.Text) & "', '" & EnleverApost(TxtConventionMarche.Text) & "', '" & DelaiExecution.ToString & "', '" & dateconvert(Now.ToShortDateString) & " " & Now.ToShortTimeString & "', '" & dateconvert(Now.ToShortDateString) & " " & Now.ToShortTimeString & "', '" & CodeUtilisateur & "', '" & ProjetEnCours & "', NULL, NULL, '" & EnleverApost(NomChefFil.Text) & "', '" & EnleverApost(Representantcheffil.Text) & "', '" & delairesiliations.ToString & "', '" & TauxAnuel.Text.Replace(".", ",").Replace(".00", "").Replace(",00", "") & "', '" & DateAchev.ToString & "', '" & IIf(Disqualification.Checked = True, "OUI", "NON").ToString & "', '" & IIf(Disqualification.Checked = True, EnleverApost(MotifDisqualif.Text), "").ToString & "', '" & MantantTaxe.Text.Replace(".", ",").Replace(".00", "").Replace(",00", "") & "')"
                 ExecuteNonQuery(query)
             ElseIf Afficher.ToString = "Update" Then
-                query = "Update t_dp_contrat Set NomPrenRepre = '" & EnleverApost(TxtNomRepLegal.Text) & "', EmailRepresentant='" & EnleverApost(EmailRepresentant.Text) & "',  BoitePostalRepr= '" & EnleverApost(TxtBpRepLegal.Text) & "', ContactRepr='" & TxtContactRepLegal.Text & "', CompteContribuabl = '" & EnleverApost(TxtContribuable.Text) & "', RegistreCommerce='" & EnleverApost(TxtRegCommerce.Text) & "',"
-                query &= " NomBanqFourniss='" & EnleverApost(TxtNomBanqueFournis.Text) & "', DelaiExecution='" & DelaiExecution.ToString & "', NomCompteConsult='" & EnleverApost(TxtNumCompteConsult.Text) & "', NumCptedeviseConsult='" & EnleverApost(NumCptedevise.Text) & "', NumCpteLocalConsult='" & EnleverApost(NumCpteLocal.Text) & "', "
-                query &= " DateModif ='" & dateconvert(Now.ToShortDateString) & " " & Now.ToShortTimeString & "', Operateur= '" & CodeUtilisateur & "' where NumContrat ='" & EnleverApost(NumContrat.Text) & "' and CodeProjet='" & ProjetEnCours & "'"
+                query = "Update t_dp_contrat Set NomPrenRepre = '" & EnleverApost(TxtNomRepLegal.Text) & "', EmailRepresentant='" & EnleverApost(EmailRepresentant.Text) & "',  BoitePostalRepr= '" & EnleverApost(TxtBpRepLegal.Text) & "', ContactRepr='" & TxtContactRepLegal.Text & "', CompteContribuabl = '" & EnleverApost(TxtContribuable.Text) & "', RegistreCommerce='" & EnleverApost(TxtRegCommerce.Text) & "',  MotifDisqualif='" & IIf(Disqualification.Checked = True, EnleverApost(MotifDisqualif.Text), "").ToString & "', "
+                query &= " NomBanqDevise='" & EnleverApost(TxtNomBanqueFournisDevise.Text) & "', DelaiExecution='" & DelaiExecution.ToString & "', NomBanqMonaiLocal='" & EnleverApost(NomBanqMonaiLocal.Text) & "', NumCptedeviseConsult='" & EnleverApost(NumCptedevise.Text) & "', NumCpteLocalConsult='" & EnleverApost(NumCpteLocal.Text) & "', PeriodeAchev='" & DateAchev.ToString & "', Disqualification='" & IIf(Disqualification.Checked = True, "OUI", "NON").ToString & "',"
+                query &= " DateModif ='" & dateconvert(Now.ToShortDateString) & " " & Now.ToShortTimeString & "', Operateur= '" & CodeUtilisateur & "', NomChefFil='" & EnleverApost(NomChefFil.Text) & "', Representantcheffil='" & EnleverApost(Representantcheffil.Text) & "', delairesiliation='" & delairesiliations.ToString & "', TauxAnuel='" & TauxAnuel.Text.Replace(".", ",").Replace(".00", "").Replace(",00", "") & "', MantantTaxe='" & MantantTaxe.Text.Replace(".", ",").Replace(".00", "").Replace(",00", "") & "' where NumContrat ='" & EnleverApost(NumContrat.Text) & "' and CodeProjet='" & ProjetEnCours & "'"
                 ExecuteNonQuery(query)
             End If
         Catch ex As Exception
@@ -3156,21 +3919,26 @@ Public Class EvaluationConsultants
 
     Private Sub BtModifContrat_Click(sender As Object, e As EventArgs) Handles BtModifContrat.Click
         If CmbContrat.Properties.Items.Count = 0 Then
-            SuccesMsg("Aucun contrat à modofié")
+            SuccesMsg("Aucun contrat à modofier")
             CmbContrat.Focus()
             Exit Sub
         End If
         If CmbContrat.SelectedIndex = -1 Then
-            SuccesMsg("Veuillez selectionné le contrat à modofié")
+            SuccesMsg("Veuillez selectionner le contrat à modofier")
             CmbContrat.Focus()
             Exit Sub
         End If
+        If StatutConsult.Text = "Disqualifié" Then
+            SuccesMsg("Impossible de modifier les informations d'un consultant disqualifié")
+            Exit Sub
+        End If
+
         BtAjoutArticle.Text = "AJOUTER"
         DejaEnregistrer = True
         NewReadOnly(False)
         NumContrat.Properties.ReadOnly = True
+        ViewRepartion.OptionsBehavior.Editable = True
     End Sub
-
 
     Private Sub TxtPrctAvance_EditValueChanged(sender As Object, e As EventArgs) Handles TxtPrctAvance.EditValueChanged
         If TxtPrctAvance.Text <> "" And TxtMontantMarche.Text <> "" Then
@@ -3211,8 +3979,8 @@ Public Class EvaluationConsultants
         EmailRepresentant.Text = ""
         TxtContribuable.Text = ""
         TxtRegCommerce.Text = ""
-        TxtNomBanqueFournis.Text = ""
-        TxtNumCompteConsult.Text = ""
+        TxtNomBanqueFournisDevise.Text = ""
+        NomBanqMonaiLocal.Text = ""
         TxtMontantMarche.Text = ""
         TxtMontMarcheLettre.Text = ""
         TxtPrctCautionDef.Text = ""
@@ -3222,37 +3990,33 @@ Public Class EvaluationConsultants
         TxtBailleurMarche.Text = ""
         TxtConventionMarche.Text = ""
         TxtImputBudgetaire.Text = ""
+        StatutConsult.Text = ""
 
-        TxtMontAnne1.Text = ""
-        TxtMontAnne2.Text = ""
-        TxtMontAnne3.Text = ""
-        TxtTotalReparti.Text = ""
         NbrExecution.Text = ""
         JoursExecution.Text = ""
         NumCptedevise.Text = ""
         NumCpteLocal.Text = ""
         CmbArticle.Text = ""
         TxtArticle.Text = ""
-        LabelAnne1.Text = "..."
-        LabelAnne2.Text = "..."
-        LabelAnne3.Text = "..."
 
-        RdDonAnCour.Checked = False
-        RdEmpruntAnCour.Checked = False
-        RdTresorCour.Checked = False
-
-        RdDonAnPlus1.Checked = False
-        RdEmpruntPlus1.Checked = False
-        RdTresorPlus1.Checked = False
-
-        RdDonAnPlus2.Checked = False
-        RdEmpruntPlus2.Checked = False
-        RdTresorPlus2.Checked = False
+        NomChefFil.ResetText()
+        Representantcheffil.ResetText()
+        delairesiliation.ResetText()
+        cmbdelairesi.ResetText()
+        TauxAnuel.ResetText()
+        DateAchev1.EditValue = Nothing
+        DateAchev2.EditValue = Nothing
+        Disqualification.Checked = False
+        MotifDisqualif.ResetText()
+        MantantTaxe.ResetText()
+        TypeRenumeration.ResetText()
 
         GridArticle.Rows.Clear()
         dtAnnexe.Rows.Clear()
         GridAnnexe.DataSource = Nothing
 
+        ViewRepartion.Columns.Clear()
+        ListeRepartion.DataSource = Nothing
     End Sub
 
     Private Sub NewReadOnly(ByVal value As Boolean)
@@ -3268,8 +4032,8 @@ Public Class EvaluationConsultants
         TxtContribuable.Properties.ReadOnly = value
         TxtRegCommerce.Properties.ReadOnly = value
 
-        TxtNomBanqueFournis.Properties.ReadOnly = value
-        TxtNumCompteConsult.Properties.ReadOnly = value
+        TxtNomBanqueFournisDevise.Properties.ReadOnly = value
+        NomBanqMonaiLocal.Properties.ReadOnly = value
 
         TxtPrctCautionDef.Properties.ReadOnly = value
         TxtPrctAvance.Properties.ReadOnly = value
@@ -3277,45 +4041,61 @@ Public Class EvaluationConsultants
         NbrExecution.Properties.ReadOnly = value
         JoursExecution.Properties.ReadOnly = value
 
-        TxtMontAnne1.Properties.ReadOnly = value
-        TxtMontAnne2.Properties.ReadOnly = value
-        GroupControlRepartition.Enabled = Not value
+        NomChefFil.Properties.ReadOnly = value
+        Representantcheffil.Properties.ReadOnly = value
+        delairesiliation.Properties.ReadOnly = value
+        cmbdelairesi.Properties.ReadOnly = value
+        TauxAnuel.Properties.ReadOnly = value
+        DateAchev1.Enabled = Not value
+        DateAchev2.Enabled = Not value
+        Disqualification.Enabled = Not value
+        ' MotifDisqualif.Properties.ReadOnly = value
+        MantantTaxe.Properties.ReadOnly = value
+        BtDelete.Enabled = Not value
+        AddLigneRepartition.Enabled = Not value
+        CmbArticle.Enabled = Not value
+        BtAjoutArticle.Enabled = Not value
+        BtSelectAnnexe.Enabled = Not value
+        GridAnnexe.Enabled = Not value
+        IntituleAnnexe.Enabled = Not value
+        TxtArticle.Properties.ReadOnly = value
+        TypeRenumeration.Properties.ReadOnly = value
+        GridArticle.Enabled = Not value
+
     End Sub
 
     Private Sub CmbContrat_SelectedValueChanged_1(sender As Object, e As EventArgs) Handles CmbContrat.SelectedValueChanged
         'Initialiser
         GetInitialiserContrat()
-        BtAjoutArticle.Text = "AJOUTER"
         If CmbContrat.SelectedIndex <> -1 Then
 
             DebutChargement(True, "Chargement des données en cours...")
 
             NumContrat.Text = CmbContrat.Text
-            query = "select m.ImputBudgetaire, m.RefSoumis, m.MontantHT, m.PrctCautionDef, m.PrctAvance, c.* from t_marchesigne as m, t_dp_contrat as c where m.NumeroMarche=c.NumContrat and NumeroMarche='" & EnleverApost(CmbContrat.Text) & "' and c.NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and c.CodeProjet='" & ProjetEnCours & "'"
+            query = "select m.ImputBudgetaire, m.RefSoumis, m.MontantHT, m.PrctCautionDef, m.PrctAvance, c.* from t_marchesigne as m, t_dp_contrat as c where m.NumeroMarche=c.NumContrat and m.NumeroMarche='" & EnleverApost(CmbContrat.Text) & "' and c.NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and c.CodeProjet='" & ProjetEnCours & "'"
             Dim dt1 As DataTable = ExcecuteSelectQuery(query)
             For Each rw0 In dt1.Rows
                 RefSoumisRetenuContrat = rw0("RefSoumis").ToString
                 ReponseDialog = rw0("MontantHT").ToString.Replace(" ", "")
                 TxtMontantMarche.Text = AfficherMonnaie(ReponseDialog)
                 TxtMontMarcheLettre.Text = MontantLettre(ReponseDialog)
-                TxtPrctCautionDef.Text = rw0("PrctCautionDef").ToString.Replace(".", ",")
-                If rw0("PrctCautionDef").ToString <> "" Then TxtMontCautionDef.Text = AfficherMonnaie((rw0("PrctCautionDef").ToString.Replace(".", ",") / 100) * CDec(rw0("MontantHT")))
-                TxtPrctAvance.Text = rw0("PrctAvance").ToString.Replace(".", ",")
-                If rw0("PrctAvance").ToString <> "" Then TxtMontAvance.Text = AfficherMonnaie((rw0("PrctAvance").ToString.Replace(".", ",") / 100) * CDec(rw0("MontantHT")))
-                TxtImputBudgetaire.Text = AfficherMonnaie(rw0("ImputBudgetaire").ToString)
-
-                'Next
-                'query = "Select * from t_dp_contrat where NumContrat='" & EnleverApost(CmbContrat.Text) & "' and CodeProjet='" & ProjetEnCours & "'"
-                'dt1 = ExcecuteSelectQuery(query)
-                'For Each rw1 In dt1.Rows
+                Dim PctCaution As String = ""
+                Dim PctAvance As String = ""
+                PctCaution = IIf(rw0("PrctCautionDef").ToString = "0.00", "", rw0("PrctCautionDef").ToString.Replace(".", ",")).ToString
+                PctAvance = IIf(rw0("PrctAvance").ToString = "0.00", "", rw0("PrctAvance").ToString.Replace(".", ",")).ToString
+                TxtPrctAvance.Text = PctAvance
+                TxtPrctCautionDef.Text = PctCaution
+                If PctCaution.ToString <> "" Then TxtMontCautionDef.Text = AfficherMonnaie((CDec(PctCaution) / 100) * CDec(rw0("MontantHT").ToString.Replace(".", ",")))
+                If PctAvance.ToString <> "" Then TxtMontAvance.Text = AfficherMonnaie((CDec(PctAvance) / 100) * CDec(rw0("MontantHT")))
+                TxtImputBudgetaire.Text = rw0("ImputBudgetaire").ToString
 
                 TxtNomRepLegal.Text = MettreApost(rw0("NomPrenRepre").ToString)
                 TxtBpRepLegal.Text = MettreApost(rw0("BoitePostalRepr").ToString)
                 TxtContactRepLegal.Text = rw0("ContactRepr").ToString
                 TxtContribuable.Text = MettreApost(rw0("CompteContribuabl").ToString)
                 TxtRegCommerce.Text = MettreApost(rw0("RegistreCommerce").ToString)
-                TxtNomBanqueFournis.Text = MettreApost(rw0("NomBanqFourniss").ToString)
-                TxtNumCompteConsult.Text = MettreApost(rw0("NomCompteConsult").ToString)
+                TxtNomBanqueFournisDevise.Text = MettreApost(rw0("NomBanqDevise").ToString)
+                NomBanqMonaiLocal.Text = MettreApost(rw0("NomBanqMonaiLocal").ToString)
                 NumCptedevise.Text = MettreApost(rw0("NumCptedeviseConsult").ToString)
                 EmailRepresentant.Text = MettreApost(rw0("EmailRepresentant").ToString)
                 NumCpteLocal.Text = MettreApost(rw0("NumCpteLocalConsult").ToString)
@@ -3328,9 +4108,24 @@ Public Class EvaluationConsultants
                     NbrExecution.Text = rw0("DelaiExecution").ToString.Split(" ")(0)
                     JoursExecution.Text = rw0("DelaiExecution").ToString.Split(" ")(1)
                 End If
+
+                NomChefFil.Text = MettreApost(rw0("NomChefFil").ToString)
+                Representantcheffil.Text = MettreApost(rw0("Representantcheffil").ToString)
+                If rw0("delairesiliation").ToString <> "" Then
+                    delairesiliation.Text = rw0("delairesiliation").ToString.Split(" ")(0)
+                    cmbdelairesi.Text = rw0("delairesiliation").ToString.Split(" ")(1)
+                End If
+                TauxAnuel.Text = rw0("TauxAnuel").ToString
+                If rw0("PeriodeAchev").ToString <> "" Then
+                    DateAchev1.Text = rw0("PeriodeAchev").ToString.Split(" ")(0)
+                    DateAchev2.Text = rw0("PeriodeAchev").Split(" ")(1)
+                End If
+                Disqualification.Checked = IIf(rw0("Disqualification").ToString = "OUI", True, False).ToString
+                MotifDisqualif.Text = IIf(rw0("Disqualification").ToString = "OUI", MettreApost(rw0("MotifDisqualif").ToString), "").ToString
+                MantantTaxe.Text = rw0("MantantTaxe").ToString
             Next
 
-            query = "select c.RefConsult, c.NomConsult, c.TelConsult, c.AdressConsult, c.EmailConsult from t_consultant as c, t_soumissionconsultant as s where c.RefConsult=s.RefConsult and s.RefSoumis='" & RefSoumisRetenuContrat & "' and s.NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "'"
+            query = "select c.RefConsult, c.NomConsult, c.TelConsult, c.AdressConsult, c.EmailConsult, s.ConsultDisqualifie from t_consultant as c, t_soumissionconsultant as s where c.RefConsult=s.RefConsult and s.RefSoumis='" & RefSoumisRetenuContrat & "' and s.NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "'"
             Dim dt As DataTable = ExcecuteSelectQuery(query)
             For Each rw In dt.Rows
                 TxtConsultContrat.Text = MettreApost(rw("NomConsult").ToString)
@@ -3338,233 +4133,226 @@ Public Class EvaluationConsultants
                 TxtAdresseConsContrat.Text = rw("AdressConsult").ToString
                 TxtEmail.Text = MettreApost(rw("EmailConsult").ToString)
                 RefConsults = rw("RefConsult").ToString
+                StatutConsult.Text = IIf(IsDBNull(rw("ConsultDisqualifie")), "Non disqualifié", "Disqualifié").ToString
             Next
 
+            LoadRepartionMontantMarche("Load")
             Save_ChargerLesArticles(CmbContrat.Text, True)
-            NewInitAnne(ReponseDialog)
-            EnregistreRepartition(CmbContrat.Text, "Load")
             EnregistretePiece(CmbContrat.Text, True)
-            NewReadOnly(True)
+
+            If TypeRenumeration.Visible = True Then
+                TypeRenumeration.Text = MettreApost(ExecuteScallar("select TypeRemune from t_ami where NumeroDAMI='" & EnleverApost(CmbNumDoss.Text) & "'").ToString)
+            End If
+
             FinChargement()
         End If
+        ViewRepartion.OptionsBehavior.Editable = False
+        NewReadOnly(True)
+        BtAjoutArticle.Text = "AJOUTER"
+
     End Sub
 
     Private Sub BtNouveauContrat_Click(sender As Object, e As EventArgs) Handles BtNouveauContrat.Click
+        If TypeDossier(CmbNumDoss.Text) = "AMI" Then
+            query = "select C.RefConsult, C.NomConsult, C.TelConsult, C.AdressConsult, C.EmailConsult, N.MontantNego, S.RefSoumis, S.AttribueContrat from t_consultant as C, t_soumissionconsultant as S, t_dp_negociation as N where C.RefConsult=S.RefConsult and S.RefSoumis=N.RefSoumis and S.Negociation='OUI' and S.RangConsult IS NOT NULL and S.EvalTechOk='OUI' and S.NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and S.ConsultDisqualifie IS NULL ORDER BY S.RangConsult ASC LIMIT 3"
+        Else
+            query = "select C.RefConsult, C.NomConsult, C.TelConsult, C.AdressConsult, C.EmailConsult, N.MontantNego, S.RefSoumis, S.AttribueContrat from t_consultant as C, t_soumissionconsultant as S, t_dp_negociation as N where C.RefConsult=S.RefConsult and S.RefSoumis=N.RefSoumis and S.Negociation='OUI' and S.RangFinal IS NOT NULL and S.EvalFinOk='OUI' and S.NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and S.ConsultDisqualifie IS NULL ORDER BY S.RangFinal ASC"
+        End If
 
-        query = "select C.RefConsult, C.NomConsult, C.TelConsult, C.AdressConsult, C.EmailConsult,N.MontantNego, S.RefSoumis from t_consultant as C, t_soumissionconsultant as S, t_dp_negociation as N where C.RefConsult=S.RefConsult and S.RefSoumis=N.RefSoumis and S.Negociation='OUI' and S.RangFinal IS NOT NULL and S.EvalFinOk='OUI' and S.NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and S.AttribueContrat IS NULL ORDER BY S.RangFinal ASC LIMIT 1"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
+
         If dt.Rows.Count > 0 Then
             DebutChargement(True, "Initialisation des données en cours...")
-
-            CmbContrat.Text = ""
-            GetInitialiserContrat()
-            NewReadOnly(False)
-
+            Dim NbrsDisqualifier As Integer = 0
             For Each rw In dt.Rows
-                ReponseDialog = rw("MontantNego").ToString.Replace(" ", "")
-                TxtMontantMarche.Text = AfficherMonnaie(rw("MontantNego").ToString)
-                TxtMontMarcheLettre.Text = MontantLettre(rw("MontantNego").ToString.Replace(".00", "").Replace(".", ","))
 
-                TxtConsultContrat.Text = MettreApost(rw("NomConsult").ToString)
-                TxtContactRepre.Text = MettreApost(rw("TelConsult").ToString)
-                TxtAdresseConsContrat.Text = MettreApost(rw("AdressConsult").ToString)
-                TxtEmail.Text = MettreApost(rw("EmailConsult").ToString)
-                RefSoumisRetenuContrat = rw("RefSoumis").ToString
-                RefConsults = rw("RefConsult").ToString
-            Next
+                'Contrat non attribuer
+                If IsDBNull(rw("AttribueContrat")) Then
+                    CmbContrat.Text = ""
+                    GetInitialiserContrat()
+                    NewReadOnly(False)
 
-            'Info marche
-            query = "Select m.MontantEstimatif, b.NomBailleur, b.InitialeBailleur, c.CodeConvention, c.TypeConvention, c.TitreConvention from t_marche as m, t_bailleur as b, t_convention as c, t_dp as d  where d.RefMarche=m.RefMarche and m.Convention_ChefFile=c.CodeConvention and c.CodeBailleur=b.CodeBailleur and d.NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "'"
-            Dim dt1 As DataTable = ExcecuteSelectQuery(query)
+                    ReponseDialog = rw("MontantNego").ToString.Replace(" ", "")
+                    TxtMontantMarche.Text = AfficherMonnaie(rw("MontantNego").ToString)
+                    TxtMontMarcheLettre.Text = MontantLettre(rw("MontantNego").ToString.Replace(".00", "").Replace(".", ","))
 
-            For Each rw In dt1.Rows
-                TxtBailleurMarche.Text = IIf(rw("NomBailleur").ToString <> "", MettreApost(rw("InitialeBailleur").ToString) & " - " & MettreApost(rw("NomBailleur").ToString), MettreApost(rw("InitialeBailleur").ToString)).ToString
-                TxtConventionMarche.Text = IIf(rw("TitreConvention").ToString <> "", MettreApost(rw("CodeConvention").ToString) & " - " & MettreApost(rw("TitreConvention").ToString), MettreApost(rw("CodeConvention").ToString)).ToString
-                TypeConvention = MettreApost(rw("TypeConvention").ToString)
-            Next
+                    TxtConsultContrat.Text = MettreApost(rw("NomConsult").ToString)
+                    TxtContactRepre.Text = MettreApost(rw("TelConsult").ToString)
+                    TxtAdresseConsContrat.Text = MettreApost(rw("AdressConsult").ToString)
+                    TxtEmail.Text = MettreApost(rw("EmailConsult").ToString)
+                    RefSoumisRetenuContrat = rw("RefSoumis").ToString
+                    RefConsults = rw("RefConsult").ToString
+                    StatutConsult.Text = "Non disqualifié"
 
-            NumContrat.Text = ""
-            NumContrat.Select()
-            BtAjoutArticle.Text = "AJOUTER"
-            NewInitAnne(ReponseDialog)
-            DejaEnregistrer = False
-            FinChargement()
-        Else
-            SuccesMsg("Impossible d'édité un autre contrat sur cette Dp !")
-        End If
-    End Sub
+                    'Info marche
+                    Dim ListeConvention As String = ""
 
-    Private Sub BtImpContrat_Click(sender As Object, e As EventArgs) Handles BtImpContrat.Click
-        If CmbContrat.Properties.Items.Count = 0 Then
-            SuccesMsg("Aucun contrat à impremier")
-            CmbContrat.Select()
-            Exit Sub
-        End If
-        If CmbContrat.SelectedIndex = -1 Then
-            SuccesMsg("Veuillez selectionné le contrat à impremier")
-            CmbContrat.Select()
-            Exit Sub
-        End If
+                    If TypeDossier(CmbNumDoss.Text) = "AMI" Then 'Cas de la methode 3CV
+                        query = "Select m.MontantEstimatif,m.Convention_ChefFile, m.CodeConvention, b.NomBailleur, b.InitialeBailleur, c.TypeConvention, c.TitreConvention from t_marche as m, t_bailleur as b, t_convention as c, T_ami as a  where a.RefMarche=m.RefMarche and m.Convention_ChefFile=c.CodeConvention and c.CodeBailleur=b.CodeBailleur and a.NumeroDAMI='" & EnleverApost(CmbNumDoss.Text) & "'"
+                    Else
+                        query = "Select m.MontantEstimatif,m.Convention_ChefFile, m.CodeConvention, b.NomBailleur, b.InitialeBailleur, c.TypeConvention, c.TitreConvention from t_marche as m, t_bailleur as b, t_convention as c, t_dp as d  where d.RefMarche=m.RefMarche and m.Convention_ChefFile=c.CodeConvention and c.CodeBailleur=b.CodeBailleur and d.NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "'"
+                    End If
 
-        Try
-            DebutChargement(True, "Chargement du contrat en cours...")
-            ExecuteNonQuery("delete from t_dp_tamparticlecontrat where CodeOperateur='" & CodeOperateurEnCours & "' and CodeProjet='" & ProjetEnCours & "'")
-            'Enregistrement des article
-            EnregistreArticle()
-
-            Dim Contrat, Annexe As New ReportDocument
-            Dim crtableLogoninfos As New TableLogOnInfos
-            Dim crtableLogoninfo As New TableLogOnInfo
-            Dim crConnectionInfo As New ConnectionInfo
-            Dim CrTables As Tables
-            Dim CrTable As Table
-
-            Dim DatSet = New DataSet
-
-            Dim Chemin As String = lineEtat & "\Marches\DP\Contrats\"
-
-            Contrat.Load(Chemin & "Contrat_0 - Copie.rpt")
-            Annexe.Load(Chemin & "Annexe.rpt")
-
-            With crConnectionInfo
-                .ServerName = ODBCNAME
-                .DatabaseName = DB
-                .UserID = USERNAME
-                .Password = PWD
-            End With
-
-            CrTables = Contrat.Database.Tables
-            For Each CrTable In CrTables
-                crtableLogoninfo = CrTable.LogOnInfo
-                crtableLogoninfo.ConnectionInfo = crConnectionInfo
-                CrTable.ApplyLogOnInfo(crtableLogoninfo)
-            Next
-
-            CrTables = Annexe.Database.Tables
-            For Each CrTable In CrTables
-                crtableLogoninfo = CrTable.LogOnInfo
-                crtableLogoninfo.ConnectionInfo = crConnectionInfo
-                CrTable.ApplyLogOnInfo(crtableLogoninfo)
-            Next
-
-            Contrat.SetDataSource(DatSet)
-            Annexe.SetDataSource(DatSet)
-
-            Contrat.SetParameterValue("CodeProjet", ProjetEnCours)
-            Contrat.SetParameterValue("NumeroContrat", EnleverApost(NumContrat.Text))
-            Contrat.SetParameterValue("NumDp", EnleverApost(CmbNumDoss.Text))
-            Contrat.SetParameterValue("CodeOperateur", CodeOperateurEnCours)
-            Dim rwDevise As DataRow = ExcecuteSelectQuery("SELECT s.MontantOffresLocal,s.MontantAjusterLocal from t_soumissionconsultant as s, t_marchesigne as m where m.RefSoumis=s.RefSoumis and m.NumeroMarche='" & EnleverApost(NumContrat.Text) & "' and s.NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "'").Rows(0)
-            Dim MontantDevisePropo As Decimal = Val(Mid(rwDevise("MontantAjuster").ToString, 3))
-            If Mid(rwDevise("MontantAjuster"), 1, 1) = "+" Then
-                MontantDevisePropo = Val(rwDevise("MontantPropose")) + MontantDevisePropo
-            Else
-                MontantDevisePropo = Val(rwDevise("MontantPropose")) - MontantDevisePropo
-            End If
-
-            Contrat.SetParameterValue("MontantDevisePropo", AfficherMonnaie(MontantDevisePropo))
-
-            Annexe.SetParameterValue("CodeProjet", ProjetEnCours)
-            Annexe.SetParameterValue("NumeroContrat", EnleverApost(NumContrat.Text))
-
-            Dim CheminDocTDR As String = ExecuteScallar("select CheminDocTDR from t_dp where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and CodeProjet='" & ProjetEnCours & "'")
-
-            Dim Chemin1 As String = Path.GetTempFileName & ".doc"
-            Dim Chemin2 As String = Path.GetTempFileName & ".doc"
-            Contrat.ExportToDisk(ExportFormatType.WordForWindows, Chemin1)
-            Annexe.ExportToDisk(ExportFormatType.WordForWindows, Chemin2)
-
-            Dim NomDossier As String = line & "\DP\" & FormatFileName(CmbNumDoss.Text, "_") & "\" & FormatFileName(NumContrat.Text, "")
-
-            If (Directory.Exists(NomDossier) = False) Then
-                Directory.CreateDirectory(NomDossier)
-            End If
-            NomDossier = NomDossier & "\Contrat.pdf"
-
-            ' Contrat.ExportToDisk(ExportFormatType.PortableDocFormat, NomDossier & "\Contrat.pdf")
-
-            ' ViewRapportEval.ReportSource = RapportEvalTech
-            'With FullScreenReport
-            '    .FullView.ReportSource = Contrat
-            '    '.FullView.ReportSource = RapportPV
-            '    .Text = "Contrat N°" & EnleverApost(NumContrat.Text)
-            '    .ShowDialog()
-            'End With
-
-            Dim oWord As New Word.Application
-            Try
-                Dim currentDoc As Word.Document
-
-                currentDoc = oWord.Documents.Add(Chemin1)
-                Dim myRange As Word.Range = currentDoc.Bookmarks.Item("\endofdoc").Range
-                Dim mySection1 As Word.Section = AjouterNouvelleSectionDocument(currentDoc, myRange)
-                'Insertion des TDR
-                If CheminDocTDR.ToString <> "" Then
-                    Dim CheminTDR As String = line & "\DP\" & FormatFileName(CmbNumDoss.Text, "_") & "\TDR1.Rtf"
-                    myRange.InsertFile(CheminTDR)
-                End If
-                If CheminDocTDR.ToString <> "" Then
-                    mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
-                End If
-                myRange.InsertFile(Chemin2)
-
-                currentDoc.SaveAs2(FileName:=NomDossier, FileFormat:=Word.WdSaveFormat.wdFormatPDF)
-                oWord.Quit(SaveChanges:=Word.WdSaveOptions.wdDoNotSaveChanges)
-            Catch ex As Exception
-                FailMsg("Erreur de traitement " & ex.ToString)
-                oWord.Quit(SaveChanges:=Word.WdSaveOptions.wdDoNotSaveChanges)
-                FinChargement()
-            End Try
-            FinChargement()
-            Process.Start(NomDossier)
-        Catch ex As Exception
-            FailMsg(ex.ToString)
-            FinChargement()
-        End Try
-    End Sub
-
-    Private Sub EnregistreArticle()
-        Try
-            Dim dt0 As DataTable
-            Dim TabCodeArticle As Array = {"2.1", "2.2", "2.3", "2.4", "3.5(a)", "3.5(b)", "3.5(c)", "3.5(d)", "3.5(E)", "3.9", "6.4(a)(1)", "6.4(a)(2)", "6.4(b)", "6.4(c)", "8.2"}
-            For i = 0 To 14
-                query = "SELECT DescriptionArticle from t_dp_articlecontrat where CodeArticle='" & TabCodeArticle(i) & "' and NumeroContrat='" & EnleverApost(NumContrat.Text) & "' and CodeProjet ='" & ProjetEnCours & "'"
-                dt0 = ExcecuteSelectQuery(query)
-                If dt0.Rows.Count > 0 Then
-                    For Each rw0 In dt0.Rows
-                        ExecuteNonQuery("Insert into t_dp_tamparticlecontrat values('" & EnleverApost(NumContrat.Text) & "', '" & TabCodeArticle(i) & "', '" & EnleverApost(rw0("DescriptionArticle").ToString) & "', '" & CodeOperateurEnCours & "', '" & ProjetEnCours & "')")
+                    Dim dt1 As DataTable = ExcecuteSelectQuery(query)
+                    For Each rw1 In dt1.Rows
+                        TxtBailleurMarche.Text = IIf(rw1("NomBailleur").ToString <> "", MettreApost(rw1("InitialeBailleur").ToString) & " - " & MettreApost(rw1("NomBailleur").ToString), MettreApost(rw1("InitialeBailleur").ToString)).ToString
+                        TxtConventionMarche.Text = IIf(rw1("TitreConvention").ToString <> "", MettreApost(rw1("Convention_ChefFile").ToString) & " - " & MettreApost(rw1("TitreConvention").ToString), MettreApost(rw1("Convention_ChefFile").ToString)).ToString
+                        TypeConvention = MettreApost(rw1("TypeConvention").ToString)
+                        ListeConvention = rw1("CodeConvention").ToString
                     Next
+
+                    NumContrat.Text = ""
+                    NumContrat.Select()
+                    BtAjoutArticle.Text = "AJOUTER"
+                    DejaEnregistrer = False
+                    LoadRepartionMontantMarche("CreateTable", ListeConvention)
+                    FinChargement()
+
+                    Exit For
                 Else
-                    ExecuteNonQuery("Insert into t_dp_tamparticlecontrat values('" & EnleverApost(NumContrat.Text) & "', '" & TabCodeArticle(i) & "', 'Sans Objet', '" & CodeOperateurEnCours & "', '" & ProjetEnCours & "')")
+                    'Consultant en cours de disqualification
+                    FinChargement()
+                    ReponseDialog = ""
+                    Dim NewMotifDias As New MotifDisqualification
+                    NewMotifDias.TxtNomConslt.Text = MettreApost(rw("NomConsult").ToString)
+                    NewMotifDias.ShowDialog()
+                    If ReponseDialog.ToString = "" Then
+                        Exit Sub
+                    End If
+                    ExecuteNonQuery("update t_soumissionconsultant set ConsultDisqualifie='OUI', MotifDisqualification='" & EnleverApost(ReponseDialog.ToString) & "' where RefSoumis='" & rw("RefSoumis") & "' and NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "'")
+                    SuccesMsg("Disqualification effectuée avec succès")
+                    NbrsDisqualifier += 1
                 End If
             Next
+
+            'Tous les consultant de la liste restriente ont été disqualifier
+            If NbrsDisqualifier = dt.Rows.Count Then
+                FailMsg("Tous les consultants retenus pour" & vbNewLine & "ce marché sont disqualifiés")
+                Exit Sub
+            End If
+        Else
+            FailMsg("Impossible d'élaboré un autre contrat sur ce dossier")
+        End If
+    End Sub
+
+    Private Sub LoadRepartionMontantMarche(TypaChargement As String, Optional ListeConvention As String = "")
+        Try
+            Dim dtRepart = New DataTable()
+            dtRepart.Columns.Clear()
+            ViewRepartion.Columns.Clear()
+            dtRepart.Columns.Add("RefRepartion", Type.GetType("System.String"))
+            dtRepart.Columns.Add("Année", Type.GetType("System.String"))
+
+            If TypaChargement = "CreateTable" Then
+                Dim ListeCon As String() = ListeConvention.Split("|")
+                For i = 0 To ListeCon.Length - 1
+                    If ListeCon(i).ToString.Trim <> "" Then
+                        dtRepart.Columns.Add(ListeCon(i).ToString, Type.GetType("System.String"))
+                    End If
+                Next
+                dtRepart.Rows.Clear()
+            Else
+
+                Dim dtt As DataTable = ExcecuteSelectQuery("select * from t_dp_repartition_montant_contrat where NumeroContrat='" & EnleverApost(NumContrat.Text) & "'")
+                Dim Ajouter As Boolean = False
+                Dim NombrConvenAjouter As Integer = 0
+                For Each rw In dtt.Rows
+                    If Ajouter = False Then
+                        For i = 1 To 10 'Ajout des convention == *** ligne des convention
+                            If rw(i + 2).ToString.Trim <> "" Then
+                                dtRepart.Columns.Add(MettreApost(rw(i + 2).ToString), Type.GetType("System.String"))
+                                NombrConvenAjouter += 1
+                            End If
+                        Next
+                        Ajouter = True
+                        dtRepart.Rows.Clear()
+                    End If
+
+                    Dim drS = dtRepart.NewRow()
+                    drS("RefRepartion") = rw("RefRepartion").ToString
+                    drS("Année") = rw("Annee").ToString
+
+                    'Renseigné la valeur de la convention
+                    'Dim ValConven As Integer = 12
+                    For Cols = 0 To NombrConvenAjouter - 1
+                        drS(Cols + 2) = rw(13 + Cols).ToString
+                    Next
+                    dtRepart.Rows.Add(drS)
+                Next
+            End If
+
+            ListeRepartion.DataSource = dtRepart
+            '  ViewRepartion.Columns("RefRepartion").MaxWidth = 100
+            ViewRepartion.Columns("RefRepartion").Visible = False
+            ViewRepartion.Columns("Année").Width = 100
+            ViewRepartion.OptionsBehavior.Editable = True
+
+            ViewRepartion.Appearance.Row.Font = New Font("Times New Roman", 11, FontStyle.Regular)
+            ViewRepartion.Columns("Année").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Default
+            For i = 2 To ViewRepartion.Columns.Count - 1
+                ViewRepartion.Columns(i).AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+                ViewRepartion.Columns(i).Width = 250
+            Next
+
+            Dim cmbAnne As RepositoryItemComboBox = New RepositoryItemComboBox()
+            cmbAnne.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+            GetRemplirAnne(cmbAnne)
+            AddHandler cmbAnne.EditValueChanged, AddressOf cmbAnne_CheckedChanged
+            ViewRepartion.Columns("Année").ColumnEdit = cmbAnne
         Catch ex As Exception
             FailMsg(ex.ToString)
         End Try
     End Sub
-    Private Sub TxtMontAnne1_TextChanged(sender As Object, e As EventArgs) Handles TxtMontAnne1.TextChanged, TxtMontAnne2.TextChanged, TxtMontAnne3.TextChanged
-        If TxtMontantMarche.Text <> "" Then
-            Dim MontantToal As Decimal = 0
-            If IsNumeric(TxtMontAnne1.Text.Replace(" ", "")) = True Then MontantToal += CDec(TxtMontAnne1.Text)
-            If IsNumeric(TxtMontAnne2.Text.Replace(" ", "")) = True Then MontantToal += CDec(TxtMontAnne2.Text)
-            If IsNumeric(TxtMontAnne3.Text.Replace(" ", "")) = True Then MontantToal += CDec(TxtMontAnne3.Text)
 
-            TxtTotalReparti.Text = IIf(MontantToal > 0, AfficherMonnaie(MontantToal), "").ToString
+    Private Sub cmbAnne_CheckedChanged(sender As Object, e As EventArgs)
+        Dim obj As DevExpress.XtraEditors.ComboBoxEdit = CType(sender, DevExpress.XtraEditors.ComboBoxEdit)
+    End Sub
 
-            If TypeConvention.ToString = "Prêt" Then
-                RdEmpruntAnCour.Checked = IIf(Val(TxtMontAnne1.Text) > 0, True, False).ToString
-                RdEmpruntPlus1.Checked = IIf(Val(TxtMontAnne2.Text) > 0, True, False).ToString
-                RdEmpruntPlus2.Checked = IIf(Val(TxtMontAnne3.Text) > 0, True, False).ToString
-            ElseIf TypeConvention.ToString = "Don" Then
-                RdDonAnCour.Checked = IIf(Val(TxtMontAnne1.Text) > 0, True, False).ToString
-                RdDonAnPlus1.Checked = IIf(Val(TxtMontAnne2.Text) > 0, True, False).ToString
-                RdDonAnPlus2.Checked = IIf(Val(TxtMontAnne3.Text) > 0, True, False).ToString
-            ElseIf TypeConvention.ToString = "Contrepartie" Then
-                RdTresorCour.Checked = IIf(Val(TxtMontAnne1.Text) > 0, True, False).ToString
-                RdTresorPlus1.Checked = IIf(Val(TxtMontAnne2.Text) > 0, True, False).ToString
-                RdTresorPlus2.Checked = IIf(Val(TxtMontAnne3.Text) > 0, True, False).ToString
+    Private Sub GetRemplirAnne(ByRef OutPut As RepositoryItemComboBox)
+        OutPut.Items.Clear()
+        Dim Anne As Integer = 5
+        For i = 1 To 10
+            If i <= 5 Then
+                OutPut.Items.Add(Now.Year - Anne)
+                Anne -= 1
+            Else
+                OutPut.Items.Add(Now.Year + Anne)
+                Anne += 1
             End If
-        End If
+        Next
+    End Sub
+
+
+    Private Sub AddLigneRepartition_Click(sender As Object, e As EventArgs) Handles AddLigneRepartition.Click
+        Try
+            Dim NewLign As DataTable = ListeRepartion.DataSource
+            Dim drs = NewLign.NewRow()
+            For i = 0 To ViewRepartion.Columns.Count - 1
+                drs(i) = ""
+            Next
+
+            NewLign.Rows.Add(drs)
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+
+    Private Sub BtDelete_Click(sender As Object, e As EventArgs) Handles BtDelete.Click
+        Try
+            If ViewRepartion.RowCount > 0 Then
+                If ConfirmMsg("Êtes-vous sûrs de vouloir supprimer ?") Then
+                    Dim RefRepartion = ViewRepartion.GetFocusedRowCellValue("RefRepartion").ToString
+                    If RefRepartion.ToString <> "" Then
+                        ExecuteNonQuery("delete from t_dp_repartition_montant_contrat where RefRepartion='" & RefRepartion & "'")
+                    End If
+                    ViewRepartion.GetDataRow(ViewRepartion.FocusedRowHandle).Delete()
+                End If
+            Else
+                FailMsg("Aucune ligne à supprimé")
+            End If
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
     End Sub
 
     Private Sub Save_ChargerLesArticles(ByVal NumeroContrat As String, Optional Afficher As Boolean = False)
@@ -3718,7 +4506,6 @@ Public Class EvaluationConsultants
         End If
     End Sub
 
-
     Private Sub BtAjoutArticle_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles BtAjoutArticle.LinkClicked
         If CmbArticle.IsRequiredControl("Veuillez selectionné un article") Then
             CmbArticle.Focus()
@@ -3746,7 +4533,6 @@ Public Class EvaluationConsultants
         BtAjoutArticle.Text = "AJOUTER"
         IndexLignArticle = 0
     End Sub
-
 
     Private Sub GridArticle_DoubleClick(sender As Object, e As EventArgs) Handles GridArticle.DoubleClick
         If GridArticle.RowCount > 0 Then
@@ -3785,26 +4571,6 @@ Public Class EvaluationConsultants
         Catch ex As Exception
             FailMsg(ex.ToString)
         End Try
-    End Sub
-
-    Private Sub BtWordContrat_Click(sender As Object, e As EventArgs) Handles BtWordContrat.Click
-
-    End Sub
-
-    Private Sub BtPdfContrat_Click(sender As Object, e As EventArgs) Handles BtPdfContrat.Click
-
-    End Sub
-
-    Private Sub BtActuaContrat_Click(sender As Object, e As EventArgs) Handles BtActuaContrat.Click
-
-    End Sub
-
-    Private Sub BtModifContrat2_Click(sender As Object, e As EventArgs) Handles BtModifContrat2.Click
-
-    End Sub
-
-    Private Sub BtEnvoiBailleur_Click(sender As Object, e As EventArgs) Handles BtEnvoiBailleur.Click
-
     End Sub
 
     Private Sub ContextMenuStrip1_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip1.Opening
@@ -3854,6 +4620,8 @@ Public Class EvaluationConsultants
                 If RefArcticle.ToString <> "" Then
                     ExecuteNonQuery("delete from t_dp_articlecontrat where RefArticle='" & RefArcticle & "' and CodeProjet='" & ProjetEnCours & "'")
                 End If
+                BtAjoutArticle.Text = "AJOUTER"
+                IndexLignArticle = 0
             End If
         End If
     End Sub
@@ -3863,11 +4631,10 @@ Public Class EvaluationConsultants
             DrX = ViewAnnexe.GetDataRow(ViewAnnexe.FocusedRowHandle)
             If File.Exists(DrX("Chemin").ToString) = True Then
                 Process.Start(DrX("Chemin").ToString)
-            ElseIf ConfirmMsg("Le fichier que vous tentez d'ouvrir n'existe pas ou été supprimer" & vbNewLine & "Voulez-vous le supprimer de la liste ?") = DialogResult.yes Then
+            ElseIf ConfirmMsg("Le fichier que vous tentez d'ouvrir n'existe pas ou été supprimer" & vbNewLine & "Voulez-vous le supprimer de la liste ?") = DialogResult.Yes Then
                 If DrX("RefAnnexe").ToString <> "" Then
                     ExecuteNonQuery("delete from t_dp_annexepj where RefAnnexe='" & DrX("RefAnnexe").ToString & "'")
                 End If
-
                 ViewAnnexe.GetDataRow(ViewAnnexe.FocusedRowHandle).Delete()
             End If
         End If
@@ -3885,10 +4652,503 @@ Public Class EvaluationConsultants
             End If
         End If
     End Sub
+
+#End Region
+
+#Region "Impression du contrat"
+    Private Sub BtImprimerContrat_Click(sender As Object, e As EventArgs) Handles BtImprimerContrat.Click
+        Try
+            If TablBoutonClik(5) = False Then
+                ChargerListeContrat(CombContratImp)
+                TablBoutonClik(5) = True
+                WebBrowser3.Navigate("")
+                CheminContrat = ""
+                EnebledBoutonImpContrat(False)
+            End If
+
+            GetVisiblePanel(True, "ImprimerContrat")
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+
+    Private Sub EnebledBoutonImpContrat(value As Boolean)
+        GeneContrat.Enabled = value
+        ImpContrat.Enabled = value
+        EnvoiContraBailleur.Enabled = value
+        ModifImpContrat.Enabled = value
+        ActuaImpContrat.Enabled = value
+        PdfContratImp.Enabled = value
+        wordimpContrat.Enabled = value
+        BtValContrat.Enabled = value
+    End Sub
+
+    Private Sub GetValidContrat(value As Boolean)
+        GeneContrat.Enabled = value
+        EnvoiContraBailleur.Enabled = value
+        ModifImpContrat.Enabled = value
+        ActuaImpContrat.Enabled = value
+        BtValContrat.Enabled = value
+    End Sub
+
+    Private Sub CombContrat_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CombContratImp.SelectedIndexChanged
+        Try
+            EnebledBoutonImpContrat(False)
+            WebBrowser3.Navigate("")
+            CheminContrat = ""
+
+            If CombContratImp.SelectedIndex <> -1 Then
+
+                Dim dt As DataTable = ExcecuteSelectQuery("SELECT * FROM t_dp_contrat where NumContrat='" & EnleverApost(CombContratImp.Text) & "' and CodeProjet='" & ProjetEnCours & "'")
+                For Each rw In dt.Rows
+
+                    If rw("CheminContrat").ToString = "" Then
+                        If GetGenererContrat() = False Then Exit Sub
+                        EnebledBoutonImpContrat(True)
+                    ElseIf rw("CheminContrat").ToString <> "" Then
+                        Dim ChemeniContrat As String = line & "\DP\" & FormatFileName(CmbNumDoss.Text, "_") & "\" & FormatFileName(CombContratImp.Text, "")
+                        If File.Exists(ChemeniContrat.ToString & "\" & rw("CheminContrat").ToString) Then
+                            DebutChargement(True, "Chargement du contrat en cours...")
+                            WebBrowser3.Navigate(ChemeniContrat.ToString & "\" & rw("CheminContrat").ToString)
+                            Threading.Thread.Sleep(5000)
+                            CheminContrat = rw("CheminContrat").ToString
+                            FinChargement()
+
+                        ElseIf ConfirmMsg("Le fichier spécifier n'existe pas ou a été supprimer" & vbNewLine & "Voulez-vous le regénérer à nouveau ?") = DialogResult.Yes Then
+                            If GetGenererContrat() = False Then Exit Sub
+                        End If
+
+                        If rw("EtatContrat").ToString = "Valider" Then
+                            GetValidContrat(False)
+                            ImpContrat.Enabled = True
+                            PdfContratImp.Enabled = True
+                            wordimpContrat.Enabled = True
+                        End If
+                    End If
+                Next
+            End If
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+
+
+    Private Sub ModifImpContrat_Click(sender As Object, e As EventArgs) Handles ModifImpContrat.Click
+        Try
+            If ExportContrat("modifier", "word") = False Then Exit Sub
+            ModifsContrats = True
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+
+    Private Function ExportContrat(Textes As String, TypeFichier As String) As Boolean
+        Try
+            If CombContratImp.Properties.Items.Count = 0 Then
+                SuccesMsg("Aucun contrat à " & Textes.ToString)
+                CombContratImp.Select()
+                Return False
+            End If
+            If CombContratImp.SelectedIndex = -1 Then
+                SuccesMsg("Veuillez selectionner le contrat à " & Textes.ToString)
+                CombContratImp.Select()
+                Return False
+            End If
+
+            Dim ChemeniContrat As String = line & "\DP\" & FormatFileName(CmbNumDoss.Text, "_") & "\" & FormatFileName(CombContratImp.Text, "")
+            Dim NomFichiers As String = IIf(TypeFichier = "word", "Contrat.docx", CheminContrat.ToString).ToString
+
+            If File.Exists(ChemeniContrat & "\" & NomFichiers.ToString) Then
+                DebutChargement(True, "Chargement du contrat en cours...")
+                Process.Start(ChemeniContrat & "\" & NomFichiers.ToString)
+                FinChargement()
+                Return True
+            Else
+                SuccesMsg("Le fichier spécifié n'existe pas ou a été supprimé")
+                Return False
+            End If
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+            Return False
+        End Try
+    End Function
+
+    Private Sub PdfContratImp_Click(sender As Object, e As EventArgs) Handles PdfContratImp.Click
+        Try
+            If CombContratImp.Properties.Items.Count = 0 Then
+                SuccesMsg("Aucun contrat à exporter")
+                CombContratImp.Select()
+                Exit Sub
+            End If
+            If CombContratImp.SelectedIndex = -1 Then
+                SuccesMsg("Veuillez selectionner le contrat à exporter")
+                CombContratImp.Select()
+                Exit Sub
+            End If
+
+            Dim ChemeniContrat As String = line & "\DP\" & FormatFileName(CmbNumDoss.Text, "_") & "\" & FormatFileName(CombContratImp.Text, "") & "\" & CheminContrat.ToString
+            If File.Exists(ChemeniContrat) Then
+                If ExporterPDF(ChemeniContrat.ToString, "Contrat.pdf") = False Then
+                    Exit Sub
+                End If
+            Else
+                SuccesMsg("Le fichier à exporter n'existe pas ou a été supprimé")
+            End If
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+
+    Private Sub ImpContrat_Click(sender As Object, e As EventArgs) Handles ImpContrat.Click
+        Try
+            If ExportContrat("imprimer", "pdf") = False Then Exit Sub
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+
+    Private Sub EnvoiContraBailleur_Click(sender As Object, e As EventArgs) Handles EnvoiContraBailleur.Click
+        Try
+            If CombContratImp.Properties.Items.Count = 0 Or CheminContrat.ToString = "" Then
+                SuccesMsg("Aucun contrat à envoyer au balleur de fonds")
+                CombContratImp.Select()
+                Exit Sub
+            End If
+            If CombContratImp.SelectedIndex = -1 Then
+                SuccesMsg("Veuillez selectionner le contrat à envoyer au bailleur")
+                CombContratImp.Select()
+                Exit Sub
+            End If
+
+            Dim ChemeniContrat As String = line & "\DP\" & FormatFileName(CmbNumDoss.Text, "_") & "\" & FormatFileName(CombContratImp.Text, "") & "\Contrat.docx"
+            If Not File.Exists(ChemeniContrat.ToString) Then
+                FailMsg("Le contrat n'existe pas ou à été supprimer")
+            ElseIf File.Exists(ChemeniContrat.ToString) Then
+                If ChargerLesDonneEmail_AMI_DP_SERVICEAUTRES(CmbNumDoss.Text, "DP", False) = False Then
+                    Exit Sub
+                End If
+
+                'Info de l'envoi de l'email
+                If ConfirmMsg("Confirmez-vous l'envoi du contrat au bailleur [ " & MettreApost(rwDossDPAMISA.Rows(0)("InitialeBailleur").ToString) & " ]") = DialogResult.Yes Then
+                    DebutChargement(True, "Envoi du contrat au bailleur en cours...")
+                    'Envoi du rapport au bailleur
+                    If EnvoiMailRapport(NomBailleurRetenu, CmbNumDoss.Text, EmailDestinatauer, ChemeniContrat.ToString, EmailCoordinateurProjet, EmailResponsablePM, "Contrat") = False Then Exit Sub
+                    SuccesMsg("Le contrat a été envoyé avec succès")
+                    FinChargement()
+                End If
+            End If
+        Catch exs As IOException
+            FinChargement()
+            FailMsg("Un exemplaire du contrat est ouvert dans une autre application" & vbNewLine & "Veuillez le fermer svp")
+        Catch ex As Exception
+            FinChargement()
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+
+    Private Sub BtValContrat_Click(sender As Object, e As EventArgs) Handles BtValContrat.Click
+        Try
+            If CombContratImp.Properties.Items.Count = 0 Or CheminContrat.ToString = "" Then
+                SuccesMsg("Aucun contrat à valider")
+                CombContratImp.Select()
+                Exit Sub
+            End If
+            If CombContratImp.SelectedIndex = -1 Then
+                SuccesMsg("Veuillez selectionner le contrat à valider")
+                CombContratImp.Select()
+                Exit Sub
+            End If
+
+            Dim ChemeniContrat As String = line & "\DP\" & FormatFileName(CmbNumDoss.Text, "_") & "\" & FormatFileName(CombContratImp.Text, "")
+            If Not File.Exists(ChemeniContrat & "\" & CheminContrat.ToString) Then
+                FailMsg("Le contrat que vous avez essayer de valider" & vbNewLine & "n'existe pas ou a été supprimé")
+            ElseIf ConfirmMsg("La validation du contrat êmpechera sa modification" & vbNewLine & "Voulez-vous continuez ?") = DialogResult.Yes Then
+                ExecuteNonQuery("Update t_dp_contrat set EtatContrat='Valider' where NumContrat='" & EnleverApost(CombContratImp.Text) & "' and CodeProjet='" & ProjetEnCours & "'")
+                SuccesMsg("Contrat validé avec succès")
+                GetValidContrat(False)
+            End If
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+
+    Private Sub ActuaImpContrat_Click(sender As Object, e As EventArgs) Handles ActuaImpContrat.Click
+        Try
+            If CombContratImp.Properties.Items.Count = 0 Or CheminContrat.ToString = "" Then
+                SuccesMsg("Aucun contrat à actualiser")
+                CombContratImp.Select()
+                Exit Sub
+            End If
+            If CombContratImp.SelectedIndex = -1 Then
+                SuccesMsg("Veuillez selectionner le contrat à actualiser")
+                CombContratImp.Select()
+                Exit Sub
+            End If
+
+            If ModifsContrats = False Then
+                SuccesMsg("Veuillez modifier le contrat avant d'actualiser")
+                Exit Sub
+            End If
+
+            Dim ChemeniContrat As String = line & "\DP\" & FormatFileName(CmbNumDoss.Text, "_") & "\" & FormatFileName(CombContratImp.Text, "")
+            Dim SaveContratpdf As String = "Contrat_" & FormatFileName(Now.ToString.Replace(" ", ""), "") & ".pdf"
+            If Not File.Exists(ChemeniContrat.ToString & "\Contrat.doc") Then
+                SuccesMsg("Le contrat à actualiser n'existe pas ou a été supprimé")
+            ElseIf File.Exists(ChemeniContrat.ToString & "\Contrat.doc") Then
+                DebutChargement(True, "Actualisation du contrat en cours...")
+
+                If Directory.Exists(ChemeniContrat) = False Then Directory.CreateDirectory(ChemeniContrat)
+
+                Dim WdApp As New Word.Application
+                Dim WdDoc As New Word.Document
+
+                Try
+                    WdDoc = WdApp.Documents.Add(ChemeniContrat.ToString & "\Contrat.docx")
+                    WdDoc.SaveAs2(FileName:=ChemeniContrat.ToString & "\" & SaveContratpdf.ToString, FileFormat:=Word.WdSaveFormat.wdFormatPDF)
+                    WdDoc.Close(True)
+                    WdApp.Quit(SaveChanges:=Word.WdSaveOptions.wdDoNotSaveChanges)
+                Catch ep As IO.IOException
+                    FinChargement()
+                    SuccesMsg("Un exemplaire du contrat est ouvert dans une autre application" & vbNewLine & "Veuillez le fermer svp.")
+                    WdDoc.Close(True)
+                    WdApp.Quit(SaveChanges:=Word.WdSaveOptions.wdDoNotSaveChanges)
+                    Exit Sub
+                Catch ex As Exception
+                    FinChargement()
+                    FailMsg(ex.ToString)
+                    WdDoc.Close(True)
+                    WdApp.Quit(SaveChanges:=Word.WdSaveOptions.wdDoNotSaveChanges)
+                    Exit Sub
+                End Try
+                FinChargement()
+
+                DebutChargement(True, "Chargement du contrat en cours...")
+                ExecuteNonQuery("Update t_dp_contrat set CheminContrat='" & SaveContratpdf.ToString & "' where NumContrat='" & EnleverApost(CombContratImp.Text) & "' and CodeProjet='" & ProjetEnCours & "'")
+                WebBrowser3.Navigate(ChemeniContrat.ToString & "\" & SaveContratpdf.ToString)
+                Threading.Thread.Sleep(5000)
+                ModifsContrats = False
+                CheminContrat = SaveContratpdf.ToString
+                FinChargement()
+            End If
+        Catch exs As IOException
+            FinChargement()
+            SuccesMsg("Un exemplaire du contrat est ouvert dans une autre application" & vbNewLine & "Veuillez le fermer svp.")
+        Catch ex As Exception
+            FinChargement()
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+
+    Private Sub wordimpContrat_Click(sender As Object, e As EventArgs) Handles wordimpContrat.Click
+        Try
+            If CombContratImp.Properties.Items.Count = 0 Then
+                SuccesMsg("Aucun contrat à exporter")
+                CombContratImp.Select()
+                Exit Sub
+            End If
+            If CombContratImp.SelectedIndex = -1 Then
+                SuccesMsg("Veuillez selectionner le contrat à exporter")
+                CombContratImp.Select()
+                Exit Sub
+            End If
+
+            Dim ChemeniContrat As String = line & "\DP\" & FormatFileName(CmbNumDoss.Text, "_") & "\" & FormatFileName(CombContratImp.Text, "") & "\Contrat.docx"
+            If File.Exists(ChemeniContrat) Then
+                If ExporterWORDfOrmatDocx(ChemeniContrat.ToString, "Contrat001.docx") = False Then
+                    Exit Sub
+                End If
+            Else
+                SuccesMsg("Le fichier à exporter n'existe pas ou a été supprimé")
+            End If
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+
+    Private Sub GeneContrat_Click(sender As Object, e As EventArgs) Handles GeneContrat.Click
+        Try
+            If CombContratImp.Properties.Items.Count = 0 Then
+                SuccesMsg("Aucun contrat à générer")
+                CombContratImp.Select()
+                Exit Sub
+            End If
+
+            If CombContratImp.SelectedIndex = -1 Then
+                SuccesMsg("Veuillez selectionner un contrat dans la liste")
+                CombContratImp.Select()
+                Exit Sub
+            End If
+            If GetGenererContrat() = False Then Exit Sub
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+
+    Private Function GetGenererContrat() As Boolean
+        SuccesMsg("Etat en cours de réalisation")
+        Return False
+        Try
+            DebutChargement(True, "Génération du contrat en cours...")
+            ExecuteNonQuery("delete from t_dp_tamparticlecontrat where CodeOperateur='" & CodeOperateurEnCours & "' and CodeProjet='" & ProjetEnCours & "'")
+            'Enregistrement des article
+            EnregistreArticle()
+
+            Dim Contrat, Contrat1, Contrat2, Contrat3, Contrat4, Contrat5 As New ReportDocument
+            Dim crtableLogoninfos As New TableLogOnInfos
+            Dim crtableLogoninfo As New TableLogOnInfo
+            Dim crConnectionInfo As New ConnectionInfo
+            Dim CrTables As Tables
+            Dim CrTable As Table
+
+            Dim DatSet = New DataSet
+
+            Dim Chemin As String = lineEtat & "\Marches\DP\Contrats\"
+            Dim TypeRenumeration As String = ""
+            If TypeDossier(CmbNumDoss.Text) = "AMI" Then
+                TypeRenumeration = ExecuteScallar("select TypeRemune from t_ami where NumeroDAMI='" & EnleverApost(CmbNumDoss.Text) & "'")
+            Else
+                TypeRenumeration = ExecuteScallar("select TypeRemune from t_dp where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "'")
+            End If
+
+            If TypeRenumeration = "Temps passé" Then
+                Contrat.Load(Chemin & "\Temps passé\Contrat_Dp_TempsPasse.rpt")
+                'Contrat1.Load(Chemin & "\Temps passé\Contrat_Dp_TempsPasse.rpt")
+                'Contrat2.Load(Chemin & "\Temps passé\Contrat_Dp_TempsPasse.rpt")
+                'Contrat3.Load(Chemin & "\Temps passé\Contrat_Dp_TempsPasse.rpt")
+                'Contrat4.Load(Chemin & "\Temps passé\Contrat_Dp_TempsPasse.rpt")
+                'Contrat5.Load(Chemin & "\Temps passé\Contrat_Dp_TempsPasse.rpt")
+            Else
+            End If
+
+            With crConnectionInfo
+                .ServerName = ODBCNAME
+                .DatabaseName = DB
+                .UserID = USERNAME
+                .Password = PWD
+            End With
+
+            CrTables = Contrat.Database.Tables
+            For Each CrTable In CrTables
+                crtableLogoninfo = CrTable.LogOnInfo
+                crtableLogoninfo.ConnectionInfo = crConnectionInfo
+                CrTable.ApplyLogOnInfo(crtableLogoninfo)
+            Next
+
+            Contrat.SetDataSource(DatSet)
+
+            Contrat.SetParameterValue("CodeProjet", ProjetEnCours)
+            Contrat.SetParameterValue("NumeroContrat", EnleverApost(CombContratImp.Text))
+            Contrat.SetParameterValue("NumeroDp", EnleverApost(CmbNumDoss.Text))
+            ' Contrat.SetParameterValue("CodeOperateur", CodeOperateurEnCours)
+
+            'Dim rwDevise As DataRow = ExcecuteSelectQuery("SELECT s.MontantOffresLocal,s.MontantAjusterLocal from t_soumissionconsultant as s, t_marchesigne as m where m.RefSoumis=s.RefSoumis and m.NumeroMarche='" & EnleverApost(CombContratImp.Text) & "' and s.NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "'").Rows(0)
+            'Dim MontantDevisePropo As Decimal = Val(Mid(rwDevise("MontantAjuster").ToString, 3))
+            'If Mid(rwDevise("MontantAjuster"), 1, 1) = "+" Then
+            '    MontantDevisePropo = Val(rwDevise("MontantPropose")) + MontantDevisePropo
+            'Else
+            '    MontantDevisePropo = Val(rwDevise("MontantPropose")) - MontantDevisePropo
+            'End If
+
+            'Contrat.SetParameterValue("MontantDevisePropo", AfficherMonnaie(MontantDevisePropo))
+
+            'Annexe.SetParameterValue("CodeProjet", ProjetEnCours)
+            'Annexe.SetParameterValue("NumeroContrat", EnleverApost(CombContratImp.Text))
+
+            Dim CheminDocTDR As String = ExecuteScallar("select CheminDocTDR from t_dp where NumeroDp='" & EnleverApost(CmbNumDoss.Text) & "' and CodeProjet='" & ProjetEnCours & "'")
+
+            Dim Chemin1 As String = Path.GetTempFileName & ".doc"
+            Dim Chemin2 As String = Path.GetTempFileName & ".doc"
+            Contrat.ExportToDisk(ExportFormatType.WordForWindows, Chemin1)
+            'Annexe.ExportToDisk(ExportFormatType.WordForWindows, Chemin2)
+
+            Dim NomDossier As String = line & "\DP\" & FormatFileName(CmbNumDoss.Text, "_") & "\" & FormatFileName(CombContratImp.Text, "")
+            If (Directory.Exists(NomDossier) = False) Then
+                Directory.CreateDirectory(NomDossier)
+            End If
+
+            Dim oWord As New Word.Application
+            Try
+                Dim currentDoc As New Word.Document
+
+                currentDoc = oWord.Documents.Add(Chemin1)
+                Dim myRange As Word.Range = currentDoc.Bookmarks.Item("\endofdoc").Range
+                Dim mySection1 As Word.Section = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                'Insertion des TDR
+                If CheminDocTDR.ToString <> "" Then
+                    Dim CheminTDR As String = line & "\DP\" & FormatFileName(CmbNumDoss.Text, "_") & "\TDR1.Rtf"
+                    myRange.InsertFile(CheminTDR)
+                End If
+                If CheminDocTDR.ToString <> "" Then
+                    mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                End If
+                myRange.InsertFile(Chemin2)
+
+                Dim SaveNomPdf As String = "Contrat_" & FormatFileName(Now.ToString.Replace(" ", ""), "") & ".pdf"
+
+                currentDoc.SaveAs2(FileName:=NomDossier & "\Contrat.docx", FileFormat:=Word.WdSaveFormat.wdFormatDocumentDefault)
+                currentDoc.SaveAs2(FileName:=NomDossier & "\" & SaveNomPdf.ToString, FileFormat:=Word.WdSaveFormat.wdFormatPDF)
+                oWord.Quit(SaveChanges:=Word.WdSaveOptions.wdDoNotSaveChanges)
+
+                ExecuteNonQuery("update t_dp_contrat set CheminContrat='" & SaveNomPdf.ToString & "' where NumContrat='" & EnleverApost(CombContratImp.Text) & "' and CodeProjet='" & ProjetEnCours & "'")
+                CheminContrat = SaveNomPdf.ToString
+            Catch exs As IOException
+                FinChargement()
+                SuccesMsg("Un exemplaire du contrat est ouvert dans une autre application" & vbNewLine & "Veuillez le fermer svp.")
+                oWord.Quit(SaveChanges:=Word.WdSaveOptions.wdDoNotSaveChanges)
+                Return False
+            Catch ex As Exception
+                FinChargement()
+                FailMsg("Erreur de traitement " & ex.ToString)
+                oWord.Quit(SaveChanges:=Word.WdSaveOptions.wdDoNotSaveChanges)
+                Return False
+            End Try
+
+            FinChargement()
+            DebutChargement(True, "Chargement du contrat en cours...")
+            Process.Start(NomDossier & "\" & CheminContrat.ToString)
+            Threading.Thread.Sleep(5000)
+            FinChargement()
+            Return True
+
+        Catch exd As IOException
+            FinChargement()
+            SuccesMsg("Un exemplaire du contrat est ouvert dans une autre application" & vbNewLine & "Veuillez le fermer svp.")
+            Return False
+        Catch ex As Exception
+            FinChargement()
+            FailMsg(ex.ToString)
+            Return False
+        End Try
+    End Function
+
+    Private Sub EnregistreArticle()
+        Try
+            Dim dt0 As DataTable
+            Dim TabCodeArticle As Array = {"2.1", "2.2", "2.3", "2.4", "3.5(a)", "3.5(b)", "3.5(c)", "3.5(d)", "3.5(E)", "3.9", "6.4(a)(1)", "6.4(a)(2)", "6.4(b)", "6.4(c)", "8.2"}
+            For i = 0 To 14
+                query = "SELECT DescriptionArticle from t_dp_articlecontrat where CodeArticle='" & TabCodeArticle(i) & "' and NumeroContrat='" & EnleverApost(NumContrat.Text) & "' and CodeProjet ='" & ProjetEnCours & "'"
+                dt0 = ExcecuteSelectQuery(query)
+                If dt0.Rows.Count > 0 Then
+                    For Each rw0 In dt0.Rows
+                        ExecuteNonQuery("Insert into t_dp_tamparticlecontrat values('" & EnleverApost(NumContrat.Text) & "', '" & TabCodeArticle(i) & "', '" & EnleverApost(rw0("DescriptionArticle").ToString) & "', '" & CodeOperateurEnCours & "', '" & ProjetEnCours & "')")
+                    Next
+                Else
+                    ExecuteNonQuery("Insert into t_dp_tamparticlecontrat values('" & EnleverApost(NumContrat.Text) & "', '" & TabCodeArticle(i) & "', 'Sans Objet', '" & CodeOperateurEnCours & "', '" & ProjetEnCours & "')")
+                End If
+            Next
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
 #End Region
 
 
-    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs)
-        BtResultEvalTechniq_Click(Me, e)
+    Private Sub Disqualification_CheckedChanged(sender As Object, e As EventArgs) Handles Disqualification.CheckedChanged
+        If Disqualification.Checked = True Then
+            MotifDisqualif.Enabled = True
+        Else
+            MotifDisqualif.Enabled = False
+        End If
     End Sub
+
 End Class

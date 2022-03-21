@@ -52,7 +52,7 @@ Public Class SeuilRevue
                 Dim n As Decimal = SeuilGrid.Rows.Add
                 SeuilGrid.Rows.Item(n).DefaultCellStyle.Font = New Font("Times New Roman", 9, FontStyle.Regular)
 
-                SeuilGrid.Rows.Item(n).Cells(3).Value = rw1("CodeSeuil")
+                SeuilGrid.Rows.Item(n).Cells(3).Value = rw1("CodeSeuil").ToString
                 SeuilGrid.Rows.Item(n).Cells(3).Style.ForeColor = Color.White
 
                 If (rw1("TypeExamenAO").ToString = "Priori") Then
@@ -125,7 +125,7 @@ Public Class SeuilRevue
                 Dim q As Decimal = SeuilGrid.Rows.Add
                 SeuilGrid.Rows.Item(q).DefaultCellStyle.Font = New Font("Times New Roman", 9, FontStyle.Regular)
 
-                SeuilGrid.Rows.Item(q).Cells(3).Value = rw1(0)
+                SeuilGrid.Rows.Item(q).Cells(3).Value = rw1("CodeSeuil").ToString
                 SeuilGrid.Rows.Item(q).Cells(3).Style.ForeColor = Color.White
 
                 If (rw1(6).ToString = "Priori") Then
@@ -199,7 +199,7 @@ Public Class SeuilRevue
                 Dim n As Decimal = SeuilGrid.Rows.Add
                 SeuilGrid.Rows.Item(n).DefaultCellStyle.Font = New Font("Times New Roman", 9, FontStyle.Regular)
 
-                SeuilGrid.Rows.Item(n).Cells(3).Value = rw1(0)
+                SeuilGrid.Rows.Item(n).Cells(3).Value = rw1("CodeSeuil").ToString
                 SeuilGrid.Rows.Item(n).Cells(3).Style.ForeColor = Color.White
 
                 If (rw1(6).ToString = "Priori") Then
@@ -272,7 +272,7 @@ Public Class SeuilRevue
                 Dim h As Decimal = SeuilGrid.Rows.Add
                 SeuilGrid.Rows.Item(h).DefaultCellStyle.Font = New Font("Times New Roman", 9, FontStyle.Regular)
 
-                SeuilGrid.Rows.Item(h).Cells(3).Value = rw4(0)
+                SeuilGrid.Rows.Item(h).Cells(3).Value = rw4("CodeSeuil").ToString
                 SeuilGrid.Rows.Item(h).Cells(3).Style.ForeColor = Color.White
 
                 If (rw4(6).ToString = "Priori") Then
@@ -336,25 +336,30 @@ Public Class SeuilRevue
     End Sub
 
     Private Sub BtSupprimer_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtSupprimer.Click
-        Dim LigneSupp As Decimal = SeuilGrid.CurrentRow.Index
-        Dim CodeSeuil As Decimal = SeuilGrid.Rows.Item(LigneSupp).Cells(3).Value
+        If SeuilGrid.RowCount > 0 Then
+            Dim LigneSupp As Decimal = SeuilGrid.CurrentRow.Index
+            Dim CodeSeuil As Decimal = SeuilGrid.Rows.Item(LigneSupp).Cells(3).Value
 
-        '******** ligne a ne pas supprimer  (CodeSeuil = 0)
-        If (CodeSeuil = 0) Then
-            FailMsg("Cette ligne ne peut être supprimée!")
-            Exit Sub
-        End If
-        '*******  verifre si on a déjà definis des etapes de marche
-        Dim CodeProcAO = ExecuteScallar("select CodeProcAO from T_Seuil where CodeSeuil='" & CodeSeuil & "'")
-        If Val(ExecuteScallar("select count(*) from t_etapemarche where CodeProcAO='" & CodeProcAO & "'")) > 0 Then
-            FailMsg("Cette ligne ne peut être supprimée !")
-            Exit Sub
-        End If
+            '******** ligne a ne pas supprimer  (CodeSeuil = 0)
+            If (CodeSeuil = 0) Then
+                FailMsg("Cette ligne ne peut être supprimée!")
+                Exit Sub
+            End If
 
-        If ConfirmMsg("Voulez-vous supprimer définitivement la ligne" & vbNewLine & Mid(SeuilGrid.Rows.Item(LigneSupp).Cells(0).Value.ToString, 20) & " " & SeuilGrid.Rows.Item(LigneSupp).Cells(1).Value & " " & SeuilGrid.Rows.Item(LigneSupp).Cells(2).Value & " ?") = DialogResult.Yes Then
-            ExecuteNonQuery("DELETE from T_Seuil where CodeSeuil='" & CodeSeuil & "'")
-            SuccesMsg("Suppression effectuée avec succès")
-            If ComBailleur.Text.Trim <> "" Then RemplirSeuil(ComBailleur.Text)
+            '*******  verifre si on a déjà definis des etapes de marche
+            'Dim CodeProcAO = ExecuteScallar("select CodeProcAO from T_Seuil where CodeSeuil='" & CodeSeuil & "'")
+            'If Val(ExecuteScallar("select count(*) from t_etapemarche where CodeProcAO='" & CodeProcAO & "'")) > 0 Then
+            '    FailMsg(CodeSeuil & "Impossible de supprimer cette ligne car elle contient des étapes !")
+            '    Exit Sub
+            'End If
+
+            If ConfirmMsg("Voulez-vous supprimer définitivement la ligne" & vbNewLine & Mid(SeuilGrid.Rows.Item(LigneSupp).Cells(0).Value.ToString, 20) & " " & SeuilGrid.Rows.Item(LigneSupp).Cells(1).Value & " " & SeuilGrid.Rows.Item(LigneSupp).Cells(2).Value & " ?") = DialogResult.Yes Then
+                ExecuteNonQuery("DELETE from T_Seuil where CodeSeuil='" & CodeSeuil & "'")
+                SuccesMsg("Suppression effectuée avec succès")
+                If ComBailleur.Text.Trim <> "" Then RemplirSeuil(ComBailleur.Text)
+            End If
+        Else
+            SuccesMsg("Aucune ligne à supprimé")
         End If
     End Sub
 

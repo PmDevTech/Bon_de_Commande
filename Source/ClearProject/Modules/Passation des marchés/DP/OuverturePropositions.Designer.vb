@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class OuverturePropositions
+Partial Class OuverturePropositionsDp
     Inherits DevExpress.XtraEditors.XtraForm
 
     'Form overrides dispose to clean up the component list.
@@ -345,7 +345,7 @@ Partial Class OuverturePropositions
         Me.GbOffres.FireScrollEventOnMouseWheel = True
         Me.GbOffres.Location = New System.Drawing.Point(0, 373)
         Me.GbOffres.Name = "GbOffres"
-        Me.GbOffres.Size = New System.Drawing.Size(1016, 192)
+        Me.GbOffres.Size = New System.Drawing.Size(1006, 192)
         Me.GbOffres.TabIndex = 11
         Me.GbOffres.Text = "Propositions lues"
         '
@@ -358,9 +358,9 @@ Partial Class OuverturePropositions
         Me.GroupControl4.CaptionLocation = DevExpress.Utils.Locations.Left
         Me.GroupControl4.Controls.Add(Me.GridRecapOffre)
         Me.GroupControl4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GroupControl4.Location = New System.Drawing.Point(539, 23)
+        Me.GroupControl4.Location = New System.Drawing.Point(555, 23)
         Me.GroupControl4.Name = "GroupControl4"
-        Me.GroupControl4.Size = New System.Drawing.Size(475, 167)
+        Me.GroupControl4.Size = New System.Drawing.Size(449, 167)
         Me.GroupControl4.TabIndex = 6
         '
         'GridRecapOffre
@@ -369,7 +369,7 @@ Partial Class OuverturePropositions
         Me.GridRecapOffre.Location = New System.Drawing.Point(23, 2)
         Me.GridRecapOffre.MainView = Me.GridView2
         Me.GridRecapOffre.Name = "GridRecapOffre"
-        Me.GridRecapOffre.Size = New System.Drawing.Size(450, 163)
+        Me.GridRecapOffre.Size = New System.Drawing.Size(424, 163)
         Me.GridRecapOffre.TabIndex = 1
         Me.GridRecapOffre.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView2})
         '
@@ -414,7 +414,7 @@ Partial Class OuverturePropositions
         Me.GbSaisieInfos.Dock = System.Windows.Forms.DockStyle.Left
         Me.GbSaisieInfos.Location = New System.Drawing.Point(2, 23)
         Me.GbSaisieInfos.Name = "GbSaisieInfos"
-        Me.GbSaisieInfos.Size = New System.Drawing.Size(537, 167)
+        Me.GbSaisieInfos.Size = New System.Drawing.Size(553, 167)
         Me.GbSaisieInfos.TabIndex = 4
         Me.GbSaisieInfos.Text = "Saisie Propositions"
         '
@@ -523,9 +523,9 @@ Partial Class OuverturePropositions
         'BtEnrgOffre
         '
         Me.BtEnrgOffre.Image = Global.ClearProject.My.Resources.Resources.Ribbon_Save_32x32
-        Me.BtEnrgOffre.Location = New System.Drawing.Point(393, 106)
+        Me.BtEnrgOffre.Location = New System.Drawing.Point(399, 105)
         Me.BtEnrgOffre.Name = "BtEnrgOffre"
-        Me.BtEnrgOffre.Size = New System.Drawing.Size(138, 53)
+        Me.BtEnrgOffre.Size = New System.Drawing.Size(144, 53)
         Me.BtEnrgOffre.TabIndex = 5
         Me.BtEnrgOffre.Text = "ENREGISTRER " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "LA PROPOSITION"
         '
@@ -539,7 +539,7 @@ Partial Class OuverturePropositions
         Me.BtDureeSeance.Image = Global.ClearProject.My.Resources.Resources.Scheduler_32x32
         Me.BtDureeSeance.Location = New System.Drawing.Point(606, 6)
         Me.BtDureeSeance.Name = "BtDureeSeance"
-        Me.BtDureeSeance.Size = New System.Drawing.Size(310, 44)
+        Me.BtDureeSeance.Size = New System.Drawing.Size(300, 44)
         Me.BtDureeSeance.TabIndex = 12
         Me.BtDureeSeance.Text = "00   :   00   :   00"
         '
@@ -551,7 +551,7 @@ Partial Class OuverturePropositions
         Me.BtOuvertureOffre.Appearance.Options.UseFont = True
         Me.BtOuvertureOffre.Appearance.Options.UseForeColor = True
         Me.BtOuvertureOffre.Enabled = False
-        Me.BtOuvertureOffre.Location = New System.Drawing.Point(922, 6)
+        Me.BtOuvertureOffre.Location = New System.Drawing.Point(912, 6)
         Me.BtOuvertureOffre.Name = "BtOuvertureOffre"
         Me.BtOuvertureOffre.Size = New System.Drawing.Size(88, 44)
         Me.BtOuvertureOffre.TabIndex = 13
@@ -650,7 +650,7 @@ Partial Class OuverturePropositions
         Me.GroupControl2.Controls.Add(Me.PanelControl1)
         Me.GroupControl2.Location = New System.Drawing.Point(606, 56)
         Me.GroupControl2.Name = "GroupControl2"
-        Me.GroupControl2.Size = New System.Drawing.Size(405, 307)
+        Me.GroupControl2.Size = New System.Drawing.Size(395, 307)
         Me.GroupControl2.TabIndex = 9
         Me.GroupControl2.Text = "Commission d'Ouverture"
         '
@@ -661,7 +661,7 @@ Partial Class OuverturePropositions
         Me.GridCojo.Location = New System.Drawing.Point(2, 47)
         Me.GridCojo.MainView = Me.GridView1
         Me.GridCojo.Name = "GridCojo"
-        Me.GridCojo.Size = New System.Drawing.Size(401, 258)
+        Me.GridCojo.Size = New System.Drawing.Size(391, 258)
         Me.GridCojo.TabIndex = 3
         Me.GridCojo.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -691,7 +691,7 @@ Partial Class OuverturePropositions
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Top
         Me.PanelControl1.Location = New System.Drawing.Point(2, 23)
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(401, 24)
+        Me.PanelControl1.Size = New System.Drawing.Size(391, 24)
         Me.PanelControl1.TabIndex = 2
         '
         'Timer1
@@ -700,18 +700,18 @@ Partial Class OuverturePropositions
         'Timer2
         '
         '
-        'OuverturePropositions
+        'OuverturePropositionsDp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1016, 569)
+        Me.ClientSize = New System.Drawing.Size(1006, 569)
         Me.Controls.Add(Me.GroupControl1)
         Me.Controls.Add(Me.BtDureeSeance)
         Me.Controls.Add(Me.BtOuvertureOffre)
         Me.Controls.Add(Me.GbSoumissionnaire)
         Me.Controls.Add(Me.GroupControl2)
         Me.Controls.Add(Me.GbOffres)
-        Me.Name = "OuverturePropositions"
+        Me.Name = "OuverturePropositionsDp"
         Me.Text = "Ouverture des propositions"
         CType(Me.TxtMailSoumis.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TxtFaxSoumis.Properties, System.ComponentModel.ISupportInitialize).EndInit()

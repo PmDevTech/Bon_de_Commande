@@ -247,7 +247,7 @@ Public Class EvalOffreFinanciereFinal
                 If IsNumeric(ViewFrais.GetRow(i)(4).ToString) Then
                     MontantFraisRembours += CDec(ViewFrais.GetRow(i)(4).ToString)
                 Else
-                    SuccesMsg("Veuillez saisie correctement tous les montants des frais remboursables")
+                    SuccesMsg("Veuillez saisir correctement tous les montants des frais remboursables")
                     Exit Sub
                 End If
             Next
@@ -267,7 +267,7 @@ Public Class EvalOffreFinanciereFinal
         ExecuteNonQuery("Update T_SoumissionConsultant set Monnaie='" & EnleverApost(CmbDevise.Text) & "', HtHdTtc='HT', MontantProposeDevise='" & Round(MontantFraisRembours + CDec(TxtMontPropose.Text.Replace(".", ",").Replace(" ", "")), 2).ToString.Replace(",", ".") & "', TauxJournalierDevise='" & TxtTauxJrs.Text.Replace(" ", "").Replace(",", ".") & "', MontantOffresLocal='" & TxtMontOffre.Text.Replace(" ", "").Replace(",", ".") & "', TauxJournalierLocal='" & Round(CDec(TxtTaux.Text.Replace(".", ",").Replace(" ", "")) * CDec(TxtTauxJrs.Text.Replace(".", ",").Replace(" ", ""))) & "', NbreJrsTravail='" & NbJoursTravail.Text.Replace(" ", "") & "', Unite='" & EnleverApost(CmbUnite.Text) & "', TauxEvalOffrsFin='" & TxtTaux.Text.Replace(".", ",").Replace(" ", "") & "', DateSaisieOffreFin='" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "' where RefSoumis='" & ExceptRevue & "'")
 
         FinChargement()
-        SuccesMsg("Offre enregistre avec succès")
+        SuccesMsg("Offre enregistrée avec succès")
         EvaluationConsultants.ViewSaisiOffreFinance.SetFocusedRowCellValue("Offre financière", AfficherMonnaie(TxtMontOffre.Text.Replace(".", ",")) & " " & MonnaieEvalOffre.ToString)
         EvaluationConsultants.ViewSaisiOffreFinance.SetFocusedRowCellValue("Statut de l'offre", "A calculer")
 

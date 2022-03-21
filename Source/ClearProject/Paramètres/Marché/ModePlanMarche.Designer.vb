@@ -53,7 +53,7 @@ Partial Class ModePlanMarche
         '
         Me.rdPPSD.Location = New System.Drawing.Point(223, 33)
         Me.rdPPSD.Name = "rdPPSD"
-        Me.rdPPSD.Properties.Caption = "Saisi le plan"
+        Me.rdPPSD.Properties.Caption = "Saisir le plan"
         Me.rdPPSD.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio
         Me.rdPPSD.Properties.RadioGroupIndex = 0
         Me.rdPPSD.Size = New System.Drawing.Size(149, 19)
@@ -65,7 +65,7 @@ Partial Class ModePlanMarche
         Me.rdGenere.EditValue = True
         Me.rdGenere.Location = New System.Drawing.Point(93, 33)
         Me.rdGenere.Name = "rdGenere"
-        Me.rdGenere.Properties.Caption = "Généré le plan"
+        Me.rdGenere.Properties.Caption = "Générer le plan"
         Me.rdGenere.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio
         Me.rdGenere.Properties.RadioGroupIndex = 0
         Me.rdGenere.Size = New System.Drawing.Size(124, 19)
@@ -123,7 +123,7 @@ Partial Class ModePlanMarche
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Elaboration du PPM"
+        Me.Text = "Mode d'élaboration du PPM"
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl1.ResumeLayout(False)
         Me.GroupControl1.PerformLayout()

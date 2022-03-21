@@ -117,6 +117,7 @@ Partial Class ClearMdi
         Me.ElaboPPM = New DevExpress.XtraBars.BarButtonItem()
         Me.RespEtape = New DevExpress.XtraBars.BarButtonItem()
         Me.BtSignataire = New DevExpress.XtraBars.BarButtonItem()
+        Me.BtResposblePM = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonMiniToolbar1 = New DevExpress.XtraBars.Ribbon.RibbonMiniToolbar(Me.components)
         Me.PageAccueil = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibTheme = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
@@ -305,7 +306,6 @@ Partial Class ClearMdi
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.BarButtonItem21 = New DevExpress.XtraBars.BarButtonItem()
-        Me.BtResposblePM = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemPictureEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1011,7 +1011,7 @@ Partial Class ClearMdi
         '
         'ElaboPPM
         '
-        Me.ElaboPPM.Caption = "Elaboration du PPM"
+        Me.ElaboPPM.Caption = "Mode d'élaboration du PPM"
         Me.ElaboPPM.Glyph = Global.ClearProject.My.Resources.Resources.Add_16x16
         Me.ElaboPPM.Id = 158
         Me.ElaboPPM.Name = "ElaboPPM"
@@ -1029,6 +1029,13 @@ Partial Class ClearMdi
         Me.BtSignataire.Glyph = Global.ClearProject.My.Resources.Resources._185
         Me.BtSignataire.Id = 160
         Me.BtSignataire.Name = "BtSignataire"
+        '
+        'BtResposblePM
+        '
+        Me.BtResposblePM.Caption = "Responsable passation marché"
+        Me.BtResposblePM.Glyph = Global.ClearProject.My.Resources.Resources.Add_16x16
+        Me.BtResposblePM.Id = 161
+        Me.BtResposblePM.Name = "BtResposblePM"
         '
         'PageAccueil
         '
@@ -2399,13 +2406,6 @@ Partial Class ClearMdi
         Me.BarButtonItem21.Glyph = Global.ClearProject.My.Resources.Resources.Add_16x16
         Me.BarButtonItem21.Id = 88
         Me.BarButtonItem21.Name = "BarButtonItem21"
-        '
-        'BtResposblePM
-        '
-        Me.BtResposblePM.Caption = "Responsable passation marché"
-        Me.BtResposblePM.Glyph = Global.ClearProject.My.Resources.Resources.Add_16x16
-        Me.BtResposblePM.Id = 161
-        Me.BtResposblePM.Name = "BtResposblePM"
         '
         'ClearMdi
         '

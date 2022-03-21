@@ -127,7 +127,7 @@ Public Class Demarrage
 
     Private Sub BtOuvertureProposition_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtOuvertureProposition.Click
         DebutChargement()
-        Disposer_form(OuverturePropositions)
+        Disposer_form(OuverturePropositionsDp)
         FinChargement()
     End Sub
 
@@ -357,22 +357,32 @@ Public Class Demarrage
     End Sub
 
     Private Sub BtSerElaDAO_Click(sender As Object, e As EventArgs) Handles BtSerElaDAO.Click
-
+        DebutChargement()
+        Disposer_form(NewSA)
+        FinChargement()
     End Sub
 
     Private Sub BtSerAutRetraiDOA_Click(sender As Object, e As EventArgs) Handles BtSerAutRetraiDOA.Click
-
+        DebutChargement()
+        Disposer_form(RetraitEtDepotSA)
+        FinChargement()
     End Sub
 
     Private Sub BtSerAutrOuvertureOffre_Click(sender As Object, e As EventArgs) Handles BtSerAutrOuvertureOffre.Click
-
+        DebutChargement()
+        Disposer_form(OuvertureOffresSA)
+        FinChargement()
     End Sub
 
     Private Sub BtsaSaiOffres_Click(sender As Object, e As EventArgs) Handles BtsaSaiOffres.Click
-
+        DebutChargement()
+        Disposer_form(SaisieOffresSA)
+        FinChargement()
     End Sub
 
     Private Sub BtsaAnalyJugemet_Click(sender As Object, e As EventArgs) Handles BtsaAnalyJugemet.Click
-
+        DebutChargement()
+        Disposer_form(JugementOffresSA)
+        FinChargement()
     End Sub
 End Class

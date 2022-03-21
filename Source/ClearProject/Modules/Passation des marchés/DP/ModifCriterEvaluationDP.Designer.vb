@@ -62,8 +62,6 @@ Partial Class ModifCriterEvaluationDP
         Me.TxtNote.Properties.Appearance.Options.UseFont = True
         Me.TxtNote.Properties.Appearance.Options.UseTextOptions = True
         Me.TxtNote.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.TxtNote.Properties.Mask.EditMask = "n"
-        Me.TxtNote.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.TxtNote.Size = New System.Drawing.Size(112, 22)
         Me.TxtNote.TabIndex = 3
         '

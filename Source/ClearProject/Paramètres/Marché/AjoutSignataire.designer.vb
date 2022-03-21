@@ -20,7 +20,7 @@ Partial Class AjoutSignataire
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.PanelControl4 = New DevExpress.XtraEditors.PanelControl()
         Me.NomSignatairedp = New DevExpress.XtraEditors.TextEdit()
@@ -45,14 +45,14 @@ Partial Class AjoutSignataire
         Me.BtEnregistrer = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.GridSignataire = New System.Windows.Forms.DataGridView()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.SuppressionCompteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Nom = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Fonction = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TypeSignatair = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Contact = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Adresse = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Email = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.SuppressionCompteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         CType(Me.PanelControl4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -156,8 +156,6 @@ Partial Class AjoutSignataire
         Me.ContactSigndp.Name = "ContactSigndp"
         Me.ContactSigndp.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ContactSigndp.Properties.Appearance.Options.UseFont = True
-        Me.ContactSigndp.Properties.Mask.EditMask = "\d{2} \d{3} \d{3} \d{2}"
-        Me.ContactSigndp.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx
         Me.ContactSigndp.Properties.MaxLength = 20
         Me.ContactSigndp.Size = New System.Drawing.Size(161, 24)
         Me.ContactSigndp.TabIndex = 22
@@ -308,7 +306,7 @@ Partial Class AjoutSignataire
         Me.BtAnnuler.Size = New System.Drawing.Size(92, 34)
         Me.BtAnnuler.TabIndex = 20
         Me.BtAnnuler.Text = "Annuler"
-        Me.BtAnnuler.ToolTip = "Modifier"
+        Me.BtAnnuler.ToolTip = "Annuler"
         '
         'BtEnregistrer
         '
@@ -320,7 +318,7 @@ Partial Class AjoutSignataire
         Me.BtEnregistrer.Size = New System.Drawing.Size(109, 34)
         Me.BtEnregistrer.TabIndex = 19
         Me.BtEnregistrer.Text = "Enregistrer"
-        Me.BtEnregistrer.ToolTip = "Ajouter"
+        Me.BtEnregistrer.ToolTip = "Enregistrer"
         '
         'GroupControl1
         '
@@ -338,8 +336,8 @@ Partial Class AjoutSignataire
         '
         Me.GridSignataire.AllowUserToAddRows = False
         Me.GridSignataire.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.GridSignataire.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.GridSignataire.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
         Me.GridSignataire.BackgroundColor = System.Drawing.Color.White
         Me.GridSignataire.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.GridSignataire.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
@@ -355,9 +353,22 @@ Partial Class AjoutSignataire
         Me.GridSignataire.Size = New System.Drawing.Size(540, 195)
         Me.GridSignataire.TabIndex = 86
         '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SuppressionCompteToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(130, 26)
+        '
+        'SuppressionCompteToolStripMenuItem
+        '
+        Me.SuppressionCompteToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.Trash_16x16
+        Me.SuppressionCompteToolStripMenuItem.Name = "SuppressionCompteToolStripMenuItem"
+        Me.SuppressionCompteToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
+        Me.SuppressionCompteToolStripMenuItem.Text = "Supprimer"
+        '
         'Nom
         '
-        Me.Nom.HeaderText = "Nom et Prénom"
+        Me.Nom.HeaderText = "Nom et Prénoms"
         Me.Nom.Name = "Nom"
         Me.Nom.ReadOnly = True
         Me.Nom.Width = 300
@@ -395,19 +406,6 @@ Partial Class AjoutSignataire
         Me.Email.Name = "Email"
         Me.Email.ReadOnly = True
         Me.Email.Width = 200
-        '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SuppressionCompteToolStripMenuItem})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(130, 26)
-        '
-        'SuppressionCompteToolStripMenuItem
-        '
-        Me.SuppressionCompteToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.Trash_16x16
-        Me.SuppressionCompteToolStripMenuItem.Name = "SuppressionCompteToolStripMenuItem"
-        Me.SuppressionCompteToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
-        Me.SuppressionCompteToolStripMenuItem.Text = "Supprimer"
         '
         'AjoutSignataire
         '

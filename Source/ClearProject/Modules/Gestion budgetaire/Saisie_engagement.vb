@@ -15,6 +15,7 @@ Public Class Saisie_engagement
     Dim RefMarche As String = ""
     Dim ModePPM As String = ""
     Dim TypeMarches As String = ""
+    Dim NumeroDAO As String = ""
 
     Private Sub Saisie_engagement_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         SimpleButton1_Click(Me, e)
@@ -105,7 +106,7 @@ Public Class Saisie_engagement
 
     Private Sub LoadMarcherGenere()
 
-        query = "select NumeroMarche from t_marchesigne where NumMarcheDMP =''"
+        query = "select NumeroMarche from t_marchesigne where NumMarcheDMP ='' and EtatMarche='Annulé'"
         CmbLotMarche.Properties.Items.Clear()
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         For Each rw As DataRow In dt.Rows
@@ -174,6 +175,7 @@ Public Class Saisie_engagement
     Private Sub NewInitialiser()
         RefMarche = ""
         TypeMarches = ""
+        NumeroDAO = ""
         TxtLotMarche.Text = ""
         TxtFournisMarche.Text = ""
         CmbBaill.Text = ""
@@ -197,9 +199,12 @@ Public Class Saisie_engagement
             Try
                 '  Dim rwMerche As DataTable = ExcecuteSelectQuery("select TypeMarche, MontantHT, DateMarche, NumeroDAO from t_marchesigne where NumeroMarche='" & EnleverApost(CmbLotMarche.Text) & "' and EtatMarche IS NULL and CodeProjet='" & ProjetEnCours & "'")
                 Dim rwMerche As DataTable = ExcecuteSelectQuery("select TypeMarche, MontantHT, DateMarche, NumeroDAO from t_marchesigne where NumeroMarche='" & EnleverApost(CmbLotMarche.Text) & "' and CodeProjet='" & ProjetEnCours & "'")
+                TypeMarches = MettreApost(rwMerche.Rows(0)("TypeMarche").ToString)
+                NumeroDAO = MettreApost(rwMerche.Rows(0)("NumeroDAO").ToString)
 
                 If rwMerche.Rows(0)("TypeMarche").ToString = "Consultants" Then
                     query = "select m.DescriptionMarche, m.NumeroComptable, m.MontantEstimatif, m.PeriodeMarche, m.RevuePrioPost, m.CodeProcAO, m.TypeMarche, m.Convention_ChefFile, m.RefMarche from t_marche as m, t_dp as d where d.RefMarche=m.RefMarche and d.NumeroDp='" & rwMerche.Rows(0)("NumeroDAO") & "'"
+                    'Amettre a jour
                 Else
                     query = "select m.DescriptionMarche, m.NumeroComptable, m.MontantEstimatif, m.PeriodeMarche, m.RevuePrioPost, m.CodeProcAO, m.TypeMarche, m.Convention_ChefFile, m.RefMarche from t_marche as m, t_dao as d where d.RefMarche=m.RefMarche and d.NumeroDAO='" & rwMerche.Rows(0)("NumeroDAO") & "'"
                 End If
@@ -208,12 +213,10 @@ Public Class Saisie_engagement
                 For Each rw As DataRow In dt.Rows
 
                     TxtLotMarche.Text = MettreApost(rw("DescriptionMarche").ToString())
-                    '  txtmontant.Text = AfficherMonnaie(rw("MontantEstimatif").ToString())
                     txtmontant.Text = AfficherMonnaie(rwMerche.Rows(0)("MontantHT").ToString)
                     Dim Method As DataRow = ExcecuteSelectQuery("select AbregeAO, LibelleAO from T_ProcAO where CodeProcAO ='" & rw("CodeProcAO") & "'").Rows(0)
                     txtmethode.Text = Method("AbregeAO").ToString & " | " & MettreApost(Method("LibelleAO").ToString)
                     txttypemarche.Text = rw("TypeMarche").ToString()
-                    TypeMarches = rw("TypeMarche").ToString()
 
                     DateMarche.Text = CDate(rwMerche.Rows(0)("DateMarche")).ToShortDateString
                     cmbRevue.Text = rw("RevuePrioPost").ToString()
@@ -381,11 +384,13 @@ Public Class Saisie_engagement
                 Dim frs() As String = TxtFournisMarche.Text.Split(" | ")
 
                 If ModePPM = "Genere" Then
-                    ExecuteNonQuery("update t_marchesigne set NumMarcheDMP='" & EnleverApost(NumDMP.Text) & "', RefMarche='" & RefMarche & "', CodeCateg='" & codecat.ToString & "', Attributaire='" & frs(0).ToString & "' where NumeroMarche='" & EnleverApost(CmbLotMarche.Text) & "'")
+                    ExecuteNonQuery("update t_marchesigne set NumMarcheDMP='" & EnleverApost(NumDMP.Text) & "', RefMarche='" & RefMarche & "', CodeCateg='" & codecat.ToString & "', EtatMarche='Terminé', Attributaire='" & frs(0).ToString & "' where NumeroMarche='" & EnleverApost(CmbLotMarche.Text) & "'")
+                    UpdateProcessusStatutDoss() 'MJ Statut des dossiers
                     NewSaveEngagement(False)
                 Else
-                    ExecuteNonQuery("update t_marchesigne set NumMarcheDMP='" & EnleverApost(NumDMP.Text) & "', RefMarche='" & RefMarche & "', CodeCateg='" & codecat.ToString & "', Attributaire='" & frs(0).ToString & "' where NumeroMarche='" & EnleverApost(CmbLotMarche.Text) & "'")
+                    ExecuteNonQuery("update t_marchesigne set NumMarcheDMP='" & EnleverApost(NumDMP.Text) & "', RefMarche='" & RefMarche & "', CodeCateg='" & codecat.ToString & "', EtatMarche='Terminé', Attributaire='" & frs(0).ToString & "' where NumeroMarche='" & EnleverApost(CmbLotMarche.Text) & "'")
                     'Enregistrement des engagements
+                    UpdateProcessusStatutDoss() 'MJ Statut des dossiers
                     NewSaveEngagement(True)
                 End If
 
@@ -521,7 +526,7 @@ Public Class Saisie_engagement
                 RefMarche = Val(ExecuteScallar("select max(refmarche) from t_marche"))
 
                 'a revoir
-                ExecuteNonQuery("insert into t_marchesigne values('" & EnleverApost(txtnbon.Text) & "','" & EnleverApost(txtnbon.Text) & "','" & DateMarche.Text & "','" & RefMarche.ToString & "', '', '" & EnleverApost(txttypemarche.Text) & "','0','0','0','0','" & CDec(txtmontant.Text.Replace(" ", "")) & "','','','','','" & codecat.ToString & "','Terminé','" & ProjetEnCours & "','" & frs(0).ToString & "','BONCMDE')")
+                ExecuteNonQuery("insert into t_marchesigne values('" & EnleverApost(txtnbon.Text) & "','" & EnleverApost(txtnbon.Text) & "','" & DateMarche.Text & "','" & RefMarche.ToString & "', '', '" & EnleverApost(txttypemarche.Text) & "','0','0','0','0','" & CDec(txtmontant.Text.Replace(" ", "")) & "','','','','','" & codecat.ToString & "','Terminé','" & ProjetEnCours & "','" & frs(0).ToString & "')")
 
                 'Enregistrement des engagements
                 NewSaveEngagement(True)
@@ -539,6 +544,25 @@ Public Class Saisie_engagement
         End Try
     End Sub
 
+    Private Sub UpdateProcessusStatutDoss() 'MJ Statut des dossiers()
+        Try
+            If TypeMarches.ToString.ToLower = "consultants" Then
+                'Verification du type du dossier
+                If Val(ExecuteScallar("select count(*) from t_dp where NumeroDp='" & EnleverApost(NumeroDAO.ToString) & "'")) > 0 Then
+                    'Il s'agit d'une DP
+                    ExecuteNonQuery("update t_dp set Statut='Terminé' where NumeroDp='" & EnleverApost(NumeroDAO.ToString) & "'")
+                Else
+                    ExecuteNonQuery("update t_ami set StatutDoss='Terminé', DossUtiliser='" & EnleverApost(CmbLotMarche.Text) & "' where NumeroDAMI='" & EnleverApost(NumeroDAO.ToString) & "'")
+                End If
+            Else
+
+            End If
+
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+
     Private Sub NewSaveEngagement(ByVal TypeSave As Boolean)
         Try
             Dim MontantActivit As Decimal = 0
@@ -547,7 +571,7 @@ Public Class Saisie_engagement
 
             For i = 0 To Viewact.RowCount - 1
 
-                MontantActivit = Viewact.GetDataRow(i)("Montant de l'activité").ToString.Replace(" ", "")
+                MontantActivit = Viewact.GetDataRow(i)("ThenMontant de l'activité").ToString.Replace(" ", "")
                 codepart = Viewact.GetDataRow(i)("CodePartition")
 
                 query = "insert into t_acteng values ('" & Viewact.GetDataRow(i)("Activité").ToString & "', '" & CDec(Viewact.GetDataRow(i)("Compte comptable").ToString()) & "','" & RefMarche & "','" & MontantActivit.ToString & "', '" & codepart & "')"

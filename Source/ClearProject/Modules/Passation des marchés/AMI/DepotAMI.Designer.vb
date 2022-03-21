@@ -123,7 +123,7 @@ Partial Class DepotAMI
         Me.LabelControl2.Name = "LabelControl2"
         Me.LabelControl2.Size = New System.Drawing.Size(42, 13)
         Me.LabelControl2.TabIndex = 2
-        Me.LabelControl2.Text = "Methode"
+        Me.LabelControl2.Text = "Méthode"
         '
         'LabelControl1
         '
@@ -294,8 +294,6 @@ Partial Class DepotAMI
         Me.TxtFaxConsult.Location = New System.Drawing.Point(393, 103)
         Me.TxtFaxConsult.Margin = New System.Windows.Forms.Padding(2)
         Me.TxtFaxConsult.Name = "TxtFaxConsult"
-        Me.TxtFaxConsult.Properties.Mask.EditMask = "\d{2} \d{3} \d{3} \d{2}"
-        Me.TxtFaxConsult.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx
         Me.TxtFaxConsult.Properties.MaxLength = 50
         Me.TxtFaxConsult.Size = New System.Drawing.Size(195, 20)
         Me.TxtFaxConsult.TabIndex = 7
@@ -308,7 +306,7 @@ Partial Class DepotAMI
         Me.TxtMailConsult.Name = "TxtMailConsult"
         Me.TxtMailConsult.Properties.Mask.EditMask = "[a-z,0-9,.]{1,80}[@]{1}[a-z,0-9-]{1,80}[.]{1}[a-z]{2,25}"
         Me.TxtMailConsult.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx
-        Me.TxtMailConsult.Properties.MaxLength = 50
+        Me.TxtMailConsult.Properties.MaxLength = 100
         Me.TxtMailConsult.Size = New System.Drawing.Size(528, 20)
         Me.TxtMailConsult.TabIndex = 7
         '

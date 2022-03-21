@@ -29,14 +29,16 @@
 
         CmbResposable.Text = ""
         CmbResposable.Properties.Items.Clear()
+        Dim ResponsablePM As String = ""
         query = "SELECT EMP_ID, EMP_NOM, EMP_PRENOMS, ResponsablePM FROM t_grh_employe where PROJ_ID='" & ProjetEnCours & "' AND EMP_EMAIL<>''" 'Tout les employé qui ont au un email
         Dim dt1 = ExcecuteSelectQuery(query)
         For Each rw As DataRow In dt1.Rows
             CmbResposable.Properties.Items.Add(GetNewCode(rw("EMP_ID").ToString) & " | " & MettreApost(rw("EMP_NOM").ToString) & " " & MettreApost(rw("EMP_PRENOMS").ToString))
 
-            If rw("ResponsablePM").ToString = "1" Then
-                CmbResposable.Text = GetNewCode(rw("EMP_ID").ToString) & " | " & MettreApost(rw("EMP_NOM").ToString) & " " & MettreApost(rw("EMP_PRENOMS").ToString)
+            If rw("ResponsablePM") Then
+                ResponsablePM = GetNewCode(rw("EMP_ID").ToString) & " | " & MettreApost(rw("EMP_NOM").ToString) & " " & MettreApost(rw("EMP_PRENOMS").ToString)
             End If
         Next
+        CmbResposable.Text = ResponsablePM.ToString
     End Sub
 End Class

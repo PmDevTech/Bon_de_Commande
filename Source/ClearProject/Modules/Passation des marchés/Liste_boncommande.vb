@@ -4,95 +4,18 @@ Imports DevExpress.XtraReports.UI
 Imports Microsoft.Office.Interop
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
-Imports DevExpress.XtraEditors.Repository
-Imports System.Math
 
 Public Class Liste_boncommande
     Dim drx As DataRow
     Dim dtdoc = New DataTable()
-    Dim dtListCommande = New DataTable
 
-    Private Sub Liste_boncommande_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub Liste_boncommande_Load(ByVal sender As System.Object, ByVal e As System.EventArgs)  Handles MyBase.Load
         Me.Icon = My.Resources.Logo_ClearProject_Valide
         Try
-            ' query = "select * from t_boncommande where CodeProjet='" & ProjetEnCours & "'" ' ORDER BY length(CodeBon), CodeBon"
-            'remplirDataGridBoncommande(LgListBoncommande, ViewBoncommande)
-            remplirBonCommande()
-
+            query = "select * from t_boncommande where CodeProjet='" & ProjetEnCours & "'" ' ORDER BY length(CodeBon), CodeBon"
+            remplirDataGridBoncommande(query, LgListBoncommande, LblNombre, ViewBoncommande)
         Catch ex As Exception
             Failmsg("Erreur : Information non disponible : " & ex.ToString())
-        End Try
-    End Sub
-
-    Private Sub remplirBonCommande()
-        Try
-            dtListCommande.Columns.Clear()
-            dtListCommande.Columns.Add("Code", Type.GetType("System.Boolean"))
-            dtListCommande.Columns.Add("Numéro", Type.GetType("System.String"))
-            dtListCommande.Columns.Add("Date", Type.GetType("System.String"))
-            dtListCommande.Columns.Add("Attributaire", Type.GetType("System.String"))
-            dtListCommande.Columns.Add("Quantité", Type.GetType("System.String"))
-            dtListCommande.Columns.Add("Prix unitaire", Type.GetType("System.String"))
-            dtListCommande.Columns.Add("Montant HT", Type.GetType("System.String"))
-            dtListCommande.Rows.Clear()
-
-            Dim cptr As Decimal = 0
-            query = "SELECT RefBon,
-                            numero,
-                            date,
-                            attributaire,
-                            quantite,
-                            prixUnitaire,
-                            montantHT,
-                            CodeProjet 
-                    FROM t_bon_commande WHERE CodeProjet = '" & ProjetEnCours & "'
-                    "
-            Dim dt As DataTable = ExcecuteSelectQuery(query)
-            For Each rw As DataRow In dt.Rows
-                cptr += 1
-                Dim drS = dtListCommande.NewRow()
-                drS("Code") = TabTrue(cptr - 1)
-                drS("Numéro") = rw(1).ToString
-                drS("Date") = CDate(rw(2).ToString)
-                drS("Attributaire") = MettreApost(rw(3).ToString)
-                drS("Quantité") = CDbl(rw(4).ToString)
-                drS("Prix unitaire") = AfficherMonnaie(Round(CDbl(rw(5).ToString)))
-                drS("Montant HT") = AfficherMonnaie(Round(CDbl(rw(6).ToString)))
-                dtListCommande.Rows.Add(drS)
-            Next
-
-            LgListBoncommande.DataSource = dtListCommande
-            LblNombre.Text = cptr.ToString & " Enregistrements"
-            Dim edit As RepositoryItemCheckEdit = New RepositoryItemCheckEdit()
-            edit.ValueChecked = True
-            edit.ValueUnchecked = False
-            LgListBoncommande.RepositoryItems.Add(edit)
-            ViewBoncommande.OptionsBehavior.Editable = True
-
-            ViewBoncommande.Columns("Code").ColumnEdit = edit
-
-            ViewBoncommande.Columns("Numéro").OptionsColumn.AllowEdit = False
-            ViewBoncommande.Columns("Date").OptionsColumn.AllowEdit = False
-            ViewBoncommande.Columns("Attributaire").OptionsColumn.AllowEdit = False
-            ViewBoncommande.Columns("Quantité").OptionsColumn.AllowEdit = False
-            ViewBoncommande.Columns("Prix unitaire").OptionsColumn.AllowEdit = False
-            ViewBoncommande.Columns("Montant HT").OptionsColumn.AllowEdit = False
-
-            ViewBoncommande.Appearance.Row.Font = New Font("Times New Roman", 10, FontStyle.Regular)
-            ViewBoncommande.OptionsView.ColumnAutoWidth = True
-            ViewBoncommande.OptionsBehavior.AutoExpandAllGroups = True
-            ViewBoncommande.VertScrollVisibility = True
-            ViewBoncommande.HorzScrollVisibility = True
-            ViewBoncommande.BestFitColumns()
-
-            ViewBoncommande.Columns("Numéro").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-            ViewBoncommande.Columns("Attributaire").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-            ViewBoncommande.Columns("Quantité").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-            ViewBoncommande.Columns("Prix unitaire").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-            ViewBoncommande.Columns("Montant HT").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-            ViewBoncommande.Appearance.Row.Font = New Font("Times New Roman", 10, FontStyle.Regular)
-        Catch ex As Exception
-            FailMsg("Erreur : Information non disponible : " & ex.ToString())
         End Try
     End Sub
 
@@ -147,114 +70,87 @@ Public Class Liste_boncommande
 
     Private Sub BtModifier_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtModifier.Click
 
+        Dim bool As Boolean = False
+        For i = 0 To ViewBoncommande.RowCount - 1
 
+            If CBool(ViewBoncommande.GetRowCellValue(i, "Code")) = True Then
 
-        If (ViewBoncommande.RowCount > 0) Then
-            drx = ViewBoncommande.GetDataRow(ViewBoncommande.FocusedRowHandle)
+                query = "select * from t_marche where NumeroMarche='" & ViewBoncommande.GetRowCellValue(i, "Numéro Marché").ToString & "'"
+                Dim dt As DataTable = ExcecuteSelectQuery(query)
+                For Each rw As DataRow In dt.Rows
 
-            Dim IDl = drx("Numéro").ToString
+                    Modif_engagement.txtnbon.Text = ViewBoncommande.GetRowCellValue(i, "Numéro Marché").ToString
+                    Modif_engagement.TxtLotMarche.Text = MettreApost(rw(5).ToString)
+                    Modif_engagement.txtmontant.Text = rw(9).ToString
+                    Modif_engagement.txttypemarche.Text = rw(4).ToString
+                    Modif_engagement.CmbBaill.Text = rw(14).ToString
+                    Modif_engagement.CmbConv.Text = rw(15).ToString
+                    Modif_engagement.TxtPieceJointe.Text = ViewBoncommande.GetRowCellValue(i, "Numéro Marché").ToString & ".pdf"
 
-            ColorRowGrid(ViewBoncommande, "[Numéro]='x'", Color.White, "Times New Roman", 10, FontStyle.Regular, Color.Black)
-            ColorRowGridAnal(ViewBoncommande, "[Numéro]='" & IDl & "'", Color.Navy, "Times New Roman", 10, FontStyle.Bold, Color.White, True)
+                    query = "select AbregeAO, LibelleAO from T_ProcAO where AbregeAO ='" & rw(10).ToString & "'"
+                    Dim dt5 As DataTable = ExcecuteSelectQuery(query)
+                    For Each rw5 As DataRow In dt5.Rows
+                        Modif_engagement.txtmethode.Text = rw5(0).ToString & " | " & MettreApost(rw5(1).ToString)
+                    Next
 
-            'CmbSource.Text = drx("Bailleur").ToString
-            'CmbType.Text = drx("Type").ToString
-            'TxtNumConvention.Text = MettreApost(drx("Numéro").ToString)
-            'TxtCFA.Focus()
-            'TxtCFA.Text = drx("Montant").ToString.Replace(" ", "")
-            'DTDateSignature.Text = CDate(drx("Signature")).ToShortDateString
-            'DTEntreeVigueur.Text = CDate(drx("Ouverture")).ToShortDateString
-            'DTCloture.Text = CDate(drx("Clôture")).ToShortDateString
-            Dim EditForm As New BonCommande
-            EditForm.idBon = drx("RefBon")
+                   query= "select DateMarche from t_marchesigne where NumeroMarche='" & ViewBoncommande.GetRowCellValue(i, "Numéro Marché").ToString & "'"
+                    Modif_engagement.DateMarche.Text = ExecuteScallar(query)
 
-            Dialog_form(EditForm)
+                    'remplir les sous classe du plan comptable
+                    Modif_engagement.txtcompte.Properties.Items.Clear()
+                    query = "select * from T_COMP_SOUS_CLASSE where code_sc='" & rw(3).ToString & "' ORDER BY code_sc"
+                    Dim dt1 As DataTable = ExcecuteSelectQuery(query)
+                    For Each rw1 As DataRow In dt1.Rows
+                        Modif_engagement.txtcompte.Text = rw1(0).ToString & " | " & MettreApost(rw1(2).ToString)
+                    Next
 
+                    query = "select c.NumCateg, c.LibelleCateg from t_marchesigne m, t_CategorieDepense c where m.CodeCateg=c.CodeCateg and m.NumeroMarche ='" & ViewBoncommande.GetRowCellValue(i, "Numéro Marché").ToString & "'"
+                    Dim dt2 As DataTable = ExcecuteSelectQuery(query)
+                    For Each rw2 As DataRow In dt2.Rows
+                        Modif_engagement.CmbCatDep.Text = rw2(0).ToString & " | " & MettreApost(rw2(1).ToString)
+                    Next
+
+                    Dim codefrs As String = ""
+                   query= "select Attributaire from t_marchesigne where NumeroMarche ='" & ViewBoncommande.GetRowCellValue(i, "Numéro Marché").ToString & "'"
+                    codefrs = ExecuteScallar(query)
+
+                    query = "select * from T_COMP_COMPTE where code_cpt='" & codefrs.ToString & "' and Code_Projet='" & ProjetEnCours & "' order by code_cpt"
+                    Dim dt4 As DataTable = ExcecuteSelectQuery(query)
+                    For Each rw4 As DataRow In dt4.Rows
+                        Modif_engagement.TxtFournisMarche.Text = rw4(0).ToString & " | " & MettreApost(rw4(4).ToString)
+                    Next
+
+                    dtdoc.Columns.Clear()
+                    dtdoc.Columns.Add("Activité", Type.GetType("System.String"))
+                    dtdoc.Columns.Add("Libellé de l'activité", Type.GetType("System.String"))
+                    dtdoc.Rows.Clear()
+                    query = "select p.libellecourt, p.libellepartition from t_acteng a, t_partition p where a.LibelleCourt = p.LibelleCourt and a.RefMarche ='" & rw(0).ToString & "'"
+                    Dim dt3 As DataTable = ExcecuteSelectQuery(query)
+                    For Each rw3 As DataRow In dt3.Rows
+                        Dim drs = dtdoc.NewRow()
+                        drs(0) = rw3(0).ToString
+                        drs(1) = rw3(1).ToString
+                        dtdoc.Rows.Add(drs)
+                    Next
+
+                    Modif_engagement.LgListAct.DataSource = dtdoc
+                    Modif_engagement.Viewact.OptionsView.ColumnAutoWidth = True
+                    Modif_engagement.Viewact.OptionsBehavior.AutoExpandAllGroups = True
+                    Modif_engagement.Viewact.VertScrollVisibility = True
+                    Modif_engagement.Viewact.HorzScrollVisibility = True
+                    Modif_engagement.Viewact.BestFitColumns()
+                    Modif_engagement.Size = New Point(950, 575)
+                    Modif_engagement.ShowDialog()
+                Next
+
+                bool = True
+            End If
+
+        Next
+
+        If bool = False Then
+            SuccesMsg("Veuillez cocher un marché/bon de commande")
         End If
-
-
-
-        'Dim bool As Boolean = False
-        'For i = 0 To ViewBoncommande.RowCount - 1
-
-        '    If CBool(ViewBoncommande.GetRowCellValue(i, "Code")) = True Then
-
-        '        query = "select * from t_marche where NumeroMarche='" & ViewBoncommande.GetRowCellValue(i, "Numéro Marché").ToString & "'"
-        '        Dim dt As DataTable = ExcecuteSelectQuery(query)
-        '        For Each rw As DataRow In dt.Rows
-
-        '            Modif_engagement.txtnbon.Text = ViewBoncommande.GetRowCellValue(i, "Numéro Marché").ToString
-        '            Modif_engagement.TxtLotMarche.Text = MettreApost(rw(5).ToString)
-        '            Modif_engagement.txtmontant.Text = rw(9).ToString
-        '            Modif_engagement.txttypemarche.Text = rw(4).ToString
-        '            Modif_engagement.CmbBaill.Text = rw(14).ToString
-        '            Modif_engagement.CmbConv.Text = rw(15).ToString
-        '            Modif_engagement.TxtPieceJointe.Text = ViewBoncommande.GetRowCellValue(i, "Numéro Marché").ToString & ".pdf"
-
-        '            query = "select AbregeAO, LibelleAO from T_ProcAO where AbregeAO ='" & rw(10).ToString & "'"
-        '            Dim dt5 As DataTable = ExcecuteSelectQuery(query)
-        '            For Each rw5 As DataRow In dt5.Rows
-        '                Modif_engagement.txtmethode.Text = rw5(0).ToString & " | " & MettreApost(rw5(1).ToString)
-        '            Next
-
-        '           query= "select DateMarche from t_marchesigne where NumeroMarche='" & ViewBoncommande.GetRowCellValue(i, "Numéro Marché").ToString & "'"
-        '            Modif_engagement.DateMarche.Text = ExecuteScallar(query)
-
-        '            'remplir les sous classe du plan comptable
-        '            Modif_engagement.txtcompte.Properties.Items.Clear()
-        '            query = "select * from T_COMP_SOUS_CLASSE where code_sc='" & rw(3).ToString & "' ORDER BY code_sc"
-        '            Dim dt1 As DataTable = ExcecuteSelectQuery(query)
-        '            For Each rw1 As DataRow In dt1.Rows
-        '                Modif_engagement.txtcompte.Text = rw1(0).ToString & " | " & MettreApost(rw1(2).ToString)
-        '            Next
-
-        '            query = "select c.NumCateg, c.LibelleCateg from t_marchesigne m, t_CategorieDepense c where m.CodeCateg=c.CodeCateg and m.NumeroMarche ='" & ViewBoncommande.GetRowCellValue(i, "Numéro Marché").ToString & "'"
-        '            Dim dt2 As DataTable = ExcecuteSelectQuery(query)
-        '            For Each rw2 As DataRow In dt2.Rows
-        '                Modif_engagement.CmbCatDep.Text = rw2(0).ToString & " | " & MettreApost(rw2(1).ToString)
-        '            Next
-
-        '            Dim codefrs As String = ""
-        '           query= "select Attributaire from t_marchesigne where NumeroMarche ='" & ViewBoncommande.GetRowCellValue(i, "Numéro Marché").ToString & "'"
-        '            codefrs = ExecuteScallar(query)
-
-        '            query = "select * from T_COMP_COMPTE where code_cpt='" & codefrs.ToString & "' and Code_Projet='" & ProjetEnCours & "' order by code_cpt"
-        '            Dim dt4 As DataTable = ExcecuteSelectQuery(query)
-        '            For Each rw4 As DataRow In dt4.Rows
-        '                Modif_engagement.TxtFournisMarche.Text = rw4(0).ToString & " | " & MettreApost(rw4(4).ToString)
-        '            Next
-
-        '            dtdoc.Columns.Clear()
-        '            dtdoc.Columns.Add("Activité", Type.GetType("System.String"))
-        '            dtdoc.Columns.Add("Libellé de l'activité", Type.GetType("System.String"))
-        '            dtdoc.Rows.Clear()
-        '            query = "select p.libellecourt, p.libellepartition from t_acteng a, t_partition p where a.LibelleCourt = p.LibelleCourt and a.RefMarche ='" & rw(0).ToString & "'"
-        '            Dim dt3 As DataTable = ExcecuteSelectQuery(query)
-        '            For Each rw3 As DataRow In dt3.Rows
-        '                Dim drs = dtdoc.NewRow()
-        '                drs(0) = rw3(0).ToString
-        '                drs(1) = rw3(1).ToString
-        '                dtdoc.Rows.Add(drs)
-        '            Next
-
-        '            Modif_engagement.LgListAct.DataSource = dtdoc
-        '            Modif_engagement.Viewact.OptionsView.ColumnAutoWidth = True
-        '            Modif_engagement.Viewact.OptionsBehavior.AutoExpandAllGroups = True
-        '            Modif_engagement.Viewact.VertScrollVisibility = True
-        '            Modif_engagement.Viewact.HorzScrollVisibility = True
-        '            Modif_engagement.Viewact.BestFitColumns()
-        '            Modif_engagement.Size = New Point(950, 575)
-        '            Modif_engagement.ShowDialog()
-        '        Next
-
-        '        bool = True
-        '    End If
-
-        'Next
-
-        'If bool = False Then
-        '    SuccesMsg("Veuillez cocher un marché/bon de commande")
-        'End If
     End Sub
 
     Private Sub BtAjouter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtAjouter.Click
@@ -264,12 +160,8 @@ Public Class Liste_boncommande
 
     Private Sub BtActualiser_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtActualiser.Click
         Try
-            'query = "select * from t_boncommande where CodeProjet='" & ProjetEnCours & "'" ' ORDER BY length(CodeBon), CodeBon"
-            'remplirDataGridBoncommande(LgListBoncommande, ViewBoncommande) '(query, LgListBoncommande, LblNombre, ViewBoncommande)
-
-            query = "SELECT * FROM t_bon_commande WHERE CodeProjet = '" & ProjetEnCours & "' ORDER BY RefBon"
-            remplirBonCommande()
-
+            query = "select * from t_boncommande where CodeProjet='" & ProjetEnCours & "'" ' ORDER BY length(CodeBon), CodeBon"
+            remplirDataGridBoncommande(query, LgListBoncommande, LblNombre, ViewBoncommande)
         Catch ex As Exception
             Failmsg("Erreur : Information non disponible : " & ex.ToString())
         End Try
@@ -288,12 +180,8 @@ Public Class Liste_boncommande
                     nbTab = 0
                 End If
 
-                'query = "select * from t_boncommande where CodeProjet='" & ProjetEnCours & "' ORDER BY length(CodeBon), CodeBon"
+                query = "select * from t_boncommande where CodeProjet='" & ProjetEnCours & "' ORDER BY length(CodeBon), CodeBon"
                 'remplirDataGridimmo4(query, LgListBoncommande, LblNombre, ViewBoncommande)
-
-                query = "SELECT * FROM t_bon_commande WHERE CodeProjet = '" & ProjetEnCours & "' ORDER BY RefBon"
-                remplirBonCommande()
-
 
             End If
         Catch ex As Exception

@@ -33,8 +33,7 @@ Public Class OuvertureAmi
         CmbNumDAO.Properties.Items.Clear()
         CmbNumDAO.ResetText()
         'dossier valider et date d'ouverture arrivé
-        'query = "select NumeroDAMI from T_AMI where ValiderEditionAmi='Valider' and DateOuverture<='" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "' AND CodeProjet='" & ProjetEnCours & "' order by NumeroDAMI"
-        query = "select NumeroDAMI from T_AMI where ValiderEditionAmi='Valider' and DatePub<='" & dateconvert(Now.ToShortDateString) & "' AND CodeProjet='" & ProjetEnCours & "' order by NumeroDAMI"
+        query = "select NumeroDAMI from T_AMI where StatutDoss <>'Annulé' and ValiderEditionAmi='Valider' and DatePub<='" & dateconvert(Now.ToShortDateString) & "' AND CodeProjet='" & ProjetEnCours & "' ORDER BY DateEdition DESC"
         Dim dt0 As DataTable = ExcecuteSelectQuery(query)
         For Each rw As DataRow In dt0.Rows
             CmbNumDAO.Properties.Items.Add(MettreApost(rw("NumeroDAMI").ToString))

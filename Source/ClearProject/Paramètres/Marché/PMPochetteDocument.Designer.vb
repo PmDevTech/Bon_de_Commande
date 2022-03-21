@@ -155,7 +155,7 @@ Partial Class PMPochetteDocument
         Me.TxtLibDoc.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtLibDoc.Properties.Appearance.Options.UseFont = True
         Me.TxtLibDoc.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.TxtLibDoc.Properties.Items.AddRange(New Object() {"DAO", "Publications", "Procès Verbal d'ouverture des offres", "Rapport d’évaluation des offres", "Procès-verbal d’attribution", "Contrat signé", "Preuves de paiement", "Liste signataires", "TDR", "ANO TDR", "Liste Restreinte", "ANO sur la Liste Restreinte", "Propositions Techniques et Financières", "Rapport d'évaluation", "ANO sur Le Rapport d'Evaluation", "Rapport du consultant", "Preuves de Paiement"})
+        Me.TxtLibDoc.Properties.Items.AddRange(New Object() {"DAO", "Publications", "Procès Verbal d'ouverture des offres", "Rapport d’évaluation des offres", "Procès-verbal d’attribution", "Contrat signé", "Preuves de paiement", "Liste signataires", "Liste de présence", "TDR", "ANO TDR", "Liste Restreinte", "ANO sur la Liste Restreinte", "Propositions Techniques et Financières", "ANO sur Le Rapport d'Evaluation", "Rapport du consultant", "Preuves de Paiement"})
         Me.TxtLibDoc.Size = New System.Drawing.Size(393, 22)
         Me.TxtLibDoc.TabIndex = 1
         '

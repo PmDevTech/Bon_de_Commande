@@ -146,7 +146,7 @@ Partial Class DepotDP
         Me.LabelControl2.Name = "LabelControl2"
         Me.LabelControl2.Size = New System.Drawing.Size(42, 13)
         Me.LabelControl2.TabIndex = 2
-        Me.LabelControl2.Text = "Methode"
+        Me.LabelControl2.Text = "Méthode"
         '
         'LabelControl1
         '
@@ -386,7 +386,7 @@ Partial Class DepotDP
         Me.TxtContactRep.Name = "TxtContactRep"
         Me.TxtContactRep.Properties.Appearance.Options.UseTextOptions = True
         Me.TxtContactRep.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.TxtContactRep.Properties.MaxLength = 13
+        Me.TxtContactRep.Properties.MaxLength = 20
         Me.TxtContactRep.Properties.ReadOnly = True
         Me.TxtContactRep.Size = New System.Drawing.Size(143, 20)
         Me.TxtContactRep.TabIndex = 30

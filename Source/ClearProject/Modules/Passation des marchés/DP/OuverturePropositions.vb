@@ -1,8 +1,9 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports CrystalDecisions.CrystalReports.Engine
 Imports System.IO
+Imports CrystalDecisions.Shared
 
-Public Class OuverturePropositions
+Public Class OuverturePropositionsDp
 
     Dim dt1 As DataTable = New DataTable()
     Dim dt2 As DataTable = New DataTable()
@@ -40,8 +41,7 @@ Public Class OuverturePropositions
     Private Sub RemplirCmbNumDAO()
         CmbNumDAO.Properties.Items.Clear()
         CmbNumDAO.Text = ""
-        'query = "select NumeroDp from T_DP where DossValider='Valider' and DateOuverture<='" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "' and Statut<>'Annuler' and CodeProjet='" & ProjetEnCours & "' order by NumeroDp"
-        query = "select NumeroDp from T_DP where DossValider='Valider' and Statut<>'Annuler' and CodeProjet='" & ProjetEnCours & "' order by NumeroDp"
+        query = "select NumeroDp from T_DP where DossValider='Valider' and Statut<>'Annulé' and CodeProjet='" & ProjetEnCours & "' ORDER BY DateEdition DESC"
         Dim dt0 As DataTable = ExcecuteSelectQuery(query)
         For Each rw As DataRow In dt0.Rows
             CmbNumDAO.Properties.Items.Add(rw("NumeroDp").ToString)
@@ -195,7 +195,6 @@ Public Class OuverturePropositions
     End Sub
 
 
-
     Private Sub BtOuvertureOffre_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtOuvertureOffre.Click
         If CmbNumDAO.SelectedIndex <> -1 Then
 
@@ -217,7 +216,7 @@ Public Class OuverturePropositions
 
                 If DateOuvertureEffective.ToString = "" Then
                     DateOuvertureEffective = dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString
-                    ExecuteNonQuery("Update t_dp set DateOuvertureEffective='" & DateOuvertureEffective & "' where NumeroDp='" & EnleverApost(CmbNumDAO.Text) & "'")
+                    ExecuteNonQuery("Update t_dp set DateOuvertureEffective='" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "' where NumeroDp='" & EnleverApost(CmbNumDAO.Text) & "'")
                     TxtDateOuverture.Text = DateOuvertureEffective.ToString.Replace(" ", "   à   ")
                 End If
             ElseIf (Deb = "Fin") Then
@@ -259,7 +258,7 @@ Public Class OuverturePropositions
                 dt1.Rows.Clear()
                 dt2.Rows.Clear()
 
-                BtEnrgOffre.Text = "ENREGISTRER L'OFFRE"
+                BtEnrgOffre.Text = "ENREGISTRER" & vbNewLine & "LA PROPOSITION"
 
                 CmbNomSoumis.Enabled = False
                 GbOffres.Enabled = False
@@ -295,7 +294,7 @@ Public Class OuverturePropositions
 
     Private Sub CmbNomSoumis_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmbNomSoumis.SelectedIndexChanged
 
-        BtEnrgOffre.Text = "ENREGISTRER L'OFFRE"
+        BtEnrgOffre.Text = "ENREGISTRER" & vbNewLine & "LA PROPOSITION"
 
         If (CmbNomSoumis.SelectedIndex <> -1 And CmbNumDAO.SelectedIndex <> -1) Then
             Dim Deb As String = Mid(BtOuvertureOffre.Text, 1, 3)
@@ -414,7 +413,7 @@ Public Class OuverturePropositions
 
             RempliGridRecapOffre()
 
-            BtEnrgOffre.Text = "ENREGISTRER L'OFFRE"
+            BtEnrgOffre.Text = "ENREGISTRER" & vbNewLine & "LA PROPOSITION"
             InitiliserOffres()
         Else
             SuccesMsg("Veuillez selectionné un consultant dans la liste")
@@ -464,93 +463,63 @@ Public Class OuverturePropositions
             ChkPropoFin.Checked = IIf(CInt(PropoF(0)) > 0, True, False).ToString
             NumNbPropoTech.Value = CInt(PropoT(0))
             NumNbPropoFin.Value = CInt(PropoF(0))
-            BtEnrgOffre.Text = "MODIFIER L'OFFRE"
+            BtEnrgOffre.Text = "MODIFIER" & vbNewLine & "LA PROPOSITION"
         End If
     End Sub
+
 
     Private Sub ImprimerPvOuverture()
         Try
             DebutChargement(True, "Chargement du Pv d'ouverture en cours...")
             Dim RapportPV As New ReportDocument
+            Dim crtableLogoninfos As New TableLogOnInfos
+            Dim crtableLogoninfo As New TableLogOnInfo
+            Dim crConnectionInfo As New ConnectionInfo
+            Dim CrTables As Tables
+            Dim CrTable As Table
+
+            Dim DatSet = New DataSet
             RapportPV.Load(lineEtat & "\Marches\DP\PV Ouverture\" & "PvOuverture.rpt")
+            With crConnectionInfo
+                .ServerName = ODBCNAME
+                .DatabaseName = DB
+                .UserID = USERNAME
+                .Password = PWD
+            End With
 
-            Dim rwNumDp As DataRow = ExcecuteSelectQuery("select d.LibelleMiss, d.DureeSeance,d.DateReporter, d.RefMarche, d.DateLimitePropo, d.DateFinOuverture,d.DateOuverture,d.DateOuvertureEffective, m.DescriptionMarche, m.Convention_ChefFile, p.MinistereTutelle, p.NomProjet from T_DP as d, T_Marche as m, T_Projet as p where d.RefMarche=m.RefMarche and d.CodeProjet=p.CodeProjet and d.NumeroDp='" & EnleverApost(CmbNumDAO.Text) & "' and d.CodeProjet='" & ProjetEnCours & "'").Rows(0)
-            RapportPV.SetParameterValue("NomProjet", MettreApost(rwNumDp("NomProjet").ToString))
+            CrTables = RapportPV.Database.Tables
+            For Each CrTable In CrTables
+                crtableLogoninfo = CrTable.LogOnInfo
+                crtableLogoninfo.ConnectionInfo = crConnectionInfo
+                CrTable.ApplyLogOnInfo(crtableLogoninfo)
+            Next
+
+            'Dim rwNumDp As DataRow = ExcecuteSelectQuery("select d.LibelleMiss, d.DureeSeance, d.DateReporter, d.RefMarche, d.DateLimitePropo, d.DateFinOuverture, d.DateOuverture, d.DateOuvertureEffective, m.DescriptionMarche, m.InitialeBailleur, m.CodeConvention, m.Convention_ChefFile, p.MinistereTutelle, p.NomProjet, t.TypeConvention from T_DP as d, T_Marche as m, T_Projet as p, t_convention as t where d.RefMarche=m.RefMarche and m.Convention_ChefFile=t.CodeConvention and d.CodeProjet=p.CodeProjet and d.NumeroDp='" & EnleverApost(CmbNumDAO.Text) & "' and d.CodeProjet='" & ProjetEnCours & "'").Rows(0)
+            Dim rwNumDp As DataTable = ExcecuteSelectQuery("select * from T_DP where NumeroDp='" & EnleverApost(CmbNumDAO.Text) & "' and CodeProjet='" & ProjetEnCours & "'")
             RapportPV.SetParameterValue("NumeroDp", EnleverApost(CmbNumDAO.Text))
-
-            ' RapportPV.SetParameterValue("MinistereTutel", MettreApost(NomProjet("MinistereTutelle").ToString), "PvOuverturePageGarde.rpt")
-            ' RapportPV.SetParameterValue("NomProjets", MettreApost(NomProjet("NomProjet").ToString), "PvOuverturePageGarde.rpt")
-
-            'RapportPV.SetParameterValue("TypeConv", MettreApost(ExecuteScallar("SELECT TypeConvention from t_convention where CodeConvention='" & DtMarche("CodeConvention").ToString & "'")), "PvOuverturePageGarde.rpt")
-            ' RapportPV.SetParameterValue("Bailleur", DtMarche("InitialeBailleur").ToString, "PvOuverturePageGarde.rpt")
-            ' RapportPV.SetParameterValue("NumConv", DtMarche("CodeConvention").ToString, "PvOuverturePageGarde.rpt")
-            'RapportPV.SetParameterValue("DateEdition", CDate(Now.ToShortDateString).ToString("MMMM").ToUpper & "  " & CDate(Now.ToShortDateString).ToString("yyyy"), "PvOuverturePageGarde.rpt")
-
-            'RapportPV.SetParameterValue("NumDao", EnleverApost(CmbNumDAO.Text), "PvOuverturePageGarde.rpt")
-            'RapportPV.SetParameterValue("DateFormatLong", CDate(rwNumDp("DateOuverture").ToString.Split(" ")(0)).ToLongDateString, "PvOuverturePageGarde.rpt")
-
-            'Liste des cojos
-            ' RapportPV.SetParameterValue("NumDpCojo", EnleverApost(CmbNumDAO.Text), "CojoPvOuvertureDP.rpt")
-            'Liste cojos signataire
-            ' RapportPV.SetParameterValue("NumDpCojoSigne", EnleverApost(CmbNumDAO.Text), "CojoPvSignatureDP.rpt")
-            'Liste Offres depose
-            'RapportPV.SetParameterValue("NumDpConsulDepot", EnleverApost(CmbNumDAO.Text), "OffresDeposesDP.rpt")
-
-            'Pv ouverture pricipale
-            RapportPV.SetParameterValue("AnneeEnLettre", MontantLettre(CDate(Now.ToShortDateString).ToString("yyyy")))
-            Dim DateOuver As String() = rwNumDp("DateOuvertureEffective").ToString.Split(" ")
-            Dim finSean As String() = DateOuver(1).ToString.Split(":")
-            Dim DateDebutSeance = finSean(0) & " Heures " & finSean(1) & " Minutes " & finSean(2) & " Secondes"
-            RapportPV.SetParameterValue("DateOuverture", CDate(DateOuver(0)).ToLongDateString & " à " & DateDebutSeance.ToString)
             RapportPV.SetParameterValue("CodeProjet", ProjetEnCours)
-            RapportPV.SetParameterValue("DateFormatLong", Now.ToLongDateString)
+            For Each rw In rwNumDp.Rows
+                RapportPV.SetParameterValue("AnneeEnLettre", MontantLettre(CDate(rw("DateOuvertureEffective").ToString).Year))
+                If rw("DateReporter").ToString <> "" Then
+                    RapportPV.SetParameterValue("DatelimteDepot", CDate(rw("DateReporter").ToString))
+                Else
+                    RapportPV.SetParameterValue("DatelimteDepot", CDate(rw("DateLimitePropo").ToString))
+                End If
+            Next
 
-            If rwNumDp("DateReporter").ToString <> "" Then
-                RapportPV.SetParameterValue("DateDepot", CDate(rwNumDp("DateReporter").ToString).ToLongDateString)
-            Else
-                RapportPV.SetParameterValue("DateDepot", CDate(rwNumDp("DateLimitePropo").ToString).ToLongDateString)
-            End If
+            RapportPV.SetParameterValue("DateEdition", dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString)
 
-            finSean = rwNumDp("DateFinOuverture").ToString.Split(" ")(1).ToString.Split(":")
-            DateDebutSeance = finSean(0) & " Heures " & finSean(1) & " Minutes " & finSean(2) & " Secondes"
-            RapportPV.SetParameterValue("FinSeance", DateDebutSeance)
-            RapportPV.SetParameterValue("LibelleMarche", MettreApost(rwNumDp("DescriptionMarche").ToString))
+            'RapportPV.SetParameterValue("TypeConv", MettreApost(rwNumDp("TypeConvention").ToString), "PvOuverturePageGarde.rpt")
+            'RapportPV.SetParameterValue("InitialBailleur", MettreApost(rwNumDp("InitialeBailleur").ToString), "PvOuverturePageGarde.rpt")
+            'RapportPV.SetParameterValue("NumConv", MettreApost(rwNumDp("CodeConvention").ToString), "PvOuverturePageGarde.rpt")
+            'RapportPV.SetParameterValue("DateEdition", Now.ToString, "PvOuverturePageGarde.rpt")
+            'RapportPV.SetParameterValue("DateOuvertures", rwNumDp("DateOuvertureEffective").ToString, "PvOuverturePageGarde.rpt")
 
-            'Données du marché *********************
-            'Données de l'activité (Compo Souscompo) **************
-            'Dim CodActiv1 As String = ""
-            'query = "Select P.LibelleCourt from T_BesoinPartition As B, T_Partition as P, t_besoinmarche as M where B.CodePartition=P.CodePartition And B.RefBesoinPartition=M.RefBesoinPartition AND B.CodeProjet='" & ProjetEnCours & "' and M.RefMarche='" & DtMarche("RefMarche").ToString & "'"
-            'Dim dt0 = ExcecuteSelectQuery(query)
-            'For Each rw As DataRow In dt0.Rows
-            '    CodActiv1 = rw("LibelleCourt").ToString
-            'Next
-
-            'Composante   *****
-            'Dim CodComp As String = Mid(CodActiv1, 1, 1)
-            'RapportPV.SetParameterValue("CodeCompo", CodComp)
-            'query = "select LibellePartition from T_Partition where LibelleCourt='" & CodComp & "' and CodeProjet='" & ProjetEnCours & "'"
-            'dt0 = ExcecuteSelectQuery(query)
-            'For Each rw As DataRow In dt0.Rows
-            '    RapportPV.SetParameterValue("LibelleCompo", MettreApost(rw("LibellePartition").ToString))
-            'Next
-
-            'Sous Composante   *****
-            'Dim CodSouComp As String = Mid(CodActiv1, 1, 2)
-            'RapportPV.SetParameterValue("CodeSouCompo", CodSouComp)
-            'query = "select LibellePartition from T_Partition where LibelleCourt='" & CodSouComp & "' and CodeProjet='" & ProjetEnCours & "'"
-            'dt0 = ExcecuteSelectQuery(query)
-            'For Each rw As DataRow In dt0.Rows
-            '    RapportPV.SetParameterValue("LibelleSouCompo", MettreApost(rw("LibellePartition").ToString))
-            'Next
-
-            query = "select Count(*) from T_Consultant where NumeroDp='" & EnleverApost(CmbNumDAO.Text) & "'"
-            Dim NbDaoRetires As Decimal = Val(ExecuteScallar(query))
-
+            Dim NbDaoRetires As Decimal = Val(ExecuteScallar("select Count(*) from T_Consultant where NumeroDp='" & EnleverApost(CmbNumDAO.Text) & "'"))
             RapportPV.SetParameterValue("NbDossierRetires", NbDaoRetires.ToString)
             RapportPV.SetParameterValue("NbDossierRetiresLettre", MontantLettre(NbDaoRetires.ToString))
 
-            query = "select Count(*) from T_Consultant where DateDepot<>'' and NumeroDp='" & EnleverApost(CmbNumDAO.Text) & "'"
-            Dim NbOffresRecues As Decimal = Val(ExecuteScallar(query))
+            Dim NbOffresRecues As Decimal = Val(ExecuteScallar("select Count(*) from T_Consultant where DateDepot<>'' and NumeroDp='" & EnleverApost(CmbNumDAO.Text) & "'"))
             RapportPV.SetParameterValue("NbOffresDeposes", NbOffresRecues.ToString)
             RapportPV.SetParameterValue("NbOffresDeposesLettre", MontantLettre(NbOffresRecues.ToString))
 
@@ -558,7 +527,6 @@ Public Class OuverturePropositions
 
             With FullScreenReport
                 .FullView.ReportSource = RapportPV
-                '.FullView.ReportSource = RapportPV
                 .Text = "PV D'OUVERTURE DU DOSSIER N°" & EnleverApost(CmbNumDAO.Text)
                 .ShowDialog()
             End With

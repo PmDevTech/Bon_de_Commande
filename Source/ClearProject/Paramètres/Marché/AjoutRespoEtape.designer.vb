@@ -22,6 +22,7 @@ Partial Class AjoutRespoEtape
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.cmbFonction = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.LabelControl6 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl32 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl31 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl30 = New DevExpress.XtraEditors.LabelControl()
@@ -41,13 +42,12 @@ Partial Class AjoutRespoEtape
         Me.BtAnulOffre = New DevExpress.XtraEditors.SimpleButton()
         Me.BtEnrg = New DevExpress.XtraEditors.SimpleButton()
         Me.PanelControl3 = New DevExpress.XtraEditors.PanelControl()
+        Me.LabelControl5 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl26 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl5 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl6 = New DevExpress.XtraEditors.LabelControl()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         CType(Me.cmbFonction.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -110,6 +110,16 @@ Partial Class AjoutRespoEtape
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Contacts"
         '
+        'LabelControl6
+        '
+        Me.LabelControl6.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl6.Appearance.ForeColor = System.Drawing.Color.Red
+        Me.LabelControl6.Location = New System.Drawing.Point(57, 58)
+        Me.LabelControl6.Name = "LabelControl6"
+        Me.LabelControl6.Size = New System.Drawing.Size(8, 16)
+        Me.LabelControl6.TabIndex = 47
+        Me.LabelControl6.Text = "*"
+        '
         'LabelControl32
         '
         Me.LabelControl32.Location = New System.Drawing.Point(27, 61)
@@ -164,8 +174,6 @@ Partial Class AjoutRespoEtape
         '
         Me.txtFax.Location = New System.Drawing.Point(466, 33)
         Me.txtFax.Name = "txtFax"
-        Me.txtFax.Properties.Mask.EditMask = "\d{2} \d{3} \d{3} \d{2}"
-        Me.txtFax.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx
         Me.txtFax.Size = New System.Drawing.Size(177, 20)
         Me.txtFax.TabIndex = 6
         '
@@ -173,8 +181,6 @@ Partial Class AjoutRespoEtape
         '
         Me.txtPortable.Location = New System.Drawing.Point(283, 33)
         Me.txtPortable.Name = "txtPortable"
-        Me.txtPortable.Properties.Mask.EditMask = "\d{2} \d{3} \d{3} \d{2}"
-        Me.txtPortable.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx
         Me.txtPortable.Size = New System.Drawing.Size(177, 20)
         Me.txtPortable.TabIndex = 5
         '
@@ -183,8 +189,6 @@ Partial Class AjoutRespoEtape
         Me.txtTelephone.AllowDrop = True
         Me.txtTelephone.Location = New System.Drawing.Point(100, 33)
         Me.txtTelephone.Name = "txtTelephone"
-        Me.txtTelephone.Properties.Mask.EditMask = "\d{2} \d{3} \d{3} \d{2}"
-        Me.txtTelephone.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx
         Me.txtTelephone.Size = New System.Drawing.Size(177, 20)
         Me.txtTelephone.TabIndex = 4
         '
@@ -286,6 +290,46 @@ Partial Class AjoutRespoEtape
         Me.PanelControl3.Size = New System.Drawing.Size(674, 170)
         Me.PanelControl3.TabIndex = 53
         '
+        'LabelControl5
+        '
+        Me.LabelControl5.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl5.Appearance.ForeColor = System.Drawing.Color.Red
+        Me.LabelControl5.Location = New System.Drawing.Point(56, 40)
+        Me.LabelControl5.Name = "LabelControl5"
+        Me.LabelControl5.Size = New System.Drawing.Size(8, 16)
+        Me.LabelControl5.TabIndex = 47
+        Me.LabelControl5.Text = "*"
+        '
+        'LabelControl4
+        '
+        Me.LabelControl4.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl4.Appearance.ForeColor = System.Drawing.Color.Red
+        Me.LabelControl4.Location = New System.Drawing.Point(389, 39)
+        Me.LabelControl4.Name = "LabelControl4"
+        Me.LabelControl4.Size = New System.Drawing.Size(8, 16)
+        Me.LabelControl4.TabIndex = 47
+        Me.LabelControl4.Text = "*"
+        '
+        'LabelControl3
+        '
+        Me.LabelControl3.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl3.Appearance.ForeColor = System.Drawing.Color.Red
+        Me.LabelControl3.Location = New System.Drawing.Point(389, 13)
+        Me.LabelControl3.Name = "LabelControl3"
+        Me.LabelControl3.Size = New System.Drawing.Size(8, 16)
+        Me.LabelControl3.TabIndex = 47
+        Me.LabelControl3.Text = "*"
+        '
+        'LabelControl2
+        '
+        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl2.Appearance.ForeColor = System.Drawing.Color.Red
+        Me.LabelControl2.Location = New System.Drawing.Point(28, 14)
+        Me.LabelControl2.Name = "LabelControl2"
+        Me.LabelControl2.Size = New System.Drawing.Size(8, 16)
+        Me.LabelControl2.TabIndex = 46
+        Me.LabelControl2.Text = "*"
+        '
         'LabelControl1
         '
         Me.LabelControl1.Location = New System.Drawing.Point(346, 14)
@@ -301,56 +345,6 @@ Partial Class AjoutRespoEtape
         Me.LabelControl26.Size = New System.Drawing.Size(41, 13)
         Me.LabelControl26.TabIndex = 52
         Me.LabelControl26.Text = "Fonction"
-        '
-        'LabelControl2
-        '
-        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl2.Appearance.ForeColor = System.Drawing.Color.Red
-        Me.LabelControl2.Location = New System.Drawing.Point(28, 14)
-        Me.LabelControl2.Name = "LabelControl2"
-        Me.LabelControl2.Size = New System.Drawing.Size(8, 16)
-        Me.LabelControl2.TabIndex = 46
-        Me.LabelControl2.Text = "*"
-        '
-        'LabelControl3
-        '
-        Me.LabelControl3.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl3.Appearance.ForeColor = System.Drawing.Color.Red
-        Me.LabelControl3.Location = New System.Drawing.Point(389, 13)
-        Me.LabelControl3.Name = "LabelControl3"
-        Me.LabelControl3.Size = New System.Drawing.Size(8, 16)
-        Me.LabelControl3.TabIndex = 47
-        Me.LabelControl3.Text = "*"
-        '
-        'LabelControl4
-        '
-        Me.LabelControl4.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl4.Appearance.ForeColor = System.Drawing.Color.Red
-        Me.LabelControl4.Location = New System.Drawing.Point(389, 39)
-        Me.LabelControl4.Name = "LabelControl4"
-        Me.LabelControl4.Size = New System.Drawing.Size(8, 16)
-        Me.LabelControl4.TabIndex = 47
-        Me.LabelControl4.Text = "*"
-        '
-        'LabelControl5
-        '
-        Me.LabelControl5.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl5.Appearance.ForeColor = System.Drawing.Color.Red
-        Me.LabelControl5.Location = New System.Drawing.Point(56, 40)
-        Me.LabelControl5.Name = "LabelControl5"
-        Me.LabelControl5.Size = New System.Drawing.Size(8, 16)
-        Me.LabelControl5.TabIndex = 47
-        Me.LabelControl5.Text = "*"
-        '
-        'LabelControl6
-        '
-        Me.LabelControl6.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl6.Appearance.ForeColor = System.Drawing.Color.Red
-        Me.LabelControl6.Location = New System.Drawing.Point(57, 58)
-        Me.LabelControl6.Name = "LabelControl6"
-        Me.LabelControl6.Size = New System.Drawing.Size(8, 16)
-        Me.LabelControl6.TabIndex = 47
-        Me.LabelControl6.Text = "*"
         '
         'AjoutRespoEtape
         '

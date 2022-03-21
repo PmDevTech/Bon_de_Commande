@@ -102,7 +102,7 @@ Public Class AjoutSignataire
 
             If BtEnregistrer.Text = "Enregistrer" Then
                 If GridSignataire.RowCount = 0 Then
-                    SuccesMsg("Veuilez ajouter un signataire")
+                    SuccesMsg("Veuillez ajouter un signataire")
                     Exit Sub
                 End If
 

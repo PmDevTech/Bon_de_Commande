@@ -611,13 +611,12 @@ Module CONNEXION
 
     End Sub
 
-
-    Sub remplirDataGridBoncommande(ByVal mondg As DevExpress.XtraGrid.GridControl, ByVal grid As DevExpress.XtraGrid.Views.Grid.GridView)
+    Sub remplirDataGridBoncommande(ByVal requete As String, ByVal mondg As DevExpress.XtraGrid.GridControl, ByVal nbre As DevExpress.XtraEditors.LabelControl, ByVal grid As DevExpress.XtraGrid.Views.Grid.GridView)
         Try
             dtimmo.Columns.Clear()
             dtimmo.Columns.Add("Code", Type.GetType("System.Boolean"))
-            dtimmo.Columns.Add("Numéro", Type.GetType("System.String"))
             dtimmo.Columns.Add("Date", Type.GetType("System.String"))
+            dtimmo.Columns.Add("Numéro", Type.GetType("System.String"))
             dtimmo.Columns.Add("Description du marché", Type.GetType("System.String"))
             dtimmo.Columns.Add("Demandeur", Type.GetType("System.String"))
             dtimmo.Columns.Add("Fournisseur", Type.GetType("System.String"))
@@ -626,39 +625,23 @@ Module CONNEXION
             dtimmo.Rows.Clear()
 
             Dim cptr As Decimal = 0
-            query = "SELECT bc.RefBon,
-                            bc.RefMarche,
-                            bc.RefLot,
-                            bc.DateCommande,
-                            bc.DateLivraison,
-                            bc.CodeFournis,
-                            bc.NumContrat,
-                            bc.MontantContrat,
-                            bc.CodeProjet 
-                    FROM t_boncommande bc, t_marche m, t_marchesigne ms, t_fournisseur f, t_lotdao l WHERE bc.RefMarche = m.RefMarche 
-                            AND bc.RefLot = l.RefLot 
-                            AND bc.CodeFournis = f.CodeFournis 
-                            AND f.CodeFournis = ms.CodeFournis 
-                            AND bc.CodeProjet = '" & ProjetEnCours & "'
-                    "
-            Dim dt As DataTable = ExcecuteSelectQuery(query)
+            Dim dt As DataTable = ExcecuteSelectQuery(requete)
             For Each rw As DataRow In dt.Rows
                 cptr += 1
                 Dim drS = dtimmo.NewRow()
                 drS("Code") = TabTrue(cptr - 1)
-                drS("Numéro") = rw(0).ToString
                 drS("Date") = rw(3).ToString
+                drS("Numéro") = rw(1).ToString
                 drS("Description du marché") = MettreApost(rw(2).ToString)
                 drS("Demandeur") = rw(5).ToString
                 drS("Fournisseur") = rw(4).ToString
                 drS("Activité(s)") = ""
-                drS("Montant") = AfficherMonnaie(Round(CDbl(rw(7).ToString)))
+                drS("Montant") = AfficherMonnaie(Round(CDbl(rw(6).ToString)))
                 dtimmo.Rows.Add(drS)
             Next
 
             mondg.DataSource = dtimmo
-            Liste_boncommande.LblNombre.Text = cptr.ToString & " Enregistrements"
-            'nbre.Text = cptr.ToString & " Enregistrements"
+            nbre.Text = cptr.ToString & " Enregistrements"
             Dim edit As RepositoryItemCheckEdit = New RepositoryItemCheckEdit()
             edit.ValueChecked = True
             edit.ValueUnchecked = False
@@ -666,8 +649,8 @@ Module CONNEXION
             mondg.RepositoryItems.Add(edit)
             grid.OptionsBehavior.Editable = True
 
-            grid.Columns("Numéro").OptionsColumn.AllowEdit = False
             grid.Columns("Date").OptionsColumn.AllowEdit = False
+            grid.Columns("Numéro").OptionsColumn.AllowEdit = False
             grid.Columns("Description du marché").OptionsColumn.AllowEdit = False
             grid.Columns("Demandeur").OptionsColumn.AllowEdit = False
             grid.Columns("Fournisseur").OptionsColumn.AllowEdit = False
@@ -681,10 +664,10 @@ Module CONNEXION
             grid.HorzScrollVisibility = True
             grid.BestFitColumns()
 
-            grid.Columns("Numéro").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
             grid.Columns("Date").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+            grid.Columns("Numéro").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
             'grid.Columns("Description du marché").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-            'grid.Columns("Demandeur").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+            grid.Columns("Demandeur").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
             grid.Columns("Fournisseur").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
             grid.Columns("Activité(s)").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
             grid.Columns("Montant").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
@@ -694,74 +677,6 @@ Module CONNEXION
         End Try
 
     End Sub
-
-
-    'Sub remplirDataGridBoncommande(ByVal requete As String, ByVal mondg As DevExpress.XtraGrid.GridControl, ByVal nbre As DevExpress.XtraEditors.LabelControl, ByVal grid As DevExpress.XtraGrid.Views.Grid.GridView)
-    '    Try
-    '        dtimmo.Columns.Clear()
-    '        'dtimmo.Columns.Add("Code", Type.GetType("System.Boolean"))
-    '        dtimmo.Columns.Add("Numéro", Type.GetType("System.String"))
-    '        dtimmo.Columns.Add("Date", Type.GetType("System.String"))
-    '        dtimmo.Columns.Add("Description du marché", Type.GetType("System.String"))
-    '        'dtimmo.Columns.Add("Demandeur", Type.GetType("System.String"))
-    '        dtimmo.Columns.Add("Fournisseur", Type.GetType("System.String"))
-    '        dtimmo.Columns.Add("Activité(s)", Type.GetType("System.String"))
-    '        dtimmo.Columns.Add("Montant", Type.GetType("System.String"))
-    '        dtimmo.Rows.Clear()
-
-    '        Dim cptr As Decimal = 0
-    '        Dim dt As DataTable = ExcecuteSelectQuery(requete)
-    '        For Each rw As DataRow In dt.Rows
-    '            cptr += 1
-    '            Dim drS = dtimmo.NewRow()
-    '            'drS("Code") = TabTrue(cptr - 1)
-    '            drS("Numéro") = rw(1).ToString
-    '            drS("Date") = rw(3).ToString
-    '            drS("Description du marché") = MettreApost(rw(2).ToString)
-    '            'drS("Demandeur") = rw(5).ToString
-    '            drS("Fournisseur") = rw(4).ToString
-    '            drS("Activité(s)") = ""
-    '            drS("Montant") = AfficherMonnaie(Round(CDbl(rw(6).ToString)))
-    '            dtimmo.Rows.Add(drS)
-    '        Next
-
-    '        mondg.DataSource = dtimmo
-    '        nbre.Text = cptr.ToString & " Enregistrements"
-    '        Dim edit As RepositoryItemCheckEdit = New RepositoryItemCheckEdit()
-    '        edit.ValueChecked = True
-    '        edit.ValueUnchecked = False
-    '        'grid.Columns("Code").ColumnEdit = edit
-    '        mondg.RepositoryItems.Add(edit)
-    '        grid.OptionsBehavior.Editable = True
-
-    '        grid.Columns("Numéro").OptionsColumn.AllowEdit = False
-    '        grid.Columns("Date").OptionsColumn.AllowEdit = False
-    '        grid.Columns("Description du marché").OptionsColumn.AllowEdit = False
-    '        'grid.Columns("Demandeur").OptionsColumn.AllowEdit = False
-    '        grid.Columns("Fournisseur").OptionsColumn.AllowEdit = False
-    '        grid.Columns("Activité(s)").OptionsColumn.AllowEdit = False
-    '        grid.Columns("Montant").OptionsColumn.AllowEdit = False
-
-    '        grid.Appearance.Row.Font = New Font("Times New Roman", 10, FontStyle.Regular)
-    '        grid.OptionsView.ColumnAutoWidth = True
-    '        grid.OptionsBehavior.AutoExpandAllGroups = True
-    '        grid.VertScrollVisibility = True
-    '        grid.HorzScrollVisibility = True
-    '        grid.BestFitColumns()
-
-    '        grid.Columns("Numéro").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-    '        grid.Columns("Date").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-    '        'grid.Columns("Description du marché").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-    '        'grid.Columns("Demandeur").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-    '        grid.Columns("Fournisseur").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-    '        grid.Columns("Activité(s)").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-    '        grid.Columns("Montant").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-    '        grid.Appearance.Row.Font = New Font("Times New Roman", 10, FontStyle.Regular)
-    '    Catch ex As Exception
-    '        FailMsg("Erreur : Information non disponible : " & ex.ToString())
-    '    End Try
-
-    'End Sub
 
     Sub remplirDataGridarticlestock(ByVal requete As String, ByVal mondg As DevExpress.XtraGrid.GridControl, ByVal nbre As DevExpress.XtraEditors.LabelControl, ByVal grid As DevExpress.XtraGrid.Views.Grid.GridView)
         Try
@@ -1322,6 +1237,7 @@ Module CONNEXION
             Prct = Prct - 100
         End While
     End Sub
+
     Public Sub VerifSaisieMontant(ByRef Zone As Object)
 
         Try
@@ -2999,7 +2915,7 @@ Erreur:
                 Next
             End If
         Catch ex As Exception
-            MsgBox(ex.ToString())
+            SuccesMsg(ex.ToString())
         End Try
     End Sub
 
@@ -3993,35 +3909,5 @@ Erreur:
             FailMsg(ex.ToString)
         End Try
         Return CodeRetounrer
-    End Function
-
-    Public Function GenerateOPNumber(IdExercice As Integer) As String
-
-        Dim NumberBC As String = ""
-        Try
-            Dim AnneeExercice As Integer = CDate(ExerciceComptable.Rows(0).Item("datedebut")).Year
-            query = "SELECT numero FROM t_bon_commande WHERE id_Exercice='" & IdExercice & "' ORDER BY DateAdd DESC LIMIT 1"
-            Dim OldNumeroBC = ExecuteScallar(query)
-            If OldNumeroBC.Length = 0 Then
-                Return "0001" & "/" & AnneeExercice
-            Else
-                Dim Number As Decimal = Val(OldNumeroBC.Split("/"c)(0))
-                Dim NewNumber As Decimal = Number + 1
-                If NewNumber.ToString().Length >= 4 Then
-                    Return NewNumber & "/" & AnneeExercice
-                ElseIf NewNumber.ToString().Length = 3 Then
-                    Return "0" & NewNumber & "/" & AnneeExercice
-                ElseIf NewNumber.ToString().Length = 2 Then
-                    Return "00" & NewNumber & "/" & AnneeExercice
-                ElseIf NewNumber.ToString().Length >= 1 Then
-                    Return "000" & NewNumber & "/" & AnneeExercice
-                End If
-            End If
-        Catch ex As Exception
-            MsgBox("Erreur : Information non disponible : " & ex.ToString(), MsgBoxStyle.Exclamation, "ClearProject")
-        End Try
-
-        Return NumberBC
-
     End Function
 End Module

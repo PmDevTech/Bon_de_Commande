@@ -820,7 +820,7 @@ Public Class FichesActivitesEtape2
 
         Dim montbail As Double = CDbl(TxtPrixTotal.Text.Replace(" ", ""))
 
-        query = "update T_BesoinPartition set NumeroComptable='" & numeroc.ToString & "',LibelleBesoin='" & EnleverApost(TxtLibelleBesoin.Text) & "',QteNature='" & TxtQte.EditValue.ToString.Replace(".", ",") & "',PUNature='" & TxtPrixUnit.EditValue.ToString & "',UniteBesoin='" & EnleverApost(Trim(CmbUnite.Text.Split("["c)(0))) & "',TypeBesoin='" & TxtTypeCompte.Text & "'  where RefBesoinPartition='" & TxtRefBesoin.Text & "' and CodeProjet='" & ProjetEnCours & "'"
+        query = "update T_BesoinPartition set NumeroComptable='" & numeroc.ToString & "',LibelleBesoin='" & EnleverApost(TxtLibelleBesoin.Text) & "',QteNature='" & TxtQte.EditValue.ToString.Replace(".", ",") & "',PUNature='" & TxtPrixUnit.EditValue.ToString & "',UniteBesoin='" & EnleverApost(Trim(CmbUnite.Text.Split("["c)(0))) & "',TypeBesoin='" & EnleverApost(TxtTypeCompte.Text) & "'  where RefBesoinPartition='" & TxtRefBesoin.Text & "' and CodeProjet='" & ProjetEnCours & "'"
         ExecuteNonQuery(query)
 
         query = "update t_repartitionparbailleur set MontantBailleur='" & montbail.ToString & "' where RefBesoinPartition='" & TxtRefBesoin.Text & "'"
@@ -851,11 +851,16 @@ Public Class FichesActivitesEtape2
 
         If (ViewBesoin.RowCount > 0) Then
             DrX = ViewBesoin.GetDataRow(ViewBesoin.FocusedRowHandle)
+            'Verifier si la ligne est utilisé
+            If Val(ExecuteScallar("select count(*) from t_besoinmarche where RefBesoinPartition='" & DrX(1).ToString & "'")) > 0 Then
+                FailMsg("Impossible de modifier cette ligne." & vbNewLine & "car elle est utilisé pour elaboré un marché")
+                Exit Sub
+            End If
             Dim RefBes As String = DrX(1).ToString
-            OuvrirModif(RefBes)
-            boolmodif = True
+                OuvrirModif(RefBes)
+                boolmodif = True
 
-        End If
+            End If
 
     End Sub
 
@@ -1010,6 +1015,12 @@ Public Class FichesActivitesEtape2
 
         If (ViewBesoin.RowCount > 0) Then
             DrX = ViewBesoin.GetDataRow(ViewBesoin.FocusedRowHandle)
+            'Verifier si la ligne est utilisé
+            If Val(ExecuteScallar("select count(*) from t_besoinmarche where RefBesoinPartition='" & DrX(1).ToString & "'")) > 0 Then
+                FailMsg("Impossible de supprimer cette ligne." & vbNewLine & "car elle est utilisé pour elaboré un marché")
+                Exit Sub
+            End If
+
             Dim RefBes As String = DrX(1).ToString
             query = "SELECT COUNT(*) FROM t_comp_activite WHERE CODE_SC='" & DrX("Compte") & "' AND CodePartition='" & TxtCodeActiv.Text & "' AND Date_act BETWEEN '" & dateconvert(CDate(ExerciceComptable.Rows(0)("datedebut"))) & "' AND '" & dateconvert(CDate(ExerciceComptable.Rows(0)("datefin"))) & "'"
             Dim dtVerif As DataTable = ExcecuteSelectQuery(query)

@@ -17,6 +17,8 @@ Imports ClearProject.PassationMarche
 Imports System.Text
 Imports System.Runtime.InteropServices
 Imports System.Security.Cryptography
+Imports System.IO.Compression
+Imports GemBox.Document
 
 Public Class NewAmi
 
@@ -69,7 +71,7 @@ Public Class NewAmi
 
     Private Sub ChargerMarcher()
 
-        '  query = "Select RefMarche, DescriptionMarche, MontantEstimatif, InitialeBailleur, CodeConvention from T_Marche where CodeProjet='" & ProjetEnCours & "' AND TypeMarche LIKE 'Consultants%' AND NumeroDAO IS NULL order by TypeMarche ASC"
+        'query = "Select RefMarche, DescriptionMarche, MontantEstimatif, InitialeBailleur, CodeConvention from T_Marche where CodeProjet='" & ProjetEnCours & "' AND TypeMarche LIKE 'Consultants%' AND NumeroDAO IS NULL order by TypeMarche ASC"
 
         query = "Select RefMarche, DescriptionMarche, MontantEstimatif, Convention_ChefFile from T_Marche where CodeProjet='" & ProjetEnCours & "' AND TypeMarche LIKE 'Consultants%' and NumeroMarche IS NULL"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
@@ -128,7 +130,7 @@ Public Class NewAmi
         dt.Columns.Add("Nom membre", Type.GetType("System.String"))
         dt.Columns.Add("Titre", Type.GetType("System.String"))
         dt.Columns.Add("Fonction", Type.GetType("System.String"))
-        dt.Columns.Add("téléphone", Type.GetType("System.String"))
+        dt.Columns.Add("Téléphone", Type.GetType("System.String"))
         dt.Columns.Add("E-mail", Type.GetType("System.String"))
         dt.Columns.Add("Type commission", Type.GetType("System.String"))
         dt.Columns.Add("LigneModif", Type.GetType("System.String"))
@@ -136,9 +138,10 @@ Public Class NewAmi
 
         Viewami.OptionsView.ColumnAutoWidth = True
         Viewami.Columns("CodeMembre").Visible = False
+        Viewami.Columns("Type commission").Visible = False
         Viewami.Columns("LigneModif").Visible = False
         Viewami.Columns("Civilité").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Viewami.Columns("téléphone").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Viewami.Columns("Téléphone").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Viewami.Columns("Type commission").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Viewami.Appearance.Row.Font = New Font("Times New Roman", 11, FontStyle.Regular)
     End Sub
@@ -259,8 +262,9 @@ Public Class NewAmi
         dt.Columns.Add("NoteMinimaleAMI", Type.GetType("System.String"))
         dt.Columns.Add("DateLimitePropo", Type.GetType("System.String"))
         dt.Columns.Add("ValiderEditionAmi", Type.GetType("System.String"))
+        dt.Columns.Add("Statut", Type.GetType("System.String"))
 
-        query = "select NumeroDAMI, ValiderEditionAmi, DateEdition, TypeRemune, MethodeSelection, DateLimitePropo, ListeRestreinte, DateFinOuverture, DateOuverture, LibelleMiss, NoteMinimaleAMI from T_AMI where CodeProjet='" & ProjetEnCours & "' order by NumeroDAMI DESC"
+        query = "select * from T_AMI where CodeProjet='" & ProjetEnCours & "' ORDER BY DateEdition DESC"
         dt.Rows.Clear()
         Dim dt0 As DataTable = ExcecuteSelectQuery(query)
         For Each rw As DataRow In dt0.Rows
@@ -271,12 +275,13 @@ Public Class NewAmi
             dr1("Méthode") = rw("MethodeSelection").ToString
             dr1("Liste") = rw("ListeRestreinte").ToString & " Consultants"
             dr1("NoteMinimaleAMI") = rw("NoteMinimaleAMI")
-            dr1("DateLimitePropo") = rw("DateLimitePropo").ToString
+            dr1("DateLimitePropo") = IIf(rw("DateReporte").ToString <> "", rw("DateReporte").ToString, rw("DateLimitePropo").ToString).ToString
             dr1("ValiderEditionAmi") = rw("ValiderEditionAmi").ToString
+            dr1("Statut") = rw("StatutDoss").ToString
 
-            If (rw("DateFinOuverture").ToString <> "") Then
+            If (rw("DateOuvertureEffective").ToString <> "") Then
                 dr1("Ouverture") = "Effectuée"
-                dr1("Date") = CDate(rw("DateFinOuverture")).ToShortDateString & " à " & CDate(rw("DateFinOuverture")).ToLongTimeString 'Replace(":", " h ") & " mn"
+                dr1("Date") = CDate(rw("DateOuvertureEffective")).ToShortDateString & " à " & CDate(rw("DateOuvertureEffective")).ToLongTimeString 'Replace(":", " h ") & " mn"
             Else
                 If (rw("DateOuverture").ToString <> "") Then
                     dr1("Ouverture") = "Non effectuée"
@@ -433,6 +438,20 @@ Public Class NewAmi
     End Sub
 #End Region
 
+    Private Function VerifierTraitementMethode(CodeMethod As String) As Boolean
+        Try
+            Dim ListeMethode As New List(Of String) From {"SFQC", "SCBD", "SMC", "3CV", "SFQ", "SQC"}
+            For i = 0 To ListeMethode.Count - 1
+                If ListeMethode(i) = CodeMethod.ToString.ToUpper Then
+                    Return True
+                End If
+            Next
+            Return False
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Function
+
     Private Sub BtEnregistrer_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles BtEnregistrer.ItemClick
         If TxtNumDp.Text.Trim = "" Then
             SuccesMsg("Veuillez saisir le numéro de l'AMI")
@@ -440,7 +459,7 @@ Public Class NewAmi
             Exit Sub
         End If
 
-        If VerifierTraiterMethode(MethodeMarche.Text) = False Then
+        If VerifierTraitementMethode(MethodeMarche.Text) = False Then
             FailMsg("Aucun traitement prévu pour la méthode [" & MethodeMarche.Text & "]")
             Exit Sub
         End If
@@ -473,7 +492,7 @@ Public Class NewAmi
         End If
 
         If cmbMarches.Text.Trim = "" Then
-            SuccesMsg("Veuillez selectionner un marche")
+            SuccesMsg("Veuillez selectionner un marché")
             cmbMarches.Focus()
             Exit Sub
         End If
@@ -531,7 +550,7 @@ Public Class NewAmi
         If DatePub1.Text.Trim <> "" And DatePub2.Text.Trim <> "" Then
             If DateTime.Compare(CDate(DatePub1.Text), CDate(DatePub2.Text)) > 0 Then
                 SuccesMsg("La prémière date de publication ne doit être " & vbNewLine & "suppérieure à la deuxième date de publication")
-                Exit sub
+                Exit Sub
             End If
         End If
 
@@ -546,7 +565,7 @@ Public Class NewAmi
         'End If
 
         If Viewami.RowCount = 0 Then
-            SuccesMsg("Veuillez ajouter un mêmbre de la commission d'ouverture")
+            SuccesMsg("Veuillez ajouter un membre de la commission d'ouverture")
             Exit Sub
         End If
 
@@ -621,6 +640,7 @@ Public Class NewAmi
 
             ' DatRow("ValidationMoyenne") = "En cours"
             DatRow("ValiderEditionAmi") = "En cours"
+            DatRow("StatutDoss") = "En cours"
 
 
             DatSet.Tables("T_AMI").Rows.Add(DatRow)
@@ -635,7 +655,7 @@ Public Class NewAmi
             Next
 
             For i = 0 To Viewami.RowCount - 1
-                query = "insert into T_Commission values(NULL,'" & EnleverApost(Viewami.GetRowCellValue(i, "Nom membre").ToString) & "', '" & EnleverApost(Viewami.GetRowCellValue(i, "téléphone").ToString) & "', '" & EnleverApost(Viewami.GetRowCellValue(i, "E-mail").ToString) & "', '" & EnleverApost(Viewami.GetRowCellValue(i, "Fonction").ToString) & "', '',  '" & EnleverApost(Viewami.GetRowCellValue(i, "Titre").ToString) & "', '" & NumAMIEnCours & "', '" & EnleverApost(Viewami.GetRowCellValue(i, "Type commission").ToString) & "', '" & Viewami.GetRowCellValue(i, "Civilité").ToString & "', '" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "', '" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "', '" & CodeUtilisateur & "', '', '','', '', '','')"
+                query = "insert into T_Commission values(NULL,'" & EnleverApost(Viewami.GetRowCellValue(i, "Nom membre").ToString) & "', '" & EnleverApost(Viewami.GetRowCellValue(i, "Téléphone").ToString) & "', '" & EnleverApost(Viewami.GetRowCellValue(i, "E-mail").ToString) & "', '" & EnleverApost(Viewami.GetRowCellValue(i, "Fonction").ToString) & "', '',  '" & EnleverApost(Viewami.GetRowCellValue(i, "Titre").ToString) & "', '" & NumAMIEnCours & "', '" & EnleverApost(Viewami.GetRowCellValue(i, "Type commission").ToString) & "', '" & Viewami.GetRowCellValue(i, "Civilité").ToString & "', '" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "', '" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "', '" & CodeUtilisateur & "', '', '','', '', '','')"
                 ExecuteNonQuery(query)
             Next
 
@@ -682,12 +702,12 @@ Public Class NewAmi
             For i = 0 To Viewami.RowCount - 1
                 If Viewami.GetRowCellValue(i, "CodeMembre").ToString = "" Then
 
-                    query = "insert into T_Commission values(NULL,'" & EnleverApost(Viewami.GetRowCellValue(i, "Nom membre").ToString) & "', '" & EnleverApost(Viewami.GetRowCellValue(i, "téléphone").ToString) & "', '" & EnleverApost(Viewami.GetRowCellValue(i, "E-mail").ToString) & "', '" & EnleverApost(Viewami.GetRowCellValue(i, "Fonction").ToString) & "', '',  '" & EnleverApost(Viewami.GetRowCellValue(i, "Titre").ToString) & "', '" & NumAMIEnCours & "', '" & EnleverApost(Viewami.GetRowCellValue(i, "Type commission").ToString) & "', '" & Viewami.GetRowCellValue(i, "Civilité").ToString & "', '" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "', '" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "', '" & CodeUtilisateur & "', '', '','','', '','')"
+                    query = "insert into T_Commission values(NULL,'" & EnleverApost(Viewami.GetRowCellValue(i, "Nom membre").ToString) & "', '" & EnleverApost(Viewami.GetRowCellValue(i, "Téléphone").ToString) & "', '" & EnleverApost(Viewami.GetRowCellValue(i, "E-mail").ToString) & "', '" & EnleverApost(Viewami.GetRowCellValue(i, "Fonction").ToString) & "', '',  '" & EnleverApost(Viewami.GetRowCellValue(i, "Titre").ToString) & "', '" & NumAMIEnCours & "', '" & EnleverApost(Viewami.GetRowCellValue(i, "Type commission").ToString) & "', '" & Viewami.GetRowCellValue(i, "Civilité").ToString & "', '" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "', '" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "', '" & CodeUtilisateur & "', '', '','','', '','')"
                     ExecuteNonQuery(query)
 
                     TrouverModif = True
                 ElseIf Viewami.GetRowCellValue(i, "LigneModif").ToString = "Modifier" Then
-                    query = "update T_Commission set NomMem='" & EnleverApost(Viewami.GetRowCellValue(i, "Nom membre").ToString) & "', TelMem='" & EnleverApost(Viewami.GetRowCellValue(i, "téléphone").ToString) & "', EmailMem='" & EnleverApost(Viewami.GetRowCellValue(i, "E-mail").ToString) & "', FoncMem='" & EnleverApost(Viewami.GetRowCellValue(i, "Fonction").ToString) & "', TitreMem='" & EnleverApost(Viewami.GetRowCellValue(i, "Titre").ToString) & "', TypeComm='" & EnleverApost(Viewami.GetRowCellValue(i, "Type commission").ToString) & "', Civil='" & Viewami.GetRowCellValue(i, "Civilité").ToString & "', DateModif='" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "', Operateur='" & CodeUtilisateur & "' where CodeMem='" & Viewami.GetRowCellValue(i, "CodeMembre").ToString & "'"
+                    query = "update T_Commission set NomMem='" & EnleverApost(Viewami.GetRowCellValue(i, "Nom membre").ToString) & "', TelMem='" & EnleverApost(Viewami.GetRowCellValue(i, "Téléphone").ToString) & "', EmailMem='" & EnleverApost(Viewami.GetRowCellValue(i, "E-mail").ToString) & "', FoncMem='" & EnleverApost(Viewami.GetRowCellValue(i, "Fonction").ToString) & "', TitreMem='" & EnleverApost(Viewami.GetRowCellValue(i, "Titre").ToString) & "', TypeComm='" & EnleverApost(Viewami.GetRowCellValue(i, "Type commission").ToString) & "', Civil='" & Viewami.GetRowCellValue(i, "Civilité").ToString & "', DateModif='" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "', Operateur='" & CodeUtilisateur & "' where CodeMem='" & Viewami.GetRowCellValue(i, "CodeMembre").ToString & "'"
                     ExecuteNonQuery(query)
                     TrouverModif = True
                 End If
@@ -746,6 +766,10 @@ Public Class NewAmi
             dr = LayoutViewAMI.GetDataRow(LayoutViewAMI.FocusedRowHandle)
 
             If AffichDoss = False Then
+                If dr("Statut").ToString = "Annulé" Then
+                    FailMsg("Impossible de modifier un dossier annulé")
+                    Exit Sub
+                End If
                 If DateTime.Compare(CDate(dr("DateLimitePropo").ToString), Now) < 0 And dr("ValiderEditionAmi").ToString = "Valider" Then
                     SuccesMsg("Impossible de modifier ce dossier")
                     Exit Sub
@@ -810,21 +834,21 @@ Public Class NewAmi
             Next
 
             query = "Select DescriptionMarche, MontantEstimatif, Convention_ChefFile  from T_Marche where CodeProjet='" & ProjetEnCours & "' AND RefMarche='" & RefMarcheModif & "'"
-                Dim dts As DataTable = ExcecuteSelectQuery(query)
+            Dim dts As DataTable = ExcecuteSelectQuery(query)
 
-                For Each rw In dts.Rows
+            For Each rw In dts.Rows
                 cmbMarches.Text = MettreApost(rw("DescriptionMarche")) & " | " & AfficherMonnaie(rw("MontantEstimatif").ToString.Replace(" ", "")) & " | " & GetInitialbailleur(rw("Convention_ChefFile")) & "(" & rw("Convention_ChefFile") & ")"
             Next
 
-                ChargementdesDonnees(NumAMIEnCours)
+            ChargementdesDonnees(NumAMIEnCours)
 
-                'If CheminPublDoc.ToString <> "" Then
-                '    DocTDR.LoadDocument(CheminPublDoc, DevExpress.XtraRichEdit.DocumentFormat.OpenXml)
-                'End If
-                cmbMarches.Properties.ReadOnly = True
-                XtraTabControl1.SelectedTabPage = PageDonneesBase
-                FinChargement()
-            End If
+            'If CheminPublDoc.ToString <> "" Then
+            '    DocTDR.LoadDocument(CheminPublDoc, DevExpress.XtraRichEdit.DocumentFormat.OpenXml)
+            'End If
+            cmbMarches.Properties.ReadOnly = True
+            XtraTabControl1.SelectedTabPage = PageDonneesBase
+            FinChargement()
+        End If
     End Sub
 
     Private Sub GetEnabledBouton(value As Boolean)
@@ -867,7 +891,7 @@ Public Class NewAmi
             DrS("Nom membre") = MettreApost(rw("NomMem").ToString)
             DrS("Titre") = MettreApost(rw("TitreMem").ToString)
             DrS("Fonction") = MettreApost(rw("FoncMem").ToString)
-            DrS("téléphone") = MettreApost(rw("TelMem").ToString)
+            DrS("Téléphone") = MettreApost(rw("TelMem").ToString)
             DrS("E-mail") = MettreApost(rw("EmailMem").ToString)
             DrS("Type commission") = rw("TypeComm").ToString
             DrS("LigneModif") = "Enregistrer"
@@ -1106,7 +1130,7 @@ Public Class NewAmi
             Dim CodeProcAO As String = ExecuteScallar(query)
             If CodeProcAO <> "" Then
                 MethodeMarche.Text = GetMethode(CodeProcAO)
-                MontantMarche.Text = AfficherMonnaie(cmbMarches.Text.Split("|")(1))
+                MontantMarche.Text = AfficherMonnaie(cmbMarches.Text.Split("|")(1)).Replace(" ", "")
             Else
                 MethodeMarche.ResetText()
             End If
@@ -1141,17 +1165,12 @@ Public Class NewAmi
 
         'verification de l'exitence du president
         If Viewami.RowCount > 0 Then
-            Dim Presi As Boolean = False
             For i = 0 To Viewami.RowCount - 1
-                If (Viewami.GetRowCellValue(i, "Titre").ToString = "Président") Or (ModifTous = True And TypeModif = "Cojo" And Viewami.GetRowCellValue(i, "Titre").ToString = "Président" And i <> Index) Then
-                    Presi = True
-                    Exit For
+                If ((Viewami.GetRowCellValue(i, "Titre").ToString = "Président") And CmbTitreCojo.Text = "Président" And ModifTous = False And TypeModif = "") Or (ModifTous = True And TypeModif = "Cojo" And Viewami.GetRowCellValue(i, "Titre").ToString = "Président" And i <> Index And CmbTitreCojo.Text = "Président") Then
+                    SuccesMsg("Il existe déjà un président dans la liste")
+                    Exit Sub
                 End If
             Next
-            If Presi = True Then
-                SuccesMsg("Il existe déjà un president dans la liste")
-                Exit Sub
-            End If
         End If
 
         If ModifTous = True And TypeModif = "Cojo" Then
@@ -1159,9 +1178,9 @@ Public Class NewAmi
             Viewami.GetDataRow(Index).Item("Nom membre") = TxtCojo.Text
             Viewami.GetDataRow(Index).Item("Titre") = CmbTitreCojo.Text
             Viewami.GetDataRow(Index).Item("Fonction") = TxtFonctionCojo.Text
-            Viewami.GetDataRow(Index).Item("téléphone") = TxtContactCojo.Text
+            Viewami.GetDataRow(Index).Item("Téléphone") = TxtContactCojo.Text
             Viewami.GetDataRow(Index).Item("E-mail") = TxtMailCojo.Text
-            Viewami.GetDataRow(Index).Item("Type commission") = IIf(ChkEvaluateur.Checked = True, "EVAC", "COJO").ToString
+            Viewami.GetDataRow(Index).Item("Type commission") = IIf(ChkEvaluateur.Checked = True, "Evaluateur", "COJO").ToString
             Viewami.GetDataRow(Index).Item("LigneModif") = "Modifier"
         Else
             Dim dt As DataTable = GridAmi.DataSource
@@ -1172,9 +1191,9 @@ Public Class NewAmi
             drS("Nom membre") = TxtCojo.Text
             drS("Titre") = CmbTitreCojo.Text
             drS("Fonction") = TxtFonctionCojo.Text
-            drS("téléphone") = TxtContactCojo.Text
+            drS("Téléphone") = TxtContactCojo.Text
             drS("E-mail") = TxtMailCojo.Text
-            drS("Type commission") = IIf(ChkEvaluateur.Checked = True, "EVAC", "COJO").ToString
+            drS("Type commission") = IIf(ChkEvaluateur.Checked = True, "Evaluateur", "COJO").ToString
             drS("LigneModif") = "Ajouter"
             dt.Rows.Add(drS)
         End If
@@ -1193,7 +1212,7 @@ Public Class NewAmi
             TxtCojo.Text = dr("Nom membre").ToString()
             CmbTitreCojo.Text = dr("Titre").ToString
             TxtFonctionCojo.Text = dr("Fonction").ToString
-            TxtContactCojo.Text = dr("téléphone").ToString
+            TxtContactCojo.Text = dr("Téléphone").ToString
             TxtMailCojo.Text = dr("E-mail").ToString
         End If
     End Sub
@@ -1222,6 +1241,8 @@ Public Class NewAmi
                 For i = 0 To ViewCritere.RowCount - 1
                     ViewCritere.GetDataRow(i).Item("N°") = i + 1
                 Next
+                ModifTous = False
+                TypeModif = ""
             End If
         End If
     End Sub
@@ -1234,6 +1255,8 @@ Public Class NewAmi
                     ExecuteNonQuery(query)
                 End If
                 Viewami.GetDataRow(Viewami.FocusedRowHandle).Delete()
+                ModifTous = False
+                TypeModif = ""
             End If
         End If
     End Sub
@@ -1264,22 +1287,28 @@ Public Class NewAmi
             Exit Sub
         End If
 
-        'Verification des points totals
-        If TotaleDesPoints() = True Then
-            SuccesMsg("Le total des points des critères d'évaluation ne doit pas excéder 100")
-            Exit Sub
-        End If
-
         Dim NewCrite As DataTable = LgCritere.DataSource
 
         Dim NumCritere As Integer = ViewCritere.RowCount
 
         If ModifTous = True And TypeModif = "Critere" Then
+            'Verification des points totals
+            If TotaleDesPoints(Index) = True Then
+                SuccesMsg("Le total des points des critères d'évaluation ne doit pas excéder 100")
+                Exit Sub
+            End If
+
             ViewCritere.GetDataRow(Index).Item("Libellé critère") = libellecritere.Text
             ViewCritere.GetDataRow(Index).Item("Valeurs") = valeurcritere.Text
             ViewCritere.GetDataRow(Index).Item("Note") = Note.Text.Replace(".", ",") & " Points"
             ViewCritere.GetDataRow(Index).Item("LigneModif") = "Modifier"
         Else
+            'Verification des points totals
+            If TotaleDesPoints() = True Then
+                SuccesMsg("Le total des points des critères d'évaluation ne doit pas excéder 100")
+                Exit Sub
+            End If
+
             Dim DrS = NewCrite.NewRow
             DrS("Refcritere") = ""
             DrS("N°") = NumCritere + 1
@@ -1446,7 +1475,11 @@ Public Class NewAmi
             dr = LayoutViewAMI.GetDataRow(LayoutViewAMI.FocusedRowHandle)
 
             If dr("ValiderEditionAmi").ToString = "Valider" Then
-                SuccesMsg("Ce dossier a été valider")
+                SuccesMsg("Ce dossier a été validé")
+                Exit Sub
+            End If
+            If dr("Statut").ToString = "Annulé" Then
+                FailMsg("Impossible de valider un dossier Annulé")
                 Exit Sub
             End If
 
@@ -1466,7 +1499,7 @@ Public Class NewAmi
                     envoieMail(rw0("Civil").ToString & " " & MettreApost(rw0("NomMem").ToString), MettreApost(rw0("EmailMem").ToString), CodeCrypter)
                 Next
                 FinChargement()
-                SuccesMsg("Dossier valider avec succès")
+                SuccesMsg("Dossier validé avec succès")
                 ArchivesAMI()
             End If
         End If
@@ -1580,25 +1613,123 @@ Public Class NewAmi
                 End If
 
                 DebutChargement(True, "Importation de l'annonce en cours...")
-                Dim CheminPdf As String = line & "\AMI\" & FormatFileName(TxtNumDp.Text, "_") & " \PublicationAMI.pdf"
-                If CheminPublDoc.ToString = "" Then
-                    CheminPublDoc = line & "\AMI\" & FormatFileName(TxtNumDp.Text, "_")
-                    If (Directory.Exists(CheminPublDoc) = False) Then
-                        Directory.CreateDirectory(CheminPublDoc)
-                    End If
-                    CheminPublDoc = CheminPublDoc & "\PublicationAMI.docx"
-                    ExecuteNonQuery("UPDATE t_ami Set CheminPubAMI='" & CheminPublDoc.ToString.Replace("\", "\\") & "' where NumeroDAMI ='" & EnleverApost(TxtNumDp.Text) & "'")
-                End If
+                Try
+                    ' Dim fStream As FileStream
+                    'fStream = New FileStream(dlg.FileName, FileMode.Open)
+                    'DocTDR.LoadDocument(fStream, DevExpress.XtraRichEdit.DocumentFormat.OpenXml)
+                    DocTDR.LoadDocument(dlg.FileName, DevExpress.XtraRichEdit.DocumentFormat.OpenXml)
 
-                Dim fStream As FileStream
-                fStream = New FileStream(dlg.FileName, FileMode.Open)
-                DocTDR.LoadDocument(fStream, DevExpress.XtraRichEdit.DocumentFormat.OpenXml)
-                DocTDR.SaveDocument(CheminPublDoc, DevExpress.XtraRichEdit.DocumentFormat.OpenXml)
-                DocTDR.ExportToPdf(CheminPdf)
+                    Dim CheminPdf As String = line & "\AMI\" & FormatFileName(TxtNumDp.Text, "_") & " \PublicationAMI.pdf"
+                    If CheminPublDoc.ToString = "" Then
+                        CheminPublDoc = line & "\AMI\" & FormatFileName(TxtNumDp.Text, "_")
+                        If (Directory.Exists(CheminPublDoc) = False) Then
+                            Directory.CreateDirectory(CheminPublDoc)
+                        End If
+                        CheminPublDoc = CheminPublDoc & "\PublicationAMI.docx"
+                        ExecuteNonQuery("UPDATE t_ami Set CheminPubAMI='" & CheminPublDoc.ToString.Replace("\", "\\") & "' where NumeroDAMI ='" & EnleverApost(TxtNumDp.Text) & "'")
+                    End If
+
+                    DocTDR.SaveDocument(CheminPublDoc, DevExpress.XtraRichEdit.DocumentFormat.OpenXml)
+                    DocTDR.ExportToPdf(CheminPdf)
+                Catch exs As IOException
+                    FinChargement()
+                    SuccesMsg("Impossible de sauvegardé ce fichier. car un exemplaire du fichier à sauvegardé est ouvert dans une autre application. Veuillez le fermé svp.")
+                    DocTDR.ResetText()
+                Catch ex As Exception
+                    FinChargement()
+                    FailMsg(ex.ToString)
+                End Try
                 BtModifAnnonce.Enabled = True
                 FinChargement()
             End If
         End If
+    End Sub
+
+    Private Sub AnnulerLAMIToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AnnulerLAMIToolStripMenuItem.Click
+        Try
+            If LayoutViewAMI.RowCount > 0 Then
+                If (ActionTous = 0) Then
+                    SuccesMsg("Veuillez enregistrer le dossier en cours.")
+                    Exit Sub
+                ElseIf ActionTous = 1 Or ActionTous = 2 Then
+                    SuccesMsg("Veuillez fermer le dossier en cours.")
+                    Exit Sub
+                End If
+
+                dr = LayoutViewAMI.GetDataRow(LayoutViewAMI.FocusedRowHandle)
+                If dr("Statut").ToString = "Annulé" Then
+                    FailMsg("Ce dossier a été Annulé")
+                    Exit Sub
+                End If
+
+                'Verifier si le marche a ete engager
+                If dr("Statut").ToString = "Terminé" And dr("Méthode").ToString.ToUpper = "3CV" Then
+                    FailMsg("Impossible d'annuler un marché déjà executé")
+                    Exit Sub
+                End If
+
+                If dr("Statut").ToString = "Terminé" Then
+                    FailMsg("Impossible d'annuler ce dossier," & vbNewLine & "car il est utilisé pour élaborer une DP")
+                    Exit Sub
+                End If
+
+                'Tous les consultants sur la liste restriente doivent être disqualifié pour permettre l'annulation
+                Dim NbreConsultDisq As Integer = 0
+                Dim NbreConsultRetenu As Integer = 0
+                NbreConsultRetenu = Val(ExecuteScallar("select count(*) from t_soumissionconsultant where NumeroDp='" & EnleverApost(dr("N°").ToString) & "' and RangConsult IS NOT NULL and EvalTechOk='OUI'"))
+
+                If NbreConsultRetenu > 0 Then
+                    NbreConsultDisq = Val(ExecuteScallar("select count(*) from t_soumissionconsultant where NumeroDp='" & EnleverApost(dr("N°").ToString) & "' and RangConsult IS NOT NULL and EvalTechOk='OUI' and ConsultDisqualifie IS NOT NULL"))
+                    Dim MessageText As String = "Impossible d'annuler ce dossier, car il existe des" & vbNewLine & "consultants sur la liste restriente non disqualifié"
+                    If NbreConsultRetenu <> NbreConsultDisq Then
+                        FailMsg("Impossible d'annuler ce dossier, car il existe des" & vbNewLine & "consultants sur la liste restriente non disqualifié")
+                        Exit Sub
+                    End If
+                End If
+
+                If ConfirmMsg("Voulez-vous vraiment annuler ce dossier ?") = DialogResult.Yes Then
+                    ReponseDialog = ""
+                    Dim NewMotifAnnulDoss As New MotifAnnulationDossier
+                    NewMotifAnnulDoss.TxtTextDoss.Text = "Annulation du dossier N° " & dr("N°").ToString
+                    NewMotifAnnulDoss.ShowDialog()
+                    If ReponseDialog.ToString = "" Then
+                        Exit Sub
+                    End If
+                    'DossUtiliser=NULL,
+
+                    ExecuteNonQuery("Update t_ami set StatutDoss='Annulé', MotifAnnulationDossier='" & EnleverApost(ReponseDialog.ToString) & "' where NumeroDAMI='" & EnleverApost(dr("N°").ToString) & "'")
+                    If dr("Méthode").ToString.ToUpper = "3CV" Then
+                        Dim RefMarch As String = ExecuteScallar("select RefMarche from t_ami where NumeroDAMI='" & EnleverApost(dr("N°").ToString) & "'")
+                        ExecuteNonQuery("Update t_marche Set Forfait_TpsPasse=NULL, NumeroDAO=NULL where RefMarche='" & RefMarch & "'")
+                    End If
+
+                    SuccesMsg("Dossier annulé avec succès")
+                    ChargerMarcher()
+                    LayoutViewAMI.SetFocusedRowCellValue("Statut", "Annulé")
+                    'Fermeture des formulaires
+                    FermerForm()
+                End If
+            Else
+                FailMsg("Aucun dossier à Annuler")
+            End If
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+
+    End Sub
+
+    Private Sub FermerForm()
+        Try
+            'Arret du processus et fermetures des formulairs ouverts
+            'For Each child As Object In Me.MdiChildren
+            For Each child As Object In ClearMdi.MdiChildren
+                If (child.Name = "DepotAMI") Or (child.Name = "OuvertureAmi") Or (child.Name = "RapportEvaluationMI") Or (child.Name = "ListeRestreindreAMI") Then
+                    child.Close()
+                End If
+            Next
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
     End Sub
 
 End Class

@@ -292,7 +292,7 @@ Public Class ClearMdi
     End Sub
 
     Private Sub NavOuvertPropo_LinkClicked(ByVal sender As Object, ByVal e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavOuvertPropo.LinkClicked
-        Disposer_form(OuverturePropositions)
+        Disposer_form(OuverturePropositionsDp)
         FinChargement()
     End Sub
 

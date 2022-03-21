@@ -79,8 +79,8 @@ Public Class FicheEvaluation
 
                                 Lbl3.Text = CritereChap(NumChap) & "." & Niv2.ToString & "." & Niv3.ToString & "/  " & MettreApost(rw2(1).ToString) & " [/ " & rw2(3).ToString & " pts]"
                                 TxtNote.Properties.ReadOnly = False
-                                TxtNote.Text = InfosCritere(CodeSoum, EvaluationConsultants.CodeEvaluateur, rw2(0).ToString)(0)
-                                TxtCommentaire.Text = InfosCritere(CodeSoum, EvaluationConsultants.CodeEvaluateur, rw2(0).ToString)(1)
+                                'TxtNote.Text = InfosCritere(CodeSoum, EvaluationConsultants.CodeEvaluateur, rw2(0).ToString)(0)
+                                'TxtCommentaire.Text = InfosCritere(CodeSoum, EvaluationConsultants.CodeEvaluateur, rw2(0).ToString)(1)
 
                                 cpt2 = 0
 
@@ -188,8 +188,8 @@ Public Class FicheEvaluation
 
                         Lbl3.Text = rw1(4).ToString & "/  " & MettreApost(rw1(1).ToString) & " [/" & rw1(3).ToString & " pts]"
                         TxtNote.Properties.ReadOnly = False
-                        TxtNote.Text = InfosCritere(CodeSoum, EvaluationConsultants.CodeEvaluateur, rw1(0).ToString)(0)
-                        TxtCommentaire.Text = InfosCritere(CodeSoum, EvaluationConsultants.CodeEvaluateur, rw1(0).ToString)(1)
+                        ' TxtNote.Text = InfosCritere(CodeSoum, EvaluationConsultants.CodeEvaluateur, rw1(0).ToString)(0)
+                        ' TxtCommentaire.Text = InfosCritere(CodeSoum, EvaluationConsultants.CodeEvaluateur, rw1(0).ToString)(1)
                         cpt2 = 0
 
                         query = "select RefCritere,IntituleCritere,TypeCritere,PointCritere,CodeCritere from T_DP_CritereEval where NumeroDp='" & EvaluationConsultants.CmbNumDoss.Text & "' and CodeCritere like '" & CritereChap(NumChap) & "." & Niv2.ToString & ".%'"
@@ -298,8 +298,8 @@ Public Class FicheEvaluation
 
                 Lbl3.Text = CritereChap(NumChap) & "/  " & MettreApost(rw(1).ToString) & " [/ " & rw(3).ToString & " pts]"
                 TxtNote.Properties.ReadOnly = False
-                TxtNote.Text = InfosCritere(CodeSoum, EvaluationConsultants.CodeEvaluateur, rw(0).ToString)(0)
-                TxtCommentaire.Text = InfosCritere(CodeSoum, EvaluationConsultants.CodeEvaluateur, rw(0).ToString)(1)
+                'TxtNote.Text = InfosCritere(CodeSoum, EvaluationConsultants.CodeEvaluateur, rw(0).ToString)(0)
+                'TxtCommentaire.Text = InfosCritere(CodeSoum, EvaluationConsultants.CodeEvaluateur, rw(0).ToString)(1)
                 cpt2 = 0
 
                 query = "select RefCritere,IntituleCritere,TypeCritere,PointCritere,CodeCritere from T_DP_CritereEval where NumeroDp='" & EvaluationConsultants.CmbNumDoss.Text & "' and CodeCritere like '" & CritereChap(NumChap) & ".%'"
@@ -460,7 +460,7 @@ Public Class FicheEvaluation
             Dim codeNote() As String = Lbl3.Text.Split("/"c)
             Dim ligneExist As Boolean = False
 
-            query = "select Count(*) from T_SoumisNoteConsult where RefSoumis='" & CodeSoum & "' and CodeMem='" & EvaluationConsultants.CodeEvaluateur & "' and RefCritere='" & RefDe(codeNote(0)) & "'"
+            'query = "select Count(*) from T_SoumisNoteConsult where RefSoumis='" & CodeSoum & "' and CodeMem='" & EvaluationConsultants.CodeEvaluateur & "' and RefCritere='" & RefDe(codeNote(0)) & "'"
             Dim Nbres As Decimal = Val(ExecuteScallar(query))
             If Nbres > 0 Then
                 ligneExist = True
@@ -468,13 +468,13 @@ Public Class FicheEvaluation
 
             If (ligneExist = False) Then
 
-                query = "insert into T_SoumisNoteConsult values('" & CodeSoum & "','" & EvaluationConsultants.CodeEvaluateur & "','" & RefDe(codeNote(0)) & "','" & TxtNote.Text & "', '" & IIf(TxtCommentaire.Text <> "Commentaire", EnleverApost(TxtCommentaire.Text), "") & "')"
+                ' query = "insert into T_SoumisNoteConsult values('" & CodeSoum & "','" & EvaluationConsultants.CodeEvaluateur & "','" & RefDe(codeNote(0)) & "','" & TxtNote.Text & "', '" & IIf(TxtCommentaire.Text <> "Commentaire", EnleverApost(TxtCommentaire.Text), "") & "')"
                 ExecuteNonQuery(query)
 
                 Else
 
-                    query = "Update T_SoumisNoteConsult set NoteConsult='" & TxtNote.Text & "', Remarque='" & IIf(TxtCommentaire.Text <> "Commentaire", EnleverApost(TxtCommentaire.Text), "") & "' where RefSoumis='" & CodeSoum & "' and CodeMem='" & EvaluationConsultants.CodeEvaluateur & "' and RefCritere='" & RefDe(codeNote(0)) & "'"
-                    ExecuteNonQuery(query)
+                '  query = "Update T_SoumisNoteConsult set NoteConsult='" & TxtNote.Text & "', Remarque='" & IIf(TxtCommentaire.Text <> "Commentaire", EnleverApost(TxtCommentaire.Text), "") & "' where RefSoumis='" & CodeSoum & "' and CodeMem='" & EvaluationConsultants.CodeEvaluateur & "' and RefCritere='" & RefDe(codeNote(0)) & "'"
+                ExecuteNonQuery(query)
 
                 End If
 

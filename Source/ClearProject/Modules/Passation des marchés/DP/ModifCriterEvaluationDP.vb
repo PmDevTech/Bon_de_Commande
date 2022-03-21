@@ -2,7 +2,10 @@
 
 Public Class ModifCriterEvaluationDP
     Public RefCriterAModif As Decimal = 0
-    Dim TableDonneCriterAModif(5) As String
+    Dim CodeCritere As String = ""
+    Dim TypeCritere As String = ""
+    Dim CritereParent As Decimal = 0
+    Dim PointCritere As String = ""
 
     Private Sub ModifCriterEvaluationDP_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.Icon = My.Resources.Logo_ClearProject_Valide
@@ -24,15 +27,20 @@ Public Class ModifCriterEvaluationDP
         query = "Select * from t_dp_critereeval where RefCritere='" & RefCriterAModif & "' and NumeroDp='" & EnleverApost(ReponseDialog) & "' and CodeProjet='" & ProjetEnCours & "'"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         For Each rw In dt.Rows
-            TableDonneCriterAModif(0) = rw("RefCritere") 'RefCritere 
-            TableDonneCriterAModif(1) = rw("CodeCritere") 'CodeCritere
-            TableDonneCriterAModif(2) = rw("TypeCritere").ToString 'TypeCritere
-            TableDonneCriterAModif(3) = rw("CritereParent") 'CritereParent
-            TableDonneCriterAModif(4) = rw("PointCritere").ToString.Replace(".", ",") 'PointCritere
-            TableDonneCriterAModif(5) = MettreApost(rw("IntituleCritere").ToString) 'IntituleCritere
-            TxtCritere.Text = TableDonneCriterAModif(5).ToString
-            TxtNote.Text = TableDonneCriterAModif(4).ToString
+            CodeCritere = rw("CodeCritere") 'CodeCritere
+            TypeCritere = rw("TypeCritere").ToString 'TypeCritere
+            CritereParent = rw("CritereParent") 'CritereParent
+            PointCritere = rw("PointCritere").ToString.Replace(".", ",") 'PointCritere
+            TxtCritere.Text = MettreApost(rw("IntituleCritere").ToString)
+            TxtNote.Text = rw("PointCritere").ToString.Replace(".", ",")
         Next
+
+        If (TypeCritere.ToString = "Bareme") Or (TypeCritere.ToString = "Note") Then
+            TxtNote.Enabled = True
+        ElseIf TypeCritere.ToString = "Etiquette" Then
+            TxtNote.Enabled = False
+        End If
+
     End Sub
 
     Private Sub BtAjoutCritere_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtAjoutCritere.Click
@@ -41,120 +49,69 @@ Public Class ModifCriterEvaluationDP
             Exit Sub
         End If
 
-        If TxtCritere.Text = TableDonneCriterAModif(5) And TxtNote.Text.Replace(".", ",") = TableDonneCriterAModif(4) Then
-            Me.Close()
+        If ((TypeCritere.ToString = "Bareme") Or (TypeCritere.ToString = "Note")) And TxtNote.Text.Trim = "" Then
+            SuccesMsg("Veuillez saisir la note !")
+            TxtNote.Select()
             Exit Sub
         End If
 
-        Dim NvelleNote As String = ""
-
-        If TableDonneCriterAModif(4) <> TxtNote.Text.Replace(".", ",") Then
-            If IsNumeric(TxtNote.Text.Replace(".", ",")) = True Then
-                NvelleNote = CDec(TxtNote.Text.Replace(".", ","))
-            Else
-                SuccesMsg("Saisie incorrect !")
-                TxtNote.Focus()
-                Exit Sub
-            End If
-        End If
-
-        'verification du depassement de 100 points
-        If TableDonneCriterAModif(2) <> "Bareme" Then
-            Dim PointCriteres As Decimal = 0
-            Dim SomPoints As String = ""
-            SomPoints = ExecuteScallar("select SUM(PointCritere) from T_DP_CritereEval where CodeProjet='" & ProjetEnCours & "' and NumeroDp='" & EnleverApost(ReponseDialog) & "' and CritereParent='0' and PointCritere<>''").ToString.Replace(".", ",")
-            If SomPoints <> "" Then PointCriteres = CDec(SomPoints)
-            If NvelleNote <> "" Then PointCriteres += NvelleNote
-            If PointCriteres > 100 Then
-                SuccesMsg("Le total des points des critères d'évaluation ne doit pas excéder 100 points")
-                Exit Sub
-            End If
-        End If
-
-        Dim NoteParent As String = ""
-
-        'point du perent du critere selectionné
-        query = "Select PointCritere from t_dp_critereeval where RefCritere ='" & TableDonneCriterAModif(3) & "' and CodeProjet='" & ProjetEnCours & "'"
-        NoteParent = ExecuteScallar(query).ToString.Replace(".", ",")
-
-        'modification d'un parent
-        If NoteParent.ToString = "" Then
-            'Verification s'il contient des enfants
-            Dim NbrEnfant As Integer = 0
-            Dim PtEnfants As Decimal = 0
-            query = "Select Count(*) from t_dp_critereeval where CritereParent ='" & TableDonneCriterAModif(0) & "' and NumeroDp='" & EnleverApost(ReponseDialog) & "' and CodeProjet='" & ProjetEnCours & "'"
-            NbrEnfant = Val(ExecuteScallar(query))
-
-            If NbrEnfant > 0 Then
-                query = "Select SUM(PointCritere) from t_dp_critereeval where CritereParent ='" & TableDonneCriterAModif(0) & "' and PointCritere<>'0' and NumeroDp='" & EnleverApost(ReponseDialog) & "' and CodeProjet='" & ProjetEnCours & "'"
-                PtEnfants = ExecuteScallar(query).ToString.Replace(".", ",")
-                If PtEnfants.ToString <> "" Then PtEnfants = CDec(PtEnfants)
-            End If
-
-            If PtEnfants > NvelleNote Then
-                SuccesMsg("Impossible d'appliqué les modifications")
-                TxtNote.Focus()
-                Exit Sub
-            Else
-                query = "Update t_dp_critereeval set IntituleCritere='" & EnleverApost(TxtCritere.Text) & "', PointCritere='" & NvelleNote.Replace(",", ".") & "' where RefCritere ='" & TableDonneCriterAModif(0) & "' and CodeProjet='" & ProjetEnCours & "'"
-                ExecuteNonQuery(query)
-            End If
-
-        ElseIf TableDonneCriterAModif(2) = "Bareme" Then
-            If NvelleNote > CDec(NoteParent) Then
-                SuccesMsg("La note saisie est trop élevé !")
-                TxtNote.Focus()
-                Exit Sub
-            End If
-
-            query = "Update t_dp_critereeval set IntituleCritere='" & EnleverApost(TxtCritere.Text) & "', PointCritere='" & NvelleNote.Replace(",", ".") & "' where RefCritere ='" & TableDonneCriterAModif(0) & "' and CodeProjet='" & ProjetEnCours & "'"
-            ExecuteNonQuery(query)
-        Else
-
-            Dim SommePoints As Decimal = 0
-            Dim SomPoints1 As Decimal = 0
-            Dim Notesdefo As String = ""
-            query = "select SUM(PointCritere) from t_dp_critereeval where CritereParent= '" & TableDonneCriterAModif(3) & "' and PointCritere<>'' and NumeroDp='" & ReponseDialog & "' and CodeProjet='" & ProjetEnCours & "'"
-            Notesdefo = ExecuteScallar(query).ToString.Replace(".", ",")
-            If Notesdefo.ToString <> "" Then SommePoints = CDec(Notesdefo)
-            SomPoints1 = SommePoints
-            SomPoints1 = SomPoints1 - CDec(TableDonneCriterAModif(4))
-            SomPoints1 = SomPoints1 + NvelleNote
-
-            If SomPoints1 > CDec(NoteParent) Then
-                If ConfirmMsg("Dépassement du nombre de point total !" & vbNewLine & "Si vous voulez continuer l'enregistrement," & vbNewLine & "le nombre total de points sera recalculé." & vbNewLine & "Voulez-vous poursuivre l'enregistrement ?") = DialogResult.No Then
-                    Exit Sub
+        If (TypeCritere.ToString = "Bareme") Then
+            'Verifier dans le cas d'une valeur Monnetaire
+            If IsNumeric(TxtNote.Text.Replace(".", ",")) Then
+                Dim PointCriteres = ExecuteScallar("select PointCritere from t_dp_critereeval where NumeroDp='" & EnleverApost(ReponseDialog) & "' and RefCritere='" & CritereParent & "'").ToString.Replace(".", ",")
+                If PointCriteres <> "" Then
+                    If Val(PointCriteres) < CDec(TxtNote.Text.Replace(".", ",")) Then
+                        SuccesMsg("Nombre de points trop élevé !")
+                        TxtNote.Select()
+                        Exit Sub
+                    End If
                 End If
             End If
 
-            'Mise a jour critère modifier
-            query = "Update t_dp_critereeval set IntituleCritere='" & EnleverApost(TxtCritere.Text) & "', PointCritere='" & NvelleNote.Replace(",", ".") & "' where RefCritere ='" & TableDonneCriterAModif(0) & "' and CodeProjet='" & ProjetEnCours & "'"
-            ExecuteNonQuery(query)
+            ExecuteNonQuery("update T_DP_CritereEval set IntituleCritere='" & EnleverApost(TxtCritere.Text) & "', PointCritere='" & EnleverApost(TxtNote.Text.Replace(",", ".")) & "' where RefCritere='" & RefCriterAModif & "' and NumeroDp='" & EnleverApost(ReponseDialog) & "'")
+        ElseIf TypeCritere.ToString = "Etiquette" Then
+            ExecuteNonQuery("update T_DP_CritereEval set IntituleCritere='" & EnleverApost(TxtCritere.Text) & "' where RefCritere='" & RefCriterAModif & "' and NumeroDp='" & EnleverApost(ReponseDialog) & "'")
+        ElseIf TypeCritere.ToString = "Note" Then
+            Dim NvelleNoteSaisie As Decimal = 0
 
-            'Mise a jour de son premier parents
-            query = "Update t_dp_critereeval set PointCritere='" & SommePoints.ToString.Replace(",", ".") & "' where RefCritere ='" & TableDonneCriterAModif(3) & "' and CodeProjet='" & ProjetEnCours & "'"
-            ExecuteNonQuery(query)
+            If (IsNumeric(TxtNote.Text.Replace(".", ","))) Then
+                NvelleNoteSaisie = CDec(TxtNote.Text.Replace(".", ","))
+            Else
+                SuccesMsg("Saisie incorrect !")
+                TxtNote.Select()
+                Exit Sub
+            End If
 
-            'Mise a jours de son parent principal
-            SommePoints = 0
-            Dim CodeParent As Decimal = 0
-            Dim SumPoint As String = ""
-            query = "select CritereParent from t_dp_critereeval where RefCritere= '" & TableDonneCriterAModif(3) & "' and CritereParent<>'0' and CodeProjet='" & ProjetEnCours & "'"
-            CodeParent = Val(ExecuteScallar(query))
-            If CodeParent > 0 Then
-                query = "select SUM(PointCritere) from t_dp_critereeval where CritereParent= '" & CodeParent & "' and PointCritere<>'' and CodeProjet='" & ProjetEnCours & "' and NumeroDp='" & ReponseDialog & "'"
-                SumPoint = ExecuteScallar(query)
+            'verification du depassement de 100 points
+            Dim SommePoints As Decimal = ExecuteScallar("select SUM(PointCritere) from T_DP_CritereEval where CodeProjet='" & ProjetEnCours & "' and NumeroDp='" & EnleverApost(ReponseDialog) & "' and CritereParent='0' and PointCritere<>''").ToString.Replace(".", ",")
+            SommePoints = SommePoints - CDec(PointCritere) 'Retrancher l'ancienne note dans le total
+            SommePoints = SommePoints + NvelleNoteSaisie 'Ajouter la nvlle note saisie
+            If SommePoints > 100 Then
+                SuccesMsg("Le total des points des critères d'évaluation ne doit pas excéder 100 points")
+                Exit Sub
+            End If
 
-                If SumPoint.ToString <> "" Then query = "Update t_dp_critereeval set PointCritere='" & SumPoint.Replace(",", ".") & "' where RefCritere ='" & CodeParent & "' and CodeProjet='" & ProjetEnCours & "'"
-                If SumPoint.ToString = "" Then query = "Update t_dp_critereeval set PointCritere=NULL where RefCritere ='" & CodeParent & "' and CodeProjet='" & ProjetEnCours & "'"
-                ExecuteNonQuery(query)
+            ExecuteNonQuery("update T_DP_CritereEval set IntituleCritere='" & EnleverApost(TxtCritere.Text) & "', PointCritere='" & EnleverApost(NvelleNoteSaisie.ToString.Replace(",", ".")) & "' where RefCritere='" & RefCriterAModif & "' and NumeroDp='" & EnleverApost(ReponseDialog) & "'")
+
+            If CritereParent.ToString <> "0" Then
+                Dim MJPtsCrteresParent1 As String = ""
+                Dim MJPtsCrteresParent2 As String = ""
+                'MJ point sous critère
+                MJPtsCrteresParent2 = ExecuteScallar("select SUM(PointCritere) from T_DP_CritereEval where NumeroDp='" & EnleverApost(ReponseDialog) & "' and CritereParent='" & CritereParent & "' and PointCritere<>'' and CodeProjet='" & ProjetEnCours & "'")
+                ExecuteNonQuery("update T_DP_CritereEval set PointCritere='" & MJPtsCrteresParent2.ToString.Replace(",", ".") & "' where NumeroDp='" & EnleverApost(ReponseDialog) & "' and RefCritere='" & CritereParent & "' and CodeProjet='" & ProjetEnCours & "'")
+
+                Dim CodParant As String = ExecuteScallar("SELECT CritereParent FROM T_DP_CritereEval where NumeroDp='" & EnleverApost(ReponseDialog) & "' and RefCritere='" & CritereParent & "' and CodeProjet='" & ProjetEnCours & "'")
+                'MJ point critères parents
+                If CodParant.ToString <> "0" Then
+                    MJPtsCrteresParent1 = ExecuteScallar("Select SUM(PointCritere) from T_DP_CritereEval where NumeroDp='" & EnleverApost(ReponseDialog) & "' and CritereParent='" & CodParant & "' and PointCritere<>'' and CodeProjet='" & ProjetEnCours & "'")
+                    ExecuteNonQuery("update T_DP_CritereEval set PointCritere='" & MJPtsCrteresParent1.ToString.Replace(",", ".") & "' where NumeroDp='" & EnleverApost(ReponseDialog) & "' and RefCritere='" & CodParant & "' and CodeProjet='" & ProjetEnCours & "'")
+                End If
             End If
         End If
-
-        SuccesMsg("Modification effectué avec succès")
-        NewDp.MajGridEvaluation()
+        SuccesMsg("Modification effectuée avec succès")
         TxtCritere.Text = ""
         TxtNote.Text = ""
+        NewDp.MajGridEvaluation()
         Me.Close()
     End Sub
 End Class

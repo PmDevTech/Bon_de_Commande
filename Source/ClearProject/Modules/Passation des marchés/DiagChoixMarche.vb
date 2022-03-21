@@ -92,6 +92,7 @@ Public Class DiagChoixMarche
             End If
         Next
 
+
         If (NbreMarche >= 1) Then
             Dim MethMarc As String = ""
             Dim MontPlus As Decimal = 0
@@ -120,7 +121,6 @@ Public Class DiagChoixMarche
 
             Next
 
-
             'Recherche de la convention **************
             Dim Conv1 As String = ""
             Dim PaysBenef As String = ""
@@ -131,9 +131,9 @@ Public Class DiagChoixMarche
                 PaysBenef = "Etat de " & rw(2).ToString
             Next
 
-            If (NewDao.ChkLibDaoAuto.Checked = False) Then
-                Descript = NewDao.TxtLibelleDao.Text
-            End If
+            'If (NewDao.ChkLibDaoAuto.Checked = False) Then
+            '    Descript = NewDao.TxtLibelleDao.Text
+            'End If
 
             ExceptRevue = MettreApost(Descript)
             CreerDAO()

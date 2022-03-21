@@ -328,7 +328,7 @@ Public Class EtapeMarche
                 ' UpdateNumeroOrdre(CmbTypeMarche.Text, CodeMethode(cmbMethode.SelectedIndex), DrX("N°"), DrX("N°"), "-")
                 ExecuteNonQuery("UPDATE t_etapemarche SET NumeroOrdre=NumeroOrdre-1 WHERE CodeProjet='" & ProjetEnCours & "' AND TypeMarche='" & EnleverApost(CmbTypeMarche.Text) & "' AND CodeProcAO='" & CodeMethode(cmbMethode.SelectedIndex) & "' AND NumeroOrdre>'" & CInt(DrX("N°")) & "'")
                 ExecuteNonQuery("DELETE from T_EtapeMarche where RefEtape='" & CodEtap & "'")
-                SuccesMsg("Suppression effectué avec succès")
+                SuccesMsg("Suppression effectuée avec succès")
 
                 ViewEtape.GetDataRow(ViewEtape.FocusedRowHandle).Delete()
                 ChargerEtape(CodeMethode(cmbMethode.SelectedIndex))
@@ -425,6 +425,9 @@ Public Class EtapeMarche
         If Not Access_Btn("BtnPrintLstTEtapesMarche") Then
             Exit Sub
         End If
+
+        SuccesMsg("Etat en cours de realisation")
+        Exit Sub
 
         If (CmbTypeMarche.Text <> "") Then
 

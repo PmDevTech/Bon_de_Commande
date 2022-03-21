@@ -99,7 +99,7 @@ Public Class RetraitEtDepotDAO
                 TxtMethode.Text = rw(1).ToString
                 TxtTypeMarche.Text = rw(2).ToString
                 TxtLibMarche.Text = MettreApost(rw(0).ToString)
-                TxtPrixDAO.Text = AfficherMonnaie(CInt(rw(3).ToString))
+                TxtPrixDAO.Text = AfficherMonnaie(rw(3).ToString)
 
                 If (rw("DateLimiteRemise").ToString <> "" And rw("DateFinOuverture").ToString = "") Then
                     If rw("DateReport").ToString <> "" Then

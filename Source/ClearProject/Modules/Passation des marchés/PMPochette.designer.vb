@@ -417,7 +417,7 @@ Partial Class PMPochette
         'CombBail
         '
         Me.CombBail.Location = New System.Drawing.Point(177, 3)
-        Me.CombBail.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.CombBail.Margin = New System.Windows.Forms.Padding(2)
         Me.CombBail.MenuManager = Me.barManager1
         Me.CombBail.Name = "CombBail"
         Me.CombBail.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})

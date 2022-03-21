@@ -42,7 +42,6 @@ Partial Class CalculOffreFinanciere
         Me.LabelControl9 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl10 = New DevExpress.XtraEditors.LabelControl()
         Me.TauxLocal2 = New DevExpress.XtraEditors.TextEdit()
-        Me.LabelControl12 = New DevExpress.XtraEditors.LabelControl()
         Me.TauxLocal1 = New DevExpress.XtraEditors.TextEdit()
         Me.MontantOffreLocal = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl14 = New DevExpress.XtraEditors.LabelControl()
@@ -55,25 +54,24 @@ Partial Class CalculOffreFinanciere
         Me.txtMontantpropose = New DevExpress.XtraEditors.TextEdit()
         Me.MontantProposeDevise = New DevExpress.XtraEditors.TextEdit()
         Me.LabelMontPropose = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl6 = New DevExpress.XtraEditors.LabelControl()
         Me.TauxJournaConvert = New DevExpress.XtraEditors.TextEdit()
         Me.LabelTojounaConvert = New DevExpress.XtraEditors.LabelControl()
         Me.txtSigne1 = New DevExpress.XtraEditors.LabelControl()
-        Me.AjustementLettreDevise = New DevExpress.XtraEditors.TextEdit()
         Me.AjustementDevise = New DevExpress.XtraEditors.TextEdit()
         Me.LabelAjustement = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
-        Me.TxtPrixTotalLettre = New DevExpress.XtraEditors.TextEdit()
         Me.TxtPrixTotal = New DevExpress.XtraEditors.TextEdit()
         Me.LabelPrixTotal = New DevExpress.XtraEditors.LabelControl()
         Me.txtSigne2 = New DevExpress.XtraEditors.LabelControl()
-        Me.TxtAjustementsLettreLocal = New DevExpress.XtraEditors.TextEdit()
         Me.AjustementLocal = New DevExpress.XtraEditors.TextEdit()
         Me.LabelAjustConvert = New DevExpress.XtraEditors.LabelControl()
         Me.NbrJourTravail = New DevExpress.XtraEditors.TextEdit()
         Me.TauxJournaDevise = New DevExpress.XtraEditors.TextEdit()
         Me.LabelTojouna = New DevExpress.XtraEditors.LabelControl()
+        Me.AjustementLettreDevise = New DevExpress.XtraEditors.MemoEdit()
+        Me.TxtAjustementsLettreLocal = New DevExpress.XtraEditors.MemoEdit()
+        Me.TxtPrixTotalLettre = New DevExpress.XtraEditors.MemoEdit()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
@@ -92,14 +90,14 @@ Partial Class CalculOffreFinanciere
         CType(Me.txtMontantpropose.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MontantProposeDevise.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TauxJournaConvert.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AjustementLettreDevise.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AjustementDevise.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TxtPrixTotalLettre.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TxtPrixTotal.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TxtAjustementsLettreLocal.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AjustementLocal.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NbrJourTravail.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TauxJournaDevise.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AjustementLettreDevise.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TxtAjustementsLettreLocal.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TxtPrixTotalLettre.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelControl1
@@ -139,7 +137,7 @@ Partial Class CalculOffreFinanciere
         Me.BtAnnuler.Name = "BtAnnuler"
         Me.BtAnnuler.Size = New System.Drawing.Size(123, 32)
         Me.BtAnnuler.TabIndex = 32
-        Me.BtAnnuler.Text = "Annuler"
+        Me.BtAnnuler.Text = "Quitter"
         '
         'PanelControl2
         '
@@ -202,7 +200,6 @@ Partial Class CalculOffreFinanciere
         Me.PanelControl5.Controls.Add(Me.LabelControl9)
         Me.PanelControl5.Controls.Add(Me.LabelControl10)
         Me.PanelControl5.Controls.Add(Me.TauxLocal2)
-        Me.PanelControl5.Controls.Add(Me.LabelControl12)
         Me.PanelControl5.Controls.Add(Me.TauxLocal1)
         Me.PanelControl5.Controls.Add(Me.MontantOffreLocal)
         Me.PanelControl5.Controls.Add(Me.LabelControl14)
@@ -215,25 +212,24 @@ Partial Class CalculOffreFinanciere
         Me.PanelControl5.Controls.Add(Me.txtMontantpropose)
         Me.PanelControl5.Controls.Add(Me.MontantProposeDevise)
         Me.PanelControl5.Controls.Add(Me.LabelMontPropose)
-        Me.PanelControl5.Controls.Add(Me.LabelControl6)
         Me.PanelControl5.Controls.Add(Me.TauxJournaConvert)
         Me.PanelControl5.Controls.Add(Me.LabelTojounaConvert)
         Me.PanelControl5.Controls.Add(Me.txtSigne1)
-        Me.PanelControl5.Controls.Add(Me.AjustementLettreDevise)
         Me.PanelControl5.Controls.Add(Me.AjustementDevise)
         Me.PanelControl5.Controls.Add(Me.LabelAjustement)
         Me.PanelControl5.Controls.Add(Me.LabelControl1)
         Me.PanelControl5.Controls.Add(Me.LabelControl4)
-        Me.PanelControl5.Controls.Add(Me.TxtPrixTotalLettre)
         Me.PanelControl5.Controls.Add(Me.TxtPrixTotal)
         Me.PanelControl5.Controls.Add(Me.LabelPrixTotal)
         Me.PanelControl5.Controls.Add(Me.txtSigne2)
-        Me.PanelControl5.Controls.Add(Me.TxtAjustementsLettreLocal)
         Me.PanelControl5.Controls.Add(Me.AjustementLocal)
         Me.PanelControl5.Controls.Add(Me.LabelAjustConvert)
         Me.PanelControl5.Controls.Add(Me.NbrJourTravail)
         Me.PanelControl5.Controls.Add(Me.TauxJournaDevise)
         Me.PanelControl5.Controls.Add(Me.LabelTojouna)
+        Me.PanelControl5.Controls.Add(Me.AjustementLettreDevise)
+        Me.PanelControl5.Controls.Add(Me.TxtAjustementsLettreLocal)
+        Me.PanelControl5.Controls.Add(Me.TxtPrixTotalLettre)
         Me.PanelControl5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl5.Location = New System.Drawing.Point(0, 65)
         Me.PanelControl5.Name = "PanelControl5"
@@ -338,18 +334,18 @@ Partial Class CalculOffreFinanciere
         Me.LabelControl11.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl11.Location = New System.Drawing.Point(541, 81)
         Me.LabelControl11.Name = "LabelControl11"
-        Me.LabelControl11.Size = New System.Drawing.Size(73, 15)
+        Me.LabelControl11.Size = New System.Drawing.Size(67, 15)
         Me.LabelControl11.TabIndex = 74
-        Me.LabelControl11.Text = "Date et heure"
+        Me.LabelControl11.Text = "Date du jour"
         '
         'LabelControl13
         '
         Me.LabelControl13.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl13.Location = New System.Drawing.Point(308, 81)
         Me.LabelControl13.Name = "LabelControl13"
-        Me.LabelControl13.Size = New System.Drawing.Size(73, 15)
+        Me.LabelControl13.Size = New System.Drawing.Size(60, 15)
         Me.LabelControl13.TabIndex = 73
-        Me.LabelControl13.Text = "Date et heure"
+        Me.LabelControl13.Text = "Date saisie"
         '
         'DateHeureLocal
         '
@@ -396,15 +392,6 @@ Partial Class CalculOffreFinanciere
         Me.TauxLocal2.Properties.ReadOnly = True
         Me.TauxLocal2.Size = New System.Drawing.Size(102, 22)
         Me.TauxLocal2.TabIndex = 68
-        '
-        'LabelControl12
-        '
-        Me.LabelControl12.Appearance.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl12.Location = New System.Drawing.Point(192, 102)
-        Me.LabelControl12.Name = "LabelControl12"
-        Me.LabelControl12.Size = New System.Drawing.Size(9, 18)
-        Me.LabelControl12.TabIndex = 67
-        Me.LabelControl12.Text = "="
         '
         'TauxLocal1
         '
@@ -538,16 +525,7 @@ Partial Class CalculOffreFinanciere
         Me.LabelMontPropose.Name = "LabelMontPropose"
         Me.LabelMontPropose.Size = New System.Drawing.Size(163, 15)
         Me.LabelMontPropose.TabIndex = 40
-        Me.LabelMontPropose.Text = "Montant de l'offre propose  (1)"
-        '
-        'LabelControl6
-        '
-        Me.LabelControl6.Appearance.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl6.Location = New System.Drawing.Point(195, 157)
-        Me.LabelControl6.Name = "LabelControl6"
-        Me.LabelControl6.Size = New System.Drawing.Size(9, 18)
-        Me.LabelControl6.TabIndex = 39
-        Me.LabelControl6.Text = "="
+        Me.LabelMontPropose.Text = "Montant de l'offre proposé  (1)"
         '
         'TauxJournaConvert
         '
@@ -581,20 +559,6 @@ Partial Class CalculOffreFinanciere
         Me.txtSigne1.Size = New System.Drawing.Size(9, 18)
         Me.txtSigne1.TabIndex = 36
         Me.txtSigne1.Text = "+"
-        '
-        'AjustementLettreDevise
-        '
-        Me.AjustementLettreDevise.EditValue = ""
-        Me.AjustementLettreDevise.Location = New System.Drawing.Point(202, 204)
-        Me.AjustementLettreDevise.Name = "AjustementLettreDevise"
-        Me.AjustementLettreDevise.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.AjustementLettreDevise.Properties.Appearance.Options.UseFont = True
-        Me.AjustementLettreDevise.Properties.Appearance.Options.UseTextOptions = True
-        Me.AjustementLettreDevise.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
-        Me.AjustementLettreDevise.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
-        Me.AjustementLettreDevise.Properties.ReadOnly = True
-        Me.AjustementLettreDevise.Size = New System.Drawing.Size(456, 22)
-        Me.AjustementLettreDevise.TabIndex = 35
         '
         'AjustementDevise
         '
@@ -637,20 +601,6 @@ Partial Class CalculOffreFinanciere
         Me.LabelControl4.TabIndex = 31
         Me.LabelControl4.Text = "Nombre de jour(s) de travail du consultant (9)"
         '
-        'TxtPrixTotalLettre
-        '
-        Me.TxtPrixTotalLettre.EditValue = ""
-        Me.TxtPrixTotalLettre.Location = New System.Drawing.Point(202, 315)
-        Me.TxtPrixTotalLettre.Name = "TxtPrixTotalLettre"
-        Me.TxtPrixTotalLettre.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtPrixTotalLettre.Properties.Appearance.Options.UseFont = True
-        Me.TxtPrixTotalLettre.Properties.Appearance.Options.UseTextOptions = True
-        Me.TxtPrixTotalLettre.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
-        Me.TxtPrixTotalLettre.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
-        Me.TxtPrixTotalLettre.Properties.ReadOnly = True
-        Me.TxtPrixTotalLettre.Size = New System.Drawing.Size(456, 24)
-        Me.TxtPrixTotalLettre.TabIndex = 29
-        '
         'TxtPrixTotal
         '
         Me.TxtPrixTotal.EditValue = ""
@@ -683,20 +633,6 @@ Partial Class CalculOffreFinanciere
         Me.txtSigne2.Size = New System.Drawing.Size(9, 18)
         Me.txtSigne2.TabIndex = 21
         Me.txtSigne2.Text = "+"
-        '
-        'TxtAjustementsLettreLocal
-        '
-        Me.TxtAjustementsLettreLocal.EditValue = ""
-        Me.TxtAjustementsLettreLocal.Location = New System.Drawing.Point(202, 259)
-        Me.TxtAjustementsLettreLocal.Name = "TxtAjustementsLettreLocal"
-        Me.TxtAjustementsLettreLocal.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtAjustementsLettreLocal.Properties.Appearance.Options.UseFont = True
-        Me.TxtAjustementsLettreLocal.Properties.Appearance.Options.UseTextOptions = True
-        Me.TxtAjustementsLettreLocal.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
-        Me.TxtAjustementsLettreLocal.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
-        Me.TxtAjustementsLettreLocal.Properties.ReadOnly = True
-        Me.TxtAjustementsLettreLocal.Size = New System.Drawing.Size(456, 22)
-        Me.TxtAjustementsLettreLocal.TabIndex = 19
         '
         'AjustementLocal
         '
@@ -758,6 +694,48 @@ Partial Class CalculOffreFinanciere
         Me.LabelTojouna.TabIndex = 14
         Me.LabelTojouna.Text = "Taux journalier (7)"
         '
+        'AjustementLettreDevise
+        '
+        Me.AjustementLettreDevise.EditValue = ""
+        Me.AjustementLettreDevise.Location = New System.Drawing.Point(202, 204)
+        Me.AjustementLettreDevise.Name = "AjustementLettreDevise"
+        Me.AjustementLettreDevise.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.AjustementLettreDevise.Properties.Appearance.Options.UseFont = True
+        Me.AjustementLettreDevise.Properties.Appearance.Options.UseTextOptions = True
+        Me.AjustementLettreDevise.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
+        Me.AjustementLettreDevise.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
+        Me.AjustementLettreDevise.Properties.ReadOnly = True
+        Me.AjustementLettreDevise.Size = New System.Drawing.Size(456, 24)
+        Me.AjustementLettreDevise.TabIndex = 35
+        '
+        'TxtAjustementsLettreLocal
+        '
+        Me.TxtAjustementsLettreLocal.EditValue = ""
+        Me.TxtAjustementsLettreLocal.Location = New System.Drawing.Point(202, 259)
+        Me.TxtAjustementsLettreLocal.Name = "TxtAjustementsLettreLocal"
+        Me.TxtAjustementsLettreLocal.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtAjustementsLettreLocal.Properties.Appearance.Options.UseFont = True
+        Me.TxtAjustementsLettreLocal.Properties.Appearance.Options.UseTextOptions = True
+        Me.TxtAjustementsLettreLocal.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
+        Me.TxtAjustementsLettreLocal.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
+        Me.TxtAjustementsLettreLocal.Properties.ReadOnly = True
+        Me.TxtAjustementsLettreLocal.Size = New System.Drawing.Size(456, 24)
+        Me.TxtAjustementsLettreLocal.TabIndex = 19
+        '
+        'TxtPrixTotalLettre
+        '
+        Me.TxtPrixTotalLettre.EditValue = ""
+        Me.TxtPrixTotalLettre.Location = New System.Drawing.Point(202, 316)
+        Me.TxtPrixTotalLettre.Name = "TxtPrixTotalLettre"
+        Me.TxtPrixTotalLettre.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtPrixTotalLettre.Properties.Appearance.Options.UseFont = True
+        Me.TxtPrixTotalLettre.Properties.Appearance.Options.UseTextOptions = True
+        Me.TxtPrixTotalLettre.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
+        Me.TxtPrixTotalLettre.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
+        Me.TxtPrixTotalLettre.Properties.ReadOnly = True
+        Me.TxtPrixTotalLettre.Size = New System.Drawing.Size(456, 24)
+        Me.TxtPrixTotalLettre.TabIndex = 29
+        '
         'Timer1
         '
         '
@@ -795,14 +773,14 @@ Partial Class CalculOffreFinanciere
         CType(Me.txtMontantpropose.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MontantProposeDevise.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TauxJournaConvert.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AjustementLettreDevise.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AjustementDevise.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TxtPrixTotalLettre.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TxtPrixTotal.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TxtAjustementsLettreLocal.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AjustementLocal.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NbrJourTravail.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TauxJournaDevise.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AjustementLettreDevise.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TxtAjustementsLettreLocal.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TxtPrixTotalLettre.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -813,11 +791,9 @@ Partial Class CalculOffreFinanciere
     Friend WithEvents BtEnrgCalcul As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents BtAnnuler As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents PanelControl5 As DevExpress.XtraEditors.PanelControl
-    Friend WithEvents TxtPrixTotalLettre As DevExpress.XtraEditors.TextEdit
     Friend WithEvents TxtPrixTotal As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelPrixTotal As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtSigne2 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents TxtAjustementsLettreLocal As DevExpress.XtraEditors.TextEdit
     Friend WithEvents AjustementLocal As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelAjustConvert As DevExpress.XtraEditors.LabelControl
     Friend WithEvents NbrJourTravail As DevExpress.XtraEditors.TextEdit
@@ -826,12 +802,10 @@ Partial Class CalculOffreFinanciere
     Friend WithEvents LabelControl4 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtSigne1 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents AjustementLettreDevise As DevExpress.XtraEditors.TextEdit
     Friend WithEvents AjustementDevise As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelAjustement As DevExpress.XtraEditors.LabelControl
     Friend WithEvents TauxJournaConvert As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelTojounaConvert As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents LabelControl6 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtMontantpropose As DevExpress.XtraEditors.TextEdit
     Friend WithEvents MontantProposeDevise As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelMontPropose As DevExpress.XtraEditors.LabelControl
@@ -845,7 +819,6 @@ Partial Class CalculOffreFinanciere
     Friend WithEvents LabelControl9 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl10 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents TauxLocal2 As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents LabelControl12 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents TauxLocal1 As DevExpress.XtraEditors.TextEdit
     Friend WithEvents MontantOffreLocal As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl14 As DevExpress.XtraEditors.LabelControl
@@ -862,4 +835,7 @@ Partial Class CalculOffreFinanciere
     Friend WithEvents LabelControl15 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelLocal2 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelLocal1 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents AjustementLettreDevise As DevExpress.XtraEditors.MemoEdit
+    Friend WithEvents TxtAjustementsLettreLocal As DevExpress.XtraEditors.MemoEdit
+    Friend WithEvents TxtPrixTotalLettre As DevExpress.XtraEditors.MemoEdit
 End Class

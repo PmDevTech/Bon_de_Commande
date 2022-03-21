@@ -77,14 +77,14 @@ Public Class DepotAMI
                     My.Computer.Audio.PlaySystemSound(Media.SystemSounds.Exclamation)
                     BtAfficheInfos.Text = "FERMETURE DEPOT EN COURS"
                 Else
-                    InterText = "Clôture des propositions dans " & vbNewLine & InterText
+                    InterText = "Clôture des dépôts des offres dans " & vbNewLine & InterText
                     BtAfficheInfos.Text = InterText.ToString
                     'GbConsultant.Enabled = True
                 End If
 
             Else
                 BtAfficheInfos.ForeColor = Color.Black
-                BtAfficheInfos.Text = "Délai expiré !"
+                BtAfficheInfos.Text = "Dépôt des offres clôturé !"
                 GbConsultant.Enabled = False
             End If
         Else
@@ -98,7 +98,7 @@ Public Class DepotAMI
     Private Sub RemplirCmbNumDp()
         CmbNumDp.Properties.Items.Clear()
         'Dossier valider et date de publication arrivée
-        query = "select NumeroDAMI from T_AMI where ValiderEditionAmi='Valider' and DatePub<='" & dateconvert(Now.ToShortDateString) & "' and CodeProjet='" & ProjetEnCours & "' order by NumeroDAMI"
+        query = "select NumeroDAMI from T_AMI where  ValiderEditionAmi='Valider' and DatePub<='" & dateconvert(Now.ToShortDateString) & "' and StatutDoss <>'Annulé' and CodeProjet='" & ProjetEnCours & "' ORDER BY DateEdition DESC"
         Dim dt0 As DataTable = ExcecuteSelectQuery(query)
         For Each rw As DataRow In dt0.Rows
             CmbNumDp.Properties.Items.Add(MettreApost(rw("NumeroDAMI").ToString))
@@ -299,16 +299,16 @@ Public Class DepotAMI
         If CmbNumDp.SelectedIndex <> -1 Then
 
             If BtEnrgConsult.Text = "Ajouter à la liste" Then
-                If TxtNomConsult.IsRequiredControl("Veuillez saisir le nom du consulatant") Then
+                If TxtNomConsult.IsRequiredControl("Veuillez saisir le nom du consultant") Then
                     Exit Sub
                 End If
-                If TxtPaysConsult.IsRequiredControl("Veuillez saisir le pays du consulatant") Then
+                If TxtPaysConsult.IsRequiredControl("Veuillez saisir le pays du consultant") Then
                     Exit Sub
                 End If
-                If TxtTelConsult.IsRequiredControl("Veuillez saisir le numero du consulatant") Then
+                If TxtTelConsult.IsRequiredControl("Veuillez saisir le numero du consultant") Then
                     Exit Sub
                 End If
-                If TxtAdresseConsult.IsRequiredControl("Veuillez saisir l'adresse du consulatant") Then
+                If TxtAdresseConsult.IsRequiredControl("Veuillez saisir l'adresse du consultant") Then
                     Exit Sub
                 End If
 
@@ -336,8 +336,8 @@ Public Class DepotAMI
                 DatRow("PaysConsult") = EnleverApost(TxtPaysConsult.Text)
                 DatRow("TelConsult") = EnleverApost(TxtTelConsult.Text)
                 DatRow("AdressConsult") = EnleverApost(TxtAdresseConsult.Text)
-                DatRow("FaxConsult") = IIf(TxtFaxConsult.Text <> "", TxtFaxConsult.Text, "").ToString
-                DatRow("EmailConsult") = IIf(TxtMailConsult.Text <> "", TxtMailConsult.Text, "").ToString
+                DatRow("FaxConsult") = EnleverApost(TxtFaxConsult.Text)
+                DatRow("EmailConsult") = EnleverApost(TxtMailConsult.Text)
                 DatRow("NumeroDp") = EnleverApost(CmbNumDp.Text)
                 DatRow("DateDepot") = Now.ToShortDateString & " " & Now.ToLongTimeString
                 DatRow("DateSaisie") = Now.ToShortDateString & " " & Now.ToLongTimeString
@@ -352,7 +352,7 @@ Public Class DepotAMI
 
                 Action = True
             Else
-                query = "update T_Consultant set NomConsult = '" & EnleverApost(TxtNomConsult.Text) & "', PaysConsult = '" & EnleverApost(TxtPaysConsult.Text) & "', TelConsult = '" & EnleverApost(TxtTelConsult.Text) & "', AdressConsult = '" & EnleverApost(TxtAdresseConsult.Text) & "', EmailConsult = '" & TxtMailConsult.Text & "', DateModif='" & Now.ToString("yyyy-MM-dd HH:mm:ss") & "' where RefConsult='" & CodeConsult & "'"
+                query = "update T_Consultant set NomConsult = '" & EnleverApost(TxtNomConsult.Text) & "', PaysConsult = '" & EnleverApost(TxtPaysConsult.Text) & "', TelConsult = '" & EnleverApost(TxtTelConsult.Text) & "', AdressConsult = '" & EnleverApost(TxtAdresseConsult.Text) & "', EmailConsult = '" & EnleverApost(TxtMailConsult.Text) & "', FaxConsult = '" & EnleverApost(TxtFaxConsult.Text) & "', DateModif='" & Now.ToString("yyyy-MM-dd HH:mm:ss") & "' where RefConsult='" & CodeConsult & "'"
                 ExecuteNonQuery(query)
             End If
 
@@ -373,12 +373,12 @@ Public Class DepotAMI
             CodeConsult = DrX("N°").ToString
             IndexModif = GridView1.FocusedRowHandle
             '  TxtNomConsult.Properties.ReadOnly = True
-            TxtNomConsult.Text = DrX("Nom").ToString
+            TxtNomConsult.Text = DrX("Nom").ToString.Trim
             TxtPaysConsult.Text = DrX("Pays").ToString
-            TxtAdresseConsult.Text = DrX("Adresse").ToString
-            TxtTelConsult.Text = DrX("Contact").ToString.Split("/")(0)
-            If DrX("Contact").ToString.IndexOf("/") >= 0 Then TxtFaxConsult.Text = DrX("Contact").ToString.Split("/")(1)
-            TxtMailConsult.Text = DrX("Email").ToString
+            TxtAdresseConsult.Text = DrX("Adresse").ToString.Trim
+            TxtTelConsult.Text = DrX("Contact").ToString.Split("/")(0).Trim
+            If DrX("Contact").ToString.IndexOf("/") >= 0 Then TxtFaxConsult.Text = DrX("Contact").ToString.Split("/")(1).Trim
+            TxtMailConsult.Text = DrX("Email").ToString.Trim
             BtEnrgConsult.Text = "Modifier"
         End If
     End Sub

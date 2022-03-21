@@ -1,18 +1,11 @@
 ﻿Imports System.Math
-Imports DevExpress.XtraEditors.Repository
 Imports MySql.Data.MySqlClient
 
 Public Class BonCommande
 
-    Public idBon As Decimal = -1
-
     Dim tauxDollar As Decimal = 1
     Dim CfaGere As Boolean = True
     Dim dtboncommande = New DataTable
-    Dim dtListCommande = New DataTable
-
-    Dim idExercice As Integer = Val(ExerciceComptable.Rows(0).Item("id_exercice"))
-
 
     Private Sub ChargerService()
         CmbService.Properties.Items.Clear()
@@ -44,7 +37,7 @@ Public Class BonCommande
         Next
     End Sub
 
-    Private Sub BonCommande_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+    Private Sub BonCommande_Load(sender As System.Object, e As System.EventArgs)  Handles MyBase.Load
         Me.Icon = My.Resources.Logo_ClearProject_Valide
         ChargerService()
         Chargertiers()
@@ -160,120 +153,4 @@ Public Class BonCommande
     Private Sub BtAnnuler_Click(sender As Object, e As EventArgs) Handles BtAnnuler.Click
         Initialiser()
     End Sub
-
-    Private Sub BtEnregistrer_Click(sender As Object, e As EventArgs) Handles BtEnregistrer.Click
-        Try
-            'vérification des champs texts
-            Dim erreur As String = ""
-            If Txtboncmde.Text = "" Then
-                erreur += "- Numéro du bon de commande" + ControlChars.CrLf
-            End If
-            If Dateboncmde.Text = "" Then
-                erreur += "- Date du bon de commande" + ControlChars.CrLf
-            End If
-            If Cmbctfour.SelectedIndex = -1 Then
-                erreur += "- L'attributaire" + ControlChars.CrLf
-            End If
-            If TxtQte.Text = "" Then
-                erreur += "- Quantité" + ControlChars.CrLf
-            End If
-            If TxtPu.Text = "" Then
-                erreur += "- Prix unitaire " + ControlChars.CrLf
-            End If
-
-            If erreur <> "" Then
-                SuccesMsg("Veuillez renseigner correctement le(s) champ(s) suivant(s) :" & vbNewLine & erreur)
-                Exit Sub
-            End If
-
-            query = "INSERT INTO  t_bon_commande values (NULL,'" & ExerciceComptable.Rows(0).Item("id_exercice") & "','" & Txtboncmde.Text & "','" & CDate(Dateboncmde.Text) & "','" & EnleverApost(Cmbctfour.Text) & "','" & CDbl(TxtQte.Text) & "','" & CDbl(TxtPu.Text) & "','" & CDbl(TxtNewMont.Text) & "','" & ProjetEnCours & "')"
-            ExecuteNonQuery(query)
-            SuccesMsg("Enregistrement effectué avec succès.")
-            remplirBonCommande()
-            Me.Close()
-
-        Catch ex As Exception
-            FailMsg("Erreur : Information non disponible : " & vbNewLine & ex.ToString())
-        End Try
-    End Sub
-
-
-    Private Sub remplirBonCommande()
-        Try
-            dtListCommande.Columns.Clear()
-            dtListCommande.Columns.Add("Code", Type.GetType("System.Boolean"))
-            dtListCommande.Columns.Add("Numéro", Type.GetType("System.String"))
-            dtListCommande.Columns.Add("Date", Type.GetType("System.String"))
-            dtListCommande.Columns.Add("Attributaire", Type.GetType("System.String"))
-            dtListCommande.Columns.Add("Quantité", Type.GetType("System.String"))
-            dtListCommande.Columns.Add("Prix unitaire", Type.GetType("System.String"))
-            dtListCommande.Columns.Add("Montant HT", Type.GetType("System.String"))
-            dtListCommande.Rows.Clear()
-
-            Dim cptr As Decimal = 0
-            query = "SELECT RefBon,
-                            id_Exercice,
-                            numero,
-                            date,
-                            attributaire,
-                            quantite,
-                            prixUnitaire,
-                            montantHT,
-                            CodeProjet 
-                    FROM t_bon_commande WHERE CodeProjet = '" & ProjetEnCours & "'
-                    "
-            Dim dt As DataTable = ExcecuteSelectQuery(query)
-            For Each rw As DataRow In dt.Rows
-                cptr += 1
-                Dim drS = dtListCommande.NewRow()
-                drS("Code") = TabTrue(cptr - 1)
-                drS("Numéro") = rw(1).ToString
-                drS("Date") = CDate(rw(2).ToString)
-                drS("Attributaire") = MettreApost(rw(3).ToString)
-                drS("Quantité") = CDbl(rw(4).ToString)
-                drS("Prix unitaire") = AfficherMonnaie(Round(CDbl(rw(5).ToString)))
-                drS("Montant HT") = AfficherMonnaie(Round(CDbl(rw(6).ToString)))
-                dtListCommande.Rows.Add(drS)
-            Next
-
-            Liste_boncommande.LgListBoncommande.DataSource = dtListCommande
-            Liste_boncommande.LblNombre.Text = cptr.ToString & " Enregistrements"
-            Dim edit As RepositoryItemCheckEdit = New RepositoryItemCheckEdit()
-            edit.ValueChecked = True
-            edit.ValueUnchecked = False
-            Liste_boncommande.LgListBoncommande.RepositoryItems.Add(edit)
-            Liste_boncommande.ViewBoncommande.OptionsBehavior.Editable = True
-
-            Liste_boncommande.ViewBoncommande.Columns("Code").ColumnEdit = edit
-
-            Liste_boncommande.ViewBoncommande.Columns("Numéro").OptionsColumn.AllowEdit = False
-            Liste_boncommande.ViewBoncommande.Columns("Date").OptionsColumn.AllowEdit = False
-            Liste_boncommande.ViewBoncommande.Columns("Attributaire").OptionsColumn.AllowEdit = False
-            Liste_boncommande.ViewBoncommande.Columns("Quantité").OptionsColumn.AllowEdit = False
-            Liste_boncommande.ViewBoncommande.Columns("Prix unitaire").OptionsColumn.AllowEdit = False
-            Liste_boncommande.ViewBoncommande.Columns("Montant HT").OptionsColumn.AllowEdit = False
-
-            Liste_boncommande.ViewBoncommande.Appearance.Row.Font = New Font("Times New Roman", 10, FontStyle.Regular)
-            Liste_boncommande.ViewBoncommande.OptionsView.ColumnAutoWidth = True
-            Liste_boncommande.ViewBoncommande.OptionsBehavior.AutoExpandAllGroups = True
-            Liste_boncommande.ViewBoncommande.VertScrollVisibility = True
-            Liste_boncommande.ViewBoncommande.HorzScrollVisibility = True
-            Liste_boncommande.ViewBoncommande.BestFitColumns()
-
-            Liste_boncommande.ViewBoncommande.Columns("Numéro").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-            Liste_boncommande.ViewBoncommande.Columns("Attributaire").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-            Liste_boncommande.ViewBoncommande.Columns("Quantité").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-            Liste_boncommande.ViewBoncommande.Columns("Prix unitaire").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-            Liste_boncommande.ViewBoncommande.Columns("Montant HT").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-            Liste_boncommande.ViewBoncommande.Appearance.Row.Font = New Font("Times New Roman", 10, FontStyle.Regular)
-        Catch ex As Exception
-            FailMsg("Erreur : Information non disponible : " & ex.ToString())
-        End Try
-    End Sub
-
-    Private Sub BonCommande_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
-        Txtboncmde.Text = GenerateOPNumber(idExercice)
-    End Sub
-
-
 End Class

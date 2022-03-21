@@ -93,8 +93,7 @@ Public Class CalculOffreFinanciere
                 AjustementLocal.Text = 0
                 txtSigne1.Text = "+"
             End If
-            ' TxtPrixTotal.Text = AfficherMonnaie(MontantLocalConv.ToString)
-            TxtPrixTotal.Text = MontantLocalConv
+            TxtPrixTotal.Text = AfficherMonnaie(MontantLocalConv.ToString)
         Catch ex As Exception
             FailMsg(ex.ToString)
         End Try
@@ -106,7 +105,7 @@ Public Class CalculOffreFinanciere
                 Exit Sub
             End If
 
-            If ConfirmMsg("L'Enregistrement des ajustements êmpechera la modifiaction de l'offre du consultant" & vbNewLine & " Voulez-vous continuez ? ") = DialogResult.Yes Then
+            If ConfirmMsg("L'enregistrement des ajustements empêchera la modifiaction de l'offre du consultant" & vbNewLine & " Voulez-vous continuer ? ") = DialogResult.Yes Then
                 ExecuteNonQuery("UPDATE t_soumissionconsultant set TauxCalculOffrsFin='" & TauxLocal2.Text.Replace(" ", "").Replace(".", ",") & "', DateCalculOfrFin='" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "', TauxJournalierLocal='" & Round(CDec(TauxJournaConvert.Text.Replace(" ", ""))) & "', MontantAjusterLocal='" & TxtPrixTotal.Text.Replace(" ", "") & "', MontantAjusterDevise='" & Round(CDec(MontantAjutDevis.ToString.Replace(" ", "")), 2).ToString.Replace(",", ".") & "' where RefSoumis='" & ReponseDialog & "'")
                 EvaluationConsultants.ViewSaisiOffreFinance.SetFocusedRowCellValue("Offre financière", AfficherMonnaie(TxtPrixTotal.Text) & " " & MonnaieEvalOffre.ToString)
                 EvaluationConsultants.ViewSaisiOffreFinance.SetFocusedRowCellValue("Statut de l'offre", "Calculé")

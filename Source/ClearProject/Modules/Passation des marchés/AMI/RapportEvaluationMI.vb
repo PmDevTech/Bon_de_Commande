@@ -29,7 +29,7 @@ Public Class RapportEvaluationMI
         CmbDossier.Text = ""
         CmbDossier.Properties.Items.Clear()
         Try
-            query = "select NumeroDAMI from t_ami where EvalTechnique IS NOT NULL and CodeProjet='" & ProjetEnCours & "'"
+            query = "select NumeroDAMI from t_ami where StatutDoss <>'Annulé' and EvalTechnique IS NOT NULL and CodeProjet='" & ProjetEnCours & "' ORDER BY DateEdition DESC"
             Dim dt As DataTable = ExcecuteSelectQuery(query)
             For Each rw In dt.Rows
                 CmbDossier.Properties.Items.Add(MettreApost(rw("NumeroDAMI").ToString))
@@ -175,7 +175,7 @@ Public Class RapportEvaluationMI
                     Next
 
                     'Paramettre experience general a determiner
-                    RapportAMI.SetParameterValue("Param_CritereExpGenerale", "[Vide]")
+                    'RapportAMI.SetParameterValue("Param_CritereExpGenerale", "[Vide]")
                 Catch ex As Exception
                     FailMsg(ex.ToString)
                 End Try
@@ -371,7 +371,7 @@ Public Class RapportEvaluationMI
             Try
                 If ConfirmMsg("Confirmez-vous la validation du rapport ?") = DialogResult.Yes Then
                     ExecuteNonQuery("Update t_ami set ValidationsRapports= 'Valider' where NumeroDAMI='" & EnleverApost(CmbDossier.Text) & "'")
-                    SuccesMsg("Rapport d'évaluation valider avec succès")
+                    SuccesMsg("Rapport d'évaluation validé avec succès")
                     ValidationsRapports = "Valider"
                     ValRejetEnvoi(False)
                 End If
@@ -391,8 +391,8 @@ Public Class RapportEvaluationMI
     Private Sub BtRejetterRapports_Click(sender As Object, e As EventArgs) Handles BtRejetterRapports.Click
         If CmbDossier.SelectedIndex <> -1 Then
             Try
-                If ConfirmMsg("Voulez-vous vraiment rejetter ce rapport ?") = DialogResult.Yes Then
-                    ExecuteNonQuery("Update t_ami set EvalTechnique=NULL, ValidationsRapports='Rejeter' where NumeroDAMI='" & EnleverApost(CmbDossier.Text) & "'")
+                If ConfirmMsg("Voulez-vous vraiment rejeter ce rapport ?") = DialogResult.Yes Then
+                    ExecuteNonQuery("Update t_ami set EvalTechnique=NULL, ValidationsRapports='Rejeter', CheminRapportEvaluation=NULL where NumeroDAMI='" & EnleverApost(CmbDossier.Text) & "'")
                     ExecuteNonQuery("Update t_noteconsultantparcriteres set ValidationNote='' where NumeroDp='" & EnleverApost(CmbDossier.Text) & "'")
                     ExecuteNonQuery("Update t_soumissionconsultant set NoteConsult=NULL, ReferenceNote=NULL, RangConsult=NULL, EvalTechOk=NULL where NumeroDp='" & EnleverApost(CmbDossier.Text) & "'")
                     SuccesMsg("Rapport d'évaluation rejeté")
@@ -405,23 +405,41 @@ Public Class RapportEvaluationMI
         End If
     End Sub
 
-    Private Sub Btpdf_Click(sender As Object, e As EventArgs) Handles Btpdf.Click
+    'Private Sub Export()
+    '    Dim dlg As New SaveFileDialog
+    '    'Type du document a sauveagarde'
+    '    dlg.Filter = "Documents |*pdf;"
+    '    dlg.DefaultExt = ".pdf"
+    '    dlg.Title = "Exportation en pdf"
+    '    dlg.FileName = "RapportEvaluation.pdf"
+    '    If dlg.FileName.ToString.Trim = "" Then Exit Sub
+    '    If (dlg.ShowDialog() = DialogResult.OK) Then
+    '        Dim Extension As String = Mid(dlg.FileName, dlg.FileName.Length - 3) 'Obtenir l'extension du fichier
+    '        If Extension.ToString.ToLower <> ".pdf" Then
+    '            FailMsg("Impossible d'exporté ce fichier à l'extension [" & Extension.ToString & "]")
+    '            Exit Sub
+    '        End If
+    '        File.Copy(CheminRapportEvaluationPDF, dlg.FileName.ToString, True)
+    '    End If
+    'end sub
 
-        Try
-            If CmbDossier.SelectedIndex <> -1 Then
-                Dim Cheminpdf As String = ExecuteScallar(" select CheminRapportEvaluation from t_ami where NumeroDAMI='" & EnleverApost(CmbDossier.Text) & "'")
+    Private Sub Btpdf_Click(sender As Object, e As EventArgs) Handles Btpdf.Click
+        If CmbDossier.SelectedIndex <> -1 Then
+            Try
+                Dim Cheminpdf As String = ExecuteScallar("select CheminRapportEvaluation from t_ami where NumeroDAMI='" & EnleverApost(CmbDossier.Text) & "'")
                 CheminRapportEvaluationPDF = line & "\AMI\" & FormatFileName(CmbDossier.Text, "_") & "\Rapport_Evaluation\" & Cheminpdf
                 If File.Exists(CheminRapportEvaluationPDF.ToString) = True Then
-                    DebutChargement(True, "Exportation du rapport d'évaluation en cours...")
-                    Process.Start(CheminRapportEvaluationPDF)
-                    FinChargement()
+                    If ExporterPDF(CheminRapportEvaluationPDF.ToString, "RapportEvaluation.pdf") = False Then
+                        Exit Sub
+                    End If
                 Else
-                    SuccesMsg("Le chemin d'accès spécifier n'existe pas")
+                    SuccesMsg("La version du rapport à exporté" & vbNewLine & "n'existe pas ou a été supprimer")
                 End If
-            End If
-        Catch ex As Exception
-            FailMsg(ex.ToString)
-        End Try
+            Catch ex As Exception
+                FailMsg(ex.ToString)
+            End Try
+        End If
+
     End Sub
 
     Private Sub BtWord_Click(sender As Object, e As EventArgs) Handles BtWord.Click
@@ -429,11 +447,11 @@ Public Class RapportEvaluationMI
             If CmbDossier.SelectedIndex <> -1 Then
                 CheminRapportEvaluationDOC = line & "\AMI\" & FormatFileName(CmbDossier.Text, "_") & "\Rapport_Evaluation\Rapport_Evaluation_Technique.doc"
                 If File.Exists(CheminRapportEvaluationDOC.ToString) = True Then
-                    DebutChargement(True, "Exportation du rapport d'évaluation en cours...")
-                    Process.Start(CheminRapportEvaluationDOC)
-                    FinChargement()
+                    If ExporterWORD(CheminRapportEvaluationDOC, "Rapport_EvaluationMI.doc") = False Then
+                        Exit Sub
+                    End If
                 Else
-                    SuccesMsg("Le chemin d'accès spécifier n'existe pas")
+                    SuccesMsg("La version du rapport à exporté" & vbNewLine & "n'existe pas ou a été supprimer")
                 End If
             End If
         Catch ex As Exception

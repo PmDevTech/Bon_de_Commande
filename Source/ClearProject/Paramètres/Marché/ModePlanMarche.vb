@@ -56,6 +56,7 @@ Public Class ModePlanMarche
                         ExecuteNonQuery(query)
                         SuccesMsg("Enregistrement effectué avec succès")
                         rdPPSD.Enabled = False
+                        If PlanMarche.CanFocus() Then PlanMarche.Close()
                     End If
                 End If
             ElseIf ModePlan = "PPSD" Then
@@ -64,6 +65,7 @@ Public Class ModePlanMarche
                     ExecuteNonQuery(query)
                     SuccesMsg("Enregistrement effectué avec succès")
                     rdGenere.Enabled = False
+                    If PlanMarche.CanFocus() Then PlanMarche.Close()
                 End If
             End If
         ElseIf ModePPM = "Genere" Then
@@ -76,7 +78,7 @@ Public Class ModePlanMarche
                 End If
             End If
         Else
-            SuccesMsg("Impossible d'apporter des modfications")
+            SuccesMsg("Impossible d'apporter des modifications")
         End If
 
     End Sub
