@@ -37,7 +37,7 @@ Public Class BonCommande
         Next
     End Sub
 
-    Private Sub BonCommande_Load(sender As System.Object, e As System.EventArgs)  Handles MyBase.Load
+    Private Sub BonCommande_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Me.Icon = My.Resources.Logo_ClearProject_Valide
         ChargerService()
         Chargertiers()
