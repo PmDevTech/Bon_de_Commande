@@ -53,7 +53,7 @@ Public Class BonCommande
         Dateboncmde.Text = ""
         Txtboncmde.Text = ""
         'TxtMarche.Text = ""
-        CmbMarche.Text = ""
+        CmbNumMarche.Text = ""
         TxtQte.Text = ""
         TxtPu.Text = ""
         TxtNewMont.Text = ""
@@ -124,7 +124,7 @@ Public Class BonCommande
         Dim drS = dtboncommande.NewRow()
         cpt = cpt + 1
         drS(0) = TabTrue(cpt - 1)
-        drS(1) = EnleverApost(CmbMarche.Text)
+        drS(1) = EnleverApost(CmbNumMarche.Text)
         drS(2) = AfficherMonnaie(CDbl(TxtQte.Text))
         drS(3) = AfficherMonnaie(CDbl(TxtPu.Text))
         drS(4) = AfficherMonnaie(CDbl(TxtNewMont.Text))
@@ -154,22 +154,14 @@ Public Class BonCommande
         Initialiser()
     End Sub
 
-    Private Sub ChargerTypeMarche()
-        CmbTypeMarche.Properties.Items.Clear()
-        CmbTypeMarche.ResetText()
-        query = "select TypeMarche from t_typemarche order by TypeMarche"
-        Dim dt As DataTable = ExcecuteSelectQuery(query)
-        For Each rw As DataRow In dt.Rows
-            CmbTypeMarche.Properties.Items.Add(MettreApost(rw(0).ToString))
-        Next
-    End Sub
+
     Private Sub ChargerMarche()
-        CmbTypeMarche.Properties.Items.Clear()
-        CmbTypeMarche.ResetText()
+        CmbNumMarche.Properties.Items.Clear()
+        CmbNumMarche.ResetText()
         query = "select m.DescriptionMarche from t_marche m, t_marchesigne ms where m.RefMarche = ms.RefMarche order by m.RefMarche"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         For Each rw As DataRow In dt.Rows
-            CmbTypeMarche.Properties.Items.Add(MettreApost(rw(0).ToString))
+            CmbNumMarche.Properties.Items.Add(MettreApost(rw(0).ToString))
         Next
     End Sub
 
@@ -179,7 +171,7 @@ Public Class BonCommande
 
     End Sub
 
-    Private Sub CmbTypeMarche_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbTypeMarche.SelectedIndexChanged
+    Private Sub CmbTypeMarche_SelectedIndexChanged(sender As Object, e As EventArgs)
         Cmbctfour.Properties.Items.Clear()
         Cmbctfour.ResetText()
         'Cmbctfour_SelectedIndexChanged(Cmbctfour, e)
@@ -196,6 +188,17 @@ Public Class BonCommande
         Catch ex As Exception
             FailMsg("Erreur : Information non disponible : " & vbNewLine & ex.ToString())
         End Try
+    End Sub
+
+    Private Sub Checkbonc_CheckedChanged(sender As Object, e As EventArgs) Handles Checkbonc.CheckedChanged
+        If Checkbonc.Checked Then
+            Checkmarche.Checked = False
+            CmbNumMarche.Visible = False
+
+            TxtBonC.Visible = True
+            Label2.Text = "N° Marché / Bon de Cde"
+            TxtBonC.Focus()
+        End If
     End Sub
 
     'Private Sub Cmbctfour_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Cmbctfour.SelectedIndexChanged
