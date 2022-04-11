@@ -7,15 +7,15 @@ Public Class BonCommande
     Dim CfaGere As Boolean = True
     Dim dtboncommande = New DataTable
 
-    Private Sub ChargerService()
-        CmbService.Properties.Items.Clear()
-        CmbService.ResetText()
-        query = "select NomService from T_Service where CodeProjet='" & ProjetEnCours & "' order by NomService"
-        Dim dt As DataTable = ExcecuteSelectQuery(query)
-        For Each rw As DataRow In dt.Rows
-            CmbService.Properties.Items.Add(MettreApost(rw(0).ToString))
-        Next
-    End Sub
+    'Private Sub ChargerService()
+    '    CmbService.Properties.Items.Clear()
+    '    CmbService.ResetText()
+    '    query = "select NomService from T_Service where CodeProjet='" & ProjetEnCours & "' order by NomService"
+    '    Dim dt As DataTable = ExcecuteSelectQuery(query)
+    '    For Each rw As DataRow In dt.Rows
+    '        CmbService.Properties.Items.Add(MettreApost(rw(0).ToString))
+    '    Next
+    'End Sub
 
     Private Sub Chargertiers()
         Cmbctfour.Properties.Items.Clear()
@@ -27,33 +27,33 @@ Public Class BonCommande
         Next
     End Sub
 
-    Private Sub RemplirListeActivites()
-        CmbActivite.Properties.Items.Clear()
-        CmbActivite.ResetText()
-        query = "select LibelleCourt,LibellePartition from T_Partition where CodeClassePartition='5' and CodeProjet='" & ProjetEnCours & "'"
-        Dim dt As DataTable = ExcecuteSelectQuery(query)
-        For Each rw In dt.Rows
-            CmbActivite.Properties.Items.Add(rw(0).ToString & "-" & MettreApost(rw(1).ToString))
-        Next
-    End Sub
+    'Private Sub RemplirListeActivites()
+    '    CmbActivite.Properties.Items.Clear()
+    '    CmbActivite.ResetText()
+    '    query = "select LibelleCourt,LibellePartition from T_Partition where CodeClassePartition='5' and CodeProjet='" & ProjetEnCours & "'"
+    '    Dim dt As DataTable = ExcecuteSelectQuery(query)
+    '    For Each rw In dt.Rows
+    '        CmbActivite.Properties.Items.Add(rw(0).ToString & "-" & MettreApost(rw(1).ToString))
+    '    Next
+    'End Sub
 
-    Private Sub BonCommande_Load(sender As System.Object, e As System.EventArgs)  Handles MyBase.Load
+    Private Sub BonCommande_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Me.Icon = My.Resources.Logo_ClearProject_Valide
-        ChargerService()
+        'ChargerService()
         Chargertiers()
-        RemplirListeActivites()
+        'RemplirListeActivites()
         'codeauto(TextEdit1)
         Initialiser()
     End Sub
 
     Private Sub Initialiser()
-        CmbActivite.ResetText()
+        'CmbActivite.ResetText()
         Cmbctfour.ResetText()
-        CmbService.ResetText()
+        'CmbService.ResetText()
         Dateboncmde.Text = ""
         Txtboncmde.Text = ""
-        TxtMarche.Text = ""
-        TxtDesignation.Text = ""
+        'TxtMarche.Text = ""
+        CmbMarche.Text = ""
         TxtQte.Text = ""
         TxtPu.Text = ""
         TxtNewMont.Text = ""
@@ -124,7 +124,7 @@ Public Class BonCommande
         Dim drS = dtboncommande.NewRow()
         cpt = cpt + 1
         drS(0) = TabTrue(cpt - 1)
-        drS(1) = EnleverApost(TxtDesignation.Text)
+        drS(1) = EnleverApost(CmbMarche.Text)
         drS(2) = AfficherMonnaie(CDbl(TxtQte.Text))
         drS(3) = AfficherMonnaie(CDbl(TxtPu.Text))
         drS(4) = AfficherMonnaie(CDbl(TxtNewMont.Text))
@@ -153,4 +153,68 @@ Public Class BonCommande
     Private Sub BtAnnuler_Click(sender As Object, e As EventArgs) Handles BtAnnuler.Click
         Initialiser()
     End Sub
+
+    Private Sub ChargerTypeMarche()
+        CmbTypeMarche.Properties.Items.Clear()
+        CmbTypeMarche.ResetText()
+        query = "select TypeMarche from t_typemarche order by TypeMarche"
+        Dim dt As DataTable = ExcecuteSelectQuery(query)
+        For Each rw As DataRow In dt.Rows
+            CmbTypeMarche.Properties.Items.Add(MettreApost(rw(0).ToString))
+        Next
+    End Sub
+    Private Sub ChargerMarche()
+        CmbTypeMarche.Properties.Items.Clear()
+        CmbTypeMarche.ResetText()
+        query = "select m.DescriptionMarche from t_marche m, t_marchesigne ms where m.RefMarche = ms.RefMarche order by m.RefMarche"
+        Dim dt As DataTable = ExcecuteSelectQuery(query)
+        For Each rw As DataRow In dt.Rows
+            CmbTypeMarche.Properties.Items.Add(MettreApost(rw(0).ToString))
+        Next
+    End Sub
+
+    Private Sub BonCommande_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        'ChargerTypeMarche()
+        ChargerMarche()
+
+    End Sub
+
+    Private Sub CmbTypeMarche_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbTypeMarche.SelectedIndexChanged
+        Cmbctfour.Properties.Items.Clear()
+        Cmbctfour.ResetText()
+        'Cmbctfour_SelectedIndexChanged(Cmbctfour, e)
+        Try
+
+            query = "SELECT NomFournis from t_fournisseur "
+            Dim dt As DataTable = ExcecuteSelectQuery(query)
+            For Each rw As DataRow In dt.Rows
+                Cmbctfour.Properties.Items.Add(rw("NomFournis").ToString)
+            Next
+            If dt.Rows.Count = 1 Then
+                Cmbctfour.Text = dt.Rows(0)("NomFournis")
+            End If
+        Catch ex As Exception
+            FailMsg("Erreur : Information non disponible : " & vbNewLine & ex.ToString())
+        End Try
+    End Sub
+
+    'Private Sub Cmbctfour_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Cmbctfour.SelectedIndexChanged
+    '    CmbMarche.Properties.Items.Clear()
+    '    CmbMarche.ResetText()
+    '    Cmbctfour_SelectedIndexChanged(Cmbctfour, e)
+
+    '    Try
+    '        query = "SELECT DescriptionMarche from t_marche"
+    '        Dim dt As DataTable = ExcecuteSelectQuery(query)
+    '        For Each rw As DataRow In dt.Rows
+    '            CmbMarche.Properties.Items.Add(rw("DescriptionMarche").ToString)
+    '        Next
+    '        If dt.Rows.Count = 1 Then
+    '            CmbMarche.Text = dt.Rows(0)("DescriptionMarche")
+    '        End If
+    '    Catch ex As Exception
+    '        FailMsg("Erreur : Information non disponible : " & vbNewLine & ex.ToString())
+    '    End Try
+
+    'End Sub
 End Class

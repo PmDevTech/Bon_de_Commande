@@ -136,6 +136,7 @@ Module ModuleVariables
     Public Proj_smsEncodage As Decimal = 0
     Public Proj_smsModele As String = ""
 
+    Public dtbc = New DataTable()
     Public dtimmo = New DataTable()
     Public dtfam = New DataTable()
     Public dtloc = New DataTable()

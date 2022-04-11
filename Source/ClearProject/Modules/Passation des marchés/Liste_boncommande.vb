@@ -12,8 +12,9 @@ Public Class Liste_boncommande
     Private Sub Liste_boncommande_Load(ByVal sender As System.Object, ByVal e As System.EventArgs)  Handles MyBase.Load
         Me.Icon = My.Resources.Logo_ClearProject_Valide
         Try
-            query = "select * from t_boncommande where CodeProjet='" & ProjetEnCours & "'" ' ORDER BY length(CodeBon), CodeBon"
-            remplirDataGridBoncommande(query, LgListBoncommande, LblNombre, ViewBoncommande)
+            'query = "select * from t_boncommande where CodeProjet='" & ProjetEnCours & "'" ' ORDER BY length(CodeBon), CodeBon"
+            'remplirDataGridBoncommande(query, LgListBoncommande, LblNombre, ViewBoncommande)
+            remplirBonCommande(LgListBoncommande, ViewBoncommande)
         Catch ex As Exception
             Failmsg("Erreur : Information non disponible : " & ex.ToString())
         End Try
@@ -154,7 +155,7 @@ Public Class Liste_boncommande
     End Sub
 
     Private Sub BtAjouter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtAjouter.Click
-        BonCommande.Size = New Point(1010, 470)
+        BonCommande.Size = New Point(704, 470)
         Dialog_form(BonCommande)
     End Sub
 

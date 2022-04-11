@@ -678,6 +678,75 @@ Module CONNEXION
 
     End Sub
 
+    Sub remplirBonCommande(ByVal mondg As DevExpress.XtraGrid.GridControl, ByVal grid As DevExpress.XtraGrid.Views.Grid.GridView)
+        dtbc.Columns.Clear()
+        dtbc.Columns.Add("Choix", Type.GetType("System.Boolean"))
+        dtbc.Columns.Add("id_BC", Type.GetType("System.String"))
+        dtbc.Columns.Add("Date", Type.GetType("System.String"))
+        dtbc.Columns.Add("Numéro Commande", Type.GetType("System.String"))
+        dtbc.Columns.Add("Quantité", Type.GetType("System.String"))
+        dtbc.Columns.Add("Description", Type.GetType("System.String"))
+        dtbc.Columns.Add("Prix unitaire HT", Type.GetType("System.String"))
+        dtbc.Columns.Add("Montant HT", Type.GetType("System.String"))
+        dtbc.Rows.Clear()
+
+        Dim cptr As Integer = 0
+        query = "SELECT RefBon,id_Exercice,date,numeroBC,quantite,prixUnitaire,montantHT,CodeProjet 
+                FROM t_bon_commande
+                WHERE CodeProjet='" + ProjetEnCours + "'
+                AND id_Exercice='" & ExerciceComptable.Rows(0).Item("id_exercice") & "'
+                ORDER BY RefBon DESC "
+
+        Dim dt As DataTable = ExcecuteSelectQuery(query)
+        For Each rw As DataRow In dt.Rows
+            cptr += 1
+            Dim drs = dtbc.Newrow()
+            drs(0) = TabTrue(cptr - 1)
+            drs(1) = rw("RefBon").ToString
+            drs(2) = CDate(rw("date")).ToString("dd/MM/yyyy")
+            drs(3) = MettreApost(rw("NumeroBc").ToString)
+            drs(4) = rw("quantite").ToString
+            drs(5) = MettreApost(rw("descripton").ToString)
+            drs(6) = rw("prixUnitaire").ToString
+            drs(7) = AfficherMonnaie(rw("montantHT").ToString)
+        Next
+
+        mondg.DataSource = dtbc
+        Liste_boncommande.LblNombre.Text = cptr.ToString & " Enregistrements"
+        Dim edit As RepositoryItemCheckEdit = New RepositoryItemCheckEdit()
+        edit.ValueChecked = True
+        edit.ValueUnchecked = False
+        grid.Columns("Choix").ColumnEdit = edit
+        mondg.RepositoryItems.Add(edit)
+
+        If grid.Columns(1).Visible Then
+            grid.OptionsBehavior.Editable = True
+            grid.Columns("Date").OptionsColumn.AllowEdit = False
+            grid.Columns("Numéro Commande").OptionsColumn.AllowEdit = False
+            grid.Columns("Quantité").OptionsColumn.AllowEdit = False
+            grid.Columns("Description").OptionsColumn.AllowEdit = False
+            grid.Columns("Prix unitaire HT").OptionsColumn.AllowEdit = False
+            grid.Columns("Montant HT").OptionsColumn.AllowEdit = False
+
+            grid.OptionsView.ColumnAutoWidth = True
+            grid.OptionsBehavior.AutoExpandAllGroups = True
+            grid.VertScrollVisibility = True
+            grid.HorzScrollVisibility = True
+            grid.BestFitColumns()
+            grid.Columns(0).Width = 1
+            grid.Appearance.Row.Font = New Font("Times New Roman", 11, FontStyle.Regular)
+
+            grid.Columns(1).Visible = False
+            grid.Columns(2).AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+            grid.Columns(3).AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+            grid.Columns(4).AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+            grid.Columns(5).AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+            grid.Columns(6).AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+            grid.Columns(7).AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        End If
+
+    End Sub
+
     Sub remplirDataGridarticlestock(ByVal requete As String, ByVal mondg As DevExpress.XtraGrid.GridControl, ByVal nbre As DevExpress.XtraEditors.LabelControl, ByVal grid As DevExpress.XtraGrid.Views.Grid.GridView)
         Try
 
