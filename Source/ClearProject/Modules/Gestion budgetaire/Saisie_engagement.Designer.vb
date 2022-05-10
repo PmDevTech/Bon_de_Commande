@@ -234,7 +234,7 @@ Partial Class Saisie_engagement
         '
         'txtnbon
         '
-        Me.txtnbon.Location = New System.Drawing.Point(214, 19)
+        Me.txtnbon.Location = New System.Drawing.Point(189, 58)
         Me.txtnbon.Name = "txtnbon"
         Me.txtnbon.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtnbon.Properties.Appearance.Options.UseFont = True

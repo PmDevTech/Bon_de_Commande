@@ -5,6 +5,8 @@ Imports ClearProject.PassationMarche
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraTreeList.Nodes
 Imports DevExpress.XtraEditors.Controls
+Imports CrystalDecisions.CrystalReports.Engine
+Imports CrystalDecisions.Shared
 
 Public Class NewDao
     Dim PourAjoutModifDansDB As Integer = 0 '0 action de base, ajout=1, deja dans la DB, modif=2
@@ -15,22 +17,27 @@ Public Class NewDao
     Dim RefMarche As String()
     Dim CurrentMarche As DataRow = Nothing
     Dim CurrentDao As DataRow = Nothing
+    Dim CurrentDossMarche As DataRow = Nothing
+
     Dim TabAMettreAJour As Boolean() = {False, False, False, False, False, False, False}
     Dim LstTabName As New List(Of String) From {"PageDonneBase", "PageDonnePartic", "PageDQE", "PageConformTechnique", "PageSpecTech", "PagePostQualif", "PageApercu"}
+    Dim ListeMethodePrevue As New List(Of String) From {"AOI", "AON", "PSC", "PSL", "PSO", "DC"}
     Dim CvConcil As String = String.Empty
-    Dim TypeCategorieSpecTech As String = String.Empty
-    Dim SpecTech As New List(Of DaoSpecTechLot)
+    'Dim TypeCategorieSpecTech As String = String.Empty
+    ' Dim SpecTech As New List(Of DaoSpecTechLot)
     '  Dim CodeCojoSup As New ArrayList
     Dim CodePostQualifSup As New ArrayList
-    Dim CodeSpecTechSup As New ArrayList
+    ' Dim CodeSpecTechSup As New ArrayList
     Dim NodeModPost As TreeListNode
-    Dim NodeModSpec As TreeListNode
+    ' Dim NodeModSpec As TreeListNode
     Dim modifPostQualif As Boolean = False
     Dim modifSpecTech As Boolean = False
+    Dim NewAddSpecTechClik As Boolean = False
 
     Dim LigneaModifier As Boolean = False
     Dim NomGridView As String = ""
     Dim IndexActive As Integer = 0
+    Dim AfficherDossier As Boolean = False
 
     Private Sub NewDao_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.Icon = My.Resources.Logo_ClearProject_Valide
@@ -48,6 +55,7 @@ Public Class NewDao
         ItemDevise()
         MajCmbCompte()
         ChargerEnteteTableaux()
+        UniteNaturePrix()
         LoadTypeMarche()
         LoadArchivesDao()
     End Sub
@@ -117,10 +125,18 @@ Public Class NewDao
     Private Sub MajCmbCompte()
         CmbCompte.ResetText()
         CmbCompte.Properties.Items.Clear()
+        'Compte bancaire
         query = "select * from T_CompteBancaire where CodeProjet='" & ProjetEnCours & "'"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         For Each rw As DataRow In dt.Rows
             CmbCompte.Properties.Items.Add(MettreApost(rw("LibelleCompte").ToString) & " - " & rw("NumeroCompte"))
+        Next
+
+        'Charger les Caisse
+        query = "select * from T_COMP_JOURNAL where CODE_SC LIKE '57%'" '='" & drx(1).ToString & "'"
+        dt = ExcecuteSelectQuery(query)
+        For Each rw As DataRow In dt.Rows
+            CmbCompte.Properties.Items.Add(MettreApost(rw("LIBELLE_J").ToString) & " - " & rw("CODE_SC"))
         Next
     End Sub
 
@@ -133,26 +149,84 @@ Public Class NewDao
             cmbTypeMarche.Properties.Items.Add(MettreApost(rw("TypeMarche").ToString))
         Next
     End Sub
+    Private Sub UniteNaturePrix()
 
-    Private Sub LoadMarches(ByVal TypeMarche As String)
-        query = "Select * from T_Marche where CodeProjet='" & ProjetEnCours & "' AND TypeMarche='" & EnleverApost(TypeMarche) & "' AND NumeroDAO IS NULL"
+        query = "select * from t_unite"
+        NaturePrix.ResetText()
+        NaturePrix.Properties.Items.Clear()
         Dim dt As DataTable = ExcecuteSelectQuery(query)
-        ReDim RefMarche(dt.Rows.Count)
-        Dim i As Integer = 0
-        cmbMarches.Properties.Items.Clear()
-        cmbMarches.ResetText()
         For Each rw As DataRow In dt.Rows
-            RefMarche(i) = rw("RefMarche")
-            i += 1
-            cmbMarches.Properties.Items.Add(MettreApost(rw("DescriptionMarche")) & " | " & AfficherMonnaie(rw("MontantEstimatif")) & " | " & MettreApost(rw("InitialeBailleur").ToString) & "(" & MettreApost(rw("Convention_ChefFile").ToString) & ")")
+            NaturePrix.Properties.Items.Add(MettreApost(rw("LibelleCourtUnite").ToString & " - " & rw("LibelleUnite").ToString))
         Next
     End Sub
+
+    Private Sub LoadMarches(ByVal TypeMarche As String)
+        Try
+
+            cmbMarches.ResetText()
+            cmbMarches.Properties.Items.Clear()
+
+            query = "Select * From T_Marche Where CodeProjet ='" & ProjetEnCours & "' AND TypeMarche='" & EnleverApost(TypeMarche.ToString) & "' AND NumeroMarche IS NULL and RefMarche NOT IN(SELECT RefMarche from t_dao where CodeProjet='" & ProjetEnCours & "' and TypeMarche='" & EnleverApost(TypeMarche.ToString) & "' and statut_DAO<>'Annulé')"
+            Dim dt As DataTable = ExcecuteSelectQuery(query)
+            ReDim RefMarche(dt.Rows.Count)
+            Dim Taille As Integer = 0
+
+            For Each rw As DataRow In dt.Rows
+                RefMarche(Taille) = rw("RefMarche")
+                Taille += 1
+                cmbMarches.Properties.Items.Add(MettreApost(rw("DescriptionMarche")) & " | " & rw("MontantEstimatif") & " | " & MettreApost(rw("InitialeBailleur").ToString) & " (" & MettreApost(rw("CodeConvention").ToString) & ")")
+            Next
+
+            '** Afficharge des ligne du PPM en fonction des montants consomé
+
+            'query = "Select * from T_Marche where CodeProjet='" & ProjetEnCours & "' AND TypeMarche='" & EnleverApost(TypeMarche) & "' AND NumeroMarche IS NULL"
+            'Dim dt As DataTable = ExcecuteSelectQuery(query)
+            'Dim MontantMarcheRestant As Decimal = 0
+
+            'cmbMarches.ResetText()
+            'cmbMarches.Properties.Items.Clear()
+            'Dim Taille As Integer = 0
+
+            'For Each rw As DataRow In dt.Rows
+            '    'Montant marche restant (à utiliser)
+            '    MontantMarcheRestant = CDec(rw("MontantEstimatif").ToString.Replace(" ", "")) - GetMontantMarcheConsomme(rw("RefMarche"), EnleverApost(TypeMarche)) 'Montant consomé
+            '    If MontantMarcheRestant > 0 Then
+            '        ReDim Preserve RefMarche(Taille)
+            '        RefMarche(Taille) = rw("RefMarche")
+            '        Taille += 1
+            '        cmbMarches.Properties.Items.Add(MettreApost(rw("DescriptionMarche")) & " | " & MontantMarcheRestant & " | " & MettreApost(rw("InitialeBailleur").ToString) & " (" & MettreApost(rw("CodeConvention").ToString) & ")")
+            '    End If
+            'Next
+
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+
+    Private Function GetMontantMarcheConsomme(ByVal RefMarche As String, ByVal TypeMarche As String) As Decimal
+        Dim MontantMarcheConsome As Decimal = 0
+        Try
+            'Marche utiliser pour elaborer un NumeroDAO
+            ' query = "select SUM(S.PrixCorrigeOffre) from t_soumissionfournisseurclassement as S, t_DAO as D where S.NumeroDAO=D.NumeroDAO and S.AcceptationExamDetaille='OUI' and S.PrixCorrigeOffre IS NOT NULL and S.ExamPQValide='OUI' AND S.RangPostQualif IS NOT NULL and S.FournisDisqualifie IS NULL AND S.Selectionne='OUI' and S.Attribue='OUI' and  D.CodeProjet='" & ProjetEnCours & "' and D.statut_DAO<>'Annulé' and D.RefMarche='" & RefMarche & "' and D.TypeMarche='" & TypeMarche & "'"
+            query = "select SUM(S.PrixCorrigeOffre) from t_soumissionfournisseurclassement as S, t_DAO as D where S.NumeroDAO=D.NumeroDAO and S.AcceptationExamDetaille='OUI' and S.PrixCorrigeOffre IS NOT NULL and S.RangExamDetaille IS NOT NULL and S.FournisDisqualifie IS NULL AND S.Selectionne='OUI' and S.Attribue='OUI' and  D.CodeProjet='" & ProjetEnCours & "' and D.statut_DAO<>'Annulé' and D.RefMarche='" & RefMarche & "' and D.TypeMarche='" & TypeMarche & "'"
+            MontantMarcheConsome = Val(ExecuteScallar(query).ToString.Replace(".", ","))
+            If MontantMarcheConsome = 0 Then
+                query = "select SUM(MontantMarche) from t_dao where RefMarche='" & RefMarche & "' and TypeMarche='" & TypeMarche & "' and statut_DAO<>'Annulé'"
+                MontantMarcheConsome = Val(ExecuteScallar(query).ToString.Replace(".", ","))
+            End If
+
+            Return MontantMarcheConsome
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+
+    End Function
 
     Private Sub VisibleOtherTabs(ByVal Value As Boolean)
         'On désactive les autres tabs pour amener l'user à enregister les données de base.
         PageDonnePartic.PageEnabled = Value
         PageDQE.PageEnabled = Value
-        PageConformTechnique.PageEnabled = Value
+        'PageConformTechnique.PageEnabled = Value
         PageSpecTech.PageEnabled = Value
         PagePostQualif.PageEnabled = Value
         PageApercu.PageEnabled = Value
@@ -178,7 +252,7 @@ Public Class NewDao
         If Not IsNothing(CurrentDao) Then
             CurrentDao = Nothing
         End If
-
+        AfficherDossier = False
         'Initialiser Donnée particulier
         InitDonneesPartic()
         InitDQE()
@@ -187,87 +261,6 @@ Public Class NewDao
         'Initialiser Donnée post qualification
         InitPostQualif()
     End Sub
-
-    Private Function GetTextSection(CodeSection As String) As String
-        Try
-            If CodeSection.ToString = "ST(Spécification techique)" Then
-                Return "[insérer une description détaillée des specification technique]"
-            ElseIf CodeSection.ToString = "IE (Inspections et Essais)" Then
-                Return "[insérer la liste des inspections et des tests]."
-            ElseIf CodeSection.ToString = "IS 1.2(a)" Then
-                Return "[Insérer l'identification du système électronique et l’adresse url ou le lien, Insérer lesdits aspects]"
-            ElseIf CodeSection.ToString = "IS 4.8(a),4.8(b) et 5.1" Then
-                Return "[insérer la liste des pays inéligibles, ou s'il n’y en a pas, indiquer «aucun»]"
-            ElseIf CodeSection.ToString = "IS 11.1 (j)" Then
-                Return "[Insérer la liste des documents, si nécessaire, autres que ceux déjà mentionnés à l'article 11.1 des IS]"
-            ElseIf CodeSection.ToString = "IS 13.1" Then
-                Return "Les variante seront pris en compte  [Indiquer OUI ou NON]"
-            ElseIf CodeSection.ToString = "IS 14.7" Then
-                Return "[Insérer la date de la version applicable (Incoterms)]"
-            ElseIf CodeSection.ToString = "IS 14.8 (b) (i) et (c) (v)" Then
-                Return "[Insérer le nom; assurer la cohérence avec la définition de l‘ Incoterm utilisé]"
-            ElseIf CodeSection.ToString = "IS 14.8 (a) (iii), b (ii) et (c) (v)" Then
-                Return "[Insérer le nom du lieu d’utilisation des Fournitures]"
-            ElseIf CodeSection.ToString = "IS 16.4" Then
-                Return "[Insérer la période de fonctionnement prévue pour les fournitures (en vue des besoins en pièces de rechange)]"
-            ElseIf CodeSection.ToString = "IS 18.3 (a)" Then
-                Return "[Insérer la méthode ou indiquer,comment il sera indiqué dans la demande de prorogation de validité des offres]. "
-            ElseIf CodeSection.ToString = "IS 19.1" Then
-                Return "[Indiquer si une déclaration de garentie est exgigé]"
-            ElseIf CodeSection.ToString = "IS 19.3(d)" Then
-                Return "[Insérer les noms des autres types de garanties acceptables ou insérer «Néant» si une garantie d’offre n’est pas requise sous IS 19.1 ou si aucune forme de garantie d’offre autre que celles listées sous IS 19.3(a) à (c) n’est acceptable.]"
-            ElseIf CodeSection.ToString = "IS 19.9 (a)" Then
-                Return "[Inclure la disposition suivante et les informations correspondantes uniquement dans le cas où, conformément à l’article 19.1 des IS, une garantie d’offre n’est pas requise et que l’Acheteur prévoit d’exclure, pour une durée déterminée, le Soumissionnaire qui a commis un des actes mentionnés à l’article 19.9 (a) et (b) des IS. Dans le cas contraire, omettre cette disposition.]"
-            ElseIf CodeSection.ToString = "IS 19.9 (b)" Then
-                Return "[insérer le nombre d’années] "
-            ElseIf CodeSection.ToString = "IS 20.3" Then
-                Return "[insérer l’intitulé et la description des documents nécessaires à titre d’attestation de procuration (ou pouvoir) du signataire de l’offre.]"
-            ElseIf CodeSection.ToString = "IS 22.1" Then
-                Return "[insérer une description de la procédure de soumission des offres par voie électronique le cas échéant]"
-            ElseIf CodeSection.ToString = "IS 25.1" Then
-                Return "[insérer une description des procédures d’ouverture des plis par voie électronique.] "
-            ElseIf CodeSection.ToString = "IS 25.6" Then
-                Return "[insérer le nombre des représentants]"
-            ElseIf CodeSection.ToString = "IS 30.3" Then
-                Return "L’ajustement sera calculé comme étant [insérer «la moyenne» ou «la valeur la plus élevée»] "
-            ElseIf CodeSection.ToString = "IS 42.1 (a)" Then
-                Return "Les quantités peuvent être augmentées d’un pourcentage maximum égal à : [insérer pourcentage]"
-            ElseIf CodeSection.ToString = "IS 42.1 (b)" Then
-                Return "Les quantités peuvent être réduites d’un pourcentage maximum égal à : [insérer pourcentage]"
-            ElseIf CodeSection.ToString = "IS 45.1" Then
-                Return "Le Soumissionnaire retenu [aura] ou [n’aura pas] à fournir le Formulaire de divulgation des bénéficiaires effectifs. [insérer Oui ou Non]"
-            ElseIf CodeSection.ToString = "IS 34.6 (i)" Then
-                Return "[Insérer le nombre d’années de la vie utile]"
-            ElseIf CodeSection.ToString = "IS 34.6 (ii)" Then
-                Return "[Insérer le taux d’actualisation]"
-            ElseIf CodeSection.ToString = "IS 34.6 (iii)" Then
-                Return "[Insérer la méthodologie indiquer comment les coûts seront calculés] "
-            ElseIf CodeSection.ToString = "IS 34.6 (iv)" Then
-                Return "[Insérer les renseignements que le soumissionnaire devra fournir dans son offres, incluant des prix] "
-            ElseIf CodeSection.ToString = "IS 34.6 (f)" Then
-                Return "[Insérer la méthode et les facteurs applicables, le cas échéant]"
-            ElseIf CodeSection.ToString = "IS 37.1 (a) (1)" Then
-                Return "[Insérer la liste des exigences]"
-            ElseIf CodeSection.ToString = "IS 37.1 (a) (2)" Then
-                Return "[Insérer la/les condition(s) d’utilisation]"
-            ElseIf CodeSection.ToString = "CCAG 26.1" Then
-                Return "[Décrire les types, fréquences, procédures utilisées pour réaliser ces inspections et ces essais]"
-            ElseIf CodeSection.ToString = "CCAG 26.2" Then
-                Return "[Insérer les lieux de réalisation des inspections et les essais] "
-            ElseIf CodeSection.ToString = "CCAG 27.1" Then
-                Return "[Insérer le nombre % des pénalités de retard]"
-            ElseIf CodeSection.ToString = "CCAG 28.3" Then
-                Return "[Insérer le(s) nombre(s) des périodes de garantie] "
-            ElseIf CodeSection.ToString = "CCAG 28.5, CCAG 28.6" Then
-                Return "[Insérer le nombre de délai de réparation ou de remplacement (jours)] "
-            ElseIf CodeSection.ToString = "CCAG 33.4" Then
-                Return "[Insérer le pourcentage approprié,de la diminution du Montant du Marché]"
-            End If
-        Catch ex As Exception
-            FailMsg(ex.ToString)
-        End Try
-        Return ""
-    End Function
 
     Private Sub FermerDossier()
         If NumDoss <> "" Then
@@ -294,12 +287,15 @@ Public Class NewDao
             PageSpecTech.PageVisible = False
             PageDQE.PageVisible = False
         End If
+
         TabAMettreAJour = {False, False, False, False, False, False, False}
         CurrentMarche = Nothing
         CurrentDao = Nothing
+        CurrentDossMarche = Nothing
         LigneaModifier = False
         NomGridView = ""
         IndexActive = 0
+        AfficherDossier = False
     End Sub
 #End Region
 
@@ -317,6 +313,8 @@ Public Class NewDao
         cmbMarches.ResetText()
         TxtMethodeMarche.ResetText()
         MontantMarche.ResetText()
+        LieurRemiseFourniture.ResetText()
+        LigneBudgetaire.ResetText()
         NomJournal.ResetText()
         DatePublication.EditValue = Nothing
         HeurePub.EditValue = Nothing
@@ -332,9 +330,11 @@ Public Class NewDao
         dtLots.Rows.Clear()
         TxtPrixDao.ResetText()
         CmbCompte.ResetText()
-        TxtNumCompte.ResetText()
+        NaturePrix.ResetText()
         TxtAdresseCompte.ResetText()
         InitEditionLot()
+
+        GetEnebledAffichageBouton(True)
     End Sub
 
     Private Sub ViderChampsSaisieLot()
@@ -349,11 +349,11 @@ Public Class NewDao
     Private Sub BtEnrgLot_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtEnrgLot.Click
 
         If CmbNumLotDB.Text.Trim = "" Then
-            SuccesMsg("Veuillez sélectionner un numéro dans la liste")
+            SuccesMsg("Veuillez sélectionner un numéro dans la liste.")
             CmbNumLotDB.Select()
             Exit Sub
         End If
-        If TxtLibLot.IsRequiredControl("Veuillez saisir le libellé du lot") Then
+        If TxtLibLot.IsRequiredControl("Veuillez saisir le libellé du lot.") Then
             TxtLibLot.Select()
             Exit Sub
         End If
@@ -424,11 +424,11 @@ Public Class NewDao
             If e.KeyCode = Keys.Enter Then
 
                 If CmbNumLotDB.Text.Trim = "" Then
-                    SuccesMsg("Veuillez selectionner un lot")
+                    SuccesMsg("Veuillez sélectionner un lot.")
                     CmbNumLotDB.Select()
                     Exit Sub
                 End If
-                If TxtSaisiSouLot.IsRequiredControl("Veuillez saisir le libellé du sous lot") Then
+                If TxtSaisiSouLot.IsRequiredControl("Veuillez saisir le libellé du sous lot.") Then
                     TxtSaisiSouLot.Select()
                     Exit Sub
                 End If
@@ -520,7 +520,7 @@ Public Class NewDao
     End Sub
 
     Private Sub GridSousLot_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridSousLot.CellDoubleClick
-        If GridSousLot.RowCount > 0 Then
+        If GridSousLot.RowCount > 0 And AfficherDossier = False Then
             LigneaModifier = True
             NomGridView = "GridSousLot"
             IndexActive = GridSousLot.CurrentRow.Index
@@ -529,7 +529,7 @@ Public Class NewDao
     End Sub
 
     Private Sub LgListLots_DoubleClick(sender As Object, e As EventArgs) Handles LgListLots.DoubleClick
-        If ViewLots.RowCount > 0 Then
+        If ViewLots.RowCount > 0 And AfficherDossier = False Then
             CmbNumLotDB.Text = ""
             CmbNumLotDB.Text = ViewLots.GetFocusedRowCellValue("N°").ToString
         End If
@@ -598,14 +598,17 @@ Public Class NewDao
 
     Private Sub ItemCmbLot()
         query = "select CodeLot from T_LotDAO where NumeroDAO='" & NumDoss & "' order by CodeLot"
+        CmbLotDQE.ResetText()
+        CmbNumLot2.ResetText()
+        CmbNumLot.ResetText()
         CmbLotDQE.Properties.Items.Clear()
         CmbNumLot2.Properties.Items.Clear()
         CmbNumLot.Properties.Items.Clear()
         Dim dt0 As DataTable = ExcecuteSelectQuery(query)
         For Each rw As DataRow In dt0.Rows
-            CmbLotDQE.Properties.Items.Add(rw(0).ToString)
-            CmbNumLot2.Properties.Items.Add(rw(0).ToString)
-            CmbNumLot.Properties.Items.Add(rw(0).ToString)
+            CmbLotDQE.Properties.Items.Add(rw("CodeLot").ToString)
+            CmbNumLot2.Properties.Items.Add(rw("CodeLot").ToString)
+            CmbNumLot.Properties.Items.Add(rw("CodeLot").ToString)
         Next
     End Sub
 
@@ -620,7 +623,12 @@ Public Class NewDao
         dt.Columns.Add("Ouverture", Type.GetType("System.String"))
         dt.Columns.Add("Date", Type.GetType("System.String"))
         dt.Columns.Add("Libellé", Type.GetType("System.String"))
+        dt.Columns.Add("Statut", Type.GetType("System.String"))
+        dt.Columns.Add("DossValider", Type.GetType("System.Boolean"))
+        dt.Columns.Add("DateLimitePropo", Type.GetType("System.String"))
         GridArchives.DataSource = dt
+        LayoutView1.Columns("DateLimitePropo").Visible = False
+        LayoutView1.Columns("DossValider").Visible = False
 
         dt = New DataTable()
         dt.Columns.Add("IdLot", Type.GetType("System.String"))
@@ -632,6 +640,7 @@ Public Class NewDao
         dt.Columns.Add("ListeSousLot", Type.GetType("System.String"))
         LgListLots.DataSource = dt
         ViewLots.Columns("IdLot").Visible = False
+        ViewLots.Columns("ListeSousLot").Visible = False
         ViewLots.Columns("N°").Width = 30
         ViewLots.Columns("Libellé").Width = 250
         ViewLots.OptionsView.ColumnAutoWidth = True
@@ -677,7 +686,6 @@ Public Class NewDao
         ViewCritere.Columns("Eliminatoire").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         ViewCritere.Appearance.Row.Font = New Font("Times New Roman", 11, FontStyle.Regular)
 
-
         ' **************** Spécification Technique **************** '
         dt = New DataTable
         dt.Columns.Add("Id", Type.GetType("System.String"))
@@ -703,7 +711,6 @@ Public Class NewDao
         ViewSpecTechn.Appearance.Row.Font = New Font("Times New Roman", 11, FontStyle.Regular)
         ColorRowGrid(ViewSpecTechn, "[Quantité]<>''", Color.LightBlue, "Tahoma", 8, FontStyle.Bold, Color.Black)
 
-
         ' **************** Examen Post Qualification **************** '
         dt = New DataTable()
         dt.Columns.Add("Id", Type.GetType("System.String"))
@@ -727,17 +734,6 @@ Public Class NewDao
         ViewPostQualif.OptionsView.ColumnAutoWidth = True
         'ColorRowGrid(ViewPostQualif, "[Code]='x'", Color.LightGray, "Tahoma", 8, FontStyle.Regular, Color.Black)
         ColorRowGridAnal(ViewPostQualif, "[Code]='G'", Color.Navy, "Tahoma", 9, FontStyle.Bold, Color.White, True)
-
-        'Liste connexe
-        dt = New DataTable()
-        dt.Columns.Add("IdService", Type.GetType("System.String"))
-        dt.Columns.Add("Libellé", Type.GetType("System.String"))
-        dt.Columns.Add("CodeLot", Type.GetType("System.String"))
-        dt.Columns.Add("CodeSousLot", Type.GetType("System.String"))
-
-        ListServiConnex.DataSource = dt
-        ViewConnexe.OptionsView.ColumnAutoWidth = True
-
     End Sub
 
     Private Sub LoadArchivesDao()
@@ -754,9 +750,14 @@ Public Class NewDao
             dr("Nbre lot") = rw("NbreLotDAO").ToString & " lot(s)"
             dr("Libellé") = MettreApost(rw("IntituleDAO").ToString)
 
+            dr("Statut") = MettreApost(rw("statut_DAO").ToString)
+            dr("DossValider") = CBool(rw("DossValider"))
+            dr("DateLimitePropo") = IIf(rw("DateReport").ToString <> "", rw("DateReport").ToString, rw("DateLimiteRemise").ToString).ToString
+
             If (rw("DateFinOuverture").ToString <> "") Then
                 dr("Ouverture") = "Effectuée"
-                dr("Date") = CDate(rw("DateFinOuverture").ToString()).ToShortDateString() & " à " & CDate(rw("DateFinOuverture").ToString()).ToShortTimeString()
+                ' dr("Date") = CDate(rw("DateFinOuverture").ToString()).ToShortDateString() & " à " & CDate(rw("DateFinOuverture").ToString()).ToShortTimeString()
+                dr("Date") = CDate(rw("DateDebutOuverture").ToString()).ToShortDateString() & " à " & CDate(rw("DateDebutOuverture").ToString()).ToLongTimeString()
             Else
                 If (rw("DateOuverture").ToString <> "") Then
                     dr("Ouverture") = "Non effectuée"
@@ -842,7 +843,7 @@ Public Class NewDao
                 CurrentMarche = dtmarche.Rows(0)
             Else
                 CurrentMarche = Nothing
-                FailMsg("Le marché associé a été supprimé")
+                FailMsg("Le marché associé a été supprimé.")
                 Exit Sub
             End If
         End If
@@ -857,15 +858,17 @@ Public Class NewDao
             TxtNumDao.Text = MettreApost(CurrentDao("NumeroDAO").ToString)
             TxtLibelleDao.Text = MettreApost(CurrentDao("IntituleDAO").ToString)
             cmbTypeMarche.Text = MettreApost(CurrentDao("TypeMarche").ToString)
-            cmbMarches.Text = MettreApost(CurrentMarche("DescriptionMarche")) & " | " & AfficherMonnaie(CurrentDao("MontantMarche").ToString.Replace(".00", "")) & " | " & MettreApost(CurrentMarche("InitialeBailleur").ToString) & "(" & MettreApost(CurrentMarche("Convention_ChefFile").ToString) & ")"
+            cmbMarches.Text = MettreApost(CurrentMarche("DescriptionMarche")) & " | " & AfficherMonnaie(CurrentDao("MontantMarche").ToString) & " | " & MettreApost(CurrentMarche("InitialeBailleur").ToString) & " (" & MettreApost(CurrentMarche("CodeConvention").ToString) & ")"
 
             If CurrentDao("Attribution").ToString() = "Lot" Then
                 rdAttrLot.Checked = True
             End If
 
             TxtMethodeMarche.Text = CurrentDao("MethodePDM").ToString
-            MontantMarche.Text = CurrentDao("MontantMarche").ToString.Replace(".00", "")
+            MontantMarche.Text = CurrentDao("MontantMarche").ToString.Replace(" ", "")
             TxtNbreLot.Value = MettreApost(CurrentDao("NbreLotDAO"))
+            LigneBudgetaire.Text = MettreApost(CurrentDao("LigneBudgetaire").ToString)
+            LieurRemiseFourniture.Text = MettreApost(CurrentDao("LieurRemiseFourniture").ToString)
 
             If IsDBNull(CurrentDao("DateLimiteRemise")) Then
                 DateDepot.EditValue = Nothing
@@ -929,11 +932,18 @@ Public Class NewDao
                 TxtPrixDao.ResetText()
             End If
 
+            NaturePrix.Text = ExecuteScallar("select CONCAT(LibelleCourtUnite,' - ', LibelleUnite) from t_unite where LibelleCourtUnite='" & CurrentDao("NaturePrix") & "'")
+
             If CurrentDao("CompteAchat").ToString() = "" Then
-                    CmbCompte.Text = String.Empty
-                Else
-                    query = "select CONCAT(LibelleCompte,' - ', NumeroCompte) from T_CompteBancaire where CodeProjet='" & ProjetEnCours & "' AND NumeroCompte='" & CurrentDao("CompteAchat") & "'"
-                CmbCompte.Text = MettreApost(ExecuteScallar(query))
+                CmbCompte.Text = String.Empty
+            Else
+                Dim Comptes As String = ""
+                query = "select CONCAT(LibelleCompte,' - ', NumeroCompte) from T_CompteBancaire where CodeProjet='" & ProjetEnCours & "' AND NumeroCompte='" & CurrentDao("CompteAchat") & "'"
+                Comptes = ExecuteScallar(query)
+                If Comptes.ToString = "" Then
+                    Comptes = ExecuteScallar("select CONCAT(LIBELLE_J,' - ', CODE_SC) from T_COMP_JOURNAL where CODE_SC='" & CurrentDao("CompteAchat") & "'")
+                End If
+                CmbCompte.Text = MettreApost(Comptes.ToString)
             End If
             TabAMettreAJour(0) = True
         Catch ex As Exception
@@ -995,10 +1005,10 @@ Public Class NewDao
 
         Dim DelaiPublication As String = NbreDelaiPub.Text & " " & JoursDelaiPub.Text
 
-        query = "UPDATE `t_dao` SET `IntituleDAO`='" & EnleverApost(TxtLibelleDao.Text) & "', `MontantMarche`='" & CurrentMarche("MontantEstimatif") & "', `TypeMarche`='" & CurrentMarche("TypeMarche") & "', "
+        query = "UPDATE `t_dao` SET `IntituleDAO`='" & EnleverApost(TxtLibelleDao.Text) & "', `MontantMarche`='" & MontantMarche.Text.Replace(" ", "").Replace(",", ".") & "', `TypeMarche`='" & CurrentMarche("TypeMarche") & "', "
         query &= "`MethodePDM`='" & GetMethode(CurrentMarche("CodeProcAO")) & "', `NbreLotDAO`='" & TxtNbreLot.Value & "', `DateModif`='" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "', `PrixDAO`='" & TxtPrixDao.Text & "', "
-        query &= "`CompteAchat`='" & CompteVenteDAO & "', `DateOuverture`='" & dateconvert(DateOuverture.Text) & " " & HeureOuverture.Text & "', DelaiPublication='" & DelaiPublication & "', DateReport='" & DateReports & "', "
-        query &= "`DateLimiteRemise`='" & dateconvert(DateDepot.Text) & " " & HeureDepot.Text & "', `CodeConvention`='" & CurrentMarche("Convention_ChefFile") & "', "
+        query &= "`CompteAchat`='" & CompteVenteDAO & "', `DateOuverture`='" & dateconvert(DateOuverture.Text) & " " & HeureOuverture.Text & "', DelaiPublication='" & DelaiPublication & "', DateReport='" & DateReports & "', NaturePrix='" & EnleverApost(NaturePrix.Text.Split("-")(0).Trim) & "',"
+        query &= "`DateLimiteRemise`='" & dateconvert(DateDepot.Text) & " " & HeureDepot.Text & "', `CodeConvention`='" & CurrentMarche("Convention_ChefFile") & "', LieurRemiseFourniture='" & EnleverApost(LieurRemiseFourniture.Text) & "', LigneBudgetaire='" & EnleverApost(LigneBudgetaire.Text) & "', "
         query &= "`Attribution`='" & AttributionMarche & "', DatePublication='" & dateconvert(DatePublication.Text) & " " & HeurePub.Text & "', JournalPublication='" & EnleverApost(NomJournal.Text) & "' WHERE `NumeroDAO`='" & NumDossier & "'"
 
         Try
@@ -1090,7 +1100,8 @@ Public Class NewDao
                 If dt.Rows.Count > 0 Then
                     CurrentMarche = dt.Rows(0)
                     TxtMethodeMarche.Text = GetMethode(CurrentMarche("CodeProcAO"))
-                    MontantMarche.Text = CurrentMarche("MontantEstimatif").ToString
+                    ' MontantMarche.Text = CurrentMarche("MontantEstimatif").ToString
+                    MontantMarche.Text = cmbMarches.Text.Split("|")(1).Replace(" ", "")
                 Else
                     CurrentMarche = Nothing
                     TxtMethodeMarche.ResetText()
@@ -1107,7 +1118,7 @@ Public Class NewDao
 
     Private Sub ContextMenuStripSousLotDB_Opening(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStripSousLotDB.Opening
         Try
-            If GridSousLot.RowCount = 0 Then
+            If AfficherDossier = True Or GridSousLot.RowCount = 0 Then
                 e.Cancel = True
             End If
         Catch ex As Exception
@@ -1166,111 +1177,128 @@ Public Class NewDao
 
     Private Sub BtEnregistrer_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles BtEnregistrer.ItemClick
         'Vérification des champs
-        If TxtNumDao.IsRequiredControl("Veuillez saisir le numéro du DAO") Then
+        If TxtNumDao.IsRequiredControl("Veuillez saisir le numéro du DAO.") Then
             TxtNumDao.Select()
             Exit Sub
         End If
-        If TxtLibelleDao.IsRequiredControl("Veuillez saisir le libellé du DAO") Then
+        If TxtLibelleDao.IsRequiredControl("Veuillez saisir le libellé du DAO.") Then
             TxtLibelleDao.Select()
             Exit Sub
         End If
-        If cmbTypeMarche.IsRequiredControl("Veuillez selectionner le type de marché") Then
+        If cmbTypeMarche.IsRequiredControl("Veuillez sélectionner le type de marché.") Then
             cmbTypeMarche.Select()
             Exit Sub
         End If
 
         If PourAjoutModifDansDB = 1 Then
-            If cmbMarches.IsRequiredControl("Veuillez sélectionner un marché") Then
+            If cmbMarches.IsRequiredControl("Veuillez sélectionner un marché.") Then
                 cmbMarches.Select()
                 Exit Sub
             End If
         ElseIf cmbMarches.Text.Trim = "" Then
-            SuccesMsg("Veuillez sélectionner un marché")
+            SuccesMsg("Veuillez sélectionner un marché.")
             cmbMarches.Select()
             Exit Sub
         End If
 
         If Val(TxtNbreLot.Text) <= 0 Then
-            SuccesMsg("Veuillez ajouter des lots")
+            SuccesMsg("Veuillez ajouter des lots.")
             TxtNbreLot.Select()
             Exit Sub
         End If
 
-        If NomJournal.IsRequiredControl("Veuillez saisir le nom du journal") Then
+        If NomJournal.IsRequiredControl("Veuillez saisir le nom du journal.") Then
             NomJournal.Select()
             Exit Sub
         End If
-        If DatePublication.IsRequiredControl("Veuillez indiquer la date de publication") Then
+
+        If DatePublication.IsRequiredControl("Veuillez indiquer la date de publication.") Then
             DatePublication.Select()
             Exit Sub
         End If
 
-        If HeurePub.IsRequiredControl("Veuillez indiquer l'heure de publication") Then
+        If HeurePub.IsRequiredControl("Veuillez indiquer l'heure de publication.") Then
             DatePublication.Select()
             Exit Sub
         End If
 
-        If NbreDelaiPub.IsRequiredControl("Veuillez indiquer le delai de publication") Then
+        If NbreDelaiPub.IsRequiredControl("Veuillez indiquer le délai de publication.") Then
             NbreDelaiPub.Select()
             Exit Sub
         End If
-        If JoursDelaiPub.IsRequiredControl("Veuillez indiquer le delai de publication") Then
+        If JoursDelaiPub.IsRequiredControl("Veuillez indiquer le délai de publication.") Then
             JoursDelaiPub.Select()
             Exit Sub
         End If
 
+        If LieurRemiseFourniture.IsRequiredControl("Veuillez indiquer le lieu de remise des offres.") Then ' & cmbTypeMarche.Text.ToLower)
+            LieurRemiseFourniture.Select()
+            Exit Sub
+        End If
+
+        ' LigneBudgetaire
+        'LieurRemiseFourniture
+
         If (DateReporte.Text <> "" And HeureReporte.Text = "") Or (DateReporte.Text = "" And HeureReporte.Text <> "") Then
-            SuccesMsg("Veuillez bien indiquer la date de report")
+            SuccesMsg("Veuillez bien indiquer la date de report.")
             If DateReporte.Text = "" Then DateReporte.Select()
             If HeureReporte.Text = "" Then DateReporte.Select()
             Exit Sub
         End If
 
-        If DateOuverture.IsRequiredControl("Veuillez indiquer la date d'ouverture") Then
+        If DateOuverture.IsRequiredControl("Veuillez indiquer la date d'ouverture.") Then
             DateOuverture.Select()
             Exit Sub
         End If
-        If HeureOuverture.IsRequiredControl("Veuillez indiquer l'heure d'ouverture") Then
+        If HeureOuverture.IsRequiredControl("Veuillez indiquer l'heure d'ouverture.") Then
             HeureOuverture.Select()
             Exit Sub
         End If
 
-        If TxtPrixDao.IsRequiredControl("Veuillez saisir le prix de vente du dossier") Then
-            TxtPrixDao.Select()
+        If TxtNbreLot.Value > ViewLots.RowCount Then
+            FailMsg("Veuillez enregistrer tous les lots.")
             Exit Sub
         End If
 
-        If Not IsNumeric(TxtPrixDao.Text) Then
-            SuccesMsg("Saisie incorrect")
-            TxtPrixDao.Select()
-            Exit Sub
-        End If
-
-        If Val(TxtPrixDao.Text) <> 0 Then
-            If CmbCompte.IsRequiredControl("Veuillez sélectionner le compte bancaire pour les frais de dossier") Then
-                CmbCompte.Select()
+        If TxtPrixDao.Text.Trim <> "" Then
+            If TxtPrixDao.IsRequiredControl("Veuillez saisir le prix de vente du dossier.") Then
+                TxtPrixDao.Select()
                 Exit Sub
+            End If
+
+            If Not IsNumeric(TxtPrixDao.Text) Then
+                SuccesMsg("Saisie incorrect.")
+                TxtPrixDao.Select()
+                Exit Sub
+            End If
+
+            If Val(TxtPrixDao.Text) <> 0 Then
+                If CmbCompte.IsRequiredControl("Veuillez sélectionner le compte bancaire ou la caisse à disposition pour les frais de dossier.") Then
+                    CmbCompte.Select()
+                    Exit Sub
+                End If
             End If
         End If
 
-        If TxtNbreLot.Value > ViewLots.RowCount Then
-            FailMsg("Veuillez enregistrer tous les lots")
+        If NaturePrix.IsRequiredControl("Veuillez sélectionner la nature des prix.") Then
+            NaturePrix.Select()
             Exit Sub
         End If
 
+
         If IsNothing(CurrentMarche) Then
-            FailMsg("Nous n'avons pas pu récupérer le marché")
+            FailMsg("Nous n'avons pas pu récupérer le marché.")
             cmbMarches.Select()
             Exit Sub
         End If
 
-        NumDoss = EnleverApost(TxtNumDao.Text)
+        NumDoss = EnleverApost(TxtNumDao.Text.Replace(":", "")) 'A cause des deux (:) dans la clé des membre de la commission
 
         If PourAjoutModifDansDB = 1 Then 'En cours d'enregistrement
 
             query = "SELECT COUNT(*) FROM t_dao WHERE NumeroDAO='" & NumDoss & "'"
             If Val(ExecuteScallar(query)) > 0 Then
-                FailMsg("Ce numéro existe déjà")
+                FailMsg("Ce numéro existe déjà.")
                 TxtNumDao.Select()
                 Exit Sub
             End If
@@ -1278,7 +1306,7 @@ Public Class NewDao
             'dans la table AMI
             query = "select count(*) from t_ami where NumeroDAMI='" & NumDoss & "'"
             If Val(ExecuteScallar(query)) > 0 Then
-                FailMsg("Ce numéro existe déjà")
+                FailMsg("Ce numéro existe déjà.")
                 TxtNumDao.Select()
                 Exit Sub
             End If
@@ -1286,7 +1314,7 @@ Public Class NewDao
             'Dans la table DP
             query = "select count(*) from t_dp where NumeroDp='" & NumDoss & "'"
             If Val(ExecuteScallar(query)) > 0 Then
-                FailMsg("Ce numéro existe déjà")
+                FailMsg("Ce numéro existe déjà.")
                 TxtNumDao.Select()
                 Exit Sub
             End If
@@ -1307,11 +1335,12 @@ Public Class NewDao
             End If
 
             Dim DelaiPublication As String = NbreDelaiPub.Text & " " & JoursDelaiPub.Text
-            query = "INSERT INTO t_dao (NumeroDAO, IntituleDAO, RefMarche, MontantMarche, TypeMarche, MethodePDM, NbreLotDAO, DateSaisie, DateModif, Operateur, PrixDAO, CompteAchat, CodeProjet, DateOuverture, DateLimiteRemise, CodeConvention, Attribution, DateEdition, DatePublication, JournalPublication, DelaiPublication,DateReport,statut_DAO) VALUES"
-            query &= "('" & NumDoss & "','" & EnleverApost(TxtLibelleDao.Text) & "','" & CurrentMarche("RefMarche") & "','" & CurrentMarche("MontantEstimatif") & "', '" & CurrentMarche("TypeMarche") & "', '" & GetMethode(CurrentMarche("CodeProcAO")) & "','" & TxtNbreLot.Value & "','" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "','" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "','" & CodeOperateurEnCours & "','" & TxtPrixDao.Text & "','" & CompteVenteDAO & "','" & ProjetEnCours & "','" & dateconvert(DateOuverture.Text) & " " & HeureOuverture.Text & "','" & dateconvert(DateDepot.Text) & " " & HeureDepot.Text & "','" & CurrentMarche("Convention_ChefFile") & "','" & AttributionMarche & "','" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "','" & dateconvert(DatePublication.Text) & " " & HeurePub.Text & "','" & EnleverApost(NomJournal.Text) & "','" & DelaiPublication & "', '" & DateReports & "','En cours')"
-
+            query = "INSERT INTO t_dao (NumeroDAO, IntituleDAO, RefMarche, MontantMarche, TypeMarche, MethodePDM, NbreLotDAO, DateSaisie, DateModif, Operateur, PrixDAO, CompteAchat, CodeProjet, DateOuverture, DateLimiteRemise, CodeConvention, Attribution, DateEdition, DatePublication, JournalPublication, DelaiPublication,DateReport,statut_DAO, LigneBudgetaire, LieurRemiseFourniture, NaturePrix) VALUES"
+            query &= "('" & NumDoss & "','" & EnleverApost(TxtLibelleDao.Text) & "','" & CurrentMarche("RefMarche") & "','" & MontantMarche.Text.Replace(" ", "").Replace(",", ".") & "', '" & CurrentMarche("TypeMarche") & "', '" & GetMethode(CurrentMarche("CodeProcAO")) & "','" & TxtNbreLot.Value & "','" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "','" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "','" & CodeOperateurEnCours & "','" & TxtPrixDao.Text & "','" & CompteVenteDAO & "','" & ProjetEnCours & "','" & dateconvert(DateOuverture.Text) & " " & HeureOuverture.Text & "','" & dateconvert(DateDepot.Text) & " " & HeureDepot.Text & "','" & CurrentMarche("Convention_ChefFile") & "','" & AttributionMarche & "','" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "','" & dateconvert(DatePublication.Text) & " " & HeurePub.Text & "','" & EnleverApost(NomJournal.Text) & "','" & DelaiPublication & "', '" & DateReports & "','En cours', '" & EnleverApost(LigneBudgetaire.Text) & "', '" & EnleverApost(LieurRemiseFourniture.Text) & "', '" & EnleverApost(NaturePrix.Text.Split("-")(0).Trim) & "')"
+            'LigneBudgetaire
+            'LigneBudgetaire LieurRemiseFourniture
             Try
-                DebutChargement(True, "Enregistrement du dossier en cours")
+                DebutChargement(True, "Enregistrement du dossier en cours...")
                 Dim NumLot As Integer = 0
                 Dim RefLot As Decimal = 0
                 Dim ListesSousLots As String = ""
@@ -1323,26 +1352,26 @@ Public Class NewDao
                 'Enregistrements des lots
                 GetSaveLot(NumDoss)
 
+                PourAjoutModifDansDB = 2
+                TabAMettreAJour(0) = True
+                TypeMarche = CurrentMarche("TypeMarche").ToString
+                MethodMarche = GetMethode(CurrentMarche("CodeProcAO"))
+                'Verouillage des champs
+                TxtNumDao.Enabled = False
+                cmbTypeMarche.Enabled = False
+                cmbMarches.Enabled = False
+                TxtNbreLot.Enabled = False
+                FinChargement()
+                SuccesMsg("Dossier enregistré avec succès.")
+                LoadArchivesDao()
+                'Charger les lots
+                ChargerLesLots(NumDoss)
+                VisibleOtherTabs(True)
+
             Catch ex As Exception
                 FinChargement()
                 FailMsg("Impossible d'enregistrer ce DAO" & vbNewLine & "Contactez votre fournisseur" & vbNewLine & ex.ToString)
             End Try
-
-            PourAjoutModifDansDB = 2
-            TabAMettreAJour(0) = True
-            TypeMarche = CurrentMarche("TypeMarche")
-            MethodMarche = GetMethode(CurrentMarche("CodeProcAO"))
-            'Verouillage des champs
-            TxtNumDao.Enabled = False
-            cmbTypeMarche.Enabled = False
-            cmbMarches.Enabled = False
-            TxtNbreLot.Enabled = False
-            FinChargement()
-            SuccesMsg("Dossier enregistré avec succès")
-            LoadArchivesDao()
-            'Charger les lots
-            ChargerLesLots(NumDoss)
-            VisibleOtherTabs(True)
 
         ElseIf PourAjoutModifDansDB = 2 Then
             'Le DAO est déjà dans la BD, il faut enregistrer toutes les tabs modifées
@@ -1373,20 +1402,20 @@ Public Class NewDao
                                 FinChargement()
                                 Exit Sub
                             End If
-                        Case "PageConformTechnique"
-                            If SavePageConformTechnique(NumDoss) Then
-                                Exit Select
-                            Else
-                                FinChargement()
-                                Exit Sub
-                            End If
-                        Case "PageSpecTech"
-                            If SavePageSpecTech(NumDoss) Then
-                                Exit Select
-                            Else
-                                FinChargement()
-                                Exit Sub
-                            End If
+                        'Case "PageConformTechnique"
+                        '    If SavePageConformTechnique(NumDoss) Then
+                        '        Exit Select
+                        '    Else
+                        '        FinChargement()
+                        '        Exit Sub
+                        '    End If
+                        'Case "PageSpecTech"
+                        '    If SavePageSpecTech(NumDoss) Then
+                        '        Exit Select
+                        '    Else
+                        '        FinChargement()
+                        '        Exit Sub
+                        '    End If
                         Case "PagePostQualif"
                             If SavePagePostQualif(NumDoss) Then
                                 Exit Select
@@ -1401,8 +1430,8 @@ Public Class NewDao
                     End Select
                 End If
             Next
-            SuccesMsg("Enregistrement effectué avec succès")
             FinChargement()
+            SuccesMsg("Enregistrement effectué avec succès.")
         End If
     End Sub
 #End Region
@@ -1421,7 +1450,7 @@ Public Class NewDao
         NumEclaircissement.Value = 0
         CmbEclaircissement.ResetText()
         CmbDelai.ResetText()
-        ChecRevisionPrix.Checked = False
+        'ChecRevisionPrix.Checked = False
         DateReunion.EditValue = Nothing
         HeureReunion.EditValue = Nothing
         NumGroupement.Value = 0
@@ -1429,10 +1458,10 @@ Public Class NewDao
         FormePaiement.ResetText()
         PrctLot.ResetText()
         PrctArticle.ResetText()
-        MonaieAcheteur.Checked = False
-        AutorisationFabrican.Checked = False
-        ServiceVente.Checked = False
-        MargePreferenc.Checked = False
+        'MonaieAcheteur.Checked = False
+        ' AutorisationFabrican.Checked = False
+        ' ServiceVente.Checked = False
+        ' MargePreferenc.Checked = False
         CheckNonEntite.Checked = True
         AdresslieuOuvr.ResetText()
         VillelieuOuvr.ResetText()
@@ -1449,6 +1478,7 @@ Public Class NewDao
         TxtSaisiTextSection.ResetText()
         NomEmprunteur.ResetText()
         TxtMaitreOuvrag.ResetText()
+        ProjetSimilaireJustificatif.ResetText()
         GridSection.Rows.Clear()
         InitCojo()
         Dim dtCojo As DataTable = LgCojo.DataSource
@@ -1461,6 +1491,18 @@ Public Class NewDao
         TxtAdresseDesigneConcil.ResetText()
         TxtCvConcil.ResetText()
         CmbTitreCojo.ResetText()
+        VisiteduSite.Checked = False
+        Variante.Checked = False
+        CheckVoiElectro.Checked = False
+        DocumentExige.Checked = False
+        GarantiExige.Checked = False
+        AutorisationFabrican.Checked = False
+        FormationUtilisateur.Checked = False
+        ServiceApresVente.Checked = False
+        MaterielRequis.Checked = False
+        AttestationCNPS.Checked = False
+        AttestationReguFiscal.Checked = False
+
     End Sub
 
     Private Sub ItemDevise()
@@ -1532,7 +1574,7 @@ Public Class NewDao
             Exit Sub
         End If
         If TxtMailCojo.IsRequiredControl("Veuillez entrer l'email") Then
-            TxtMailCojo.select
+            TxtMailCojo.Select()
             Exit Sub
         End If
 
@@ -1573,7 +1615,7 @@ Public Class NewDao
     End Sub
 
     Private Sub ContextMenuStripCojo_Opening(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStripCojo.Opening
-        If ViewCojo.RowCount = 0 Then
+        If AfficherDossier = True Or ViewCojo.RowCount = 0 Then
             e.Cancel = True
         End If
     End Sub
@@ -1597,7 +1639,7 @@ Public Class NewDao
 
     Private Sub ToolStripMenuSupprimerCojo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuSupprimerCojo.Click
         If ViewCojo.RowCount > 0 Then
-            If ConfirmMsg("Confirmez vous la suppression de ce memebre ?") = DialogResult.Yes Then
+            If ConfirmMsg("Confirmez-vous la suppression de ce membre ?") = DialogResult.Yes Then
                 Dim IdCojo As String = ViewCojo.GetFocusedRowCellValue("IdCommission")
                 ViewCojo.GetFocusedDataRow().Delete()
                 If IdCojo <> "" Then
@@ -1638,6 +1680,9 @@ Public Class NewDao
     Private Sub LoadPageDonnePartic(ByVal NumDossier As String)
         InitDonneesPartic()
         If Not PageDonnePartic.PageEnabled Then PageDonnePartic.PageEnabled = True
+
+        'Remplir ComboSection
+        RemplirCombSection(cmbTypeMarche.Text)
 
         If IsNothing(CurrentDao) Then
             Dim dtDao As DataTable = ExcecuteSelectQuery("SELECT * FROM t_dao WHERE NumeroDAO='" & NumDossier & "'")
@@ -1691,6 +1736,8 @@ Public Class NewDao
                 DateReunion.EditValue = CDate(CurrentDao("DateReunionPrepa").ToString()).ToShortDateString()
                 HeureReunion.EditValue = CDate(CurrentDao("DateReunionPrepa").ToString()).ToLongTimeString
             End If
+            AttestationCNPS.Checked = IIf(CurrentDao("AttestationCNPS").ToString = "OUI", True, False).ToString
+            AttestationReguFiscal.Checked = IIf(CurrentDao("AttestationReguFiscal").ToString = "OUI", True, False).ToString
 
             'If Val(CurrentDao("NbreMembregroup").ToString()) = 0 Then
             NumGroupement.Value = Val(CurrentDao("NbreMembregroup").ToString())
@@ -1798,18 +1845,45 @@ Public Class NewDao
                 NumEclaircissement.Select()
                 Return False
             End If
+            If DocumentExige.Checked = True And NatureDocument.Text = "" Then
+                SuccesMsg("Veuillez saisir la nature de la documentation exigée.")
+                NatureDocument.Select()
+                Return False
+            End If
+            If GarantiExige.Checked = True And Val(DelaiGarantie.Text) <= 0 Then
+                SuccesMsg("Veuillez definir le délai de la garantie.")
+                DelaiGarantie.Select()
+                Return False
+            End If
+            If CheckVoiElectro.Checked = True And PrecedurVoiElectronic.Text = "" Then
+                SuccesMsg("Veuillez decrire la procédure de remise des offres par voie electronique.")
+                PrecedurVoiElectronic.Select()
+                Return False
+            End If
+            If Variante.Checked = True And ListeVariante.Text = "" Then
+                SuccesMsg("Veuillez saisir les variantes autorisées.")
+                ListeVariante.Select()
+                Return False
+            End If
+            If VisiteduSite.Checked = True And DateVisite.Text = "" Then
+                SuccesMsg("Veuillez sélectionner la date de la visite.")
+                DateVisite.Select()
+                Return False
+            End If
 
             If RdConcilOui.Checked = True Then
                 If TxtCvConcil.Text.Trim() <> String.Empty Then
                     If File.Exists(CvConcil) Then
                         Try
-                            Dim DossierDAO As String = FormatFileName(line & "\DAO\" & TypeMarche & "\" & MethodMarche & "\" & NumDossier, "")
+                            Dim DossierDAO As String = line & "\DAO\" & TypeMarche & "\" & MethodMarche & "\" & FormatFileName(TxtNumDao.Text.Replace(":", ""), "")
                             If Not Directory.Exists(DossierDAO) Then
                                 Directory.CreateDirectory(DossierDAO)
                             End If
+
                             If Not File.Exists(DossierDAO & "\" & TxtCvConcil.Text) Then
                                 File.Copy(CvConcil, DossierDAO & "\" & TxtCvConcil.Text, True)
                             End If
+
                         Catch exs As IOException
                             SuccesMsg("Un exemplaire du fichier est uliser par une autre application" & vbNewLine & "Veuillez le fermer svp")
                             Return False
@@ -1822,7 +1896,7 @@ Public Class NewDao
             End If
 
             'Mise a jour dans table Dao ********
-            query = "Update T_DAO set NomConciliateur='" & EnleverApost(TxtNomConcil.Text) & "', MontConciliateur='" & TxtRemunConcil.Text.Trim().Replace(" ", "") & "/" & CmbRemunConcil.Text.Trim() & "', DesignConciliateur='" & EnleverApost(TxtDesigneConcil.Text) & "', DesignAdresse='" & EnleverApost(TxtAdresseDesigneConcil.Text) & "', "
+            query = "Update T_DAO set NomConciliateur='" & EnleverApost(TxtNomConcil.Text) & "', MontConciliateur='" & TxtRemunConcil.Text.Trim().Replace(" ", "") & "/" & CmbRemunConcil.Text.Trim() & "', DesignConciliateur='" & EnleverApost(TxtDesigneConcil.Text) & "', DesignAdresse='" & EnleverApost(TxtAdresseDesigneConcil.Text) & "', AttestationCNPS = '" & IIf(AttestationCNPS.Checked = True, "OUI", "NON").ToString & "', AttestationReguFiscal ='" & IIf(AttestationReguFiscal.Checked = True, "OUI", "NON").ToString & "',"
             query &= "DelaiExecution='" & NumDelai.Value.ToString & " " & CmbDelai.Text & "', NbCopieSoumission='" & NumNbreCopie.Value.ToString & "', ValiditeOffre='" & NumValidite.Value.ToString & " " & CmbValidite.Text & "', MonnaieEvalDAO='" & CmbDevise.Text & "', LangueSoumission='" & CmbLangue.Text & "', MeOuvrageDelegue='" & IIf(CheckEntite.Checked = True, EnleverApost(TxtMaitreOuvrag.Text), "").ToString & "', "
             query &= " CvConciliateur='" & IIf(RdConcilOui.Checked = True, EnleverApost(TxtCvConcil.Text.Trim()), "").ToString & "', NbreMembreGroup='" & NumGroupement.Value.ToString & "', NomEmprunteur='" & EnleverApost(NomEmprunteur.Text) & "', DateReunionPrepa='" & DateReunion.Text & " " & HeureReunion.Text & "', NbCopieSoumission='" & NumNbreCopie.Value.ToString & "' where NumeroDAO='" & NumDossier & "' and CodeProjet='" & ProjetEnCours & "'"
             ExecuteNonQuery(query)
@@ -1882,20 +1956,32 @@ Public Class NewDao
     Private Sub UpdateDAO_DonneeParticulier(ByVal NumeroDAO As String, Optional TypeRequette As String = "")
         Try
             If TypeRequette = "" Then
-                query = "UPDATE t_dao_donneesparticuliers set ChecRevisionPrix='" & IIf(ChecRevisionPrix.Checked = True, "OUI", "NON").ToString & "', MonaieAcheteur='" & IIf(MonaieAcheteur.Checked = True, "OUI", "NON").ToString & "', AutorisationFabrican='" & IIf(AutorisationFabrican.Checked = True, "OUI", "NON").ToString & "', ServiceVente='" & IIf(ServiceVente.Checked = True, "OUI", "NON").ToString & "',"
-                query &= "MargePreferenc='" & IIf(MargePreferenc.Checked = True, "OUI", "NON").ToString & "', AdresslieuOuvr='" & EnleverApost(AdresslieuOuvr.Text) & "', VillelieuOuvr='" & EnleverApost(VillelieuOuvr.Text) & "', BuroOuver='" & EnleverApost(BuroOuver.Text) & "', PaysOuvertur='" & EnleverApost(PaysOuvertur.Text) & "',  DateSource='" & DateSource.Text & "', SourceOfficielle='" & EnleverApost(SourceOfficielle.Text) & "', "
-                query &= "ModeAchemin='" & EnleverApost(ModeAchemin.Text) & "', FormePaiement='" & EnleverApost(FormePaiement.Text) & "', PrctLot='" & EnleverApost(PrctLot.Text) & "', PrctArticle='" & EnleverApost(PrctArticle.Text) & "',  NomReclama='" & EnleverApost(NomReclama.Text) & "', TitreReclam='" & EnleverApost(TitreReclam.Text) & "',"
+                query = "UPDATE t_dao_donneesparticuliers set DocumentExige='" & IIf(DocumentExige.Checked = True, "OUI", "NON").ToString & "', NatureDocument='" & IIf(DocumentExige.Checked = True, EnleverApost(NatureDocument.Text), "").ToString & "', AutorisationFabrican='" & IIf(AutorisationFabrican.Checked = True, "OUI", "NON").ToString & "', MaterielRequis='" & IIf(MaterielRequis.Checked = True, "OUI", "NON").ToString & "', FormationUtilisateur='" & IIf(FormationUtilisateur.Checked = True, "OUI", "NON").ToString & "', ServiceApresVente='" & IIf(ServiceApresVente.Checked = True, "OUI", "NON").ToString & "',"
+                query &= "GarantiExige='" & IIf(GarantiExige.Checked = True, "OUI", "NON").ToString & "', DelaiGarantie='" & IIf(GarantiExige.Checked = True, DelaiGarantie.Text, 0).ToString & "', CheckVoiElectro='" & IIf(CheckVoiElectro.Checked = True, "OUI", "NON").ToString & "', AdresslieuOuvr='" & EnleverApost(AdresslieuOuvr.Text) & "', VillelieuOuvr='" & EnleverApost(VillelieuOuvr.Text) & "', BuroOuver='" & EnleverApost(BuroOuver.Text) & "', PaysOuvertur='" & EnleverApost(PaysOuvertur.Text) & "',  DateSource='" & DateSource.Text & "', SourceOfficielle='" & EnleverApost(SourceOfficielle.Text) & "', "
+                query &= "PrecedurVoiElectronic='" & IIf(CheckVoiElectro.Checked = True, EnleverApost(PrecedurVoiElectronic.Text), "").ToString & "', Variante='" & IIf(Variante.Checked = True, "OUI", "NON").ToString & "', ListeVariante='" & IIf(Variante.Checked = True, EnleverApost(ListeVariante.Text), "").ToString & "', VisiteduSite='" & IIf(VisiteduSite.Checked = True, "OUI", "NON").ToString & "', DateVisite='" & IIf(VisiteduSite.Checked = True, DateVisite.Text, "").ToString & "', "
+                query &= "ModeAchemin='" & EnleverApost(ModeAchemin.Text) & "', FormePaiement='" & EnleverApost(FormePaiement.Text) & "', PrctLot='" & EnleverApost(PrctLot.Text) & "', PrctArticle='" & EnleverApost(PrctArticle.Text) & "',  NomReclama='" & EnleverApost(NomReclama.Text) & "', TitreReclam='" & EnleverApost(TitreReclam.Text) & "', ProjetSimilaireJustificatif='" & EnleverApost(ProjetSimilaireJustificatif.Text) & "', "
                 query &= "NumEclaircissement='" & NumEclaircissement.Value.ToString & " " & CmbEclaircissement.Text & "', AdresseReclam='" & EnleverApost(AdresseReclam.Text) & "', AgenceReclam='" & EnleverApost(AgenceReclam.Text) & "', TelecopieReclam ='" & EnleverApost(TelecopieReclam.Text) & "', DateSaisie='" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "' where NumeroDAO='" & NumeroDAO & "' and CodeProjet='" & ProjetEnCours & "'"
                 ExecuteNonQuery(query)
             Else
                 query = "SELECT * FROM t_dao_donneesparticuliers WHERE NumeroDAO='" & NumeroDAO & "' and CodeProjet='" & ProjetEnCours & "'"
                 Dim dt As DataTable = ExcecuteSelectQuery(query)
                 For Each rw In dt.Rows
-                    ChecRevisionPrix.Checked = IIf(rw("ChecRevisionPrix").ToString = "OUI", True, False).ToString
-                    MonaieAcheteur.Checked = IIf(rw("MonaieAcheteur").ToString = "OUI", True, False).ToString
                     AutorisationFabrican.Checked = IIf(rw("AutorisationFabrican").ToString = "OUI", True, False).ToString
-                    ServiceVente.Checked = IIf(rw("ServiceVente").ToString = "OUI", True, False).ToString
-                    MargePreferenc.Checked = IIf(rw("MargePreferenc").ToString = "OUI", True, False).ToString
+                    MaterielRequis.Checked = IIf(rw("MaterielRequis").ToString = "OUI", True, False).ToString
+                    FormationUtilisateur.Checked = IIf(rw("FormationUtilisateur").ToString = "OUI", True, False).ToString
+                    ServiceApresVente.Checked = IIf(rw("ServiceApresVente").ToString = "OUI", True, False).ToString
+
+                    DocumentExige.Checked = IIf(rw("DocumentExige").ToString = "OUI", True, False).ToString
+                    NatureDocument.Text = IIf(rw("DocumentExige").ToString = "OUI", MettreApost(rw("NatureDocument").ToString), "").ToString
+                    GarantiExige.Checked = IIf(rw("GarantiExige").ToString = "OUI", True, False).ToString
+                    DelaiGarantie.Value = IIf(rw("GarantiExige").ToString = "OUI", Val(rw("DelaiGarantie").ToString), 0).ToString
+                    CheckVoiElectro.Checked = IIf(rw("CheckVoiElectro").ToString = "OUI", True, False).ToString
+                    PrecedurVoiElectronic.Text = IIf(rw("CheckVoiElectro").ToString = "OUI", MettreApost(rw("PrecedurVoiElectronic").ToString), "").ToString
+
+                    Variante.Checked = IIf(rw("Variante").ToString = "OUI", True, False).ToString
+                    ListeVariante.Text = IIf(rw("Variante").ToString = "OUI", MettreApost(rw("ListeVariante").ToString), "").ToString
+                    VisiteduSite.Checked = IIf(rw("VisiteduSite").ToString = "OUI", True, False).ToString
+                    DateVisite.Text = IIf(rw("VisiteduSite").ToString = "OUI", MettreApost(rw("DateVisite").ToString), "").ToString
 
                     ModeAchemin.Text = MettreApost(rw("ModeAchemin").ToString)
                     FormePaiement.Text = MettreApost(rw("FormePaiement").ToString)
@@ -1912,6 +1998,7 @@ Public Class NewDao
                     AdresseReclam.Text = MettreApost(rw("AdresseReclam").ToString)
                     AgenceReclam.Text = MettreApost(rw("AgenceReclam").ToString)
                     TelecopieReclam.Text = MettreApost(rw("TelecopieReclam").ToString)
+                    ProjetSimilaireJustificatif.Text = MettreApost(rw("ProjetSimilaireJustificatif").ToString)
 
                     Dim NumEclai As String() = rw("NumEclaircissement").ToString.Split(" ")
                     NumEclaircissement.Text = Val(NumEclai(0))
@@ -1925,14 +2012,6 @@ Public Class NewDao
         End Try
     End Sub
 
-
-    'Private Sub CombSection_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CombSection.TextChanged
-    '    If CombSection.Text.Trim <> "" Then
-    '        TxtSaisiTextSection.Properties.ReadOnly = False
-    '    Else
-    '        TxtSaisiTextSection.Properties.ReadOnly = True
-    '    End If
-    'End Sub
 
     Private Sub BtAjoutSection_Click(sender As Object, e As EventArgs) Handles BtAjoutSection.Click
 
@@ -1971,7 +2050,7 @@ Public Class NewDao
         Try
             If GridSection.RowCount > 0 Then
                 Dim Index = GridSection.CurrentRow.Index
-                If ConfirmMsg("Êtes-vous sûr de vouloir supprimé la ligne N° " & Index + 1 & "?") = DialogResult.Yes Then
+                If ConfirmMsg("Êtes-vous sûr de vouloir supprimer la ligne N° " & Index + 1 & "?.") = DialogResult.Yes Then
                     Dim RefSection As String = GridSection.Rows.Item(Index).Cells("RefSection").Value.ToString
                     If RefSection.ToString <> "" Then
                         ExecuteNonQuery("delete from t_dao_section where RefSection='" & RefSection & "'")
@@ -1988,26 +2067,216 @@ Public Class NewDao
         End Try
     End Sub
 
+    Private Sub RemplirCombSection(TypeMarche As String)
+        Try
+            Dim CodeSection As Array
+            Dim ok As Boolean = False
+            If (TypeMarche.ToString.ToLower = "fournitures") Then
+                If TxtMethodeMarche.Text.ToUpper = "AOI" Or TxtMethodeMarche.Text.ToUpper = "AON" Then
+                    CodeSection = {"IS 1.2(a)", "IS 4.5", "IS 4.8(a), 4.8(b) et 5.1", "IS 11.1(j)", "IS 13.1", "IS 14.5", "IS 14.7", "IS 14.8(b)(i) et (c)(v)", "IS 14.8(a)(iii)(ii) et (c)(v)", "IS 15.1", "IS 16.4", "IS 17.2(a)", "IS 17.2(b)", "IS 18.3(a)", "IS 19.1", "IS 19.3(d)", "IS 19.9(a)", "IS 19.9(b)", "IS 20.3", "IS 22.1(a)", "IS 22.1(b)", "IS 25.1", "IS 25.6", "IS 30.3", "IS 33.1", "IS 34.6(a)", "IS 34.6(b)", "IS 34.6(c)", "IS 34.6(d)", "IS 34.6(e)", "IS 34.6(f)", "IS 34.6(g)", "IS 42.1(a)", "IS 42.1(b)", "IS 45.1"}
+                    ok = True
+                End If
+            ElseIf (TypeMarche.ToString.ToLower = "Travaux".ToLower) Then
+                If TxtMethodeMarche.Text.ToUpper = "AOI" Or TxtMethodeMarche.Text.ToUpper = "AON" Then
+                    CodeSection = {"IS 1.2(a)", "IS 4.5", "IS 11.1(h)", "IS 13.1", "IS 13.2", "IS 13.4", "IS 14.5", "IS 18.3(a)", "IS 19.3(d)", "IS 19.9", "IS 20.3", "IS 25.6", "IS 30.3", "IS 33.1", "IS 34.2", "IS 47.1"}
+                    ok = True
+                End If
+            End If
+            CombSection.ResetText()
+            CombSection.Properties.Items.Clear()
+
+            If ok = True Then
+                For j = 0 To CodeSection.Length - 1
+                    CombSection.Properties.Items.Add("Section " & CodeSection(j).ToString)
+                Next
+            End If
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+
     Private Sub GridSection_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridSection.CellDoubleClick
-        If GridSection.RowCount > 0 Then
+        If GridSection.RowCount > 0 And AfficherDossier = False Then
             IndexActive = GridSection.CurrentRow.Index
             Dim CodeSection As String = GridSection.Rows.Item(IndexActive).Cells("CodeSection").Value
             NomGridView = "GridSection"
             LigneaModifier = True
             TxtSaisiTextSection.Text = GridSection.Rows.Item(IndexActive).Cells("DescriptionSection").Value
-            CombSection.Text = IIf(CodeSection = "IE (Inspections et Essais)" Or CodeSection = "ST(Spécification techique)", CodeSection, "Section " & CodeSection).ToString
+            CombSection.Text = IIf(CodeSection = "Attestation CNPS" Or CodeSection = "Attestation de régularité fiscale", CodeSection, "Section " & CodeSection).ToString
             CombSection.Enabled = False
         End If
     End Sub
 
     Private Sub CombSection_TextChanged(sender As Object, e As EventArgs) Handles CombSection.TextChanged
-        TxtTextSection.Text = GetTextSection(CombSection.Text.Replace("Section ", "").Trim)
+        TxtTextSection.Text = GetTextSection(CombSection.Text.Replace("Section ", "").Trim, cmbTypeMarche.Text)
         If CombSection.Text.Trim <> "" Then
             TxtSection.Properties.ReadOnly = False
         Else
             TxtSection.Properties.ReadOnly = True
         End If
     End Sub
+
+    Private Function GetTextSection(CodeSection As String, TypeMarche As String) As String
+        Try
+            'If CodeSection.ToString = "ST(Spécification techique)" Then
+            'Return "[insérer une description détaillée des specification technique]"
+            'ElseIf CodeSection.ToString = "IE (Inspections et Essais)" Then
+            'Return "[insérer la liste des inspections et des tests]."
+
+            If TypeMarche.ToString.ToLower = "fournitures" Then
+                'If TxtMethodeMarche.Text.ToUpper = "AOI" Or TxtMethodeMarche.Text.ToUpper = "AON" Then
+
+                If CodeSection.ToString = "IS 1.2(a)" Then
+                    Return "[Insérer l'identification du système électronique et l’adresse url ou le lien, Insérer lesdits aspects]"
+                ElseIf CodeSection.ToString = "IS 4.8(a),4.8(b) et 5.1" Then
+                    Return "[insérer la liste des pays inéligibles, ou s'il n’y en a pas, indiquer «aucun»]"
+                ElseIf CodeSection.ToString = "IS 11.1(j)" Then
+                    Return "[Insérer la liste des documents, si nécessaire, autres que ceux déjà mentionnés à l'article 11.1 des IS]"
+                ElseIf CodeSection.ToString = "IS 13.1" Then
+                    Return "[Les variantes [insérer « seront » ou « ne seront pas »] prises en compte]."
+                ElseIf CodeSection.ToString = "IS 14.5" Then
+                    Return "[Les prix proposés par le Soumissionnaire [insérer « seront » ou « ne seront pas »] des prix révisables]."
+                ElseIf CodeSection.ToString = "IS 14.7" Then
+                    Return "[L’édition des Incoterms à laquelle se référer est : [insérer la date d’édition en vigueur]."
+                ElseIf CodeSection.ToString = "IS 14.8(b)(i) et (c)(v)" Then
+                    Return "[Le lieu de destination est : [insérer le nom ; assurer la cohérence avec la définition de l‘ Incoterm utilisé]."
+                ElseIf CodeSection.ToString = "IS 14.8(a)(iii), b(ii) et (c)(v)" Then
+                    Return "[Insérer le nom du lieu d’utilisation des Fournitures]"
+                ElseIf CodeSection.ToString = "IS 15.1" Then
+                    Return "Le Soumissionnaire [insérer « est » ou « n’est pas »] tenu d’exprimer dans la monnaie du pays de l’Acheteur la fraction du prix de son offre correspondant à des dépenses encourues dans cette même monnaie."
+                ElseIf CodeSection.ToString = "IS 16.4" Then
+                    Return "[Insérer la période de fonctionnement prévue pour les fournitures (en vue des besoins en pièces de rechange)]"
+                ElseIf CodeSection.ToString = "IS 17.2(a)" Then
+                    Return "L ‘Autorisation du Fabriquant [insérer « est » ou « n’est pas »] requise."
+                ElseIf CodeSection.ToString = "IS 17.2(b)" Then
+                    Return "Un service après-vente [insérer « est » ou « n’est pas »] requis."
+                ElseIf CodeSection.ToString = "IS 18.3(a)" Then
+                    Return "[Insérer la méthode ou indiquer,comment il sera indiqué dans la demande de prorogation de validité des offres]. "
+                ElseIf CodeSection.ToString = "IS 19.1" Then
+                    Return "[Une garantie d’offre [Insérer « est » ou « n’est pas »] requise]."
+                ElseIf CodeSection.ToString = "IS 19.3(d)" Then
+                    Return "[Insérer les noms des autres types de garanties acceptables ou insérer «Néant» si une garantie d’offre n’est pas requise sous IS 19.1 ou si aucune forme de garantie d’offre autre que celles listées sous IS 19.3(a) à (c) n’est acceptable.]"
+                ElseIf CodeSection.ToString = "IS 19.9(a)" Then
+                    Return "[Inclure la disposition suivante et les informations correspondantes uniquement dans le cas où, conformément à l’article 19.1 des IS, une garantie d’offre n’est pas requise et que l’Acheteur prévoit d’exclure, pour une durée déterminée, le Soumissionnaire qui a commis un des actes mentionnés à l’article 19.9 (a) et (b) des IS. Dans le cas contraire, omettre cette disposition.]"
+                ElseIf CodeSection.ToString = "IS 19.9(b)" Then
+                    Return "[Si le Soumissionnaire commet un des actes décrits aux paragraphes (a) ou (b) du présent article, l’Acheteur l’exclura de toute attribution de marché(s) pour une période de [insérer le nombre d’années] ______  ans.]"
+                ElseIf CodeSection.ToString = "IS 20.3" Then
+                    Return "[insérer l’intitulé et la description des documents nécessaires à titre d’attestation de procuration (ou pouvoir) du signataire de l’offre.]"
+                ElseIf CodeSection.ToString = "IS 22.1(a)" Then
+                    Return "[Le soumissionnaire [insérer « aura » ou « n’aura pas »] l’option de soumettre son offre par voie électronique.]"
+                ElseIf CodeSection.ToString = "IS 22.1(b)" Then
+                    Return "[Si les Soumissionnaires peuvent soumettre leurs offres par voie électronique, la procédure de soumission est la suivante : [insérer une description de la procédure de soumission des offres par voie électronique le cas échéant]"
+                ElseIf CodeSection.ToString = "IS 25.1" Then
+                    Return "[Les procédures d’ouverture des plis remis par voie électronique, lorsqu’elles sont applicables, sont les suivantes : [insérer une description des procédures d’ouverture des plis par voie électronique.] "
+                ElseIf CodeSection.ToString = "IS 25.6" Then
+                    Return "[La Soumission et les Bordereaux des Prix seront paraphés par les [insérer le nombre des représentants.]"
+                ElseIf CodeSection.ToString = "IS 30.3" Then
+                    Return "[L’ajustement sera calculé comme étant [insérer « la moyenne » ou « la valeur la plus élevée »] _____________ du prix proposé par les autres soumissionnaires ayant présenté une offre conforme.]"
+                ElseIf CodeSection.ToString = "IS 33.1" Then
+                    Return "[Une marge de préférence [insérer « sera » ou « ne sera pas » appliquée.]"
+                ElseIf CodeSection.ToString = "IS 34.6(a)" Then
+                    Return "[Variation par rapport au calendrier de livraison : [insérer « oui » ou « non ». Si oui insérer le facteur d’ajustement dans la Section III, critères d’évaluation et de qualification].]"
+                ElseIf CodeSection.ToString = "IS 34.6(b)" Then
+                    Return "[Variation par rapport au calendrier de paiement : [insérer « oui »ou « non ». Si oui, insérer le facteur d’ajustement dans la Section III, critères d’évaluation et de qualification].]"
+                ElseIf CodeSection.ToString = "IS 34.6(c)" Then
+                    Return "[Le coût de remplacement des composants clés, des pièces détachées, et du service : [insérer « oui » ou « non ». Si oui, insérer méthodologie et critères dans la Section III, critères d’évaluation et de qualification.]]"
+                ElseIf CodeSection.ToString = "IS 34.6(d)" Then
+                    Return "[Disponibilité dans le Pays de l’Acheteur des pièces détachées et du service après-vente pour les équipements offerts dans l’offre : [insérer « oui » ou « non ». Si oui, insérer la méthodologie et les critères dans la Section III, critères d’évaluation et de qualification].]"
+                ElseIf CodeSection.ToString = "IS 34.6(e)" Then
+                    Return "[Coûts de fonctionnement et d’entretien pendant la durée de vie des équipements : [insérer « oui » ou « non ». Si oui, insérer la méthodologie et les critères d’évaluation dans la Section III, critères d’évaluation et de qualification.]]"
+                ElseIf CodeSection.ToString = "IS 34.6(f)" Then
+                    Return "[Performance et productivité des équipements offerts [insérer « oui »ou »non ». Si oui, insérer la méthodologie et les critères dans la Section III, critères d’évaluation et de qualification]]"
+                ElseIf CodeSection.ToString = "IS 34.6(g)" Then
+                    Return "[Insérer tout autre critère. Si autre(s) critère(s), insérer la méthodologie(s) et les critères d’évaluation dans la Section III, critères d’évaluation et de qualification]"
+                ElseIf CodeSection.ToString = "IS 42.1(a)" Then
+                    Return "[Les quantités peuvent être augmentées d’un pourcentage maximum égal à : [insérer pourcentage].]"
+                ElseIf CodeSection.ToString = "IS 42.1(b)" Then
+                    Return "[Les quantités peuvent être réduites d’un pourcentage maximum égal à : [insérer pourcentage].]"
+                ElseIf CodeSection.ToString = "IS 45.1" Then
+                    Return "[Le Soumissionnaire retenu [Insérer « aura » ou « n'aura pas » ] à fournir le Formulaire de divulgation des bénéficiaires effectifs.]"
+                End If
+
+                'ElseIf CodeSection.ToString = "Attestion CNPS" Then
+                '    Return "[Avez-vous besion d'une attestion CNPS ? [Insérer « OUI » ou « NON » ]]"
+                'ElseIf CodeSection.ToString = "Attestation de régularité fiscale" Then
+                '    Return "[Avez-vous besion d'une attestation de régularité fiscale ? [Insérer « OUI » ou « NON » ]]"
+                'End If
+
+            ElseIf TypeMarche.ToLower = "Travaux".ToLower Then
+                ' If TxtMethodeMarche.Text.ToUpper = "AOI" Or TxtMethodeMarche.Text.ToUpper = "AON" Then
+
+                If CodeSection.ToString = "IS 1.2(a)" Then
+                        Return "[Insérer la description du système d’achat électronique utilisé par le Maître de l’Ouvrage]"
+                    ElseIf CodeSection.ToString = "IS 4.5" Then
+                        Return "[Indiquer l’adresse électronique]"
+                    ElseIf CodeSection.ToString = "IS 11.1(h)" Then
+                        Return ": [Insérer la liste des documents, si nécessaire, autres que ceux déjà mentionnés à l’article 11.1 des IS et qui doivent obligatoirement être joints à l’offre.]"
+                    ElseIf CodeSection.ToString = "IS 13.1" Then
+                        Return "[Les variantes [insérer « sont » ou « ne sont pas »] autorisées]."
+                    ElseIf CodeSection.ToString = "IS 13.2" Then
+                        Return "Des délais d’exécution des travaux différents de celui mentionné [insérer « sont » ou « ne sont pas » autorisés.]"
+                    ElseIf CodeSection.ToString = "IS 13.4" Then
+                        Return "[Insérer les éléments des travaux et les variantes spécifiées]."
+                    ElseIf CodeSection.ToString = "IS 14.5" Then
+                        Return "[Les prix proposés par le Soumissionnaire seront [insérer « révisables » ou « fermes »]]."
+                    ElseIf CodeSection.ToString = "IS 18.3(a)" Then
+                        Return "Dans le cas d’un marché à prix ferme, le Montant du marché sera le Montant de l’Offre actualisée de la manière suivante : [insérer la méthode ou indiquer « comme il sera indiqué dans la demande de prorogation de validité des offres »]."
+                    ElseIf CodeSection.ToString = "IS 19.3(d)" Then
+                        Return "[Insérer les noms des autres types de garanties acceptables ou insérer « Néant » si une garantie d’offre n’est pas requise sous IS 19.1 ou si aucune forme de garantie d’offre autre que celles listées sous IS 19.3(a) à (c) n’est acceptable.]"
+                    ElseIf CodeSection.ToString = "IS 19.9" Then
+                        Return "Si le Soumissionnaire commet un des actes décrits aux paragraphes (a) ou (b) du présent article, le Maître de l’Ouvrage l’exclura de toute attribution de marché(s) pour une période de [insérer le nombre d’années] ans."
+                    ElseIf CodeSection.ToString = "IS 20.3" Then
+                        Return "[Insérer l’intitulé et la description des documents nécessaires à titre d’attestation de procuration (ou pouvoir) du signataire de l’offre.]"
+                    ElseIf CodeSection.ToString = "IS 25.6" Then
+                        Return "[Insérer le nombre des représentants]"
+                    ElseIf CodeSection.ToString = "IS 30.3" Then
+                        Return "[L’ajustement sera calculé comme étant la [insérer soit « valeur moyenne »] ou [« valeur la plus élevée »] des prix proposés par les autres soumissionnaires ayant présenté une offre conforme pour l’élément en question.]"
+                    ElseIf CodeSection.ToString = "IS 33.1" Then
+                        Return "[Une marge de préférence [Insérer « sera » ou « ne sera pas »] accordée aux entreprises nationales]"
+                    ElseIf CodeSection.ToString = "IS 34.2" Then
+                        Return "Le pourcentage maximum des Travaux pouvant être sous-traités par l’Entrepreneur est de [spécifier ___%_ « du montant total du Marché » ]"
+                    ElseIf CodeSection.ToString = "IS 47.1" Then
+                        Return "Le Soumissionnaire retenu [aura] ou [n’aura pas] à fournir le Formulaire de divulgation des bénéficiaires effectifs."
+                    End If
+
+                'ElseIf CodeSection.ToString = "Attestion CNPS" Then
+                '    Return "[Avez-vous besion d'une attestion CNPS ? [Insérer « OUI » ou « NON » ]]"
+                'ElseIf CodeSection.ToString = "Attestation de régularité fiscale" Then
+                '    Return "[Avez-vous besion d'une attestation de régularité fiscale ? [Insérer « OUI » ou « NON » ]]"
+                'End If
+
+                'ElseIf CodeSection.ToString = "IS 34.6 (i)" Then
+                '    Return "[Insérer le nombre d’années de la vie utile]"
+                'ElseIf CodeSection.ToString = "IS 34.6 (ii)" Then
+                '    Return "[Insérer le taux d’actualisation]"
+                'ElseIf CodeSection.ToString = "IS 34.6 (iii)" Then
+                '    Return "[Insérer la méthodologie indiquer comment les coûts seront calculés] "
+                'ElseIf CodeSection.ToString = "IS 34.6 (iv)" Then
+                '    Return "[Insérer les renseignements que le soumissionnaire devra fournir dans son offres, incluant des prix] "
+                'ElseIf CodeSection.ToString = "IS 34.6 (f)" Then
+                '    Return "[Insérer la méthode et les facteurs applicables, le cas échéant]"
+                'ElseIf CodeSection.ToString = "IS 37.1 (a) (1)" Then
+                '    Return "[Insérer la liste des exigences]"
+                'ElseIf CodeSection.ToString = "IS 37.1 (a) (2)" Then
+                '    Return "[Insérer la/les condition(s) d’utilisation]"
+                'ElseIf CodeSection.ToString = "CCAG 26.1" Then
+                '    Return "[Décrire les types, fréquences, procédures utilisées pour réaliser ces inspections et ces essais]"
+                'ElseIf CodeSection.ToString = "CCAG 26.2" Then
+                '    Return "[Insérer les lieux de réalisation des inspections et les essais] "
+                'ElseIf CodeSection.ToString = "CCAG 27.1" Then
+                '    Return "[Insérer le nombre % des pénalités de retard]"
+                'ElseIf CodeSection.ToString = "CCAG 28.3" Then
+                '    Return "[Insérer le(s) nombre(s) des périodes de garantie] "
+                'ElseIf CodeSection.ToString = "CCAG 28.5, CCAG 28.6" Then
+                '    Return "[Insérer le nombre de délai de réparation ou de remplacement (jours)] "
+                'ElseIf CodeSection.ToString = "CCAG 33.4" Then
+                '    Return "[Insérer le pourcentage approprié,de la diminution du Montant du Marché]"
+            End If
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+        Return ""
+    End Function
 
     Private Sub ChargerLesSection(ByVal NumDoss As String)
         CombSection.Text = ""
@@ -2031,6 +2300,56 @@ Public Class NewDao
             TxtMaitreOuvrag.Enabled = True
         Else
             TxtMaitreOuvrag.Enabled = False
+        End If
+    End Sub
+
+    Private Sub DocumentExige_CheckedChanged(sender As Object, e As EventArgs) Handles DocumentExige.CheckedChanged
+        If DocumentExige.Checked = True Then
+            NatureDocument.Enabled = True
+            NatureDocument.Select()
+        Else
+            NatureDocument.Enabled = False
+            NatureDocument.ResetText()
+        End If
+    End Sub
+
+    Private Sub GarantiExige_CheckedChanged(sender As Object, e As EventArgs) Handles GarantiExige.CheckedChanged
+        If GarantiExige.Checked = True Then
+            DelaiGarantie.Enabled = True
+            DelaiGarantie.Select()
+        Else
+            DelaiGarantie.Enabled = False
+            DelaiGarantie.Value = 0
+        End If
+    End Sub
+
+    Private Sub CheckVoiElectro_CheckedChanged(sender As Object, e As EventArgs) Handles CheckVoiElectro.CheckedChanged
+        If CheckVoiElectro.Checked = True Then
+            PrecedurVoiElectronic.Enabled = True
+            PrecedurVoiElectronic.Select()
+        Else
+            PrecedurVoiElectronic.Enabled = False
+            PrecedurVoiElectronic.ResetText()
+        End If
+    End Sub
+
+    Private Sub Variante_CheckedChanged(sender As Object, e As EventArgs) Handles Variante.CheckedChanged
+        If Variante.Checked = True Then
+            ListeVariante.Enabled = True
+            ListeVariante.Select()
+        Else
+            ListeVariante.Enabled = False
+            ListeVariante.ResetText()
+        End If
+    End Sub
+
+    Private Sub VisiteduSite_CheckedChanged(sender As Object, e As EventArgs) Handles VisiteduSite.CheckedChanged
+        If VisiteduSite.Checked = True Then
+            DateVisite.Enabled = True
+            DateVisite.Select()
+        Else
+            DateVisite.Enabled = False
+            DateVisite.EditValue = Nothing
         End If
     End Sub
 #End Region
@@ -2222,44 +2541,40 @@ Public Class NewDao
 
         Dim dt As DataTable = GridSpecifTech.DataSource
         dt.Rows.Clear()
-        TxtLieuLivraison.Text = ""
-        TxtLieuLivraison.Enabled = False
         TxtUniteBien.Text = ""
-        CmbUniteBien.Text = ""
-        CmbUniteBien.Enabled = False
-        NumQteBien.Value = 1
         NumQteBien.Enabled = False
-        TxtLibelleBien.Text = ""
-        TxtLibelleBien.Enabled = False
-        TxtRefArticle.Text = ""
         BtCategBien.Enabled = False
         TxtLibCategBien.Text = ""
+
         ViderSaisieBien()
         ViderSaisieCaract()
         LockSaisieBien(False)
-        LoadSpecTech()
+
+        'LoadSpecTech()
         TxtLibCategBien.ResetText()
         cmbLotSpecTech.ResetText()
         TxtLibLotSpecTech.ResetText()
         CmbSousLotSpecTech.ResetText()
         TxtSousLotSpecTech.ResetText()
         cmbLotSpecTech.Focus()
-        CodeSpecTechSup.Clear()
-        TxtLibelleserviceconnexe.ResetText()
-        ListServiConnex.DataSource = Nothing
-        'dtt.Rows.Clear()
+        'CodeSpecTechSup.Clear()
+        modifSpecTech = False
     End Sub
+
     Private Sub cmbLotSpecTech_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbLotSpecTech.SelectedIndexChanged
         TxtLibLotSpecTech.ResetText()
         CmbSousLotSpecTech.Properties.Items.Clear()
         CmbSousLotSpecTech.ResetText()
         TxtSousLotSpecTech.ResetText()
+
         If cmbLotSpecTech.SelectedIndex <> -1 Then
             If (NumDoss <> "") Then
                 query = "select LibelleLot,SousLot,RefLot from T_LotDAO where NumeroDAO='" & NumDoss & "' and CodeLot='" & cmbLotSpecTech.Text & "'"
                 Dim dt As DataTable = ExcecuteSelectQuery(query)
+                Dim RefLot As Decimal = 0
                 For Each rw As DataRow In dt.Rows
                     TxtLibLotSpecTech.Text = MettreApost(rw("LibelleLot").ToString)
+                    RefLot = rw("RefLot")
                     If Val(GetSousLot(cmbLotSpecTech.Text, NumDoss)(0)) = 0 Then
                         CmbSousLotSpecTech.Enabled = False
                     Else
@@ -2268,71 +2583,39 @@ Public Class NewDao
                 Next
 
                 If (CmbSousLotSpecTech.Enabled = False) Then
-                    BtCategBien.Enabled = True
+                    If AfficherDossier = False Then BtCategBien.Enabled = True
                     MajCmbUnite()
+                    'Chargement des caracteristiq
+                    ChargerLesSpecificationTechnique(cmbLotSpecTech.Text, "")
+                    ChargerListeConnexe(cmbLotSpecTech.Text, "")
                 Else
-                    BtCategBien.Enabled = False
-                    LesSousLots(GetRefLot(Val(cmbLotSpecTech.Text), NumDoss), CmbSousLotSpecTech)
+                    If AfficherDossier = False Then BtCategBien.Enabled = False
+                    LesSousLots(RefLot, CmbSousLotSpecTech)
                 End If
                 ViderSaisieBien()
                 TxtLibCategBien.ResetText()
             End If
         End If
-
-        If BtCategBien.Enabled = False Then
-            ListeSpecTech.Nodes.Clear()
-            ChargerGridSpecif(-1, -1) 'Pour vider
-        Else
-            ChargerGridSpecif(cmbLotSpecTech.SelectedIndex, CmbSousLotSpecTech.SelectedIndex)
-            actualiserListe(cmbLotSpecTech.Text, CmbSousLotSpecTech.Text)
-            'ListeSpecTech.Nodes.Clear()
-            'ListeSpecTech.BeginUnboundLoad()
-            'Dim parentForRootNodes As TreeListNode = Nothing
-            'query = "select * from T_SpecTechFourniture where NumeroDAO='" & NumDoss & "' and CodeLot='" & cmbLotSpecTech.Text & "' and CodeSousLot='" & CmbSousLotSpecTech.Text & "' order by CodeFournit"
-            'Dim dt2 As DataTable = ExcecuteSelectQuery(query)
-            'For Each rw In dt2.Rows
-            '    Dim rootNode As TreeListNode = ListeSpecTech.AppendNode(New Object() {rw("RefSpecFournit").ToString, MettreApost(rw("CodeFournit").ToString), MettreApost(rw("DescripFournit").ToString), rw("QteFournit").ToString & " " & MettreApost(rw("UniteFournit").ToString), MettreApost(rw("LieuLivraison").ToString), rw("CodeCategorie").ToString, rw("CodeLot").ToString, rw("CodeSousLot").ToString, False}, parentForRootNodes)
-            '    query = "select * from T_SpecTechCaract where RefSpecFournit='" & rw("RefSpecFournit").ToString & "'"
-            '    Dim dt3 As DataTable = ExcecuteSelectQuery(query)
-            '    For Each rw1 As DataRow In dt3.Rows
-            '        ListeSpecTech.AppendNode(New Object() {rw1("RefSpecCaract").ToString, "", "     - " & MettreApost(rw1("LibelleCaract").ToString) & "  :  " & MettreApost(rw1("ValeurCaract").ToString), "", "", "", "", "", False}, rootNode)
-            '    Next
-            'Next
-            'ListeSpecTech.EndUnboundLoad()
-        End If
-
     End Sub
     Private Sub CmbSousLotSpecTech_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CmbSousLotSpecTech.SelectedValueChanged
         If CmbSousLotSpecTech.SelectedIndex = -1 Then
             TxtSousLotSpecTech.ResetText()
-            ChargerGridSpecif(-1, -1) 'Pour vider
-            BtCategBien.Enabled = False
+            If AfficherDossier = False Then BtCategBien.Enabled = False
             Exit Sub
         Else
             query = "select LibelleSousLot from T_LotDAO_SousLot where CodeSousLot='" & CmbSousLotSpecTech.Text & "' and NumeroDAO='" & NumDoss & "' AND RefLot='" & GetRefLot(Val(cmbLotSpecTech.Text), NumDoss) & "' LIMIT 1"
             TxtSousLotSpecTech.Text = MettreApost(ExecuteScallar(query))
-            BtCategBien.Enabled = True
+            If AfficherDossier = False Then BtCategBien.Enabled = True
         End If
+        ViderSaisieBien()
+        TxtLibCategBien.ResetText()
 
-        ChargerGridSpecif(cmbLotSpecTech.SelectedIndex, CmbSousLotSpecTech.SelectedIndex)
-        actualiserListe(cmbLotSpecTech.Text, CmbSousLotSpecTech.Text)
-        'ListeSpecTech.Nodes.Clear()
-        'ListeSpecTech.BeginUnboundLoad()
-        'Dim parentForRootNodes As TreeListNode = Nothing
-        'query = "select * from T_SpecTechFourniture where NumeroDAO='" & NumDoss & "' and CodeLot='" & cmbLotSpecTech.Text & "' and CodeSousLot='" & CmbSousLotSpecTech.Text & "' order by CodeFournit"
-        'Dim dt2 As DataTable = ExcecuteSelectQuery(query)
-        'For Each rw In dt2.Rows
-        '    Dim rootNode As TreeListNode = ListeSpecTech.AppendNode(New Object() {rw("RefSpecFournit").ToString, MettreApost(rw("CodeFournit").ToString), MettreApost(rw("DescripFournit").ToString), rw("QteFournit").ToString & " " & MettreApost(rw("UniteFournit").ToString), MettreApost(rw("LieuLivraison").ToString), rw("CodeCategorie").ToString, rw("CodeLot").ToString, rw("CodeSousLot").ToString, False}, parentForRootNodes)
-        '    query = "select * from T_SpecTechCaract where RefSpecFournit='" & rw("RefSpecFournit").ToString & "'"
-        '    Dim dt3 As DataTable = ExcecuteSelectQuery(query)
-        '    For Each rw1 As DataRow In dt3.Rows
-        '        ListeSpecTech.AppendNode(New Object() {rw1("RefSpecCaract").ToString, "", "     - " & MettreApost(rw1("LibelleCaract").ToString) & "  :  " & MettreApost(rw1("ValeurCaract").ToString), "", "", "", "", "", False}, rootNode)
-        '    Next
-        'Next
-        'ListeSpecTech.EndUnboundLoad()
+        ChargerLesSpecificationTechnique(cmbLotSpecTech.Text, CmbSousLotSpecTech.Text)
+        ChargerListeConnexe(cmbLotSpecTech.Text, CmbSousLotSpecTech.Text)
         MajCmbUnite()
 
     End Sub
+
     Private Sub BtCategBien_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtCategBien.Click
         Dim NewCat As New DiagChoixTypeFourniture
         Dim drRetour As DataRow = Nothing
@@ -2341,18 +2624,16 @@ Public Class NewDao
         End If
 
         If Not IsNothing(drRetour) Then
-            Dim nbFournit As Decimal = 0
-            'query = "select Count(*) from T_SpecTechFourniture where NumeroDAO='" & NumDoss & "' and CodeLot='" & cmbLotSpecTech.Text & "' and CodeSousLot='" & CmbSousLotSpecTech.Text & "'"
-            'Dim dt As DataTable = ExcecuteSelectQuery(query)
-            'For Each rw As DataRow In dt.Rows
-            '    nbFournit = CDec(rw(0))
+
+            Dim nbFournit As Integer = Val(ExecuteScallar("select Count(*) from T_SpecTechFourniture where NumeroDAO='" & NumDoss & "' and CodeLot='" & cmbLotSpecTech.Text & "' and CodeSousLot='" & CmbSousLotSpecTech.Text & "'"))
+
+            'For i = 0 To SaveDonnee.Nodes.Count - 1
+            '    If SaveDonnee.Nodes(i).GetValue("NumLotSav") = cmbLotSpecTech.Text And SaveDonnee.Nodes(i).GetValue("NumSousLotSav") = CmbSousLotSpecTech.Text Then
+            '        nbFournit += 1
+            '    End If
             'Next
-            For i = 0 To SaveDonnee.Nodes.Count - 1
-                If SaveDonnee.Nodes(i).GetValue("NumLotSav") = cmbLotSpecTech.Text And SaveDonnee.Nodes(i).GetValue("NumSousLotSav") = CmbSousLotSpecTech.Text Then
-                    nbFournit += 1
-                End If
-            Next
             nbFournit += 1
+
             'ViderSaisieBien()
             If modifSpecTech = False Then
                 LockSaisieBien(True)
@@ -2360,10 +2641,20 @@ Public Class NewDao
             Else
                 txtCodeCateg.Text = drRetour("IdItem") & "-" & drRetour("Type")
             End If
-            TypeCategorieSpecTech = drRetour("IdItem") & "-" & drRetour("Type")
-            Codessss.Text = drRetour("IdItem") & "-" & drRetour("Type")
+            ' TypeCategorieSpecTech = drRetour("IdItem") & "-" & drRetour("Type")
+            CodeCategorie.Text = drRetour("IdItem") & "-" & drRetour("Type")
             TxtLibCategBien.Text = drRetour("Libellé").ToString().Replace("     - ", "")
             TxtRefArticle.Select()
+
+            If CmbSousLotSpecTech.Text.Trim <> "" Then
+                CmbSousLotSpecTech.Enabled = True
+            End If
+            TxtLibelleBien.ResetText()
+            CmbUniteBien.ResetText()
+            TxtLieuLivraison.ResetText()
+            NumQteBien.Value = 1
+
+            ViderSaisieCaract()
         Else
             If modifSpecTech = False Then
                 LockSaisieBien(False)
@@ -2379,7 +2670,6 @@ Public Class NewDao
         NumQteBien.Enabled = value
         CmbUniteBien.Enabled = value
         TxtLieuLivraison.Enabled = value
-        ChkLieuLivraison.Enabled = value
         TxtLibelleCaract.Enabled = value
         TxtValeurCaract.Enabled = value
         BtEnregBien.Enabled = value
@@ -2387,31 +2677,30 @@ Public Class NewDao
     End Sub
 
     Private Sub UnlockModBien()
-        TxtRefArticle.Enabled = True
+        TxtRefArticle.Enabled = False
+        BtCategBien.Enabled = False
+
         TxtLibelleBien.Enabled = True
         NumQteBien.Enabled = True
         CmbUniteBien.Enabled = True
         TxtLieuLivraison.Enabled = True
-        ChkLieuLivraison.Enabled = True
         TxtLibelleCaract.Enabled = False
         TxtValeurCaract.Enabled = False
         BtEnregBien.Enabled = True
         btRetourBien.Enabled = True
         cmbLotSpecTech.Enabled = False
         CmbSousLotSpecTech.Enabled = False
-        BtCategBien.Enabled = True
     End Sub
 
     Private Sub UnlockModCaract()
         BtCategBien.Enabled = False
+        TxtRefArticle.Enabled = False
         cmbLotSpecTech.Enabled = False
         CmbSousLotSpecTech.Enabled = False
-        TxtRefArticle.Enabled = False
         TxtLibelleBien.Enabled = False
         NumQteBien.Enabled = False
         CmbUniteBien.Enabled = False
         TxtLieuLivraison.Enabled = False
-        ChkLieuLivraison.Enabled = False
         TxtLibelleCaract.Enabled = True
         TxtValeurCaract.Enabled = True
         BtEnregBien.Enabled = True
@@ -2424,22 +2713,44 @@ Public Class NewDao
         NumQteBien.Value = 1
         CmbUniteBien.ResetText()
         TxtLieuLivraison.ResetText()
+        RefSpecificationModif.ResetText()
+        TxtLibelleserviceconnexe.ResetText()
         ViderSaisieCaract()
     End Sub
 
-    Private Sub actualiserListe(ByVal NumLot As String, ByVal NumSousLot As String)
-        ListeSpecTech.Nodes.Clear()
-        ListeSpecTech.BeginUnboundLoad()
-        For i = 0 To SaveDonnee.Nodes.Count - 1
-            If SaveDonnee.Nodes(i).GetValue("NumLotSav") = NumLot And SaveDonnee.Nodes(i).GetValue("NumSousLotSav") = NumSousLot Then
+    'Private Sub actualiserListe(ByVal NumLot As String, ByVal NumSousLot As String)
+    '    ListeSpecTech.Nodes.Clear()
+    '    ListeSpecTech.BeginUnboundLoad()
+    '    For i = 0 To SaveDonnee.Nodes.Count - 1
+    '        If SaveDonnee.Nodes(i).GetValue("NumLotSav") = NumLot And SaveDonnee.Nodes(i).GetValue("NumSousLotSav") = NumSousLot Then
+    '            Dim parentForRootNodes As TreeListNode = Nothing
+    '            Dim rootNode As TreeListNode = ListeSpecTech.AppendNode(New Object() {SaveDonnee.Nodes(i).GetValue("IdentifiantSav"), SaveDonnee.Nodes(i).GetValue("CodeSav"), SaveDonnee.Nodes(i).GetValue("LibelleSav"), SaveDonnee.Nodes(i).GetValue("QuantiteSav"), SaveDonnee.Nodes(i).GetValue("LieuLivreSav"), SaveDonnee.Nodes(i).GetValue("CodeCategSav"), SaveDonnee.Nodes(i).GetValue("NumLotSav"), SaveDonnee.Nodes(i).GetValue("NumSousLotSav"), SaveDonnee.Nodes(i).GetValue("EditSav")}, parentForRootNodes)
+    '            For j = 0 To SaveDonnee.Nodes(i).Nodes.Count - 1
+    '                ListeSpecTech.AppendNode(New Object() {SaveDonnee.Nodes(i).Nodes(j).GetValue("IdentifiantSav"), SaveDonnee.Nodes(i).Nodes(j).GetValue("CodeSav"), SaveDonnee.Nodes(i).Nodes(j).GetValue("LibelleSav"), SaveDonnee.Nodes(i).Nodes(j).GetValue("QuantiteSav"), SaveDonnee.Nodes(i).Nodes(j).GetValue("LieuLivreSav"), SaveDonnee.Nodes(i).Nodes(j).GetValue("CodeCategSav"), SaveDonnee.Nodes(i).Nodes(j).GetValue("NumLotSav"), SaveDonnee.Nodes(i).Nodes(j).GetValue("NumSousLotSav"), SaveDonnee.Nodes(i).Nodes(j).GetValue("EditSav"), False}, rootNode)
+    '            Next
+    '        End If
+    '    Next
+    '    ListeSpecTech.EndUnboundLoad()
+    'End Sub
+
+    Private Sub ChargerLesSpecificationTechnique(ByVal CodeLot As String, ByVal CodeSousLot As String)
+        Try
+            ListeSpecTech.Nodes.Clear()
+            ListeSpecTech.BeginUnboundLoad()
+            Dim dt As DataTable = ExcecuteSelectQuery("select * from t_spectechfourniture where NumeroDAO='" & NumDoss & "' and CodeLot='" & CodeLot & "' and CodeSousLot='" & CodeSousLot & "'")
+            For Each rw In dt.Rows
                 Dim parentForRootNodes As TreeListNode = Nothing
-                Dim rootNode As TreeListNode = ListeSpecTech.AppendNode(New Object() {SaveDonnee.Nodes(i).GetValue("IdentifiantSav"), SaveDonnee.Nodes(i).GetValue("CodeSav"), SaveDonnee.Nodes(i).GetValue("LibelleSav"), SaveDonnee.Nodes(i).GetValue("QuantiteSav"), SaveDonnee.Nodes(i).GetValue("LieuLivreSav"), SaveDonnee.Nodes(i).GetValue("CodeCategSav"), SaveDonnee.Nodes(i).GetValue("NumLotSav"), SaveDonnee.Nodes(i).GetValue("NumSousLotSav"), SaveDonnee.Nodes(i).GetValue("EditSav")}, parentForRootNodes)
-                For j = 0 To SaveDonnee.Nodes(i).Nodes.Count - 1
-                    ListeSpecTech.AppendNode(New Object() {SaveDonnee.Nodes(i).Nodes(j).GetValue("IdentifiantSav"), SaveDonnee.Nodes(i).Nodes(j).GetValue("CodeSav"), SaveDonnee.Nodes(i).Nodes(j).GetValue("LibelleSav"), SaveDonnee.Nodes(i).Nodes(j).GetValue("QuantiteSav"), SaveDonnee.Nodes(i).Nodes(j).GetValue("LieuLivreSav"), SaveDonnee.Nodes(i).Nodes(j).GetValue("CodeCategSav"), SaveDonnee.Nodes(i).Nodes(j).GetValue("NumLotSav"), SaveDonnee.Nodes(i).Nodes(j).GetValue("NumSousLotSav"), SaveDonnee.Nodes(i).Nodes(j).GetValue("EditSav"), False}, rootNode)
+                Dim rootNode As TreeListNode = ListeSpecTech.AppendNode(New Object() {rw("RefSpecFournit").ToString, MettreApost(rw("CodeFournit").ToString), MettreApost(rw("DescripFournit").ToString), rw("QteFournit").ToString & " " & rw("UniteFournit").ToString, MettreApost(rw("LieuLivraison").ToString), rw("CodeCategorie").ToString, rw("CodeLot").ToString, rw("CodeSousLot").ToString}, parentForRootNodes)
+                'Chargement des caracteristiques
+                Dim dt1 As DataTable = ExcecuteSelectQuery("select * from t_spectechcaract where RefSpecFournit='" & rw("RefSpecFournit") & "'")
+                For Each rw1 In dt1.Rows
+                    ListeSpecTech.AppendNode(New Object() {rw1("RefSpecCaract").ToString, "", "   - " & MettreApost(rw1("LibelleCaract").ToString) & "  :  " & MettreApost(rw1("ValeurCaract").ToString), "", "", "", "", ""}, rootNode)
                 Next
-            End If
-        Next
-        ListeSpecTech.EndUnboundLoad()
+            Next
+            ListeSpecTech.EndUnboundLoad()
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
     End Sub
 
     Private Sub BtEnregBien_Click(sender As Object, e As EventArgs) Handles BtEnregBien.Click
@@ -2489,80 +2800,48 @@ Public Class NewDao
                 Exit Sub
             End If
 
-            Dim dtSpecTech As DataTable = GridSpecifTech.DataSource
-            Dim drS As DataRow = dtSpecTech.NewRow
-
-            Dim NumIndex As Integer = IsSavedItemInGridView(TxtRefArticle.Text.Trim(), ViewSpecTechn, "Code")
-            If NumIndex = -1 Then
-                drS("Id") = "##"
-                drS("Code") = TxtRefArticle.Text.Trim()
-                drS("Libellé") = TxtLibelleBien.Text.Trim()
-                drS("Quantité") = NumQteBien.Value & " " & CmbUniteBien.Text
-                drS("Lieu de livraison") = TxtLieuLivraison.Text.Trim()
-                drS("CodeCateg") = TypeCategorieSpecTech
-                drS("NumLot") = cmbLotSpecTech.Text
-                drS("NumSousLot") = CmbSousLotSpecTech.Text
-                drS("Edit") = False
-                dtSpecTech.Rows.Add(drS)
-
-                drS = dtSpecTech.NewRow()
-                drS("Id") = "##"
-                drS("Code") = ""
-                drS("Libellé") = "   - " & TxtLibelleCaract.Text.Trim() & "  :  " & TxtValeurCaract.Text.Trim()
-                drS("Quantité") = ""
-                drS("Lieu de livraison") = ""
-                drS("CodeCateg") = ""
-                drS("NumLot") = cmbLotSpecTech.Text
-                drS("NumSousLot") = CmbSousLotSpecTech.Text
-                drS("Edit") = False
-                dtSpecTech.Rows.Add(drS)
-            Else
-                drS("Id") = "##"
-                drS("Code") = ""
-                drS("Libellé") = "   - " & TxtLibelleCaract.Text.Trim() & "  :  " & TxtValeurCaract.Text.Trim()
-                drS("Quantité") = ""
-                drS("Lieu de livraison") = ""
-                drS("CodeCateg") = ""
-                drS("NumLot") = cmbLotSpecTech.Text
-                drS("NumSousLot") = CmbSousLotSpecTech.Text
-                drS("Edit") = False
-                dtSpecTech.Rows.InsertAt(drS, NumIndex + 1)
-            End If
-            ViewSpecTechn.OptionsView.ColumnAutoWidth = True
-            ColorRowGrid(ViewSpecTechn, "[Quantité]<>''", Color.LightBlue, "Tahoma", 8, FontStyle.Bold, Color.Black)
-
-            For i = 0 To SaveDonnee.Nodes.Count - 1
-                If SaveDonnee.Nodes(i).Item("CodeSav") = TxtRefArticle.Text.Trim() And SaveDonnee.Nodes(i).Item("LibelleSav").ToString.ToLower <> TxtLibelleBien.Text.Trim().ToLower And SaveDonnee.Nodes(i).Item("NumLotSav") = cmbLotSpecTech.Text And SaveDonnee.Nodes(i).Item("NumSousLotSav") = CmbSousLotSpecTech.Text Then
-                    SuccesMsg("Ce code de bien existe déjà")
+            'Nouveau Enregistrement
+            If TxtRefArticle.Enabled = True Then
+                'Verification de l'exitance de la reference de l'article
+                If Val(ExecuteScallar("select count(*) From t_spectechfourniture where NumeroDAO='" & NumDoss & "' and CodeLot='" & cmbLotSpecTech.Text & "' and CodeSousLot='" & CmbSousLotSpecTech.Text & "' and CodeFournit='" & EnleverApost(TxtRefArticle.Text) & "'")) > 0 Then
+                    SuccesMsg("La reference de l'article existe déjà")
+                    TxtRefArticle.Select()
                     Exit Sub
                 End If
-                If SaveDonnee.Nodes(i).Item("CodeSav") = TxtRefArticle.Text.Trim() Then
-                    If SaveDonnee.Nodes(i).Item("LibelleSav").ToString.ToLower = TxtLibelleBien.Text.Trim().ToLower Then
-                        Dim CatNode As TreeListNode = SaveDonnee.Nodes(i)
-                        SaveDonnee.AppendNode(New Object() {"##", "", "     - " & TxtLibelleCaract.Text.Trim() & "  :  " & TxtValeurCaract.Text.Trim(), "", "", "", cmbLotSpecTech.Text, CmbSousLotSpecTech.Text, False}, CatNode)
-                        ViderSaisieCaract()
-                        TxtLibelleCaract.Focus()
-                        actualiserListe(cmbLotSpecTech.Text, CmbSousLotSpecTech.Text)
-                        SuccesMsg("ok1")
 
-                        Exit Sub
-                    End If
-                End If
-            Next
+                'add dans t_spectechfourniture
+                query = "INSERT INTO T_SpecTechFourniture(RefSpecFournit,CodeCategorie,NumeroDAO,CodeLot,CodeSousLot,CodeFournit,DescripFournit,QteFournit,UniteFournit,LieuLivraison) VALUES(NULL,'" & EnleverApost(CodeCategorie.Text) & "', '" & NumDoss & "','" & cmbLotSpecTech.Text & "','" & EnleverApost(CmbSousLotSpecTech.Text) & "', '" & EnleverApost(TxtRefArticle.Text) & "', '" & EnleverApost(TxtLibelleBien.Text) & "', '" & NumQteBien.Text.Replace(" ", "") & "', '" & EnleverApost(CmbUniteBien.Text) & "','" & EnleverApost(TxtLieuLivraison.Text) & "')"
+                ExecuteNonQuery(query)
+                Dim IdBien As Decimal = Val(ExecuteScallar("SELECT MAX(RefSpecFournit) FROM T_SpecTechFourniture WHERE CodeLot='" & cmbLotSpecTech.Text & "' AND CodeSousLot='" & CmbSousLotSpecTech.Text & "' AND NumeroDAO='" & NumDoss & "'"))
 
-            Dim parentForRootNodes As TreeListNode = Nothing
-            Dim rootNode As TreeListNode = SaveDonnee.AppendNode(New Object() {"##", TxtRefArticle.Text.Trim(), TxtLibelleBien.Text.Trim(), NumQteBien.Value & " " & CmbUniteBien.Text, TxtLieuLivraison.Text.Trim(), TypeCategorieSpecTech, cmbLotSpecTech.Text, CmbSousLotSpecTech.Text, False}, parentForRootNodes)
-            SaveDonnee.AppendNode(New Object() {"##", "", "     - " & TxtLibelleCaract.Text.Trim() & "  :  " & TxtValeurCaract.Text.Trim(), "", "", "", cmbLotSpecTech.Text, CmbSousLotSpecTech.Text, False}, rootNode)
-            SuccesMsg("ok2")
-            actualiserListe(cmbLotSpecTech.Text, CmbSousLotSpecTech.Text)
-            ViderSaisieCaract()
-            TxtLibelleCaract.Focus()
+                'add dans t_spectechcaract
+                query = "INSERT INTO t_spectechcaract(RefSpecCaract,RefSpecFournit,LibelleCaract,ValeurCaract)"
+                query &= " VALUES(NULL,'" & IdBien & "','" & EnleverApost(TxtLibelleCaract.Text) & "','" & EnleverApost(TxtValeurCaract.Text) & "')"
+                ExecuteNonQuery(query)
+
+                TxtRefArticle.Enabled = False
+                'Ajout caracteristique après enregistrement de la ligne principal
+            ElseIf TxtRefArticle.Enabled = False Then
+                Dim RefSpecFournit As Decimal = ExecuteScallar("select RefSpecFournit From t_spectechfourniture where NumeroDAO='" & NumDoss & "' and CodeLot='" & cmbLotSpecTech.Text & "' and CodeSousLot='" & CmbSousLotSpecTech.Text & "' and CodeFournit='" & EnleverApost(TxtRefArticle.Text) & "'")
+
+                query = "UPDATE T_SpecTechFourniture SET CodeFournit='" & EnleverApost(TxtRefArticle.Text) & "', DescripFournit='" & EnleverApost(TxtLibelleBien.Text) & "',"
+                query &= "QteFournit='" & NumQteBien.Text.Replace(" ", "") & "', UniteFournit='" & EnleverApost(CmbUniteBien.Text) & "', LieuLivraison='" & EnleverApost(TxtLieuLivraison.Text) & "' WHERE RefSpecFournit='" & RefSpecFournit & "'"
+                ExecuteNonQuery(query)
+
+                query = "INSERT INTO t_spectechcaract(RefSpecCaract,RefSpecFournit,LibelleCaract,ValeurCaract)"
+                query &= " VALUES(NULL,'" & RefSpecFournit & "','" & EnleverApost(TxtLibelleCaract.Text) & "','" & EnleverApost(TxtValeurCaract.Text) & "')"
+                ExecuteNonQuery(query)
+            End If
+
+            ' ChargerLesSpecificationTechnique(cmbLotSpecTech.Text, CmbSousLotSpecTech.Text)
         Else
+            'Modification d'une ligne principal
             If TxtLibelleCaract.Enabled = False Then
                 If cmbLotSpecTech.IsRequiredControl("Veuillez choisir un lot.") Then
                     cmbLotSpecTech.Select()
                     Exit Sub
                 End If
+
                 If CmbSousLotSpecTech.Enabled Then
                     If CmbSousLotSpecTech.IsRequiredControl("Veuillez choisir un sous lot.") Then
                         CmbSousLotSpecTech.Select()
@@ -2595,22 +2874,11 @@ Public Class NewDao
                     TxtLieuLivraison.Select()
                     Exit Sub
                 End If
-                For i = 0 To SaveDonnee.Nodes.Count - 1
-                    If SaveDonnee.Nodes(i).GetValue("IdentifiantSav") = NodeModSpec.GetValue("Identifiant") And SaveDonnee.Nodes(i).GetValue("CodeSav") = NodeModSpec.GetValue("Code") And SaveDonnee.Nodes(i).GetValue("LibelleSav") = NodeModSpec.GetValue("Libelle") And SaveDonnee.Nodes(i).GetValue("NumLotSav") = NodeModSpec.GetValue("NumLot") And SaveDonnee.Nodes(i).GetValue("NumSousLotSav") = NodeModSpec.GetValue("NumSousLot") Then
-                        SaveDonnee.Nodes(i).SetValue("CodeSav", TxtRefArticle.Text.Trim())
-                        SaveDonnee.Nodes(i).SetValue("LibelleSav", TxtLibelleBien.Text.Trim())
-                        SaveDonnee.Nodes(i).SetValue("QuantiteSav", NumQteBien.Value & " " & CmbUniteBien.Text)
-                        SaveDonnee.Nodes(i).SetValue("LieuLivreSav", TxtLieuLivraison.Text.Trim())
-                        SaveDonnee.Nodes(i).SetValue("CodeCategSav", txtCodeCateg.Text)
-                        Exit For
-                    End If
-                Next
-                NodeModSpec.SetValue("Code", TxtRefArticle.Text.Trim())
-                NodeModSpec.SetValue("Libelle", TxtLibelleBien.Text.Trim())
-                NodeModSpec.SetValue("Quantite", NumQteBien.Value & " " & CmbUniteBien.Text)
-                NodeModSpec.SetValue("LieuLivre", TxtLieuLivraison.Text.Trim())
-                NodeModSpec.SetValue("CodeCateg", txtCodeCateg.Text)
+
+                query = "UPDATE T_SpecTechFourniture SET CodeFournit='" & EnleverApost(TxtRefArticle.Text) & "', DescripFournit='" & EnleverApost(TxtLibelleBien.Text) & "', QteFournit='" & NumQteBien.Text.Replace(" ", "") & "', UniteFournit='" & EnleverApost(CmbUniteBien.Text) & "', LieuLivraison='" & EnleverApost(TxtLieuLivraison.Text) & "' WHERE RefSpecFournit='" & RefSpecificationModif.Text & "'"
+                ExecuteNonQuery(query)
             Else
+                'Modification d'un critères
                 If TxtLibelleCaract.IsRequiredControl("Veuillez saisir la caractéristique.") Then
                     TxtLibelleCaract.Select()
                     Exit Sub
@@ -2619,35 +2887,209 @@ Public Class NewDao
                     TxtValeurCaract.Select()
                     Exit Sub
                 End If
-                For i = 0 To SaveDonnee.Nodes.Count - 1
-                    If SaveDonnee.Nodes(i).GetValue("IdentifiantSav") = NodeModSpec.ParentNode.GetValue("Identifiant") And SaveDonnee.Nodes(i).GetValue("CodeSav") = NodeModSpec.ParentNode.GetValue("Code") And SaveDonnee.Nodes(i).GetValue("LibelleSav") = NodeModSpec.ParentNode.GetValue("Libelle") And SaveDonnee.Nodes(i).GetValue("NumLotSav") = NodeModSpec.ParentNode.GetValue("NumLot") And SaveDonnee.Nodes(i).GetValue("NumSousLotSav") = NodeModSpec.ParentNode.GetValue("NumSousLot") Then
-                        For j = 0 To SaveDonnee.Nodes(i).Nodes.Count - 1
-                            If SaveDonnee.Nodes(i).Nodes(j).GetValue("IdentifiantSav") = NodeModSpec.GetValue("Identifiant") And SaveDonnee.Nodes(i).Nodes(j).GetValue("LibelleSav") = NodeModSpec.GetValue("Libelle") Then
-                                SaveDonnee.Nodes(i).Nodes(j).SetValue("LibelleSav", "    - " & TxtLibelleCaract.Text.Trim() & "  :  " & TxtValeurCaract.Text.Trim())
-                                Exit For
-                            End If
-                        Next
-                        Exit For
-                    End If
-                Next
-                NodeModSpec.SetValue("Libelle", "    - " & TxtLibelleCaract.Text.Trim() & "  :  " & TxtValeurCaract.Text.Trim())
 
+                ExecuteNonQuery("Update t_spectechcaract set LibelleCaract='" & EnleverApost(TxtLibelleCaract.Text) & "', ValeurCaract='" & EnleverApost(TxtValeurCaract.Text) & "' where RefSpecCaract='" & RefSpecificationModif.Text & "'")
             End If
+
             txtCodeCateg.Text = ""
             TxtLibCategBien.Text = ""
+            RefSpecificationModif.Text = ""
             ViderSaisieBien()
-            modifSpecTech = False
             cmbLotSpecTech.Enabled = True
-            CmbSousLotSpecTech.Enabled = True
+
+            If CmbSousLotSpecTech.Text.Trim <> "" Then CmbSousLotSpecTech.Enabled = True
             BtCategBien.Enabled = True
             LockSaisieBien(False)
         End If
+        modifSpecTech = False
+        ViderSaisieCaract()
+        ChargerLesSpecificationTechnique(cmbLotSpecTech.Text, CmbSousLotSpecTech.Text)
+
+        '    TxtRefArticle.Enabled = False
+        '    For j = 0 To SaveDonnee.Nodes(i).Nodes.Count - 1
+        '        Dim Libelle As String = SaveDonnee.Nodes(i).Nodes(j).GetValue("LibelleSav").ToString().Replace("   - ", "")
+        '        Dim LibelleCaract As String = Split(Libelle, " : ")(0)
+        '        Dim ValueurCaract As String = Split(Libelle, " : ")(1)
+        '        If SaveDonnee.Nodes(i).Nodes(j).Item("IdentifiantSav").ToString = "##" Then
+        '            If SaveDonnee.Nodes(i).Nodes(j).Item("IdentifiantSav").ToString = "##" Then
+        '                query = "INSERT INTO t_spectechcaract(RefSpecCaract,RefSpecFournit,LibelleCaract,ValeurCaract)"
+        '                query &= " VALUES(NULL,'" & IdBien & "','" & EnleverApost(LibelleCaract) & "','" & EnleverApost(ValueurCaract) & "')"
+        '                ExecuteNonQuery(query)
+        '                Dim Id As String = ExecuteScallar("SELECT MAX(RefSpecCaract) FROM t_spectechcaract WHERE RefSpecFournit='" & IdBien & "'")
+        '                SaveDonnee.Nodes(i).Nodes(j).SetValue("IdentifiantSav", Id)
+        '            End If
+        '        Else
+        '            query = "UPDATE t_spectechcaract SET LibelleCaract='" & EnleverApost(LibelleCaract) & "', ValeurCaract='" & EnleverApost(ValueurCaract) & "'"
+        '            query &= " WHERE RefSpecCaract='" & SaveDonnee.Nodes(i).Nodes(j).GetValue("IdentifiantSav") & "'"
+        '            ExecuteNonQuery(query)
+        '        End If
+        '    Next
+        '    Next
+
+
+
+
+        '    Dim dtSpecTech As DataTable = GridSpecifTech.DataSource
+        '    Dim drS As DataRow = dtSpecTech.NewRow
+
+        '    Dim NumIndex As Integer = IsSavedItemInGridView(TxtRefArticle.Text.Trim(), ViewSpecTechn, "Code")
+        '    If NumIndex = -1 Then
+        '        drS("Id") = "##"
+        '        drS("Code") = TxtRefArticle.Text.Trim()
+        '        drS("Libellé") = TxtLibelleBien.Text.Trim()
+        '        drS("Quantité") = NumQteBien.Value & " " & CmbUniteBien.Text
+        '        drS("Lieu de livraison") = TxtLieuLivraison.Text.Trim()
+        '        drS("CodeCateg") = TypeCategorieSpecTech
+        '        drS("NumLot") = cmbLotSpecTech.Text
+        '        drS("NumSousLot") = CmbSousLotSpecTech.Text
+        '        drS("Edit") = False
+        '        dtSpecTech.Rows.Add(drS)
+
+        '        drS = dtSpecTech.NewRow()
+        '        drS("Id") = "##"
+        '        drS("Code") = ""
+        '        drS("Libellé") = "   - " & TxtLibelleCaract.Text.Trim() & "  :  " & TxtValeurCaract.Text.Trim()
+        '        drS("Quantité") = ""
+        '        drS("Lieu de livraison") = ""
+        '        drS("CodeCateg") = ""
+        '        drS("NumLot") = cmbLotSpecTech.Text
+        '        drS("NumSousLot") = CmbSousLotSpecTech.Text
+        '        drS("Edit") = False
+        '        dtSpecTech.Rows.Add(drS)
+        '    Else
+        '        drS("Id") = "##"
+        '        drS("Code") = ""
+        '        drS("Libellé") = "   - " & TxtLibelleCaract.Text.Trim() & "  :  " & TxtValeurCaract.Text.Trim()
+        '        drS("Quantité") = ""
+        '        drS("Lieu de livraison") = ""
+        '        drS("CodeCateg") = ""
+        '        drS("NumLot") = cmbLotSpecTech.Text
+        '        drS("NumSousLot") = CmbSousLotSpecTech.Text
+        '        drS("Edit") = False
+        '        dtSpecTech.Rows.InsertAt(drS, NumIndex + 1)
+        '    End If
+        '    ViewSpecTechn.OptionsView.ColumnAutoWidth = True
+        '    ColorRowGrid(ViewSpecTechn, "[Quantité]<>''", Color.LightBlue, "Tahoma", 8, FontStyle.Bold, Color.Black)
+
+        '    For i = 0 To SaveDonnee.Nodes.Count - 1
+        '        If SaveDonnee.Nodes(i).Item("CodeSav") = TxtRefArticle.Text.Trim() And SaveDonnee.Nodes(i).Item("LibelleSav").ToString.ToLower <> TxtLibelleBien.Text.Trim().ToLower And SaveDonnee.Nodes(i).Item("NumLotSav") = cmbLotSpecTech.Text And SaveDonnee.Nodes(i).Item("NumSousLotSav") = CmbSousLotSpecTech.Text Then
+        '            SuccesMsg("Ce code de bien existe déjà")
+        '            Exit Sub
+        '        End If
+        '        If SaveDonnee.Nodes(i).Item("CodeSav") = TxtRefArticle.Text.Trim() Then
+        '            If SaveDonnee.Nodes(i).Item("LibelleSav").ToString.ToLower = TxtLibelleBien.Text.Trim().ToLower Then
+        '                Dim CatNode As TreeListNode = SaveDonnee.Nodes(i)
+        '                SaveDonnee.AppendNode(New Object() {"##", "", "     - " & TxtLibelleCaract.Text.Trim() & "  :  " & TxtValeurCaract.Text.Trim(), "", "", "", cmbLotSpecTech.Text, CmbSousLotSpecTech.Text, False}, CatNode)
+        '                ViderSaisieCaract()
+        '                TxtLibelleCaract.Focus()
+        '                actualiserListe(cmbLotSpecTech.Text, CmbSousLotSpecTech.Text)
+        '                SuccesMsg("ok1")
+
+        '                Exit Sub
+        '            End If
+        '        End If
+        '    Next
+
+        '    Dim parentForRootNodes As TreeListNode = Nothing
+        '    Dim rootNode As TreeListNode = SaveDonnee.AppendNode(New Object() {"##", TxtRefArticle.Text.Trim(), TxtLibelleBien.Text.Trim(), NumQteBien.Value & " " & CmbUniteBien.Text, TxtLieuLivraison.Text.Trim(), TypeCategorieSpecTech, cmbLotSpecTech.Text, CmbSousLotSpecTech.Text, False}, parentForRootNodes)
+        '    SaveDonnee.AppendNode(New Object() {"##", "", "     - " & TxtLibelleCaract.Text.Trim() & "  :  " & TxtValeurCaract.Text.Trim(), "", "", "", cmbLotSpecTech.Text, CmbSousLotSpecTech.Text, False}, rootNode)
+        '    SuccesMsg("ok2")
+        '    actualiserListe(cmbLotSpecTech.Text, CmbSousLotSpecTech.Text)
+        '    ViderSaisieCaract()
+        '    TxtLibelleCaract.Focus()
+        '    Else
+
+        '    If TxtLibelleCaract.Enabled = False Then
+        '        If cmbLotSpecTech.IsRequiredControl("Veuillez choisir un lot.") Then
+        '            cmbLotSpecTech.Select()
+        '            Exit Sub
+        '        End If
+        '        If CmbSousLotSpecTech.Enabled Then
+        '            If CmbSousLotSpecTech.IsRequiredControl("Veuillez choisir un sous lot.") Then
+        '                CmbSousLotSpecTech.Select()
+        '                Exit Sub
+        '            End If
+        '        End If
+
+        '        If TxtLibCategBien.IsRequiredControl("Veuillez choisir une catégorie.") Then
+        '            TxtLibCategBien.Select()
+        '            Exit Sub
+        '        End If
+        '        If TxtRefArticle.IsRequiredControl("Veuillez entrer le code du bien.") Then
+        '            TxtRefArticle.Select()
+        '            Exit Sub
+        '        End If
+        '        If TxtLibelleBien.IsRequiredControl("Veuillez entrer le libellé du bien.") Then
+        '            TxtLibelleBien.Select()
+        '            Exit Sub
+        '        End If
+        '        If NumQteBien.Value <= 0 Then
+        '            SuccesMsg("Veuillez entrer la quantité.")
+        '            NumQteBien.Select()
+        '            Exit Sub
+        '        End If
+        '        If CmbUniteBien.IsRequiredControl("Veuillez choisir une unité.") Then
+        '            CmbUniteBien.Select()
+        '            Exit Sub
+        '        End If
+        '        If TxtLieuLivraison.IsRequiredControl("Veuillez entrer le lieu de livraison.") Then
+        '            TxtLieuLivraison.Select()
+        '            Exit Sub
+        '        End If
+        '        For i = 0 To SaveDonnee.Nodes.Count - 1
+        '            If SaveDonnee.Nodes(i).GetValue("IdentifiantSav") = NodeModSpec.GetValue("Identifiant") And SaveDonnee.Nodes(i).GetValue("CodeSav") = NodeModSpec.GetValue("Code") And SaveDonnee.Nodes(i).GetValue("LibelleSav") = NodeModSpec.GetValue("Libelle") And SaveDonnee.Nodes(i).GetValue("NumLotSav") = NodeModSpec.GetValue("NumLot") And SaveDonnee.Nodes(i).GetValue("NumSousLotSav") = NodeModSpec.GetValue("NumSousLot") Then
+        '                SaveDonnee.Nodes(i).SetValue("CodeSav", TxtRefArticle.Text.Trim())
+        '                SaveDonnee.Nodes(i).SetValue("LibelleSav", TxtLibelleBien.Text.Trim())
+        '                SaveDonnee.Nodes(i).SetValue("QuantiteSav", NumQteBien.Value & " " & CmbUniteBien.Text)
+        '                SaveDonnee.Nodes(i).SetValue("LieuLivreSav", TxtLieuLivraison.Text.Trim())
+        '                SaveDonnee.Nodes(i).SetValue("CodeCategSav", txtCodeCateg.Text)
+        '                Exit For
+        '            End If
+        '        Next
+        '        NodeModSpec.SetValue("Code", TxtRefArticle.Text.Trim())
+        '        NodeModSpec.SetValue("Libelle", TxtLibelleBien.Text.Trim())
+        '        NodeModSpec.SetValue("Quantite", NumQteBien.Value & " " & CmbUniteBien.Text)
+        '        NodeModSpec.SetValue("LieuLivre", TxtLieuLivraison.Text.Trim())
+        '        NodeModSpec.SetValue("CodeCateg", txtCodeCateg.Text)
+        '    Else
+        '        If TxtLibelleCaract.IsRequiredControl("Veuillez saisir la caractéristique.") Then
+        '            TxtLibelleCaract.Select()
+        '            Exit Sub
+        '        End If
+        '        If TxtValeurCaract.IsRequiredControl("Veuillez saisir la valeur de la caractéristique demandée.") Then
+        '            TxtValeurCaract.Select()
+        '            Exit Sub
+        '        End If
+        '        For i = 0 To SaveDonnee.Nodes.Count - 1
+        '            If SaveDonnee.Nodes(i).GetValue("IdentifiantSav") = NodeModSpec.ParentNode.GetValue("Identifiant") And SaveDonnee.Nodes(i).GetValue("CodeSav") = NodeModSpec.ParentNode.GetValue("Code") And SaveDonnee.Nodes(i).GetValue("LibelleSav") = NodeModSpec.ParentNode.GetValue("Libelle") And SaveDonnee.Nodes(i).GetValue("NumLotSav") = NodeModSpec.ParentNode.GetValue("NumLot") And SaveDonnee.Nodes(i).GetValue("NumSousLotSav") = NodeModSpec.ParentNode.GetValue("NumSousLot") Then
+        '                For j = 0 To SaveDonnee.Nodes(i).Nodes.Count - 1
+        '                    If SaveDonnee.Nodes(i).Nodes(j).GetValue("IdentifiantSav") = NodeModSpec.GetValue("Identifiant") And SaveDonnee.Nodes(i).Nodes(j).GetValue("LibelleSav") = NodeModSpec.GetValue("Libelle") Then
+        '                        SaveDonnee.Nodes(i).Nodes(j).SetValue("LibelleSav", "    - " & TxtLibelleCaract.Text.Trim() & "  :  " & TxtValeurCaract.Text.Trim())
+        '                        Exit For
+        '                    End If
+        '                Next
+        '                Exit For
+        '            End If
+        '        Next
+        '        NodeModSpec.SetValue("Libelle", "    - " & TxtLibelleCaract.Text.Trim() & "  :  " & TxtValeurCaract.Text.Trim())
+
+        '    End If
+        '    txtCodeCateg.Text = ""
+        '    TxtLibCategBien.Text = ""
+        '    ViderSaisieBien()
+        '    modifSpecTech = False
+        '    cmbLotSpecTech.Enabled = True
+        '    CmbSousLotSpecTech.Enabled = True
+        '    BtCategBien.Enabled = True
+        '    LockSaisieBien(False)
+        'End If
     End Sub
 
     Private Sub ViderSaisieCaract()
         TxtLibelleCaract.ResetText()
         TxtValeurCaract.ResetText()
     End Sub
+
     Private Sub CmbUniteBien_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CmbUniteBien.SelectedValueChanged
         If CmbUniteBien.SelectedIndex > -1 Then
             query = "select LibelleUnite from T_Unite where LibelleCourtUnite='" & CmbUniteBien.Text & "' LIMIT 1"
@@ -2664,43 +3106,43 @@ Public Class NewDao
             'dt.Rows.Clear()
             Exit Sub
         End If
-        Dim CurrentLot As DaoSpecTechLot = SpecTech(LotIndex)
-        If CurrentLot.AreSousLot Then
-            If SousLotIndex < 0 Then
-                GridSpecifTech.DataSource = New DataTable
+        'Dim CurrentLot As DaoSpecTechLot = SpecTech(LotIndex)
+        'If CurrentLot.AreSousLot Then
+        '    If SousLotIndex < 0 Then
+        '        GridSpecifTech.DataSource = New DataTable
 
-                'dt.Rows.Clear()
-                Exit Sub
-            Else
-                Dim CurrentSousLot As DaoSpecTechSousLot = CurrentLot.GetSousLot(SousLotIndex)
-                If IsNothing(CurrentSousLot.DataTable) Then
-                    GridSpecifTech.DataSource = New DataTable
+        '        'dt.Rows.Clear()
+        '        Exit Sub
+        '    Else
+        '        Dim CurrentSousLot As DaoSpecTechSousLot = CurrentLot.GetSousLot(SousLotIndex)
+        '        If IsNothing(CurrentSousLot.DataTable) Then
+        '            GridSpecifTech.DataSource = New DataTable
 
-                    'dt.Rows.Clear()
-                    Exit Sub
-                Else
-                    GridSpecifTech.DataSource = CurrentSousLot.DataTable
+        '            'dt.Rows.Clear()
+        '            Exit Sub
+        '        Else
+        '            GridSpecifTech.DataSource = CurrentSousLot.DataTable
 
-                End If
-            End If
-        Else
-            If IsNothing(CurrentLot.DataTable) Then
-                GridSpecifTech.DataSource = New DataTable
+        '        End If
+        '    End If
+        'Else
+        '    If IsNothing(CurrentLot.DataTable) Then
+        '        GridSpecifTech.DataSource = New DataTable
 
 
-                'dt.Rows.Clear()
-                Exit Sub
-            Else
-                GridSpecifTech.DataSource = CurrentLot.DataTable
-            End If
-        End If
+        '        'dt.Rows.Clear()
+        '        Exit Sub
+        '    Else
+        '        GridSpecifTech.DataSource = CurrentLot.DataTable
+        '    End If
+        'End If
 
         ViewSpecTechn.OptionsView.ColumnAutoWidth = True
         ColorRowGrid(ViewSpecTechn, "[Quantité]<>''", Color.LightBlue, "Tahoma", 8, FontStyle.Bold, Color.Black)
     End Sub
 
     Private Sub LoadSpecTech()
-        SpecTech.Clear()
+        ' SpecTech.Clear()
         'For Each rw As DataRow In dt2.Rows
         'Dim rootNode As TreeListNode = ListePostQualif.AppendNode(New Object() {rw("RefCritere").ToString, "G", MettreApost(rw("LibelleCritere").ToString), ""}, parentForRootNodes)
         '    query = "select RefCritere, LibelleCritere, CritereElimine from T_DAO_PostQualif where NumeroDAO='" & NumDoss & "' and RefCritereMere='" & rw("RefCritere").ToString & "'"
@@ -2852,7 +3294,7 @@ Public Class NewDao
                 NewLotSpecTech.DataTable = dtSpecTech
             End If
 
-            SpecTech.Add(NewLotSpecTech)
+            'SpecTech.Add(NewLotSpecTech)
 
         Next
         SaveDonnee.EndUnboundLoad()
@@ -3121,31 +3563,32 @@ Public Class NewDao
             End If
         Next
 
-        If CodeSpecTechSup.Count > 0 Then
-            For k = 0 To CodeSpecTechSup.Count - 1
-                If CodeSpecTechSup.Item(k).ToString.Split("-")(0) <> "##" Then
-                    Dim Cat = CodeSpecTechSup.Item(k).ToString.Split("-")(1)
-                    Dim Code = CInt(CodeSpecTechSup.Item(k).ToString.Split("-")(0))
-                    If Cat <> "" Then
-                        query = "DELETE FROM T_SpecTechFourniture WHERE NumeroDAO='" & NumDossier & "' AND RefSpecFournit='" & Code & "'"
-                        ExecuteNonQuery(query)
-                    Else
-                        ExecuteNonQuery("DELETE FROM t_spectechcaract WHERE RefSpecCaract='" & Code & "'")
-                    End If
-                End If
-            Next
-        End If
-        CodeSpecTechSup.Clear()
-        actualiserListe(cmbLotSpecTech.Text, CmbSousLotSpecTech.Text)
+        'If CodeSpecTechSup.Count > 0 Then
+        '    For k = 0 To CodeSpecTechSup.Count - 1
+        '        If CodeSpecTechSup.Item(k).ToString.Split("-")(0) <> "##" Then
+        '            Dim Cat = CodeSpecTechSup.Item(k).ToString.Split("-")(1)
+        '            Dim Code = CInt(CodeSpecTechSup.Item(k).ToString.Split("-")(0))
+        '            If Cat <> "" Then
+        '                query = "DELETE FROM T_SpecTechFourniture WHERE NumeroDAO='" & NumDossier & "' AND RefSpecFournit='" & Code & "'"
+        '                ExecuteNonQuery(query)
+        '            Else
+        '                ExecuteNonQuery("DELETE FROM t_spectechcaract WHERE RefSpecCaract='" & Code & "'")
+        '            End If
+        '        End If
+        '    Next
+        'End If
+        'CodeSpecTechSup.Clear()
+        ' actualiserListe(cmbLotSpecTech.Text, CmbSousLotSpecTech.Text)
         Return True
     End Function
 
     Private Sub ToolStripMenuModifierSpecTech_Click(sender As Object, e As EventArgs) Handles ToolStripMenuModifierSpecTech.Click
         If ListeSpecTech.Nodes.Count > 0 Then
-            modifSpecTech = True
-            NodeModSpec = ListeSpecTech.FocusedNode
+            'NodeModSpec = ListeSpecTech.FocusedNode
             Dim node1 As TreeListNode = ListeSpecTech.FocusedNode.ParentNode
-            If Not NodeModSpec.ParentNode Is Nothing Then
+
+            'Modification d'un caracteristique
+            If Not ListeSpecTech.FocusedNode.ParentNode Is Nothing Then
                 UnlockModCaract()
                 Dim cat = Split(node1.GetValue("CodeCateg").ToString, "-")(1).ToString
                 If cat = "Cat" Then
@@ -3156,18 +3599,21 @@ Public Class NewDao
 
                 TxtLibCategBien.Text = MettreApost(ExecuteScallar(query))
                 Dim Quantite() = Split(node1.GetValue("Quantite").ToString, " ")
-                TxtRefArticle.Text = node1.GetValue("Code").ToString.Trim()
-                TxtLibelleBien.Text = node1.GetValue("Libelle").ToString.Trim()
+                TxtRefArticle.Text = node1.GetValue("RefArticle").ToString.Trim()
+                TxtLibelleBien.Text = node1.GetValue("LibelleArticle").ToString.Trim()
                 NumQteBien.Value = Quantite(0).ToString
                 CmbUniteBien.Text = Quantite(1).ToString
                 TxtLieuLivraison.Text = node1.GetValue("LieuLivre").ToString
-                Dim libelle() = NodeModSpec.GetValue("Libelle").ToString.Trim().Split(":")
-                TxtLibelleCaract.Text = libelle(0).ToString.Split("-")(1).ToString
-                TxtValeurCaract.Text = libelle(1).ToString.Trim()
+                Dim libelleCaracteristique() = ListeSpecTech.FocusedNode.GetValue("LibelleArticle").ToString.Trim().Split(":")
+                TxtLibelleCaract.Text = libelleCaracteristique(0).ToString.Split("-")(1).ToString.Trim
+                TxtValeurCaract.Text = libelleCaracteristique(1).ToString.Trim()
                 txtCodeCateg.Text = node1.GetValue("CodeCateg").ToString
+                CodeCategorie.Text = node1.GetValue("CodeCateg").ToString
+                RefSpecificationModif.Text = ListeSpecTech.FocusedNode.GetValue("Identifiant").ToString
+
             Else
-                modifSpecTech = True
-                NodeModSpec = ListeSpecTech.FocusedNode
+                'Modification d'une ligne principale
+                ' NodeModSpec = ListeSpecTech.FocusedNode
                 Dim cat = Split(ListeSpecTech.FocusedNode.GetValue("CodeCateg").ToString, "-")(1).ToString
                 If cat = "Cat" Then
                     query = "SELECT LibelleCat FROM t_predfournitures_groupe WHERE IdCat='" & Split(ListeSpecTech.FocusedNode.GetValue("CodeCateg").ToString, "-")(0).ToString & "'"
@@ -3178,95 +3624,268 @@ Public Class NewDao
                 TxtLibelleCaract.Text = ""
                 TxtValeurCaract.Text = ""
                 Dim Quantite() = Split(ListeSpecTech.FocusedNode.GetValue("Quantite").ToString, " ")
-                TxtRefArticle.Text = ListeSpecTech.FocusedNode.GetValue("Code").ToString.Trim()
-                TxtLibelleBien.Text = ListeSpecTech.FocusedNode.GetValue("Libelle").ToString.Trim()
+                TxtRefArticle.Text = ListeSpecTech.FocusedNode.GetValue("RefArticle").ToString.Trim()
+                TxtLibelleBien.Text = ListeSpecTech.FocusedNode.GetValue("LibelleArticle").ToString.Trim()
                 NumQteBien.Value = Quantite(0).ToString
                 CmbUniteBien.Text = Quantite(1).ToString
                 TxtLieuLivraison.Text = ListeSpecTech.FocusedNode.GetValue("LieuLivre").ToString
                 txtCodeCateg.Text = ListeSpecTech.FocusedNode.GetValue("CodeCateg").ToString
+                CodeCategorie.Text = ListeSpecTech.FocusedNode.GetValue("CodeCateg").ToString
+                RefSpecificationModif.Text = ListeSpecTech.FocusedNode.GetValue("Identifiant").ToString
                 UnlockModBien()
+            End If
+
+            modifSpecTech = True
+        End If
+    End Sub
+
+    Private Sub AjouterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AjouterToolStripMenuItem.Click
+        If ListeSpecTech.Nodes.Count > 0 Then
+            Dim cat = Split(ListeSpecTech.FocusedNode.GetValue("CodeCateg").ToString, "-")(1).ToString
+            If cat = "Cat" Then
+                query = "SELECT LibelleCat FROM t_predfournitures_groupe WHERE IdCat='" & Split(ListeSpecTech.FocusedNode.GetValue("CodeCateg").ToString, "-")(0).ToString & "'"
+            Else
+                query = "SELECT LibelleSousCat FROM t_predfournitures_sous_groupe WHERE IdSousCat='" & Split(ListeSpecTech.FocusedNode.GetValue("CodeCateg").ToString, "-")(0).ToString & "'"
+            End If
+            TxtLibCategBien.Text = MettreApost(ExecuteScallar(query))
+            TxtLibelleCaract.Text = ""
+            TxtValeurCaract.Text = ""
+            Dim Quantite() = Split(ListeSpecTech.FocusedNode.GetValue("Quantite").ToString, " ")
+            TxtRefArticle.Text = ListeSpecTech.FocusedNode.GetValue("RefArticle").ToString.Trim()
+            TxtLibelleBien.Text = ListeSpecTech.FocusedNode.GetValue("LibelleArticle").ToString.Trim()
+            NumQteBien.Value = Quantite(0).ToString
+            CmbUniteBien.Text = Quantite(1).ToString
+            TxtLieuLivraison.Text = ListeSpecTech.FocusedNode.GetValue("LieuLivre").ToString
+            txtCodeCateg.Text = ListeSpecTech.FocusedNode.GetValue("CodeCateg").ToString
+            CodeCategorie.Text = ListeSpecTech.FocusedNode.GetValue("CodeCateg").ToString
+            RefSpecificationModif.Text = ListeSpecTech.FocusedNode.GetValue("Identifiant").ToString
+
+            modifSpecTech = False
+
+            LockSaisieBien(True)
+            TxtRefArticle.Enabled = False
+            BtCategBien.Enabled = False
+            TxtLibCategBien.Enabled = False
+            CmbSousLotSpecTech.Enabled = False
+            cmbLotSpecTech.Enabled = True
+
+            'If ListeSpecTech.FocusedNode.GetValue("NumSousLot").ToString <> "" Then
+            '    CmbSousLotSpecTech.Enabled = True
+            'Else
+            'End If
+            NewAddSpecTechClik = True
+        End If
+    End Sub
+
+
+    Private Sub ListeSpecTech_MouseUp(sender As Object, e As MouseEventArgs) Handles ListeSpecTech.MouseUp
+        If ListeSpecTech.Nodes.Count > 0 Then
+            If Not ListeSpecTech.FocusedNode.ParentNode Is Nothing Then
+                ContextMenuSpectTech.Items(0).Visible = False
+            Else
+                ContextMenuSpectTech.Items(0).Visible = True
             End If
         End If
     End Sub
 
     Private Sub ToolStripMenuSupprimerSpecTech_Click(sender As Object, e As EventArgs) Handles ToolStripMenuSupprimerSpecTech.Click
         If ListeSpecTech.Nodes.Count > 0 Then
+
             Dim node As TreeListNode = ListeSpecTech.FocusedNode
             Dim node1 As TreeListNode = ListeSpecTech.FocusedNode.ParentNode
-            If Not node.ParentNode Is Nothing Then
-                CodeSpecTechSup.Add(node.GetValue("Identifiant").ToString & "-" & node.GetValue("Code").ToString)
-                For i = 0 To SaveDonnee.Nodes.Count - 1
-                    If SaveDonnee.Nodes(i).GetValue("IdentifiantSav") = node.ParentNode.GetValue("Identifiant") And SaveDonnee.Nodes(i).GetValue("CodeSav") = node.ParentNode.GetValue("Code") And SaveDonnee.Nodes(i).GetValue("LibelleSav") = node.ParentNode.GetValue("Libelle") And SaveDonnee.Nodes(i).GetValue("NumLotSav") = node.ParentNode.GetValue("NumLot") And SaveDonnee.Nodes(i).GetValue("NumSousLotSav") = node.ParentNode.GetValue("NumSousLot") Then
-                        For j = 0 To SaveDonnee.Nodes(i).Nodes.Count - 1
-                            If SaveDonnee.Nodes(i).Nodes(j).GetValue("IdentifiantSav") = node.GetValue("Identifiant") And SaveDonnee.Nodes(i).Nodes(j).GetValue("LibelleSav") = node.GetValue("Libelle") Then
-                                SaveDonnee.Nodes(i).Nodes(j).ParentNode.Nodes.Remove(SaveDonnee.Nodes(i).Nodes(j))
-                                Exit For
-                            End If
-                        Next
-                        Exit For
-                    End If
-                Next
-                node.ParentNode.Nodes.Remove(node)
 
-                If Not node1.HasChildren Then
-                    CodeSpecTechSup.Add(node1.GetValue("Identifiant").ToString & "-" & node1.GetValue("Code").ToString)
-                    For i = 0 To SaveDonnee.Nodes.Count - 1
-                        If SaveDonnee.Nodes(i).GetValue("IdentifiantSav") = node1.GetValue("Identifiant") And SaveDonnee.Nodes(i).GetValue("CodeSav") = node1.GetValue("Code") And SaveDonnee.Nodes(i).GetValue("LibelleSav") = node1.GetValue("Libelle") And SaveDonnee.Nodes(i).GetValue("NumLotSav") = node1.GetValue("NumLot") And SaveDonnee.Nodes(i).GetValue("NumSousLotSav") = node1.GetValue("NumSousLot") Then
-                            SaveDonnee.Nodes.Remove(SaveDonnee.Nodes(i))
-                            Exit For
-                        End If
-                    Next
-                    ListeSpecTech.DeleteNode(node1)
-                End If
+            'Suppression d'un caractères
+            If Not node.ParentNode Is Nothing Then
+                ExecuteNonQuery("delete from t_spectechcaract where RefSpecCaract='" & node.GetValue("Identifiant") & "'")
+                'node.ParentNode.Nodes.Remove(node)
+                ListeSpecTech.DeleteNode(node)
+
+                'CodeSpecTechSup.Add(node.GetValue("Identifiant").ToString & "-" & node.GetValue("Code").ToString)
+                'For i = 0 To SaveDonnee.Nodes.Count - 1
+                '    If SaveDonnee.Nodes(i).GetValue("IdentifiantSav") = node.ParentNode.GetValue("Identifiant") And SaveDonnee.Nodes(i).GetValue("CodeSav") = node.ParentNode.GetValue("Code") And SaveDonnee.Nodes(i).GetValue("LibelleSav") = node.ParentNode.GetValue("Libelle") And SaveDonnee.Nodes(i).GetValue("NumLotSav") = node.ParentNode.GetValue("NumLot") And SaveDonnee.Nodes(i).GetValue("NumSousLotSav") = node.ParentNode.GetValue("NumSousLot") Then
+                '        For j = 0 To SaveDonnee.Nodes(i).Nodes.Count - 1
+                '            If SaveDonnee.Nodes(i).Nodes(j).GetValue("IdentifiantSav") = node.GetValue("Identifiant") And SaveDonnee.Nodes(i).Nodes(j).GetValue("LibelleSav") = node.GetValue("Libelle") Then
+                '                SaveDonnee.Nodes(i).Nodes(j).ParentNode.Nodes.Remove(SaveDonnee.Nodes(i).Nodes(j))
+                '                Exit For
+                '            End If
+                '        Next
+                '        Exit For
+                '    End If
+                'Next
+                'node.ParentNode.Nodes.Remove(node)
+
+                'If Not node1.HasChildren Then
+                '    CodeSpecTechSup.Add(node1.GetValue("Identifiant").ToString & "-" & node1.GetValue("Code").ToString)
+                '    For i = 0 To SaveDonnee.Nodes.Count - 1
+                '        If SaveDonnee.Nodes(i).GetValue("IdentifiantSav") = node1.GetValue("Identifiant") And SaveDonnee.Nodes(i).GetValue("CodeSav") = node1.GetValue("Code") And SaveDonnee.Nodes(i).GetValue("LibelleSav") = node1.GetValue("Libelle") And SaveDonnee.Nodes(i).GetValue("NumLotSav") = node1.GetValue("NumLot") And SaveDonnee.Nodes(i).GetValue("NumSousLotSav") = node1.GetValue("NumSousLot") Then
+                '            SaveDonnee.Nodes.Remove(SaveDonnee.Nodes(i))
+                '            Exit For
+                '        End If
+                '    Next
+                '    ListeSpecTech.DeleteNode(node1)
+                'End If
             Else
-                If ConfirmMsg("Voulez-vous supprimer cette catégorie avec ses caractéristiques ?") = DialogResult.Yes Then
-                    CodeSpecTechSup.Add(node.GetValue("Identifiant").ToString & "-" & node.GetValue("Code").ToString)
-                    For i = 0 To ListeSpecTech.Nodes.Count - 1
-                        If ListeSpecTech.Nodes(i).GetValue("Identifiant").ToString = node.GetValue("Identifiant").ToString Then
-                            For j = 0 To ListeSpecTech.Nodes(i).Nodes.Count - 1
-                                CodeSpecTechSup.Add(ListeSpecTech.Nodes(i).Nodes(j).GetValue("Identifiant").ToString & "-" & node.GetValue("Code").ToString)
-                            Next
-                            Exit For
-                        End If
-                    Next
-                    For i = 0 To SaveDonnee.Nodes.Count - 1
-                        If SaveDonnee.Nodes(i).GetValue("IdentifiantSav") = node.GetValue("Identifiant") And SaveDonnee.Nodes(i).GetValue("CodeSav") = node.GetValue("Code") And SaveDonnee.Nodes(i).GetValue("LibelleSav") = node.GetValue("Libelle") And SaveDonnee.Nodes(i).GetValue("NumLotSav") = node.GetValue("NumLot") And SaveDonnee.Nodes(i).GetValue("NumSousLotSav") = node.GetValue("NumSousLot") Then
-                            SaveDonnee.Nodes.Remove(SaveDonnee.Nodes(i))
-                            Exit For
-                        End If
-                    Next
-                    ListeSpecTech.Nodes.Remove(node)
+                'Bouton d'ajout cliqué
+                If NewAddSpecTechClik = True And modifSpecTech = False Then
+                    SuccesMsg("Veuillez terminer ou annuler l'action en cours.")
+                    Exit Sub
                 End If
+
+                If ConfirmMsg("Voulez-vous supprimer cette catégorie avec ses caractéristiques ?") = DialogResult.Yes Then
+                    ExecuteNonQuery("delete from t_spectechcaract where RefSpecFournit='" & node.GetValue("Identifiant") & "'")
+                    ExecuteNonQuery("delete from t_spectechfourniture where NumeroDAO='" & NumDoss & "' and RefSpecFournit='" & node.GetValue("Identifiant") & "'")
+
+                    'CodeSpecTechSup.Add(node.GetValue("Identifiant").ToString & "-" & node.GetValue("Code").ToString)
+                    'For i = 0 To ListeSpecTech.Nodes.Count - 1
+                    '    If ListeSpecTech.Nodes(i).GetValue("Identifiant").ToString = node.GetValue("Identifiant").ToString Then
+                    '        For j = 0 To ListeSpecTech.Nodes(i).Nodes.Count - 1
+                    '            CodeSpecTechSup.Add(ListeSpecTech.Nodes(i).Nodes(j).GetValue("Identifiant").ToString & "-" & node.GetValue("Code").ToString)
+                    '        Next
+                    '        Exit For
+                    '    End If
+                    'Next
+                    'For i = 0 To SaveDonnee.Nodes.Count - 1
+                    '    If SaveDonnee.Nodes(i).GetValue("IdentifiantSav") = node.GetValue("Identifiant") And SaveDonnee.Nodes(i).GetValue("CodeSav") = node.GetValue("Code") And SaveDonnee.Nodes(i).GetValue("LibelleSav") = node.GetValue("Libelle") And SaveDonnee.Nodes(i).GetValue("NumLotSav") = node.GetValue("NumLot") And SaveDonnee.Nodes(i).GetValue("NumSousLotSav") = node.GetValue("NumSousLot") Then
+                    '        SaveDonnee.Nodes.Remove(SaveDonnee.Nodes(i))
+                    '        Exit For
+                    '    End If
+                    'Next
+                    'ListeSpecTech.Nodes.Remove(node)
+                    ChargerLesSpecificationTechnique(cmbLotSpecTech.Text, CmbSousLotSpecTech.Text)
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub TxtLibelleserviceconnexe_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtLibelleserviceconnexe.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Try
+                If cmbLotSpecTech.Text.Trim = "" Then
+                    SuccesMsg("Veuillez selectionner un lot.")
+                    cmbLotSpecTech.Select()
+                    Exit Sub
+                End If
+
+                If CmbSousLotSpecTech.Enabled Then
+                    If CmbSousLotSpecTech.Text.Trim = "" Then
+                        SuccesMsg("Veuillez selectionner un sous lot")
+                        CmbSousLotSpecTech.Select()
+                        Exit Sub
+                    End If
+                End If
+
+                If TxtLibelleserviceconnexe.IsRequiredControl("Veuillez saisir le libellé du service connexe") Then
+                    TxtLibelleserviceconnexe.Select()
+                    Exit Sub
+                End If
+
+                If LigneaModifier = True And NomGridView = "GridServiConnex" Then
+                    'Update 
+                    ExecuteNonQuery("Update t_dao_service_connexe set LibelleService='" & EnleverApost(TxtLibelleserviceconnexe.Text) & "' where IdService='" & GridServiConnex.Rows.Item(IndexActive).Cells("IdService").Value & "'")
+                    GridServiConnex.Rows.Item(IndexActive).Cells("Libelles").Value = TxtLibelleserviceconnexe.Text
+                Else
+                    'Insertion
+                    If Val(ExecuteScallar("select count(*) from t_dao_service_connexe where NumeroDAO='" & NumDoss & "' and CodeLot='" & cmbLotSpecTech.Text & "' and CodeSousLot='" & CmbSousLotSpecTech.Text & "' and LibelleService='" & EnleverApost(TxtLibelleserviceconnexe.Text) & "'")) > 0 Then
+                        SuccesMsg("Ce service existe déjà")
+                        Exit Sub
+                    End If
+
+                    ExecuteNonQuery("INSERT INTO t_dao_service_connexe values(NULL,'" & NumDoss & "','" & cmbLotSpecTech.Text & "','" & CmbSousLotSpecTech.Text & "','" & EnleverApost(TxtLibelleserviceconnexe.Text) & "','" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "','" & ProjetEnCours & "')")
+                    ChargerListeConnexe(cmbLotSpecTech.Text, CmbSousLotSpecTech.Text)
+                End If
+                LigneaModifier = False
+                NomGridView = ""
+                IndexActive = 0
+                TxtLibelleserviceconnexe.Text = ""
+
+            Catch ex As Exception
+                FailMsg(ex.ToString)
+            End Try
+        End If
+    End Sub
+
+    Private Sub ChargerListeConnexe(ByVal CodeLot As String, ByVal CodeSousLot As String)
+        Try
+            GridServiConnex.Rows.Clear()
+            Dim dtt As DataTable = ExcecuteSelectQuery("SELECT * FROM t_dao_service_connexe WHERE NumeroDAO='" & NumDoss & "' and CodeLot='" & CodeLot & "' and CodeSousLot='" & CodeSousLot & "' and CodeProjet='" & ProjetEnCours & "'")
+            Dim Nbres As Decimal = 0
+            For Each rw In dtt.Rows
+                Nbres += 1
+                Dim NewLigne = GridServiConnex.Rows.Add
+                GridServiConnex.Rows.Item(NewLigne).Cells("IdService").Value = rw("IdService").ToString
+                GridServiConnex.Rows.Item(NewLigne).Cells("Num").Value = Nbres.ToString
+                GridServiConnex.Rows.Item(NewLigne).Cells("Libelles").Value = MettreApost(rw("LibelleService").ToString)
+            Next
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+    Private Sub BtSupServicConnex_Click(sender As Object, e As EventArgs) Handles BtSupServicConnex.Click
+        If GridServiConnex.Rows.Count > 0 Then
+            Dim index = GridServiConnex.CurrentRow.Index
+            If ConfirmMsg("Êtes-vous sûrs de vouloir supprimer la ligne N° " & index + 1 & " ?") = DialogResult.Yes Then
+                ExecuteNonQuery("delete from t_dao_service_connexe where IdService='" & GridServiConnex.Rows.Item(index).Cells("IdService").Value & "'")
+                GridServiConnex.Rows.RemoveAt(index)
+                If GridServiConnex.RowCount > 0 Then
+                    For Nbres = 0 To GridServiConnex.RowCount - 1
+                        GridServiConnex.Rows.Item(Nbres).Cells("Num").Value = Nbres + 1
+                    Next
+                End If
+
+                LigneaModifier = False
+                NomGridView = ""
+                IndexActive = 0
             End If
         End If
 
     End Sub
+
+    Private Sub GridServiConnex_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridServiConnex.CellDoubleClick
+        If GridServiConnex.Rows.Count > 0 And AfficherDossier = False Then
+            IndexActive = GridServiConnex.CurrentRow.Index
+            TxtLibelleserviceconnexe.Text = GridServiConnex.Rows.Item(IndexActive).Cells("Libelles").Value.ToString
+            LigneaModifier = True
+            NomGridView = "GridServiConnex"
+        End If
+    End Sub
+
+    Private Sub ContextMenuSpectTech_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuSpectTech.Opening
+        If AfficherDossier = True Or ListeSpecTech.Nodes.Count = 0 Then
+            e.Cancel = True
+        End If
+    End Sub
 #End Region
 
 #Region "DQE"
+    'Les commentaires ['] sont pris en compte pour l'importation et la saisie manuel des DQE
+    'Les commentaires [''] ne sont pas pris en compte pour l'importation des DQE
 
     Private Sub InitDQE()
         CmbLotDQE.Text = ""
+        txtLibLotDQE.ResetText()
         CmbLotDQE.Enabled = True
         CmbSousLotDQE.Text = ""
+        TxtSousLotDQE.ResetText()
+        txtFilePathDQE.ResetText()
         CmbSousLotDQE.Enabled = False
         LoadLotDQE()
-        CmbSousLot1.Text = ""
-        CmbSousLot1.Enabled = False
-        TxtImportDQE.Text = ""
-        'btOpenDQE.Enabled = False
-        GroupControl17.Width = GroupControl13.Width - (GbItemDQE.Width + 8)
-        GroupControl17.Location = New System.Drawing.Point(GbItemDQE.Width + 5, 24)
-        CmbNumLot2.Text = ""
-        CmbNumLot2.Enabled = False
-        RdSection.Checked = True
+        ' CmbSousLot1.Text = ""
+        'CmbSousLot1.Enabled = False
+        'TxtImportDQE.Text = ""
+        ' 'btOpenDQE.Enabled = False
+        'GroupControl17.Width = GroupControl13.Width - (GbItemDQE.Width + 8)
+        'GroupControl17.Location = New System.Drawing.Point(GbItemDQE.Width + 5, 24)
+        'CmbNumLot2.Text = ""
+        'CmbNumLot2.Enabled = False
+        'RdSection.Checked = True
         DataGridView1.Rows.Clear()
-        GbItemDQE.Enabled = False
-        GbItemDQE.Visible = False
-        GridSousSection.Rows.Clear()
-        GbSousSection.Visible = False
-        ChkSousSection.Checked = False
+        'GbItemDQE.Enabled = False
+        'GbItemDQE.Visible = False
+        'GridSousSection.Rows.Clear()
+        'GbSousSection.Visible = False
+        'ChkSousSection.Checked = False
     End Sub
+
     Private Sub LoadLotDQE()
         CmbLotDQE.ResetText()
         CmbLotDQE.Properties.Items.Clear()
@@ -3276,46 +3895,127 @@ Public Class NewDao
             CmbLotDQE.Properties.Items.Add(rwLot("CodeLot"))
         Next
     End Sub
-    Private Sub CmbLotDQE_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbLotDQE.SelectedIndexChanged
-        txtLibLotDQE.ResetText()
-        CmbSousLotDQE.Properties.Items.Clear()
-        CmbSousLotDQE.ResetText()
-        TxtSousLotDQE.ResetText()
-        If CmbLotDQE.SelectedIndex <> -1 Then
-            If (NumDoss <> "") Then
-                query = "select LibelleLot,SousLot,RefLot from T_LotDAO where NumeroDAO='" & NumDoss & "' and CodeLot='" & CmbLotDQE.Text & "'"
-                Dim dt As DataTable = ExcecuteSelectQuery(query)
-                For Each rw As DataRow In dt.Rows
-                    TxtRefLot1.Text = rw(1).ToString
-                    txtLibLotDQE.Text = MettreApost(rw("LibelleLot").ToString)
-                    If Val(GetSousLot(CmbLotDQE.Text, NumDoss)(0)) = 0 Then
-                        CmbSousLotDQE.Enabled = False
-                    Else
-                        CmbSousLotDQE.Enabled = True
-                    End If
-                Next
 
-                If (CmbSousLotDQE.Enabled = False) Then
+    Private Sub LoadPageDQE(ByVal NumDossier As String)
+        InitDQE()
+        If Not PageDQE.PageEnabled Then PageDQE.PageEnabled = True
+        If IsNothing(CurrentDao) Then
+            query = "SELECT * FROM t_dao WHERE NumeroDAO='" & NumDoss & "'"
+            Dim dtDao As DataTable = ExcecuteSelectQuery(query)
+            If dtDao.Rows.Count = 0 Then
+                CurrentDao = Nothing
+                Exit Sub
+            End If
+            CurrentDao = dtDao.Rows(0)
+        End If
 
-                Else
-                    LesSousLots(GetRefLot(Val(CmbLotDQE.Text), NumDoss), CmbSousLotDQE)
-                End If
+        If IsNothing(CurrentMarche) Then
+            query = "SELECT * FROM t_marche WHERE RefMarche='" & CurrentDao("RefMarche") & "'"
+            Dim dtmarche As DataTable = ExcecuteSelectQuery(query)
+            If dtmarche.Rows.Count > 0 Then
+                CurrentMarche = dtmarche.Rows(0)
+            Else
+                CurrentMarche = Nothing
+                FailMsg("Le marché associé a été supprimé.")
+                Exit Sub
             End If
         End If
-        MajGridDQE()
+
+        If AfficherDossier = True Then
+            SimpleButton1.Enabled = False
+            btImportDQE.Enabled = False
+            Panel3Ecraser.Enabled = False
+        Else
+            SimpleButton1.Enabled = True
+            btImportDQE.Enabled = True
+            Panel3Ecraser.Enabled = True
+        End If
     End Sub
+
+    Private Function SavePageDQE(ByVal NumDossier As String) As Boolean
+        Return True
+    End Function
+
+    Private Sub CmbLotDQE_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbLotDQE.SelectedIndexChanged
+        Try
+            txtLibLotDQE.ResetText()
+            CmbSousLotDQE.Properties.Items.Clear()
+            CmbSousLotDQE.ResetText()
+            TxtSousLotDQE.ResetText()
+            DataGridView1.Rows.Clear()
+            RefLotDQE.ResetText()
+
+            If CmbLotDQE.SelectedIndex <> -1 Then
+                If (NumDoss <> "") Then
+                    query = "select LibelleLot,SousLot,RefLot from T_LotDAO where NumeroDAO='" & NumDoss & "' and CodeLot='" & CmbLotDQE.Text & "'"
+                    Dim dt As DataTable = ExcecuteSelectQuery(query)
+                    For Each rw As DataRow In dt.Rows
+                        'TxtRefLot1.Text = rw(1).ToString
+                        RefLotDQE.Text = rw("RefLot").ToString
+                        txtLibLotDQE.Text = MettreApost(rw("LibelleLot").ToString)
+                        If Val(GetSousLot(CmbLotDQE.Text, NumDoss)(0)) = 0 Then
+                            CmbSousLotDQE.Enabled = False
+                        Else
+                            CmbSousLotDQE.Enabled = True
+                        End If
+                    Next
+
+                    If (CmbSousLotDQE.Enabled = False) Then
+                        MajGridDQE()
+                    Else
+                        ' LesSousLots(GetRefLot(Val(CmbLotDQE.Text), NumDoss), CmbSousLotDQE)
+                        LesSousLots(Val(RefLotDQE.Text), CmbSousLotDQE)
+                    End If
+                End If
+            End If
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+
+    Private Sub CmbSousLotDQE_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CmbSousLotDQE.SelectedValueChanged
+        Try
+            'CmbSousLot1.Text = CmbSousLotDQE.Text
+            If CmbLotDQE.SelectedIndex <> -1 Then
+                query = "select LibelleSousLot from T_LotDAO_SousLot where RefLot='" & RefLotDQE.Text & "' and  CodeSousLot='" & CmbSousLotDQE.Text & "' and NumeroDAO='" & NumDoss & "'"
+                Dim dt0 As DataTable = ExcecuteSelectQuery(query)
+                For Each rw As DataRow In dt0.Rows
+                    TxtSousLotDQE.Text = MettreApost(rw("LibelleSousLot").ToString)
+                Next
+
+                ' GbSectionDQE.Enabled = True
+                ' GbItemDQE.Enabled = True
+                ' 'btOpenDQE.Enabled = True
+                MajGridDQE()
+            End If
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
+        Dim NewOpenFile As New OpenFileDialog
+        NewOpenFile.Filter = "Fichier d'importation (Excel) | *.xls;*.xlsx"
+        If NewOpenFile.ShowDialog() = DialogResult.OK Then
+            txtFilePathDQE.Text = NewOpenFile.FileName
+        End If
+    End Sub
+
     Private Sub BtImportDQE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btImportDQE.Click
         If CmbLotDQE.IsRequiredControl("Veuillez choisir un lot.") Then
+            CmbLotDQE.Focus()
             Exit Sub
         End If
+
         If CmbSousLotDQE.Properties.Items.Count > 0 Then
             If CmbSousLotDQE.IsRequiredControl("Veuillez choisir un sous lot.") Then
+                CmbSousLotDQE.Select()
                 Exit Sub
             End If
         End If
 
         If txtFilePathDQE.Text.Trim() = String.Empty Then
             SuccesMsg("Veuillez choisir le fichier à importer.")
+            txtFilePathDQE.Select()
             Exit Sub
         End If
 
@@ -3333,26 +4033,41 @@ Public Class NewDao
         For i As Integer = 1 To app.Workbooks(1).Worksheets.Count()
             Dim Feuille = app.Workbooks(1).Worksheets(i)
             Dim FeuilleName = Feuille.Name
+            Dim ColCount = Feuille.Cells.Find("*", , , , Excel.XlSearchOrder.xlByColumns, Excel.XlSearchDirection.xlPrevious).Column
             Dim RowCount = Feuille.Cells(Feuille.Rows.Count, 1).End(Excel.XlDirection.xlUp).Row
+
             If RowCount < 4 Then
                 app.Quit()
                 FinChargement()
-                FailMsg("La feuille de calcul """ & FeuilleName & """" & " n'a pas le bon format d'importation")
+                FailMsg("La feuille de calcul """ & FeuilleName & """" & " n'a pas le bon format d'importation.")
+                Exit Sub
+            End If
+            If ColCount < 8 Then 'Vérifier le nombre de colonne
+                app.Quit()
+                FinChargement()
+                FailMsg("La feuille de calcul """ & FeuilleName & """" & " n'a pas le bon format d'importation.")
                 Exit Sub
             End If
 
             Dim Titre As String = Feuille.Range("A4").Value
-            If IsNothing(Titre) Then
+            Dim NumeroPrix As String = Feuille.Range("B4").Value
+            Dim Designation As String = Feuille.Range("C4").Value
+            Dim LibUnite As String = Feuille.Range("D4").Value
+            Dim LibQuantite As String = Feuille.Range("E4").Value
+            Dim LibPrixUnitaire As String = Feuille.Range("G4").Value
+            Dim LibMontantTotal As String = Feuille.Range("H4").Value
+
+            If IsNothing(Titre) Or IsNothing(NumeroPrix) Or IsNothing(Designation) Or IsNothing(LibUnite) Or IsNothing(LibQuantite) Or IsNothing(LibPrixUnitaire) Or IsNothing(LibMontantTotal) Then
                 app.Quit()
                 FinChargement()
-                FailMsg("La feuille de calcul """ & FeuilleName & """" & " n'a pas le bon format d'importation")
+                FailMsg("La feuille de calcul """ & FeuilleName & """" & " n'a pas le bon format d'importation.")
                 Exit Sub
             End If
 
-            If Titre.ToLower() <> "type" Then
+            If Titre.ToLower() <> "type" Or NumeroPrix <> "N° de prix" Or Designation.ToUpper <> "DESIGNATIONS" Or LibUnite.ToLower <> "unités" Or LibQuantite.ToLower <> "quantités" Or LibPrixUnitaire <> "Prix Unitaires en FCFA" Or LibMontantTotal <> "Montant total en FCFA" Then
                 app.Quit()
                 FinChargement()
-                FailMsg("La feuille de calcul """ & FeuilleName & """" & " n'a pas le bon format d'importation")
+                FailMsg("La feuille de calcul """ & FeuilleName & """" & " n'a pas le bon format d'importation.")
                 Exit Sub
             End If
 
@@ -3374,8 +4089,12 @@ Public Class NewDao
 
             For l = 5 To RowCount
                 Dim CurrentType As String = Feuille.Range("A" & l).Value
-                Dim CurrentLib As String = Feuille.Range("C" & l).Value
                 Dim CurrentNumero As String = Feuille.Range("B" & l).Value
+                Dim CurrentLib As String = Feuille.Range("C" & l).Value
+                Dim Unites As String = Feuille.Range("D" & l).Value
+                Dim Qtes As String = Feuille.Range("E" & l).Value
+                ' Dim Ptus As String = Feuille.Range("G" & l).Value
+
                 If IsNothing(CurrentType) Then
                     app.Quit()
                     FinChargement()
@@ -3404,6 +4123,23 @@ Public Class NewDao
                         FailMsg("La colonne ""Type"" doit être ""SEC"" à la cellule A" & l & " sur la feuille """ & FeuilleName & """")
                         Exit Sub
                     End If
+
+                    If l = RowCount Then 'Definition d'une section à la dernière ligne
+                        app.Quit()
+                        FinChargement()
+                        FailMsg("Veuillez décrire les elements de la section sur la ligne " & RowCount & " de la feuille """ & FeuilleName & """")
+                        Exit Sub
+                    Else
+                        'Insertion de deux section successive
+                        Dim LastSection As String = Feuille.Range("A" & l + 1).Value
+                        If LastSection.ToString.Trim().ToLower() <> "elt" Then
+                            app.Quit()
+                            FinChargement()
+                            FailMsg("La colonne ""Type"" doit être ""ELT"" à la cellule A" & l + 1 & " sur la feuille """ & FeuilleName & """")
+                            Exit Sub
+                        End If
+                    End If
+
                 Else
                     If CurrentType.Trim().ToLower() <> "elt" And CurrentType.Trim().ToLower <> "sec" Then
                         app.Quit()
@@ -3411,16 +4147,82 @@ Public Class NewDao
                         FailMsg("""" & CurrentType.Trim() & """ n'est pas un code reconnu pour la colonne ""Type"" à la cellule A" & l & " sur la feuille """ & FeuilleName & """")
                         Exit Sub
                     End If
+
+                    'Verification des sections
+                    If CurrentType.Trim().ToLower() = "sec" Then
+                        If l = RowCount Then 'Definition d'une section à la dernière ligne
+                            app.Quit()
+                            FinChargement()
+                            FailMsg("Veuillez décrire les elements de la section sur la ligne " & RowCount & " de la feuille """ & FeuilleName & """")
+                            Exit Sub
+                        Else
+                            'Insertion de deux section successive
+                            Dim LastSection As String = Feuille.Range("A" & l + 1).Value
+                            If LastSection.ToString.Trim().ToLower() <> "elt" Then
+                                app.Quit()
+                                FinChargement()
+                                FailMsg("La colonne ""Type"" doit être ""ELT"" à la cellule A" & l + 1 & " sur la feuille """ & FeuilleName & """")
+                                Exit Sub
+                            End If
+                        End If
+
+                    ElseIf CurrentType.Trim().ToLower() = "elt" Then 'Insertion de deux section successive
+
+                        If IsNothing(Unites) Then
+                            app.Quit()
+                            FinChargement()
+                            FailMsg("La colonne ""Unités"" doit être renseigné à la cellule D" & l & " sur la feuille """ & FeuilleName & """")
+                            Exit Sub
+                        End If
+                        If IsNothing(Qtes) Then
+                            app.Quit()
+                            FinChargement()
+                            FailMsg("La colonne ""Quantités"" doit être renseigné à la cellule E" & l & " sur la feuille """ & FeuilleName & """")
+                            Exit Sub
+                        End If
+                        If Not IsNumeric(Qtes.ToString) Then
+                            app.Quit()
+                            FinChargement()
+                            FailMsg("La colonne ""Quantités"" doit être une valeur numérique à la cellule E" & l & " sur la feuille """ & FeuilleName & """")
+                            Exit Sub
+                        End If
+
+                        'If IsNothing(Ptus) Then
+                        '    app.Quit()
+                        '    FinChargement()
+                        '    FailMsg("La colonne ""Prix Unitaires en FCFA"" doit être renseigné à la cellule G" & l & " sur la feuille """ & FeuilleName & """")
+                        '    Exit Sub
+                        'End If
+                        'If Not IsNumeric(Ptus.ToString) Then
+                        '    app.Quit()
+                        '    FinChargement()
+                        '    FailMsg("La colonne ""Prix Unitaires en FCFA"" doit être une valeur numérique à la cellule G" & l & " sur la feuille """ & FeuilleName & """")
+                        '    Exit Sub
+                        'End If
+                    End If
                 End If
+            Next
+
+            'Verification de l'unicité des N° des sections
+            For k = 5 To RowCount - 1
+                For j = k + 1 To RowCount
+                    If Feuille.Range("B" & k).Value = Feuille.Range("B" & j).Value Then
+                        app.Quit()
+                        FinChargement()
+                        FailMsg("Les valeurs inscrites dans la colonne ""N° de prix"" doit être unique à vérifié dans les cellules B" & k & " et B" & j & " sur la feuille """ & FeuilleName & """")
+                        Exit Sub
+                    End If
+                Next
             Next
 
             FinChargement()
             Dim EraseOldData As Boolean = chkEraseDQE.Checked
+
             Dim ResultDialog As DialogResult
             If Not EraseOldData Then
-                ResultDialog = ConfirmMsg("Vérification terminée." & vbNewLine & "Voulez-vous commencer l'importation?")
+                ResultDialog = ConfirmMsg("Vérification terminée." & vbNewLine & "Voulez-vous commencer l'importation ?")
             Else
-                ResultDialog = ConfirmMsgWarning("Attention les anciennes données seront supprimées !!!" & vbNewLine & "Voulez-vous importer ce fichier?")
+                ResultDialog = ConfirmMsgWarning("Attention les anciennes données seront supprimées !!!" & vbNewLine & "Voulez-vous importer ce fichier ?")
             End If
 
             If ResultDialog <> DialogResult.Yes Then
@@ -3431,12 +4233,13 @@ Public Class NewDao
             Dim LastIdSection As String = String.Empty
             For l = 5 To RowCount
                 Dim CurrentType As String = Feuille.Range("A" & l).Value
-                Dim CurrentLib As String = Feuille.Range("C" & l).Value
                 Dim CurrentNumero As String = Feuille.Range("B" & l).Value
+                Dim CurrentLib As String = Feuille.Range("C" & l).Value
                 Dim Unite As String = String.Empty
                 Dim Qte As String = String.Empty
                 Dim Pu As String = String.Empty
                 Dim MontantTotal As String = String.Empty
+
                 If IsNothing(CurrentType) Then
                     app.Quit()
                     FinChargement()
@@ -3494,6 +4297,7 @@ Public Class NewDao
                         query = "DELETE FROM t_dqesection WHERE NumeroDAO='" & NumDoss & "' AND CodeLot='" & CmbLotDQE.Text & "' AND CodeSousLot='" & CmbSousLotDQE.Text & "'"
                         ExecuteNonQuery(query)
                     End If
+
                     query = "INSERT INTO t_dqesection VALUES(NULL,'" & NumDoss & "','" & CurrentNumero.EnleverApostrophe() & "','" & CurrentLib.EnleverApostrophe() & "','" & CmbLotDQE.Text & "','" & CmbSousLotDQE.Text & "')"
                     ExecuteNonQuery(query)
                     LastIdSection = ExecuteScallar("SELECT MAX(RefSection) FROM t_dqesection WHERE NumeroDAO='" & NumDoss & "' AND CodeLot='" & CmbLotDQE.Text & "' AND CodeSousLot='" & CmbSousLotDQE.Text & "'")
@@ -3529,7 +4333,9 @@ Public Class NewDao
 
                     If CurrentType.Trim().ToLower() = "elt" Then
                         'Enregistement de la prevision...
-                        query = "INSERT INTO t_dqeitem VALUES(NULL,'" & LastIdSection & "','','" & CurrentNumero.EnleverApostrophe() & "','" & CurrentLib.EnleverApostrophe() & "','" & Unite.EnleverApostrophe() & "','" & Qte.EnleverApostrophe() & "','" & AfficherMonnaie(Pu.EnleverApostrophe()) & "','" & MontantTotal.EnleverApostrophe() & "','" & MontantLettre(Pu.EnleverApostrophe()) & "')"
+                        ' query = "INSERT INTO t_dqeitem VALUES(NULL,'" & LastIdSection & "','','" & CurrentNumero.EnleverApostrophe() & "','" & CurrentLib.EnleverApostrophe() & "','" & Unite.EnleverApostrophe() & "','" & CDbl(Qte.EnleverApostrophe()) & "','" & CDbl(Pu.EnleverApostrophe()) & "','" & CDbl(MontantTotal.EnleverApostrophe()) & "','" & MontantLettre(Pu.EnleverApostrophe()) & "')"
+
+                        query = "INSERT INTO t_dqeitem VALUES(NULL,'" & LastIdSection & "','','" & CurrentNumero.EnleverApostrophe() & "','" & CurrentLib.EnleverApostrophe() & "','" & Unite.EnleverApostrophe() & "','" & CDbl(Qte.EnleverApostrophe()) & "','','','')"
                         ExecuteNonQuery(query)
                     ElseIf CurrentType.Trim().ToLower() = "sec" Then
                         'Enregistement de la section...
@@ -3537,255 +4343,323 @@ Public Class NewDao
                         ExecuteNonQuery(query)
                         LastIdSection = ExecuteScallar("SELECT MAX(RefSection) FROM t_dqesection WHERE NumeroDAO='" & NumDoss & "' AND CodeLot='" & CmbLotDQE.Text & "' AND CodeSousLot='" & CmbSousLotDQE.Text & "'")
                     End If
-
                 End If
             Next
         Next
 
         app.Quit()
-        GroupControl17.Width = GroupControl13.Width - 4
-        GroupControl17.Left = 2
-        GroupControl17.BringToFront()
+        'GroupControl17.Width = GroupControl13.Width - 4
+        'GroupControl17.Left = 2
+        ' GroupControl17.BringToFront()
         MajGridDQE()
         FinChargement()
         SuccesMsg("Importation effectuée avec succès.")
 
+#Region "Code Non utiliser"
+        ''DebutChargement(True, "Importation des données Excel en cours...")
+
+        ''Dim partFichier() As String = FileName.ToString.Split("."c)
+        ''If (partFichier(1).ToLower <> "xlsx" And partFichier(1).ToLower <> "xls") Then
+        ''    MsgBox("Ce fichier n'est pas un fichier MS Excel!", MsgBoxStyle.Exclamation)
+        ''    Exit Sub
+        ''End If
+
+        ''TxtImportDQE.Text = FileName
+        ''Dim NomDossier As String = FormatFileName(line & "\DAO\" & TypeMarche & "\" & MethodMarche & "\" & NumDoss, "")
+        ''If (Directory.Exists(NomDossier) = True) Then
+        ''    File.Copy(FileName, NomDossier & "\FichierDQE_L" & CmbLotDQE.Text & IIf(CmbSousLotDQE.Enabled = True, "SL" & CmbSousLotDQE.Text.Replace(".", ""), "") & "." & partFichier(1), True)
+        ''End If
+
+        ''app = New Excel.Application
+        ''app.Workbooks.Open(FileName)
+        ''For i As Integer = 1 To 4
+        ''    If (app.Workbooks(1).Worksheets(1).Cells(2, i).value = Nothing) Then
+        ''        MsgBox("Format incorrect!", MsgBoxStyle.Exclamation)
+        ''        app.Quit()
+        ''        Exit Sub
+        ''    End If
+        ''Next
+        ''If (Mid(app.Workbooks(1).Worksheets(1).Cells(3, 1).value.ToString, 1, 7).ToLower <> "section") Then
+        ''    MsgBox("Format incorrect!", MsgBoxStyle.Exclamation)
+        ''    app.Quit()
+        ''    Exit Sub
+        ''End If
+
+        ''Dim LesRef(100) As String
+        ''Dim NbSect As Decimal = 0
+        ''query = "select RefSection from T_DQESection where NumeroDAO='" & NumDoss & "' and CodeLot='" & CmbLotDQE.Text & "' and CodeSousLot='" & IIf(CmbSousLotDQE.Enabled = True, CmbSousLotDQE.Text, "") & "'"
+        ''Dim dt0 As DataTable = ExcecuteSelectQuery(query)
+        ''For Each rw As DataRow In dt0.Rows
+        ''    LesRef(NbSect) = rw(0).ToString
+        ''    NbSect += 1
+        ''Next
+
+        ''For k As Integer = 0 To NbSect - 1
+        ''    query = "DELETE from T_DQEItem where RefSection='" & LesRef(k) & "'"
+        ''    ExecuteNonQuery(query)
+
+        ''    query = "DELETE from T_DQESection_SousSection where RefSection='" & LesRef(k) & "'"
+        ''    ExecuteNonQuery(query)
+
+        ''    query = "DELETE from T_DQESection where RefSection='" & LesRef(k) & "'"
+        ''    ExecuteNonQuery(query)
+        ''Next
+
+        ''Dim SectionEncours As Decimal = 0
+        ''Dim SSenCours As String = ""
+        ''Dim MarkSection As Boolean = False
+        ''Dim YaSousSect As Boolean = False
+        ''Dim sqlconn As New MySqlConnection
+        ''BDOPEN(sqlconn)
+        ''For LigNe As Integer = 3 To 1000
+        ''    If (app.Workbooks(1).Worksheets(1).Cells(LigNe, 1).value = Nothing) Then MsgBox("Fin du fichier à la ligne " & LigNe.ToString, MsgBoxStyle.Information) : Exit For
+        ''    Dim partTyp() As String = app.Workbooks(1).Worksheets(1).Cells(LigNe, 1).value.ToString.Split(" "c)
+        ''    If (partTyp(0).ToLower = "section") Then   'Pour les sections ***********************
+        ''        If (app.Workbooks(1).Worksheets(1).Cells(LigNe, 2).value = Nothing) Then MsgBox("Format incorrect! (ligne " & LigNe.ToString & ")", MsgBoxStyle.Exclamation) : Exit For
+        ''        If (partTyp(1) <> "") Then
+        ''            Dim DatSet = New DataSet
+        ''            query = "select * from T_DQESection"
+
+        ''            Dim Cmd As MySqlCommand = New MySqlCommand(query, sqlconn)
+        ''            Dim DatAdapt = New MySqlDataAdapter(Cmd)
+        ''            DatAdapt.Fill(DatSet, "T_DQESection")
+        ''            Dim DatTable = DatSet.Tables("T_DQESection")
+        ''            Dim DatRow = DatSet.Tables("T_DQESection").NewRow()
+
+        ''            DatRow("NumeroDAO") = NumDoss
+        ''            DatRow("NumeroSection") = partTyp(1)
+        ''            DatRow("Designation") = EnleverApost(app.Workbooks(1).Worksheets(1).Cells(LigNe, 2).value.ToString)
+        ''            DatRow("CodeLot") = CmbLotDQE.Text
+        ''            DatRow("CodeSousLot") = IIf(CmbSousLotDQE.Enabled = True, CmbSousLotDQE.Text, "").ToString
+
+        ''            DatSet.Tables("T_DQESection").Rows.Add(DatRow)
+        ''            Dim CmdBuilder = New MySqlCommandBuilder(DatAdapt)
+        ''            DatAdapt.Update(DatSet, "T_DQESection")
+        ''            DatSet.Clear()
+
+        ''            query = "select RefSection from T_DQESection where NumeroDAO='" & NumDoss & "' and CodeLot='" & CmbLotDQE.Text & "' and NumeroSection='" & partTyp(1) & "'"
+        ''            dt0 = ExcecuteSelectQuery(query)
+        ''            For Each rw As DataRow In dt0.Rows
+        ''                SectionEncours = CInt(rw(0))
+        ''                MarkSection = True
+        ''            Next
+
+        ''        Else
+        ''            MsgBox("Importation interrompue! (ligne " & LigNe.ToString & ")", MsgBoxStyle.Exclamation)
+        ''            app.Quit()
+        ''            Exit For
+        ''        End If
+
+        ''    ElseIf (partTyp(0).ToLower = "sous") Then  'Pour les sous sections ****************
+
+        ''        If (MarkSection = True) Then
+        ''            YaSousSect = True
+        ''            MarkSection = False
+        ''        End If
+
+        ''        If (YaSousSect = True) Then
+        ''            If (app.Workbooks(1).Worksheets(1).Cells(LigNe, 2).value = Nothing) Then MsgBox("Format incorrect! (ligne " & LigNe.ToString & ")", MsgBoxStyle.Exclamation) : Exit For
+        ''            If (partTyp(2) <> "") Then
+        ''                Dim DatSet = New DataSet
+        ''                query = "select * from T_DQESection_SousSection"
+
+        ''                Dim Cmd As MySqlCommand = New MySqlCommand(query, sqlconn)
+        ''                Dim DatAdapt = New MySqlDataAdapter(Cmd)
+        ''                DatAdapt.Fill(DatSet, "T_DQESection_SousSection")
+        ''                Dim DatTable = DatSet.Tables("T_DQESection_SousSection")
+        ''                Dim DatRow = DatSet.Tables("T_DQESection_SousSection").NewRow()
+
+        ''                DatRow("RefSection") = SectionEncours.ToString
+        ''                DatRow("NumeroDAO") = NumDoss
+        ''                DatRow("NumeroSousSection") = partTyp(2)
+        ''                DatRow("LibelleSousSection") = EnleverApost(app.Workbooks(1).Worksheets(1).Cells(LigNe, 2).value.ToString)
+
+        ''                DatSet.Tables("T_DQESection_SousSection").Rows.Add(DatRow)
+        ''                Dim CmdBuilder = New MySqlCommandBuilder(DatAdapt)
+        ''                DatAdapt.Update(DatSet, "T_DQESection_SousSection")
+        ''                DatSet.Clear()
+
+        ''            Else
+        ''                MsgBox("Importation interrompue! (ligne " & LigNe.ToString & ")", MsgBoxStyle.Exclamation)
+        ''                app.Quit()
+        ''                Exit Sub
+        ''            End If
+
+        ''        Else
+        ''            MsgBox("Disposition données incorrecte! (ligne " & LigNe.ToString & ")", MsgBoxStyle.Exclamation)
+        ''            MsgBox("Importation interrompue! (ligne " & LigNe.ToString & ")", MsgBoxStyle.Exclamation)
+        ''            Exit For
+        ''        End If
+
+        ''    Else   'Pour les items ************************
+
+        ''        If (MarkSection = True) Then
+        ''            YaSousSect = False
+        ''            MarkSection = False
+        ''        End If
+
+        ''        If (partTyp(0) <> "") Then
+        ''            If (app.Workbooks(1).Worksheets(1).Cells(LigNe, 3).value <> Nothing Or app.Workbooks(1).Worksheets(1).Cells(LigNe, 4).value <> Nothing) Then
+        ''                Dim DatSet = New DataSet
+        ''                query = "select * from T_DQEItem"
+
+        ''                Dim Cmd As MySqlCommand = New MySqlCommand(query, sqlconn)
+        ''                Dim DatAdapt = New MySqlDataAdapter(Cmd)
+        ''                DatAdapt.Fill(DatSet, "T_DQEItem")
+        ''                Dim DatTable = DatSet.Tables("T_DQEItem")
+        ''                Dim DatRow = DatSet.Tables("T_DQEItem").NewRow()
+
+        ''                DatRow("RefSection") = SectionEncours.ToString
+        ''                DatRow("NumeroItem") = partTyp(0)
+        ''                DatRow("Designation") = EnleverApost(app.Workbooks(1).Worksheets(1).Cells(LigNe, 2).value.ToString)
+        ''                DatRow("NumeroSousSection") = SSenCours
+
+        ''                If (app.Workbooks(1).Worksheets(1).Cells(LigNe, 3).value <> Nothing) Then
+        ''                    DatRow("UniteItem") = IIf(app.Workbooks(1).Worksheets(1).Cells(LigNe, 3).value.ToString.Replace(" ", "") <> "", app.Workbooks(1).Worksheets(1).Cells(LigNe, 3).value.ToString, "F").ToString
+        ''                Else
+        ''                    DatRow("UniteItem") = "F"
+        ''                End If
+        ''                Dim Qte As Decimal = 1
+        ''                If (app.Workbooks(1).Worksheets(1).Cells(LigNe, 4).value <> Nothing) Then
+        ''                    If (app.Workbooks(1).Worksheets(1).Cells(LigNe, 4).value.ToString.Replace(" ", "") <> "") Then
+        ''                        If (IsNumeric(app.Workbooks(1).Worksheets(1).Cells(LigNe, 4).value.ToString.Replace(" ", "")) = True) Then
+        ''                            DatRow("QteItem") = CDec(app.Workbooks(1).Worksheets(1).Cells(LigNe, 4).value.ToString.Replace(" ", "")).ToString
+        ''                            Qte = CDec(app.Workbooks(1).Worksheets(1).Cells(LigNe, 4).value.ToString.Replace(" ", "")).ToString
+        ''                        Else
+        ''                            DatSet.Clear()
+
+        ''                            MsgBox("Quantité non numérique! (ligne " & LigNe.ToString & ")", MsgBoxStyle.Exclamation)
+        ''                            Exit For
+        ''                        End If
+
+        ''                    Else
+        ''                        DatRow("QteItem") = "1"
+        ''                    End If
+        ''                Else
+        ''                    DatRow("QteItem") = "1"
+        ''                End If
+        ''                If (app.Workbooks(1).Worksheets(1).Cells(LigNe, 5).value <> Nothing) Then
+        ''                    If (IsNumeric(app.Workbooks(1).Worksheets(1).Cells(LigNe, 5).value) = True And app.Workbooks(1).Worksheets(1).Cells(LigNe, 5).value.ToString.Replace(" ", "") <> "") Then
+        ''                        DatRow("PuHtva") = AfficherMonnaie(CDec(app.Workbooks(1).Worksheets(1).Cells(LigNe, 5).value.ToString.Replace(" ", "")).ToString)
+        ''                        DatRow("PuHtvaLettre") = MontantLettre(CDec(app.Workbooks(1).Worksheets(1).Cells(LigNe, 5).value.ToString.Replace(" ", "")).ToString)
+        ''                        DatRow("MontHtva") = AfficherMonnaie(Math.Round(CDec(app.Workbooks(1).Worksheets(1).Cells(LigNe, 5).value.ToString.Replace(" ", "")) * Qte, 2).ToString)
+        ''                    ElseIf (IsNumeric(app.Workbooks(1).Worksheets(1).Cells(LigNe, 5).value) = False And app.Workbooks(1).Worksheets(1).Cells(LigNe, 5).value.ToString.Replace(" ", "") <> "") Then
+        ''                        MsgBox("Prix unitaire ligne " & LigNe.ToString & " : " & app.Workbooks(1).Worksheets(1).Cells(LigNe, 5).value.ToString & " incorrect!", MsgBoxStyle.Exclamation)
+        ''                    End If
+        ''                End If
+
+        ''                DatSet.Tables("T_DQEItem").Rows.Add(DatRow)
+        ''                Dim CmdBuilder = New MySqlCommandBuilder(DatAdapt)
+        ''                DatAdapt.Update(DatSet, "T_DQEItem")
+        ''                DatSet.Clear()
 
 
-        'DebutChargement(True, "Importation des données Excel en cours...")
+        ''            Else
+        ''                MsgBox("La ligne " & LigNe.ToString & " ne sera pas prise en compte, elle n'a ni unité ni quantité!", MsgBoxStyle.Exclamation)
+        ''            End If
 
-        'Dim partFichier() As String = FileName.ToString.Split("."c)
-        'If (partFichier(1).ToLower <> "xlsx" And partFichier(1).ToLower <> "xls") Then
-        '    MsgBox("Ce fichier n'est pas un fichier MS Excel!", MsgBoxStyle.Exclamation)
-        '    Exit Sub
-        'End If
-
-        'TxtImportDQE.Text = FileName
-        'Dim NomDossier As String = FormatFileName(line & "\DAO\" & TypeMarche & "\" & MethodMarche & "\" & NumDoss, "")
-        'If (Directory.Exists(NomDossier) = True) Then
-        '    File.Copy(FileName, NomDossier & "\FichierDQE_L" & CmbLotDQE.Text & IIf(CmbSousLotDQE.Enabled = True, "SL" & CmbSousLotDQE.Text.Replace(".", ""), "") & "." & partFichier(1), True)
-        'End If
-
-        'app = New Excel.Application
-        'app.Workbooks.Open(FileName)
-        'For i As Integer = 1 To 4
-        '    If (app.Workbooks(1).Worksheets(1).Cells(2, i).value = Nothing) Then
-        '        MsgBox("Format incorrect!", MsgBoxStyle.Exclamation)
-        '        app.Quit()
-        '        Exit Sub
-        '    End If
-        'Next
-        'If (Mid(app.Workbooks(1).Worksheets(1).Cells(3, 1).value.ToString, 1, 7).ToLower <> "section") Then
-        '    MsgBox("Format incorrect!", MsgBoxStyle.Exclamation)
-        '    app.Quit()
-        '    Exit Sub
-        'End If
-
-        'Dim LesRef(100) As String
-        'Dim NbSect As Decimal = 0
-        'query = "select RefSection from T_DQESection where NumeroDAO='" & NumDoss & "' and CodeLot='" & CmbLotDQE.Text & "' and CodeSousLot='" & IIf(CmbSousLotDQE.Enabled = True, CmbSousLotDQE.Text, "") & "'"
-        'Dim dt0 As DataTable = ExcecuteSelectQuery(query)
-        'For Each rw As DataRow In dt0.Rows
-        '    LesRef(NbSect) = rw(0).ToString
-        '    NbSect += 1
-        'Next
-
-        'For k As Integer = 0 To NbSect - 1
-        '    query = "DELETE from T_DQEItem where RefSection='" & LesRef(k) & "'"
-        '    ExecuteNonQuery(query)
-
-        '    query = "DELETE from T_DQESection_SousSection where RefSection='" & LesRef(k) & "'"
-        '    ExecuteNonQuery(query)
-
-        '    query = "DELETE from T_DQESection where RefSection='" & LesRef(k) & "'"
-        '    ExecuteNonQuery(query)
-        'Next
-
-        'Dim SectionEncours As Decimal = 0
-        'Dim SSenCours As String = ""
-        'Dim MarkSection As Boolean = False
-        'Dim YaSousSect As Boolean = False
-        'Dim sqlconn As New MySqlConnection
-        'BDOPEN(sqlconn)
-        'For LigNe As Integer = 3 To 1000
-        '    If (app.Workbooks(1).Worksheets(1).Cells(LigNe, 1).value = Nothing) Then MsgBox("Fin du fichier à la ligne " & LigNe.ToString, MsgBoxStyle.Information) : Exit For
-        '    Dim partTyp() As String = app.Workbooks(1).Worksheets(1).Cells(LigNe, 1).value.ToString.Split(" "c)
-        '    If (partTyp(0).ToLower = "section") Then   'Pour les sections ***********************
-        '        If (app.Workbooks(1).Worksheets(1).Cells(LigNe, 2).value = Nothing) Then MsgBox("Format incorrect! (ligne " & LigNe.ToString & ")", MsgBoxStyle.Exclamation) : Exit For
-        '        If (partTyp(1) <> "") Then
-        '            Dim DatSet = New DataSet
-        '            query = "select * from T_DQESection"
-
-        '            Dim Cmd As MySqlCommand = New MySqlCommand(query, sqlconn)
-        '            Dim DatAdapt = New MySqlDataAdapter(Cmd)
-        '            DatAdapt.Fill(DatSet, "T_DQESection")
-        '            Dim DatTable = DatSet.Tables("T_DQESection")
-        '            Dim DatRow = DatSet.Tables("T_DQESection").NewRow()
-
-        '            DatRow("NumeroDAO") = NumDoss
-        '            DatRow("NumeroSection") = partTyp(1)
-        '            DatRow("Designation") = EnleverApost(app.Workbooks(1).Worksheets(1).Cells(LigNe, 2).value.ToString)
-        '            DatRow("CodeLot") = CmbLotDQE.Text
-        '            DatRow("CodeSousLot") = IIf(CmbSousLotDQE.Enabled = True, CmbSousLotDQE.Text, "").ToString
-
-        '            DatSet.Tables("T_DQESection").Rows.Add(DatRow)
-        '            Dim CmdBuilder = New MySqlCommandBuilder(DatAdapt)
-        '            DatAdapt.Update(DatSet, "T_DQESection")
-        '            DatSet.Clear()
-
-        '            query = "select RefSection from T_DQESection where NumeroDAO='" & NumDoss & "' and CodeLot='" & CmbLotDQE.Text & "' and NumeroSection='" & partTyp(1) & "'"
-        '            dt0 = ExcecuteSelectQuery(query)
-        '            For Each rw As DataRow In dt0.Rows
-        '                SectionEncours = CInt(rw(0))
-        '                MarkSection = True
-        '            Next
-
-        '        Else
-        '            MsgBox("Importation interrompue! (ligne " & LigNe.ToString & ")", MsgBoxStyle.Exclamation)
-        '            app.Quit()
-        '            Exit For
-        '        End If
-
-        '    ElseIf (partTyp(0).ToLower = "sous") Then  'Pour les sous sections ****************
-
-        '        If (MarkSection = True) Then
-        '            YaSousSect = True
-        '            MarkSection = False
-        '        End If
-
-        '        If (YaSousSect = True) Then
-        '            If (app.Workbooks(1).Worksheets(1).Cells(LigNe, 2).value = Nothing) Then MsgBox("Format incorrect! (ligne " & LigNe.ToString & ")", MsgBoxStyle.Exclamation) : Exit For
-        '            If (partTyp(2) <> "") Then
-        '                Dim DatSet = New DataSet
-        '                query = "select * from T_DQESection_SousSection"
-
-        '                Dim Cmd As MySqlCommand = New MySqlCommand(query, sqlconn)
-        '                Dim DatAdapt = New MySqlDataAdapter(Cmd)
-        '                DatAdapt.Fill(DatSet, "T_DQESection_SousSection")
-        '                Dim DatTable = DatSet.Tables("T_DQESection_SousSection")
-        '                Dim DatRow = DatSet.Tables("T_DQESection_SousSection").NewRow()
-
-        '                DatRow("RefSection") = SectionEncours.ToString
-        '                DatRow("NumeroDAO") = NumDoss
-        '                DatRow("NumeroSousSection") = partTyp(2)
-        '                DatRow("LibelleSousSection") = EnleverApost(app.Workbooks(1).Worksheets(1).Cells(LigNe, 2).value.ToString)
-
-        '                DatSet.Tables("T_DQESection_SousSection").Rows.Add(DatRow)
-        '                Dim CmdBuilder = New MySqlCommandBuilder(DatAdapt)
-        '                DatAdapt.Update(DatSet, "T_DQESection_SousSection")
-        '                DatSet.Clear()
-
-        '            Else
-        '                MsgBox("Importation interrompue! (ligne " & LigNe.ToString & ")", MsgBoxStyle.Exclamation)
-        '                app.Quit()
-        '                Exit Sub
-        '            End If
-
-        '        Else
-        '            MsgBox("Disposition données incorrecte! (ligne " & LigNe.ToString & ")", MsgBoxStyle.Exclamation)
-        '            MsgBox("Importation interrompue! (ligne " & LigNe.ToString & ")", MsgBoxStyle.Exclamation)
-        '            Exit For
-        '        End If
-
-        '    Else   'Pour les items ************************
-
-        '        If (MarkSection = True) Then
-        '            YaSousSect = False
-        '            MarkSection = False
-        '        End If
-
-        '        If (partTyp(0) <> "") Then
-        '            If (app.Workbooks(1).Worksheets(1).Cells(LigNe, 3).value <> Nothing Or app.Workbooks(1).Worksheets(1).Cells(LigNe, 4).value <> Nothing) Then
-        '                Dim DatSet = New DataSet
-        '                query = "select * from T_DQEItem"
-
-        '                Dim Cmd As MySqlCommand = New MySqlCommand(query, sqlconn)
-        '                Dim DatAdapt = New MySqlDataAdapter(Cmd)
-        '                DatAdapt.Fill(DatSet, "T_DQEItem")
-        '                Dim DatTable = DatSet.Tables("T_DQEItem")
-        '                Dim DatRow = DatSet.Tables("T_DQEItem").NewRow()
-
-        '                DatRow("RefSection") = SectionEncours.ToString
-        '                DatRow("NumeroItem") = partTyp(0)
-        '                DatRow("Designation") = EnleverApost(app.Workbooks(1).Worksheets(1).Cells(LigNe, 2).value.ToString)
-        '                DatRow("NumeroSousSection") = SSenCours
-
-        '                If (app.Workbooks(1).Worksheets(1).Cells(LigNe, 3).value <> Nothing) Then
-        '                    DatRow("UniteItem") = IIf(app.Workbooks(1).Worksheets(1).Cells(LigNe, 3).value.ToString.Replace(" ", "") <> "", app.Workbooks(1).Worksheets(1).Cells(LigNe, 3).value.ToString, "F").ToString
-        '                Else
-        '                    DatRow("UniteItem") = "F"
-        '                End If
-        '                Dim Qte As Decimal = 1
-        '                If (app.Workbooks(1).Worksheets(1).Cells(LigNe, 4).value <> Nothing) Then
-        '                    If (app.Workbooks(1).Worksheets(1).Cells(LigNe, 4).value.ToString.Replace(" ", "") <> "") Then
-        '                        If (IsNumeric(app.Workbooks(1).Worksheets(1).Cells(LigNe, 4).value.ToString.Replace(" ", "")) = True) Then
-        '                            DatRow("QteItem") = CDec(app.Workbooks(1).Worksheets(1).Cells(LigNe, 4).value.ToString.Replace(" ", "")).ToString
-        '                            Qte = CDec(app.Workbooks(1).Worksheets(1).Cells(LigNe, 4).value.ToString.Replace(" ", "")).ToString
-        '                        Else
-        '                            DatSet.Clear()
-
-        '                            MsgBox("Quantité non numérique! (ligne " & LigNe.ToString & ")", MsgBoxStyle.Exclamation)
-        '                            Exit For
-        '                        End If
-
-        '                    Else
-        '                        DatRow("QteItem") = "1"
-        '                    End If
-        '                Else
-        '                    DatRow("QteItem") = "1"
-        '                End If
-        '                If (app.Workbooks(1).Worksheets(1).Cells(LigNe, 5).value <> Nothing) Then
-        '                    If (IsNumeric(app.Workbooks(1).Worksheets(1).Cells(LigNe, 5).value) = True And app.Workbooks(1).Worksheets(1).Cells(LigNe, 5).value.ToString.Replace(" ", "") <> "") Then
-        '                        DatRow("PuHtva") = AfficherMonnaie(CDec(app.Workbooks(1).Worksheets(1).Cells(LigNe, 5).value.ToString.Replace(" ", "")).ToString)
-        '                        DatRow("PuHtvaLettre") = MontantLettre(CDec(app.Workbooks(1).Worksheets(1).Cells(LigNe, 5).value.ToString.Replace(" ", "")).ToString)
-        '                        DatRow("MontHtva") = AfficherMonnaie(Math.Round(CDec(app.Workbooks(1).Worksheets(1).Cells(LigNe, 5).value.ToString.Replace(" ", "")) * Qte, 2).ToString)
-        '                    ElseIf (IsNumeric(app.Workbooks(1).Worksheets(1).Cells(LigNe, 5).value) = False And app.Workbooks(1).Worksheets(1).Cells(LigNe, 5).value.ToString.Replace(" ", "") <> "") Then
-        '                        MsgBox("Prix unitaire ligne " & LigNe.ToString & " : " & app.Workbooks(1).Worksheets(1).Cells(LigNe, 5).value.ToString & " incorrect!", MsgBoxStyle.Exclamation)
-        '                    End If
-        '                End If
-
-        '                DatSet.Tables("T_DQEItem").Rows.Add(DatRow)
-        '                Dim CmdBuilder = New MySqlCommandBuilder(DatAdapt)
-        '                DatAdapt.Update(DatSet, "T_DQEItem")
-        '                DatSet.Clear()
-
-
-        '            Else
-        '                MsgBox("La ligne " & LigNe.ToString & " ne sera pas prise en compte, elle n'a ni unité ni quantité!", MsgBoxStyle.Exclamation)
-        '            End If
-
-        '        End If
-        '    End If
-        'Next
-        'BDQUIT(sqlconn)
-        'GroupControl17.Width = GroupControl13.Width - 4
-        'GroupControl17.Left = 2
-        'GroupControl17.BringToFront()
-        'MajGridDQE()
-        'app.Quit()
-        'FinChargement()
-
-
+        ''        End If
+        ''    End If
+        ''Next
+        ''BDQUIT(sqlconn)
+        ''GroupControl17.Width = GroupControl13.Width - 4
+        ''GroupControl17.Left = 2
+        ''GroupControl17.BringToFront()
+        ''MajGridDQE()
+        ''app.Quit()
+        ''FinChargement()
+#End Region
     End Sub
-    Private Sub PanelControl2_Click(sender As Object, e As EventArgs) Handles PanelControl2.Click
-        Dim NewOpenFile As New OpenFileDialog
-        NewOpenFile.Filter = "Fichier d'importation (Excel) | *.xls;*.xlsx"
-        If NewOpenFile.ShowDialog() = DialogResult.OK Then
-            txtFilePathDQE.Text = NewOpenFile.FileName
-        End If
 
-    End Sub
-    Private Sub RdItem_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RdItem.CheckedChanged
-        If (RdItem.Checked = True) Then
-            GbItemDQE.Visible = True
-        Else
-            GbItemDQE.Visible = False
-            TxtDesigneSection.Focus()
-        End If
+    Public Sub MajGridDQE()
+        Dim NumSection As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        Dim cptr As Decimal = 0
+        DataGridView1.Rows.Clear()
+        CmbNumSection.Properties.Items.Clear()
+
+        query = "select RefSection,NumeroSection,Designation from T_DQESection where NumeroDAO='" & NumDoss & "' and CodeLot='" & CmbLotDQE.Text & "' and CodeSousLot='" & CmbSousLotDQE.Text & "' order by NumeroSection"
+        Dim dt As DataTable = ExcecuteSelectQuery(query)
+        For Each rw As DataRow In dt.Rows
+            cptr = cptr + 1
+            Dim RefSect As Decimal = rw("RefSection")
+            CmbNumSection.Properties.Items.Add(rw("NumeroSection").ToString)
+
+            Dim n As Decimal = DataGridView1.Rows.Add()
+            DataGridView1.Rows.Item(n).Cells(0).Value = "S" & rw("RefSection").ToString
+            DataGridView1.Rows.Item(n).Cells(1).Value = "SECTION " & rw("NumeroSection").ToString
+            DataGridView1.Rows.Item(n).Cells(2).Value = MettreApost(rw("Designation").ToString)
+            DataGridView1.Rows.Item(n).DefaultCellStyle.BackColor = Color.LightBlue
+
+            For i As Integer = 1 To 2
+                DataGridView1.Rows.Item(n).Cells(i).Style.Font = New Font("Tahoma", 9, FontStyle.Bold)
+            Next
+
+            Dim NbSS As Decimal = 0
+
+            query = "select Count(*) from T_DQESection_SousSection where RefSection='" & rw("RefSection").ToString & "' and NumeroDAO='" & NumDoss & "'"
+            Dim dt1 As DataTable = ExcecuteSelectQuery(query)
+            For Each rw1 As DataRow In dt1.Rows
+                NbSS = CInt(rw1(0))
+            Next
+
+            If (NbSS > 1) Then
+
+                query = "select RefSousSection,NumeroSousSection,LibelleSousSection from T_DQESection_SousSection where RefSection='" & RefSect.ToString & "' order by NumeroSousSection"
+                dt1 = ExcecuteSelectQuery(query)
+                For Each rw1 As DataRow In dt1.Rows
+                    Dim z As Decimal = DataGridView1.Rows.Add()
+                    DataGridView1.Rows.Item(z).Cells(0).Value = "X" & rw1(0).ToString
+                    DataGridView1.Rows.Item(z).Cells(1).Value = "S/S " & rw1(1).ToString
+                    DataGridView1.Rows.Item(z).Cells(2).Value = MettreApost(rw1(2).ToString)
+
+                    For i As Integer = 1 To 2
+                        DataGridView1.Rows.Item(z).Cells(i).Style.Font = New Font("Tahoma", 8, FontStyle.Bold)
+                    Next
+
+                    query = "select RefItem,NumeroItem,Designation,UniteItem,QteItem,PuHtva,MontHtva from T_DQEItem where RefSection='" & RefSect.ToString & "' and NumeroSousSection='" & rw1(1).ToString & "' order by NumeroItem"
+                    Dim dt2 As DataTable = ExcecuteSelectQuery(query)
+                    For Each rw2 As DataRow In dt2.Rows
+                        Dim x As Decimal = DataGridView1.Rows.Add()
+                        DataGridView1.Rows.Item(x).Cells(0).Value = "I" & rw2(0).ToString
+                        DataGridView1.Rows.Item(x).Cells(1).Value = rw2(1).ToString
+                        DataGridView1.Rows.Item(x).Cells(2).Value = MettreApost(rw2(2).ToString)
+                        DataGridView1.Rows.Item(x).Cells(3).Value = rw2(3).ToString
+                        DataGridView1.Rows.Item(x).Cells(4).Value = AfficherMonnaie(rw2(4).ToString)
+                        DataGridView1.Rows.Item(x).Cells(5).Value = AfficherMonnaie(rw2(5).ToString)
+                        DataGridView1.Rows.Item(x).Cells(6).Value = AfficherMonnaie(rw2(6).ToString)
+                    Next
+                Next
+            Else
+
+                query = "select RefItem,NumeroItem,Designation,UniteItem,QteItem,PuHtva,MontHtva from T_DQEItem where RefSection='" & RefSect.ToString & "' order by NumeroItem"
+                dt1 = ExcecuteSelectQuery(query)
+                For Each rw1 As DataRow In dt1.Rows
+                    Dim x As Decimal = DataGridView1.Rows.Add()
+                    DataGridView1.Rows.Item(x).Cells(0).Value = "I" & rw1("RefItem").ToString
+                    DataGridView1.Rows.Item(x).Cells(1).Value = rw1("NumeroItem").ToString
+                    DataGridView1.Rows.Item(x).Cells(2).Value = MettreApost(rw1("Designation").ToString)
+                    DataGridView1.Rows.Item(x).Cells(3).Value = rw1("UniteItem").ToString
+                    DataGridView1.Rows.Item(x).Cells(4).Value = AfficherMonnaie(rw1("QteItem").ToString)
+                    DataGridView1.Rows.Item(x).Cells(5).Value = AfficherMonnaie(rw1("PuHtva").ToString)
+                    DataGridView1.Rows.Item(x).Cells(6).Value = AfficherMonnaie(rw1("MontHtva").ToString)
+                Next
+            End If
+        Next
+
+        'DataGridView1.Columns(2).Width = DataGridView1.Width - (DataGridView1.Columns(0).Width + DataGridView1.Columns(1).Width + DataGridView1.Columns(3).Width + DataGridView1.Columns(4).Width + DataGridView1.Columns(5).Width + DataGridView1.Columns(6).Width)
+
+        'TxtNumSection.Text = NumSection(cptr)
+
+        'If (GbItemDQE.Visible = True) Then
+        '    TxtDesigneItem.Focus()
+        'Else
+        '    TxtDesigneSection.Focus()
+        'End If
+
+        'MajCmbUnite()
     End Sub
 
     Private Sub LesSousLots(ByVal Lot As String, ByRef Combo As ComboBoxEdit)
-
         If (Lot <> "" And Combo.Enabled = True) Then
             Combo.Properties.Items.Clear()
             query = "select CodeSousLot from T_LotDAO_SousLot where RefLot='" & Lot & "' and NumeroDAO='" & NumDoss & "'"
@@ -3794,7 +4668,58 @@ Public Class NewDao
                 Combo.Properties.Items.Add(rw("CodeSousLot").ToString)
             Next
         End If
+    End Sub
 
+    Private Sub ToolStripMenuItemModifLignDQE_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItemModifLignDQE.Click
+        Try
+            If DataGridView1.Rows.Count > 0 Then
+                Dim Index = DataGridView1.CurrentRow.Index
+                Dim NewModifLigneDQE As New ModifLigneDQE
+                NewModifLigneDQE.RefSection = Val(Mid(DataGridView1.Rows.Item(Index).Cells(0).Value, 2))
+                If Mid(DataGridView1.Rows.Item(Index).Cells(0).Value, 1, 1) = "I" Then
+                    NewModifLigneDQE.TypeModification = ""
+                Else
+                    NewModifLigneDQE.TypeModification = "Section"
+                    NewModifLigneDQE.Size = New Point(413, 124)
+                    NewModifLigneDQE.Label2.Visible = False
+                    NewModifLigneDQE.NumQteBien.Visible = False
+                    NewModifLigneDQE.Label1.Visible = False
+                    NewModifLigneDQE.Unites.Visible = False
+                    NewModifLigneDQE.Label3.Visible = False
+                    NewModifLigneDQE.PrixUnitaire.Visible = False
+                    NewModifLigneDQE.Label5.Visible = False
+                    NewModifLigneDQE.MontantTotal.Visible = False
+                    NewModifLigneDQE.Label6.Visible = False
+                    NewModifLigneDQE.Label7.Visible = False
+                End If
+                NewModifLigneDQE.Designation.Text = DataGridView1.Rows.Item(Index).Cells(2).Value
+                NewModifLigneDQE.NumQteBien.Text = DataGridView1.Rows.Item(Index).Cells(4).Value
+                NewModifLigneDQE.Unites.Text = DataGridView1.Rows.Item(Index).Cells(3).Value
+                ' NewModifLigneDQE.PrixUnitaire.Text = DataGridView1.Rows.Item(Index).Cells(5).Value
+                NewModifLigneDQE.ShowDialog()
+            End If
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+    Private Sub DataGridView1_CellMouseDown(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DataGridView1.CellMouseDown
+        NewGridLigneSelected(DataGridView1, e)
+    End Sub
+
+    Private Sub ContextMenuStriptDQE_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStriptDQE.Opening
+        If AfficherDossier = True Or DataGridView1.Rows.Count = 0 Then
+            e.Cancel = True
+        End If
+    End Sub
+
+#Region "Code saisie manuel des DQE"
+    Private Sub RdItem_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RdItem.CheckedChanged
+        If (RdItem.Checked = True) Then
+            GbItemDQE.Visible = True
+        Else
+            GbItemDQE.Visible = False
+            TxtDesigneSection.Focus()
+        End If
     End Sub
 
     Private Sub CmbNumLot2_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CmbNumLot2.SelectedValueChanged
@@ -3834,56 +4759,41 @@ Public Class NewDao
         End If
     End Sub
 
-    Private Sub CmbLotDQE_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CmbLotDQE.SelectedValueChanged
-        'TxtRefLot1.Text = ""
-        'CmbSousLotDQE.Text = ""
-        'CmbSousLot1.Text = ""
-        'TxtSousLotDQE.Text = ""
+    ' Private Sub CmbLotDQE_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CmbLotDQE.SelectedValueChanged
+    'TxtRefLot1.Text = ""
+    'CmbSousLotDQE.Text = ""
+    'CmbSousLot1.Text = ""
+    'TxtSousLotDQE.Text = ""
 
-        'If (CmbLotDQE.Text <> "") Then
-        '    query = "select LibelleLot,RefLot,SousLot from T_LotDAO where NumeroDAO='" & NumDoss & "' and CodeLot='" & CmbLotDQE.Text & "'"
-        '    Dim dt0 As DataTable = ExcecuteSelectQuery(query)
-        '    For Each rw As DataRow In dt0.Rows
-        '        txtLibLotDQE.Text = MettreApost(rw(0).ToString)
-        '        TxtRefLot1.Text = rw(1).ToString
-        '        If (rw(2).ToString = "OUI") Then
-        '            CmbSousLotDQE.Enabled = True
-        '            CmbSousLot1.Enabled = True
-        '        Else
-        '            CmbSousLotDQE.Enabled = False
-        '            CmbSousLot1.Enabled = False
-        '        End If
-        '    Next
+    'If (CmbLotDQE.Text <> "") Then
+    '    query = "select LibelleLot,RefLot,SousLot from T_LotDAO where NumeroDAO='" & NumDoss & "' and CodeLot='" & CmbLotDQE.Text & "'"
+    '    Dim dt0 As DataTable = ExcecuteSelectQuery(query)
+    '    For Each rw As DataRow In dt0.Rows
+    '        txtLibLotDQE.Text = MettreApost(rw(0).ToString)
+    '        TxtRefLot1.Text = rw(1).ToString
+    '        If (rw(2).ToString = "OUI") Then
+    '            CmbSousLotDQE.Enabled = True
+    '            CmbSousLot1.Enabled = True
+    '        Else
+    '            CmbSousLotDQE.Enabled = False
+    '            CmbSousLot1.Enabled = False
+    '        End If
+    '    Next
 
-        '    If (CmbSousLotDQE.Enabled = False) Then
-        '        'btOpenDQE.Enabled = True
-        '    Else
-        '        'btOpenDQE.Enabled = False
-        '        LesSousLots(TxtRefLot1.Text, CmbSousLotDQE)
-        '        LesSousLots(TxtRefLot1.Text, CmbSousLot1)
-        '    End If
+    '    If (CmbSousLotDQE.Enabled = False) Then
+    '        'btOpenDQE.Enabled = True
+    '    Else
+    '        'btOpenDQE.Enabled = False
+    '        LesSousLots(TxtRefLot1.Text, CmbSousLotDQE)
+    '        LesSousLots(TxtRefLot1.Text, CmbSousLot1)
+    '    End If
 
-        '    CmbNumLot2.Text = CmbLotDQE.Text
-        'Else
-        '    'btOpenDQE.Enabled = False
-        'End If
-        'MajGridDQE()
-    End Sub
-
-    Private Sub CmbSousLotDQE_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CmbSousLotDQE.SelectedValueChanged
-        CmbSousLot1.Text = CmbSousLotDQE.Text
-        query = "select LibelleSousLot from T_LotDAO_SousLot where CodeSousLot='" & CmbSousLotDQE.Text & "' and NumeroDAO='" & NumDoss & "'"
-        Dim dt0 As DataTable = ExcecuteSelectQuery(query)
-        For Each rw As DataRow In dt0.Rows
-            TxtSousLotDQE.Text = MettreApost(rw(0).ToString)
-        Next
-
-        GbSectionDQE.Enabled = True
-        GbItemDQE.Enabled = True
-        'btOpenDQE.Enabled = True
-        MajGridDQE()
-
-    End Sub
+    '    CmbNumLot2.Text = CmbLotDQE.Text
+    'Else
+    '    'btOpenDQE.Enabled = False
+    'End If
+    'MajGridDQE()
+    ' End Sub
 
     Private Sub CmbSousLot1_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CmbSousLot1.SelectedValueChanged
 
@@ -3910,93 +4820,6 @@ Public Class NewDao
         If (e.KeyCode = Keys.Enter) Then
             BtEnrgSection_Click(Me, e)
         End If
-    End Sub
-
-    Private Sub MajGridDQE()
-        Dim NumSection As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        Dim cptr As Decimal = 0
-        DataGridView1.Rows.Clear()
-        CmbNumSection.Properties.Items.Clear()
-        query = "select RefSection,NumeroSection,Designation from T_DQESection where NumeroDAO='" & NumDoss & "' and CodeLot='" & CmbLotDQE.Text & "' and CodeSousLot='" & CmbSousLotDQE.Text & "' order by NumeroSection"
-        Dim dt As DataTable = ExcecuteSelectQuery(query)
-        For Each rw As DataRow In dt.Rows
-            cptr = cptr + 1
-            Dim RefSect As Decimal = rw(0)
-            CmbNumSection.Properties.Items.Add(rw(1).ToString)
-
-            Dim n As Decimal = DataGridView1.Rows.Add()
-            DataGridView1.Rows.Item(n).Cells(0).Value = "S" & rw(0).ToString
-            DataGridView1.Rows.Item(n).Cells(1).Value = "SECTION " & rw(1).ToString
-            DataGridView1.Rows.Item(n).Cells(2).Value = MettreApost(rw(2).ToString)
-            For i As Integer = 1 To 2
-                DataGridView1.Rows.Item(n).Cells(i).Style.Font = New Font("Tahoma", 9, FontStyle.Bold)
-            Next
-
-            Dim NbSS As Decimal = 0
-
-            query = "select Count(*) from T_DQESection_SousSection where RefSection='" & rw(0).ToString & "' and NumeroDAO='" & NumDoss & "'"
-            Dim dt1 As DataTable = ExcecuteSelectQuery(query)
-            For Each rw1 As DataRow In dt1.Rows
-                NbSS = CInt(rw1(0))
-            Next
-
-
-            If (NbSS > 1) Then
-
-                query = "select RefSousSection,NumeroSousSection,LibelleSousSection from T_DQESection_SousSection where RefSection='" & RefSect.ToString & "' order by NumeroSousSection"
-                dt1 = ExcecuteSelectQuery(query)
-                For Each rw1 As DataRow In dt1.Rows
-                    Dim z As Decimal = DataGridView1.Rows.Add()
-                    DataGridView1.Rows.Item(z).Cells(0).Value = "X" & rw1(0).ToString
-                    DataGridView1.Rows.Item(z).Cells(1).Value = "S/S " & rw1(1).ToString
-                    DataGridView1.Rows.Item(z).Cells(2).Value = MettreApost(rw1(2).ToString)
-                    For i As Integer = 1 To 2
-                        DataGridView1.Rows.Item(z).Cells(i).Style.Font = New Font("Tahoma", 8, FontStyle.Bold)
-                    Next
-
-                    query = "select RefItem,NumeroItem,Designation,UniteItem,QteItem,PuHtva,MontHtva from T_DQEItem where RefSection='" & RefSect.ToString & "' and NumeroSousSection='" & rw1(1).ToString & "' order by NumeroItem"
-                    Dim dt2 As DataTable = ExcecuteSelectQuery(query)
-                    For Each rw2 As DataRow In dt2.Rows
-                        Dim x As Decimal = DataGridView1.Rows.Add()
-                        DataGridView1.Rows.Item(x).Cells(0).Value = "I" & rw2(0).ToString
-                        DataGridView1.Rows.Item(x).Cells(1).Value = rw2(1).ToString
-                        DataGridView1.Rows.Item(x).Cells(2).Value = MettreApost(rw2(2).ToString)
-                        DataGridView1.Rows.Item(x).Cells(3).Value = rw2(3).ToString
-                        DataGridView1.Rows.Item(x).Cells(4).Value = AfficherMonnaie(rw2(4).ToString)
-                        DataGridView1.Rows.Item(x).Cells(5).Value = AfficherMonnaie(rw2(5).ToString)
-                        DataGridView1.Rows.Item(x).Cells(6).Value = AfficherMonnaie(rw2(6).ToString)
-                    Next
-                Next
-
-            Else
-
-                query = "select RefItem,NumeroItem,Designation,UniteItem,QteItem,PuHtva,MontHtva from T_DQEItem where RefSection='" & RefSect.ToString & "' order by NumeroItem"
-                dt1 = ExcecuteSelectQuery(query)
-                For Each rw1 As DataRow In dt1.Rows
-                    Dim x As Decimal = DataGridView1.Rows.Add()
-                    DataGridView1.Rows.Item(x).Cells(0).Value = "I" & rw1(0).ToString
-                    DataGridView1.Rows.Item(x).Cells(1).Value = rw1(1).ToString
-                    DataGridView1.Rows.Item(x).Cells(2).Value = MettreApost(rw1(2).ToString)
-                    DataGridView1.Rows.Item(x).Cells(3).Value = rw1(3).ToString
-                    DataGridView1.Rows.Item(x).Cells(4).Value = AfficherMonnaie(rw1(4).ToString)
-                    DataGridView1.Rows.Item(x).Cells(5).Value = AfficherMonnaie(rw1(5).ToString)
-                    DataGridView1.Rows.Item(x).Cells(6).Value = AfficherMonnaie(rw1(6).ToString)
-                Next
-
-            End If
-        Next
-
-        DataGridView1.Columns(2).Width = DataGridView1.Width - (DataGridView1.Columns(0).Width + DataGridView1.Columns(1).Width + DataGridView1.Columns(3).Width + DataGridView1.Columns(4).Width + DataGridView1.Columns(5).Width + DataGridView1.Columns(6).Width)
-
-        TxtNumSection.Text = NumSection(cptr)
-
-        If (GbItemDQE.Visible = True) Then
-            TxtDesigneItem.Focus()
-        Else
-            TxtDesigneSection.Focus()
-        End If
-
-        MajCmbUnite()
     End Sub
 
     Private Sub CmbNumSection_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CmbNumSection.SelectedValueChanged
@@ -4033,7 +4856,7 @@ Public Class NewDao
             Next
 
             Dim codeItem As String = (nbreItem + 1).ToString
-            If (nbreItem < 10) Then codeItem = "0" & codeItem
+            If (nbreItem <10) Then codeItem = "0" & codeItem
             TxtNumItem.Text = CmbNumSection.Text & codeItem
             RefSectionItemCache.Text = refSection.ToString
 
@@ -4079,7 +4902,7 @@ Public Class NewDao
         query = "select LibelleUnite from T_Unite where LibelleCourtUnite='" & CmbUnite.Text & "'"
         Dim dt0 As DataTable = ExcecuteSelectQuery(query)
         For Each rw As DataRow In dt0.Rows
-            TxtUnite.Text = MettreApost(rw(0).ToString)
+            TxtUnite.Text = MettreApost(rw("LibelleUnite").ToString)
             TxtQte.Focus()
         Next
     End Sub
@@ -4228,8 +5051,7 @@ Public Class NewDao
             BDQUIT(sqlconn)
         End If
     End Sub
-
-
+#End Region
 
 #End Region
 
@@ -4580,41 +5402,6 @@ Public Class NewDao
         CodePostQualifSup.Clear()
         Return True
     End Function
-    Private Sub LoadPageDQE(ByVal NumDossier As String)
-        InitDQE()
-        If Not PageDQE.PageEnabled Then PageDQE.PageEnabled = True
-        If IsNothing(CurrentDao) Then
-            query = "SELECT * FROM t_dao WHERE NumeroDAO='" & NumDoss & "'"
-            Dim dtDao As DataTable = ExcecuteSelectQuery(query)
-            If dtDao.Rows.Count = 0 Then
-                CurrentDao = Nothing
-                Exit Sub
-            End If
-            CurrentDao = dtDao.Rows(0)
-        End If
-
-        If IsNothing(CurrentMarche) Then
-            query = "SELECT * FROM t_marche WHERE RefMarche='" & CurrentDao("RefMarche") & "'"
-            Dim dtmarche As DataTable = ExcecuteSelectQuery(query)
-            If dtmarche.Rows.Count > 0 Then
-                CurrentMarche = dtmarche.Rows(0)
-            Else
-                CurrentMarche = Nothing
-                FailMsg("Le marché associé a été supprimé")
-                Exit Sub
-            End If
-        End If
-
-        Try
-
-        Catch ex As Exception
-
-        End Try
-    End Sub
-
-    Private Function SavePageDQE(ByVal NumDossier As String) As Boolean
-        Return True
-    End Function
 #End Region
 
 #Region "Code non Utiliser"
@@ -4858,29 +5645,41 @@ Public Class NewDao
 
 #Region "Context MenuScript"
 
+    Private Sub ContextMenuStrip1_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip1.Opening
+        If LayoutView1.RowCount = 0 Then
+            e.Cancel = True
+        End If
+    End Sub
+
     Private Sub ModifierLeDossier_Click(sender As Object, e As EventArgs) Handles ModifierLeDossier.Click
         Try
-            If PourAjoutModifDansDB = 1 Then
-                SuccesMsg("Veuillez enregistrer le dossier en cours.")
-                Exit Sub
-            ElseIf (PourAjoutModifDansDB = 2) Then
-                SuccesMsg("Veuillez enregistrer et fermer le dossier en cours.")
-                Exit Sub
-            End If
-
             If LayoutView1.RowCount > 0 Then
-                PourAjoutModifDansDB = 2
+                If PourAjoutModifDansDB = 1 Then
+                    SuccesMsg("Veuillez enregistrer le dossier en cours.")
+                    Exit Sub
+                ElseIf (PourAjoutModifDansDB = 2) Then
+                    SuccesMsg("Veuillez enregistrer et fermer le dossier en cours.")
+                    Exit Sub
+                End If
+
                 Dim drx = LayoutView1.GetDataRow(LayoutView1.FocusedRowHandle)
+
+                If AfficherDossier = False Then 'Au cas de non afficharge du dossier
+                    If drx("Statut").ToString = "Annulé" Then
+                        FailMsg("Impossible de modifier un dossier annulé.")
+                        Exit Sub
+                    End If
+
+                    If DateTime.Compare(CDate(drx("DateLimitePropo").ToString), Now) < 0 And CBool(drx("DossValider")) = True Then
+                        FailMsg("Impossible de modifier un dossier validé.")
+                        Exit Sub
+                    End If
+                End If
+
+                PourAjoutModifDansDB = 2
                 NumDoss = EnleverApost(drx("N°").ToString)
                 TypeMarche = drx("Type").ToString
                 MethodMarche = drx("Méthode").ToString
-
-                'query = "SELECT DossValider FROM t_dao WHERE NumeroDAO='" & NumDoss & "'"
-                'Dim test As Boolean = ExecuteScallar(query)
-                'If test = True Then
-                '    SuccesMsg("Impossible de modifier le dossier car il a dejà été valider")
-                '    Exit Sub
-                'End If
 
                 cmbTypeMarche.Text = TypeMarche
                 TxtMethodeMarche.Text = MethodMarche
@@ -4902,7 +5701,10 @@ Public Class NewDao
         End Try
     End Sub
 
-    Private Sub SupprimerLeDossier_Click(sender As Object, e As EventArgs) Handles SupprimerLeDossier.Click
+    Private Sub AfficherLeDossier_Click(sender As Object, e As EventArgs) Handles AfficherLeDossier.Click
+        'Dim FFF As String = MontantLettre("858 750")
+        'InputBox("foj", "fodj", FFF)
+        'Exit Sub
         Try
             If PourAjoutModifDansDB = 1 Then
                 SuccesMsg("Veuillez enregistrer le dossier en cours.")
@@ -4912,123 +5714,1639 @@ Public Class NewDao
                 Exit Sub
             End If
 
-            If ConfirmMsg("Voulez-vous supprimer ce dossier ?") = DialogResult.Yes Then
-                Dim drx = LayoutView1.GetDataRow(LayoutView1.FocusedRowHandle)
-                NumDoss = drx("N°")
-                query = "SELECT DossValider FROM t_dao WHERE NumeroDAO='" & NumDoss & "'"
-                Dim test As Boolean = ExecuteScallar(query)
-                If test = True Then
-                    SuccesMsg("Impossible de supprimer le dossier car il a dejà été validé")
-                    Exit Sub
-                End If
-                'Suppression des données post qualification
-                query = "DELETE FROM WHERE NumeroDAO='" & NumDoss & "'"
-                ExecuteNonQuery(query)
-                'Suppresion des données de spécification technique
-                query = "DELETE FROM t_spectechcaract WHERE RefSpecFournit IN(SELECT RefSpecFournit FROM t_spectechfourniture WHERE NumeroDAO='" & NumDoss & "')"
-                ExecuteNonQuery(query)
-                query = "DELETE FROM T_SpecTechFourniture WHERE NumeroDAO='" & NumDoss & "'"
-                ExecuteNonQuery(query)
-                'Supression des données dans membre de la comission
-                query = "DELETE FROM t_commission WHERE NumeroDAO='" & NumDoss & "'"
-                ExecuteNonQuery(query)
-                'Supprimer les sous-lots
-                query = "DELETE FROM t_lotdao_souslot WHERE NumeroDAO='" & NumDoss & "'"
-                ExecuteNonQuery(query)
-                'Supprimer les lots
-                query = "DELETE FROM t_lotdao WHERE NumeroDAO='" & NumDoss & "'"
-                ExecuteNonQuery(query)
-                'Recuperation de reference marche
-                query = "SELECT RefMarche FROM t_dao WHERE NumeroDAO='" & NumDoss & "'"
-                Dim RefMarche = Val(ExecuteScallar(query))
-                'Suppression du DAO
-                query = "DELETE FROM t_dao WHERE NumeroDAO='" & NumDoss & "'"
-                ExecuteNonQuery(query)
-                'Mise à jour qu marché
-                query = "UPDATE t_marche SET NumeroDAO=NULL WHERE RefMarche='" & RefMarche & "'"
-                ExecuteNonQuery(query)
-                SuccesMsg("Suppression du dosssier effectué")
-                LoadArchivesDao()
-            End If
+            AfficherDossier = True
+            ModifierLeDossier_Click(Me, e)
+            GetEnebledAffichageBouton(False)
+
+            'If LayoutView1.RowCount > 0 Then
+            '    Dim drx = LayoutView1.GetDataRow(LayoutView1.FocusedRowHandle)
+            '    Dim NewApercuDAO As New ApercuDAO
+            '    NewApercuDAO.NumDoss = drx("N°")
+            '    Disposer_form(NewApercuDAO)
+            'End If
         Catch ex As Exception
+            AfficherDossier = False
             FailMsg(ex.ToString)
         End Try
     End Sub
 
-    Private Sub AfficherLeDossier_Click(sender As Object, e As EventArgs) Handles AfficherLeDossier.Click
-        Try
-            If LayoutView1.RowCount > 0 Then
+    Private Sub GetEnebledAffichageBouton(value As Boolean)
+        BtEnregistrer.Enabled = value
+        BtEnrgLot.Enabled = value
+        BtAjoutCojo.Enabled = value
+        BtAjoutSection.Enabled = value
+        BtSupSection.Enabled = value
+        BtAnnulPostQualif.Enabled = value
+        BtEnrgPostQualif.Enabled = value
+        BtEnregBien.Enabled = value
+        btRetourBien.Enabled = value
+        BtCategBien.Enabled = value
+        BtSupServicConnex.Enabled = value
+
+        NaturePrix.Properties.ReadOnly = Not value
+        NomJournal.Properties.ReadOnly = Not value
+        LigneBudgetaire.Properties.ReadOnly = Not value
+        LieurRemiseFourniture.Properties.ReadOnly = Not value
+
+        DatePublication.Properties.ReadOnly = Not value
+        HeurePub.Properties.ReadOnly = Not value
+        NbreDelaiPub.Properties.ReadOnly = Not value
+        JoursDelaiPub.Properties.ReadOnly = Not value
+        HeureDepot.Properties.ReadOnly = Not value
+        DateReporte.Properties.ReadOnly = Not value
+        HeureReporte.Properties.ReadOnly = Not value
+
+        TxtLibelleDao.ReadOnly = Not value
+        TxtLibLot.ReadOnly = Not value
+        TxtCautionLot.Properties.ReadOnly = Not value
+        NumGarantiLot.Properties.ReadOnly = Not value
+        CmbGarantiLot.Properties.ReadOnly = Not value
+        TxtSaisiSouLot.Properties.ReadOnly = Not value
+        TxtPrixDao.ReadOnly = Not value
+        CmbCompte.Properties.ReadOnly = Not value
+        CombSection.Properties.ReadOnly = Not value
+        TxtLibelleserviceconnexe.Properties.ReadOnly = Not value
+    End Sub
+
+    Private Sub SupprimerLeDossier_Click(sender As Object, e As EventArgs) Handles SupprimerLeDossier.Click
+        If LayoutView1.RowCount > 0 Then
+            Try
+                If PourAjoutModifDansDB = 1 Then
+                    SuccesMsg("Veuillez enregistrer le dossier en cours.")
+                    Exit Sub
+                ElseIf (PourAjoutModifDansDB = 2) Then
+                    SuccesMsg("Veuillez enregistrer et fermer le dossier en cours.")
+                    Exit Sub
+                End If
+
                 Dim drx = LayoutView1.GetDataRow(LayoutView1.FocusedRowHandle)
-                Dim NewApercuDAO As New ApercuDAO
-                NewApercuDAO.NumDoss = drx("N°")
-                Disposer_form(NewApercuDAO)
-            End If
-        Catch ex As Exception
-            FailMsg(ex.ToString)
-        End Try
+
+                'query = "SELECT DossValider FROM t_dao WHERE NumeroDAO='" & EnleverApost(drx("N°").ToString) & "'"
+                ' Dim test As Boolean = ExecuteScallar(query)
+                If CBool(drx("DossValider")) = True Then
+                    FailMsg("Impossible de supprimer ce dossier, car il a déjà été validé.")
+                    Exit Sub
+                End If
+
+                If ConfirmMsg("Voulez-vous supprimer ce dossier ?") = DialogResult.Yes Then
+                    DebutChargement(True, "Suppression du dossier en cours...")
+
+                    Dim NumeroDAO As String = EnleverApost(drx("N°").ToString)
+
+                    'Suppression des données post qualification
+                    ExecuteNonQuery("DELETE FROM t_dao_postqualif WHERE NumeroDAO='" & NumeroDAO & "'")
+
+                    If drx("Type").ToString.ToLower = "Fournitures".ToLower Then
+                        'Suppresion des données de spécification technique
+                        ExecuteNonQuery("DELETE FROM t_spectechcaract WHERE RefSpecFournit IN(SELECT RefSpecFournit FROM t_spectechfourniture WHERE NumeroDAO='" & NumeroDAO & "')")
+
+                        ExecuteNonQuery("DELETE FROM T_SpecTechFourniture WHERE NumeroDAO='" & NumeroDAO & "'")
+                        'Suppression dE LA LISTE DES ERVICES CONNEXES
+                        ExecuteNonQuery("delete from t_dao_service_connexe where NumeroDAO='" & NumeroDAO & "'")
+                    Else
+                        'Suppresion des Items des DQE
+                        ExecuteNonQuery("DELETE FROM t_dqeitem WHERE RefSection IN(SELECT RefSection FROM t_dqesection WHERE NumeroDAO='" & NumeroDAO & "')")
+                        'Suppresion des sections
+                        ExecuteNonQuery("DELETE FROM t_dqesection WHERE NumeroDAO='" & NumeroDAO & "'")
+                    End If
+
+                    'Supression des données dans membre de la comission
+                    ExecuteNonQuery("DELETE FROM t_commission WHERE NumeroDAO='" & NumeroDAO & "'")
+                    'Suppression des fournisseurs
+                    ExecuteNonQuery("DELETE FROM T_Fournisseur where NumeroDAO='" & NumeroDAO & "' and CodeProjet='" & ProjetEnCours & "'")
+
+                    'Supprimer les sous-lots
+                    ExecuteNonQuery("DELETE FROM t_lotdao_souslot WHERE NumeroDAO='" & NumeroDAO & "'")
+
+                    'Supprimer les lots
+                    ExecuteNonQuery("DELETE FROM t_lotdao WHERE NumeroDAO='" & NumeroDAO & "'")
+
+                    'Recuperation de reference marche
+                    Dim RefMarche = Val(ExecuteScallar("SELECT RefMarche FROM t_dao WHERE NumeroDAO='" & NumeroDAO & "'"))
+                    'Suppression du DAO
+                    ExecuteNonQuery("DELETE FROM t_dao WHERE NumeroDAO='" & NumeroDAO & "'")
+
+                    'Mise à jour du marché
+                    ExecuteNonQuery("UPDATE t_marche SET NumeroDAO=NULL WHERE RefMarche='" & RefMarche & "'")
+
+                    SuccesMsg("Dosssier supprimé avec succès.")
+                    'LoadArchivesDao()
+                    LayoutView1.GetDataRow(LayoutView1.FocusedRowHandle).Delete()
+                End If
+            Catch ex As Exception
+                FinChargement()
+                FailMsg(ex.ToString)
+            End Try
+        End If
     End Sub
 
     Private Sub ImprimerLeDossier_Click(sender As Object, e As EventArgs) Handles ImprimerLeDossier.Click
+        If LayoutView1.RowCount > 0 Then
+            Try
+                If PourAjoutModifDansDB = 1 Then
+                    SuccesMsg("Veuillez enregistrer le dossier en cours.")
+                    Exit Sub
+                ElseIf (PourAjoutModifDansDB = 2) Then
+                    SuccesMsg("Veuillez enregistrer et fermer le dossier en cours.")
+                    Exit Sub
+                End If
+
+                Dim drx = LayoutView1.GetDataRow(LayoutView1.FocusedRowHandle)
+
+                If ListeMethodePrevue.Contains(drx("Méthode").ToString.ToUpper) = False Then
+                    FailMsg("Aucun état prévu pour la méthode [" & drx("Méthode").ToString.ToUpper & "]")
+                    Exit Sub
+                End If
+
+                Dim DossierGenerer As Boolean = False
+                Dim FicheiExiste As Boolean = False
+                Dim dtSoumis As New DataTable
+                Dim NomFichierpdf As String = ""
+
+                Dim NomRepCheminSauve As String = line & "\DAO\" & drx("Type").ToString & "\" & drx("Méthode").ToString & "\" & FormatFileName(drx("N°").ToString, "")
+
+                If drx("Méthode").ToString.ToUpper = "PSL" Then ' And drx("Type").ToString.ToLower = "Fournitures".ToLower Then
+                    query = "select * from T_Fournisseur where NumeroDAO='" & EnleverApost(drx("N°").ToString) & "' and CodeProjet='" & ProjetEnCours & "'" ' and DateDepotDAO<>''"
+                    dtSoumis = ExcecuteSelectQuery(query)
+                    If dtSoumis.Rows.Count = 0 Then
+                        FailMsg("Aucun soumissoinnaire enregistré.")
+                        Exit Sub
+                    End If
+
+                    'Verifier si la génération a été effectué
+                    FicheiExiste = True
+                    For Each rw As DataRow In dtSoumis.Rows
+                        NomFichierpdf = "DAO N°_" & rw("CodeFournis").ToString & FormatFileName(drx("N°").ToString, "") & ".pdf"
+                        If Not File.Exists(NomRepCheminSauve & "\" & NomFichierpdf) Then
+                            FicheiExiste = False
+                        End If
+                    Next
+                ElseIf File.Exists(NomRepCheminSauve & "\DAO N°_" & FormatFileName(drx("N°").ToString, "") & ".pdf") Then
+                    FicheiExiste = True
+                End If
+
+                'Recherche date limite de depot des dossiers
+                'Dossier valider par la bailleur de fond et fichier existant on actualise plus
+                If DateTime.Compare(CDate(drx("DateLimitePropo")), Now) < 0 And CBool(drx("DossValider")) = True And FicheiExiste = True Then
+                    DossierGenerer = True
+                End If
+
+                If DossierGenerer = False Then
+                    If NewGenereDossDAO(drx("N°").ToString) = False Then
+                        FinChargement()
+                        Exit Sub
+                    End If
+
+                ElseIf ("Voulez-vous actualiser les données du dossier ?") = DialogResult.Yes Then
+                    If NewGenereDossDAO(drx("N°").ToString, "Actualisation des données du dossier en cours...") = False Then
+                        FinChargement()
+                        Exit Sub
+                    End If
+                End If
+                FinChargement()
+
+                If dtSoumis.Rows.Count > 0 Then 'Cas de PSL
+                    For Each rw1 As DataRow In dtSoumis.Rows
+                        NomFichierpdf = "DAO N°_" & rw1("CodeFournis").ToString & FormatFileName(drx("N°").ToString, "") & ".pdf"
+                        If File.Exists(NomRepCheminSauve & "\" & NomFichierpdf) = True Then
+                            DebutChargement(True, "Chargement du dossier de " & MettreApost(rw1("NomFournis").ToString.Split(" ")(0)) & " en cours...")
+                            Process.Start(NomRepCheminSauve & "\" & NomFichierpdf)
+                            FinChargement()
+                        End If
+                    Next
+                Else
+                    If File.Exists(NomRepCheminSauve & "\DAO N°_" & FormatFileName(drx("N°").ToString, "") & ".pdf") = True Then
+                        DebutChargement(True, "Chargement du dossier d'appel d'offre...")
+                        Process.Start(NomRepCheminSauve & "\DAO N°_" & FormatFileName(drx("N°").ToString, "") & ".pdf")
+                        FinChargement()
+                    Else
+                        SuccesMsg("Le fichier spécifié n'existe pas ou a été supprimé.")
+                    End If
+                End If
+
+                'ApercuDAO.ImpressionDAO(NumDossier)
+            Catch ex As Exception
+                FinChargement()
+                FailMsg(ex.ToString)
+            End Try
+        End If
+    End Sub
+
+    Private Function NewGenereDossDAO(ByVal NumeroDoss As String, Optional TextActualisation As String = "") As Boolean
         Try
-            Dim drx = LayoutView1.GetDataRow(LayoutView1.FocusedRowHandle)
-            Dim NumDossier = drx("N°")
-            ApercuDAO.ImpressionDAO(NumDossier)
+            Dim dt As DataTable = ExcecuteSelectQuery("select * from t_dao where NumeroDAO='" & EnleverApost(NumeroDoss.ToString) & "' and CodeProjet='" & ProjetEnCours & "'")
+            If dt.Rows.Count = 0 Then
+                Return False
+            End If
+            Dim CurrenDoss As DataRow = dt.Rows(0)
+
+            Dim TypeMarches As String = MettreApost(CurrenDoss("TypeMarche").ToString)
+            Dim Methodes As String = MettreApost(CurrenDoss("MethodePDM").ToString)
+            Dim NumeroDAO As String = MettreApost(CurrenDoss("NumeroDAO").ToString)
+
+            DebutChargement(True, IIf(TextActualisation = "", "Consolidation du dossier d'appel d'offre...", TextActualisation).ToString)
+
+            Dim PageGarde, report0, report1, report2, report3, report4, report5, report6, report7, report8, report9, report10, report11, report12, report13 As New ReportDocument
+            Dim crtableLogoninfos As New TableLogOnInfos
+            Dim crtableLogoninfo As New TableLogOnInfo
+            Dim crConnectionInfo As New ConnectionInfo
+            Dim CrTables As Tables
+            Dim CrTable As Table
+            Dim DatSet = New DataSet
+
+            Dim Chemin As String = lineEtat & "\Marches\DAO\Fournitures\DTAO\"
+
+            If TypeMarches.ToLower = "Travaux".ToLower Then
+                Chemin = lineEtat & "\Marches\DAO\Travaux\"
+            End If
+
+            'Remplir la table tempo des sections.
+            If RemplirTempSection(NumeroDoss, TypeMarches, Methodes) = False Then
+                FinChargement()
+                Return False
+            End If
+
+            If TypeMarches.ToLower = "fournitures" Then
+                If Methodes.ToUpper = "AOI" Or Methodes.ToUpper = "AON" Then
+                    PageGarde.Load(Chemin & "AOI_AON\DTAO.rpt")
+                    report0.Load(Chemin & "AOI_AON\DTAO_Section_0_IDA.rpt")
+                    report1.Load(Chemin & "AOI_AON\DTAO_Section_I_IDA.rpt")
+                    report2.Load(Chemin & "AOI_AON\DTAO_Section_II_IDA.rpt")
+                    report3.Load(Chemin & "AOI_AON\DTAO_Section_III_IDA.rpt")
+                    report4.Load(Chemin & "AOI_AON\DTAO_Section_IV.1_IDA.rpt")
+                    report5.Load(Chemin & "AOI_AON\DTAO_Section_IV.2_IDA.rpt")
+                    report6.Load(Chemin & "AOI_AON\DTAO_Section_IV.3_IDA.rpt")
+                    report7.Load(Chemin & "AOI_AON\DTAO_Section_IX.1_IDA.rpt")
+                    report8.Load(Chemin & "AOI_AON\DTAO_Section_V.1_IDA.rpt")
+                    report9.Load(Chemin & "AOI_AON\DTAO_Section_VI.1_IDA.rpt")
+                    report10.Load(Chemin & "AOI_AON\DTAO_Section_VII.1_IDA.rpt")
+                    report11.Load(Chemin & "AOI_AON\DTAO_Section_VIII.1_IDA.rpt")
+                    report12.Load(Chemin & "AOI_AON\DTAO_Section_X.1_IDA.rpt")
+
+                ElseIf Methodes.ToUpper = "PSC" Then
+                    GetSaveDonneesPSC(CurrenDoss("NumeroDAO").ToString)
+                    report0.Load(Chemin & "PSC\DAO_Fourniture_PSC.rpt")
+
+                ElseIf Methodes.ToUpper = "PSO" Then
+                    GetSaveTampServiceConnexe(CurrenDoss("NumeroDAO").ToString)
+                    report0.Load(Chemin & "PSO\DAO_Fourniture_1_PS0.rpt")
+                    report1.Load(Chemin & "PSO\DAO_Fourniture_2_PSO.rpt") 'Paysage
+                    report2.Load(Chemin & "PSO\DAO_Fourniture_3_PSO.rpt")
+                    report3.Load(Chemin & "PSO\DAO_Fourniture_4_PSO.rpt")
+
+                ElseIf Methodes.ToUpper = "PSL" Then
+                    Return GetImpEnvoiDossPSL(NumeroDoss.ToString, TypeMarches)
+
+                ElseIf Methodes.ToUpper = "DC" Then
+                    FailMsg("Etat en cours de réalisation.")
+                    Return False
+                End If
+
+            ElseIf TypeMarches.ToLower = "travaux" Then ' ********************* travaux
+                If Methodes.ToUpper = "AOI" Or Methodes.ToUpper = "AON" Then
+                    PageGarde.Load(Chemin & "AOI_AON\DTAO_PageGarde.rpt")
+                    report0.Load(Chemin & "AOI_AON\DTAO_0_Travaux_IDA.rpt")
+                    report1.Load(Chemin & "AOI_AON\DTAO_1_Travaux_IDA.rpt")
+                    report2.Load(Chemin & "AOI_AON\DTAO_2_Travaux_IDA.rpt")
+                    report3.Load(Chemin & "AOI_AON\DTAO_3_Travaux_IDA.rpt")
+                    report4.Load(Chemin & "AOI_AON\DTAO_4_Travaux_IDA.rpt")
+                    report5.Load(Chemin & "AOI_AON\DTAO_5_Travaux_IDA.rpt")
+                    report6.Load(Chemin & "AOI_AON\DTAO_6_Travaux_IDA.rpt")
+                    report7.Load(Chemin & "AOI_AON\DTAO_7_Travaux_IDA.rpt")
+                    report8.Load(Chemin & "AOI_AON\DTAO_8_Travaux_IDA.rpt")
+                    report9.Load(Chemin & "AOI_AON\DTAO_9_Travaux_IDA.rpt")
+                    report10.Load(Chemin & "AOI_AON\DTAO_10_Travaux_IDA.rpt")
+                    report11.Load(Chemin & "AOI_AON\DTAO_11_Travaux_IDA.rpt")
+
+                ElseIf Methodes.ToUpper = "PSC" Then
+                    report0.Load(Chemin & "PSC\Travaux_RCI_PSC.rpt")
+
+                ElseIf Methodes.ToUpper = "PSO" Then
+                    report0.Load(Chemin & "PSO\1_Travaux_RCI_PSO.rpt")
+                    report1.Load(Chemin & "PSO\2_Travaux_RCI_PSO.rpt")
+                    report2.Load(Chemin & "PSO\3_Travaux_RCI_PSO.rpt")
+                    report3.Load(Chemin & "PSO\4_Travaux_RCI_PSO.rpt")
+
+                ElseIf Methodes.ToUpper = "PSL" Then
+                    Return GetImpEnvoiDossPSL(NumeroDoss.ToString, TypeMarches)
+
+                ElseIf Methodes.ToUpper = "DC" Then
+                    FailMsg("Etat en cours de réalisation.")
+                    Return False
+                End If
+            Else
+                FailMsg("L'impression du type de marché [" & TypeMarches & "] n'est pas prévu dans cet onglé.")
+                Return False
+            End If
+
+            With crConnectionInfo
+                .ServerName = ODBCNAME
+                .DatabaseName = DB
+                .UserID = USERNAME
+                .Password = PWD
+            End With
+
+            If TypeMarches.ToLower = "fournitures" Then
+                If Methodes.ToUpper = "AOI" Or Methodes.ToUpper = "AON" Then
+                    CrTables = PageGarde.Database.Tables
+                    For Each CrTable In CrTables
+                        crtableLogoninfo = CrTable.LogOnInfo
+                        crtableLogoninfo.ConnectionInfo = crConnectionInfo
+                        CrTable.ApplyLogOnInfo(crtableLogoninfo)
+                    Next
+
+                    CrTables = report2.Database.Tables
+                    For Each CrTable In CrTables
+                        crtableLogoninfo = CrTable.LogOnInfo
+                        crtableLogoninfo.ConnectionInfo = crConnectionInfo
+                        CrTable.ApplyLogOnInfo(crtableLogoninfo)
+                    Next
+                    PageGarde.SetDataSource(DatSet)
+                    report2.SetDataSource(DatSet)
+
+                ElseIf Methodes = "PSO" Then
+                    CrTables = report2.Database.Tables
+                    For Each CrTable In CrTables
+                        crtableLogoninfo = CrTable.LogOnInfo
+                        crtableLogoninfo.ConnectionInfo = crConnectionInfo
+                        CrTable.ApplyLogOnInfo(crtableLogoninfo)
+                    Next
+                    CrTables = report3.Database.Tables
+                    For Each CrTable In CrTables
+                        crtableLogoninfo = CrTable.LogOnInfo
+                        crtableLogoninfo.ConnectionInfo = crConnectionInfo
+                        CrTable.ApplyLogOnInfo(crtableLogoninfo)
+                    Next
+                    report2.SetDataSource(DatSet)
+                    report3.SetDataSource(DatSet)
+                    report2.SetParameterValue("NumDAO", CurrenDoss("NumeroDAO").ToString)
+                    report2.SetParameterValue("CodeProjet", ProjetEnCours)
+                    report3.SetParameterValue("NumDAO", CurrenDoss("NumeroDAO").ToString)
+                    report3.SetParameterValue("CodeProjet", ProjetEnCours)
+                End If
+
+            ElseIf TypeMarches.ToLower = "travaux" Then ' *************************************
+                If Methodes.ToUpper = "AOI" Or Methodes.ToUpper = "AON" Then
+                    CrTables = PageGarde.Database.Tables
+                    For Each CrTable In CrTables
+                        crtableLogoninfo = CrTable.LogOnInfo
+                        crtableLogoninfo.ConnectionInfo = crConnectionInfo
+                        CrTable.ApplyLogOnInfo(crtableLogoninfo)
+                    Next
+                    PageGarde.SetDataSource(DatSet)
+                    CrTables = report1.Database.Tables
+                    For Each CrTable In CrTables
+                        crtableLogoninfo = CrTable.LogOnInfo
+                        crtableLogoninfo.ConnectionInfo = crConnectionInfo
+                        CrTable.ApplyLogOnInfo(crtableLogoninfo)
+                    Next
+                    report1.SetDataSource(DatSet)
+
+                ElseIf Methodes.ToUpper = "PSL" Then
+                ElseIf Methodes.ToUpper = "DC" Then
+                End If
+            End If
+
+            CrTables = report0.Database.Tables
+            For Each CrTable In CrTables
+                crtableLogoninfo = CrTable.LogOnInfo
+                crtableLogoninfo.ConnectionInfo = crConnectionInfo
+                CrTable.ApplyLogOnInfo(crtableLogoninfo)
+            Next
+
+            report0.SetDataSource(DatSet)
+            'Paramettre valable pour toutes les méthodes
+            report0.SetParameterValue("NumDAO", CurrenDoss("NumeroDAO").ToString)
+            report0.SetParameterValue("CodeProjet", ProjetEnCours)
+
+            Dim NaturePrix As String = ExecuteScallar("select LibelleUnite from t_unite where LibelleCourtUnite='" & CurrenDoss("NaturePrix") & "'")
+            Dim MontTaux As Decimal = 1
+
+            ' ****************************** Paramètres page de présentations ***********************************
+            If TypeMarches.ToLower = "fournitures" Then
+                If Methodes.ToUpper = "AOI" Or Methodes.ToUpper = "AON" Then
+
+                    PageGarde.SetParameterValue("NumDAO", CurrenDoss("NumeroDAO").ToString)
+                    PageGarde.SetParameterValue("CodeProjet", ProjetEnCours)
+
+                    report2.SetParameterValue("NumDAO", CurrenDoss("NumeroDAO").ToString)
+                    report2.SetParameterValue("CodeProjet", ProjetEnCours)
+
+                    query = "select TauxDevise from T_Devise where AbregeDevise='US$'"
+                    Dim dt0 = ExcecuteSelectQuery(query)
+                    For Each rw0 As DataRow In dt0.Rows
+                        MontTaux = CDec(rw0("TauxDevise"))
+                    Next
+                    Dim MontantMarché_Devise_Dollar As String = ""
+                    Dim MontDollar As Decimal = CDec(IIf(CurrenDoss("MontantMarche").ToString.Replace(".", ",") = "", 0, CurrenDoss("MontantMarche").ToString.Replace(".", ",")))
+                    MontantMarché_Devise_Dollar = Math.Round(MontDollar / MontTaux, 2)
+                    report2.SetParameterValue("MontantMarché_Devise_Dollar", AfficherMonnaie(MontantMarché_Devise_Dollar))
+
+                ElseIf Methodes = "PSC" Or Methodes = "PSO" Then
+                    report0.SetParameterValue("NaturePrix", MettreApost(NaturePrix.ToString))
+                End If
+
+            ElseIf TypeMarches.ToLower = "travaux" Then
+                If Methodes.ToUpper = "AOI" Or Methodes.ToUpper = "AON" Then
+                    PageGarde.SetParameterValue("NumDAO", CurrenDoss("NumeroDAO").ToString)
+                    PageGarde.SetParameterValue("CodeProjet", ProjetEnCours)
+
+                    report1.SetParameterValue("NumDAO", CurrenDoss("NumeroDAO").ToString)
+                    report1.SetParameterValue("CodeProjet", ProjetEnCours)
+
+                    query = "select TauxDevise from T_Devise where AbregeDevise='US$'"
+                    Dim dt0 = ExcecuteSelectQuery(query)
+                    For Each rw0 As DataRow In dt0.Rows
+                        MontTaux = CDec(rw0("TauxDevise"))
+                    Next
+                    Dim EquivalentDollar As String = ""
+                    Dim MontDollar As Decimal = Val(ExecuteScallar("select c.MontantConvention from t_convention as c, t_marche as m where m.Convention_ChefFile=c.CodeConvention and m.RefMarche='" & CurrenDoss("RefMarche") & "' and m.TypeMarche='" & CurrenDoss("TypeMarche") & "' and m.CodeProjet='" & ProjetEnCours & "'"))
+                    EquivalentDollar = Math.Round(MontDollar / MontTaux, 2)
+                    report1.SetParameterValue("EquivalentDollar", EquivalentDollar)
+
+                ElseIf Methodes.ToUpper = "PSC" Then
+                    report0.SetParameterValue("NaturePrix", MettreApost(NaturePrix.ToString))
+                ElseIf Methodes.ToUpper = "PSO" Then
+                    report0.SetParameterValue("NaturePrix", MettreApost(NaturePrix.ToString))
+                ElseIf Methodes.ToUpper = "PSL" Then
+                ElseIf Methodes.ToUpper = "DC" Then
+
+                End If
+            End If
+
+            'Enregistrement automatique *************************
+            Dim CheminSauvGarde As String = ""
+            Dim NomDossier As String = ""
+
+            NomDossier = Environ$("TEMP") & "\DAO\" & TypeMarches & "\" & Methodes & "\" & FormatFileName(NumeroDAO.ToString, "")
+            CheminSauvGarde = line & "\DAO\" & TypeMarches & "\" & Methodes & "\" & FormatFileName(NumeroDAO.ToString, "")
+
+            If (Directory.Exists(NomDossier) = False) Then
+                Directory.CreateDirectory(NomDossier)
+            End If
+            If (Directory.Exists(CheminSauvGarde) = False) Then
+                Directory.CreateDirectory(CheminSauvGarde)
+            End If
+
+            Dim PageGard = NomDossier & "\" & "PageGarde.doc"
+            Dim page0 = NomDossier & "\" & "DTAO_Section_0.doc"
+            Dim page1 = NomDossier & "\" & "DTAO_Section_I.doc"
+            Dim page2 = NomDossier & "\" & "DTAO_Section_II.doc"
+            Dim page3 = NomDossier & "\" & "DTAO_Section_III.doc"
+            Dim page4 = NomDossier & "\" & "DTAO_Section_IV.1.doc"
+            Dim page5 = NomDossier & "\" & "DTAO_Section_IV.2.doc"
+            Dim page6 = NomDossier & "\" & "DTAO_Section_IV.3.doc"
+            Dim page7 = NomDossier & "\" & "DTAO_Section_IX.1.doc"
+            Dim page8 = NomDossier & "\" & "DTAO_Section_V.1.doc"
+            Dim page9 = NomDossier & "\" & "DTAO_Section_VI.1.doc"
+            Dim page10 = NomDossier & "\" & "DTAO_Section_VII.1.doc"
+            Dim page11 = NomDossier & "\" & "DTAO_Section_VIII.1.doc"
+            Dim page12 = NomDossier & "\" & "DTAO_Section_X.1.doc"
+
+            If TypeMarches.ToLower = "fournitures" Then
+                If Methodes.ToUpper = "AOI" Or Methodes.ToUpper = "AON" Then
+                    PageGarde.ExportToDisk(ExportFormatType.WordForWindows, PageGard)
+                    report0.ExportToDisk(ExportFormatType.WordForWindows, page0)
+                    report1.ExportToDisk(ExportFormatType.WordForWindows, page1)
+                    report2.ExportToDisk(ExportFormatType.WordForWindows, page2)
+                    report3.ExportToDisk(ExportFormatType.WordForWindows, page3)
+                    report4.ExportToDisk(ExportFormatType.WordForWindows, page4)
+                    report5.ExportToDisk(ExportFormatType.WordForWindows, page5)
+                    report6.ExportToDisk(ExportFormatType.WordForWindows, page6)
+                    report7.ExportToDisk(ExportFormatType.WordForWindows, page7)
+                    report8.ExportToDisk(ExportFormatType.WordForWindows, page8)
+                    report9.ExportToDisk(ExportFormatType.WordForWindows, page9)
+                    report10.ExportToDisk(ExportFormatType.WordForWindows, page10)
+                    report11.ExportToDisk(ExportFormatType.WordForWindows, page11)
+                    report12.ExportToDisk(ExportFormatType.WordForWindows, page12)
+                ElseIf Methodes.ToUpper = "PSC" Then
+                    report0.ExportToDisk(ExportFormatType.WordForWindows, PageGard)
+                ElseIf Methodes.ToUpper = "PSO" Then
+                    report0.ExportToDisk(ExportFormatType.WordForWindows, PageGard)
+                    report1.ExportToDisk(ExportFormatType.WordForWindows, page0)
+                    report2.ExportToDisk(ExportFormatType.WordForWindows, page1)
+                    report3.ExportToDisk(ExportFormatType.WordForWindows, page2)
+                End If
+
+            ElseIf TypeMarches.ToLower = "travaux" Then
+                If Methodes.ToUpper = "AOI" Or Methodes.ToUpper = "AON" Then
+                    PageGarde.ExportToDisk(ExportFormatType.WordForWindows, PageGard)
+                    report0.ExportToDisk(ExportFormatType.WordForWindows, page0)
+                    report1.ExportToDisk(ExportFormatType.WordForWindows, page1)
+                    report2.ExportToDisk(ExportFormatType.WordForWindows, page2)
+                    report3.ExportToDisk(ExportFormatType.WordForWindows, page3)
+                    report4.ExportToDisk(ExportFormatType.WordForWindows, page4)
+                    report5.ExportToDisk(ExportFormatType.WordForWindows, page5)
+                    report6.ExportToDisk(ExportFormatType.WordForWindows, page6)
+                    report7.ExportToDisk(ExportFormatType.WordForWindows, page7)
+                    report8.ExportToDisk(ExportFormatType.WordForWindows, page8)
+                    report9.ExportToDisk(ExportFormatType.WordForWindows, page9)
+                    report10.ExportToDisk(ExportFormatType.WordForWindows, page10)
+                    report11.ExportToDisk(ExportFormatType.WordForWindows, page11)
+                ElseIf Methodes.ToUpper = "PSC" Then
+                    report0.ExportToDisk(ExportFormatType.WordForWindows, PageGard)
+                ElseIf Methodes.ToUpper = "PSO" Then
+                    report0.ExportToDisk(ExportFormatType.WordForWindows, PageGard)
+                    report1.ExportToDisk(ExportFormatType.WordForWindows, page0)
+                    report2.ExportToDisk(ExportFormatType.WordForWindows, page1)
+                    report3.ExportToDisk(ExportFormatType.WordForWindows, page2)
+                ElseIf Methodes.ToUpper = "PSL" Then
+                ElseIf Methodes.ToUpper = "DC" Then
+                End If
+            End If
+
+            Dim oWord As New Word.Application
+            Dim currentDoc As New Word.Document
+
+            Dim NomFichierpdf As String = "DAO N°_" & FormatFileName(NumeroDAO.ToString, "") & ".pdf"
+            Dim NomFichierWord As String = "DAO N°_" & FormatFileName(NumeroDAO.ToString, "") & ".docx"
+
+            Try
+                'Ajout de la page de garde
+                currentDoc = oWord.Documents.Add(PageGard)
+                Dim myRange As Word.Range = currentDoc.Bookmarks.Item("\endofdoc").Range
+
+                If TypeMarches.ToLower = "fournitures" Then
+                    If Methodes.ToUpper = "AOI" Or Methodes.ToUpper = "AON" Then
+                        Dim mySection1 As Word.Section = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        'mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientLandscape
+                        myRange.InsertFile(page0)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        'mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientLandscape
+                        myRange.InsertFile(page1)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        myRange.InsertFile(page2)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        myRange.InsertFile(page3)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        'mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientLandscape
+                        myRange.InsertFile(page4)
+                        '
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientLandscape
+                        myRange.InsertFile(page5)
+
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientPortrait
+                        myRange.InsertFile(page6)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientPortrait
+                        myRange.InsertFile(page7)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientPortrait
+                        myRange.InsertFile(page8)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientPortrait
+                        myRange.InsertFile(page9)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientPortrait
+                        myRange.InsertFile(page10)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientPortrait
+                        myRange.InsertFile(page11)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientPortrait
+                        myRange.InsertFile(page12)
+                    ElseIf Methodes.ToUpper = "PSO" Then
+                        Dim mySection1 As Word.Section = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        myRange.InsertFile(page0)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        myRange.InsertFile(page1)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        myRange.InsertFile(page2)
+                    End If
+
+                ElseIf TypeMarches.ToLower = "travaux" Then
+                    If Methodes.ToUpper = "AOI" Or Methodes.ToUpper = "AON" Then
+                        Dim mySection1 As Word.Section = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        'mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientLandscape
+                        myRange.InsertFile(page0)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        myRange.InsertFile(page1)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        myRange.InsertFile(page2)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        myRange.InsertFile(page3)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        myRange.InsertFile(page4)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        ' mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientLandscape
+                        myRange.InsertFile(page5)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        'mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientPortrait
+                        myRange.InsertFile(page6)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        ' mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientPortrait
+                        myRange.InsertFile(page7)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        ' mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientPortrait
+                        myRange.InsertFile(page8)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        ' mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientPortrait
+                        myRange.InsertFile(page9)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        'mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientPortrait
+                        myRange.InsertFile(page10)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        'mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientPortrait
+                        myRange.InsertFile(page11)
+                    ElseIf Methodes.ToUpper = "PSO" Then
+                        Dim mySection1 As Word.Section = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        myRange.InsertFile(page0)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        myRange.InsertFile(page1)
+                        mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                        myRange.InsertFile(page2)
+                    End If
+                End If
+
+                Try
+                    currentDoc.SaveAs2(FileName:=CheminSauvGarde & "\" & NomFichierWord.ToString, FileFormat:=Word.WdSaveFormat.wdFormatDocumentDefault)
+                    currentDoc.SaveAs2(FileName:=CheminSauvGarde & "\" & NomFichierpdf.ToString, FileFormat:=Word.WdSaveFormat.wdFormatPDF)
+                    currentDoc.Close(True)
+                    oWord.Quit(SaveChanges:=Word.WdSaveOptions.wdDoNotSaveChanges)
+
+                Catch exp As IOException
+                    FinChargement()
+                    FailMsg("Un exemplaire du dossier est ouvert par une auttre applicattion. Veuillez le fermer svp.")
+                    currentDoc.Close(True)
+                    oWord.Quit(SaveChanges:=Word.WdSaveOptions.wdDoNotSaveChanges)
+                    Return False
+                Catch ex As Exception
+                    FinChargement()
+                    FailMsg("Erreur de traitement" & ex.ToString)
+                    currentDoc.Close(True)
+                    oWord.Quit(SaveChanges:=Word.WdSaveOptions.wdDoNotSaveChanges)
+                    Return False
+                End Try
+
+            Catch ex As Exception
+                FinChargement()
+                FailMsg("Erreur de traitement " & ex.ToString)
+                currentDoc.Close(True)
+                oWord.Quit(SaveChanges:=Word.WdSaveOptions.wdDoNotSaveChanges)
+                Return False
+            End Try
+
+            Return True
+        Catch ex As Exception
+            FinChargement()
+            FailMsg(ex.ToString)
+            Return False
+        End Try
+    End Function
+
+    Private Function GetImpEnvoiDossPSL(ByVal NumeroDAO As String, TypeMarche As String) As Boolean
+        Try
+            query = "select * from T_Fournisseur where NumeroDAO='" & EnleverApost(NumeroDAO.ToString) & "' and CodeProjet='" & ProjetEnCours & "'" ' and DateDepotDAO<>''"
+                    Dim dtSoumis As DataTable = ExcecuteSelectQuery(query)
+            If dtSoumis.Rows.Count = 0 Then
+                FinChargement()
+                FailMsg("Aucun soumissoinnaire enregistré.")
+                Return False
+            End If
+
+            Dim Chemin As String = lineEtat & "\Marches\DAO\Fournitures\DTAO\"
+
+            'Enregistrement des services connexes
+            If TypeMarche.ToLower = "fournitures" Then
+                GetSaveTampServiceConnexe(NumeroDAO)
+            Else
+                Chemin = "\Marches\DAO\Travaux\PSL\"
+            End If
+            FinChargement()
+
+            For Each rw As DataRow In dtSoumis.Rows
+                DebutChargement(True, "Consolidation du dossier de " & MettreApost(rw("NomFournis").ToString.Split(" ")(0)) & " en cours...")
+
+                Dim report1, report2, report3, report4 As New ReportDocument
+                Dim crtableLogoninfos As New TableLogOnInfos
+                Dim crtableLogoninfo As New TableLogOnInfo
+                Dim crConnectionInfo As New ConnectionInfo
+                Dim CrTables As Tables
+                Dim CrTable As Table
+                Dim DatSet = New DataSet
+
+                If TypeMarche.ToLower = "fournitures" Then
+                    report1.Load(Chemin & "PSL\DAO_Fourniture_1_PSL_Fournisseur.rpt")
+                    report2.Load(Chemin & "PSL\DAO_Fourniture_2_PSL.rpt")
+                    report3.Load(Chemin & "PSL\DAO_Fourniture_3_PSL.rpt")
+                    report4.Load(Chemin & "PSL\DAO_Fourniture_4_PSL.rpt")
+                Else
+                    report1.Load(Chemin & "1_Travaux_RCI_PSL.rpt")
+                    report2.Load(Chemin & "2_Travaux_RCI_PSL.rpt")
+                    report3.Load(Chemin & "3_Travaux_RCI_PSL.rpt")
+                    report4.Load(Chemin & "4_Travaux_RCI_PSL.rpt")
+                End If
+
+                With crConnectionInfo
+                    .ServerName = ODBCNAME
+                    .DatabaseName = DB
+                    .UserID = USERNAME
+                    .Password = PWD
+                End With
+
+                CrTables = report1.Database.Tables
+                For Each CrTable In CrTables
+                    crtableLogoninfo = CrTable.LogOnInfo
+                    crtableLogoninfo.ConnectionInfo = crConnectionInfo
+                    CrTable.ApplyLogOnInfo(crtableLogoninfo)
+                Next
+                report1.SetDataSource(DatSet)
+                report1.SetParameterValue("NumDAO", EnleverApost(NumeroDAO))
+                report1.SetParameterValue("CodeProjet", ProjetEnCours)
+                report1.SetParameterValue("IdFournisseur", rw("CodeFournis"))
+
+                If TypeMarche.ToLower = "fournitures" Then
+                    CrTables = report3.Database.Tables
+                    For Each CrTable In CrTables
+                        crtableLogoninfo = CrTable.LogOnInfo
+                        crtableLogoninfo.ConnectionInfo = crConnectionInfo
+                        CrTable.ApplyLogOnInfo(crtableLogoninfo)
+                    Next
+                    report3.SetDataSource(DatSet)
+                    report3.SetParameterValue("NumDAO", EnleverApost(NumeroDAO))
+                    report3.SetParameterValue("CodeProjet", ProjetEnCours)
+                    'Else
+                End If
+
+                'Enregistrement automatique *************************
+                Dim CheminSauvGarde As String = ""
+                Dim NomDossier As String = ""
+
+                NomDossier = Environ$("TEMP") & "\DAO\" & TypeMarche.ToString & "\PSL\" & FormatFileName(NumeroDAO.ToString, "")
+                CheminSauvGarde = line & "\DAO\" & TypeMarche.ToString & "\PSL\" & FormatFileName(NumeroDAO.ToString, "")
+
+                If (Directory.Exists(NomDossier) = False) Then
+                    Directory.CreateDirectory(NomDossier)
+                End If
+                If (Directory.Exists(CheminSauvGarde) = False) Then
+                    Directory.CreateDirectory(CheminSauvGarde)
+                End If
+
+                Dim page1 = NomDossier & "\" & "DAO_Fourniture_1_PSL_Fournisseur.doc"
+                Dim page2 = NomDossier & "\" & "DAO_Fourniture_2_PSL.doc"
+                Dim page3 = NomDossier & "\" & "DAO_Fourniture_3_PSL.doc"
+                Dim page4 = NomDossier & "\" & "DAO_Fourniture_4_PSL.doc"
+
+                report1.ExportToDisk(ExportFormatType.WordForWindows, page1)
+                report2.ExportToDisk(ExportFormatType.WordForWindows, page2)
+                report3.ExportToDisk(ExportFormatType.WordForWindows, page3)
+                report4.ExportToDisk(ExportFormatType.WordForWindows, page4)
+
+                Dim oWord As New Word.Application
+                Dim currentDoc As New Word.Document
+
+                Dim NomFichierpdf As String = "DAO N°_" & rw("CodeFournis").ToString & FormatFileName(NumeroDAO.ToString, "") & ".pdf"
+                Dim NomFichierWord As String = "DAO N°_" & rw("CodeFournis").ToString & FormatFileName(NumeroDAO.ToString, "") & ".docx"
+
+                Try
+                    'Ajout de la premiere page
+                    currentDoc = oWord.Documents.Add(page1)
+                    Dim myRange As Word.Range = currentDoc.Bookmarks.Item("\endofdoc").Range
+                    Dim mySection1 As Word.Section = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                    ' mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientLandscape
+                    myRange.InsertFile(page2)
+                    mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                    'mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientPortrait
+                    myRange.InsertFile(page3)
+                    mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                    myRange.InsertFile(page4)
+
+                    Try
+                        currentDoc.SaveAs2(FileName:=CheminSauvGarde & "\" & NomFichierWord.ToString, FileFormat:=Word.WdSaveFormat.wdFormatDocumentDefault)
+                        currentDoc.SaveAs2(FileName:=CheminSauvGarde & "\" & NomFichierpdf.ToString, FileFormat:=Word.WdSaveFormat.wdFormatPDF)
+                        currentDoc.Close(True)
+                        oWord.Quit(SaveChanges:=Word.WdSaveOptions.wdDoNotSaveChanges)
+
+                    Catch exp As IOException
+                        FinChargement()
+                        FailMsg("Un exemplaire du dossier est ouvert par une auttre applicattion. Veuillez le fermer svp.")
+                        currentDoc.Close(True)
+                        oWord.Quit(SaveChanges:=Word.WdSaveOptions.wdDoNotSaveChanges)
+                        Return False
+                    Catch ex As Exception
+                        FinChargement()
+                        FailMsg("Erreur de traitement" & ex.ToString)
+                        currentDoc.Close(True)
+                        oWord.Quit(SaveChanges:=Word.WdSaveOptions.wdDoNotSaveChanges)
+                        Return False
+                    End Try
+
+                Catch ex As Exception
+                    FinChargement()
+                    FailMsg("Erreur de traitement " & ex.ToString)
+                    currentDoc.Close(True)
+                    oWord.Quit(SaveChanges:=Word.WdSaveOptions.wdDoNotSaveChanges)
+                    Return False
+                End Try
+                FinChargement()
+            Next
+
+        Catch ex As Exception
+            FinChargement()
+            FailMsg(ex.ToString)
+            Return False
+        End Try
+        Return True
+    End Function
+
+    Private Sub GetSaveDonneesPSC(ByVal NumeroDAO As String)
+        Try
+            ExecuteNonQuery("delete from t_tamp_lotdao where NumDAO='" & NumeroDAO & "' and CodeProjet='" & ProjetEnCours & "' and CodeUtils='" & CodeOperateurEnCours & "'")
+            ExecuteNonQuery("delete from t_tamp_lotdao_souslot where NumDAO='" & NumeroDAO & "' and CodeProjet='" & ProjetEnCours & "' and CodeUtils='" & CodeOperateurEnCours & "'")
+
+            Dim dt As DataTable = ExcecuteSelectQuery("select * from t_spectechfourniture where NumeroDAO='" & NumeroDAO & "'")
+            For Each rw In dt.Rows
+                If rw("CodeSousLot").ToString = "" Then
+                    ExecuteNonQuery("insert into t_tamp_lotdao values('" & rw("CodeLot") & "', '" & GetLibelleLot(rw("CodeLot"), NumeroDAO) & "', '" & NumeroDAO & "', '" & rw("RefSpecFournit") & "', '" & rw("DescripFournit") & "', '" & GetListeSpec(rw("RefSpecFournit")) & "', '" & rw("QteFournit") & "', '" & ProjetEnCours & "', '" & CodeOperateurEnCours & "')")
+                Else
+                    query = "select count(*) from t_tamp_lotdao where CodeLot='" & rw("CodeLot") & "' and LibelleLot='" & GetLibelleLot(rw("CodeLot"), NumeroDAO) & "' and NumDAO='" & NumeroDAO & "' AND CodeProjet='" & ProjetEnCours & "' and CodeUtils='" & CodeOperateurEnCours & "'"
+                    If Val(ExecuteScallar(query)) = 0 Then
+                        ExecuteNonQuery("insert into t_tamp_lotdao values('" & rw("CodeLot") & "', '" & GetLibelleLot(rw("CodeLot"), NumeroDAO) & "', '" & NumeroDAO & "', NULL, NULL, NULL, NULL, '" & ProjetEnCours & "', '" & CodeOperateurEnCours & "')")
+                    End If
+                    ExecuteNonQuery("insert into t_tamp_lotdao_souslot values('" & rw("CodeLot") & "', '" & rw("CodeSousLot") & "', '" & GetLibelleLot(rw("CodeLot"), NumeroDAO, rw("CodeSousLot")) & "', '" & NumeroDAO & "', '" & rw("RefSpecFournit") & "', '" & rw("DescripFournit") & "', '" & GetListeSpec(rw("RefSpecFournit")) & "', '" & rw("QteFournit") & "', '" & ProjetEnCours & "', '" & CodeOperateurEnCours & "')")
+                End If
+            Next
         Catch ex As Exception
             FailMsg(ex.ToString)
         End Try
     End Sub
 
-    Private Sub PdfToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PdfToolStripMenuItem.Click
+    Private Sub GetSaveTampServiceConnexe(ByVal NumeroDAO As String)
+        Try
+            ExecuteNonQuery("delete from t_tamp_lotdao where NumDAO='" & NumeroDAO & "' and CodeProjet='" & ProjetEnCours & "' and CodeUtils='" & CodeOperateurEnCours & "'")
+            ExecuteNonQuery("delete from t_tamp_lotdao_souslot where NumDAO='" & NumeroDAO & "' and CodeProjet='" & ProjetEnCours & "' and CodeUtils='" & CodeOperateurEnCours & "'")
 
+            Dim dtLot As DataTable = ExcecuteSelectQuery("select * from t_lotdao where NumeroDAO='" & NumeroDAO & "'")
+
+            For Each rwLot In dtLot.Rows
+                Dim dtSousLot As DataTable = ExcecuteSelectQuery("select S.* from t_lotdao_souslot as S, t_lotdao as L where S.RefLot=L.RefLot and S.NumeroDAO='" & NumeroDAO & "' AND L.RefLot='" & rwLot("RefLot") & "'")
+
+                If dtSousLot.Rows.Count > 0 Then
+                    query = "select count(*) from t_tamp_lotdao where CodeLot='" & rwLot("CodeLot") & "' and LibelleLot='" & rwLot("LibelleLot") & "' and NumDAO='" & NumeroDAO & "' AND CodeProjet='" & ProjetEnCours & "' and CodeUtils='" & CodeOperateurEnCours & "'"
+                    If Val(ExecuteScallar(query)) = 0 Then
+                        ExecuteNonQuery("insert into t_tamp_lotdao values('" & rwLot("CodeLot") & "', '" & rwLot("LibelleLot") & "', '" & NumeroDAO & "', NULL, NULL, NULL, NULL, '" & ProjetEnCours & "', '" & CodeOperateurEnCours & "')")
+                    End If
+                    For Each rwSousLot In dtSousLot.Rows
+                        ExecuteNonQuery("insert into t_tamp_lotdao_souslot values('" & rwLot("CodeLot") & "', '" & rwSousLot("CodeSousLot") & "', '" & rwSousLot("LibelleSousLot") & "', '" & NumeroDAO & "', NULL, NULL, '" & ListeServiceConnexe(NumeroDAO, rwLot("CodeLot"), rwSousLot("CodeSousLot")) & "', NULL, '" & ProjetEnCours & "', '" & CodeOperateurEnCours & "')")
+                    Next
+                Else
+                    ExecuteNonQuery("insert into t_tamp_lotdao values('" & rwLot("CodeLot") & "', '" & rwLot("LibelleLot") & "', '" & NumeroDAO & "', NULL, NULL, '" & ListeServiceConnexe(NumeroDAO, rwLot("CodeLot"), "") & "', NULL, '" & ProjetEnCours & "', '" & CodeOperateurEnCours & "')")
+                End If
+            Next
+
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
+
+    Private Function ListeServiceConnexe(ByVal NumeroDAO As String, CodeLot As String, CodeSousLot As String) As String
+        Dim ListeService As String = ""
+        Try
+            Dim dt As DataTable = ExcecuteSelectQuery("select * from t_dao_service_connexe where NumeroDAO='" & NumeroDAO & "' and CodeLot='" & CodeLot & "' and CodeSousLot='" & CodeSousLot & "'")
+            For Each rw In dt.Rows
+                If ListeService = "" Then
+                    ListeService = rw("LibelleService").ToString
+                Else
+                    ListeService = ListeService & vbNewLine & rw("LibelleService").ToString
+                End If
+            Next
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+        Return ListeService
+    End Function
+
+    Private Function GetListeSpec(ByVal RefSpecFournit As Decimal) As String
+        Dim LibelleLot As String = ""
+        Try
+            Dim dt As DataTable = ExcecuteSelectQuery("select * from t_spectechcaract where RefSpecFournit='" & RefSpecFournit & "'")
+            For Each rw In dt.Rows
+                If LibelleLot = "" Then
+                    LibelleLot = rw("LibelleCaract") & " : " & rw("ValeurCaract")
+                Else
+                    LibelleLot = LibelleLot & vbNewLine & rw("LibelleCaract") & " : " & rw("ValeurCaract")
+                End If
+            Next
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+        Return LibelleLot
+    End Function
+
+    Private Function GetLibelleLot(ByVal CodeLot As String, ByVal NumeroDAO As String, Optional CodeSousLot As String = "") As String
+        Dim LibelleLot As String = ""
+        Try
+            Dim RefLot = ExecuteScallar("select RefLot from t_lotdao where CodeLot='" & CodeLot & "' and  NumeroDAO='" & NumeroDAO & "'")
+            If CodeSousLot = "" Then
+                LibelleLot = ExecuteScallar("select LibelleLot from t_lotdao where RefLot='" & RefLot & "'")
+            Else
+                LibelleLot = ExecuteScallar("select LibelleSousLot from t_lotdao_souslot where RefLot='" & RefLot & "' and  NumeroDAO='" & NumeroDAO & "' and CodeSousLot='" & CodeSousLot & "'")
+            End If
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+        Return LibelleLot
+    End Function
+
+    Private Function RemplirTempSection(ByVal NumeroDoss As String, ByVal TypeMarche As String, ByVal Methode As String) As Boolean
+        Try
+            ExecuteNonQuery("delete from t_dao_section_tampon where NumeroDAO='" & NumeroDoss & "' and CodeProjet='" & ProjetEnCours & "' and CodeUtils='" & CodeOperateurEnCours & "'")
+            Dim CodeSection As Array
+            Dim OK As Boolean = False
+
+            If (TypeMarche.ToLower = "fournitures") Then
+                If Methode.ToUpper = "AOI" Or Methode.ToUpper = "AON" Then
+                    CodeSection = {"IS 1.2(a)", "IS 4.5", "IS 4.8(a), 4.8(b) et 5.1", "IS 11.1(j)", "IS 13.1", "IS 14.5", "IS 14.7", "IS 14.8(b)(i) et (c)(v)", "IS 14.8(a)(iii)(ii) et (c)(v)", "IS 15.1", "IS 16.4", "IS 17.2(a)", "IS 17.2(b)", "IS 18.3(a)", "IS 19.1", "IS 19.3(d)", "IS 19.9(a)", "IS 19.9(b)", "IS 20.3", "IS 22.1(a)", "IS 22.1(b)", "IS 25.1", "IS 25.6", "IS 30.3", "IS 33.1", "IS 34.6(a)", "IS 34.6(b)", "IS 34.6(c)", "IS 34.6(d)", "IS 34.6(e)", "IS 34.6(f)", "IS 34.6(g)", "IS 42.1(a)", "IS 42.1(b)", "IS 45.1"}
+                    OK = True
+                End If
+            ElseIf (TypeMarche.ToLower = "Travaux".ToLower) Then
+                If Methode.ToUpper = "AOI" Or Methode.ToUpper = "AON" Then 'Travaux
+                    CodeSection = {"IS 1.2(a)", "IS 4.5", "IS 11.1(h)", "IS 13.1", "IS 13.2", "IS 13.4", "IS 14.5", "IS 18.3(a)", "IS 19.3(d)", "IS 19.9", "IS 20.3", "IS 25.6", "IS 30.3", "IS 33.1", "IS 34.2", "IS 47.1"}
+                    OK = True
+                End If
+            End If
+
+            Dim dt0 As New DataTable
+            If OK = True Then
+                For i = 0 To CodeSection.Length - 1
+                    dt0 = ExcecuteSelectQuery("SELECT Description from t_dao_section_tampon where CodeSection='" & CodeSection(i) & "' and NumeroDAO='" & NumeroDoss.ToString & "' and CodeProjet ='" & ProjetEnCours & "'")
+
+                    If dt0.Rows.Count > 0 Then
+                        For Each rw0 In dt0.Rows
+                            ExecuteNonQuery("Insert into t_dao_section_tampon values(NULL, '" & NumeroDoss.ToString & "', '" & CodeSection(i) & "', '" & EnleverApost(rw0("Description").ToString) & "', '" & CodeOperateurEnCours & "', '" & ProjetEnCours & "')")
+                        Next
+                    Else
+                        ExecuteNonQuery("Insert into t_dao_section_tampon values(NULL, '" & NumeroDoss.ToString & "', '" & CodeSection(i) & "', '" & GetValDefautSection(CodeSection(i), TypeMarche, Methode) & "', '" & CodeOperateurEnCours & "',  '" & ProjetEnCours & "')")
+                    End If
+                Next
+            End If
+        Catch ex As Exception
+            FinChargement()
+            FailMsg("Erreur dans l'enregistrement des sections." & ex.ToString)
+            Return False
+        End Try
+        Return True
+    End Function
+
+    Private Function GetValDefautSection(ByVal CodeSection As String, ByVal TypeMarche As String, ByVal Methode As String) As String
+        Dim DescriptionSection As String = ""
+        ' CodeSection = { "IS 4.8(a), 4.8(b) et 5.1"} ******** Code non retrouver **********
+
+        If TypeMarche.ToLower = "fournitures" Then
+            If CodeSection.ToString = "IS 30.3" Then ' « la moyenne » ou « la valeur la plus élevée »] 
+                DescriptionSection = "la valeur la plus élevée"
+            ElseIf CodeSection.ToString = "IS 4.5" Then
+                DescriptionSection = "http://www.worldbank.org/debarr"
+            ElseIf CodeSection.ToString = "IS 13.1" Or CodeSection.ToString = "IS 14.5" Then 'Variante
+                DescriptionSection = "ne seront pas"
+            ElseIf CodeSection.ToString = "IS 15.1" Or CodeSection.ToString = "IS 17.2(a)" Or CodeSection.ToString = "IS 17.2(b)" Then
+                DescriptionSection = "n’est pas"
+            ElseIf CodeSection.ToString = "IS 19.1" Then 'Garantie d'offre
+                DescriptionSection = " n’est pas"
+            ElseIf CodeSection.ToString = "IS 19.3(d)" Then
+                DescriptionSection = "Néant"
+            ElseIf CodeSection.ToString = "IS 22.1(a)" Or CodeSection.ToString = "IS 45.1" Then
+                DescriptionSection = "n’aura pas"
+            ElseIf CodeSection.ToString = "IS 33.1" Then
+                DescriptionSection = "ne sera pas"
+            ElseIf CodeSection.ToString = "IS 34.6(a)" Or CodeSection.ToString = "IS 34.6(b)" Or CodeSection.ToString = "IS 34.6(c)" Or CodeSection.ToString = "IS 34.6(d)" Or CodeSection.ToString = "IS 34.6(e)" Or CodeSection.ToString = "IS 34.6(f)" Then
+                DescriptionSection = "non"
+            Else
+                DescriptionSection = "Sans Objet"
+            End If
+
+        ElseIf (TypeMarche.ToLower = "travaux") Then
+
+            If Methode.ToUpper = "AOI" Or Methode.ToUpper = "AON" Then
+                If CodeSection.ToString = "IS 4.5" Then
+                    DescriptionSection = "http://www.worldbank.org/debarr"
+                ElseIf CodeSection.ToString = "IS 13.1" Or CodeSection = "IS 13.2" Or CodeSection = "IS 13.4" Then
+                    DescriptionSection = "ne sont pas"
+                ElseIf CodeSection.ToString = "IS 14.5" Then '[révisables/fermes]. 
+                    DescriptionSection = "fermes"
+                ElseIf CodeSection.ToString = "IS 19.3(d)" Then
+                    Return "Néant"
+                ElseIf CodeSection.ToString = "IS 30.3" Then '« valeur moyenne »] ou [« valeur la plus élevée »] 
+                    DescriptionSection = "valeur moyenne"
+                ElseIf CodeSection.ToString = "IS 33.1" Then '[sera/ne sera pas] 
+                    DescriptionSection = "ne sera pas"
+                ElseIf CodeSection.ToString = "IS 47.1" Then '[aura] ou [n’aura pas] 
+                    DescriptionSection = "n’aura pas"
+                Else
+                    DescriptionSection = "Sans Objet"
+                End If
+            End If
+        End If
+
+        Return DescriptionSection
+    End Function
+
+    Private Sub PdfToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PdfToolStripMenuItem.Click
+        If LayoutView1.RowCount > 0 Then
+            Try
+                If PourAjoutModifDansDB = 1 Then
+                    SuccesMsg("Veuillez enregistrer le dossier en cours.")
+                    Exit Sub
+                ElseIf (PourAjoutModifDansDB = 2) Then
+                    SuccesMsg("Veuillez enregistrer et fermer le dossier en cours.")
+                    Exit Sub
+                End If
+
+                Dim drx = LayoutView1.GetDataRow(LayoutView1.FocusedRowHandle)
+                Dim NumeroDAO As String = drx("N°").ToString
+                Dim NomRepCheminSauve As String = line & "\DAO\" & drx("Type").ToString & "\" & drx("Méthode").ToString & "\" & FormatFileName(NumeroDAO.ToString, "")
+                Dim NomFichier As String = "\DAO N°_" & FormatFileName(NumeroDAO.ToString, "") & ".pdf"
+
+                If drx("Méthode").ToString.ToUpper = "PSL" Then ' drx("Type").ToString.ToLower = "Fournitures".ToLower And
+                    Dim NewEnvoiDoss As New EnvoiDossSoumissionnaire
+                    NewEnvoiDoss.NumeroDAO = drx("N°").ToString
+                    NewEnvoiDoss.ExtensionExport = ".pdf"
+                    NewEnvoiDoss.TypesMarches = drx("Type").ToString
+                    NewEnvoiDoss.Text = "Soumissoinnaire"
+                    NewEnvoiDoss.BtEnregComm.Text = "Exporter"
+                    NewEnvoiDoss.BtEnregComm.ToolTip = "Exporter"
+                    NewEnvoiDoss.BtEnregComm.Image = My.Resources.Resources.ExportToPDF_16x16
+                    NewEnvoiDoss.ShowDialog()
+                Else
+                    If File.Exists(NomRepCheminSauve & NomFichier) = True Then
+                        If ExporterPDF(NomRepCheminSauve.ToString & NomFichier.ToString, "DossierAppelOffre.pdf") = False Then
+                            Exit Sub
+                        End If
+                    Else
+                        FailMsg("Le fichier à exporter n'existe pas ou a été supprimé.")
+                    End If
+                End If
+
+            Catch ex As Exception
+                FailMsg(ex.ToString)
+            End Try
+        End If
     End Sub
 
     Private Sub WordToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles WordToolStripMenuItem.Click
+        If LayoutView1.RowCount > 0 Then
+            Try
+                If PourAjoutModifDansDB = 1 Then
+                    SuccesMsg("Veuillez enregistrer le dossier en cours.")
+                    Exit Sub
+                ElseIf (PourAjoutModifDansDB = 2) Then
+                    SuccesMsg("Veuillez enregistrer et fermer le dossier en cours.")
+                    Exit Sub
+                End If
 
+                Dim drx = LayoutView1.GetDataRow(LayoutView1.FocusedRowHandle)
+                Dim NumeroDAO As String = drx("N°").ToString
+                Dim NomRepCheminSauve As String = line & "\DAO\" & drx("Type").ToString & "\" & drx("Méthode").ToString & "\" & FormatFileName(NumeroDAO.ToString, "") & "\DAO N°_" & FormatFileName(NumeroDAO.ToString, "") & ".docx"
+
+                If drx("Méthode").ToString.ToUpper = "PSL" Then 'drx("Type").ToString.ToLower = "Fournitures".ToLower And
+                    Dim NewEnvoiDoss As New EnvoiDossSoumissionnaire
+                    NewEnvoiDoss.NumeroDAO = drx("N°").ToString
+                    NewEnvoiDoss.ExtensionExport = ".docx"
+                    NewEnvoiDoss.TypesMarches = drx("Type").ToString
+                    NewEnvoiDoss.Text = "Soumissoinnaire"
+                    NewEnvoiDoss.BtEnregComm.Text = "Exporter"
+                    NewEnvoiDoss.BtEnregComm.ToolTip = "Exporter"
+                    NewEnvoiDoss.BtEnregComm.Image = My.Resources.Resources.ExportToRTF_16x16
+                    NewEnvoiDoss.ShowDialog()
+                Else
+                    If File.Exists(NomRepCheminSauve) = True Then
+                        If ExporterWORDfOrmatDocx(NomRepCheminSauve.ToString, "Dossier_Appel_Offre.docx") = False Then
+                            Exit Sub
+                        End If
+                    Else
+                        FailMsg("Le fichier à exporter n'existe pas ou a été supprimé.")
+                    End If
+                End If
+
+            Catch ex As Exception
+                FailMsg(ex.ToString)
+            End Try
+        End If
     End Sub
 
     Private Sub ValiderLeDossierToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ValiderLeDossierToolStripMenuItem.Click
-        Try
-            If PourAjoutModifDansDB = 1 Then
-                SuccesMsg("Veuillez enregistrer le dossier en cours.")
-                Exit Sub
-            ElseIf (PourAjoutModifDansDB = 2) Then
-                SuccesMsg("Veuillez enregistrer et fermer le dossier en cours.")
-                Exit Sub
-            End If
+        If LayoutView1.RowCount > 0 Then
+            Try
+                If PourAjoutModifDansDB = 1 Then
+                    SuccesMsg("Veuillez enregistrer le dossier en cours.")
+                    Exit Sub
+                ElseIf (PourAjoutModifDansDB = 2) Then
+                    SuccesMsg("Veuillez enregistrer et fermer le dossier en cours.")
+                    Exit Sub
+                End If
 
-
-            If ConfirmMsg("Voulez-vous valider ce dossier ?") = DialogResult.Yes Then
                 Dim drx = LayoutView1.GetDataRow(LayoutView1.FocusedRowHandle)
-                NumDoss = drx("N°")
-                DebutChargement()
-                query = "SELECT * FROM t_commission WHERE NumeroDAO='" & NumDoss & "' AND TypeComm='COJO'"
-                Dim dt = ExcecuteSelectQuery(query)
-                For Each rw In dt.Rows
-                    Dim Authkey = GenererToken(NumDoss, rw("CodeMem").ToString, "DAO", DB)
-                    Dim ID() = Authkey.Split(":")
-                    Dim token = ID(0).ToString
-                    query = "UPDATE t_commission SET AuthKey='" & token & "' WHERE CodeMem='" & rw("CodeMem").ToString & "'"
-                    ExecuteNonQuery(query)
-                    envoieMail(rw("NomMem").ToString, rw("EmailMem").ToString, Authkey)
-                    query = "INSERT INTO t_dao_evalcojo(NumeroDAO,id_cojo) VALUES('" & NumDoss & "','" & rw("CodeMem").ToString & "')"
-                    ExecuteNonQuery(query)
-                Next
-                query = "UPDATE t_dao SET DossValider=TRUE WHERE NumeroDAO='" & NumDoss & "'"
-                ExecuteNonQuery(query)
+                Dim NumeroDAO As String = EnleverApost(drx("N°").ToString)
+
+                DebutChargement(True, "Vérification des données en cours...")
+
+                If drx("Statut").ToString = "Annulé" Then
+                    FinChargement()
+                    FailMsg("Impossible de valider un dossier annulé.")
+                    Exit Sub
+                End If
+
+                If drx("Statut").ToString = "Terminé" Then
+                    FinChargement()
+                    FailMsg("Impossible de valider un marche executé.")
+                    Exit Sub
+                End If
+
+                If CBool(drx("DossValider")) = True Then
+                    FinChargement()
+                    FailMsg("Ce dossier a été validé.")
+                    Exit Sub
+                End If
+
+                'Verifier si tous les articles ont des caracteristique
+                If drx("Type").ToString.ToLower = "Fournitures".ToLower Then
+                    If Val(ExecuteScallar("select count(*) from t_spectechfourniture where NumeroDAO='" & NumeroDAO & "'")) = 0 Then
+                        FinChargement()
+                        FailMsg("Impossible de valider ce dossier. Car" & vbNewLine & "aucune spécification technique définie.")
+                        Exit Sub
+                    End If
+
+                    Dim ExisteCara As Decimal = Val(ExecuteScallar("Select count(*) from t_spectechfourniture where NumeroDAO='" & NumeroDAO & "' and RefSpecFournit NOT IN(select RefSpecFournit from t_spectechcaract)"))
+                    If ExisteCara > 0 Then
+                        FinChargement()
+                        FailMsg("Impossible de valider ce dossier. Car il" & vbNewLine & "existe des articles sans caractéristiques.")
+                        Exit Sub
+                    End If
+
+                Else 'Travaux
+                    query = "SELECT COUNT(CodeLot) FROM `t_lotdao` WHERE NumeroDAO='" & NumeroDAO & "'"
+                    p1 = "SELECT COUNT(DISTINCT CodeLot) FROM `t_dqesection` WHERE NumeroDAO='" & NumeroDAO & "'"
+                    If Val(ExecuteScallar(query)) <> Val(ExecuteScallar(p1)) Then
+                        FinChargement()
+                        FailMsg("Impossible de valider ce dossier. Car il existe" & vbNewLine & "des lots qui ne sont pas liés à des DQE.")
+                        Exit Sub
+                    End If
+
+                    query = "SELECT COUNT(CodeSousLot) FROM `t_lotdao_souslot` WHERE NumeroDAO='" & NumeroDAO & "'"
+                    p1 = "SELECT COUNT(DISTINCT CodeSousLot) FROM `t_dqesection` WHERE NumeroDAO='" & NumeroDAO & "' and CodeSousLot <>''"
+
+                    If Val(ExecuteScallar(query)) <> Val(ExecuteScallar(p1)) Then
+                        FinChargement()
+                        FailMsg("Impossible de valider ce dossier. Car il existe" & vbNewLine & "des sous lots qui ne sont pas liés à des DQE.")
+                        Exit Sub
+                    End If
+                End If
+
+                Dim MessageValidation As String = "Voulez-vous valider ce dossier ?"
+                query = "select count(*) from T_DAO_PostQualif where NumeroDAO='" & NumeroDAO & "'"
+                If Val(ExecuteScallar(query)) = 0 Then
+                    MessageValidation = "Votre dossier ne subira pas d'examen post qualification." & vbNewLine & "Car aucun critère post qualification definie." & vbNewLine & "Êtes-vous sûrs de vouloir valider ce dossier ?"
+                    'FinChargement()
+                    'FailMsg("Impossible de valider ce dossier. Car" & vbNewLine & "aucun critère post qualification définie.")
+                    'Exit Sub
+                End If
                 FinChargement()
-                SuccesMsg("Dossier validé avec succès")
+
+                If ConfirmMsg(MessageValidation) = DialogResult.Yes Then
+
+                    DebutChargement(True, "Traitement de la validation du dossier en cours...")
+
+                    Dim dt As DataTable = ExcecuteSelectQuery("SELECT * FROM t_commission WHERE NumeroDAO='" & NumeroDAO & "'") 'AND TypeComm='COJO'"
+                    For Each rw In dt.Rows
+                        Dim Authkey = GenererToken(NumeroDAO, rw("CodeMem").ToString, "DAO", DB)
+                        Dim ID() = Authkey.Split(":")
+                        Dim token = ID(0).ToString
+                        ExecuteNonQuery("UPDATE t_commission SET AuthKey='" & token & "' WHERE CodeMem='" & rw("CodeMem").ToString & "'")
+
+                        'InputBox("Cle", "dd", Authkey)
+
+                        If envoieMail(rw("NomMem").ToString, rw("EmailMem").ToString, Authkey) = False Then
+                            FinChargement()
+                            Exit Sub
+                        End If
+                        'FinChargement()
+                        'SuccesMsg("Dossier validé avec succès.")
+                        'Exit Sub
+
+                        ExecuteNonQuery("INSERT INTO t_dao_evalcojo(NumeroDAO, id_cojo) VALUES('" & NumeroDAO & "','" & rw("CodeMem").ToString & "')")
+                    Next
+                    ExecuteNonQuery("UPDATE t_dao SET DossValider=TRUE WHERE NumeroDAO='" & NumeroDAO & "'")
+
+                    FinChargement()
+                    SuccesMsg("Dossier validé avec succès.")
+
+                    LayoutView1.SetFocusedRowCellValue("DossValider", True)
+                End If
+            Catch ex As Exception
+                FailMsg(ex.ToString)
+            End Try
+        End If
+    End Sub
+
+    Private Sub BailleurToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BailleurToolStripMenuItem.Click
+        If LayoutView1.RowCount > 0 Then
+            Try
+                If PourAjoutModifDansDB = 1 Then
+                    SuccesMsg("Veuillez enregistrer le dossier en cours.")
+                    Exit Sub
+                ElseIf (PourAjoutModifDansDB = 2) Then
+                    SuccesMsg("Veuillez enregistrer et fermer le dossier en cours.")
+                    Exit Sub
+                End If
+
+                Dim drx = LayoutView1.GetDataRow(LayoutView1.FocusedRowHandle)
+                Dim NumeroDAO As String = drx("N°").ToString
+
+                If drx("Statut").ToString = "Annulé" Then
+                    FailMsg("Ce marché a été annulé.")
+                    Exit Sub
+                End If
+
+                If drx("Statut").ToString = "Terminé" Then
+                    FailMsg("Ce marché a été executer.")
+                    Exit Sub
+                End If
+
+                'Info de l'envoi de l'email
+                If GetVerifDonneEmailBailleur(drx("N°").ToString) = False Then
+                    FinChargement()
+                    Exit Sub
+                End If
+
+                Dim CheminFile As String = line & "\DAO\" & drx("Type").ToString & "\" & drx("Méthode").ToString & "\" & FormatFileName(NumeroDAO.ToString, "")
+                Dim NomFichierWord As String = "\DAO N°_" & FormatFileName(NumeroDAO.ToString, "") & ".docx"
+
+                Dim dtSoumis As New DataTable
+                If drx("Méthode").ToString.ToUpper = "PSL" Then ' And drx("Type").ToString.ToLower = "Fournitures".ToLower 
+                    query = "select * from T_Fournisseur where NumeroDAO='" & EnleverApost(drx("N°").ToString) & "' and CodeProjet='" & ProjetEnCours & "'" ' and DateDepotDAO<>''"
+                    dtSoumis = ExcecuteSelectQuery(query)
+                    If dtSoumis.Rows.Count = 0 Then
+                        FailMsg("Aucun soumissoinnaire enregistré.")
+                        Exit Sub
+                    End If
+
+                    NomFichierWord = "\DAO N°_Bailleur" & FormatFileName(drx("N°").ToString, "") & ".docx"
+                    If File.Exists(CheminFile & NomFichierWord) = False Then
+                        'Generer le dossier du bailleur
+                        If GetGenererDossBailleur(drx("N°").ToString, drx("Type").ToString) = False Then
+                            FinChargement()
+                            Exit Sub
+                        End If
+                    End If
+                End If
+
+                If Not File.Exists(CheminFile & NomFichierWord) Then
+                    FinChargement()
+                    FailMsg("Le dossier à envoyer au bailleur de fonds  n'existe pas ou a été supprimé.")
+                    Exit Sub
+                End If
+
+                Dim MessageText As String = ""
+                If CBool(drx("DossValider")) = True Then
+                    MessageText = "Le bailleur de fonds a déjà validé le dossier." & vbNewLine & "Voulez-vous l'envoyer à nouveau ?"
+                Else
+                    MessageText = "Confirmez-vous l'envoi du dossier d'appel d'offre au bailleur [ " & MettreApost(rwDossDAO.Rows(0)("InitialeBailleur").ToString) & " ] ?"
+                End If
+
+                If ConfirmMsg(MessageText) = DialogResult.Yes Then
+                    Try
+                        DebutChargement(True, "Envoi du dossier d'appel d'offre au bailleur...")
+                        'Envoi du dossier
+                        If EnvoiMailRapport(NomBailleurRetenuDAO, NumeroDAO.ToString, EmailDestinatauerDAO, CheminFile & NomFichierWord, EmailCoordinateurProjetDAO, EmailResponsablePMDAO, "Dossier d'appel d'offre", "DAO") = False Then
+                            FinChargement()
+                            Exit Sub
+                        End If
+
+                        FinChargement()
+                        SuccesMsg("Dossier envoyé avec succès.")
+                    Catch ep As IOException
+                        FinChargement()
+                        SuccesMsg("Le fichier est utilisé par une autre application" & vbNewLine & "Veuillez le fermer svp.")
+                    Catch ex As Exception
+                        FinChargement()
+                        FailMsg(ex.ToString)
+                    End Try
+                End If
+            Catch exs As Exception
+                FailMsg(exs.ToString)
+            End Try
+        End If
+    End Sub
+
+    Private Function GetGenererDossBailleur(ByVal NumeroDAO As String, ByVal TypeMarche As String) As Boolean
+        Try
+            DebutChargement(True, "Vérification des informations en cours...")
+
+            'Enregistrement des services connexes
+            Dim Chemin As String = lineEtat & "\Marches\DAO\Fournitures\DTAO\"
+            If TypeMarche.ToLower = "fournitures" Then
+                GetSaveTampServiceConnexe(NumeroDAO)
+            Else
+                Chemin = "\Marches\DAO\Travaux\PSL\"
             End If
+
+            Dim report1, report2, report3, report4 As New ReportDocument
+            Dim crtableLogoninfos As New TableLogOnInfos
+            Dim crtableLogoninfo As New TableLogOnInfo
+            Dim crConnectionInfo As New ConnectionInfo
+            Dim CrTables As Tables
+            Dim CrTable As Table
+            Dim DatSet = New DataSet
+
+            If TypeMarche.ToLower = "fournitures" Then
+                report1.Load(Chemin & "PSL\DAO_Fourniture_1_PSL_Bailleur.rpt")
+                report2.Load(Chemin & "PSL\DAO_Fourniture_2_PSL.rpt")
+                report3.Load(Chemin & "PSL\DAO_Fourniture_3_PSL.rpt")
+                report4.Load(Chemin & "PSL\DAO_Fourniture_4_PSL.rpt")
+            Else
+                report1.Load(Chemin & ".rpt")
+                report2.Load(Chemin & ".rpt")
+                report3.Load(Chemin & ".rpt")
+                report4.Load(Chemin & ".rpt")
+            End If
+
+            With crConnectionInfo
+                .ServerName = ODBCNAME
+                .DatabaseName = DB
+                .UserID = USERNAME
+                .Password = PWD
+            End With
+
+            CrTables = report1.Database.Tables
+            For Each CrTable In CrTables
+                crtableLogoninfo = CrTable.LogOnInfo
+                crtableLogoninfo.ConnectionInfo = crConnectionInfo
+                CrTable.ApplyLogOnInfo(crtableLogoninfo)
+            Next
+            CrTables = report3.Database.Tables
+            For Each CrTable In CrTables
+                crtableLogoninfo = CrTable.LogOnInfo
+                crtableLogoninfo.ConnectionInfo = crConnectionInfo
+                CrTable.ApplyLogOnInfo(crtableLogoninfo)
+            Next
+            report1.SetDataSource(DatSet)
+            report3.SetDataSource(DatSet)
+            report1.SetParameterValue("NumDAO", EnleverApost(NumeroDAO))
+            report1.SetParameterValue("CodeProjet", ProjetEnCours)
+            report3.SetParameterValue("NumDAO", EnleverApost(NumeroDAO))
+            report3.SetParameterValue("CodeProjet", ProjetEnCours)
+
+            'Enregistrement automatique *************************
+            Dim CheminSauvGarde As String = ""
+            Dim NomDossier As String = ""
+
+            NomDossier = Environ$("TEMP") & "\DAO\" & MettreApost(TypeMarche.ToString) & "\PSL\" & FormatFileName(NumeroDAO.ToString, "")
+            CheminSauvGarde = line & "\DAO\" & EnleverApost(TypeMarche.ToString) & "\PSL\" & FormatFileName(NumeroDAO.ToString, "")
+
+            If (Directory.Exists(NomDossier) = False) Then
+                Directory.CreateDirectory(NomDossier)
+            End If
+            If (Directory.Exists(CheminSauvGarde) = False) Then
+                Directory.CreateDirectory(CheminSauvGarde)
+            End If
+
+            Dim page1 = NomDossier & "\" & "DAO_Fourniture_1_PSL_Bailleur.doc"
+            Dim page2 = NomDossier & "\" & "DAO_Fourniture_2_PSL.doc"
+            Dim page3 = NomDossier & "\" & "DAO_Fourniture_3_PSL.doc"
+            Dim page4 = NomDossier & "\" & "DAO_Fourniture_4_PSL.doc"
+
+            report1.ExportToDisk(ExportFormatType.WordForWindows, page1)
+            report2.ExportToDisk(ExportFormatType.WordForWindows, page2)
+            report3.ExportToDisk(ExportFormatType.WordForWindows, page3)
+            report4.ExportToDisk(ExportFormatType.WordForWindows, page4)
+
+            Dim oWord As New Word.Application
+            Dim currentDoc As New Word.Document
+
+            Dim NomFichierWord As String = "DAO N°_Bailleur" & FormatFileName(NumeroDAO.ToString, "") & ".docx"
+
+            Try
+                'Ajout de la premiere page
+                currentDoc = oWord.Documents.Add(page1)
+                Dim myRange As Word.Range = currentDoc.Bookmarks.Item("\endofdoc").Range
+                Dim mySection1 As Word.Section = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                'mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientLandscape
+                myRange.InsertFile(page2)
+                mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                'mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientPortrait
+                myRange.InsertFile(page3)
+                mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
+                myRange.InsertFile(page4)
+
+                Try
+                    currentDoc.SaveAs2(FileName:=CheminSauvGarde & "\" & NomFichierWord.ToString, FileFormat:=Word.WdSaveFormat.wdFormatDocumentDefault)
+                    currentDoc.Close(True)
+                    oWord.Quit(SaveChanges:=Word.WdSaveOptions.wdDoNotSaveChanges)
+
+                Catch exp As IOException
+                    FinChargement()
+                    FailMsg("Un exemplaire du dossier est ouvert par une auttre applicattion. Veuillez le fermer svp.")
+                    currentDoc.Close(True)
+                    oWord.Quit(SaveChanges:=Word.WdSaveOptions.wdDoNotSaveChanges)
+                    Return False
+                Catch ex As Exception
+                    FinChargement()
+                    FailMsg("Erreur de traitement" & ex.ToString)
+                    currentDoc.Close(True)
+                    oWord.Quit(SaveChanges:=Word.WdSaveOptions.wdDoNotSaveChanges)
+                    Return False
+                End Try
+
+            Catch ex As Exception
+                FinChargement()
+                FailMsg("Erreur de traitement " & ex.ToString)
+                currentDoc.Close(True)
+                oWord.Quit(SaveChanges:=Word.WdSaveOptions.wdDoNotSaveChanges)
+                Return False
+            End Try
+            FinChargement()
         Catch ex As Exception
+            FinChargement()
             FailMsg(ex.ToString)
+            Return False
         End Try
+        Return True
+    End Function
+
+    Private Sub SoumissionnaireToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SoumissionnaireToolStripMenuItem.Click
+        If LayoutView1.RowCount > 0 Then
+            Try
+                If PourAjoutModifDansDB = 1 Then
+                    SuccesMsg("Veuillez enregistrer le dossier en cours.")
+                    Exit Sub
+                ElseIf (PourAjoutModifDansDB = 2) Then
+                    SuccesMsg("Veuillez enregistrer et fermer le dossier en cours.")
+                    Exit Sub
+                End If
+
+                Dim drx = LayoutView1.GetDataRow(LayoutView1.FocusedRowHandle)
+                Dim NumeroDAO As String = drx("N°").ToString
+
+                If drx("Statut").ToString = "Annulé" Then
+                    FailMsg("Ce marché a été annulé.")
+                    Exit Sub
+                End If
+
+                If drx("Statut").ToString = "Terminé" Then
+                    FailMsg("Ce marché a été executer.")
+                    Exit Sub
+                End If
+
+                If ListeMethodePrevue.Contains(drx("Méthode").ToString.ToUpper) = False Then
+                    FailMsg("Aucun état prévu pour la méthode [" & drx("Méthode").ToString.ToUpper & "]")
+                    Exit Sub
+                End If
+
+                'verifer si le bailleur de fonds a valider en tenant compte de la revu
+                Dim Revu As String = ExecuteScallar("select RevuePrioPost from t_marche as m, t_dao as d where d.RefMarche=m.RefMarche and d.NumeroDAO='" & EnleverApost(drx("N°").ToString) & "'")
+                If Revu.ToString = "Priori" And CBool(drx("DossValider").ToString) = False Then
+                    FailMsg("Le bailleur de fonds doit valider le dossier avant d'envoyer aux soumissoinnaires.")
+                    Exit Sub
+                End If
+
+                If Revu.ToString <> "Priori" And CBool(drx("DossValider").ToString) = False Then
+                    FailMsg("Vous devez valider le dossier avant d'envoyer aux soumissoinnaires.")
+                    Exit Sub
+                End If
+
+                Dim FichierExiste As Boolean = False
+                Dim NomFichierWord As String = "\DAO N°_" & FormatFileName(drx("N°").ToString, "") & ".docx"
+
+                query = "select * from T_Fournisseur where NumeroDAO='" & EnleverApost(drx("N°").ToString) & "' and CodeProjet='" & ProjetEnCours & "'" ' and DateDepotDAO<>''"
+                Dim dtSoumis As DataTable = ExcecuteSelectQuery(query)
+                If dtSoumis.Rows.Count = 0 Then
+                    FailMsg("Aucun soumissoinnaire enregistré.")
+                    Exit Sub
+                End If
+
+                Dim NomRepCheminSauve As String = line & "\DAO\" & drx("Type").ToString & "\" & drx("Méthode").ToString & "\" & FormatFileName(drx("N°").ToString, "")
+
+                If drx("Méthode").ToString.ToUpper = "PSL" Then ' And drx("Type").ToString.ToLower = "Fournitures".ToLower 
+                    'Verifier si le dossier de chaque soumissoinnaire existe
+                    FichierExiste = True
+                    For Each rw As DataRow In dtSoumis.Rows
+                        NomFichierWord = "DAO N°_" & rw("CodeFournis").ToString & FormatFileName(drx("N°").ToString, "") & ".docx"
+                        If Not File.Exists(NomRepCheminSauve & "\" & NomFichierWord) Then
+                            FichierExiste = False
+                        End If
+                    Next
+                ElseIf File.Exists(NomRepCheminSauve & NomFichierWord) Then
+                    FichierExiste = True
+                End If
+
+                If FichierExiste = False Then 'Dossier Non genéré
+                    If NewGenereDossDAO(drx("N°").ToString) = False Then
+                        Exit Sub
+                    End If
+                End If
+
+                Dim CheminEnvoiDoss As String = ""
+                For Each rw1 As DataRow In dtSoumis.Rows
+                    'Cas de dossier de PSL
+                    If drx("Méthode").ToString.ToUpper = "PSL" Then ' And drx("Type").ToString.ToLower = "Fournitures".ToLower
+                        NomFichierWord = "\DAO N°_" & rw1("CodeFournis").ToString & FormatFileName(drx("N°").ToString, "") & ".docx"
+                    End If
+                    CheminEnvoiDoss = NomRepCheminSauve & NomFichierWord
+
+                    Try
+                        If File.Exists(CheminEnvoiDoss) = True Then
+                            DebutChargement(True, "Envoi du dossier d'appel d'offre à " & MettreApost(rw1("NomFournis").ToString.Split(" ")(0)) & "...")
+                            'Envoi du dossier
+                            If EnvoiMailRapport(MettreApost(rw1("NomFournis").ToString), NumeroDAO.ToString, MettreApost(rw1("MailFournis").ToString), CheminEnvoiDoss, "", "", "Dossier d'appel d'offre", "DAO", True) = False Then
+                                FinChargement()
+                                Exit Sub
+                            End If
+                            FinChargement()
+                        Else
+                            FinChargement()
+                            FailMsg("Le dossier du soumissoinnaire " & MettreApost(rw1("NomFournis").ToString.Split(" ")(0)) & " n'existe pas ou a été supprimé.")
+                        End If
+                    Catch ep As IOException
+                        FinChargement()
+                        SuccesMsg("Un exemplaire du fichier est utilisé par une autre application" & vbNewLine & "Veuillez le fermer svp.")
+                    Catch ex As Exception
+                        FinChargement()
+                        FailMsg(ex.ToString)
+                    End Try
+                Next
+
+                FinChargement()
+                SuccesMsg("Dossier envoyé avec succès.")
+
+                'Dim NewEnvoiDoss As New EnvoiDossSoumissionnaire
+                'NewEnvoiDoss.NumeroDAO = drx("N°").ToString
+                'NewEnvoiDoss.ShowDialog()
+            Catch ex As Exception
+                FinChargement()
+                FailMsg(ex.ToString)
+            End Try
+        End If
     End Sub
 
-    Private Sub EnvoyerLeDossierAuBailleurToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EnvoyerLeDossierAuBailleurToolStripMenuItem.Click
-
-    End Sub
 
     Private Sub AnnulerLeDossierToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AnnulerLeDossierToolStripMenuItem.Click
 
+        If LayoutView1.RowCount > 0 Then
+            Try
+                If PourAjoutModifDansDB = 1 Then
+                    SuccesMsg("Veuillez enregistrer le dossier en cours.")
+                    Exit Sub
+                ElseIf (PourAjoutModifDansDB = 2) Then
+                    SuccesMsg("Veuillez enregistrer et fermer le dossier en cours.")
+                    Exit Sub
+                End If
+
+                Dim drx = LayoutView1.GetDataRow(LayoutView1.FocusedRowHandle)
+                If drx("Statut").ToString = "Annulé" Then
+                    FailMsg("Ce marché a été annulé.")
+                    Exit Sub
+                End If
+
+                'Verifier si le marche a ete engager
+                If drx("Statut").ToString = "Terminé" Then
+                    FailMsg("Impossible d'annuler un marché déjà executé.")
+                    Exit Sub
+                End If
+
+                'Verifier si tous les fournisseurs retenus sont disqualifiés
+
+                'Verifier s'il existe des critères post qualifications
+                If Val(ExecuteScallar("select count(*) from T_DAO_PostQualif where NumeroDAO='" & EnleverApost(drx("N°").ToString) & "'")) > 0 Then
+                    query = "select count(*) from t_soumissionfournisseurclassement as S, t_fournisseur as F where S.CodeFournis=F.CodeFournis and S.NumeroDAO=F.NumeroDAO AND F.NumeroDAO='" & EnleverApost(drx("N°").ToString) & "' and F.CodeProjet='" & ProjetEnCours & "' and S.AcceptationExamDetaille='OUI' and S.PrixCorrigeOffre IS NOT NULL and S.ExamPQValide='OUI' AND S.RangPostQualif IS NOT NULL and S.FournisDisqualifie IS NULL"
+                Else
+                    query = "select count(*) from t_soumissionfournisseurclassement as S, t_fournisseur as F where S.CodeFournis=F.CodeFournis and S.NumeroDAO=F.NumeroDAO AND F.NumeroDAO='" & EnleverApost(drx("N°").ToString) & "' and F.CodeProjet='" & ProjetEnCours & "' and S.AcceptationExamDetaille='OUI' and S.PrixCorrigeOffre IS NOT NULL AND S.RangExamDetaille IS NOT NULL and S.FournisDisqualifie IS NULL"
+                End If
+
+                If Val(ExecuteScallar(query)) > 0 Then
+                    FailMsg("Impossible d'annuler ce marché, car il existe" & vbNewLine & "des fournisseurs retenus non disqualifié.")
+                    Exit Sub
+                End If
+
+                If ConfirmMsg("Voulez-vous vraiment annuler ce dossier ?") = DialogResult.Yes Then
+                    ReponseDialog = ""
+                    Dim NewMotifAnnulDoss As New MotifAnnulationDossier
+                    NewMotifAnnulDoss.TxtTextDoss.Text = "Annulation du dossier N° " & drx("N°").ToString
+                    NewMotifAnnulDoss.ShowDialog()
+                    If ReponseDialog.ToString = "" Then
+                        Exit Sub
+                    End If
+
+                    ExecuteNonQuery("Update t_dao Set statut_DAO='Annulé', MotifAnnulationDossier='" & EnleverApost(ReponseDialog.ToString) & "' where NumeroDAO='" & EnleverApost(drx("N°").ToString) & "'")
+
+                    Dim dts As DataTable = ExcecuteSelectQuery("select RefMarche from t_dao where NumeroDAO='" & EnleverApost(drx("N°").ToString) & "'")
+                    For Each rw In dts.Rows
+                        ExecuteNonQuery("Update t_marche set NumeroDAO=NULL where RefMarche='" & rw("RefMarche") & "'")
+
+                        'Annulation des dates de réalisations.
+                        GetAnnuleDateRealisationPPM(rw("RefMarche"))
+                    Next
+
+                    SuccesMsg("Dossier annulé avec succès.")
+                    LayoutView1.SetFocusedRowCellValue("Statut", "Annulé")
+                    'Fermeture des formulaires
+                    FermerForm({"RetraitEtDepotDAO", "OuvertureOffres", "SaisieOffres", "JugementOffres"})
+                End If
+            Catch ex As Exception
+                FailMsg(ex.ToString)
+            End Try
+        End If
     End Sub
 
 #End Region
@@ -5038,92 +7356,17 @@ Public Class NewDao
         cmbLotSpecTech.Enabled = True
         'CmbSousLotSpecTech.Enabled = True
         BtCategBien.Enabled = True
+        NewAddSpecTechClik = False
         modifSpecTech = False
         TxtLibCategBien.Text = ""
         txtCodeCateg.Text = ""
+        CodeCategorie.Text = ""
         LockSaisieBien(False)
     End Sub
 
     Private Sub ContextMenuPostQualif_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuPostQualif.Opening
-        If ListePostQualif.Nodes.Count = 0 Then
+        If AfficherDossier = True Or ListePostQualif.Nodes.Count = 0 Then
             e.Cancel = True
-        End If
-    End Sub
-
-    Private Sub TxtLibelleserviceconnexe_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtLibelleserviceconnexe.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            Try
-                If cmbLotSpecTech.Text.Trim = "" Then
-                    SuccesMsg("Veuillez selectionner un lot.")
-                    cmbLotSpecTech.Select()
-                    Exit Sub
-                End If
-
-                If CmbSousLotSpecTech.Enabled Then
-                    If CmbSousLotSpecTech.Text.Trim = "" Then
-                        SuccesMsg("Veuillez selectionner un sous lot")
-                        CmbSousLotSpecTech.Select()
-                        Exit Sub
-                    End If
-                End If
-
-                If TxtLibelleserviceconnexe.IsRequiredControl("Veuillez saisir le libellé du service connexe") Then
-                    TxtLibelleserviceconnexe.Select()
-                    Exit Sub
-                End If
-
-                If LigneaModifier = True And NomGridView = "ViewConnexe" Then
-                    'Update 
-                    ExecuteNonQuery("Update t_dao_service_connexe set LibelleService='" & EnleverApost(TxtLibelleserviceconnexe.Text) & "' where IdService='" & ViewConnexe.GetRowCellValue(IndexActive, "IdService") & "'")
-                    ViewConnexe.SetRowCellValue(IndexActive, "Libellé", TxtLibelleserviceconnexe.Text)
-                Else
-                    'Insertion
-                    If Val(ExecuteScallar("select count(*) from t_dao_service_connexe where NumeroDAO='" & NumDoss & "' and CodeLot='" & cmbLotSpecTech.Text & "' and CodeSousLot='" & CmbSousLotSpecTech.Text & "' and LibelleService='" & EnleverApost(TxtLibelleserviceconnexe.Text) & "'")) > 0 Then
-                        SuccesMsg("Ce service existe déjà")
-                        Exit Sub
-                    End If
-
-                    ExecuteNonQuery("INSERT INTO t_dao_service_connexe values(NULL,'" & NumDoss & "','" & cmbLotSpecTech.Text & "','" & CmbSousLotSpecTech.Text & "','" & EnleverApost(TxtLibelleserviceconnexe.Text) & "','" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "','" & ProjetEnCours & "')")
-                    Dim MaxCodeListe As Decimal = Val(ExecuteScallar("select MAX(IdService) from t_dao_service_connexe"))
-                    Dim dt As DataTable = ListServiConnex.DataSource
-                    ' dt.Rows.Clear()
-                    Dim drS = dt.NewRow()
-                    drS("IdService") = MaxCodeListe
-                    drS("Libellé") = TxtLibelleserviceconnexe.Text
-                    drS("CodeLot") = cmbLotSpecTech.Text
-                    drS("CodeSousLot") = CmbSousLotSpecTech.Text
-                    dt.Rows.Add(drS)
-                End If
-                LigneaModifier = False
-                NomGridView = ""
-                IndexActive = 0
-                TxtLibelleserviceconnexe.Text = ""
-
-        Catch ex As Exception
-            FailMsg(ex.ToString)
-        End Try
-        End If
-    End Sub
-
-    Private Sub ListServiConnex_DoubleClick(sender As Object, e As EventArgs) Handles ListServiConnex.DoubleClick
-        If ViewConnexe.RowCount > 0 Then
-            Dim index = ViewConnexe.FocusedRowHandle
-            If ConfirmMsg("Êtes-vous sûrs de vouloir supprimé la ligne N° " & index + 1 & "?") = DialogResult.Yes Then
-                ExecuteNonQuery("delete from t_dao_service_connexe where IdService='" & ViewConnexe.GetFocusedRowCellValue("IdService") & "'")
-                ViewConnexe.GetDataRow(index).Delete()
-                LigneaModifier = False
-                NomGridView = ""
-                IndexActive = 0
-            End If
-        End If
-    End Sub
-
-    Private Sub BtSupServicConnex_Click(sender As Object, e As EventArgs) Handles BtSupServicConnex.Click
-        If ViewConnexe.RowCount > 0 Then
-            IndexActive = ViewConnexe.FocusedRowHandle
-            TxtLibelleserviceconnexe.Text = ViewConnexe.GetFocusedRowCellValue("Libellé").ToString
-            LigneaModifier = True
-            NomGridView = "ViewConnexe"
         End If
     End Sub
 End Class

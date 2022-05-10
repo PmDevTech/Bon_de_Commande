@@ -14,6 +14,7 @@ Public Class PlanMarcheSuite
     Public Bailleur As String
     Public CodeConvention As String
     Public RefPPM As String
+    Public TypesMarches As String
 
     Dim IdEmpTab As String()
     Dim NomEmpTab As New List(Of String)
@@ -211,7 +212,7 @@ Public Class PlanMarcheSuite
             Dim Date2 As Date = CDate(obj.Text)
 
             If DateTime.Compare(Date1, Date2) > 0 Then
-                SuccesMsg("La date de réalisation de l'étape N° " & IndexActive + 1 & " doit être " & vbNewLine & "supperieure à la date de réalisation de l'étape N° " & IndexActive)
+                SuccesMsg("La date de réalisation de l'étape N° " & IndexActive + 1 & " doit être " & vbNewLine & "supérieure à la date de réalisation de l'étape N° " & IndexActive)
                 ViewEtape.SetFocusedRowCellValue("Réalisation", "")
             End If
         ElseIf ViewEtape.GetRowCellValue(IndexActive, "Action") = False And obj.Text = "" Then
@@ -247,11 +248,12 @@ Public Class PlanMarcheSuite
             If PlanMarche.ElaboPPM = "Tous les bailleurs" Then
                 query = "Select * from T_Marche where CodeProjet='" & ProjetEnCours & "' AND RefPPM='" & RefPPM & "' AND ModePPM ='Tous_Bailleurs' and CodeProcAO>0 and RevuePrioPost<>'' ORDER BY DescriptionMarche"
             Else
-                query = "Select * from T_Marche where CodeProjet='" & ProjetEnCours & "' AND InitialeBailleur='" & Bailleur & "' AND CodeConvention='" & CodeConvention & "' AND RefPPM='" & RefPPM & "'  AND ModePPM ='Bailleur' and CodeProcAO>0 and RevuePrioPost<>'' ORDER BY DescriptionMarche"
+                query = "Select * from T_Marche where CodeProjet='" & ProjetEnCours & "' AND InitialeBailleur='" & Bailleur & "' AND CodeConvention='" & CodeConvention & "' AND RefPPM='" & RefPPM & "' AND ModePPM ='Bailleur' and CodeProcAO>0 and RevuePrioPost<>'' ORDER BY DescriptionMarche"
             End If
         Else
             query = "Select * from T_Marche where CodeProjet='" & ProjetEnCours & "' AND RefPPM='" & RefPPM & "' AND ModePPM ='PPSD' and CodeProcAO>0 and RevuePrioPost<>'' ORDER BY RefMarche"
         End If
+
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         For Each rw As DataRow In dt.Rows
             AddMarcheItem(rw("RefMarche"), MettreApost(rw("TypeMarche").ToString))
@@ -351,7 +353,7 @@ Public Class PlanMarcheSuite
             ViewEtape.Columns("Responsable").OptionsColumn.AllowEdit = True
             ViewEtape.Columns("Début").OptionsColumn.AllowEdit = True
 
-            query = "SELECT * FROM t_etapemarche WHERE TypeMarche='" & EnleverApost(TypeMarche) & "' and CodeProcAO='" & CodeProcAO & "' AND " & Revue & "='OUI' AND CodeProjet='" & ProjetEnCours & "' ORDER BY NumeroOrdre"
+            query = "SELECT E.* FROM t_etapemarche AS E, t_liaisonetape as L WHERE L.RefEtape=E.RefEtape and E.TypeMarche='" & EnleverApost(TypeMarche) & "' and L.CodeProcAO='" & CodeProcAO & "' AND  E." & Revue & "='OUI' AND E.CodeProjet='" & ProjetEnCours & "' ORDER BY E.NumeroOrdre ASC"
             Dim dt As DataTable = ExcecuteSelectQuery(query)
             Dim Numéro As Integer = 1
             For Each rw As DataRow In dt.Rows
@@ -374,7 +376,7 @@ Public Class PlanMarcheSuite
             ViewEtape.Columns("Responsable").OptionsColumn.AllowEdit = False
             ViewEtape.Columns("Début").OptionsColumn.AllowEdit = False
 
-            query = "SELECT * FROM t_planmarche WHERE RefMarche='" & RefMarche & "'  ORDER BY NumeroOrdre"
+            query = "SELECT * FROM t_planmarche WHERE RefMarche='" & RefMarche & "'  ORDER BY NumeroOrdre ASC"
             Dim dt As DataTable = ExcecuteSelectQuery(query)
             'Dim Numéro As Integer = 1
             For Each rw As DataRow In dt.Rows

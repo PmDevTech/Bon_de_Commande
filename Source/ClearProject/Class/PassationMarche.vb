@@ -9,11 +9,6 @@ Public Class PassationMarche
         Return ExecuteScallar(query)
     End Function
 
-    Public Function GetMethode1(CodeProcAO As String) As String
-        query = "SELECT AbregeAO FROM t_procao WHERE CodeProcAO='" & CodeProcAO & "'"
-        Return ExecuteScallar(query)
-    End Function
-
     Public Shared Function VerifEtapePlan(RefMarche As String) As Boolean
         query = "SELECT COUNT(*) FROM t_planmarche WHERE RefMarche='" & RefMarche & "' AND DebutPrevu IS NOT NULL"
         Dim verif As String = Val(ExecuteScallar(query))
@@ -90,13 +85,13 @@ Public Class PassationMarche
             EmailCoordinateurProjet = ExecuteScallar("SELECT EMP_EMAIL from t_grh_employe where PROJ_ID='" & ProjetEnCours & "' and Emp_Cordonnateur='1'")
 
             If rwDossDPAMISA.Rows.Count = 0 Then
-                FailMsg("Nous n'avons pas pu recupéré toutes les informations du bailleur")
+                FailMsg("Nous n'avons pas pu recupéré toutes les informations du bailleur.")
                 Return False
             End If
 
 
             If rwDossDPAMISA.Rows(0)("RevuePrioPost").ToString = "" Then
-                FailMsg("Veuillez definir la revu")
+                FailMsg("Veuillez definir la revue.")
                 Return False
             End If
 
@@ -108,24 +103,74 @@ Public Class PassationMarche
             End If
 
             If rwDossDPAMISA.Rows(0)("MailTTL").ToString = "" Then
-                SuccesMsg("L'email du bailleur de fonds est vide")
+                SuccesMsg("L'email du bailleur de fonds est vide.")
                 Return False
             End If
 
             'email responsable Passation de marche
             If EmailResponsablePM.ToString = "" Then
-                FailMsg("L'email de réponse [responsable de la passation de marché] est vide")
+                FailMsg("L'email de réponse [responsable de la passation de marché] est vide.")
                 Return False
             End If
 
             'email coordinateur
             If EmailCoordinateurProjet.ToString = "" Then
-                FailMsg("L'email de réponse [coordinateur] est vide")
+                FailMsg("L'email de réponse [coordinateur] est vide.")
                 Return False
             End If
 
             NomBailleurRetenu = MettreApost(rwDossDPAMISA.Rows(0)("TitreTTL").ToString) & " " & MettreApost(rwDossDPAMISA.Rows(0)("NomTTL").ToString) & " " & MettreApost(rwDossDPAMISA.Rows(0)("PrenomTTL").ToString)
             EmailDestinatauer = MettreApost(rwDossDPAMISA.Rows(0)("MailTTL").ToString)
+
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+        Return True
+    End Function
+
+    Public Shared Function GetVerifDonneEmailBailleur(ByVal NumeroDAO As String, Optional ControlsProcessus As Boolean = True) As Boolean
+
+        Try
+            rwDossDAO = ExcecuteSelectQuery("SELECT m.RevuePrioPost, m.Convention_ChefFile, d.CodeConvention, b.InitialeBailleur, b.TitreTTL, b.NomTTL, b.PrenomTTL, b.MailTTL from t_marche as m, t_dao as d, t_bailleur as b, t_convention as c where d.RefMarche=m.RefMarche and m.Convention_ChefFile=c.CodeConvention and c.CodeBailleur=b.CodeBailleur and d.NumeroDAO='" & EnleverApost(NumeroDAO.ToString) & "' and d.CodeProjet='" & ProjetEnCours & "'")
+            EmailResponsablePMDAO = ExecuteScallar("SELECT EMP_EMAIL from t_grh_employe where PROJ_ID='" & ProjetEnCours & "' and ResponsablePM='1'")
+            EmailCoordinateurProjetDAO = ExecuteScallar("SELECT EMP_EMAIL from t_grh_employe where PROJ_ID='" & ProjetEnCours & "' and Emp_Cordonnateur='1'")
+
+            If rwDossDAO.Rows.Count = 0 Then
+                FailMsg("Nous n'avons pas pu recupéré toutes les informations du bailleur.")
+                Return False
+            End If
+
+            If rwDossDAO.Rows(0)("RevuePrioPost").ToString = "" Then
+                FailMsg("Veuillez definir la révue.")
+                Return False
+            End If
+
+            If ControlsProcessus = True Then
+                If Mid(rwDossDAO.Rows(0)("RevuePrioPost").ToString, 1, 4).ToLower = "post" Then
+                    SuccesMsg("Le dossier étant à postériori le bailleur" & vbNewLine & "de fonds intervient à la fin du processus.")
+                    Return False
+                End If
+            End If
+
+            If rwDossDAO.Rows(0)("MailTTL").ToString = "" Then
+                SuccesMsg("L'email du bailleur de fonds est vide.")
+                Return False
+            End If
+
+            'email responsable Passation de marche
+            If EmailResponsablePMDAO.ToString = "" Then
+                FailMsg("L'email de réponse [responsable de la passation de marché] est vide.")
+                Return False
+            End If
+
+            'email coordinateur
+            If EmailCoordinateurProjetDAO.ToString = "" Then
+                FailMsg("L'email de réponse [coordinateur] est vide.")
+                Return False
+            End If
+
+            NomBailleurRetenuDAO = MettreApost(rwDossDAO.Rows(0)("TitreTTL").ToString) & " " & MettreApost(rwDossDAO.Rows(0)("NomTTL").ToString) & " " & MettreApost(rwDossDAO.Rows(0)("PrenomTTL").ToString)
+            EmailDestinatauerDAO = MettreApost(rwDossDAO.Rows(0)("MailTTL").ToString)
 
         Catch ex As Exception
             FailMsg(ex.ToString)
@@ -217,34 +262,37 @@ Public Class PassationMarche
         dt.Columns.Add("Libelle", Type.GetType("System.String"))
         dt.Columns.Add("NumeroOrdre", Type.GetType("System.String"))
         dt.Columns.Add("Delai", Type.GetType("System.String"))
-        dt.Columns.Add("CodeProcAO", Type.GetType("System.String"))
+        ' dt.Columns.Add("CodeProcAO", Type.GetType("System.String"))
         Dim Libelle As String = String.Empty
         Dim NumeroOrdre As String = String.Empty
         Dim DelaiEtape As String = String.Empty
-        Dim CodeProcAO As String = String.Empty
+        'Dim CodeProcAO As String = String.Empty
+
         query = "select * from t_etapemarche where RefEtape='" & RefEtape & "'"
         Dim dt0 As DataTable = ExcecuteSelectQuery(query)
         If dt0.Rows.Count > 0 Then
             Libelle = dt0.Rows(0).Item("TitreEtape")
             NumeroOrdre = dt0.Rows(0).Item("NumeroOrdre")
             DelaiEtape = dt0.Rows(0).Item("DelaiEtape")
-            CodeProcAO = dt0.Rows(0).Item("CodeProcAO")
+            ' CodeProcAO = dt0.Rows(0).Item("CodeProcAO")
         End If
 
-        dt.Rows.Add({Libelle, NumeroOrdre, DelaiEtape, CodeProcAO})
+        dt.Rows.Add({Libelle, NumeroOrdre, DelaiEtape}) 'CodeProcAO
         Return dt.Rows(0)
     End Function
 
 #Region "DAO"
     Public Shared Function GetSousLot(NumLot As Integer, NumDossier As String) As Object()
-        query = "SELECT COUNT(*) FROM t_lotdao_souslot WHERE NumeroDAO='" & NumDossier & "' AND RefLot='" & GetRefLot(NumLot, NumDossier) & "'"
+        Dim RefLot As Decimal = GetRefLot(NumLot, NumDossier)
+        query = "SELECT COUNT(*) FROM t_lotdao_souslot WHERE NumeroDAO='" & EnleverApost(NumDossier) & "' AND RefLot='" & RefLot & "'"
         Dim NbreSousLot As Integer = Val(ExecuteScallar(query))
-        query = "SELECT * FROM t_lotdao_souslot WHERE NumeroDAO='" & NumDossier & "' AND RefLot='" & GetRefLot(NumLot, NumDossier) & "'"
+        query = "SELECT * FROM t_lotdao_souslot WHERE NumeroDAO='" & EnleverApost(NumDossier) & "' AND RefLot='" & RefLot & "'"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         Return {NbreSousLot, dt}
     End Function
-    Public Shared Function GetRefLot(NumLot As Integer, NumDossier As String) As Integer
-        query = "SELECT RefLot FROM t_lotdao WHERE NumeroDAO='" & NumDossier & "' AND CodeLot='" & NumLot & "'"
+
+    Public Shared Function GetRefLot(NumLot As Integer, NumDossier As String) As Decimal
+        query = "SELECT RefLot FROM t_lotdao WHERE NumeroDAO='" & EnleverApost(NumDossier) & "' AND CodeLot='" & NumLot & "'"
         Return Val(ExecuteScallar(query))
     End Function
 #End Region
@@ -295,6 +343,7 @@ Public Class PassationMarche
 
         Return encrypted
     End Function
+
     Public Shared Function GenererToken(ByVal NumDossier As String, ByVal ID_COJO As String, ByVal TypeDos As String, Optional DB As String = "") As String
         Dim strTest As String = DB & ":" & ProjetEnCours & ":" & NumDossier & ":" & ID_COJO & ":" & TypeDos
         Dim token As String
@@ -314,6 +363,7 @@ Public Class PassationMarche
         Loop While tokenExiste = True
         Return token & ":" & salt
     End Function
+
     Private Shared Function VerifieToken(ByVal token As String) As Boolean
         query = "SELECT COUNT(*) FROM t_commission WHERE AuthKey='" & token & "'"
         Dim verif As Integer = Val(ExecuteScallar(query))
@@ -323,16 +373,13 @@ Public Class PassationMarche
         Return False
     End Function
 
-    Public Shared Sub envoieMail(ByVal nomPrenom As String, ByVal EmailDestinateur As String, ByVal AuthKey As String)
+    Public Shared Function envoieMail(ByVal nomPrenom As String, ByVal EmailDestinateur As String, ByVal AuthKey As String) As Boolean
         Dim email As String = EmailDestinateur
         Dim nom As String = nomPrenom
         Dim ID() = AuthKey.Split(":")
         Dim token = ID(0).ToString
         Dim salt = ID(1).ToString
         Dim mail As MailMessage = New MailMessage()
-
-        Dim MailExp As String = "support@clearproject.online"
-        Dim ModpassExp As String = "D9akt36*"
 
         Dim content As String = "Bonjour " & nomPrenom.ToString & "<br><br> Vous êtes invité (e) s à intégrer une commission d'ouverture sur ClearProject. <br><br> Votre clé d'authenfication est le suivant: <br> <b>" & AuthKey & "</b>"
         Dim MailDesti As String = EmailDestinateur.ToString
@@ -349,10 +396,11 @@ Public Class PassationMarche
             Message.Subject = objets
 
             'email de la personne envoyant le message'
-            Message.From = New Net.Mail.MailAddress(MailExp)
+            Message.From = New Net.Mail.MailAddress(EMailExpediteur)
 
             'le corps du message'
-            Message.Body = content & "<br><br> Veuillez <a href='http://localhost/clearProject/index.php?ID1=" & salt & "&amp;ID2=" & token & "'title='Cliquer pour accepter l'invitation'> <b> Cliquer ici pour l'accepter </b> </a> <br><br> Merci, <br> <b>Le service passation des marchés</b> <br><br> "
+            'Message.Body = content & "<br><br> Veuillez <a href='http://localhost/clearProject/index.php?ID1=" & salt & "&amp;ID2=" & token & "'title='Cliquer pour accepter l'invitation'> <b> Cliquer ici pour l'accepter </b> </a> <br><br> Merci, <br> <b>Le service passation des marchés</b> <br><br> "
+            Message.Body = content & "<br><br><br> Merci, <br> <b>Le service passation des marchés</b> <br><br> "
 
             ' email du destinataire'
             With Message.To
@@ -365,29 +413,35 @@ Public Class PassationMarche
             Smtp.EnableSsl = False
 
             'email et mot de passe de celui qui envoi le message'
-            Smtp.Credentials = New Net.NetworkCredential(MailExp, ModpassExp)
+            Smtp.Credentials = New Net.NetworkCredential(EMailExpediteur, MotpassExpediteur)
 
             'l'envoie du message'
             Smtp.Send(Message)
             Message.Dispose()
+            Return True
         Catch ex As Exception
-            FailMsg("Echec d'envoie du client de connection.")
-            Exit Sub
+            FinChargement()
+            FailMsg("Echec d'envoi des clés de connexion des membres de la commission.")
+            Return False
         End Try
-    End Sub
+    End Function
 
-    Public Shared Sub envoieMail2(ByVal nomEntreprise As String, ByVal NumeroDao As String, ByVal EmailDestinateur As String, Optional reçu As String = "")
+    Public Shared Function envoieMail2(ByVal nomEntreprise As String, ByVal NumeroDao As String, ByVal EmailDestinateur As String, Optional reçu As String = "", Optional TypeMessage As String = "Reçu") As Boolean
         Dim email As String = EmailDestinateur
         Dim nom As String = nomEntreprise
         Dim mail As MailMessage = New MailMessage()
+        Dim content As String = ""
+        Dim objets As String = ""
 
-        Dim MailExp As String = "support@clearproject.online"
-        Dim ModpassExp As String = "D9akt36*"
+        If TypeMessage.ToString = "Reçu" Then
+            content = "Bonjour " & nomEntreprise.ToString & ", <br><br> Veuillez recevoir en fichier joint le reçu de paiement du dossier d'appel d'offre N° " & NumeroDao & ". <br><b>"
+            objets = "Reçu de rétrait de dossier d'appel d'offre"
+        ElseIf TypeMessage.ToString = "NotificationAttributrionMarche" Then
+            content = "Bonjour " & nomEntreprise.ToString & ", <br><br> Veuillez recevoir en fichier joint la notification d'attribution du marché du dossier d'appel d'offre N° " & NumeroDao & ". <br><b>"
+            objets = "Notification attribution du marché"
+        End If
 
-        Dim content As String = "Bonjour " & nomEntreprise.ToString & ", <br><br> Veuillez recevoir en fichier joint le reçu du dossier d'appel d'offre N° " & NumeroDao & ". <br><b>"
         Dim MailDesti As String = EmailDestinateur.ToString
-
-        Dim objets As String = "Reçu de rétrait de dossier d'appel d'offre"
         Dim PieceJointe As New Attachment(reçu)
 
         'ENVOI D'EMAIL A L'EXTERIEUR
@@ -400,7 +454,7 @@ Public Class PassationMarche
             Message.Subject = objets
 
             'email de la personne envoyant le message'
-            Message.From = New Net.Mail.MailAddress(MailExp)
+            Message.From = New Net.Mail.MailAddress(EMailExpediteur)
 
             'le corps du message'
             Message.Body = content & "<br><b>Le service passation des marchés</b><br><br> "
@@ -418,34 +472,75 @@ Public Class PassationMarche
             Smtp.EnableSsl = False
 
             'email et mot de passe de celui qui envoi le message'
-            Smtp.Credentials = New Net.NetworkCredential(MailExp, ModpassExp)
+            Smtp.Credentials = New Net.NetworkCredential(EMailExpediteur, MotpassExpediteur)
 
             'l'envoie du message'
             Smtp.Send(Message)
             Message.Dispose()
+            Return True
         Catch ex As Exception
-            FailMsg("Echec d'envoie du client de connection.")
-            Exit Sub
+            FinChargement()
+            If TypeMessage.ToString = "Reçu" Then
+                FailMsg("Echec d'envoi du réçu.")
+            Else
+                FailMsg("Echec d'envoi de la notification d'attrbution du marché.")
+            End If
+            Return False
+        End Try
+    End Function
+
+    Public Shared Sub FermerForm(ByVal ListeForm As String())
+        Try
+            'Arret du processus et fermetures des formulairs ouverts
+            'For Each child As Object In Me.MdiChildren
+            For Each child As Object In ClearMdi.MdiChildren
+                For i = 0 To ListeForm.Length - 1
+                    If (child.Name = ListeForm(i).ToString) Then
+                        child.Close()
+                    End If
+                Next
+            Next
+        Catch ex As Exception
+            FailMsg(ex.ToString)
         End Try
     End Sub
 
 
-    Public Shared Function EnvoiMailRapport(ByVal nomEntreprise As String, ByVal NumeroAMI_DP As String, ByVal EmailDestinateur As String, ByVal CheminDoc As String, ByVal EmailCoordinateur As String, ByVal EmailResponsablePM As String, ByVal TexteMessageDoc As String, Optional TypeDoc As Boolean = False) As Boolean
+    Public Shared Function EnvoiMailRapport(ByVal nomEntreprise As String, ByVal NumeroDossier As String, ByVal EmailDestinateur As String, ByVal CheminDoc As String, ByVal EmailCoordinateur As String, ByVal EmailResponsablePM As String, ByVal TexteMessageDoc As String, ByVal TypeDossier As String, Optional TypeMessage As Boolean = False) As Boolean
         Dim mail As MailMessage = New MailMessage()
-        Dim MailExp As String = "support@clearproject.online"
-        Dim ModpassExp As String = "D9akt36*"
         Dim content As String = ""
+        Dim objets As String = ""
 
-        'TypeDoc permet de personnaliser le message
-        If TypeDoc = True Then
-            content = "Bonjour " & nomEntreprise.ToString & ", <br><br> Veuillez recevoir en fichier joint le " & TexteMessageDoc.ToLower & " de la demande de proposition N° " & NumeroAMI_DP & ". <br><br> Pour toutes modifications veuillez télécharger le fichier joint."
-        Else
-            content = "Bonjour " & nomEntreprise.ToString & ", <br><br> Veuillez recevoir en fichier joint le " & TexteMessageDoc.ToLower & " de la demande de proposition N° " & NumeroAMI_DP & ". <br><br> Pour toutes modifications veuillez télécharger le fichier joint. <br><br> Après avoir appliqué vos modifications, veuillez envoyer le fichier aux adresses suivantes: <b>" & EmailCoordinateur.ToString & "</b>, <b>" & EmailResponsablePM.ToString & "</b>"
+        'Cas des AMI
+        If TypeDossier = "AMI" Then
+
+            objets = TexteMessageDoc.ToString & " N° " & NumeroDossier
+            content = "Bonjour " & nomEntreprise.ToString & ", <br><br> Veuillez recevoir en fichier joint le " & TexteMessageDoc.ToLower & " N° " & NumeroDossier & ". <br><br> Pour toutes modifications veuillez télécharger le fichier joint. <br><br> Après avoir appliqué vos modifications, veuillez envoyer le fichier aux adresses suivantes: <b>" & EmailCoordinateur.ToString & "</b>, <b>" & EmailResponsablePM.ToString & "</b>"
+
+            'Cas des DP
+        ElseIf TypeDossier = "DP" Then
+            'TypeDoc permet de personnaliser le message
+            If TypeMessage = True Then
+                content = "Bonjour " & nomEntreprise.ToString & ", <br><br> Veuillez recevoir en fichier joint le " & TexteMessageDoc.ToLower & " de la demande de proposition N° " & NumeroDossier & ". <br><br> Pour toutes modifications veuillez télécharger le fichier joint."
+            Else
+                content = "Bonjour " & nomEntreprise.ToString & ", <br><br> Veuillez recevoir en fichier joint le " & TexteMessageDoc.ToLower & " de la demande de proposition N° " & NumeroDossier & ". <br><br> Pour toutes modifications veuillez télécharger le fichier joint. <br><br> Après avoir appliqué vos modifications, veuillez envoyer le fichier aux adresses suivantes: <b>" & EmailCoordinateur.ToString & "</b>, <b>" & EmailResponsablePM.ToString & "</b>"
+            End If
+
+            objets = TexteMessageDoc.ToString & " de la demande de proposition N° " & NumeroDossier
+
+            'Fourniture, Travaux, et Service autres
+        ElseIf TypeDossier = "DAO" Then
+            If TypeMessage = True Then
+                content = "Bonjour " & nomEntreprise.ToString & ", <br><br> Veuillez recevoir en fichier joint le " & TexteMessageDoc.ToLower & " N° " & NumeroDossier & ". <br><br> Pour toutes modifications veuillez télécharger le fichier joint."
+            Else
+                content = "Bonjour " & nomEntreprise.ToString & ", <br><br> Veuillez recevoir en fichier joint le " & TexteMessageDoc.ToLower & " N° " & NumeroDossier & ". <br><br> Pour toutes modifications veuillez télécharger le fichier joint. <br><br> Après avoir appliqué vos modifications, veuillez envoyer le fichier aux adresses suivantes: <b>" & EmailCoordinateur.ToString & "</b>, <b>" & EmailResponsablePM.ToString & "</b>"
+            End If
+
+            objets = TexteMessageDoc.ToString & " N° " & NumeroDossier
         End If
 
         Dim MailDesti As String = EmailDestinateur.ToString
 
-        Dim objets As String = TexteMessageDoc.ToString & " de la demande de proposition N° " & NumeroAMI_DP
         Dim PieceJointe As New System.Net.Mail.Attachment(CheminDoc)
 
         'ENVOI D'EMAIL A L'EXTERIEUR
@@ -458,7 +553,7 @@ Public Class PassationMarche
             Message.Subject = objets
 
             'email de la personne envoyant le message'
-            Message.From = New Net.Mail.MailAddress(MailExp)
+            Message.From = New Net.Mail.MailAddress(EMailExpediteur)
 
             'le corps du message'
             Message.Body = content & "<br><b> Le service passation des marchés</b><br><br> "
@@ -477,17 +572,40 @@ Public Class PassationMarche
             Smtp.EnableSsl = False
 
             'email et mot de passe de celui qui envoi le message'
-            Smtp.Credentials = New Net.NetworkCredential(MailExp, ModpassExp)
+            Smtp.Credentials = New Net.NetworkCredential(EMailExpediteur, MotpassExpediteur)
 
             'l'envoie du message'
             Smtp.Send(Message)
             Message.Dispose()
             Return True
         Catch ex As Exception
+            FinChargement()
             FailMsg("Echec d'envoi de l'email.")
             Return False
         End Try
     End Function
+
+    Public Shared Sub GetAnnuleDateRealisationPPM(RefMarche As Decimal)
+        query = "UPDATE t_planmarche SET FinEffective=NULL where RefMarche='" & RefMarche & "'"
+        ExecuteNonQuery(query)
+    End Sub
+
+    Public Shared Sub NewGridLigneSelected(ByVal NomGrid As System.Windows.Forms.DataGridView, e As DataGridViewCellMouseEventArgs)
+        Try
+            If e.RowIndex <> -1 And e.ColumnIndex <> -1 Then
+                If (e.Button = MouseButtons.Right) Then
+                    Try
+                        NomGrid.CurrentCell = NomGrid.Rows(e.RowIndex).Cells(e.ColumnIndex)
+                        NomGrid.Rows(e.RowIndex).Selected = True
+                        NomGrid.Focus()
+                    Catch ex As Exception
+                    End Try
+                End If
+            End If
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
 End Class
 
 Public Class DaoSpecTechLot
@@ -579,6 +697,4 @@ Public Class DaoSpecTechSousLot
             _DataTableValue = value
         End Set
     End Property
-
-
 End Class

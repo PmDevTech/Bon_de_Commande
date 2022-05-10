@@ -368,8 +368,8 @@ Partial Class NewDp
         Me.PDFToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FormatWordToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FormatTexteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ImprimerDossier = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ModifierDossier = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.SupprimerDossier = New System.Windows.Forms.ToolStripMenuItem()
@@ -445,6 +445,8 @@ Partial Class NewDp
         Me.LabelControl5 = New DevExpress.XtraEditors.LabelControl()
         Me.TxtLibDp = New DevExpress.XtraEditors.MemoEdit()
         Me.GroupCaracteristique = New DevExpress.XtraEditors.GroupControl()
+        Me.LabelControl58 = New DevExpress.XtraEditors.LabelControl()
+        Me.NomEmprunteur = New DevExpress.XtraEditors.TextEdit()
         Me.DateRecpDossConsult = New DevExpress.XtraEditors.DateEdit()
         Me.LabelControl52 = New DevExpress.XtraEditors.LabelControl()
         Me.CmbTypeRemune = New DevExpress.XtraEditors.ComboBoxEdit()
@@ -746,6 +748,7 @@ Partial Class NewDp
         CType(Me.TxtLibDp.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupCaracteristique, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupCaracteristique.SuspendLayout()
+        CType(Me.NomEmprunteur.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateRecpDossConsult.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateRecpDossConsult.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CmbTypeRemune.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -2661,28 +2664,28 @@ Partial Class NewDp
         '
         'ContextMenuStrip2
         '
-        Me.ContextMenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AfficherDossier, Me.ToolStripSeparator1, Me.ExporterDossier, Me.ToolStripSeparator2, Me.ImprimerDossier, Me.ModifierDossier, Me.ToolStripSeparator3, Me.SupprimerDossier, Me.ValiderToolStripMenuItem, Me.EnvoyerLaDPAuBailleurToolStripMenuItem, Me.AnnulerLaDPToolStripMenuItem})
+        Me.ContextMenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AfficherDossier, Me.ToolStripSeparator1, Me.ExporterDossier, Me.ImprimerDossier, Me.ToolStripSeparator2, Me.ModifierDossier, Me.ToolStripSeparator3, Me.SupprimerDossier, Me.ValiderToolStripMenuItem, Me.EnvoyerLaDPAuBailleurToolStripMenuItem, Me.AnnulerLaDPToolStripMenuItem})
         Me.ContextMenuStrip2.Name = "ContextMenuStrip2"
-        Me.ContextMenuStrip2.Size = New System.Drawing.Size(160, 198)
+        Me.ContextMenuStrip2.Size = New System.Drawing.Size(181, 220)
         '
         'AfficherDossier
         '
         Me.AfficherDossier.Image = Global.ClearProject.My.Resources.Resources.View_16x16
         Me.AfficherDossier.Name = "AfficherDossier"
-        Me.AfficherDossier.Size = New System.Drawing.Size(159, 22)
+        Me.AfficherDossier.Size = New System.Drawing.Size(180, 22)
         Me.AfficherDossier.Text = "Afficher la DP"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(156, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(177, 6)
         '
         'ExporterDossier
         '
         Me.ExporterDossier.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PDFToolStripMenuItem, Me.FormatWordToolStripMenuItem, Me.FormatTexteToolStripMenuItem})
         Me.ExporterDossier.Image = Global.ClearProject.My.Resources.Resources.Outbox_16x16
         Me.ExporterDossier.Name = "ExporterDossier"
-        Me.ExporterDossier.Size = New System.Drawing.Size(159, 22)
+        Me.ExporterDossier.Size = New System.Drawing.Size(180, 22)
         Me.ExporterDossier.Text = "Exporter la DP"
         '
         'PDFToolStripMenuItem
@@ -2706,42 +2709,42 @@ Partial Class NewDp
         Me.FormatTexteToolStripMenuItem.Text = "Format Texte"
         Me.FormatTexteToolStripMenuItem.Visible = False
         '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(156, 6)
-        '
         'ImprimerDossier
         '
         Me.ImprimerDossier.Image = Global.ClearProject.My.Resources.Resources.Group_Reports
         Me.ImprimerDossier.Name = "ImprimerDossier"
-        Me.ImprimerDossier.Size = New System.Drawing.Size(159, 22)
+        Me.ImprimerDossier.Size = New System.Drawing.Size(180, 22)
         Me.ImprimerDossier.Text = "Imprimer la DP"
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(177, 6)
         '
         'ModifierDossier
         '
         Me.ModifierDossier.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
         Me.ModifierDossier.Name = "ModifierDossier"
-        Me.ModifierDossier.Size = New System.Drawing.Size(159, 22)
+        Me.ModifierDossier.Size = New System.Drawing.Size(180, 22)
         Me.ModifierDossier.Text = "Modifier la DP"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(156, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(177, 6)
         '
         'SupprimerDossier
         '
         Me.SupprimerDossier.Image = Global.ClearProject.My.Resources.Resources.CloseDetails_16x16
         Me.SupprimerDossier.Name = "SupprimerDossier"
-        Me.SupprimerDossier.Size = New System.Drawing.Size(159, 22)
+        Me.SupprimerDossier.Size = New System.Drawing.Size(180, 22)
         Me.SupprimerDossier.Text = "Supprimer la DP"
         '
         'ValiderToolStripMenuItem
         '
         Me.ValiderToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.ActiveRents_16x16
         Me.ValiderToolStripMenuItem.Name = "ValiderToolStripMenuItem"
-        Me.ValiderToolStripMenuItem.Size = New System.Drawing.Size(159, 22)
+        Me.ValiderToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ValiderToolStripMenuItem.Text = "Valider la DP"
         '
         'EnvoyerLaDPAuBailleurToolStripMenuItem
@@ -2749,7 +2752,7 @@ Partial Class NewDp
         Me.EnvoyerLaDPAuBailleurToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AuBailleurToolStripMenuItem, Me.AuxConsultantsToolStripMenuItem})
         Me.EnvoyerLaDPAuBailleurToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.Mail_16x16
         Me.EnvoyerLaDPAuBailleurToolStripMenuItem.Name = "EnvoyerLaDPAuBailleurToolStripMenuItem"
-        Me.EnvoyerLaDPAuBailleurToolStripMenuItem.Size = New System.Drawing.Size(159, 22)
+        Me.EnvoyerLaDPAuBailleurToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.EnvoyerLaDPAuBailleurToolStripMenuItem.Text = "Envoyer la DP"
         '
         'AuBailleurToolStripMenuItem
@@ -2770,7 +2773,7 @@ Partial Class NewDp
         '
         Me.AnnulerLaDPToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.Close_16x16
         Me.AnnulerLaDPToolStripMenuItem.Name = "AnnulerLaDPToolStripMenuItem"
-        Me.AnnulerLaDPToolStripMenuItem.Size = New System.Drawing.Size(159, 22)
+        Me.AnnulerLaDPToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.AnnulerLaDPToolStripMenuItem.Text = "Annuler la DP"
         '
         'LayoutView1
@@ -2891,10 +2894,10 @@ Partial Class NewDp
         '
         'Nom
         '
+        Me.Nom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.Nom.HeaderText = "Nom"
         Me.Nom.Name = "Nom"
         Me.Nom.ReadOnly = True
-        Me.Nom.Width = 200
         '
         'Pays
         '
@@ -2913,6 +2916,7 @@ Partial Class NewDp
         Me.Email.HeaderText = "E-mail"
         Me.Email.Name = "Email"
         Me.Email.ReadOnly = True
+        Me.Email.Width = 150
         '
         'Telephone
         '
@@ -3005,7 +3009,7 @@ Partial Class NewDp
         Me.TxtMail.Name = "TxtMail"
         Me.TxtMail.Properties.Mask.EditMask = "[a-z,0-9,.]{1,80}[@]{1}[a-z,0-9-]{1,80}[.]{1}[a-z]{2,25}"
         Me.TxtMail.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx
-        Me.TxtMail.Size = New System.Drawing.Size(746, 20)
+        Me.TxtMail.Size = New System.Drawing.Size(763, 20)
         Me.TxtMail.TabIndex = 26
         '
         'LabelControl12
@@ -3071,7 +3075,7 @@ Partial Class NewDp
         Me.TxtAdresse.MenuManager = Me.RibbonDP
         Me.TxtAdresse.Name = "TxtAdresse"
         Me.TxtAdresse.Properties.MaxLength = 200
-        Me.TxtAdresse.Size = New System.Drawing.Size(260, 24)
+        Me.TxtAdresse.Size = New System.Drawing.Size(277, 24)
         Me.TxtAdresse.TabIndex = 25
         '
         'CmbPays
@@ -3082,7 +3086,7 @@ Partial Class NewDp
         Me.CmbPays.MenuManager = Me.RibbonDP
         Me.CmbPays.Name = "CmbPays"
         Me.CmbPays.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.CmbPays.Size = New System.Drawing.Size(746, 20)
+        Me.CmbPays.Size = New System.Drawing.Size(763, 20)
         Me.CmbPays.TabIndex = 22
         '
         'LabelControl3
@@ -3104,7 +3108,7 @@ Partial Class NewDp
         Me.TxtNomConsult.Name = "TxtNomConsult"
         Me.TxtNomConsult.Properties.Appearance.Options.UseTextOptions = True
         Me.TxtNomConsult.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
-        Me.TxtNomConsult.Size = New System.Drawing.Size(746, 20)
+        Me.TxtNomConsult.Size = New System.Drawing.Size(763, 20)
         Me.TxtNomConsult.TabIndex = 21
         '
         'GroupControl7
@@ -3569,6 +3573,8 @@ Partial Class NewDp
         '
         Me.GroupCaracteristique.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupCaracteristique.Controls.Add(Me.LabelControl58)
+        Me.GroupCaracteristique.Controls.Add(Me.NomEmprunteur)
         Me.GroupCaracteristique.Controls.Add(Me.DateRecpDossConsult)
         Me.GroupCaracteristique.Controls.Add(Me.LabelControl52)
         Me.GroupCaracteristique.Controls.Add(Me.CmbTypeRemune)
@@ -3584,6 +3590,28 @@ Partial Class NewDp
         Me.GroupCaracteristique.TabIndex = 7
         Me.GroupCaracteristique.Text = "Caractéristiques"
         '
+        'LabelControl58
+        '
+        Me.LabelControl58.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl58.LineVisible = True
+        Me.LabelControl58.Location = New System.Drawing.Point(5, 106)
+        Me.LabelControl58.Name = "LabelControl58"
+        Me.LabelControl58.Size = New System.Drawing.Size(80, 13)
+        Me.LabelControl58.TabIndex = 43
+        Me.LabelControl58.Text = "Nom emprunteur"
+        '
+        'NomEmprunteur
+        '
+        Me.NomEmprunteur.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.NomEmprunteur.Location = New System.Drawing.Point(114, 102)
+        Me.NomEmprunteur.MenuManager = Me.RibbonDP
+        Me.NomEmprunteur.Name = "NomEmprunteur"
+        Me.NomEmprunteur.Properties.Appearance.Options.UseTextOptions = True
+        Me.NomEmprunteur.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.NomEmprunteur.Size = New System.Drawing.Size(169, 20)
+        Me.NomEmprunteur.TabIndex = 39
+        '
         'DateRecpDossConsult
         '
         Me.DateRecpDossConsult.EditValue = Nothing
@@ -3596,7 +3624,7 @@ Partial Class NewDp
         Me.DateRecpDossConsult.Properties.CloseUpKey = New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None)
         Me.DateRecpDossConsult.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret
         Me.DateRecpDossConsult.Properties.VistaTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
-        Me.DateRecpDossConsult.Size = New System.Drawing.Size(120, 20)
+        Me.DateRecpDossConsult.Size = New System.Drawing.Size(124, 20)
         Me.DateRecpDossConsult.TabIndex = 41
         '
         'LabelControl52
@@ -3618,7 +3646,7 @@ Partial Class NewDp
         Me.CmbTypeRemune.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.CmbTypeRemune.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.CmbTypeRemune.Properties.Items.AddRange(New Object() {"Forfait", "Temps passé"})
-        Me.CmbTypeRemune.Size = New System.Drawing.Size(177, 20)
+        Me.CmbTypeRemune.Size = New System.Drawing.Size(181, 20)
         Me.CmbTypeRemune.TabIndex = 18
         '
         'LabelControl41
@@ -3635,7 +3663,7 @@ Partial Class NewDp
         '
         Me.LabelControl40.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl40.LineVisible = True
-        Me.LabelControl40.Location = New System.Drawing.Point(3, 99)
+        Me.LabelControl40.Location = New System.Drawing.Point(3, 128)
         Me.LabelControl40.Name = "LabelControl40"
         Me.LabelControl40.Size = New System.Drawing.Size(105, 13)
         Me.LabelControl40.TabIndex = 22
@@ -3655,11 +3683,11 @@ Partial Class NewDp
         '
         Me.LibellePublication.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LibellePublication.Location = New System.Drawing.Point(114, 100)
+        Me.LibellePublication.Location = New System.Drawing.Point(114, 128)
         Me.LibellePublication.MenuManager = Me.RibbonDP
         Me.LibellePublication.Name = "LibellePublication"
         Me.LibellePublication.Properties.MaxLength = 500
-        Me.LibellePublication.Size = New System.Drawing.Size(169, 46)
+        Me.LibellePublication.Size = New System.Drawing.Size(169, 19)
         Me.LibellePublication.TabIndex = 20
         '
         'LieuRemiseProposition
@@ -3670,7 +3698,7 @@ Partial Class NewDp
         Me.LieuRemiseProposition.MenuManager = Me.RibbonDP
         Me.LieuRemiseProposition.Name = "LieuRemiseProposition"
         Me.LieuRemiseProposition.Properties.MaxLength = 200
-        Me.LieuRemiseProposition.Size = New System.Drawing.Size(122, 20)
+        Me.LieuRemiseProposition.Size = New System.Drawing.Size(125, 20)
         Me.LieuRemiseProposition.TabIndex = 19
         '
         'LabelControl2
@@ -4084,10 +4112,10 @@ Partial Class NewDp
         '
         'Objet1
         '
+        Me.Objet1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.Objet1.HeaderText = "Objet"
         Me.Objet1.Name = "Objet1"
         Me.Objet1.ReadOnly = True
-        Me.Objet1.Width = 800
         '
         'Action1
         '
@@ -4218,10 +4246,10 @@ Partial Class NewDp
         '
         'Description
         '
+        Me.Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.Description.HeaderText = "Description"
         Me.Description.Name = "Description"
         Me.Description.ReadOnly = True
-        Me.Description.Width = 800
         '
         'LigneModif
         '
@@ -4434,10 +4462,10 @@ Partial Class NewDp
         '
         'Nomcojo
         '
+        Me.Nomcojo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.Nomcojo.HeaderText = "Nom et Prénoms"
         Me.Nomcojo.Name = "Nomcojo"
         Me.Nomcojo.ReadOnly = True
-        Me.Nomcojo.Width = 200
         '
         'Fonctioncojo
         '
@@ -4573,10 +4601,10 @@ Partial Class NewDp
         '
         'Objet2
         '
+        Me.Objet2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.Objet2.HeaderText = "Objet"
         Me.Objet2.Name = "Objet2"
         Me.Objet2.ReadOnly = True
-        Me.Objet2.Width = 800
         '
         'Action2
         '
@@ -6351,6 +6379,7 @@ Partial Class NewDp
         CType(Me.GroupCaracteristique, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupCaracteristique.ResumeLayout(False)
         Me.GroupCaracteristique.PerformLayout()
+        CType(Me.NomEmprunteur.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateRecpDossConsult.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateRecpDossConsult.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CmbTypeRemune.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -6979,12 +7008,6 @@ Partial Class NewDp
     Friend WithEvents RetirerCojo As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents RetirerFour As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents RetirerRem As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents Num2 As DataGridViewTextBoxColumn
-    Friend WithEvents Objet2 As DataGridViewTextBoxColumn
-    Friend WithEvents Action2 As DataGridViewTextBoxColumn
-    Friend WithEvents Num1 As DataGridViewTextBoxColumn
-    Friend WithEvents Objet1 As DataGridViewTextBoxColumn
-    Friend WithEvents Action1 As DataGridViewTextBoxColumn
     Friend WithEvents Ref As DataGridViewTextBoxColumn
     Friend WithEvents Details As DataGridViewTextBoxColumn
     Friend WithEvents Points As DataGridViewTextBoxColumn
@@ -7009,23 +7032,10 @@ Partial Class NewDp
     Friend WithEvents CheckEdit2 As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents GroupBoxSection As GroupBox
     Friend WithEvents TxtSection As DevExpress.XtraEditors.MemoEdit
-    Friend WithEvents RefSection As DataGridViewTextBoxColumn
-    Friend WithEvents CodeSection As DataGridViewTextBoxColumn
-    Friend WithEvents Description As DataGridViewTextBoxColumn
-    Friend WithEvents LigneModif As DataGridViewTextBoxColumn
     Friend WithEvents GroupControlPub As DevExpress.XtraEditors.GroupControl
     Friend WithEvents LibellePublication As DevExpress.XtraEditors.MemoEdit
     Friend WithEvents LabelControl40 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl45 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents RefConsult As DataGridViewTextBoxColumn
-    Friend WithEvents Numero As DataGridViewTextBoxColumn
-    Friend WithEvents Nom As DataGridViewTextBoxColumn
-    Friend WithEvents Pays As DataGridViewTextBoxColumn
-    Friend WithEvents Adresse As DataGridViewTextBoxColumn
-    Friend WithEvents Email As DataGridViewTextBoxColumn
-    Friend WithEvents Telephone As DataGridViewTextBoxColumn
-    Friend WithEvents Fax As DataGridViewTextBoxColumn
-    Friend WithEvents Action As DataGridViewTextBoxColumn
     Friend WithEvents BtModifierCritere As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents BtAjoutSousCritere As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents BtAjoutCritere As DevExpress.XtraEditors.SimpleButton
@@ -7119,6 +7129,24 @@ Partial Class NewDp
     Friend WithEvents Coutencourus As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents PanelScrTechFin As Panel
     Friend WithEvents BtSupSection As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents LabelControl58 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents NomEmprunteur As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents RefConsult As DataGridViewTextBoxColumn
+    Friend WithEvents Numero As DataGridViewTextBoxColumn
+    Friend WithEvents Nom As DataGridViewTextBoxColumn
+    Friend WithEvents Pays As DataGridViewTextBoxColumn
+    Friend WithEvents Adresse As DataGridViewTextBoxColumn
+    Friend WithEvents Email As DataGridViewTextBoxColumn
+    Friend WithEvents Telephone As DataGridViewTextBoxColumn
+    Friend WithEvents Fax As DataGridViewTextBoxColumn
+    Friend WithEvents Action As DataGridViewTextBoxColumn
+    Friend WithEvents Num1 As DataGridViewTextBoxColumn
+    Friend WithEvents Objet1 As DataGridViewTextBoxColumn
+    Friend WithEvents Action1 As DataGridViewTextBoxColumn
+    Friend WithEvents RefSection As DataGridViewTextBoxColumn
+    Friend WithEvents CodeSection As DataGridViewTextBoxColumn
+    Friend WithEvents Description As DataGridViewTextBoxColumn
+    Friend WithEvents LigneModif As DataGridViewTextBoxColumn
     Friend WithEvents Refcojo As DataGridViewTextBoxColumn
     Friend WithEvents Civilitecojo As DataGridViewTextBoxColumn
     Friend WithEvents Nomcojo As DataGridViewTextBoxColumn
@@ -7128,4 +7156,7 @@ Partial Class NewDp
     Friend WithEvents Organismecojo As DataGridViewTextBoxColumn
     Friend WithEvents Typecojo As DataGridViewTextBoxColumn
     Friend WithEvents Actioncojo As DataGridViewTextBoxColumn
+    Friend WithEvents Num2 As DataGridViewTextBoxColumn
+    Friend WithEvents Objet2 As DataGridViewTextBoxColumn
+    Friend WithEvents Action2 As DataGridViewTextBoxColumn
 End Class

@@ -1,0 +1,91 @@
+
+IS 30.3
+[insérer « la moyenne » ou « la valeur la plus élevée »]
+
+
+IS 33.1 (Applicable ou non-applicable)
+ [insérer « sera » ou « ne sera pas » appliquée]
+
+IS 34.6
+[insérer « oui » ou « non »
+Pour (a); (b); (c); (d); (e); (f)
+
+Si oui, ... (Action)
+
+IS 42.1
+diviser en 
+IS 42.1(a) prct Qté augmenté
+IS 42.1(b) prct Qté réduite
+
+
+Paramètre des rapports
+---------------------------
+Section 0 (NumDAO / CodeProjet)
+
+Section II
+
+Section II (NumDAO / CodeProjet / Garantieoffre_Exige / Adresse_ListeEntreprise_Banque / MontantMarché_Devise_Dollar)
+
+Section IV
+
+Section V
+
+Section VI
+
+Section VII
+
+Section VIII jusqu'à SECTION X
+
+---------
+
+ST(Spécification techique)
+IE (Inspections et Essais)
+
+Section IS 1.2(a)
+Section IS 4.8(a),4.8(b) et 5.1
+Section IS 11.1(j)
+Section IS 13.1
+Section IS 14.5
+Section IS 14.7
+Section IS 14.8(b)(i) et (c)(v)
+Section IS 14.8 (a)(iii), b(ii) et (c)(v)
+Section IS 15.1
+Section IS 16.4
+Section IS 17.2(a)
+Section IS 17.2(b)
+Section IS 18.3(a)
+Section IS 19.1
+Section IS 19.3(d)
+Section IS 19.9(a)
+Section IS 19.9(b)
+Section IS 20.3
+Section IS 22.1(a)
+Section IS 22.1(b)
+Section IS 25.1
+Section IS 25.6
+Section IS 30.3
+Section IS 33.1
+Section IS 34.6(a)
+Section IS 34.6(b)
+Section IS 34.6(c)
+Section IS 34.6(d)
+Section IS 34.6(e)
+Section IS 34.6(f)
+Section IS 34.6(g)
+Section IS 42.1(a)
+Section IS 42.1(b)
+
+Section IS 45.1
+Section IS 34.6 (i)
+Section IS 34.6 (ii)
+Section IS 34.6 (iii)
+Section IS 34.6 (iv)
+Section IS 34.6 (f)
+Section IS 37.1 (a) (1)
+Section IS 37.1 (a) (2)
+Section CCAG 26.1
+Section CCAG 26.2
+Section CCAG 27.1
+Section CCAG 28.3
+Section CCAG 28.5, CCAG 28.6
+Section CCAG 33.4

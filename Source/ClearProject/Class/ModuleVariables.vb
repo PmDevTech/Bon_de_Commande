@@ -70,7 +70,6 @@ Module ModuleVariables
     Public DateEtpPlan As String = ""
     Public ExerciceComptable As DataTable
 
-
     Public BailleurEnCours(10) As Decimal
     Public CodeNatureBesoin(50) As Decimal
     Public TpsInfo As Decimal = 0
@@ -84,13 +83,11 @@ Module ModuleVariables
     Public CODEPARTITION As Decimal
     Public MNTBESOIN As Double
     Public CurrEmpId As Decimal = -1
-    
 
     Public TotalPU As Decimal = 0
     Public TotalPT As Decimal = 0
     Public TotalBailleur() As Decimal = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
     Public GrandTotalGAP As Decimal = 0
-
 
     Public ecran As Screen = Screen.PrimaryScreen
     Public DateDuJour As Date = My.Computer.Clock.LocalTime.ToString
@@ -136,7 +133,6 @@ Module ModuleVariables
     Public Proj_smsEncodage As Decimal = 0
     Public Proj_smsModele As String = ""
 
-    Public dtbc = New DataTable()
     Public dtimmo = New DataTable()
     Public dtfam = New DataTable()
     Public dtloc = New DataTable()
@@ -254,10 +250,23 @@ Module ModuleVariables
     Public facture As String
     Public id_table = "", id_table2 = "", id_serv = "", id_zone = "", id_tctp = "", codepart = "", utilisateur, type_journal, cpt_classe As String
 
-    'Variable DP et pour l'envoi des rapport et dossier aux bailleur et au consultant
+    'Variable DP et AMI pour l'envoi des rapport et dossier aux bailleur et au consultant
     Public rwDossDPAMISA As DataTable = New DataTable()
     Public EmailResponsablePM As String = String.Empty
     Public EmailCoordinateurProjet As String = String.Empty
     Public NomBailleurRetenu As String = String.Empty
     Public EmailDestinatauer As String = String.Empty
+
+    'Variable DAO-Travaux, Fourniture et service autres.
+    Public rwDossDAO As DataTable = New DataTable()
+    Public EmailResponsablePMDAO As String = String.Empty
+    Public EmailCoordinateurProjetDAO As String = String.Empty
+    Public NomBailleurRetenuDAO As String = String.Empty
+    Public EmailDestinatauerDAO As String = String.Empty
+
+    'Variable Contenant les mots de passe pour l'envoi des emails
+    'Public MotpassExpediteur As String = "D9akt36*"
+    Public MotpassExpediteur As String = "D9akt38++"
+    Public EMailExpediteur As String = "support@clearproject.online"
+
 End Module

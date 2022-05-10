@@ -29,7 +29,7 @@ Public Class ListesSignataires
         If TextRechercher = "" Then
             query = "SELECT * FROM t_signataire WHERE CodeProjet='" & ProjetEnCours & "'"
         Else
-            query = "SELECT * FROM t_signataire WHERE CodeProjet='" & ProjetEnCours & "' and ((NomPren LIKE '" & TextRechercher & "%') or (TypeSignataire LIKE '" & TextRechercher & "%') or (Email LIKE '" & TextRechercher & "%') or (Contact LIKE '" & TextRechercher & "%'))"
+            query = "SELECT * FROM t_signataire WHERE CodeProjet='" & ProjetEnCours & "' and ((NomPren LIKE '" & TextRechercher & "%') or (Fonction LIKE '" & TextRechercher & "%') or (TypeSignataire LIKE '" & TextRechercher & "%') or (Email LIKE '" & TextRechercher & "%') or (Contact LIKE '" & TextRechercher & "%'))"
         End If
 
         Dim dt As DataTable = ExcecuteSelectQuery(query)

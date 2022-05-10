@@ -962,11 +962,11 @@ Public Class Bailleur
 
     Private Sub BtModifier1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtModifier1.Click
         If TxtCodeBailleur.Text <> "" Then
-            If GetVerifierInitialBailleur(TxtSigle.Text) = False Then
-                SuccesMsg("Le sigle saisie n'existe pas")
-                TxtSigle.Select()
-                Exit Sub
-            End If
+            'If GetVerifierInitialBailleur(TxtSigle.Text) = False Then
+            '    SuccesMsg("Le sigle saisie n'existe pas")
+            '    TxtSigle.Select()
+            '    Exit Sub
+            'End If
 
             If ConfirmMsg("Voulez vous modifier ce bailleur ?") = DialogResult.Yes Then
                 'Dim j As Integer = ListViewBailleur.SelectedIndices(0).ToString
@@ -1012,11 +1012,11 @@ Public Class Bailleur
         '**********************  Pour ajouter ******************************
 
         Sig = TxtSigle.Text
-        If GetVerifierInitialBailleur(TxtSigle.Text) = False Then
-            SuccesMsg("Le sigle saisie n'existe pas")
-            TxtSigle.Select()
-            Exit Sub
-        End If
+        'If GetVerifierInitialBailleur(TxtSigle.Text) = False Then
+        '    SuccesMsg("Le sigle saisie n'existe pas")
+        '    TxtSigle.Select()
+        '    Exit Sub
+        'End If
 
         'ParaCon() 'procedure permettant de prendre le nom du serveur 
         EnregistrerNouveauBailleur()

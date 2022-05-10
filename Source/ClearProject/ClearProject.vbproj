@@ -199,6 +199,12 @@
     <Compile Include="Modules\Passation des marchés\AMI\DepotAMI.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modules\Passation des marchés\Fournitures et travaux\ModifLigneDQE.Designer.vb">
+      <DependentUpon>ModifLigneDQE.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\Fournitures et travaux\ModifLigneDQE.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modules\Passation des marchés\DP\DepotDP.Designer.vb">
       <DependentUpon>DepotDP.vb</DependentUpon>
     </Compile>
@@ -221,6 +227,12 @@
       <DependentUpon>ImpressionPlan.vb</DependentUpon>
     </Compile>
     <Compile Include="Modules\Passation des marchés\PPM\ImpressionPlan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\Fournitures et travaux\EnvoiDossSoumissionnaire.Designer.vb">
+      <DependentUpon>EnvoiDossSoumissionnaire.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\Fournitures et travaux\EnvoiDossSoumissionnaire.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modules\Passation des marchés\Services Autres\JugementOffresSA.Designer.vb">
@@ -271,10 +283,10 @@
     <Compile Include="Modules\Passation des marchés\ReportDate.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modules\Passation des marchés\AjoutMontantSousLot.Designer.vb">
+    <Compile Include="Modules\Passation des marchés\Fournitures et travaux\AjoutMontantSousLot.Designer.vb">
       <DependentUpon>AjoutMontantSousLot.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modules\Passation des marchés\AjoutMontantSousLot.vb">
+    <Compile Include="Modules\Passation des marchés\Fournitures et travaux\AjoutMontantSousLot.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modules\Passation des marchés\AutreResponsable.Designer.vb">
@@ -325,10 +337,10 @@
     <Compile Include="Modules\Passation des marchés\ApercuDAO.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modules\Passation des marchés\OuvertureOffres.Designer.vb">
+    <Compile Include="Modules\Passation des marchés\Fournitures et travaux\OuvertureOffres.Designer.vb">
       <DependentUpon>OuvertureOffres.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modules\Passation des marchés\OuvertureOffres.vb">
+    <Compile Include="Modules\Passation des marchés\Fournitures et travaux\OuvertureOffres.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modules\Passation des marchés\OuvertureOffresOld.Designer.vb">
@@ -355,10 +367,10 @@
     <Compile Include="Modules\Passation des marchés\PPM\SaisiePPM.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modules\Passation des marchés\ValiderAttributionMarche .Designer.vb">
+    <Compile Include="Modules\Passation des marchés\Fournitures et travaux\ValiderAttributionMarche .Designer.vb">
       <DependentUpon>ValiderAttributionMarche .vb</DependentUpon>
     </Compile>
-    <Compile Include="Modules\Passation des marchés\ValiderAttributionMarche .vb">
+    <Compile Include="Modules\Passation des marchés\Fournitures et travaux\ValiderAttributionMarche .vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modules\Passation des marchés\AMI\VisualiserAnnonceAMI.Designer.vb">
@@ -505,16 +517,22 @@
     <Compile Include="Paramètres\Marché\ResponsbleEtape.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Paramètres\Marché\LiaisionEtapesPPM.designer.vb">
+      <DependentUpon>LiaisionEtapesPPM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Marché\LiaisionEtapesPPM.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Paramètres\Projet\Bailleur.Designer.vb">
       <DependentUpon>Bailleur.vb</DependentUpon>
     </Compile>
     <Compile Include="Paramètres\Projet\Bailleur.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modules\Passation des marchés\CalculDetaille.Designer.vb">
+    <Compile Include="Modules\Passation des marchés\Fournitures et travaux\CalculDetaille.Designer.vb">
       <DependentUpon>CalculDetaille.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modules\Passation des marchés\CalculDetaille.vb">
+    <Compile Include="Modules\Passation des marchés\Fournitures et travaux\CalculDetaille.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Paramètres\Projet\CategorieDepense.Designer.vb">
@@ -588,6 +606,12 @@
       <DependentUpon>CompteA_MarcheEtTypeMarche.vb</DependentUpon>
     </Compile>
     <Compile Include="Paramètres\Marché\CompteA_MarcheEtTypeMarche.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramètres\Marché\ModePPM_ResponsablPPM.Designer.vb">
+      <DependentUpon>ModePPM_ResponsablPPM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres\Marché\ModePPM_ResponsablPPM.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Paramètres\Projet\ParametreTauxAppli.Designer.vb">
@@ -940,16 +964,16 @@
     <Compile Include="Modules\Passation des marchés\DP\EvalValidationMoyenne.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modules\Passation des marchés\ExamenDetaille.Designer.vb">
+    <Compile Include="Modules\Passation des marchés\Fournitures et travaux\ExamenDetaille.Designer.vb">
       <DependentUpon>ExamenDetaille.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modules\Passation des marchés\ExamenDetaille.vb">
+    <Compile Include="Modules\Passation des marchés\Fournitures et travaux\ExamenDetaille.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modules\Passation des marchés\ExamPostQualif.Designer.vb">
+    <Compile Include="Modules\Passation des marchés\Fournitures et travaux\ExamPostQualif.Designer.vb">
       <DependentUpon>ExamPostQualif.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modules\Passation des marchés\ExamPostQualif.vb">
+    <Compile Include="Modules\Passation des marchés\Fournitures et travaux\ExamPostQualif.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Paramètres\Marché\ExceptionRevue.designer.vb">
@@ -1024,10 +1048,10 @@
     <Compile Include="Paramètres\Comptable\Journal.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modules\Passation des marchés\JugementOffres.Designer.vb">
+    <Compile Include="Modules\Passation des marchés\Fournitures et travaux\JugementOffres.Designer.vb">
       <DependentUpon>JugementOffres.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modules\Passation des marchés\JugementOffres.vb">
+    <Compile Include="Modules\Passation des marchés\Fournitures et travaux\JugementOffres.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Paramètres\Autre\Liste_parametre.designer.vb">
@@ -1192,10 +1216,10 @@
     <Compile Include="Paramètres\Projet\RepartitionMontantConvention.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modules\Passation des marchés\RetraitEtDepotDAO.Designer.vb">
+    <Compile Include="Modules\Passation des marchés\Fournitures et travaux\RetraitEtDepotDAO.Designer.vb">
       <DependentUpon>RetraitEtDepotDAO.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modules\Passation des marchés\RetraitEtDepotDAO.vb">
+    <Compile Include="Modules\Passation des marchés\Fournitures et travaux\RetraitEtDepotDAO.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Paramètres\Autre\RsmBailleurDevise.Designer.vb">
@@ -1210,10 +1234,10 @@
     <Compile Include="Paramètres\Marché\SaisieMethodes.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modules\Passation des marchés\SaisieOffres.Designer.vb">
+    <Compile Include="Modules\Passation des marchés\Fournitures et travaux\SaisieOffres.Designer.vb">
       <DependentUpon>SaisieOffres.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modules\Passation des marchés\SaisieOffres.vb">
+    <Compile Include="Modules\Passation des marchés\Fournitures et travaux\SaisieOffres.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modules\Passation des marchés\SaisieTexte.Designer.vb">
@@ -1341,6 +1365,9 @@
     <EmbeddedResource Include="Modules\Passation des marchés\AMI\DepotAMI.resx">
       <DependentUpon>DepotAMI.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\Fournitures et travaux\ModifLigneDQE.resx">
+      <DependentUpon>ModifLigneDQE.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modules\Passation des marchés\DP\DepotDP.resx">
       <DependentUpon>DepotDP.vb</DependentUpon>
     </EmbeddedResource>
@@ -1352,6 +1379,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\Passation des marchés\PPM\ImpressionPlan.resx">
       <DependentUpon>ImpressionPlan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\Fournitures et travaux\EnvoiDossSoumissionnaire.resx">
+      <DependentUpon>EnvoiDossSoumissionnaire.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\Passation des marchés\Services Autres\JugementOffresSA.resx">
       <DependentUpon>JugementOffresSA.vb</DependentUpon>
@@ -1385,7 +1416,7 @@
       <DependentUpon>ReportDate.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modules\Passation des marchés\AjoutMontantSousLot.resx">
+    <EmbeddedResource Include="Modules\Passation des marchés\Fournitures et travaux\AjoutMontantSousLot.resx">
       <DependentUpon>AjoutMontantSousLot.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\Passation des marchés\AutreResponsable.resx">
@@ -1416,7 +1447,7 @@
       <DependentUpon>ApercuDAO.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modules\Passation des marchés\OuvertureOffres.resx">
+    <EmbeddedResource Include="Modules\Passation des marchés\Fournitures et travaux\OuvertureOffres.resx">
       <DependentUpon>OuvertureOffres.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\Passation des marchés\OuvertureOffresOld.resx">
@@ -1431,7 +1462,7 @@
     <EmbeddedResource Include="Modules\Passation des marchés\PPM\SaisiePPM.resx">
       <DependentUpon>SaisiePPM.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modules\Passation des marchés\ValiderAttributionMarche .resx">
+    <EmbeddedResource Include="Modules\Passation des marchés\Fournitures et travaux\ValiderAttributionMarche .resx">
       <DependentUpon>ValiderAttributionMarche .vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\Passation des marchés\AMI\VisualiserAnnonceAMI.resx">
@@ -1513,11 +1544,14 @@
     <EmbeddedResource Include="Paramètres\Marché\ResponsbleEtape.resx">
       <DependentUpon>ResponsbleEtape.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Marché\LiaisionEtapesPPM.resx">
+      <DependentUpon>LiaisionEtapesPPM.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Paramètres\Projet\Bailleur.resx">
       <DependentUpon>Bailleur.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modules\Passation des marchés\CalculDetaille.resx">
+    <EmbeddedResource Include="Modules\Passation des marchés\Fournitures et travaux\CalculDetaille.resx">
       <DependentUpon>CalculDetaille.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Paramètres\Projet\CategorieDepense.resx">
@@ -1559,6 +1593,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Paramètres\Marché\CompteA_MarcheEtTypeMarche.resx">
       <DependentUpon>CompteA_MarcheEtTypeMarche.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres\Marché\ModePPM_ResponsablPPM.resx">
+      <DependentUpon>ModePPM_ResponsablPPM.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Paramètres\Projet\ParametreTauxAppli.resx">
       <DependentUpon>ParametreTauxAppli.vb</DependentUpon>
@@ -1746,10 +1783,10 @@
     <EmbeddedResource Include="Modules\Passation des marchés\DP\EvalValidationMoyenne.resx">
       <DependentUpon>EvalValidationMoyenne.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modules\Passation des marchés\ExamenDetaille.resx">
+    <EmbeddedResource Include="Modules\Passation des marchés\Fournitures et travaux\ExamenDetaille.resx">
       <DependentUpon>ExamenDetaille.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modules\Passation des marchés\ExamPostQualif.resx">
+    <EmbeddedResource Include="Modules\Passation des marchés\Fournitures et travaux\ExamPostQualif.resx">
       <DependentUpon>ExamPostQualif.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Paramètres\Marché\ExceptionRevue.resx">
@@ -1789,7 +1826,7 @@
     <EmbeddedResource Include="Paramètres\Comptable\Journal.resx">
       <DependentUpon>Journal.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modules\Passation des marchés\JugementOffres.resx">
+    <EmbeddedResource Include="Modules\Passation des marchés\Fournitures et travaux\JugementOffres.resx">
       <DependentUpon>JugementOffres.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Paramètres\Autre\Liste_parametre.resx">
@@ -1877,7 +1914,7 @@
     <EmbeddedResource Include="Paramètres\Projet\RepartitionMontantConvention.resx">
       <DependentUpon>RepartitionMontantConvention.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modules\Passation des marchés\RetraitEtDepotDAO.resx">
+    <EmbeddedResource Include="Modules\Passation des marchés\Fournitures et travaux\RetraitEtDepotDAO.resx">
       <DependentUpon>RetraitEtDepotDAO.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -1888,7 +1925,7 @@
     <EmbeddedResource Include="Paramètres\Marché\SaisieMethodes.resx">
       <DependentUpon>SaisieMethodes.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modules\Passation des marchés\SaisieOffres.resx">
+    <EmbeddedResource Include="Modules\Passation des marchés\Fournitures et travaux\SaisieOffres.resx">
       <DependentUpon>SaisieOffres.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -2388,6 +2425,8 @@
     <Content Include="Logos\ClearIcone.ico" />
     <Content Include="Logos\logo.ico" />
     <Content Include="Logos\logo48.ico" />
+    <None Include="Resources\Valid1.jpg" />
+    <None Include="Resources\th %285%29.jpg" />
     <None Include="Resources\abc-Del-16.png" />
     <None Include="Resources\abc-Del-161.png" />
     <None Include="Resources\abc-16.png" />

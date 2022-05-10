@@ -21,191 +21,192 @@ Partial Class EvaluationConsultants
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EvaluationConsultants))
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim SuperToolTip181 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem361 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem181 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem181 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem362 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip182 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem363 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem182 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem182 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem364 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip183 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem365 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem183 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem183 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem366 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip184 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem367 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem184 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem184 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem368 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip185 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem369 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem185 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem185 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem370 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip186 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem371 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem186 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem186 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem372 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip187 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem373 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem187 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem187 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem374 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip188 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem375 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem188 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem188 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem376 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip189 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem377 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem189 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem189 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem378 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip190 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem379 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem190 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem190 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem380 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip191 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem381 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem191 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem191 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem382 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip192 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem383 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem192 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem192 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem384 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip193 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem385 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem193 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem193 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem386 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip194 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem387 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem194 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem194 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem388 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip195 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem389 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem195 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem195 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem390 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip196 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem391 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem196 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem196 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem392 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip197 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem393 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem197 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem197 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem394 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip198 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem395 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem198 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem198 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem396 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip199 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem397 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem199 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem199 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem398 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip200 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem399 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem200 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem200 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem400 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip201 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem401 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem201 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem201 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem402 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip202 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem403 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem202 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem202 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem404 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip203 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem405 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem203 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem203 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem406 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip204 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem407 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem204 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem204 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem408 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip205 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem409 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem205 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem205 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem410 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip206 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem411 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem206 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem206 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem412 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip207 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem413 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem207 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem207 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem414 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip208 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem415 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem208 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem208 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem416 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip209 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem417 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem209 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem209 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem418 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip210 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem419 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem210 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem210 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem420 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip211 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem421 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem211 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem211 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem422 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip212 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem423 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem212 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem212 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem424 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim SuperToolTip213 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem425 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem213 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem213 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem426 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip214 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem427 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem214 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem214 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem428 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip215 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem429 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem215 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem215 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem430 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip216 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem431 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem216 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem216 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem432 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim SuperToolTip3 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem5 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem3 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem3 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem6 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip4 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem7 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem4 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem4 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem8 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim SuperToolTip5 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem9 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem5 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem5 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem10 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip6 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem11 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem6 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem6 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem12 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip7 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem13 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem7 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem7 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem14 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip8 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem15 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem8 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem8 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem16 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip9 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem17 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem9 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem9 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem18 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip10 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem19 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem10 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem10 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem20 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip11 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem21 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem11 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem11 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem22 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip12 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem23 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem12 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem12 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem24 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip13 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem25 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem13 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem13 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem26 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip14 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem27 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem14 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem14 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem28 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip15 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem29 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem15 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem15 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem30 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip16 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem31 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem16 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem16 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem32 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip17 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem33 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem17 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem17 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem34 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip18 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem35 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem18 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem18 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem36 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip19 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem37 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem19 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem19 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem38 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip20 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem39 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem20 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem20 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem40 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip21 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem41 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem21 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem21 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem42 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip22 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem43 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem22 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem22 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem44 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip23 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem45 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem23 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem23 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem46 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip24 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem47 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem24 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem24 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem48 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip25 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem49 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem25 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem25 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem50 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip26 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem51 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem26 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem26 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem52 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip27 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem53 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem27 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem27 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem54 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip28 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem55 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem28 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem28 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem56 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip29 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem57 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem29 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem29 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem58 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip30 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem59 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem30 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem30 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem60 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip31 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem61 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem31 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem31 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem62 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip32 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem63 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem32 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem32 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem64 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim SuperToolTip33 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem65 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem33 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem33 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem66 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip34 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem67 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem34 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem34 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem68 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip35 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem69 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem35 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem35 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem70 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip36 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem71 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem36 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem36 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem72 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip1 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem1 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem1 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem1 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem2 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip2 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem3 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem2 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem2 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem4 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Me.SplitContainerControl1 = New DevExpress.XtraEditors.SplitContainerControl()
         Me.XtraScrollableControl1 = New DevExpress.XtraEditors.XtraScrollableControl()
         Me.GbMarche = New DevExpress.XtraEditors.GroupControl()
@@ -301,24 +302,36 @@ Partial Class EvaluationConsultants
         Me.TxtContribuable = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl17 = New DevExpress.XtraEditors.LabelControl()
         Me.GroupControlInfo = New DevExpress.XtraEditors.GroupControl()
-        Me.LabelControl36 = New DevExpress.XtraEditors.LabelControl()
-        Me.MantantTaxe = New DevExpress.XtraEditors.TextEdit()
-        Me.TauxAnuel = New DevExpress.XtraEditors.TextEdit()
-        Me.delairesiliation = New DevExpress.XtraEditors.TextEdit()
-        Me.Representantcheffil = New DevExpress.XtraEditors.TextEdit()
-        Me.NomChefFil = New DevExpress.XtraEditors.TextEdit()
-        Me.LabelControl37 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl32 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl28 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl27 = New DevExpress.XtraEditors.LabelControl()
+        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.LabelControl5 = New DevExpress.XtraEditors.LabelControl()
+        Me.NomsGroups = New DevExpress.XtraEditors.TextEdit()
+        Me.ListeMembrGroup = New System.Windows.Forms.DataGridView()
+        Me.RefGroup = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Nom = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TypeMembre = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LigneModif1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ContextMenuStrip4 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.SupprimerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TypeGroups = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
         Me.LabelControl26 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl21 = New DevExpress.XtraEditors.LabelControl()
-        Me.Disqualification = New DevExpress.XtraEditors.CheckEdit()
+        Me.DateAchev2 = New DevExpress.XtraEditors.DateEdit()
+        Me.LabelControl36 = New DevExpress.XtraEditors.LabelControl()
+        Me.DateAchev1 = New DevExpress.XtraEditors.DateEdit()
+        Me.MantantTaxe = New DevExpress.XtraEditors.TextEdit()
+        Me.cmbdelairesi = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.TauxAnuel = New DevExpress.XtraEditors.TextEdit()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.MotifDisqualif = New DevExpress.XtraEditors.MemoEdit()
-        Me.cmbdelairesi = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.DateAchev1 = New DevExpress.XtraEditors.DateEdit()
-        Me.DateAchev2 = New DevExpress.XtraEditors.DateEdit()
+        Me.delairesiliation = New DevExpress.XtraEditors.TextEdit()
+        Me.Disqualification = New DevExpress.XtraEditors.CheckEdit()
+        Me.Representantcheffil = New DevExpress.XtraEditors.TextEdit()
+        Me.LabelControl21 = New DevExpress.XtraEditors.LabelControl()
+        Me.NomChefFil = New DevExpress.XtraEditors.TextEdit()
+        Me.LabelControl27 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl37 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl28 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl32 = New DevExpress.XtraEditors.LabelControl()
         Me.PanelControl6 = New DevExpress.XtraEditors.PanelControl()
         Me.GroupControl9 = New DevExpress.XtraEditors.GroupControl()
         Me.SplitContainer2 = New System.Windows.Forms.SplitContainer()
@@ -396,28 +409,6 @@ Partial Class EvaluationConsultants
         Me.BtRejetterRapports = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl45 = New DevExpress.XtraEditors.LabelControl()
         Me.DateSoumRapTech = New DevExpress.XtraEditors.DateEdit()
-        Me.PanelOffreFinanciere = New DevExpress.XtraEditors.PanelControl()
-        Me.GroupControl2 = New DevExpress.XtraEditors.GroupControl()
-        Me.PanelSaisieOffre = New DevExpress.XtraEditors.PanelControl()
-        Me.GridSaisieOffreFinance = New DevExpress.XtraGrid.GridControl()
-        Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.SaisirOffre = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CalculerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RésultatCalculOffreFinancièreToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ViewSaisiOffreFinance = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GridBilanOffreFinancier = New DevExpress.XtraGrid.GridControl()
-        Me.ViewBilanOffre = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.PanelControl3 = New DevExpress.XtraEditors.PanelControl()
-        Me.TxtTypeExamen = New DevExpress.XtraEditors.SimpleButton()
-        Me.PanelExecuter = New DevExpress.XtraEditors.PanelControl()
-        Me.BtResultatEvalFin = New DevExpress.XtraEditors.SimpleButton()
-        Me.GroupBoxOuvertureOffres = New System.Windows.Forms.GroupBox()
-        Me.NouvelOuvertureOffres = New DevExpress.XtraEditors.SimpleButton()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.CmbNumOuvertureOffre = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.BtValiderEvalOffresFin = New DevExpress.XtraEditors.SimpleButton()
-        Me.BtOuvertureOffre = New DevExpress.XtraEditors.SimpleButton()
-        Me.BtResultatSaisiOffre = New DevExpress.XtraEditors.SimpleButton()
         Me.PanelRapportCombinet = New DevExpress.XtraEditors.PanelControl()
         Me.GroupControl7 = New DevExpress.XtraEditors.GroupControl()
         Me.WebBrowser1 = New System.Windows.Forms.WebBrowser()
@@ -466,6 +457,13 @@ Partial Class EvaluationConsultants
         Me.LabelControl61 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl62 = New DevExpress.XtraEditors.LabelControl()
         Me.GridComite = New System.Windows.Forms.DataGridView()
+        Me.Refcmte = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NomPrencmte = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Contactcmte = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Fonctioncmte = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Organismecmte = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TypeComite = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.modifcmte = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ContactNego = New DevExpress.XtraEditors.TextEdit()
         Me.Organismenego = New DevExpress.XtraEditors.TextEdit()
         Me.NomPrenom = New DevExpress.XtraEditors.TextEdit()
@@ -512,19 +510,36 @@ Partial Class EvaluationConsultants
         Me.Btprintnego = New DevExpress.XtraEditors.SimpleButton()
         Me.Btsavenego = New DevExpress.XtraEditors.SimpleButton()
         Me.CmbNegoEdite = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.PanelOffreFinanciere = New DevExpress.XtraEditors.PanelControl()
+        Me.GroupControl2 = New DevExpress.XtraEditors.GroupControl()
+        Me.PanelSaisieOffre = New DevExpress.XtraEditors.PanelControl()
+        Me.GridSaisieOffreFinance = New DevExpress.XtraGrid.GridControl()
+        Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.SaisirOffre = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CalculerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RésultatCalculOffreFinancièreToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ViewSaisiOffreFinance = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.GridBilanOffreFinancier = New DevExpress.XtraGrid.GridControl()
+        Me.ViewBilanOffre = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.PanelControl3 = New DevExpress.XtraEditors.PanelControl()
+        Me.TxtTypeExamen = New DevExpress.XtraEditors.SimpleButton()
+        Me.PanelExecuter = New DevExpress.XtraEditors.PanelControl()
+        Me.BtResultatEvalFin = New DevExpress.XtraEditors.SimpleButton()
+        Me.GroupBoxOuvertureOffres = New System.Windows.Forms.GroupBox()
+        Me.NouvelOuvertureOffres = New DevExpress.XtraEditors.SimpleButton()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.CmbNumOuvertureOffre = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.BtValiderEvalOffresFin = New DevExpress.XtraEditors.SimpleButton()
+        Me.BtOuvertureOffre = New DevExpress.XtraEditors.SimpleButton()
+        Me.BtResultatSaisiOffre = New DevExpress.XtraEditors.SimpleButton()
         Me.PanelAccueilEvalTech = New DevExpress.XtraEditors.PanelControl()
         Me.GroupControl6 = New DevExpress.XtraEditors.GroupControl()
         Me.PanelControl10 = New DevExpress.XtraEditors.PanelControl()
         Me.GridMoyenne = New DevExpress.XtraGrid.GridControl()
         Me.ViewMoyenne = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
-        Me.Refcmte = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NomPrencmte = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Contactcmte = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Fonctioncmte = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Organismecmte = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TypeComite = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.modifcmte = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainerControl1.SuspendLayout()
         Me.XtraScrollableControl1.SuspendLayout()
@@ -594,19 +609,25 @@ Partial Class EvaluationConsultants
         CType(Me.TxtContribuable.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControlInfo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControlInfo.SuspendLayout()
-        CType(Me.MantantTaxe.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TauxAnuel.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.delairesiliation.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Representantcheffil.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NomChefFil.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Disqualification.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox5.SuspendLayout()
-        CType(Me.MotifDisqualif.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cmbdelairesi.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DateAchev1.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DateAchev1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox6.SuspendLayout()
+        CType(Me.NomsGroups.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ListeMembrGroup, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip4.SuspendLayout()
+        CType(Me.TypeGroups.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox7.SuspendLayout()
         CType(Me.DateAchev2.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateAchev2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateAchev1.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateAchev1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MantantTaxe.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmbdelairesi.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TauxAnuel.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox5.SuspendLayout()
+        CType(Me.MotifDisqualif.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.delairesiliation.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Disqualification.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Representantcheffil.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NomChefFil.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl6.SuspendLayout()
         CType(Me.GroupControl9, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -658,23 +679,6 @@ Partial Class EvaluationConsultants
         CType(Me.DateAviObj.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateSoumRapTech.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateSoumRapTech.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PanelOffreFinanciere, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelOffreFinanciere.SuspendLayout()
-        CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl2.SuspendLayout()
-        CType(Me.PanelSaisieOffre, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelSaisieOffre.SuspendLayout()
-        CType(Me.GridSaisieOffreFinance, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ContextMenuStrip2.SuspendLayout()
-        CType(Me.ViewSaisiOffreFinance, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridBilanOffreFinancier, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ViewBilanOffre, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PanelControl3, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelControl3.SuspendLayout()
-        CType(Me.PanelExecuter, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelExecuter.SuspendLayout()
-        Me.GroupBoxOuvertureOffres.SuspendLayout()
-        CType(Me.CmbNumOuvertureOffre.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelRapportCombinet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelRapportCombinet.SuspendLayout()
         CType(Me.GroupControl7, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -730,6 +734,23 @@ Partial Class EvaluationConsultants
         Me.PanelControl12.SuspendLayout()
         CType(Me.TxtRefSoumis.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CmbNegoEdite.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PanelOffreFinanciere, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelOffreFinanciere.SuspendLayout()
+        CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl2.SuspendLayout()
+        CType(Me.PanelSaisieOffre, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelSaisieOffre.SuspendLayout()
+        CType(Me.GridSaisieOffreFinance, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip2.SuspendLayout()
+        CType(Me.ViewSaisiOffreFinance, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridBilanOffreFinancier, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ViewBilanOffre, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PanelControl3, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl3.SuspendLayout()
+        CType(Me.PanelExecuter, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelExecuter.SuspendLayout()
+        Me.GroupBoxOuvertureOffres.SuspendLayout()
+        CType(Me.CmbNumOuvertureOffre.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelAccueilEvalTech, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelAccueilEvalTech.SuspendLayout()
         CType(Me.GroupControl6, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -748,12 +769,12 @@ Partial Class EvaluationConsultants
         Me.SplitContainerControl1.Name = "SplitContainerControl1"
         Me.SplitContainerControl1.Panel1.Controls.Add(Me.XtraScrollableControl1)
         Me.SplitContainerControl1.Panel1.Text = "Panel1"
-        Me.SplitContainerControl1.Panel2.Controls.Add(Me.PanelImpressionContrat)
+        Me.SplitContainerControl1.Panel2.Controls.Add(Me.PanelOffreFinanciere)
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.PanelEditionMarche)
+        Me.SplitContainerControl1.Panel2.Controls.Add(Me.PanelImpressionContrat)
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.PanelRapportEvaluationTech)
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.PanelRapportCombinet)
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.PanelNegociation)
-        Me.SplitContainerControl1.Panel2.Controls.Add(Me.PanelOffreFinanciere)
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.PanelAccueilEvalTech)
         Me.SplitContainerControl1.Panel2.Text = "Panel2"
         Me.SplitContainerControl1.Size = New System.Drawing.Size(1283, 653)
@@ -1134,9 +1155,9 @@ Partial Class EvaluationConsultants
         Me.Panel1.Controls.Add(Me.GroupControlArticle)
         Me.Panel1.Controls.Add(Me.GroupeControlAnnexe)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(0, 820)
+        Me.Panel1.Location = New System.Drawing.Point(0, 925)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(957, 378)
+        Me.Panel1.Size = New System.Drawing.Size(957, 273)
         Me.Panel1.TabIndex = 101
         '
         'GroupControlArticle
@@ -1152,7 +1173,7 @@ Partial Class EvaluationConsultants
         Me.GroupControlArticle.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupControlArticle.Location = New System.Drawing.Point(0, 0)
         Me.GroupControlArticle.Name = "GroupControlArticle"
-        Me.GroupControlArticle.Size = New System.Drawing.Size(661, 378)
+        Me.GroupControlArticle.Size = New System.Drawing.Size(661, 273)
         Me.GroupControlArticle.TabIndex = 100
         Me.GroupControlArticle.Text = "Section des articles du contrat"
         '
@@ -1160,8 +1181,8 @@ Partial Class EvaluationConsultants
         '
         Me.GridArticle.AllowUserToAddRows = False
         Me.GridArticle.AllowUserToDeleteRows = False
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.GridArticle.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.GridArticle.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.GridArticle.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -1172,13 +1193,13 @@ Partial Class EvaluationConsultants
         Me.GridArticle.ColumnHeadersVisible = False
         Me.GridArticle.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.RefArticle, Me.CodeArticle, Me.Description, Me.LigneModif})
         Me.GridArticle.ContextMenuStrip = Me.ContextMenuStrip1
-        Me.GridArticle.Location = New System.Drawing.Point(15, 157)
+        Me.GridArticle.Location = New System.Drawing.Point(15, 128)
         Me.GridArticle.MultiSelect = False
         Me.GridArticle.Name = "GridArticle"
         Me.GridArticle.ReadOnly = True
         Me.GridArticle.RowHeadersVisible = False
         Me.GridArticle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.GridArticle.Size = New System.Drawing.Size(640, 216)
+        Me.GridArticle.Size = New System.Drawing.Size(640, 140)
         Me.GridArticle.TabIndex = 86
         '
         'RefArticle
@@ -1205,8 +1226,8 @@ Partial Class EvaluationConsultants
         '
         'LigneModif
         '
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.LigneModif.DefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.LigneModif.DefaultCellStyle = DataGridViewCellStyle2
         Me.LigneModif.HeaderText = "LigneModif"
         Me.LigneModif.Name = "LigneModif"
         Me.LigneModif.ReadOnly = True
@@ -1260,7 +1281,7 @@ Partial Class EvaluationConsultants
         Me.GroupBox1.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 69)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(645, 81)
+        Me.GroupBox1.Size = New System.Drawing.Size(645, 53)
         Me.GroupBox1.TabIndex = 26
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Description de l'article"
@@ -1284,7 +1305,7 @@ Partial Class EvaluationConsultants
         Me.TxtArticle.Name = "TxtArticle"
         Me.TxtArticle.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtArticle.Properties.Appearance.Options.UseFont = True
-        Me.TxtArticle.Size = New System.Drawing.Size(639, 61)
+        Me.TxtArticle.Size = New System.Drawing.Size(639, 33)
         Me.TxtArticle.TabIndex = 25
         '
         'CmbArticle
@@ -1315,7 +1336,7 @@ Partial Class EvaluationConsultants
         Me.GroupeControlAnnexe.Dock = System.Windows.Forms.DockStyle.Right
         Me.GroupeControlAnnexe.Location = New System.Drawing.Point(661, 0)
         Me.GroupeControlAnnexe.Name = "GroupeControlAnnexe"
-        Me.GroupeControlAnnexe.Size = New System.Drawing.Size(296, 378)
+        Me.GroupeControlAnnexe.Size = New System.Drawing.Size(296, 273)
         Me.GroupeControlAnnexe.TabIndex = 101
         Me.GroupeControlAnnexe.Text = "Annexe"
         '
@@ -1327,7 +1348,7 @@ Partial Class EvaluationConsultants
         Me.GridAnnexe.Location = New System.Drawing.Point(2, 72)
         Me.GridAnnexe.MainView = Me.ViewAnnexe
         Me.GridAnnexe.Name = "GridAnnexe"
-        Me.GridAnnexe.Size = New System.Drawing.Size(292, 304)
+        Me.GridAnnexe.Size = New System.Drawing.Size(292, 199)
         Me.GridAnnexe.TabIndex = 10
         Me.GridAnnexe.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ViewAnnexe})
         '
@@ -1398,9 +1419,9 @@ Partial Class EvaluationConsultants
         Me.GroupControlRepartition.Controls.Add(Me.ListeRepartion)
         Me.GroupControlRepartition.Controls.Add(Me.PanelControl5)
         Me.GroupControlRepartition.Dock = System.Windows.Forms.DockStyle.Top
-        Me.GroupControlRepartition.Location = New System.Drawing.Point(0, 614)
+        Me.GroupControlRepartition.Location = New System.Drawing.Point(0, 739)
         Me.GroupControlRepartition.Name = "GroupControlRepartition"
-        Me.GroupControlRepartition.Size = New System.Drawing.Size(957, 206)
+        Me.GroupControlRepartition.Size = New System.Drawing.Size(957, 186)
         Me.GroupControlRepartition.TabIndex = 77
         Me.GroupControlRepartition.Text = "Répartition Périodique"
         '
@@ -1411,7 +1432,7 @@ Partial Class EvaluationConsultants
         Me.ListeRepartion.Location = New System.Drawing.Point(2, 56)
         Me.ListeRepartion.MainView = Me.ViewRepartion
         Me.ListeRepartion.Name = "ListeRepartion"
-        Me.ListeRepartion.Size = New System.Drawing.Size(953, 148)
+        Me.ListeRepartion.Size = New System.Drawing.Size(953, 128)
         Me.ListeRepartion.TabIndex = 100
         Me.ListeRepartion.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ViewRepartion, Me.GridView1})
         '
@@ -1570,19 +1591,19 @@ Partial Class EvaluationConsultants
         Me.AddLigneRepartition.Location = New System.Drawing.Point(103, 2)
         Me.AddLigneRepartition.Name = "AddLigneRepartition"
         Me.AddLigneRepartition.Size = New System.Drawing.Size(104, 27)
-        ToolTipTitleItem361.Appearance.Image = Global.ClearProject.My.Resources.Resources.Add_16x16
-        ToolTipTitleItem361.Appearance.Options.UseImage = True
-        ToolTipTitleItem361.Image = Global.ClearProject.My.Resources.Resources.Add_16x16
-        ToolTipTitleItem361.Text = "Ajouter"
-        ToolTipItem181.LeftIndent = 6
-        ToolTipItem181.Text = "Cliquez pour ajouter une ligne"
-        ToolTipTitleItem362.LeftIndent = 6
-        ToolTipTitleItem362.Text = "Contrat"
-        SuperToolTip181.Items.Add(ToolTipTitleItem361)
-        SuperToolTip181.Items.Add(ToolTipItem181)
-        SuperToolTip181.Items.Add(ToolTipSeparatorItem181)
-        SuperToolTip181.Items.Add(ToolTipTitleItem362)
-        Me.AddLigneRepartition.SuperTip = SuperToolTip181
+        ToolTipTitleItem5.Appearance.Image = Global.ClearProject.My.Resources.Resources.Add_16x16
+        ToolTipTitleItem5.Appearance.Options.UseImage = True
+        ToolTipTitleItem5.Image = Global.ClearProject.My.Resources.Resources.Add_16x16
+        ToolTipTitleItem5.Text = "Ajouter"
+        ToolTipItem3.LeftIndent = 6
+        ToolTipItem3.Text = "Cliquez pour ajouter une ligne"
+        ToolTipTitleItem6.LeftIndent = 6
+        ToolTipTitleItem6.Text = "Contrat"
+        SuperToolTip3.Items.Add(ToolTipTitleItem5)
+        SuperToolTip3.Items.Add(ToolTipItem3)
+        SuperToolTip3.Items.Add(ToolTipSeparatorItem3)
+        SuperToolTip3.Items.Add(ToolTipTitleItem6)
+        Me.AddLigneRepartition.SuperTip = SuperToolTip3
         Me.AddLigneRepartition.TabIndex = 99
         Me.AddLigneRepartition.Text = "Ajouter"
         '
@@ -1598,19 +1619,19 @@ Partial Class EvaluationConsultants
         Me.BtDelete.Location = New System.Drawing.Point(2, 2)
         Me.BtDelete.Name = "BtDelete"
         Me.BtDelete.Size = New System.Drawing.Size(101, 27)
-        ToolTipTitleItem363.Appearance.Image = Global.ClearProject.My.Resources.Resources.Delete_16x16
-        ToolTipTitleItem363.Appearance.Options.UseImage = True
-        ToolTipTitleItem363.Image = Global.ClearProject.My.Resources.Resources.Delete_16x16
-        ToolTipTitleItem363.Text = "Supprimer"
-        ToolTipItem182.LeftIndent = 6
-        ToolTipItem182.Text = "Cliquez pour Supprimer une ligne"
-        ToolTipTitleItem364.LeftIndent = 6
-        ToolTipTitleItem364.Text = "Contrat"
-        SuperToolTip182.Items.Add(ToolTipTitleItem363)
-        SuperToolTip182.Items.Add(ToolTipItem182)
-        SuperToolTip182.Items.Add(ToolTipSeparatorItem182)
-        SuperToolTip182.Items.Add(ToolTipTitleItem364)
-        Me.BtDelete.SuperTip = SuperToolTip182
+        ToolTipTitleItem7.Appearance.Image = Global.ClearProject.My.Resources.Resources.Delete_16x16
+        ToolTipTitleItem7.Appearance.Options.UseImage = True
+        ToolTipTitleItem7.Image = Global.ClearProject.My.Resources.Resources.Delete_16x16
+        ToolTipTitleItem7.Text = "Supprimer"
+        ToolTipItem4.LeftIndent = 6
+        ToolTipItem4.Text = "Cliquez pour Supprimer une ligne"
+        ToolTipTitleItem8.LeftIndent = 6
+        ToolTipTitleItem8.Text = "Contrat"
+        SuperToolTip4.Items.Add(ToolTipTitleItem7)
+        SuperToolTip4.Items.Add(ToolTipItem4)
+        SuperToolTip4.Items.Add(ToolTipSeparatorItem4)
+        SuperToolTip4.Items.Add(ToolTipTitleItem8)
+        Me.BtDelete.SuperTip = SuperToolTip4
         Me.BtDelete.TabIndex = 100
         Me.BtDelete.Text = "Supprimer"
         '
@@ -1623,7 +1644,7 @@ Partial Class EvaluationConsultants
         Me.PanelControl4.Controls.Add(Me.TxtBailleurMarche)
         Me.PanelControl4.Controls.Add(Me.LabelControl24)
         Me.PanelControl4.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelControl4.Location = New System.Drawing.Point(0, 578)
+        Me.PanelControl4.Location = New System.Drawing.Point(0, 703)
         Me.PanelControl4.Name = "PanelControl4"
         Me.PanelControl4.Size = New System.Drawing.Size(957, 36)
         Me.PanelControl4.TabIndex = 79
@@ -1704,7 +1725,7 @@ Partial Class EvaluationConsultants
         Me.PanelControl7.Controls.Add(Me.LabelControl23)
         Me.PanelControl7.Controls.Add(Me.TxtMontMarcheLettre)
         Me.PanelControl7.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelControl7.Location = New System.Drawing.Point(0, 516)
+        Me.PanelControl7.Location = New System.Drawing.Point(0, 641)
         Me.PanelControl7.Name = "PanelControl7"
         Me.PanelControl7.Size = New System.Drawing.Size(957, 62)
         Me.PanelControl7.TabIndex = 88
@@ -1758,7 +1779,7 @@ Partial Class EvaluationConsultants
         'JoursExecution
         '
         Me.JoursExecution.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.JoursExecution.Location = New System.Drawing.Point(879, 35)
+        Me.JoursExecution.Location = New System.Drawing.Point(880, 35)
         Me.JoursExecution.Name = "JoursExecution"
         Me.JoursExecution.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JoursExecution.Properties.Appearance.Options.UseFont = True
@@ -1883,7 +1904,7 @@ Partial Class EvaluationConsultants
         '
         Me.TxtMontMarcheLettre.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TxtMontMarcheLettre.Location = New System.Drawing.Point(284, 5)
+        Me.TxtMontMarcheLettre.Location = New System.Drawing.Point(281, 5)
         Me.TxtMontMarcheLettre.Name = "TxtMontMarcheLettre"
         Me.TxtMontMarcheLettre.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtMontMarcheLettre.Properties.Appearance.Options.UseFont = True
@@ -1903,7 +1924,7 @@ Partial Class EvaluationConsultants
         Me.GroupCompte.Controls.Add(Me.TxtContribuable)
         Me.GroupCompte.Controls.Add(Me.LabelControl17)
         Me.GroupCompte.Dock = System.Windows.Forms.DockStyle.Top
-        Me.GroupCompte.Location = New System.Drawing.Point(0, 370)
+        Me.GroupCompte.Location = New System.Drawing.Point(0, 495)
         Me.GroupCompte.Name = "GroupCompte"
         Me.GroupCompte.Size = New System.Drawing.Size(957, 146)
         Me.GroupCompte.TabIndex = 93
@@ -1924,7 +1945,7 @@ Partial Class EvaluationConsultants
         Me.GroupBox3.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.Location = New System.Drawing.Point(5, 56)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(942, 91)
+        Me.GroupBox3.Size = New System.Drawing.Size(952, 91)
         Me.GroupBox3.TabIndex = 86
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Domiciliation bancaire"
@@ -1961,12 +1982,12 @@ Partial Class EvaluationConsultants
         '
         Me.NumCptedevise.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.NumCptedevise.Location = New System.Drawing.Point(720, 27)
+        Me.NumCptedevise.Location = New System.Drawing.Point(723, 27)
         Me.NumCptedevise.Name = "NumCptedevise"
         Me.NumCptedevise.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NumCptedevise.Properties.Appearance.Options.UseFont = True
         Me.NumCptedevise.Properties.MaxLength = 100
-        Me.NumCptedevise.Size = New System.Drawing.Size(216, 24)
+        Me.NumCptedevise.Size = New System.Drawing.Size(221, 24)
         Me.NumCptedevise.TabIndex = 82
         '
         'LabelControl51
@@ -1980,9 +2001,8 @@ Partial Class EvaluationConsultants
         '
         'LabelControl50
         '
-        Me.LabelControl50.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LabelControl50.Appearance.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl50.Location = New System.Drawing.Point(481, 60)
+        Me.LabelControl50.Location = New System.Drawing.Point(480, 60)
         Me.LabelControl50.Name = "LabelControl50"
         Me.LabelControl50.Size = New System.Drawing.Size(233, 19)
         Me.LabelControl50.TabIndex = 85
@@ -2000,15 +2020,16 @@ Partial Class EvaluationConsultants
         '
         'NumCpteLocal
         '
-        Me.NumCpteLocal.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.NumCpteLocal.Location = New System.Drawing.Point(721, 57)
+        Me.NumCpteLocal.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.NumCpteLocal.Location = New System.Drawing.Point(722, 57)
         Me.NumCpteLocal.Name = "NumCpteLocal"
         Me.NumCpteLocal.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NumCpteLocal.Properties.Appearance.Options.UseFont = True
         Me.NumCpteLocal.Properties.Appearance.Options.UseTextOptions = True
         Me.NumCpteLocal.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.NumCpteLocal.Properties.MaxLength = 100
-        Me.NumCpteLocal.Size = New System.Drawing.Size(215, 24)
+        Me.NumCpteLocal.Size = New System.Drawing.Size(222, 24)
         Me.NumCpteLocal.TabIndex = 83
         '
         'LabelControl18
@@ -2061,200 +2082,193 @@ Partial Class EvaluationConsultants
         Me.GroupControlInfo.AppearanceCaption.Options.UseFont = True
         Me.GroupControlInfo.AppearanceCaption.Options.UseTextOptions = True
         Me.GroupControlInfo.AppearanceCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GroupControlInfo.Controls.Add(Me.LabelControl36)
-        Me.GroupControlInfo.Controls.Add(Me.MantantTaxe)
-        Me.GroupControlInfo.Controls.Add(Me.TauxAnuel)
-        Me.GroupControlInfo.Controls.Add(Me.delairesiliation)
-        Me.GroupControlInfo.Controls.Add(Me.Representantcheffil)
-        Me.GroupControlInfo.Controls.Add(Me.NomChefFil)
-        Me.GroupControlInfo.Controls.Add(Me.LabelControl37)
-        Me.GroupControlInfo.Controls.Add(Me.LabelControl32)
-        Me.GroupControlInfo.Controls.Add(Me.LabelControl28)
-        Me.GroupControlInfo.Controls.Add(Me.LabelControl27)
-        Me.GroupControlInfo.Controls.Add(Me.LabelControl26)
-        Me.GroupControlInfo.Controls.Add(Me.LabelControl21)
-        Me.GroupControlInfo.Controls.Add(Me.Disqualification)
-        Me.GroupControlInfo.Controls.Add(Me.GroupBox5)
-        Me.GroupControlInfo.Controls.Add(Me.cmbdelairesi)
-        Me.GroupControlInfo.Controls.Add(Me.DateAchev1)
-        Me.GroupControlInfo.Controls.Add(Me.DateAchev2)
+        Me.GroupControlInfo.Controls.Add(Me.GroupBox6)
+        Me.GroupControlInfo.Controls.Add(Me.GroupBox7)
         Me.GroupControlInfo.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupControlInfo.Location = New System.Drawing.Point(0, 224)
         Me.GroupControlInfo.Name = "GroupControlInfo"
-        Me.GroupControlInfo.Size = New System.Drawing.Size(957, 146)
+        Me.GroupControlInfo.Size = New System.Drawing.Size(957, 271)
         Me.GroupControlInfo.TabIndex = 103
         Me.GroupControlInfo.Text = "Info"
         '
-        'LabelControl36
+        'GroupBox6
         '
-        Me.LabelControl36.Appearance.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl36.Location = New System.Drawing.Point(386, 119)
-        Me.LabelControl36.Name = "LabelControl36"
-        Me.LabelControl36.Size = New System.Drawing.Size(18, 19)
-        Me.LabelControl36.TabIndex = 97
-        Me.LabelControl36.Text = "Au"
+        Me.GroupBox6.Controls.Add(Me.LabelControl5)
+        Me.GroupBox6.Controls.Add(Me.NomsGroups)
+        Me.GroupBox6.Controls.Add(Me.ListeMembrGroup)
+        Me.GroupBox6.Controls.Add(Me.TypeGroups)
+        Me.GroupBox6.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupBox6.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox6.Location = New System.Drawing.Point(577, 23)
+        Me.GroupBox6.Name = "GroupBox6"
+        Me.GroupBox6.Size = New System.Drawing.Size(378, 246)
+        Me.GroupBox6.TabIndex = 110
+        Me.GroupBox6.TabStop = False
+        Me.GroupBox6.Text = "Saisir des noms des membres du groupe"
         '
-        'MantantTaxe
+        'LabelControl5
         '
-        Me.MantantTaxe.Location = New System.Drawing.Point(702, 116)
-        Me.MantantTaxe.Name = "MantantTaxe"
-        Me.MantantTaxe.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MantantTaxe.Properties.Appearance.Options.UseFont = True
-        Me.MantantTaxe.Properties.Appearance.Options.UseTextOptions = True
-        Me.MantantTaxe.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.MantantTaxe.Properties.Mask.EditMask = "n"
-        Me.MantantTaxe.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
-        Me.MantantTaxe.Properties.MaxLength = 19
-        Me.MantantTaxe.Size = New System.Drawing.Size(245, 24)
-        Me.MantantTaxe.TabIndex = 108
+        Me.LabelControl5.Appearance.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl5.Location = New System.Drawing.Point(4, 27)
+        Me.LabelControl5.Name = "LabelControl5"
+        Me.LabelControl5.Size = New System.Drawing.Size(31, 19)
+        Me.LabelControl5.TabIndex = 111
+        Me.LabelControl5.Text = "Nom"
         '
-        'TauxAnuel
+        'NomsGroups
         '
-        Me.TauxAnuel.Location = New System.Drawing.Point(495, 87)
-        Me.TauxAnuel.Name = "TauxAnuel"
-        Me.TauxAnuel.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TauxAnuel.Properties.Appearance.Options.UseFont = True
-        Me.TauxAnuel.Properties.Appearance.Options.UseTextOptions = True
-        Me.TauxAnuel.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.TauxAnuel.Properties.Mask.EditMask = "n"
-        Me.TauxAnuel.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
-        Me.TauxAnuel.Properties.MaxLength = 300
-        Me.TauxAnuel.Size = New System.Drawing.Size(64, 24)
-        Me.TauxAnuel.TabIndex = 107
+        Me.NomsGroups.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.NomsGroups.Location = New System.Drawing.Point(40, 26)
+        Me.NomsGroups.Name = "NomsGroups"
+        Me.NomsGroups.Properties.Appearance.Options.UseTextOptions = True
+        Me.NomsGroups.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.NomsGroups.Size = New System.Drawing.Size(220, 20)
+        Me.NomsGroups.TabIndex = 37
         '
-        'delairesiliation
+        'ListeMembrGroup
         '
-        Me.delairesiliation.Location = New System.Drawing.Point(208, 87)
-        Me.delairesiliation.Name = "delairesiliation"
-        Me.delairesiliation.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.delairesiliation.Properties.Appearance.Options.UseFont = True
-        Me.delairesiliation.Properties.Mask.EditMask = "n0"
-        Me.delairesiliation.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
-        Me.delairesiliation.Properties.MaxLength = 14
-        Me.delairesiliation.Size = New System.Drawing.Size(58, 24)
-        Me.delairesiliation.TabIndex = 106
+        Me.ListeMembrGroup.AllowUserToAddRows = False
+        Me.ListeMembrGroup.AllowUserToDeleteRows = False
+        Me.ListeMembrGroup.AllowUserToResizeRows = False
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.ListeMembrGroup.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        Me.ListeMembrGroup.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ListeMembrGroup.BackgroundColor = System.Drawing.Color.White
+        Me.ListeMembrGroup.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.ListeMembrGroup.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        Me.ListeMembrGroup.ColumnHeadersHeight = 30
+        Me.ListeMembrGroup.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.RefGroup, Me.Nom, Me.TypeMembre, Me.LigneModif1})
+        Me.ListeMembrGroup.ContextMenuStrip = Me.ContextMenuStrip4
+        Me.ListeMembrGroup.Location = New System.Drawing.Point(4, 57)
+        Me.ListeMembrGroup.MultiSelect = False
+        Me.ListeMembrGroup.Name = "ListeMembrGroup"
+        Me.ListeMembrGroup.ReadOnly = True
+        Me.ListeMembrGroup.RowHeadersVisible = False
+        Me.ListeMembrGroup.Size = New System.Drawing.Size(374, 183)
+        Me.ListeMembrGroup.TabIndex = 109
         '
-        'Representantcheffil
+        'RefGroup
         '
-        Me.Representantcheffil.Location = New System.Drawing.Point(208, 56)
-        Me.Representantcheffil.Name = "Representantcheffil"
-        Me.Representantcheffil.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Representantcheffil.Properties.Appearance.Options.UseFont = True
-        Me.Representantcheffil.Properties.MaxLength = 300
-        Me.Representantcheffil.Size = New System.Drawing.Size(351, 24)
-        Me.Representantcheffil.TabIndex = 103
+        Me.RefGroup.HeaderText = "RefGroup"
+        Me.RefGroup.Name = "RefGroup"
+        Me.RefGroup.ReadOnly = True
+        Me.RefGroup.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.RefGroup.Visible = False
         '
-        'NomChefFil
+        'Nom
         '
-        Me.NomChefFil.Location = New System.Drawing.Point(208, 26)
-        Me.NomChefFil.Name = "NomChefFil"
-        Me.NomChefFil.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.NomChefFil.Properties.Appearance.Options.UseFont = True
-        Me.NomChefFil.Properties.MaxLength = 300
-        Me.NomChefFil.Size = New System.Drawing.Size(351, 24)
-        Me.NomChefFil.TabIndex = 102
+        Me.Nom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Nom.HeaderText = "Nom (s)"
+        Me.Nom.Name = "Nom"
+        Me.Nom.ReadOnly = True
+        Me.Nom.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
-        'LabelControl37
+        'TypeMembre
         '
-        Me.LabelControl37.Appearance.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl37.Location = New System.Drawing.Point(582, 119)
-        Me.LabelControl37.Name = "LabelControl37"
-        Me.LabelControl37.Size = New System.Drawing.Size(111, 19)
-        Me.LabelControl37.TabIndex = 101
-        Me.LabelControl37.Text = "Montant des taxes"
+        Me.TypeMembre.HeaderText = "Type membre"
+        Me.TypeMembre.Name = "TypeMembre"
+        Me.TypeMembre.ReadOnly = True
+        Me.TypeMembre.Visible = False
         '
-        'LabelControl32
+        'LigneModif1
         '
-        Me.LabelControl32.Appearance.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl32.Location = New System.Drawing.Point(5, 117)
-        Me.LabelControl32.Name = "LabelControl32"
-        Me.LabelControl32.Size = New System.Drawing.Size(198, 19)
-        Me.LabelControl32.TabIndex = 99
-        Me.LabelControl32.Text = "Période d'achèvement du contrat"
+        Me.LigneModif1.HeaderText = "LigneModif1"
+        Me.LigneModif1.Name = "LigneModif1"
+        Me.LigneModif1.ReadOnly = True
+        Me.LigneModif1.Visible = False
         '
-        'LabelControl28
+        'ContextMenuStrip4
         '
-        Me.LabelControl28.Appearance.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl28.Location = New System.Drawing.Point(365, 89)
-        Me.LabelControl28.Name = "LabelControl28"
-        Me.LabelControl28.Size = New System.Drawing.Size(124, 19)
-        Me.LabelControl28.TabIndex = 98
-        Me.LabelControl28.Text = "Taux d'intérêt annuel"
+        Me.ContextMenuStrip4.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SupprimerToolStripMenuItem})
+        Me.ContextMenuStrip4.Name = "ContextMenuStrip4"
+        Me.ContextMenuStrip4.Size = New System.Drawing.Size(130, 26)
         '
-        'LabelControl27
+        'SupprimerToolStripMenuItem
         '
-        Me.LabelControl27.Appearance.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl27.Location = New System.Drawing.Point(5, 88)
-        Me.LabelControl27.Name = "LabelControl27"
-        Me.LabelControl27.Size = New System.Drawing.Size(175, 19)
-        Me.LabelControl27.TabIndex = 97
-        Me.LabelControl27.Text = "Délai de résiliation du contrat"
+        Me.SupprimerToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.Close_16x16
+        Me.SupprimerToolStripMenuItem.Name = "SupprimerToolStripMenuItem"
+        Me.SupprimerToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
+        Me.SupprimerToolStripMenuItem.Text = "Supprimer"
+        '
+        'TypeGroups
+        '
+        Me.TypeGroups.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TypeGroups.Location = New System.Drawing.Point(266, 26)
+        Me.TypeGroups.Name = "TypeGroups"
+        Me.TypeGroups.Properties.Appearance.Options.UseTextOptions = True
+        Me.TypeGroups.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.TypeGroups.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.TypeGroups.Properties.Items.AddRange(New Object() {"Membre du group", "Nom du group"})
+        Me.TypeGroups.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        Me.TypeGroups.Size = New System.Drawing.Size(106, 20)
+        Me.TypeGroups.TabIndex = 110
+        '
+        'GroupBox7
+        '
+        Me.GroupBox7.Controls.Add(Me.LabelControl26)
+        Me.GroupBox7.Controls.Add(Me.DateAchev2)
+        Me.GroupBox7.Controls.Add(Me.LabelControl36)
+        Me.GroupBox7.Controls.Add(Me.DateAchev1)
+        Me.GroupBox7.Controls.Add(Me.MantantTaxe)
+        Me.GroupBox7.Controls.Add(Me.cmbdelairesi)
+        Me.GroupBox7.Controls.Add(Me.TauxAnuel)
+        Me.GroupBox7.Controls.Add(Me.GroupBox5)
+        Me.GroupBox7.Controls.Add(Me.delairesiliation)
+        Me.GroupBox7.Controls.Add(Me.Disqualification)
+        Me.GroupBox7.Controls.Add(Me.Representantcheffil)
+        Me.GroupBox7.Controls.Add(Me.LabelControl21)
+        Me.GroupBox7.Controls.Add(Me.NomChefFil)
+        Me.GroupBox7.Controls.Add(Me.LabelControl27)
+        Me.GroupBox7.Controls.Add(Me.LabelControl37)
+        Me.GroupBox7.Controls.Add(Me.LabelControl28)
+        Me.GroupBox7.Controls.Add(Me.LabelControl32)
+        Me.GroupBox7.Dock = System.Windows.Forms.DockStyle.Left
+        Me.GroupBox7.Location = New System.Drawing.Point(2, 23)
+        Me.GroupBox7.Name = "GroupBox7"
+        Me.GroupBox7.Size = New System.Drawing.Size(575, 246)
+        Me.GroupBox7.TabIndex = 110
+        Me.GroupBox7.TabStop = False
         '
         'LabelControl26
         '
         Me.LabelControl26.Appearance.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl26.Location = New System.Drawing.Point(5, 59)
+        Me.LabelControl26.Location = New System.Drawing.Point(13, 46)
         Me.LabelControl26.Name = "LabelControl26"
         Me.LabelControl26.Size = New System.Drawing.Size(167, 19)
         Me.LabelControl26.TabIndex = 96
         Me.LabelControl26.Text = "Répresentant du chef de file"
         '
-        'LabelControl21
+        'DateAchev2
         '
-        Me.LabelControl21.Appearance.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl21.Location = New System.Drawing.Point(5, 25)
-        Me.LabelControl21.Name = "LabelControl21"
-        Me.LabelControl21.Size = New System.Drawing.Size(119, 19)
-        Me.LabelControl21.TabIndex = 95
-        Me.LabelControl21.Text = "Nom du chef de file"
+        Me.DateAchev2.EditValue = Nothing
+        Me.DateAchev2.Location = New System.Drawing.Point(427, 102)
+        Me.DateAchev2.Name = "DateAchev2"
+        Me.DateAchev2.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DateAchev2.Properties.Appearance.Options.UseFont = True
+        Me.DateAchev2.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateAchev2.Properties.Mask.EditMask = ""
+        Me.DateAchev2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None
+        Me.DateAchev2.Properties.MaxLength = 300
+        Me.DateAchev2.Properties.VistaTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.DateAchev2.Size = New System.Drawing.Size(140, 20)
+        Me.DateAchev2.TabIndex = 105
         '
-        'Disqualification
+        'LabelControl36
         '
-        Me.Disqualification.Location = New System.Drawing.Point(582, 22)
-        Me.Disqualification.Name = "Disqualification"
-        Me.Disqualification.Properties.Caption = "Résiliation du contrat"
-        Me.Disqualification.Size = New System.Drawing.Size(175, 19)
-        Me.Disqualification.TabIndex = 28
-        '
-        'GroupBox5
-        '
-        Me.GroupBox5.Controls.Add(Me.MotifDisqualif)
-        Me.GroupBox5.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox5.Location = New System.Drawing.Point(582, 43)
-        Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(367, 64)
-        Me.GroupBox5.TabIndex = 27
-        Me.GroupBox5.TabStop = False
-        Me.GroupBox5.Text = "Motif résiliation du contrat"
-        '
-        'MotifDisqualif
-        '
-        Me.MotifDisqualif.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.MotifDisqualif.Enabled = False
-        Me.MotifDisqualif.Location = New System.Drawing.Point(3, 17)
-        Me.MotifDisqualif.Name = "MotifDisqualif"
-        Me.MotifDisqualif.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MotifDisqualif.Properties.Appearance.Options.UseFont = True
-        Me.MotifDisqualif.Size = New System.Drawing.Size(361, 44)
-        Me.MotifDisqualif.TabIndex = 25
-        '
-        'cmbdelairesi
-        '
-        Me.cmbdelairesi.Location = New System.Drawing.Point(275, 87)
-        Me.cmbdelairesi.Name = "cmbdelairesi"
-        Me.cmbdelairesi.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbdelairesi.Properties.Appearance.Options.UseFont = True
-        Me.cmbdelairesi.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cmbdelairesi.Properties.Items.AddRange(New Object() {"Jours", "Semaine", "Mois", "Année"})
-        Me.cmbdelairesi.Properties.MaxLength = 300
-        Me.cmbdelairesi.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.cmbdelairesi.Size = New System.Drawing.Size(84, 24)
-        Me.cmbdelairesi.TabIndex = 107
+        Me.LabelControl36.Appearance.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl36.Location = New System.Drawing.Point(394, 106)
+        Me.LabelControl36.Name = "LabelControl36"
+        Me.LabelControl36.Size = New System.Drawing.Size(18, 19)
+        Me.LabelControl36.TabIndex = 97
+        Me.LabelControl36.Text = "Au"
         '
         'DateAchev1
         '
         Me.DateAchev1.EditValue = Nothing
-        Me.DateAchev1.Location = New System.Drawing.Point(208, 116)
+        Me.DateAchev1.Location = New System.Drawing.Point(216, 103)
         Me.DateAchev1.Name = "DateAchev1"
         Me.DateAchev1.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DateAchev1.Properties.Appearance.Options.UseFont = True
@@ -2266,20 +2280,155 @@ Partial Class EvaluationConsultants
         Me.DateAchev1.Size = New System.Drawing.Size(162, 20)
         Me.DateAchev1.TabIndex = 104
         '
-        'DateAchev2
+        'MantantTaxe
         '
-        Me.DateAchev2.EditValue = Nothing
-        Me.DateAchev2.Location = New System.Drawing.Point(419, 115)
-        Me.DateAchev2.Name = "DateAchev2"
-        Me.DateAchev2.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateAchev2.Properties.Appearance.Options.UseFont = True
-        Me.DateAchev2.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.DateAchev2.Properties.Mask.EditMask = ""
-        Me.DateAchev2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None
-        Me.DateAchev2.Properties.MaxLength = 300
-        Me.DateAchev2.Properties.VistaTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
-        Me.DateAchev2.Size = New System.Drawing.Size(140, 20)
-        Me.DateAchev2.TabIndex = 105
+        Me.MantantTaxe.Location = New System.Drawing.Point(216, 128)
+        Me.MantantTaxe.Name = "MantantTaxe"
+        Me.MantantTaxe.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MantantTaxe.Properties.Appearance.Options.UseFont = True
+        Me.MantantTaxe.Properties.Appearance.Options.UseTextOptions = True
+        Me.MantantTaxe.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.MantantTaxe.Properties.Mask.EditMask = "n"
+        Me.MantantTaxe.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        Me.MantantTaxe.Properties.MaxLength = 19
+        Me.MantantTaxe.Size = New System.Drawing.Size(351, 24)
+        Me.MantantTaxe.TabIndex = 108
+        '
+        'cmbdelairesi
+        '
+        Me.cmbdelairesi.Location = New System.Drawing.Point(283, 74)
+        Me.cmbdelairesi.Name = "cmbdelairesi"
+        Me.cmbdelairesi.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbdelairesi.Properties.Appearance.Options.UseFont = True
+        Me.cmbdelairesi.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cmbdelairesi.Properties.Items.AddRange(New Object() {"Jours", "Semaine", "Mois", "Année"})
+        Me.cmbdelairesi.Properties.MaxLength = 300
+        Me.cmbdelairesi.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        Me.cmbdelairesi.Size = New System.Drawing.Size(84, 24)
+        Me.cmbdelairesi.TabIndex = 107
+        '
+        'TauxAnuel
+        '
+        Me.TauxAnuel.Location = New System.Drawing.Point(503, 74)
+        Me.TauxAnuel.Name = "TauxAnuel"
+        Me.TauxAnuel.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TauxAnuel.Properties.Appearance.Options.UseFont = True
+        Me.TauxAnuel.Properties.Appearance.Options.UseTextOptions = True
+        Me.TauxAnuel.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.TauxAnuel.Properties.Mask.EditMask = "n"
+        Me.TauxAnuel.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        Me.TauxAnuel.Properties.MaxLength = 300
+        Me.TauxAnuel.Size = New System.Drawing.Size(64, 24)
+        Me.TauxAnuel.TabIndex = 107
+        '
+        'GroupBox5
+        '
+        Me.GroupBox5.Controls.Add(Me.MotifDisqualif)
+        Me.GroupBox5.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox5.Location = New System.Drawing.Point(13, 175)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(554, 63)
+        Me.GroupBox5.TabIndex = 27
+        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.Text = "Motif résiliation du contrat"
+        '
+        'MotifDisqualif
+        '
+        Me.MotifDisqualif.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.MotifDisqualif.Enabled = False
+        Me.MotifDisqualif.Location = New System.Drawing.Point(3, 22)
+        Me.MotifDisqualif.Name = "MotifDisqualif"
+        Me.MotifDisqualif.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MotifDisqualif.Properties.Appearance.Options.UseFont = True
+        Me.MotifDisqualif.Size = New System.Drawing.Size(548, 38)
+        Me.MotifDisqualif.TabIndex = 25
+        '
+        'delairesiliation
+        '
+        Me.delairesiliation.Location = New System.Drawing.Point(216, 74)
+        Me.delairesiliation.Name = "delairesiliation"
+        Me.delairesiliation.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.delairesiliation.Properties.Appearance.Options.UseFont = True
+        Me.delairesiliation.Properties.Mask.EditMask = "n0"
+        Me.delairesiliation.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        Me.delairesiliation.Properties.MaxLength = 14
+        Me.delairesiliation.Size = New System.Drawing.Size(58, 24)
+        Me.delairesiliation.TabIndex = 106
+        '
+        'Disqualification
+        '
+        Me.Disqualification.Location = New System.Drawing.Point(13, 154)
+        Me.Disqualification.Name = "Disqualification"
+        Me.Disqualification.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Disqualification.Properties.Appearance.Options.UseFont = True
+        Me.Disqualification.Properties.Caption = "Résiliation du contrat"
+        Me.Disqualification.Size = New System.Drawing.Size(175, 24)
+        Me.Disqualification.TabIndex = 28
+        '
+        'Representantcheffil
+        '
+        Me.Representantcheffil.Location = New System.Drawing.Point(216, 43)
+        Me.Representantcheffil.Name = "Representantcheffil"
+        Me.Representantcheffil.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Representantcheffil.Properties.Appearance.Options.UseFont = True
+        Me.Representantcheffil.Properties.MaxLength = 300
+        Me.Representantcheffil.Size = New System.Drawing.Size(351, 24)
+        Me.Representantcheffil.TabIndex = 103
+        '
+        'LabelControl21
+        '
+        Me.LabelControl21.Appearance.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl21.Location = New System.Drawing.Point(13, 12)
+        Me.LabelControl21.Name = "LabelControl21"
+        Me.LabelControl21.Size = New System.Drawing.Size(119, 19)
+        Me.LabelControl21.TabIndex = 95
+        Me.LabelControl21.Text = "Nom du chef de file"
+        '
+        'NomChefFil
+        '
+        Me.NomChefFil.Location = New System.Drawing.Point(216, 13)
+        Me.NomChefFil.Name = "NomChefFil"
+        Me.NomChefFil.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NomChefFil.Properties.Appearance.Options.UseFont = True
+        Me.NomChefFil.Properties.MaxLength = 300
+        Me.NomChefFil.Size = New System.Drawing.Size(351, 24)
+        Me.NomChefFil.TabIndex = 102
+        '
+        'LabelControl27
+        '
+        Me.LabelControl27.Appearance.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl27.Location = New System.Drawing.Point(13, 75)
+        Me.LabelControl27.Name = "LabelControl27"
+        Me.LabelControl27.Size = New System.Drawing.Size(175, 19)
+        Me.LabelControl27.TabIndex = 97
+        Me.LabelControl27.Text = "Délai de résiliation du contrat"
+        '
+        'LabelControl37
+        '
+        Me.LabelControl37.Appearance.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl37.Location = New System.Drawing.Point(13, 131)
+        Me.LabelControl37.Name = "LabelControl37"
+        Me.LabelControl37.Size = New System.Drawing.Size(111, 19)
+        Me.LabelControl37.TabIndex = 101
+        Me.LabelControl37.Text = "Montant des taxes"
+        '
+        'LabelControl28
+        '
+        Me.LabelControl28.Appearance.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl28.Location = New System.Drawing.Point(373, 76)
+        Me.LabelControl28.Name = "LabelControl28"
+        Me.LabelControl28.Size = New System.Drawing.Size(124, 19)
+        Me.LabelControl28.TabIndex = 98
+        Me.LabelControl28.Text = "Taux d'intérêt annuel"
+        '
+        'LabelControl32
+        '
+        Me.LabelControl32.Appearance.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl32.Location = New System.Drawing.Point(13, 104)
+        Me.LabelControl32.Name = "LabelControl32"
+        Me.LabelControl32.Size = New System.Drawing.Size(198, 19)
+        Me.LabelControl32.TabIndex = 99
+        Me.LabelControl32.Text = "Période d'achèvement du contrat"
         '
         'PanelControl6
         '
@@ -2658,6 +2807,7 @@ Partial Class EvaluationConsultants
         '
         Me.TypeRenumeration.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TypeRenumeration.EditValue = ""
         Me.TypeRenumeration.Location = New System.Drawing.Point(143, 3)
         Me.TypeRenumeration.Name = "TypeRenumeration"
         Me.TypeRenumeration.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2740,19 +2890,19 @@ Partial Class EvaluationConsultants
         Me.BtNouveauContrat.Location = New System.Drawing.Point(554, 4)
         Me.BtNouveauContrat.Name = "BtNouveauContrat"
         Me.BtNouveauContrat.Size = New System.Drawing.Size(122, 36)
-        ToolTipTitleItem365.Appearance.Image = Global.ClearProject.My.Resources.Resources.View_16x16
-        ToolTipTitleItem365.Appearance.Options.UseImage = True
-        ToolTipTitleItem365.Image = Global.ClearProject.My.Resources.Resources.View_16x16
-        ToolTipTitleItem365.Text = "Nouveau"
-        ToolTipItem183.LeftIndent = 6
-        ToolTipItem183.Text = "Cliquez pour faire un nouveau contrat"
-        ToolTipTitleItem366.LeftIndent = 6
-        ToolTipTitleItem366.Text = "Contrat"
-        SuperToolTip183.Items.Add(ToolTipTitleItem365)
-        SuperToolTip183.Items.Add(ToolTipItem183)
-        SuperToolTip183.Items.Add(ToolTipSeparatorItem183)
-        SuperToolTip183.Items.Add(ToolTipTitleItem366)
-        Me.BtNouveauContrat.SuperTip = SuperToolTip183
+        ToolTipTitleItem9.Appearance.Image = Global.ClearProject.My.Resources.Resources.View_16x16
+        ToolTipTitleItem9.Appearance.Options.UseImage = True
+        ToolTipTitleItem9.Image = Global.ClearProject.My.Resources.Resources.View_16x16
+        ToolTipTitleItem9.Text = "Nouveau"
+        ToolTipItem5.LeftIndent = 6
+        ToolTipItem5.Text = "Cliquez pour faire un nouveau contrat"
+        ToolTipTitleItem10.LeftIndent = 6
+        ToolTipTitleItem10.Text = "Contrat"
+        SuperToolTip5.Items.Add(ToolTipTitleItem9)
+        SuperToolTip5.Items.Add(ToolTipItem5)
+        SuperToolTip5.Items.Add(ToolTipSeparatorItem5)
+        SuperToolTip5.Items.Add(ToolTipTitleItem10)
+        Me.BtNouveauContrat.SuperTip = SuperToolTip5
         Me.BtNouveauContrat.TabIndex = 28
         Me.BtNouveauContrat.Text = "NOUVEAU"
         '
@@ -2768,19 +2918,19 @@ Partial Class EvaluationConsultants
         Me.BtModifContrat.Location = New System.Drawing.Point(683, 4)
         Me.BtModifContrat.Name = "BtModifContrat"
         Me.BtModifContrat.Size = New System.Drawing.Size(123, 36)
-        ToolTipTitleItem367.Appearance.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
-        ToolTipTitleItem367.Appearance.Options.UseImage = True
-        ToolTipTitleItem367.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
-        ToolTipTitleItem367.Text = "Modifier"
-        ToolTipItem184.LeftIndent = 6
-        ToolTipItem184.Text = "Cliquez pour modifier un contrat"
-        ToolTipTitleItem368.LeftIndent = 6
-        ToolTipTitleItem368.Text = "Contrat"
-        SuperToolTip184.Items.Add(ToolTipTitleItem367)
-        SuperToolTip184.Items.Add(ToolTipItem184)
-        SuperToolTip184.Items.Add(ToolTipSeparatorItem184)
-        SuperToolTip184.Items.Add(ToolTipTitleItem368)
-        Me.BtModifContrat.SuperTip = SuperToolTip184
+        ToolTipTitleItem11.Appearance.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
+        ToolTipTitleItem11.Appearance.Options.UseImage = True
+        ToolTipTitleItem11.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
+        ToolTipTitleItem11.Text = "Modifier"
+        ToolTipItem6.LeftIndent = 6
+        ToolTipItem6.Text = "Cliquez pour modifier un contrat"
+        ToolTipTitleItem12.LeftIndent = 6
+        ToolTipTitleItem12.Text = "Contrat"
+        SuperToolTip6.Items.Add(ToolTipTitleItem11)
+        SuperToolTip6.Items.Add(ToolTipItem6)
+        SuperToolTip6.Items.Add(ToolTipSeparatorItem6)
+        SuperToolTip6.Items.Add(ToolTipTitleItem12)
+        Me.BtModifContrat.SuperTip = SuperToolTip6
         Me.BtModifContrat.TabIndex = 97
         Me.BtModifContrat.Text = "MODIFIER"
         '
@@ -2796,19 +2946,19 @@ Partial Class EvaluationConsultants
         Me.BtSaveContrat.Location = New System.Drawing.Point(812, 4)
         Me.BtSaveContrat.Name = "BtSaveContrat"
         Me.BtSaveContrat.Size = New System.Drawing.Size(156, 36)
-        ToolTipTitleItem369.Appearance.Image = Global.ClearProject.My.Resources.Resources.Ribbon_SaveAs_16x16
-        ToolTipTitleItem369.Appearance.Options.UseImage = True
-        ToolTipTitleItem369.Image = Global.ClearProject.My.Resources.Resources.Ribbon_SaveAs_16x16
-        ToolTipTitleItem369.Text = "Enregistrer"
-        ToolTipItem185.LeftIndent = 6
-        ToolTipItem185.Text = "Cliquez pour enregistrer le contrat"
-        ToolTipTitleItem370.LeftIndent = 6
-        ToolTipTitleItem370.Text = "Contrat"
-        SuperToolTip185.Items.Add(ToolTipTitleItem369)
-        SuperToolTip185.Items.Add(ToolTipItem185)
-        SuperToolTip185.Items.Add(ToolTipSeparatorItem185)
-        SuperToolTip185.Items.Add(ToolTipTitleItem370)
-        Me.BtSaveContrat.SuperTip = SuperToolTip185
+        ToolTipTitleItem13.Appearance.Image = Global.ClearProject.My.Resources.Resources.Ribbon_SaveAs_16x16
+        ToolTipTitleItem13.Appearance.Options.UseImage = True
+        ToolTipTitleItem13.Image = Global.ClearProject.My.Resources.Resources.Ribbon_SaveAs_16x16
+        ToolTipTitleItem13.Text = "Enregistrer"
+        ToolTipItem7.LeftIndent = 6
+        ToolTipItem7.Text = "Cliquez pour enregistrer le contrat"
+        ToolTipTitleItem14.LeftIndent = 6
+        ToolTipTitleItem14.Text = "Contrat"
+        SuperToolTip7.Items.Add(ToolTipTitleItem13)
+        SuperToolTip7.Items.Add(ToolTipItem7)
+        SuperToolTip7.Items.Add(ToolTipSeparatorItem7)
+        SuperToolTip7.Items.Add(ToolTipTitleItem14)
+        Me.BtSaveContrat.SuperTip = SuperToolTip7
         Me.BtSaveContrat.TabIndex = 98
         Me.BtSaveContrat.Text = "ENREGISTRER"
         '
@@ -2922,22 +3072,22 @@ Partial Class EvaluationConsultants
         Me.BtValContrat.Enabled = False
         Me.BtValContrat.Image = Global.ClearProject.My.Resources.Resources.ActiveRents_16x16
         Me.BtValContrat.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.BtValContrat.Location = New System.Drawing.Point(842, 6)
+        Me.BtValContrat.Location = New System.Drawing.Point(799, 5)
         Me.BtValContrat.Name = "BtValContrat"
         Me.BtValContrat.Size = New System.Drawing.Size(39, 29)
-        ToolTipTitleItem371.Appearance.Image = Global.ClearProject.My.Resources.Resources.vieux_rafraichir_vue_icone_4185_16
-        ToolTipTitleItem371.Appearance.Options.UseImage = True
-        ToolTipTitleItem371.Image = Global.ClearProject.My.Resources.Resources.vieux_rafraichir_vue_icone_4185_16
-        ToolTipTitleItem371.Text = "Valider"
-        ToolTipItem186.LeftIndent = 6
-        ToolTipItem186.Text = "Cliquez pour validé le contrat"
-        ToolTipTitleItem372.LeftIndent = 6
-        ToolTipTitleItem372.Text = "Contrat"
-        SuperToolTip186.Items.Add(ToolTipTitleItem371)
-        SuperToolTip186.Items.Add(ToolTipItem186)
-        SuperToolTip186.Items.Add(ToolTipSeparatorItem186)
-        SuperToolTip186.Items.Add(ToolTipTitleItem372)
-        Me.BtValContrat.SuperTip = SuperToolTip186
+        ToolTipTitleItem15.Appearance.Image = Global.ClearProject.My.Resources.Resources.vieux_rafraichir_vue_icone_4185_16
+        ToolTipTitleItem15.Appearance.Options.UseImage = True
+        ToolTipTitleItem15.Image = Global.ClearProject.My.Resources.Resources.vieux_rafraichir_vue_icone_4185_16
+        ToolTipTitleItem15.Text = "Valider"
+        ToolTipItem8.LeftIndent = 6
+        ToolTipItem8.Text = "Cliquez pour validé le contrat"
+        ToolTipTitleItem16.LeftIndent = 6
+        ToolTipTitleItem16.Text = "Contrat"
+        SuperToolTip8.Items.Add(ToolTipTitleItem15)
+        SuperToolTip8.Items.Add(ToolTipItem8)
+        SuperToolTip8.Items.Add(ToolTipSeparatorItem8)
+        SuperToolTip8.Items.Add(ToolTipTitleItem16)
+        Me.BtValContrat.SuperTip = SuperToolTip8
         Me.BtValContrat.TabIndex = 108
         '
         'GeneContrat
@@ -2951,22 +3101,22 @@ Partial Class EvaluationConsultants
         Me.GeneContrat.Enabled = False
         Me.GeneContrat.Image = Global.ClearProject.My.Resources.Resources.Ribbon_Content_16x16
         Me.GeneContrat.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.GeneContrat.Location = New System.Drawing.Point(618, 6)
+        Me.GeneContrat.Location = New System.Drawing.Point(618, 5)
         Me.GeneContrat.Name = "GeneContrat"
         Me.GeneContrat.Size = New System.Drawing.Size(39, 29)
-        ToolTipTitleItem373.Appearance.Image = Global.ClearProject.My.Resources.Resources.imprimer_16
-        ToolTipTitleItem373.Appearance.Options.UseImage = True
-        ToolTipTitleItem373.Image = Global.ClearProject.My.Resources.Resources.imprimer_16
-        ToolTipTitleItem373.Text = "Générer/Régénérer"
-        ToolTipItem187.LeftIndent = 6
-        ToolTipItem187.Text = "Cliquez pour générer ou regénérer le contrat"
-        ToolTipTitleItem374.LeftIndent = 6
-        ToolTipTitleItem374.Text = "Contrat"
-        SuperToolTip187.Items.Add(ToolTipTitleItem373)
-        SuperToolTip187.Items.Add(ToolTipItem187)
-        SuperToolTip187.Items.Add(ToolTipSeparatorItem187)
-        SuperToolTip187.Items.Add(ToolTipTitleItem374)
-        Me.GeneContrat.SuperTip = SuperToolTip187
+        ToolTipTitleItem17.Appearance.Image = Global.ClearProject.My.Resources.Resources.imprimer_16
+        ToolTipTitleItem17.Appearance.Options.UseImage = True
+        ToolTipTitleItem17.Image = Global.ClearProject.My.Resources.Resources.imprimer_16
+        ToolTipTitleItem17.Text = "Générer/Régénérer"
+        ToolTipItem9.LeftIndent = 6
+        ToolTipItem9.Text = "Cliquez pour générer ou regénérer le contrat"
+        ToolTipTitleItem18.LeftIndent = 6
+        ToolTipTitleItem18.Text = "Contrat"
+        SuperToolTip9.Items.Add(ToolTipTitleItem17)
+        SuperToolTip9.Items.Add(ToolTipItem9)
+        SuperToolTip9.Items.Add(ToolTipSeparatorItem9)
+        SuperToolTip9.Items.Add(ToolTipTitleItem18)
+        Me.GeneContrat.SuperTip = SuperToolTip9
         Me.GeneContrat.TabIndex = 107
         Me.GeneContrat.ToolTip = "Imprimer le contrat"
         '
@@ -2979,22 +3129,22 @@ Partial Class EvaluationConsultants
         Me.ActuaImpContrat.Enabled = False
         Me.ActuaImpContrat.Image = Global.ClearProject.My.Resources.Resources.vieux_rafraichir_vue_icone_4185_16
         Me.ActuaImpContrat.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.ActuaImpContrat.Location = New System.Drawing.Point(798, 6)
+        Me.ActuaImpContrat.Location = New System.Drawing.Point(710, 5)
         Me.ActuaImpContrat.Name = "ActuaImpContrat"
         Me.ActuaImpContrat.Size = New System.Drawing.Size(39, 29)
-        ToolTipTitleItem375.Appearance.Image = Global.ClearProject.My.Resources.Resources.vieux_rafraichir_vue_icone_4185_16
-        ToolTipTitleItem375.Appearance.Options.UseImage = True
-        ToolTipTitleItem375.Image = Global.ClearProject.My.Resources.Resources.vieux_rafraichir_vue_icone_4185_16
-        ToolTipTitleItem375.Text = "Actualiser"
-        ToolTipItem188.LeftIndent = 6
-        ToolTipItem188.Text = "Cliquez pour actualiser le contrat après modification"
-        ToolTipTitleItem376.LeftIndent = 6
-        ToolTipTitleItem376.Text = "Contrat"
-        SuperToolTip188.Items.Add(ToolTipTitleItem375)
-        SuperToolTip188.Items.Add(ToolTipItem188)
-        SuperToolTip188.Items.Add(ToolTipSeparatorItem188)
-        SuperToolTip188.Items.Add(ToolTipTitleItem376)
-        Me.ActuaImpContrat.SuperTip = SuperToolTip188
+        ToolTipTitleItem19.Appearance.Image = Global.ClearProject.My.Resources.Resources.vieux_rafraichir_vue_icone_4185_16
+        ToolTipTitleItem19.Appearance.Options.UseImage = True
+        ToolTipTitleItem19.Image = Global.ClearProject.My.Resources.Resources.vieux_rafraichir_vue_icone_4185_16
+        ToolTipTitleItem19.Text = "Actualiser"
+        ToolTipItem10.LeftIndent = 6
+        ToolTipItem10.Text = "Cliquez pour actualiser le contrat après modification"
+        ToolTipTitleItem20.LeftIndent = 6
+        ToolTipTitleItem20.Text = "Contrat"
+        SuperToolTip10.Items.Add(ToolTipTitleItem19)
+        SuperToolTip10.Items.Add(ToolTipItem10)
+        SuperToolTip10.Items.Add(ToolTipSeparatorItem10)
+        SuperToolTip10.Items.Add(ToolTipTitleItem20)
+        Me.ActuaImpContrat.SuperTip = SuperToolTip10
         Me.ActuaImpContrat.TabIndex = 106
         '
         'ModifImpContrat
@@ -3006,22 +3156,22 @@ Partial Class EvaluationConsultants
         Me.ModifImpContrat.Enabled = False
         Me.ModifImpContrat.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
         Me.ModifImpContrat.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.ModifImpContrat.Location = New System.Drawing.Point(753, 6)
+        Me.ModifImpContrat.Location = New System.Drawing.Point(665, 5)
         Me.ModifImpContrat.Name = "ModifImpContrat"
         Me.ModifImpContrat.Size = New System.Drawing.Size(39, 29)
-        ToolTipTitleItem377.Appearance.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
-        ToolTipTitleItem377.Appearance.Options.UseImage = True
-        ToolTipTitleItem377.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
-        ToolTipTitleItem377.Text = "Modifier"
-        ToolTipItem189.LeftIndent = 6
-        ToolTipItem189.Text = "Cliquez pour modifier le contrat"
-        ToolTipTitleItem378.LeftIndent = 6
-        ToolTipTitleItem378.Text = "Contrat"
-        SuperToolTip189.Items.Add(ToolTipTitleItem377)
-        SuperToolTip189.Items.Add(ToolTipItem189)
-        SuperToolTip189.Items.Add(ToolTipSeparatorItem189)
-        SuperToolTip189.Items.Add(ToolTipTitleItem378)
-        Me.ModifImpContrat.SuperTip = SuperToolTip189
+        ToolTipTitleItem21.Appearance.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
+        ToolTipTitleItem21.Appearance.Options.UseImage = True
+        ToolTipTitleItem21.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
+        ToolTipTitleItem21.Text = "Modifier"
+        ToolTipItem11.LeftIndent = 6
+        ToolTipItem11.Text = "Cliquez pour modifier le contrat"
+        ToolTipTitleItem22.LeftIndent = 6
+        ToolTipTitleItem22.Text = "Contrat"
+        SuperToolTip11.Items.Add(ToolTipTitleItem21)
+        SuperToolTip11.Items.Add(ToolTipItem11)
+        SuperToolTip11.Items.Add(ToolTipSeparatorItem11)
+        SuperToolTip11.Items.Add(ToolTipTitleItem22)
+        Me.ModifImpContrat.SuperTip = SuperToolTip11
         Me.ModifImpContrat.TabIndex = 104
         '
         'EnvoiContraBailleur
@@ -3033,22 +3183,22 @@ Partial Class EvaluationConsultants
         Me.EnvoiContraBailleur.Enabled = False
         Me.EnvoiContraBailleur.Image = Global.ClearProject.My.Resources.Resources.Mail_16x161
         Me.EnvoiContraBailleur.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.EnvoiContraBailleur.Location = New System.Drawing.Point(707, 6)
+        Me.EnvoiContraBailleur.Location = New System.Drawing.Point(755, 5)
         Me.EnvoiContraBailleur.Name = "EnvoiContraBailleur"
         Me.EnvoiContraBailleur.Size = New System.Drawing.Size(39, 29)
-        ToolTipTitleItem379.Appearance.Image = Global.ClearProject.My.Resources.Resources.Previous_16x16
-        ToolTipTitleItem379.Appearance.Options.UseImage = True
-        ToolTipTitleItem379.Image = Global.ClearProject.My.Resources.Resources.Previous_16x16
-        ToolTipTitleItem379.Text = "Envoyer"
-        ToolTipItem190.LeftIndent = 6
-        ToolTipItem190.Text = "Cliquez pour envoyer le contrat au bailleur"
-        ToolTipTitleItem380.LeftIndent = 6
-        ToolTipTitleItem380.Text = "Contrat"
-        SuperToolTip190.Items.Add(ToolTipTitleItem379)
-        SuperToolTip190.Items.Add(ToolTipItem190)
-        SuperToolTip190.Items.Add(ToolTipSeparatorItem190)
-        SuperToolTip190.Items.Add(ToolTipTitleItem380)
-        Me.EnvoiContraBailleur.SuperTip = SuperToolTip190
+        ToolTipTitleItem23.Appearance.Image = Global.ClearProject.My.Resources.Resources.Previous_16x16
+        ToolTipTitleItem23.Appearance.Options.UseImage = True
+        ToolTipTitleItem23.Image = Global.ClearProject.My.Resources.Resources.Previous_16x16
+        ToolTipTitleItem23.Text = "Envoyer"
+        ToolTipItem12.LeftIndent = 6
+        ToolTipItem12.Text = "Cliquez pour envoyer le contrat au bailleur"
+        ToolTipTitleItem24.LeftIndent = 6
+        ToolTipTitleItem24.Text = "Contrat"
+        SuperToolTip12.Items.Add(ToolTipTitleItem23)
+        SuperToolTip12.Items.Add(ToolTipItem12)
+        SuperToolTip12.Items.Add(ToolTipSeparatorItem12)
+        SuperToolTip12.Items.Add(ToolTipTitleItem24)
+        Me.EnvoiContraBailleur.SuperTip = SuperToolTip12
         Me.EnvoiContraBailleur.TabIndex = 101
         '
         'wordimpContrat
@@ -3060,22 +3210,22 @@ Partial Class EvaluationConsultants
         Me.wordimpContrat.Enabled = False
         Me.wordimpContrat.Image = Global.ClearProject.My.Resources.Resources.ExportToRTF_16x16
         Me.wordimpContrat.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.wordimpContrat.Location = New System.Drawing.Point(930, 6)
+        Me.wordimpContrat.Location = New System.Drawing.Point(930, 5)
         Me.wordimpContrat.Name = "wordimpContrat"
         Me.wordimpContrat.Size = New System.Drawing.Size(39, 29)
-        ToolTipTitleItem381.Appearance.Image = Global.ClearProject.My.Resources.Resources.ExportToRTF_16x16
-        ToolTipTitleItem381.Appearance.Options.UseImage = True
-        ToolTipTitleItem381.Image = Global.ClearProject.My.Resources.Resources.ExportToRTF_16x16
-        ToolTipTitleItem381.Text = "Exporter"
-        ToolTipItem191.LeftIndent = 6
-        ToolTipItem191.Text = "Cliquez pour exporter le contrat au format word"
-        ToolTipTitleItem382.LeftIndent = 6
-        ToolTipTitleItem382.Text = "Contrat"
-        SuperToolTip191.Items.Add(ToolTipTitleItem381)
-        SuperToolTip191.Items.Add(ToolTipItem191)
-        SuperToolTip191.Items.Add(ToolTipSeparatorItem191)
-        SuperToolTip191.Items.Add(ToolTipTitleItem382)
-        Me.wordimpContrat.SuperTip = SuperToolTip191
+        ToolTipTitleItem25.Appearance.Image = Global.ClearProject.My.Resources.Resources.ExportToRTF_16x16
+        ToolTipTitleItem25.Appearance.Options.UseImage = True
+        ToolTipTitleItem25.Image = Global.ClearProject.My.Resources.Resources.ExportToRTF_16x16
+        ToolTipTitleItem25.Text = "Exporter"
+        ToolTipItem13.LeftIndent = 6
+        ToolTipItem13.Text = "Cliquez pour exporter le contrat au format word"
+        ToolTipTitleItem26.LeftIndent = 6
+        ToolTipTitleItem26.Text = "Contrat"
+        SuperToolTip13.Items.Add(ToolTipTitleItem25)
+        SuperToolTip13.Items.Add(ToolTipItem13)
+        SuperToolTip13.Items.Add(ToolTipSeparatorItem13)
+        SuperToolTip13.Items.Add(ToolTipTitleItem26)
+        Me.wordimpContrat.SuperTip = SuperToolTip13
         Me.wordimpContrat.TabIndex = 100
         '
         'PdfContratImp
@@ -3087,22 +3237,22 @@ Partial Class EvaluationConsultants
         Me.PdfContratImp.Enabled = False
         Me.PdfContratImp.Image = Global.ClearProject.My.Resources.Resources.ExportToPDF_16x16
         Me.PdfContratImp.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.PdfContratImp.Location = New System.Drawing.Point(886, 6)
+        Me.PdfContratImp.Location = New System.Drawing.Point(886, 5)
         Me.PdfContratImp.Name = "PdfContratImp"
         Me.PdfContratImp.Size = New System.Drawing.Size(39, 29)
-        ToolTipTitleItem383.Appearance.Image = Global.ClearProject.My.Resources.Resources.ExportToPDF_16x16
-        ToolTipTitleItem383.Appearance.Options.UseImage = True
-        ToolTipTitleItem383.Image = Global.ClearProject.My.Resources.Resources.ExportToPDF_16x16
-        ToolTipTitleItem383.Text = "Exporter"
-        ToolTipItem192.LeftIndent = 6
-        ToolTipItem192.Text = "Cliquez pour exporter le contrat au format pdf"
-        ToolTipTitleItem384.LeftIndent = 6
-        ToolTipTitleItem384.Text = "Contrat"
-        SuperToolTip192.Items.Add(ToolTipTitleItem383)
-        SuperToolTip192.Items.Add(ToolTipItem192)
-        SuperToolTip192.Items.Add(ToolTipSeparatorItem192)
-        SuperToolTip192.Items.Add(ToolTipTitleItem384)
-        Me.PdfContratImp.SuperTip = SuperToolTip192
+        ToolTipTitleItem27.Appearance.Image = Global.ClearProject.My.Resources.Resources.ExportToPDF_16x16
+        ToolTipTitleItem27.Appearance.Options.UseImage = True
+        ToolTipTitleItem27.Image = Global.ClearProject.My.Resources.Resources.ExportToPDF_16x16
+        ToolTipTitleItem27.Text = "Exporter"
+        ToolTipItem14.LeftIndent = 6
+        ToolTipItem14.Text = "Cliquez pour exporter le contrat au format pdf"
+        ToolTipTitleItem28.LeftIndent = 6
+        ToolTipTitleItem28.Text = "Contrat"
+        SuperToolTip14.Items.Add(ToolTipTitleItem27)
+        SuperToolTip14.Items.Add(ToolTipItem14)
+        SuperToolTip14.Items.Add(ToolTipSeparatorItem14)
+        SuperToolTip14.Items.Add(ToolTipTitleItem28)
+        Me.PdfContratImp.SuperTip = SuperToolTip14
         Me.PdfContratImp.TabIndex = 99
         '
         'ImpContrat
@@ -3116,22 +3266,22 @@ Partial Class EvaluationConsultants
         Me.ImpContrat.Enabled = False
         Me.ImpContrat.Image = Global.ClearProject.My.Resources.Resources.Group_Reports
         Me.ImpContrat.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.ImpContrat.Location = New System.Drawing.Point(662, 6)
+        Me.ImpContrat.Location = New System.Drawing.Point(843, 5)
         Me.ImpContrat.Name = "ImpContrat"
         Me.ImpContrat.Size = New System.Drawing.Size(39, 29)
-        ToolTipTitleItem385.Appearance.Image = Global.ClearProject.My.Resources.Resources.imprimer_16
-        ToolTipTitleItem385.Appearance.Options.UseImage = True
-        ToolTipTitleItem385.Image = Global.ClearProject.My.Resources.Resources.imprimer_16
-        ToolTipTitleItem385.Text = "Imprimer"
-        ToolTipItem193.LeftIndent = 6
-        ToolTipItem193.Text = "Cliquez pour imprimer le contrat"
-        ToolTipTitleItem386.LeftIndent = 6
-        ToolTipTitleItem386.Text = "Contrat"
-        SuperToolTip193.Items.Add(ToolTipTitleItem385)
-        SuperToolTip193.Items.Add(ToolTipItem193)
-        SuperToolTip193.Items.Add(ToolTipSeparatorItem193)
-        SuperToolTip193.Items.Add(ToolTipTitleItem386)
-        Me.ImpContrat.SuperTip = SuperToolTip193
+        ToolTipTitleItem29.Appearance.Image = Global.ClearProject.My.Resources.Resources.imprimer_16
+        ToolTipTitleItem29.Appearance.Options.UseImage = True
+        ToolTipTitleItem29.Image = Global.ClearProject.My.Resources.Resources.imprimer_16
+        ToolTipTitleItem29.Text = "Imprimer"
+        ToolTipItem15.LeftIndent = 6
+        ToolTipItem15.Text = "Cliquez pour imprimer le contrat"
+        ToolTipTitleItem30.LeftIndent = 6
+        ToolTipTitleItem30.Text = "Contrat"
+        SuperToolTip15.Items.Add(ToolTipTitleItem29)
+        SuperToolTip15.Items.Add(ToolTipItem15)
+        SuperToolTip15.Items.Add(ToolTipSeparatorItem15)
+        SuperToolTip15.Items.Add(ToolTipTitleItem30)
+        Me.ImpContrat.SuperTip = SuperToolTip15
         Me.ImpContrat.TabIndex = 26
         Me.ImpContrat.ToolTip = "Imprimer le contrat"
         '
@@ -3152,7 +3302,6 @@ Partial Class EvaluationConsultants
         Me.CombContratImp.Properties.Appearance.Options.UseFont = True
         Me.CombContratImp.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.CombContratImp.Properties.MaxLength = 44
-        Me.CombContratImp.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         Me.CombContratImp.Size = New System.Drawing.Size(163, 24)
         Me.CombContratImp.TabIndex = 96
         '
@@ -3266,19 +3415,19 @@ Partial Class EvaluationConsultants
         Me.BtResultEvalTechniq.Location = New System.Drawing.Point(556, 15)
         Me.BtResultEvalTechniq.Name = "BtResultEvalTechniq"
         Me.BtResultEvalTechniq.Size = New System.Drawing.Size(41, 28)
-        ToolTipTitleItem387.Appearance.Image = Global.ClearProject.My.Resources.Resources.CustomersKPI_16x16
-        ToolTipTitleItem387.Appearance.Options.UseImage = True
-        ToolTipTitleItem387.Image = Global.ClearProject.My.Resources.Resources.CustomersKPI_16x16
-        ToolTipTitleItem387.Text = "Resultat"
-        ToolTipItem194.LeftIndent = 6
-        ToolTipItem194.Text = "Cliquez pour voir le resultat de l'évaluation technique"
-        ToolTipTitleItem388.LeftIndent = 6
-        ToolTipTitleItem388.Text = "Evaluation technique"
-        SuperToolTip194.Items.Add(ToolTipTitleItem387)
-        SuperToolTip194.Items.Add(ToolTipItem194)
-        SuperToolTip194.Items.Add(ToolTipSeparatorItem194)
-        SuperToolTip194.Items.Add(ToolTipTitleItem388)
-        Me.BtResultEvalTechniq.SuperTip = SuperToolTip194
+        ToolTipTitleItem31.Appearance.Image = Global.ClearProject.My.Resources.Resources.CustomersKPI_16x16
+        ToolTipTitleItem31.Appearance.Options.UseImage = True
+        ToolTipTitleItem31.Image = Global.ClearProject.My.Resources.Resources.CustomersKPI_16x16
+        ToolTipTitleItem31.Text = "Resultat"
+        ToolTipItem16.LeftIndent = 6
+        ToolTipItem16.Text = "Cliquez pour voir le resultat de l'évaluation technique"
+        ToolTipTitleItem32.LeftIndent = 6
+        ToolTipTitleItem32.Text = "Evaluation technique"
+        SuperToolTip16.Items.Add(ToolTipTitleItem31)
+        SuperToolTip16.Items.Add(ToolTipItem16)
+        SuperToolTip16.Items.Add(ToolTipSeparatorItem16)
+        SuperToolTip16.Items.Add(ToolTipTitleItem32)
+        Me.BtResultEvalTechniq.SuperTip = SuperToolTip16
         Me.BtResultEvalTechniq.TabIndex = 47
         '
         'BtActualisers
@@ -3292,19 +3441,19 @@ Partial Class EvaluationConsultants
         Me.BtActualisers.Location = New System.Drawing.Point(699, 15)
         Me.BtActualisers.Name = "BtActualisers"
         Me.BtActualisers.Size = New System.Drawing.Size(41, 28)
-        ToolTipTitleItem389.Appearance.Image = Global.ClearProject.My.Resources.Resources.vieux_rafraichir_vue_icone_4185_16
-        ToolTipTitleItem389.Appearance.Options.UseImage = True
-        ToolTipTitleItem389.Image = Global.ClearProject.My.Resources.Resources.vieux_rafraichir_vue_icone_4185_16
-        ToolTipTitleItem389.Text = "Actualiser"
-        ToolTipItem195.LeftIndent = 6
-        ToolTipItem195.Text = "Cliquez pour actualiser le rapport après modification"
-        ToolTipTitleItem390.LeftIndent = 6
-        ToolTipTitleItem390.Text = "Rapport d'évaluation technique"
-        SuperToolTip195.Items.Add(ToolTipTitleItem389)
-        SuperToolTip195.Items.Add(ToolTipItem195)
-        SuperToolTip195.Items.Add(ToolTipSeparatorItem195)
-        SuperToolTip195.Items.Add(ToolTipTitleItem390)
-        Me.BtActualisers.SuperTip = SuperToolTip195
+        ToolTipTitleItem33.Appearance.Image = Global.ClearProject.My.Resources.Resources.vieux_rafraichir_vue_icone_4185_16
+        ToolTipTitleItem33.Appearance.Options.UseImage = True
+        ToolTipTitleItem33.Image = Global.ClearProject.My.Resources.Resources.vieux_rafraichir_vue_icone_4185_16
+        ToolTipTitleItem33.Text = "Actualiser"
+        ToolTipItem17.LeftIndent = 6
+        ToolTipItem17.Text = "Cliquez pour actualiser le rapport après modification"
+        ToolTipTitleItem34.LeftIndent = 6
+        ToolTipTitleItem34.Text = "Rapport d'évaluation technique"
+        SuperToolTip17.Items.Add(ToolTipTitleItem33)
+        SuperToolTip17.Items.Add(ToolTipItem17)
+        SuperToolTip17.Items.Add(ToolTipSeparatorItem17)
+        SuperToolTip17.Items.Add(ToolTipTitleItem34)
+        Me.BtActualisers.SuperTip = SuperToolTip17
         Me.BtActualisers.TabIndex = 46
         '
         'LabelControl47
@@ -3328,19 +3477,19 @@ Partial Class EvaluationConsultants
         Me.BtModifiers.Location = New System.Drawing.Point(655, 15)
         Me.BtModifiers.Name = "BtModifiers"
         Me.BtModifiers.Size = New System.Drawing.Size(41, 28)
-        ToolTipTitleItem391.Appearance.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
-        ToolTipTitleItem391.Appearance.Options.UseImage = True
-        ToolTipTitleItem391.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
-        ToolTipTitleItem391.Text = "Modifier"
-        ToolTipItem196.LeftIndent = 6
-        ToolTipItem196.Text = "Cliquez pour modifier le rapport"
-        ToolTipTitleItem392.LeftIndent = 6
-        ToolTipTitleItem392.Text = "Rapport d'évaluation technique"
-        SuperToolTip196.Items.Add(ToolTipTitleItem391)
-        SuperToolTip196.Items.Add(ToolTipItem196)
-        SuperToolTip196.Items.Add(ToolTipSeparatorItem196)
-        SuperToolTip196.Items.Add(ToolTipTitleItem392)
-        Me.BtModifiers.SuperTip = SuperToolTip196
+        ToolTipTitleItem35.Appearance.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
+        ToolTipTitleItem35.Appearance.Options.UseImage = True
+        ToolTipTitleItem35.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
+        ToolTipTitleItem35.Text = "Modifier"
+        ToolTipItem18.LeftIndent = 6
+        ToolTipItem18.Text = "Cliquez pour modifier le rapport"
+        ToolTipTitleItem36.LeftIndent = 6
+        ToolTipTitleItem36.Text = "Rapport d'évaluation technique"
+        SuperToolTip18.Items.Add(ToolTipTitleItem35)
+        SuperToolTip18.Items.Add(ToolTipItem18)
+        SuperToolTip18.Items.Add(ToolTipSeparatorItem18)
+        SuperToolTip18.Items.Add(ToolTipTitleItem36)
+        Me.BtModifiers.SuperTip = SuperToolTip18
         Me.BtModifiers.TabIndex = 44
         '
         'BtGenerers
@@ -3354,19 +3503,19 @@ Partial Class EvaluationConsultants
         Me.BtGenerers.Location = New System.Drawing.Point(607, 15)
         Me.BtGenerers.Name = "BtGenerers"
         Me.BtGenerers.Size = New System.Drawing.Size(41, 28)
-        ToolTipTitleItem393.Appearance.Image = Global.ClearProject.My.Resources.Resources.View_16x16
-        ToolTipTitleItem393.Appearance.Options.UseImage = True
-        ToolTipTitleItem393.Image = Global.ClearProject.My.Resources.Resources.View_16x16
-        ToolTipTitleItem393.Text = "Générer"
-        ToolTipItem197.LeftIndent = 6
-        ToolTipItem197.Text = "Cliquez pour générer le rapport"
-        ToolTipTitleItem394.LeftIndent = 6
-        ToolTipTitleItem394.Text = "Rapport d'évaluation technique"
-        SuperToolTip197.Items.Add(ToolTipTitleItem393)
-        SuperToolTip197.Items.Add(ToolTipItem197)
-        SuperToolTip197.Items.Add(ToolTipSeparatorItem197)
-        SuperToolTip197.Items.Add(ToolTipTitleItem394)
-        Me.BtGenerers.SuperTip = SuperToolTip197
+        ToolTipTitleItem37.Appearance.Image = Global.ClearProject.My.Resources.Resources.View_16x16
+        ToolTipTitleItem37.Appearance.Options.UseImage = True
+        ToolTipTitleItem37.Image = Global.ClearProject.My.Resources.Resources.View_16x16
+        ToolTipTitleItem37.Text = "Générer"
+        ToolTipItem19.LeftIndent = 6
+        ToolTipItem19.Text = "Cliquez pour générer le rapport"
+        ToolTipTitleItem38.LeftIndent = 6
+        ToolTipTitleItem38.Text = "Rapport d'évaluation technique"
+        SuperToolTip19.Items.Add(ToolTipTitleItem37)
+        SuperToolTip19.Items.Add(ToolTipItem19)
+        SuperToolTip19.Items.Add(ToolTipSeparatorItem19)
+        SuperToolTip19.Items.Add(ToolTipTitleItem38)
+        Me.BtGenerers.SuperTip = SuperToolTip19
         Me.BtGenerers.TabIndex = 43
         '
         'BtValiderRaports
@@ -3380,19 +3529,19 @@ Partial Class EvaluationConsultants
         Me.BtValiderRaports.Location = New System.Drawing.Point(790, 15)
         Me.BtValiderRaports.Name = "BtValiderRaports"
         Me.BtValiderRaports.Size = New System.Drawing.Size(41, 28)
-        ToolTipTitleItem395.Appearance.Image = Global.ClearProject.My.Resources.Resources.ActiveRents_16x16
-        ToolTipTitleItem395.Appearance.Options.UseImage = True
-        ToolTipTitleItem395.Image = Global.ClearProject.My.Resources.Resources.ActiveRents_16x16
-        ToolTipTitleItem395.Text = "Valider"
-        ToolTipItem198.LeftIndent = 6
-        ToolTipItem198.Text = "Cliquez pour valider le rapport"
-        ToolTipTitleItem396.LeftIndent = 6
-        ToolTipTitleItem396.Text = "Rapport d'évaluation technique"
-        SuperToolTip198.Items.Add(ToolTipTitleItem395)
-        SuperToolTip198.Items.Add(ToolTipItem198)
-        SuperToolTip198.Items.Add(ToolTipSeparatorItem198)
-        SuperToolTip198.Items.Add(ToolTipTitleItem396)
-        Me.BtValiderRaports.SuperTip = SuperToolTip198
+        ToolTipTitleItem39.Appearance.Image = Global.ClearProject.My.Resources.Resources.ActiveRents_16x16
+        ToolTipTitleItem39.Appearance.Options.UseImage = True
+        ToolTipTitleItem39.Image = Global.ClearProject.My.Resources.Resources.ActiveRents_16x16
+        ToolTipTitleItem39.Text = "Valider"
+        ToolTipItem20.LeftIndent = 6
+        ToolTipItem20.Text = "Cliquez pour valider le rapport"
+        ToolTipTitleItem40.LeftIndent = 6
+        ToolTipTitleItem40.Text = "Rapport d'évaluation technique"
+        SuperToolTip20.Items.Add(ToolTipTitleItem39)
+        SuperToolTip20.Items.Add(ToolTipItem20)
+        SuperToolTip20.Items.Add(ToolTipSeparatorItem20)
+        SuperToolTip20.Items.Add(ToolTipTitleItem40)
+        Me.BtValiderRaports.SuperTip = SuperToolTip20
         Me.BtValiderRaports.TabIndex = 42
         '
         'BtEnvoieBailleurs
@@ -3406,19 +3555,19 @@ Partial Class EvaluationConsultants
         Me.BtEnvoieBailleurs.Location = New System.Drawing.Point(745, 15)
         Me.BtEnvoieBailleurs.Name = "BtEnvoieBailleurs"
         Me.BtEnvoieBailleurs.Size = New System.Drawing.Size(41, 28)
-        ToolTipTitleItem397.Appearance.Image = Global.ClearProject.My.Resources.Resources.Previous_16x16
-        ToolTipTitleItem397.Appearance.Options.UseImage = True
-        ToolTipTitleItem397.Image = Global.ClearProject.My.Resources.Resources.Previous_16x16
-        ToolTipTitleItem397.Text = "Envoyer"
-        ToolTipItem199.LeftIndent = 6
-        ToolTipItem199.Text = "Cliquez pour envoyer le rapport au bailleur"
-        ToolTipTitleItem398.LeftIndent = 6
-        ToolTipTitleItem398.Text = "Rapport d'évaluation technique"
-        SuperToolTip199.Items.Add(ToolTipTitleItem397)
-        SuperToolTip199.Items.Add(ToolTipItem199)
-        SuperToolTip199.Items.Add(ToolTipSeparatorItem199)
-        SuperToolTip199.Items.Add(ToolTipTitleItem398)
-        Me.BtEnvoieBailleurs.SuperTip = SuperToolTip199
+        ToolTipTitleItem41.Appearance.Image = Global.ClearProject.My.Resources.Resources.Previous_16x16
+        ToolTipTitleItem41.Appearance.Options.UseImage = True
+        ToolTipTitleItem41.Image = Global.ClearProject.My.Resources.Resources.Previous_16x16
+        ToolTipTitleItem41.Text = "Envoyer"
+        ToolTipItem21.LeftIndent = 6
+        ToolTipItem21.Text = "Cliquez pour envoyer le rapport au bailleur"
+        ToolTipTitleItem42.LeftIndent = 6
+        ToolTipTitleItem42.Text = "Rapport d'évaluation technique"
+        SuperToolTip21.Items.Add(ToolTipTitleItem41)
+        SuperToolTip21.Items.Add(ToolTipItem21)
+        SuperToolTip21.Items.Add(ToolTipSeparatorItem21)
+        SuperToolTip21.Items.Add(ToolTipTitleItem42)
+        Me.BtEnvoieBailleurs.SuperTip = SuperToolTip21
         Me.BtEnvoieBailleurs.TabIndex = 41
         '
         'BtWord
@@ -3432,19 +3581,19 @@ Partial Class EvaluationConsultants
         Me.BtWord.Location = New System.Drawing.Point(928, 15)
         Me.BtWord.Name = "BtWord"
         Me.BtWord.Size = New System.Drawing.Size(41, 28)
-        ToolTipTitleItem399.Appearance.Image = Global.ClearProject.My.Resources.Resources.ExportToRTF_16x16
-        ToolTipTitleItem399.Appearance.Options.UseImage = True
-        ToolTipTitleItem399.Image = Global.ClearProject.My.Resources.Resources.ExportToRTF_16x16
-        ToolTipTitleItem399.Text = "Exporter"
-        ToolTipItem200.LeftIndent = 6
-        ToolTipItem200.Text = "Cliquez pour exporter le rapport au format word"
-        ToolTipTitleItem400.LeftIndent = 6
-        ToolTipTitleItem400.Text = "Rapport d'évaluation technique"
-        SuperToolTip200.Items.Add(ToolTipTitleItem399)
-        SuperToolTip200.Items.Add(ToolTipItem200)
-        SuperToolTip200.Items.Add(ToolTipSeparatorItem200)
-        SuperToolTip200.Items.Add(ToolTipTitleItem400)
-        Me.BtWord.SuperTip = SuperToolTip200
+        ToolTipTitleItem43.Appearance.Image = Global.ClearProject.My.Resources.Resources.ExportToRTF_16x16
+        ToolTipTitleItem43.Appearance.Options.UseImage = True
+        ToolTipTitleItem43.Image = Global.ClearProject.My.Resources.Resources.ExportToRTF_16x16
+        ToolTipTitleItem43.Text = "Exporter"
+        ToolTipItem22.LeftIndent = 6
+        ToolTipItem22.Text = "Cliquez pour exporter le rapport au format word"
+        ToolTipTitleItem44.LeftIndent = 6
+        ToolTipTitleItem44.Text = "Rapport d'évaluation technique"
+        SuperToolTip22.Items.Add(ToolTipTitleItem43)
+        SuperToolTip22.Items.Add(ToolTipItem22)
+        SuperToolTip22.Items.Add(ToolTipSeparatorItem22)
+        SuperToolTip22.Items.Add(ToolTipTitleItem44)
+        Me.BtWord.SuperTip = SuperToolTip22
         Me.BtWord.TabIndex = 40
         '
         'Btpdf
@@ -3458,19 +3607,19 @@ Partial Class EvaluationConsultants
         Me.Btpdf.Location = New System.Drawing.Point(883, 15)
         Me.Btpdf.Name = "Btpdf"
         Me.Btpdf.Size = New System.Drawing.Size(41, 28)
-        ToolTipTitleItem401.Appearance.Image = Global.ClearProject.My.Resources.Resources.ExportToPDF_16x16
-        ToolTipTitleItem401.Appearance.Options.UseImage = True
-        ToolTipTitleItem401.Image = Global.ClearProject.My.Resources.Resources.ExportToPDF_16x16
-        ToolTipTitleItem401.Text = "Exporter"
-        ToolTipItem201.LeftIndent = 6
-        ToolTipItem201.Text = "Cliquez pour exporter le rapport au format pdf"
-        ToolTipTitleItem402.LeftIndent = 6
-        ToolTipTitleItem402.Text = "Rapport d'évaluation technique"
-        SuperToolTip201.Items.Add(ToolTipTitleItem401)
-        SuperToolTip201.Items.Add(ToolTipItem201)
-        SuperToolTip201.Items.Add(ToolTipSeparatorItem201)
-        SuperToolTip201.Items.Add(ToolTipTitleItem402)
-        Me.Btpdf.SuperTip = SuperToolTip201
+        ToolTipTitleItem45.Appearance.Image = Global.ClearProject.My.Resources.Resources.ExportToPDF_16x16
+        ToolTipTitleItem45.Appearance.Options.UseImage = True
+        ToolTipTitleItem45.Image = Global.ClearProject.My.Resources.Resources.ExportToPDF_16x16
+        ToolTipTitleItem45.Text = "Exporter"
+        ToolTipItem23.LeftIndent = 6
+        ToolTipItem23.Text = "Cliquez pour exporter le rapport au format pdf"
+        ToolTipTitleItem46.LeftIndent = 6
+        ToolTipTitleItem46.Text = "Rapport d'évaluation technique"
+        SuperToolTip23.Items.Add(ToolTipTitleItem45)
+        SuperToolTip23.Items.Add(ToolTipItem23)
+        SuperToolTip23.Items.Add(ToolTipSeparatorItem23)
+        SuperToolTip23.Items.Add(ToolTipTitleItem46)
+        Me.Btpdf.SuperTip = SuperToolTip23
         Me.Btpdf.TabIndex = 39
         '
         'BtRejetterRapports
@@ -3484,19 +3633,19 @@ Partial Class EvaluationConsultants
         Me.BtRejetterRapports.Location = New System.Drawing.Point(837, 15)
         Me.BtRejetterRapports.Name = "BtRejetterRapports"
         Me.BtRejetterRapports.Size = New System.Drawing.Size(41, 28)
-        ToolTipTitleItem403.Appearance.Image = Global.ClearProject.My.Resources.Resources.Delete_16x16
-        ToolTipTitleItem403.Appearance.Options.UseImage = True
-        ToolTipTitleItem403.Image = Global.ClearProject.My.Resources.Resources.Delete_16x16
-        ToolTipTitleItem403.Text = "Rejeter"
-        ToolTipItem202.LeftIndent = 6
-        ToolTipItem202.Text = "Cliquez pour rejeter le rapport"
-        ToolTipTitleItem404.LeftIndent = 6
-        ToolTipTitleItem404.Text = "Rapport d'évaluation technique"
-        SuperToolTip202.Items.Add(ToolTipTitleItem403)
-        SuperToolTip202.Items.Add(ToolTipItem202)
-        SuperToolTip202.Items.Add(ToolTipSeparatorItem202)
-        SuperToolTip202.Items.Add(ToolTipTitleItem404)
-        Me.BtRejetterRapports.SuperTip = SuperToolTip202
+        ToolTipTitleItem47.Appearance.Image = Global.ClearProject.My.Resources.Resources.Delete_16x16
+        ToolTipTitleItem47.Appearance.Options.UseImage = True
+        ToolTipTitleItem47.Image = Global.ClearProject.My.Resources.Resources.Delete_16x16
+        ToolTipTitleItem47.Text = "Rejeter"
+        ToolTipItem24.LeftIndent = 6
+        ToolTipItem24.Text = "Cliquez pour rejeter le rapport"
+        ToolTipTitleItem48.LeftIndent = 6
+        ToolTipTitleItem48.Text = "Rapport d'évaluation technique"
+        SuperToolTip24.Items.Add(ToolTipTitleItem47)
+        SuperToolTip24.Items.Add(ToolTipItem24)
+        SuperToolTip24.Items.Add(ToolTipSeparatorItem24)
+        SuperToolTip24.Items.Add(ToolTipTitleItem48)
+        Me.BtRejetterRapports.SuperTip = SuperToolTip24
         Me.BtRejetterRapports.TabIndex = 38
         '
         'LabelControl45
@@ -3525,302 +3674,6 @@ Partial Class EvaluationConsultants
         Me.DateSoumRapTech.Properties.VistaTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
         Me.DateSoumRapTech.Size = New System.Drawing.Size(107, 20)
         Me.DateSoumRapTech.TabIndex = 97
-        '
-        'PanelOffreFinanciere
-        '
-        Me.PanelOffreFinanciere.Controls.Add(Me.GroupControl2)
-        Me.PanelOffreFinanciere.Controls.Add(Me.PanelControl3)
-        Me.PanelOffreFinanciere.Controls.Add(Me.PanelExecuter)
-        Me.PanelOffreFinanciere.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelOffreFinanciere.Location = New System.Drawing.Point(0, 0)
-        Me.PanelOffreFinanciere.Name = "PanelOffreFinanciere"
-        Me.PanelOffreFinanciere.Size = New System.Drawing.Size(978, 653)
-        Me.PanelOffreFinanciere.TabIndex = 7
-        Me.PanelOffreFinanciere.Visible = False
-        '
-        'GroupControl2
-        '
-        Me.GroupControl2.AppearanceCaption.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupControl2.AppearanceCaption.Options.UseFont = True
-        Me.GroupControl2.AppearanceCaption.Options.UseTextOptions = True
-        Me.GroupControl2.AppearanceCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GroupControl2.Controls.Add(Me.PanelSaisieOffre)
-        Me.GroupControl2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GroupControl2.Location = New System.Drawing.Point(2, 81)
-        Me.GroupControl2.Name = "GroupControl2"
-        Me.GroupControl2.Size = New System.Drawing.Size(974, 570)
-        Me.GroupControl2.TabIndex = 5
-        Me.GroupControl2.Text = "Traitement"
-        '
-        'PanelSaisieOffre
-        '
-        Me.PanelSaisieOffre.Controls.Add(Me.GridSaisieOffreFinance)
-        Me.PanelSaisieOffre.Controls.Add(Me.GridBilanOffreFinancier)
-        Me.PanelSaisieOffre.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelSaisieOffre.Location = New System.Drawing.Point(2, 23)
-        Me.PanelSaisieOffre.Name = "PanelSaisieOffre"
-        Me.PanelSaisieOffre.Size = New System.Drawing.Size(970, 545)
-        Me.PanelSaisieOffre.TabIndex = 7
-        '
-        'GridSaisieOffreFinance
-        '
-        Me.GridSaisieOffreFinance.ContextMenuStrip = Me.ContextMenuStrip2
-        Me.GridSaisieOffreFinance.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GridSaisieOffreFinance.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GridSaisieOffreFinance.Location = New System.Drawing.Point(2, 2)
-        Me.GridSaisieOffreFinance.MainView = Me.ViewSaisiOffreFinance
-        Me.GridSaisieOffreFinance.Name = "GridSaisieOffreFinance"
-        Me.GridSaisieOffreFinance.Size = New System.Drawing.Size(966, 541)
-        Me.GridSaisieOffreFinance.TabIndex = 5
-        Me.GridSaisieOffreFinance.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ViewSaisiOffreFinance})
-        Me.GridSaisieOffreFinance.Visible = False
-        '
-        'ContextMenuStrip2
-        '
-        Me.ContextMenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SaisirOffre, Me.CalculerToolStripMenuItem, Me.RésultatCalculOffreFinancièreToolStripMenuItem})
-        Me.ContextMenuStrip2.Name = "ContextMenuStrip2"
-        Me.ContextMenuStrip2.Size = New System.Drawing.Size(234, 70)
-        '
-        'SaisirOffre
-        '
-        Me.SaisirOffre.Image = Global.ClearProject.My.Resources.Resources.CustomerRevenue_16x16
-        Me.SaisirOffre.Name = "SaisirOffre"
-        Me.SaisirOffre.Size = New System.Drawing.Size(233, 22)
-        Me.SaisirOffre.Text = "Saisir Offre Financière"
-        '
-        'CalculerToolStripMenuItem
-        '
-        Me.CalculerToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.Revenue_16x16
-        Me.CalculerToolStripMenuItem.Name = "CalculerToolStripMenuItem"
-        Me.CalculerToolStripMenuItem.Size = New System.Drawing.Size(233, 22)
-        Me.CalculerToolStripMenuItem.Text = "Calculer l'Offre Financière"
-        '
-        'RésultatCalculOffreFinancièreToolStripMenuItem
-        '
-        Me.RésultatCalculOffreFinancièreToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.CustomersByDate_16x16
-        Me.RésultatCalculOffreFinancièreToolStripMenuItem.Name = "RésultatCalculOffreFinancièreToolStripMenuItem"
-        Me.RésultatCalculOffreFinancièreToolStripMenuItem.Size = New System.Drawing.Size(233, 22)
-        Me.RésultatCalculOffreFinancièreToolStripMenuItem.Text = "Résultat calcul offre financière"
-        '
-        'ViewSaisiOffreFinance
-        '
-        Me.ViewSaisiOffreFinance.ActiveFilterEnabled = False
-        Me.ViewSaisiOffreFinance.Appearance.Row.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ViewSaisiOffreFinance.Appearance.Row.Options.UseFont = True
-        Me.ViewSaisiOffreFinance.GridControl = Me.GridSaisieOffreFinance
-        Me.ViewSaisiOffreFinance.Name = "ViewSaisiOffreFinance"
-        Me.ViewSaisiOffreFinance.OptionsBehavior.Editable = False
-        Me.ViewSaisiOffreFinance.OptionsBehavior.ReadOnly = True
-        Me.ViewSaisiOffreFinance.OptionsCustomization.AllowColumnMoving = False
-        Me.ViewSaisiOffreFinance.OptionsCustomization.AllowFilter = False
-        Me.ViewSaisiOffreFinance.OptionsCustomization.AllowGroup = False
-        Me.ViewSaisiOffreFinance.OptionsCustomization.AllowSort = False
-        Me.ViewSaisiOffreFinance.OptionsFilter.AllowFilterEditor = False
-        Me.ViewSaisiOffreFinance.OptionsFilter.AllowFilterIncrementalSearch = False
-        Me.ViewSaisiOffreFinance.OptionsPrint.AutoWidth = False
-        Me.ViewSaisiOffreFinance.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never
-        Me.ViewSaisiOffreFinance.OptionsView.ShowGroupExpandCollapseButtons = False
-        Me.ViewSaisiOffreFinance.OptionsView.ShowGroupPanel = False
-        Me.ViewSaisiOffreFinance.OptionsView.ShowVerticalLines = DevExpress.Utils.DefaultBoolean.[False]
-        Me.ViewSaisiOffreFinance.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow
-        '
-        'GridBilanOffreFinancier
-        '
-        Me.GridBilanOffreFinancier.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GridBilanOffreFinancier.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GridBilanOffreFinancier.Location = New System.Drawing.Point(2, 2)
-        Me.GridBilanOffreFinancier.MainView = Me.ViewBilanOffre
-        Me.GridBilanOffreFinancier.Name = "GridBilanOffreFinancier"
-        Me.GridBilanOffreFinancier.Size = New System.Drawing.Size(966, 541)
-        Me.GridBilanOffreFinancier.TabIndex = 6
-        Me.GridBilanOffreFinancier.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ViewBilanOffre})
-        Me.GridBilanOffreFinancier.Visible = False
-        '
-        'ViewBilanOffre
-        '
-        Me.ViewBilanOffre.ActiveFilterEnabled = False
-        Me.ViewBilanOffre.Appearance.Row.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ViewBilanOffre.Appearance.Row.Options.UseFont = True
-        Me.ViewBilanOffre.GridControl = Me.GridBilanOffreFinancier
-        Me.ViewBilanOffre.Name = "ViewBilanOffre"
-        Me.ViewBilanOffre.OptionsBehavior.Editable = False
-        Me.ViewBilanOffre.OptionsBehavior.ReadOnly = True
-        Me.ViewBilanOffre.OptionsCustomization.AllowColumnMoving = False
-        Me.ViewBilanOffre.OptionsCustomization.AllowFilter = False
-        Me.ViewBilanOffre.OptionsCustomization.AllowGroup = False
-        Me.ViewBilanOffre.OptionsCustomization.AllowSort = False
-        Me.ViewBilanOffre.OptionsFilter.AllowFilterEditor = False
-        Me.ViewBilanOffre.OptionsFilter.AllowFilterIncrementalSearch = False
-        Me.ViewBilanOffre.OptionsPrint.AutoWidth = False
-        Me.ViewBilanOffre.OptionsView.ColumnAutoWidth = False
-        Me.ViewBilanOffre.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never
-        Me.ViewBilanOffre.OptionsView.ShowGroupExpandCollapseButtons = False
-        Me.ViewBilanOffre.OptionsView.ShowGroupPanel = False
-        Me.ViewBilanOffre.OptionsView.ShowVerticalLines = DevExpress.Utils.DefaultBoolean.[False]
-        Me.ViewBilanOffre.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow
-        '
-        'PanelControl3
-        '
-        Me.PanelControl3.Controls.Add(Me.TxtTypeExamen)
-        Me.PanelControl3.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelControl3.Location = New System.Drawing.Point(2, 51)
-        Me.PanelControl3.Name = "PanelControl3"
-        Me.PanelControl3.Size = New System.Drawing.Size(974, 30)
-        Me.PanelControl3.TabIndex = 7
-        '
-        'TxtTypeExamen
-        '
-        Me.TxtTypeExamen.Appearance.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtTypeExamen.Appearance.ForeColor = System.Drawing.Color.Navy
-        Me.TxtTypeExamen.Appearance.Options.UseFont = True
-        Me.TxtTypeExamen.Appearance.Options.UseForeColor = True
-        Me.TxtTypeExamen.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TxtTypeExamen.Image = Global.ClearProject.My.Resources.Resources.Ribbon_Content_16x16
-        Me.TxtTypeExamen.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.TxtTypeExamen.Location = New System.Drawing.Point(2, 2)
-        Me.TxtTypeExamen.Name = "TxtTypeExamen"
-        Me.TxtTypeExamen.Size = New System.Drawing.Size(970, 26)
-        Me.TxtTypeExamen.TabIndex = 0
-        '
-        'PanelExecuter
-        '
-        Me.PanelExecuter.Controls.Add(Me.BtResultatEvalFin)
-        Me.PanelExecuter.Controls.Add(Me.GroupBoxOuvertureOffres)
-        Me.PanelExecuter.Controls.Add(Me.BtValiderEvalOffresFin)
-        Me.PanelExecuter.Controls.Add(Me.BtOuvertureOffre)
-        Me.PanelExecuter.Controls.Add(Me.BtResultatSaisiOffre)
-        Me.PanelExecuter.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelExecuter.Location = New System.Drawing.Point(2, 2)
-        Me.PanelExecuter.Name = "PanelExecuter"
-        Me.PanelExecuter.Size = New System.Drawing.Size(974, 49)
-        Me.PanelExecuter.TabIndex = 4
-        '
-        'BtResultatEvalFin
-        '
-        Me.BtResultatEvalFin.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BtResultatEvalFin.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtResultatEvalFin.Appearance.Options.UseFont = True
-        Me.BtResultatEvalFin.Image = Global.ClearProject.My.Resources.Resources.RevenueSplit_32x32
-        Me.BtResultatEvalFin.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.BtResultatEvalFin.Location = New System.Drawing.Point(588, 4)
-        Me.BtResultatEvalFin.Name = "BtResultatEvalFin"
-        Me.BtResultatEvalFin.Size = New System.Drawing.Size(47, 39)
-        ToolTipTitleItem405.Appearance.Image = Global.ClearProject.My.Resources.Resources.Revenue_16x16
-        ToolTipTitleItem405.Appearance.Options.UseImage = True
-        ToolTipTitleItem405.Image = Global.ClearProject.My.Resources.Resources.Revenue_16x16
-        ToolTipTitleItem405.Text = "Résultat"
-        ToolTipItem203.LeftIndent = 6
-        ToolTipItem203.Text = "Résultat évaluation financière"
-        ToolTipTitleItem406.LeftIndent = 6
-        ToolTipTitleItem406.Text = "Evaluation fiancière"
-        SuperToolTip203.Items.Add(ToolTipTitleItem405)
-        SuperToolTip203.Items.Add(ToolTipItem203)
-        SuperToolTip203.Items.Add(ToolTipSeparatorItem203)
-        SuperToolTip203.Items.Add(ToolTipTitleItem406)
-        Me.BtResultatEvalFin.SuperTip = SuperToolTip203
-        Me.BtResultatEvalFin.TabIndex = 23
-        Me.BtResultatEvalFin.Text = "Résultat Evaluation" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " financière"
-        '
-        'GroupBoxOuvertureOffres
-        '
-        Me.GroupBoxOuvertureOffres.Controls.Add(Me.NouvelOuvertureOffres)
-        Me.GroupBoxOuvertureOffres.Controls.Add(Me.Label1)
-        Me.GroupBoxOuvertureOffres.Controls.Add(Me.CmbNumOuvertureOffre)
-        Me.GroupBoxOuvertureOffres.Location = New System.Drawing.Point(5, 3)
-        Me.GroupBoxOuvertureOffres.Name = "GroupBoxOuvertureOffres"
-        Me.GroupBoxOuvertureOffres.Size = New System.Drawing.Size(381, 47)
-        Me.GroupBoxOuvertureOffres.TabIndex = 22
-        Me.GroupBoxOuvertureOffres.TabStop = False
-        Me.GroupBoxOuvertureOffres.Text = "Liste des ouvertures effectuée"
-        '
-        'NouvelOuvertureOffres
-        '
-        Me.NouvelOuvertureOffres.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.NouvelOuvertureOffres.Appearance.Options.UseFont = True
-        Me.NouvelOuvertureOffres.Image = Global.ClearProject.My.Resources.Resources.CustomerRevenue_16x16
-        Me.NouvelOuvertureOffres.Location = New System.Drawing.Point(247, 13)
-        Me.NouvelOuvertureOffres.Name = "NouvelOuvertureOffres"
-        Me.NouvelOuvertureOffres.Size = New System.Drawing.Size(128, 27)
-        Me.NouvelOuvertureOffres.TabIndex = 23
-        Me.NouvelOuvertureOffres.Text = "Nouvelle ouverture"
-        Me.NouvelOuvertureOffres.ToolTip = "Nouvelle ouverture"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 20)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(72, 13)
-        Me.Label1.TabIndex = 22
-        Me.Label1.Text = "N° Ouverture"
-        '
-        'CmbNumOuvertureOffre
-        '
-        Me.CmbNumOuvertureOffre.EditValue = ""
-        Me.CmbNumOuvertureOffre.Location = New System.Drawing.Point(80, 16)
-        Me.CmbNumOuvertureOffre.Name = "CmbNumOuvertureOffre"
-        Me.CmbNumOuvertureOffre.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CmbNumOuvertureOffre.Properties.Appearance.Options.UseFont = True
-        Me.CmbNumOuvertureOffre.Properties.Appearance.Options.UseTextOptions = True
-        Me.CmbNumOuvertureOffre.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.CmbNumOuvertureOffre.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.CmbNumOuvertureOffre.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.CmbNumOuvertureOffre.Size = New System.Drawing.Size(159, 22)
-        Me.CmbNumOuvertureOffre.TabIndex = 21
-        '
-        'BtValiderEvalOffresFin
-        '
-        Me.BtValiderEvalOffresFin.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BtValiderEvalOffresFin.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtValiderEvalOffresFin.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.BtValiderEvalOffresFin.Appearance.Options.UseFont = True
-        Me.BtValiderEvalOffresFin.Appearance.Options.UseForeColor = True
-        Me.BtValiderEvalOffresFin.Image = Global.ClearProject.My.Resources.Resources.MediaPerformance_32x32
-        Me.BtValiderEvalOffresFin.Location = New System.Drawing.Point(640, 4)
-        Me.BtValiderEvalOffresFin.Name = "BtValiderEvalOffresFin"
-        Me.BtValiderEvalOffresFin.Size = New System.Drawing.Size(154, 39)
-        Me.BtValiderEvalOffresFin.TabIndex = 20
-        Me.BtValiderEvalOffresFin.Text = " Valider l'évaluation" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "financière"
-        '
-        'BtOuvertureOffre
-        '
-        Me.BtOuvertureOffre.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BtOuvertureOffre.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtOuvertureOffre.Appearance.ForeColor = System.Drawing.Color.DarkRed
-        Me.BtOuvertureOffre.Appearance.Options.UseFont = True
-        Me.BtOuvertureOffre.Appearance.Options.UseForeColor = True
-        Me.BtOuvertureOffre.Image = Global.ClearProject.My.Resources.Resources.Scheduler_32x32
-        Me.BtOuvertureOffre.Location = New System.Drawing.Point(798, 5)
-        Me.BtOuvertureOffre.Name = "BtOuvertureOffre"
-        Me.BtOuvertureOffre.Size = New System.Drawing.Size(170, 39)
-        Me.BtOuvertureOffre.TabIndex = 19
-        Me.BtOuvertureOffre.Text = "Démarrer l'ouverture" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "des offres financières"
-        '
-        'BtResultatSaisiOffre
-        '
-        Me.BtResultatSaisiOffre.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BtResultatSaisiOffre.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtResultatSaisiOffre.Appearance.Options.UseFont = True
-        Me.BtResultatSaisiOffre.Image = Global.ClearProject.My.Resources.Resources.View_32x32
-        Me.BtResultatSaisiOffre.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.BtResultatSaisiOffre.Location = New System.Drawing.Point(534, 4)
-        Me.BtResultatSaisiOffre.Name = "BtResultatSaisiOffre"
-        Me.BtResultatSaisiOffre.Size = New System.Drawing.Size(50, 39)
-        ToolTipTitleItem407.Appearance.Image = Global.ClearProject.My.Resources.Resources.View_16x16
-        ToolTipTitleItem407.Appearance.Options.UseImage = True
-        ToolTipTitleItem407.Image = Global.ClearProject.My.Resources.Resources.View_16x16
-        ToolTipTitleItem407.Text = "Résultat"
-        ToolTipItem204.LeftIndent = 6
-        ToolTipItem204.Text = "Résultat ouverture des offres"
-        ToolTipTitleItem408.LeftIndent = 6
-        ToolTipTitleItem408.Text = "Offre financière"
-        SuperToolTip204.Items.Add(ToolTipTitleItem407)
-        SuperToolTip204.Items.Add(ToolTipItem204)
-        SuperToolTip204.Items.Add(ToolTipSeparatorItem204)
-        SuperToolTip204.Items.Add(ToolTipTitleItem408)
-        Me.BtResultatSaisiOffre.SuperTip = SuperToolTip204
-        Me.BtResultatSaisiOffre.TabIndex = 18
-        Me.BtResultatSaisiOffre.Text = "Resultat ouverture" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "des offres"
         '
         'PanelRapportCombinet
         '
@@ -3962,19 +3815,19 @@ Partial Class EvaluationConsultants
         Me.SimpleButton2.Location = New System.Drawing.Point(654, 18)
         Me.SimpleButton2.Name = "SimpleButton2"
         Me.SimpleButton2.Size = New System.Drawing.Size(41, 28)
-        ToolTipTitleItem409.Appearance.Image = Global.ClearProject.My.Resources.Resources.CustomersKPI_16x16
-        ToolTipTitleItem409.Appearance.Options.UseImage = True
-        ToolTipTitleItem409.Image = Global.ClearProject.My.Resources.Resources.CustomersKPI_16x16
-        ToolTipTitleItem409.Text = "Résultat"
-        ToolTipItem205.LeftIndent = 6
-        ToolTipItem205.Text = "Cliquez pour voir le résultat de l'évaluation technique"
-        ToolTipTitleItem410.LeftIndent = 6
-        ToolTipTitleItem410.Text = "Evaluation technique"
-        SuperToolTip205.Items.Add(ToolTipTitleItem409)
-        SuperToolTip205.Items.Add(ToolTipItem205)
-        SuperToolTip205.Items.Add(ToolTipSeparatorItem205)
-        SuperToolTip205.Items.Add(ToolTipTitleItem410)
-        Me.SimpleButton2.SuperTip = SuperToolTip205
+        ToolTipTitleItem49.Appearance.Image = Global.ClearProject.My.Resources.Resources.CustomersKPI_16x16
+        ToolTipTitleItem49.Appearance.Options.UseImage = True
+        ToolTipTitleItem49.Image = Global.ClearProject.My.Resources.Resources.CustomersKPI_16x16
+        ToolTipTitleItem49.Text = "Résultat"
+        ToolTipItem25.LeftIndent = 6
+        ToolTipItem25.Text = "Cliquez pour voir le résultat de l'évaluation technique"
+        ToolTipTitleItem50.LeftIndent = 6
+        ToolTipTitleItem50.Text = "Evaluation technique"
+        SuperToolTip25.Items.Add(ToolTipTitleItem49)
+        SuperToolTip25.Items.Add(ToolTipItem25)
+        SuperToolTip25.Items.Add(ToolTipSeparatorItem25)
+        SuperToolTip25.Items.Add(ToolTipTitleItem50)
+        Me.SimpleButton2.SuperTip = SuperToolTip25
         Me.SimpleButton2.TabIndex = 57
         '
         'Actualiserrc
@@ -3989,19 +3842,19 @@ Partial Class EvaluationConsultants
         Me.Actualiserrc.Location = New System.Drawing.Point(745, 18)
         Me.Actualiserrc.Name = "Actualiserrc"
         Me.Actualiserrc.Size = New System.Drawing.Size(41, 28)
-        ToolTipTitleItem411.Appearance.Image = Global.ClearProject.My.Resources.Resources.vieux_rafraichir_vue_icone_4185_16
-        ToolTipTitleItem411.Appearance.Options.UseImage = True
-        ToolTipTitleItem411.Image = Global.ClearProject.My.Resources.Resources.vieux_rafraichir_vue_icone_4185_16
-        ToolTipTitleItem411.Text = "Actualiser"
-        ToolTipItem206.LeftIndent = 6
-        ToolTipItem206.Text = "Cliquez pour actualiser le rapport après modification"
-        ToolTipTitleItem412.LeftIndent = 6
-        ToolTipTitleItem412.Text = "Rapport combiné"
-        SuperToolTip206.Items.Add(ToolTipTitleItem411)
-        SuperToolTip206.Items.Add(ToolTipItem206)
-        SuperToolTip206.Items.Add(ToolTipSeparatorItem206)
-        SuperToolTip206.Items.Add(ToolTipTitleItem412)
-        Me.Actualiserrc.SuperTip = SuperToolTip206
+        ToolTipTitleItem51.Appearance.Image = Global.ClearProject.My.Resources.Resources.vieux_rafraichir_vue_icone_4185_16
+        ToolTipTitleItem51.Appearance.Options.UseImage = True
+        ToolTipTitleItem51.Image = Global.ClearProject.My.Resources.Resources.vieux_rafraichir_vue_icone_4185_16
+        ToolTipTitleItem51.Text = "Actualiser"
+        ToolTipItem26.LeftIndent = 6
+        ToolTipItem26.Text = "Cliquez pour actualiser le rapport après modification"
+        ToolTipTitleItem52.LeftIndent = 6
+        ToolTipTitleItem52.Text = "Rapport combiné"
+        SuperToolTip26.Items.Add(ToolTipTitleItem51)
+        SuperToolTip26.Items.Add(ToolTipItem26)
+        SuperToolTip26.Items.Add(ToolTipSeparatorItem26)
+        SuperToolTip26.Items.Add(ToolTipTitleItem52)
+        Me.Actualiserrc.SuperTip = SuperToolTip26
         Me.Actualiserrc.TabIndex = 56
         '
         'LabelControl33
@@ -4026,19 +3879,19 @@ Partial Class EvaluationConsultants
         Me.modifierrc.Location = New System.Drawing.Point(701, 18)
         Me.modifierrc.Name = "modifierrc"
         Me.modifierrc.Size = New System.Drawing.Size(41, 28)
-        ToolTipTitleItem413.Appearance.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
-        ToolTipTitleItem413.Appearance.Options.UseImage = True
-        ToolTipTitleItem413.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
-        ToolTipTitleItem413.Text = "Modifier"
-        ToolTipItem207.LeftIndent = 6
-        ToolTipItem207.Text = "Cliquez pour modifier le rapport"
-        ToolTipTitleItem414.LeftIndent = 6
-        ToolTipTitleItem414.Text = "Rapport combiné"
-        SuperToolTip207.Items.Add(ToolTipTitleItem413)
-        SuperToolTip207.Items.Add(ToolTipItem207)
-        SuperToolTip207.Items.Add(ToolTipSeparatorItem207)
-        SuperToolTip207.Items.Add(ToolTipTitleItem414)
-        Me.modifierrc.SuperTip = SuperToolTip207
+        ToolTipTitleItem53.Appearance.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
+        ToolTipTitleItem53.Appearance.Options.UseImage = True
+        ToolTipTitleItem53.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
+        ToolTipTitleItem53.Text = "Modifier"
+        ToolTipItem27.LeftIndent = 6
+        ToolTipItem27.Text = "Cliquez pour modifier le rapport"
+        ToolTipTitleItem54.LeftIndent = 6
+        ToolTipTitleItem54.Text = "Rapport combiné"
+        SuperToolTip27.Items.Add(ToolTipTitleItem53)
+        SuperToolTip27.Items.Add(ToolTipItem27)
+        SuperToolTip27.Items.Add(ToolTipSeparatorItem27)
+        SuperToolTip27.Items.Add(ToolTipTitleItem54)
+        Me.modifierrc.SuperTip = SuperToolTip27
         Me.modifierrc.TabIndex = 54
         '
         'Validerrc
@@ -4053,19 +3906,19 @@ Partial Class EvaluationConsultants
         Me.Validerrc.Location = New System.Drawing.Point(836, 18)
         Me.Validerrc.Name = "Validerrc"
         Me.Validerrc.Size = New System.Drawing.Size(41, 28)
-        ToolTipTitleItem415.Appearance.Image = Global.ClearProject.My.Resources.Resources.ActiveRents_16x16
-        ToolTipTitleItem415.Appearance.Options.UseImage = True
-        ToolTipTitleItem415.Image = Global.ClearProject.My.Resources.Resources.ActiveRents_16x16
-        ToolTipTitleItem415.Text = "Valider"
-        ToolTipItem208.LeftIndent = 6
-        ToolTipItem208.Text = "Cliquez pour valider le rapport"
-        ToolTipTitleItem416.LeftIndent = 6
-        ToolTipTitleItem416.Text = "Rapport combiné"
-        SuperToolTip208.Items.Add(ToolTipTitleItem415)
-        SuperToolTip208.Items.Add(ToolTipItem208)
-        SuperToolTip208.Items.Add(ToolTipSeparatorItem208)
-        SuperToolTip208.Items.Add(ToolTipTitleItem416)
-        Me.Validerrc.SuperTip = SuperToolTip208
+        ToolTipTitleItem55.Appearance.Image = Global.ClearProject.My.Resources.Resources.ActiveRents_16x16
+        ToolTipTitleItem55.Appearance.Options.UseImage = True
+        ToolTipTitleItem55.Image = Global.ClearProject.My.Resources.Resources.ActiveRents_16x16
+        ToolTipTitleItem55.Text = "Valider"
+        ToolTipItem28.LeftIndent = 6
+        ToolTipItem28.Text = "Cliquez pour valider le rapport"
+        ToolTipTitleItem56.LeftIndent = 6
+        ToolTipTitleItem56.Text = "Rapport combiné"
+        SuperToolTip28.Items.Add(ToolTipTitleItem55)
+        SuperToolTip28.Items.Add(ToolTipItem28)
+        SuperToolTip28.Items.Add(ToolTipSeparatorItem28)
+        SuperToolTip28.Items.Add(ToolTipTitleItem56)
+        Me.Validerrc.SuperTip = SuperToolTip28
         Me.Validerrc.TabIndex = 52
         '
         'Envoibailleurrc
@@ -4080,19 +3933,19 @@ Partial Class EvaluationConsultants
         Me.Envoibailleurrc.Location = New System.Drawing.Point(791, 18)
         Me.Envoibailleurrc.Name = "Envoibailleurrc"
         Me.Envoibailleurrc.Size = New System.Drawing.Size(41, 28)
-        ToolTipTitleItem417.Appearance.Image = Global.ClearProject.My.Resources.Resources.Previous_16x16
-        ToolTipTitleItem417.Appearance.Options.UseImage = True
-        ToolTipTitleItem417.Image = Global.ClearProject.My.Resources.Resources.Previous_16x16
-        ToolTipTitleItem417.Text = "Envoyer"
-        ToolTipItem209.LeftIndent = 6
-        ToolTipItem209.Text = "Cliquez pour envoyer le rapport au bailleur"
-        ToolTipTitleItem418.LeftIndent = 6
-        ToolTipTitleItem418.Text = "Rapport combiné"
-        SuperToolTip209.Items.Add(ToolTipTitleItem417)
-        SuperToolTip209.Items.Add(ToolTipItem209)
-        SuperToolTip209.Items.Add(ToolTipSeparatorItem209)
-        SuperToolTip209.Items.Add(ToolTipTitleItem418)
-        Me.Envoibailleurrc.SuperTip = SuperToolTip209
+        ToolTipTitleItem57.Appearance.Image = Global.ClearProject.My.Resources.Resources.Previous_16x16
+        ToolTipTitleItem57.Appearance.Options.UseImage = True
+        ToolTipTitleItem57.Image = Global.ClearProject.My.Resources.Resources.Previous_16x16
+        ToolTipTitleItem57.Text = "Envoyer"
+        ToolTipItem29.LeftIndent = 6
+        ToolTipItem29.Text = "Cliquez pour envoyer le rapport au bailleur"
+        ToolTipTitleItem58.LeftIndent = 6
+        ToolTipTitleItem58.Text = "Rapport combiné"
+        SuperToolTip29.Items.Add(ToolTipTitleItem57)
+        SuperToolTip29.Items.Add(ToolTipItem29)
+        SuperToolTip29.Items.Add(ToolTipSeparatorItem29)
+        SuperToolTip29.Items.Add(ToolTipTitleItem58)
+        Me.Envoibailleurrc.SuperTip = SuperToolTip29
         Me.Envoibailleurrc.TabIndex = 51
         '
         'Wordrc
@@ -4107,19 +3960,19 @@ Partial Class EvaluationConsultants
         Me.Wordrc.Location = New System.Drawing.Point(928, 18)
         Me.Wordrc.Name = "Wordrc"
         Me.Wordrc.Size = New System.Drawing.Size(41, 28)
-        ToolTipTitleItem419.Appearance.Image = Global.ClearProject.My.Resources.Resources.ExportToRTF_16x16
-        ToolTipTitleItem419.Appearance.Options.UseImage = True
-        ToolTipTitleItem419.Image = Global.ClearProject.My.Resources.Resources.ExportToRTF_16x16
-        ToolTipTitleItem419.Text = "Exporter"
-        ToolTipItem210.LeftIndent = 6
-        ToolTipItem210.Text = "Cliquez pour exporter le rapport au format word"
-        ToolTipTitleItem420.LeftIndent = 6
-        ToolTipTitleItem420.Text = "Rapport combiné"
-        SuperToolTip210.Items.Add(ToolTipTitleItem419)
-        SuperToolTip210.Items.Add(ToolTipItem210)
-        SuperToolTip210.Items.Add(ToolTipSeparatorItem210)
-        SuperToolTip210.Items.Add(ToolTipTitleItem420)
-        Me.Wordrc.SuperTip = SuperToolTip210
+        ToolTipTitleItem59.Appearance.Image = Global.ClearProject.My.Resources.Resources.ExportToRTF_16x16
+        ToolTipTitleItem59.Appearance.Options.UseImage = True
+        ToolTipTitleItem59.Image = Global.ClearProject.My.Resources.Resources.ExportToRTF_16x16
+        ToolTipTitleItem59.Text = "Exporter"
+        ToolTipItem30.LeftIndent = 6
+        ToolTipItem30.Text = "Cliquez pour exporter le rapport au format word"
+        ToolTipTitleItem60.LeftIndent = 6
+        ToolTipTitleItem60.Text = "Rapport combiné"
+        SuperToolTip30.Items.Add(ToolTipTitleItem59)
+        SuperToolTip30.Items.Add(ToolTipItem30)
+        SuperToolTip30.Items.Add(ToolTipSeparatorItem30)
+        SuperToolTip30.Items.Add(ToolTipTitleItem60)
+        Me.Wordrc.SuperTip = SuperToolTip30
         Me.Wordrc.TabIndex = 50
         '
         'pdfrc
@@ -4134,19 +3987,19 @@ Partial Class EvaluationConsultants
         Me.pdfrc.Location = New System.Drawing.Point(883, 18)
         Me.pdfrc.Name = "pdfrc"
         Me.pdfrc.Size = New System.Drawing.Size(41, 28)
-        ToolTipTitleItem421.Appearance.Image = Global.ClearProject.My.Resources.Resources.ExportToPDF_16x16
-        ToolTipTitleItem421.Appearance.Options.UseImage = True
-        ToolTipTitleItem421.Image = Global.ClearProject.My.Resources.Resources.ExportToPDF_16x16
-        ToolTipTitleItem421.Text = "Exporter"
-        ToolTipItem211.LeftIndent = 6
-        ToolTipItem211.Text = "Cliquez pour exporter le rapport au format pdf"
-        ToolTipTitleItem422.LeftIndent = 6
-        ToolTipTitleItem422.Text = "Rapport combiné"
-        SuperToolTip211.Items.Add(ToolTipTitleItem421)
-        SuperToolTip211.Items.Add(ToolTipItem211)
-        SuperToolTip211.Items.Add(ToolTipSeparatorItem211)
-        SuperToolTip211.Items.Add(ToolTipTitleItem422)
-        Me.pdfrc.SuperTip = SuperToolTip211
+        ToolTipTitleItem61.Appearance.Image = Global.ClearProject.My.Resources.Resources.ExportToPDF_16x16
+        ToolTipTitleItem61.Appearance.Options.UseImage = True
+        ToolTipTitleItem61.Image = Global.ClearProject.My.Resources.Resources.ExportToPDF_16x16
+        ToolTipTitleItem61.Text = "Exporter"
+        ToolTipItem31.LeftIndent = 6
+        ToolTipItem31.Text = "Cliquez pour exporter le rapport au format pdf"
+        ToolTipTitleItem62.LeftIndent = 6
+        ToolTipTitleItem62.Text = "Rapport combiné"
+        SuperToolTip31.Items.Add(ToolTipTitleItem61)
+        SuperToolTip31.Items.Add(ToolTipItem31)
+        SuperToolTip31.Items.Add(ToolTipSeparatorItem31)
+        SuperToolTip31.Items.Add(ToolTipTitleItem62)
+        Me.pdfrc.SuperTip = SuperToolTip31
         Me.pdfrc.TabIndex = 49
         '
         'Rejeterrc
@@ -4160,19 +4013,19 @@ Partial Class EvaluationConsultants
         Me.Rejeterrc.Location = New System.Drawing.Point(581, 19)
         Me.Rejeterrc.Name = "Rejeterrc"
         Me.Rejeterrc.Size = New System.Drawing.Size(41, 28)
-        ToolTipTitleItem423.Appearance.Image = Global.ClearProject.My.Resources.Resources.Delete_16x16
-        ToolTipTitleItem423.Appearance.Options.UseImage = True
-        ToolTipTitleItem423.Image = Global.ClearProject.My.Resources.Resources.Delete_16x16
-        ToolTipTitleItem423.Text = "Rejeter"
-        ToolTipItem212.LeftIndent = 6
-        ToolTipItem212.Text = "Cliquez pour rejeter le rapport"
-        ToolTipTitleItem424.LeftIndent = 6
-        ToolTipTitleItem424.Text = "Rapport combine"
-        SuperToolTip212.Items.Add(ToolTipTitleItem423)
-        SuperToolTip212.Items.Add(ToolTipItem212)
-        SuperToolTip212.Items.Add(ToolTipSeparatorItem212)
-        SuperToolTip212.Items.Add(ToolTipTitleItem424)
-        Me.Rejeterrc.SuperTip = SuperToolTip212
+        ToolTipTitleItem63.Appearance.Image = Global.ClearProject.My.Resources.Resources.Delete_16x16
+        ToolTipTitleItem63.Appearance.Options.UseImage = True
+        ToolTipTitleItem63.Image = Global.ClearProject.My.Resources.Resources.Delete_16x16
+        ToolTipTitleItem63.Text = "Rejeter"
+        ToolTipItem32.LeftIndent = 6
+        ToolTipItem32.Text = "Cliquez pour rejeter le rapport"
+        ToolTipTitleItem64.LeftIndent = 6
+        ToolTipTitleItem64.Text = "Rapport combine"
+        SuperToolTip32.Items.Add(ToolTipTitleItem63)
+        SuperToolTip32.Items.Add(ToolTipItem32)
+        SuperToolTip32.Items.Add(ToolTipSeparatorItem32)
+        SuperToolTip32.Items.Add(ToolTipTitleItem64)
+        Me.Rejeterrc.SuperTip = SuperToolTip32
         Me.Rejeterrc.TabIndex = 48
         Me.Rejeterrc.Visible = False
         '
@@ -4508,8 +4361,8 @@ Partial Class EvaluationConsultants
         '
         Me.GridComite.AllowUserToAddRows = False
         Me.GridComite.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.GridComite.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.GridComite.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
         Me.GridComite.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -4526,6 +4379,56 @@ Partial Class EvaluationConsultants
         Me.GridComite.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.GridComite.Size = New System.Drawing.Size(588, 148)
         Me.GridComite.TabIndex = 86
+        '
+        'Refcmte
+        '
+        Me.Refcmte.HeaderText = "Ref"
+        Me.Refcmte.MinimumWidth = 10
+        Me.Refcmte.Name = "Refcmte"
+        Me.Refcmte.ReadOnly = True
+        Me.Refcmte.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Refcmte.Visible = False
+        Me.Refcmte.Width = 30
+        '
+        'NomPrencmte
+        '
+        Me.NomPrencmte.HeaderText = "Nom et Prénoms"
+        Me.NomPrencmte.Name = "NomPrencmte"
+        Me.NomPrencmte.ReadOnly = True
+        Me.NomPrencmte.Width = 200
+        '
+        'Contactcmte
+        '
+        Me.Contactcmte.HeaderText = "Contact"
+        Me.Contactcmte.Name = "Contactcmte"
+        Me.Contactcmte.ReadOnly = True
+        '
+        'Fonctioncmte
+        '
+        Me.Fonctioncmte.HeaderText = "Fonction"
+        Me.Fonctioncmte.Name = "Fonctioncmte"
+        Me.Fonctioncmte.ReadOnly = True
+        '
+        'Organismecmte
+        '
+        Me.Organismecmte.HeaderText = "Organisme"
+        Me.Organismecmte.Name = "Organismecmte"
+        Me.Organismecmte.ReadOnly = True
+        '
+        'TypeComite
+        '
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.TypeComite.DefaultCellStyle = DataGridViewCellStyle6
+        Me.TypeComite.HeaderText = "Autorité contractante"
+        Me.TypeComite.Name = "TypeComite"
+        Me.TypeComite.ReadOnly = True
+        '
+        'modifcmte
+        '
+        Me.modifcmte.HeaderText = "Modif"
+        Me.modifcmte.Name = "modifcmte"
+        Me.modifcmte.ReadOnly = True
+        Me.modifcmte.Visible = False
         '
         'ContactNego
         '
@@ -5010,19 +4913,19 @@ Partial Class EvaluationConsultants
         Me.ModifNego.Location = New System.Drawing.Point(398, 6)
         Me.ModifNego.Name = "ModifNego"
         Me.ModifNego.Size = New System.Drawing.Size(103, 41)
-        ToolTipTitleItem425.Appearance.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
-        ToolTipTitleItem425.Appearance.Options.UseImage = True
-        ToolTipTitleItem425.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
-        ToolTipTitleItem425.Text = "Modifier"
-        ToolTipItem213.LeftIndent = 6
-        ToolTipItem213.Text = "Cliquez pour modifier une négociation"
-        ToolTipTitleItem426.LeftIndent = 6
-        ToolTipTitleItem426.Text = "Négociation"
-        SuperToolTip213.Items.Add(ToolTipTitleItem425)
-        SuperToolTip213.Items.Add(ToolTipItem213)
-        SuperToolTip213.Items.Add(ToolTipSeparatorItem213)
-        SuperToolTip213.Items.Add(ToolTipTitleItem426)
-        Me.ModifNego.SuperTip = SuperToolTip213
+        ToolTipTitleItem65.Appearance.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
+        ToolTipTitleItem65.Appearance.Options.UseImage = True
+        ToolTipTitleItem65.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
+        ToolTipTitleItem65.Text = "Modifier"
+        ToolTipItem33.LeftIndent = 6
+        ToolTipItem33.Text = "Cliquez pour modifier une négociation"
+        ToolTipTitleItem66.LeftIndent = 6
+        ToolTipTitleItem66.Text = "Négociation"
+        SuperToolTip33.Items.Add(ToolTipTitleItem65)
+        SuperToolTip33.Items.Add(ToolTipItem33)
+        SuperToolTip33.Items.Add(ToolTipSeparatorItem33)
+        SuperToolTip33.Items.Add(ToolTipTitleItem66)
+        Me.ModifNego.SuperTip = SuperToolTip33
         Me.ModifNego.TabIndex = 44
         Me.ModifNego.Text = "Modifier" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "négociation"
         '
@@ -5035,19 +4938,19 @@ Partial Class EvaluationConsultants
         Me.NewNego.Location = New System.Drawing.Point(287, 6)
         Me.NewNego.Name = "NewNego"
         Me.NewNego.Size = New System.Drawing.Size(104, 41)
-        ToolTipTitleItem427.Appearance.Image = Global.ClearProject.My.Resources.Resources.View_16x16
-        ToolTipTitleItem427.Appearance.Options.UseImage = True
-        ToolTipTitleItem427.Image = Global.ClearProject.My.Resources.Resources.View_16x16
-        ToolTipTitleItem427.Text = "Nouvelle négociation"
-        ToolTipItem214.LeftIndent = 6
-        ToolTipItem214.Text = "Cliquez pour ajouter une négociation"
-        ToolTipTitleItem428.LeftIndent = 6
-        ToolTipTitleItem428.Text = "Négociation"
-        SuperToolTip214.Items.Add(ToolTipTitleItem427)
-        SuperToolTip214.Items.Add(ToolTipItem214)
-        SuperToolTip214.Items.Add(ToolTipSeparatorItem214)
-        SuperToolTip214.Items.Add(ToolTipTitleItem428)
-        Me.NewNego.SuperTip = SuperToolTip214
+        ToolTipTitleItem67.Appearance.Image = Global.ClearProject.My.Resources.Resources.View_16x16
+        ToolTipTitleItem67.Appearance.Options.UseImage = True
+        ToolTipTitleItem67.Image = Global.ClearProject.My.Resources.Resources.View_16x16
+        ToolTipTitleItem67.Text = "Nouvelle négociation"
+        ToolTipItem34.LeftIndent = 6
+        ToolTipItem34.Text = "Cliquez pour ajouter une négociation"
+        ToolTipTitleItem68.LeftIndent = 6
+        ToolTipTitleItem68.Text = "Négociation"
+        SuperToolTip34.Items.Add(ToolTipTitleItem67)
+        SuperToolTip34.Items.Add(ToolTipItem34)
+        SuperToolTip34.Items.Add(ToolTipSeparatorItem34)
+        SuperToolTip34.Items.Add(ToolTipTitleItem68)
+        Me.NewNego.SuperTip = SuperToolTip34
         Me.NewNego.TabIndex = 43
         Me.NewNego.Text = "Nouvelle " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "négociation"
         '
@@ -5061,19 +4964,19 @@ Partial Class EvaluationConsultants
         Me.Btprintnego.Location = New System.Drawing.Point(800, 6)
         Me.Btprintnego.Name = "Btprintnego"
         Me.Btprintnego.Size = New System.Drawing.Size(167, 39)
-        ToolTipTitleItem429.Appearance.Image = Global.ClearProject.My.Resources.Resources.imprimer_16
-        ToolTipTitleItem429.Appearance.Options.UseImage = True
-        ToolTipTitleItem429.Image = Global.ClearProject.My.Resources.Resources.imprimer_16
-        ToolTipTitleItem429.Text = "Imprimer"
-        ToolTipItem215.LeftIndent = 6
-        ToolTipItem215.Text = "Cliquez pour imprimer le pv de négociation"
-        ToolTipTitleItem430.LeftIndent = 6
-        ToolTipTitleItem430.Text = "Négociation"
-        SuperToolTip215.Items.Add(ToolTipTitleItem429)
-        SuperToolTip215.Items.Add(ToolTipItem215)
-        SuperToolTip215.Items.Add(ToolTipSeparatorItem215)
-        SuperToolTip215.Items.Add(ToolTipTitleItem430)
-        Me.Btprintnego.SuperTip = SuperToolTip215
+        ToolTipTitleItem69.Appearance.Image = Global.ClearProject.My.Resources.Resources.imprimer_16
+        ToolTipTitleItem69.Appearance.Options.UseImage = True
+        ToolTipTitleItem69.Image = Global.ClearProject.My.Resources.Resources.imprimer_16
+        ToolTipTitleItem69.Text = "Imprimer"
+        ToolTipItem35.LeftIndent = 6
+        ToolTipItem35.Text = "Cliquez pour imprimer le pv de négociation"
+        ToolTipTitleItem70.LeftIndent = 6
+        ToolTipTitleItem70.Text = "Négociation"
+        SuperToolTip35.Items.Add(ToolTipTitleItem69)
+        SuperToolTip35.Items.Add(ToolTipItem35)
+        SuperToolTip35.Items.Add(ToolTipSeparatorItem35)
+        SuperToolTip35.Items.Add(ToolTipTitleItem70)
+        Me.Btprintnego.SuperTip = SuperToolTip35
         Me.Btprintnego.TabIndex = 40
         Me.Btprintnego.Text = "Imprimer " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "le PV de la négociation"
         '
@@ -5087,19 +4990,19 @@ Partial Class EvaluationConsultants
         Me.Btsavenego.Location = New System.Drawing.Point(671, 6)
         Me.Btsavenego.Name = "Btsavenego"
         Me.Btsavenego.Size = New System.Drawing.Size(122, 39)
-        ToolTipTitleItem431.Appearance.Image = Global.ClearProject.My.Resources.Resources.Ribbon_Save_16x16
-        ToolTipTitleItem431.Appearance.Options.UseImage = True
-        ToolTipTitleItem431.Image = Global.ClearProject.My.Resources.Resources.Ribbon_Save_16x16
-        ToolTipTitleItem431.Text = "Enregistrer"
-        ToolTipItem216.LeftIndent = 6
-        ToolTipItem216.Text = "Cliquez pour enregistrer le pv de négociation"
-        ToolTipTitleItem432.LeftIndent = 6
-        ToolTipTitleItem432.Text = "Négociation"
-        SuperToolTip216.Items.Add(ToolTipTitleItem431)
-        SuperToolTip216.Items.Add(ToolTipItem216)
-        SuperToolTip216.Items.Add(ToolTipSeparatorItem216)
-        SuperToolTip216.Items.Add(ToolTipTitleItem432)
-        Me.Btsavenego.SuperTip = SuperToolTip216
+        ToolTipTitleItem71.Appearance.Image = Global.ClearProject.My.Resources.Resources.Ribbon_Save_16x16
+        ToolTipTitleItem71.Appearance.Options.UseImage = True
+        ToolTipTitleItem71.Image = Global.ClearProject.My.Resources.Resources.Ribbon_Save_16x16
+        ToolTipTitleItem71.Text = "Enregistrer"
+        ToolTipItem36.LeftIndent = 6
+        ToolTipItem36.Text = "Cliquez pour enregistrer le pv de négociation"
+        ToolTipTitleItem72.LeftIndent = 6
+        ToolTipTitleItem72.Text = "Négociation"
+        SuperToolTip36.Items.Add(ToolTipTitleItem71)
+        SuperToolTip36.Items.Add(ToolTipItem36)
+        SuperToolTip36.Items.Add(ToolTipSeparatorItem36)
+        SuperToolTip36.Items.Add(ToolTipTitleItem72)
+        Me.Btsavenego.SuperTip = SuperToolTip36
         Me.Btsavenego.TabIndex = 39
         Me.Btsavenego.Tag = ""
         Me.Btsavenego.Text = "Enregistrer " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "la négociation"
@@ -5114,6 +5017,302 @@ Partial Class EvaluationConsultants
         Me.CmbNegoEdite.Properties.MaxLength = 300
         Me.CmbNegoEdite.Size = New System.Drawing.Size(158, 24)
         Me.CmbNegoEdite.TabIndex = 112
+        '
+        'PanelOffreFinanciere
+        '
+        Me.PanelOffreFinanciere.Controls.Add(Me.GroupControl2)
+        Me.PanelOffreFinanciere.Controls.Add(Me.PanelControl3)
+        Me.PanelOffreFinanciere.Controls.Add(Me.PanelExecuter)
+        Me.PanelOffreFinanciere.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelOffreFinanciere.Location = New System.Drawing.Point(0, 0)
+        Me.PanelOffreFinanciere.Name = "PanelOffreFinanciere"
+        Me.PanelOffreFinanciere.Size = New System.Drawing.Size(978, 653)
+        Me.PanelOffreFinanciere.TabIndex = 7
+        Me.PanelOffreFinanciere.Visible = False
+        '
+        'GroupControl2
+        '
+        Me.GroupControl2.AppearanceCaption.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupControl2.AppearanceCaption.Options.UseFont = True
+        Me.GroupControl2.AppearanceCaption.Options.UseTextOptions = True
+        Me.GroupControl2.AppearanceCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GroupControl2.Controls.Add(Me.PanelSaisieOffre)
+        Me.GroupControl2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupControl2.Location = New System.Drawing.Point(2, 81)
+        Me.GroupControl2.Name = "GroupControl2"
+        Me.GroupControl2.Size = New System.Drawing.Size(974, 570)
+        Me.GroupControl2.TabIndex = 5
+        Me.GroupControl2.Text = "Traitement"
+        '
+        'PanelSaisieOffre
+        '
+        Me.PanelSaisieOffre.Controls.Add(Me.GridSaisieOffreFinance)
+        Me.PanelSaisieOffre.Controls.Add(Me.GridBilanOffreFinancier)
+        Me.PanelSaisieOffre.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelSaisieOffre.Location = New System.Drawing.Point(2, 23)
+        Me.PanelSaisieOffre.Name = "PanelSaisieOffre"
+        Me.PanelSaisieOffre.Size = New System.Drawing.Size(970, 545)
+        Me.PanelSaisieOffre.TabIndex = 7
+        '
+        'GridSaisieOffreFinance
+        '
+        Me.GridSaisieOffreFinance.ContextMenuStrip = Me.ContextMenuStrip2
+        Me.GridSaisieOffreFinance.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GridSaisieOffreFinance.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GridSaisieOffreFinance.Location = New System.Drawing.Point(2, 2)
+        Me.GridSaisieOffreFinance.MainView = Me.ViewSaisiOffreFinance
+        Me.GridSaisieOffreFinance.Name = "GridSaisieOffreFinance"
+        Me.GridSaisieOffreFinance.Size = New System.Drawing.Size(966, 541)
+        Me.GridSaisieOffreFinance.TabIndex = 5
+        Me.GridSaisieOffreFinance.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ViewSaisiOffreFinance})
+        Me.GridSaisieOffreFinance.Visible = False
+        '
+        'ContextMenuStrip2
+        '
+        Me.ContextMenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SaisirOffre, Me.CalculerToolStripMenuItem, Me.RésultatCalculOffreFinancièreToolStripMenuItem})
+        Me.ContextMenuStrip2.Name = "ContextMenuStrip2"
+        Me.ContextMenuStrip2.Size = New System.Drawing.Size(234, 70)
+        '
+        'SaisirOffre
+        '
+        Me.SaisirOffre.Image = Global.ClearProject.My.Resources.Resources.CustomerRevenue_16x16
+        Me.SaisirOffre.Name = "SaisirOffre"
+        Me.SaisirOffre.Size = New System.Drawing.Size(233, 22)
+        Me.SaisirOffre.Text = "Saisir Offre Financière"
+        '
+        'CalculerToolStripMenuItem
+        '
+        Me.CalculerToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.Revenue_16x16
+        Me.CalculerToolStripMenuItem.Name = "CalculerToolStripMenuItem"
+        Me.CalculerToolStripMenuItem.Size = New System.Drawing.Size(233, 22)
+        Me.CalculerToolStripMenuItem.Text = "Calculer l'Offre Financière"
+        '
+        'RésultatCalculOffreFinancièreToolStripMenuItem
+        '
+        Me.RésultatCalculOffreFinancièreToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.CustomersByDate_16x16
+        Me.RésultatCalculOffreFinancièreToolStripMenuItem.Name = "RésultatCalculOffreFinancièreToolStripMenuItem"
+        Me.RésultatCalculOffreFinancièreToolStripMenuItem.Size = New System.Drawing.Size(233, 22)
+        Me.RésultatCalculOffreFinancièreToolStripMenuItem.Text = "Résultat calcul offre financière"
+        '
+        'ViewSaisiOffreFinance
+        '
+        Me.ViewSaisiOffreFinance.ActiveFilterEnabled = False
+        Me.ViewSaisiOffreFinance.Appearance.Row.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ViewSaisiOffreFinance.Appearance.Row.Options.UseFont = True
+        Me.ViewSaisiOffreFinance.GridControl = Me.GridSaisieOffreFinance
+        Me.ViewSaisiOffreFinance.Name = "ViewSaisiOffreFinance"
+        Me.ViewSaisiOffreFinance.OptionsBehavior.Editable = False
+        Me.ViewSaisiOffreFinance.OptionsBehavior.ReadOnly = True
+        Me.ViewSaisiOffreFinance.OptionsCustomization.AllowColumnMoving = False
+        Me.ViewSaisiOffreFinance.OptionsCustomization.AllowFilter = False
+        Me.ViewSaisiOffreFinance.OptionsCustomization.AllowGroup = False
+        Me.ViewSaisiOffreFinance.OptionsCustomization.AllowSort = False
+        Me.ViewSaisiOffreFinance.OptionsFilter.AllowFilterEditor = False
+        Me.ViewSaisiOffreFinance.OptionsFilter.AllowFilterIncrementalSearch = False
+        Me.ViewSaisiOffreFinance.OptionsPrint.AutoWidth = False
+        Me.ViewSaisiOffreFinance.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never
+        Me.ViewSaisiOffreFinance.OptionsView.ShowGroupExpandCollapseButtons = False
+        Me.ViewSaisiOffreFinance.OptionsView.ShowGroupPanel = False
+        Me.ViewSaisiOffreFinance.OptionsView.ShowVerticalLines = DevExpress.Utils.DefaultBoolean.[False]
+        Me.ViewSaisiOffreFinance.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow
+        '
+        'GridBilanOffreFinancier
+        '
+        Me.GridBilanOffreFinancier.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GridBilanOffreFinancier.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GridBilanOffreFinancier.Location = New System.Drawing.Point(2, 2)
+        Me.GridBilanOffreFinancier.MainView = Me.ViewBilanOffre
+        Me.GridBilanOffreFinancier.Name = "GridBilanOffreFinancier"
+        Me.GridBilanOffreFinancier.Size = New System.Drawing.Size(966, 541)
+        Me.GridBilanOffreFinancier.TabIndex = 6
+        Me.GridBilanOffreFinancier.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ViewBilanOffre})
+        Me.GridBilanOffreFinancier.Visible = False
+        '
+        'ViewBilanOffre
+        '
+        Me.ViewBilanOffre.ActiveFilterEnabled = False
+        Me.ViewBilanOffre.Appearance.Row.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ViewBilanOffre.Appearance.Row.Options.UseFont = True
+        Me.ViewBilanOffre.GridControl = Me.GridBilanOffreFinancier
+        Me.ViewBilanOffre.Name = "ViewBilanOffre"
+        Me.ViewBilanOffre.OptionsBehavior.Editable = False
+        Me.ViewBilanOffre.OptionsBehavior.ReadOnly = True
+        Me.ViewBilanOffre.OptionsCustomization.AllowColumnMoving = False
+        Me.ViewBilanOffre.OptionsCustomization.AllowFilter = False
+        Me.ViewBilanOffre.OptionsCustomization.AllowGroup = False
+        Me.ViewBilanOffre.OptionsCustomization.AllowSort = False
+        Me.ViewBilanOffre.OptionsFilter.AllowFilterEditor = False
+        Me.ViewBilanOffre.OptionsFilter.AllowFilterIncrementalSearch = False
+        Me.ViewBilanOffre.OptionsPrint.AutoWidth = False
+        Me.ViewBilanOffre.OptionsView.ColumnAutoWidth = False
+        Me.ViewBilanOffre.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never
+        Me.ViewBilanOffre.OptionsView.ShowGroupExpandCollapseButtons = False
+        Me.ViewBilanOffre.OptionsView.ShowGroupPanel = False
+        Me.ViewBilanOffre.OptionsView.ShowVerticalLines = DevExpress.Utils.DefaultBoolean.[False]
+        Me.ViewBilanOffre.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow
+        '
+        'PanelControl3
+        '
+        Me.PanelControl3.Controls.Add(Me.TxtTypeExamen)
+        Me.PanelControl3.Dock = System.Windows.Forms.DockStyle.Top
+        Me.PanelControl3.Location = New System.Drawing.Point(2, 51)
+        Me.PanelControl3.Name = "PanelControl3"
+        Me.PanelControl3.Size = New System.Drawing.Size(974, 30)
+        Me.PanelControl3.TabIndex = 7
+        '
+        'TxtTypeExamen
+        '
+        Me.TxtTypeExamen.Appearance.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtTypeExamen.Appearance.ForeColor = System.Drawing.Color.Navy
+        Me.TxtTypeExamen.Appearance.Options.UseFont = True
+        Me.TxtTypeExamen.Appearance.Options.UseForeColor = True
+        Me.TxtTypeExamen.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TxtTypeExamen.Image = Global.ClearProject.My.Resources.Resources.Ribbon_Content_16x16
+        Me.TxtTypeExamen.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.TxtTypeExamen.Location = New System.Drawing.Point(2, 2)
+        Me.TxtTypeExamen.Name = "TxtTypeExamen"
+        Me.TxtTypeExamen.Size = New System.Drawing.Size(970, 26)
+        Me.TxtTypeExamen.TabIndex = 0
+        '
+        'PanelExecuter
+        '
+        Me.PanelExecuter.Controls.Add(Me.BtResultatEvalFin)
+        Me.PanelExecuter.Controls.Add(Me.GroupBoxOuvertureOffres)
+        Me.PanelExecuter.Controls.Add(Me.BtValiderEvalOffresFin)
+        Me.PanelExecuter.Controls.Add(Me.BtOuvertureOffre)
+        Me.PanelExecuter.Controls.Add(Me.BtResultatSaisiOffre)
+        Me.PanelExecuter.Dock = System.Windows.Forms.DockStyle.Top
+        Me.PanelExecuter.Location = New System.Drawing.Point(2, 2)
+        Me.PanelExecuter.Name = "PanelExecuter"
+        Me.PanelExecuter.Size = New System.Drawing.Size(974, 49)
+        Me.PanelExecuter.TabIndex = 4
+        '
+        'BtResultatEvalFin
+        '
+        Me.BtResultatEvalFin.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BtResultatEvalFin.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtResultatEvalFin.Appearance.Options.UseFont = True
+        Me.BtResultatEvalFin.Image = Global.ClearProject.My.Resources.Resources.RevenueSplit_32x32
+        Me.BtResultatEvalFin.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.BtResultatEvalFin.Location = New System.Drawing.Point(588, 4)
+        Me.BtResultatEvalFin.Name = "BtResultatEvalFin"
+        Me.BtResultatEvalFin.Size = New System.Drawing.Size(47, 39)
+        ToolTipTitleItem1.Appearance.Image = Global.ClearProject.My.Resources.Resources.Revenue_16x16
+        ToolTipTitleItem1.Appearance.Options.UseImage = True
+        ToolTipTitleItem1.Image = Global.ClearProject.My.Resources.Resources.Revenue_16x16
+        ToolTipTitleItem1.Text = "Résultat"
+        ToolTipItem1.LeftIndent = 6
+        ToolTipItem1.Text = "Résultat évaluation financière"
+        ToolTipTitleItem2.LeftIndent = 6
+        ToolTipTitleItem2.Text = "Evaluation fiancière"
+        SuperToolTip1.Items.Add(ToolTipTitleItem1)
+        SuperToolTip1.Items.Add(ToolTipItem1)
+        SuperToolTip1.Items.Add(ToolTipSeparatorItem1)
+        SuperToolTip1.Items.Add(ToolTipTitleItem2)
+        Me.BtResultatEvalFin.SuperTip = SuperToolTip1
+        Me.BtResultatEvalFin.TabIndex = 23
+        Me.BtResultatEvalFin.Text = "Résultat Evaluation" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " financière"
+        '
+        'GroupBoxOuvertureOffres
+        '
+        Me.GroupBoxOuvertureOffres.Controls.Add(Me.NouvelOuvertureOffres)
+        Me.GroupBoxOuvertureOffres.Controls.Add(Me.Label1)
+        Me.GroupBoxOuvertureOffres.Controls.Add(Me.CmbNumOuvertureOffre)
+        Me.GroupBoxOuvertureOffres.Location = New System.Drawing.Point(5, 3)
+        Me.GroupBoxOuvertureOffres.Name = "GroupBoxOuvertureOffres"
+        Me.GroupBoxOuvertureOffres.Size = New System.Drawing.Size(381, 47)
+        Me.GroupBoxOuvertureOffres.TabIndex = 22
+        Me.GroupBoxOuvertureOffres.TabStop = False
+        Me.GroupBoxOuvertureOffres.Text = "Liste des ouvertures effectuée"
+        '
+        'NouvelOuvertureOffres
+        '
+        Me.NouvelOuvertureOffres.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NouvelOuvertureOffres.Appearance.Options.UseFont = True
+        Me.NouvelOuvertureOffres.Image = Global.ClearProject.My.Resources.Resources.CustomerRevenue_16x16
+        Me.NouvelOuvertureOffres.Location = New System.Drawing.Point(247, 13)
+        Me.NouvelOuvertureOffres.Name = "NouvelOuvertureOffres"
+        Me.NouvelOuvertureOffres.Size = New System.Drawing.Size(128, 27)
+        Me.NouvelOuvertureOffres.TabIndex = 23
+        Me.NouvelOuvertureOffres.Text = "Nouvelle ouverture"
+        Me.NouvelOuvertureOffres.ToolTip = "Nouvelle ouverture"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(6, 20)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(72, 13)
+        Me.Label1.TabIndex = 22
+        Me.Label1.Text = "N° Ouverture"
+        '
+        'CmbNumOuvertureOffre
+        '
+        Me.CmbNumOuvertureOffre.EditValue = ""
+        Me.CmbNumOuvertureOffre.Location = New System.Drawing.Point(80, 16)
+        Me.CmbNumOuvertureOffre.Name = "CmbNumOuvertureOffre"
+        Me.CmbNumOuvertureOffre.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CmbNumOuvertureOffre.Properties.Appearance.Options.UseFont = True
+        Me.CmbNumOuvertureOffre.Properties.Appearance.Options.UseTextOptions = True
+        Me.CmbNumOuvertureOffre.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.CmbNumOuvertureOffre.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.CmbNumOuvertureOffre.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        Me.CmbNumOuvertureOffre.Size = New System.Drawing.Size(159, 22)
+        Me.CmbNumOuvertureOffre.TabIndex = 21
+        '
+        'BtValiderEvalOffresFin
+        '
+        Me.BtValiderEvalOffresFin.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BtValiderEvalOffresFin.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtValiderEvalOffresFin.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.BtValiderEvalOffresFin.Appearance.Options.UseFont = True
+        Me.BtValiderEvalOffresFin.Appearance.Options.UseForeColor = True
+        Me.BtValiderEvalOffresFin.Image = Global.ClearProject.My.Resources.Resources.MediaPerformance_32x32
+        Me.BtValiderEvalOffresFin.Location = New System.Drawing.Point(640, 4)
+        Me.BtValiderEvalOffresFin.Name = "BtValiderEvalOffresFin"
+        Me.BtValiderEvalOffresFin.Size = New System.Drawing.Size(154, 39)
+        Me.BtValiderEvalOffresFin.TabIndex = 20
+        Me.BtValiderEvalOffresFin.Text = " Valider l'évaluation" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "financière"
+        '
+        'BtOuvertureOffre
+        '
+        Me.BtOuvertureOffre.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BtOuvertureOffre.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtOuvertureOffre.Appearance.ForeColor = System.Drawing.Color.DarkRed
+        Me.BtOuvertureOffre.Appearance.Options.UseFont = True
+        Me.BtOuvertureOffre.Appearance.Options.UseForeColor = True
+        Me.BtOuvertureOffre.Image = Global.ClearProject.My.Resources.Resources.Scheduler_32x32
+        Me.BtOuvertureOffre.Location = New System.Drawing.Point(798, 5)
+        Me.BtOuvertureOffre.Name = "BtOuvertureOffre"
+        Me.BtOuvertureOffre.Size = New System.Drawing.Size(170, 39)
+        Me.BtOuvertureOffre.TabIndex = 19
+        Me.BtOuvertureOffre.Text = "Démarrer l'ouverture" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "des offres financières"
+        '
+        'BtResultatSaisiOffre
+        '
+        Me.BtResultatSaisiOffre.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BtResultatSaisiOffre.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtResultatSaisiOffre.Appearance.Options.UseFont = True
+        Me.BtResultatSaisiOffre.Image = Global.ClearProject.My.Resources.Resources.View_32x32
+        Me.BtResultatSaisiOffre.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.BtResultatSaisiOffre.Location = New System.Drawing.Point(534, 4)
+        Me.BtResultatSaisiOffre.Name = "BtResultatSaisiOffre"
+        Me.BtResultatSaisiOffre.Size = New System.Drawing.Size(50, 39)
+        ToolTipTitleItem3.Appearance.Image = Global.ClearProject.My.Resources.Resources.View_16x16
+        ToolTipTitleItem3.Appearance.Options.UseImage = True
+        ToolTipTitleItem3.Image = Global.ClearProject.My.Resources.Resources.View_16x16
+        ToolTipTitleItem3.Text = "Résultat"
+        ToolTipItem2.LeftIndent = 6
+        ToolTipItem2.Text = "Résultat ouverture des offres"
+        ToolTipTitleItem4.LeftIndent = 6
+        ToolTipTitleItem4.Text = "Offre financière"
+        SuperToolTip2.Items.Add(ToolTipTitleItem3)
+        SuperToolTip2.Items.Add(ToolTipItem2)
+        SuperToolTip2.Items.Add(ToolTipSeparatorItem2)
+        SuperToolTip2.Items.Add(ToolTipTitleItem4)
+        Me.BtResultatSaisiOffre.SuperTip = SuperToolTip2
+        Me.BtResultatSaisiOffre.TabIndex = 18
+        Me.BtResultatSaisiOffre.Text = "Resultat ouverture" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "des offres"
         '
         'PanelAccueilEvalTech
         '
@@ -5181,56 +5380,6 @@ Partial Class EvaluationConsultants
         Me.ViewMoyenne.OptionsView.ShowGroupPanel = False
         Me.ViewMoyenne.OptionsView.ShowVerticalLines = DevExpress.Utils.DefaultBoolean.[False]
         Me.ViewMoyenne.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow
-        '
-        'Refcmte
-        '
-        Me.Refcmte.HeaderText = "Ref"
-        Me.Refcmte.MinimumWidth = 10
-        Me.Refcmte.Name = "Refcmte"
-        Me.Refcmte.ReadOnly = True
-        Me.Refcmte.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Refcmte.Visible = False
-        Me.Refcmte.Width = 30
-        '
-        'NomPrencmte
-        '
-        Me.NomPrencmte.HeaderText = "Nom et Prénoms"
-        Me.NomPrencmte.Name = "NomPrencmte"
-        Me.NomPrencmte.ReadOnly = True
-        Me.NomPrencmte.Width = 200
-        '
-        'Contactcmte
-        '
-        Me.Contactcmte.HeaderText = "Contact"
-        Me.Contactcmte.Name = "Contactcmte"
-        Me.Contactcmte.ReadOnly = True
-        '
-        'Fonctioncmte
-        '
-        Me.Fonctioncmte.HeaderText = "Fonction"
-        Me.Fonctioncmte.Name = "Fonctioncmte"
-        Me.Fonctioncmte.ReadOnly = True
-        '
-        'Organismecmte
-        '
-        Me.Organismecmte.HeaderText = "Organisme"
-        Me.Organismecmte.Name = "Organismecmte"
-        Me.Organismecmte.ReadOnly = True
-        '
-        'TypeComite
-        '
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.TypeComite.DefaultCellStyle = DataGridViewCellStyle16
-        Me.TypeComite.HeaderText = "Autorité contractante"
-        Me.TypeComite.Name = "TypeComite"
-        Me.TypeComite.ReadOnly = True
-        '
-        'modifcmte
-        '
-        Me.modifcmte.HeaderText = "Modif"
-        Me.modifcmte.Name = "modifcmte"
-        Me.modifcmte.ReadOnly = True
-        Me.modifcmte.Visible = False
         '
         'EvaluationConsultants
         '
@@ -5317,20 +5466,27 @@ Partial Class EvaluationConsultants
         CType(Me.TxtContribuable.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControlInfo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControlInfo.ResumeLayout(False)
-        Me.GroupControlInfo.PerformLayout()
-        CType(Me.MantantTaxe.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TauxAnuel.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.delairesiliation.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Representantcheffil.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NomChefFil.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Disqualification.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox5.ResumeLayout(False)
-        CType(Me.MotifDisqualif.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cmbdelairesi.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DateAchev1.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DateAchev1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox6.ResumeLayout(False)
+        Me.GroupBox6.PerformLayout()
+        CType(Me.NomsGroups.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ListeMembrGroup, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip4.ResumeLayout(False)
+        CType(Me.TypeGroups.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox7.ResumeLayout(False)
+        Me.GroupBox7.PerformLayout()
         CType(Me.DateAchev2.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateAchev2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateAchev1.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateAchev1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MantantTaxe.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmbdelairesi.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TauxAnuel.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox5.ResumeLayout(False)
+        CType(Me.MotifDisqualif.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.delairesiliation.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Disqualification.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Representantcheffil.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NomChefFil.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl6.ResumeLayout(False)
         CType(Me.GroupControl9, System.ComponentModel.ISupportInitialize).EndInit()
@@ -5389,24 +5545,6 @@ Partial Class EvaluationConsultants
         CType(Me.DateAviObj.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateSoumRapTech.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateSoumRapTech.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PanelOffreFinanciere, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelOffreFinanciere.ResumeLayout(False)
-        CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupControl2.ResumeLayout(False)
-        CType(Me.PanelSaisieOffre, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelSaisieOffre.ResumeLayout(False)
-        CType(Me.GridSaisieOffreFinance, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ContextMenuStrip2.ResumeLayout(False)
-        CType(Me.ViewSaisiOffreFinance, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridBilanOffreFinancier, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ViewBilanOffre, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PanelControl3, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelControl3.ResumeLayout(False)
-        CType(Me.PanelExecuter, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelExecuter.ResumeLayout(False)
-        Me.GroupBoxOuvertureOffres.ResumeLayout(False)
-        Me.GroupBoxOuvertureOffres.PerformLayout()
-        CType(Me.CmbNumOuvertureOffre.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelRapportCombinet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelRapportCombinet.ResumeLayout(False)
         CType(Me.GroupControl7, System.ComponentModel.ISupportInitialize).EndInit()
@@ -5470,6 +5608,24 @@ Partial Class EvaluationConsultants
         Me.PanelControl12.PerformLayout()
         CType(Me.TxtRefSoumis.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CmbNegoEdite.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PanelOffreFinanciere, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelOffreFinanciere.ResumeLayout(False)
+        CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl2.ResumeLayout(False)
+        CType(Me.PanelSaisieOffre, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelSaisieOffre.ResumeLayout(False)
+        CType(Me.GridSaisieOffreFinance, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip2.ResumeLayout(False)
+        CType(Me.ViewSaisiOffreFinance, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridBilanOffreFinancier, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ViewBilanOffre, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PanelControl3, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl3.ResumeLayout(False)
+        CType(Me.PanelExecuter, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelExecuter.ResumeLayout(False)
+        Me.GroupBoxOuvertureOffres.ResumeLayout(False)
+        Me.GroupBoxOuvertureOffres.PerformLayout()
+        CType(Me.CmbNumOuvertureOffre.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelAccueilEvalTech, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelAccueilEvalTech.ResumeLayout(False)
         CType(Me.GroupControl6, System.ComponentModel.ISupportInitialize).EndInit()
@@ -5800,4 +5956,18 @@ Partial Class EvaluationConsultants
     Friend WithEvents Organismecmte As DataGridViewTextBoxColumn
     Friend WithEvents TypeComite As DataGridViewTextBoxColumn
     Friend WithEvents modifcmte As DataGridViewTextBoxColumn
+    Friend WithEvents GroupBox6 As GroupBox
+    Friend WithEvents NomsGroups As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents ListeMembrGroup As DataGridView
+    Friend WithEvents GroupBox7 As GroupBox
+    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
+    Friend WithEvents LabelControl5 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents TypeGroups As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents ContextMenuStrip4 As ContextMenuStrip
+    Friend WithEvents SupprimerToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents RefGroup As DataGridViewTextBoxColumn
+    Friend WithEvents Nom As DataGridViewTextBoxColumn
+    Friend WithEvents TypeMembre As DataGridViewTextBoxColumn
+    Friend WithEvents LigneModif1 As DataGridViewTextBoxColumn
+    Friend WithEvents PrintDocument1 As Printing.PrintDocument
 End Class

@@ -284,6 +284,7 @@ Module SuperModule
 
         End Try
     End Sub
+
     Public Function IsSavedItemInGridView(Obj As String, GridView As DevExpress.XtraGrid.Views.Grid.GridView, NumColonne As String) As Integer
         For i = 0 To GridView.RowCount - 1
             If Obj = GridView.GetRowCellValue(i, NumColonne).ToString().ToLower Then

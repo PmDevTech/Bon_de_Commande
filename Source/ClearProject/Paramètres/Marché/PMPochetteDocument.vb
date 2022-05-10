@@ -196,7 +196,7 @@ Public Class PMPochetteDocument
                 Exit Sub
             End If
 
-            If ConfirmMsg("Voulez-vous continuer supprimer [" & DrX("Document").ToString & "] ?") = DialogResult.Yes Then
+            If ConfirmMsg("Voulez-vous supprimer [" & DrX("Document").ToString & "] ?") = DialogResult.Yes Then
                 ExecuteNonQuery("delete from t_pm_pochette_document where POCHDOC_ID='" & DrX("Ref") & "'")
                 ' InitFormulaire()
                 'RemplirDocument(tabPochette(CmbPochette.SelectedIndex))

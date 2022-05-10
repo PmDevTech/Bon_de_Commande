@@ -20,34 +20,55 @@ Partial Class ModePlanMarche
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
+        Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
+        Me.BtEnrg = New DevExpress.XtraEditors.SimpleButton()
         Me.rdPPSD = New DevExpress.XtraEditors.CheckEdit()
         Me.rdGenere = New DevExpress.XtraEditors.CheckEdit()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.cmbModePlan = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
-        Me.BtEnrg = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
+        CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl2.SuspendLayout()
         CType(Me.rdPPSD.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rdGenere.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbModePlan.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelControl2.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupControl1
         '
         Me.GroupControl1.AppearanceCaption.Font = New System.Drawing.Font("Trebuchet MS", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupControl1.AppearanceCaption.Options.UseFont = True
+        Me.GroupControl1.Controls.Add(Me.PanelControl2)
         Me.GroupControl1.Controls.Add(Me.rdPPSD)
         Me.GroupControl1.Controls.Add(Me.rdGenere)
         Me.GroupControl1.Controls.Add(Me.LabelControl1)
         Me.GroupControl1.Controls.Add(Me.cmbModePlan)
-        Me.GroupControl1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.GroupControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupControl1.Location = New System.Drawing.Point(0, 0)
         Me.GroupControl1.Name = "GroupControl1"
         Me.GroupControl1.Size = New System.Drawing.Size(431, 131)
         Me.GroupControl1.TabIndex = 15
+        '
+        'PanelControl2
+        '
+        Me.PanelControl2.Controls.Add(Me.BtEnrg)
+        Me.PanelControl2.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.PanelControl2.Location = New System.Drawing.Point(2, 93)
+        Me.PanelControl2.Name = "PanelControl2"
+        Me.PanelControl2.Size = New System.Drawing.Size(427, 36)
+        Me.PanelControl2.TabIndex = 16
+        '
+        'BtEnrg
+        '
+        Me.BtEnrg.Appearance.Font = New System.Drawing.Font("Trebuchet MS", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtEnrg.Appearance.Options.UseFont = True
+        Me.BtEnrg.Image = Global.ClearProject.My.Resources.Resources.disque_editer_fichier_enregistrez_icone_4226_16
+        Me.BtEnrg.Location = New System.Drawing.Point(122, 5)
+        Me.BtEnrg.Name = "BtEnrg"
+        Me.BtEnrg.Size = New System.Drawing.Size(153, 26)
+        Me.BtEnrg.TabIndex = 10
+        Me.BtEnrg.Text = "Enregistrer"
         '
         'rdPPSD
         '
@@ -89,32 +110,11 @@ Partial Class ModePlanMarche
         Me.cmbModePlan.Size = New System.Drawing.Size(313, 20)
         Me.cmbModePlan.TabIndex = 2
         '
-        'PanelControl2
-        '
-        Me.PanelControl2.Controls.Add(Me.BtEnrg)
-        Me.PanelControl2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PanelControl2.Location = New System.Drawing.Point(0, 95)
-        Me.PanelControl2.Name = "PanelControl2"
-        Me.PanelControl2.Size = New System.Drawing.Size(431, 36)
-        Me.PanelControl2.TabIndex = 16
-        '
-        'BtEnrg
-        '
-        Me.BtEnrg.Appearance.Font = New System.Drawing.Font("Trebuchet MS", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtEnrg.Appearance.Options.UseFont = True
-        Me.BtEnrg.Image = Global.ClearProject.My.Resources.Resources.disque_editer_fichier_enregistrez_icone_4226_16
-        Me.BtEnrg.Location = New System.Drawing.Point(122, 5)
-        Me.BtEnrg.Name = "BtEnrg"
-        Me.BtEnrg.Size = New System.Drawing.Size(153, 26)
-        Me.BtEnrg.TabIndex = 10
-        Me.BtEnrg.Text = "Enregistrer"
-        '
         'ModePlanMarche
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(431, 131)
-        Me.Controls.Add(Me.PanelControl2)
         Me.Controls.Add(Me.GroupControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
@@ -127,11 +127,11 @@ Partial Class ModePlanMarche
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl1.ResumeLayout(False)
         Me.GroupControl1.PerformLayout()
+        CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl2.ResumeLayout(False)
         CType(Me.rdPPSD.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rdGenere.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbModePlan.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelControl2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub

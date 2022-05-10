@@ -22,7 +22,6 @@ Public Class PlanMarche
     Dim NumeroDAO As String
     Dim ChefFile As String = ""
 
-
     Private Sub PlanMarche_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.Icon = My.Resources.Logo_ClearProject_Valide
         RemplirMarcheAConsulter()
@@ -127,15 +126,6 @@ Public Class PlanMarche
 
 #Region "Creer les colonnes du plan"
     Private Sub ColDescription()
-
-        GridPlanMarche.Rows.Clear()
-        Dim NbCol As Decimal = GridPlanMarche.ColumnCount
-        If (NbCol > 0) Then
-            For i As Integer = 1 To NbCol - 1
-                GridPlanMarche.Columns.Remove("A")
-            Next
-        End If
-
         Dim ColonneNum As New DataGridViewTextBoxColumn
         With ColonneNum
             .HeaderText = "N°"
@@ -358,7 +348,7 @@ Public Class PlanMarche
         Dim LeType As String = GroupInfo(0)
         NbreColoEtape = 0
 
-        query = "select DISTINCT  TitreEtape from T_EtapeMarche where CodeProjet='" & ProjetEnCours & "' and TypeMarche='" & LeType & "' order by RefEtape ASC"
+        query = "select DISTINCT RefEtape, TitreEtape from T_EtapeMarche where CodeProjet='" & ProjetEnCours & "' and TypeMarche='" & EnleverApost(LeType) & "' ORDER BY NumeroOrdre ASC"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         For Each rw As DataRow In dt.Rows
             NbreColoEtape = NbreColoEtape + 1
@@ -367,7 +357,7 @@ Public Class PlanMarche
             With ColonneGrid
                 .HeaderText = MettreApost(rw("TitreEtape").ToString)
                 .HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
-                .Name = "A"
+                .Name = "E_" & rw("RefEtape").ToString
                 .Width = 120
                 .ReadOnly = True
                 .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
@@ -406,6 +396,7 @@ Public Class PlanMarche
         End If
 
         MarcheAConsulter.Enabled = False
+        PanelDatePPM.Enabled = False
         cmbDevise.Enabled = False
         txtNumPlan.Select()
     End Sub
@@ -426,6 +417,7 @@ Public Class PlanMarche
         BailleurConcerne.Enabled = False
         txtNumPlan.Enabled = False
         MarcheAConsulter.Enabled = True
+        'PanelDatePPM.Enabled = True
         cmbDevise.Enabled = True
         cmbDevise.Select()
     End Sub
@@ -441,6 +433,7 @@ Public Class PlanMarche
         End If
         Dim NewModMethode As New ImpressionPlan
         NewModMethode.IDPlan = CurrentRefPPM
+        NewModMethode.TypeMarches = MarcheAConsulter.Text.Split("_"c)(0)
         NewModMethode.ShowDialog()
     End Sub
 
@@ -552,13 +545,31 @@ Public Class PlanMarche
             Exit Sub
         End If
 
+        GridPlanMarche.Columns.Clear()
         GridPlanMarche.Rows.Clear()
-        Dim NbCol As Decimal = GridPlanMarche.ColumnCount
-        If (NbCol > 0) Then
-            For i As Integer = 1 To NbCol - 1
-                GridPlanMarche.Columns.Remove("A")
-            Next
-        End If
+        'Creation colonne N°0
+        Dim ColonneNum0 As New DataGridViewTextBoxColumn
+        With ColonneNum0
+            .HeaderText = "Colum1"
+            .HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Name = "Colum1"
+            .Width = 50
+            .ReadOnly = True
+            .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Frozen = True
+            .SortMode = DataGridViewColumnSortMode.Automatic
+            .Visible = False
+            .Resizable = False
+        End With
+        GridPlanMarche.Columns.Insert(0, ColonneNum0)
+
+        'Dim NbCol As Decimal = GridPlanMarche.ColumnCount
+        'If (NbCol > 0) Then
+        '    For i As Integer = 1 To NbCol - 1
+        '        GridPlanMarche.Columns.RemoveAt(CInt(i))
+        '        ' GridPlanMarche.Columns.Remove("A")
+        '    Next
+        'End If
 
         Dim dtPlan As DataTable = ExcecuteSelectQuery("SELECT * FROM t_ppm_marche WHERE CodeProjet='" & ProjetEnCours & "' AND RefPPM='" & RefPlan & "'")
         If dtPlan.Rows.Count <= 0 Then
@@ -568,6 +579,10 @@ Public Class PlanMarche
         Dim rwPlan As DataRow = dtPlan.Rows(0)
         Dim TypeM As String = rwPlan("TypeMarche").ToString
         Dim PeriodeM As String = rwPlan("PeriodePlan").ToString
+        ' PanelDatePPM.Enabled = true
+        DateApproPlan.Text = rwPlan("DateApprobation").ToString
+        DateAvisGeneral.Text = rwPlan("DateAvisGle").ToString
+
         Dim NumSuivi As Decimal = 0
 
         DebutChargement(True, "Chargement du plan en cours...")
@@ -592,6 +607,21 @@ Public Class PlanMarche
 
         'Creation des colonnes des etapes
         AfficherLesAutresColonnes()
+
+        'Creation colonne commentaire
+        Dim NbreColom As Decimal = GridPlanMarche.ColumnCount - 1
+        Dim ColonneNum As New DataGridViewTextBoxColumn
+        With ColonneNum
+            .HeaderText = "Commentaire"
+            .HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Name = "A"
+            .Width = 120
+            .ReadOnly = False
+            .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Frozen = False
+            .SortMode = DataGridViewColumnSortMode.NotSortable
+        End With
+        GridPlanMarche.Columns.Insert(NbreColom + 1, ColonneNum)
 
         'Ligne separant les colonnes du plan et les lignes rows ********************************************************
         Dim b As Decimal = GridPlanMarche.Rows.Add()
@@ -729,11 +759,12 @@ Public Class PlanMarche
 
                 'Les valeurs des colonnes des etapes ***************
                 Dim ReponseDatePrevu As String = ""
-                Dim TitreEtapes As String = ""
+                Dim RefEtape As String = ""
+                Dim NbreEtape As Integer = NbreColoEtape
 
                 For Ne As Integer = 1 To NbreColoEtape
-                    TitreEtapes = GridPlanMarche.Columns.Item(10 + NbreColAjout + Ne).HeaderText
-                    ReponseDatePrevu = GetDatePrevuRealise(TitreEtapes, rw("CodeProcAO").ToString, rw("RevuePrioPost").ToString().Replace("é", "e"), rw("RefMarche"), "Prévu")
+                    RefEtape = GridPlanMarche.Columns.Item(10 + NbreColAjout + Ne).Name.Split("_")(1)
+                    ReponseDatePrevu = GetDatePrevuRealise(RefEtape, rw("CodeProcAO").ToString, rw("RevuePrioPost").ToString().Replace("é", "e"), rw("RefMarche"), "Prévu")
                     Dim ValEtp As String = ""
 
                     'Le RefMarche n'existe pas encore dans la table t_planmarche
@@ -753,11 +784,18 @@ Public Class PlanMarche
                     GridPlanMarche.Rows.Item(n).Cells(10 + NbreColAjout + Ne).Style.Alignment = DataGridViewContentAlignment.TopCenter
                 Next
 
+                ' Commentaire
+                GridPlanMarche.Rows.Item(n).Cells(11 + NbreColAjout + NbreEtape).Value = MettreApost(rw("Commentaire").ToString)
+                GridPlanMarche.Rows.Item(n).Cells(11 + NbreColAjout + NbreEtape).ReadOnly = False
+                GridPlanMarche.Rows.Item(n).Cells(11 + NbreColAjout + NbreEtape).Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+                GridPlanMarche.Rows.Item(n).Cells(11 + NbreColAjout + NbreEtape).Style.Font = New Font("Times New Roman", 9, FontStyle.Bold)
+
                 'La ligne Plan Réalisé ***************************************************************************
                 Dim m As Decimal = GridPlanMarche.Rows.Add()
                 GridPlanMarche.Rows.Item(m).DefaultCellStyle.BackColor = CouleurRealise.Color
                 GridPlanMarche.Rows.Item(m).DefaultCellStyle.ForeColor = CouleurTexte2.Color
                 GridPlanMarche.Rows.Item(m).Height = 15
+                GridPlanMarche.Rows.Item(m).ReadOnly = True
 
                 GridPlanMarche.Rows.Item(m).Cells(0).Value = "R" & rw("RefMarche").ToString
                 GridPlanMarche.Rows.Item(m).Cells(0).ReadOnly = True
@@ -830,11 +868,10 @@ Public Class PlanMarche
                 'Next
 
                 Dim ReponseDateRealise As String = ""
-                Dim TitrEtape As String = ""
-
+                Dim RefEtapes As String = ""
                 For Ne As Integer = 1 To NbreColoEtape
-                    TitrEtape = GridPlanMarche.Columns.Item(10 + NbreColAjout + Ne).HeaderText
-                    ReponseDateRealise = GetDatePrevuRealise(TitrEtape, rw("CodeProcAO").ToString, rw("RevuePrioPost").ToString().Replace("é", "e"), rw("RefMarche"), "Réalise")
+                    RefEtapes = GridPlanMarche.Columns.Item(10 + NbreColAjout + Ne).Name.Split("_")(1)
+                    ReponseDateRealise = GetDatePrevuRealise(RefEtapes, rw("CodeProcAO").ToString, rw("RevuePrioPost").ToString().Replace("é", "e"), rw("RefMarche"), "Réalise")
                     Dim Result1 As String = ""
 
                     'Le RefMarche n'existe pas encore dans la table t_planmarche
@@ -961,11 +998,12 @@ Public Class PlanMarche
                 'Next
 
                 Dim ReponseDatePrevu As String = ""
-                Dim TitreEtapes As String = ""
+                Dim RefEtape As String = ""
+                Dim NbreEtape As Integer = NbreColoEtape
 
                 For Ne As Integer = 1 To NbreColoEtape
-                    TitreEtapes = GridPlanMarche.Columns.Item(8 + NbreColAjout + Ne).HeaderText
-                    ReponseDatePrevu = GetDatePrevuRealise(TitreEtapes, rw("CodeProcAO").ToString, rw("RevuePrioPost").ToString().Replace("é", "e"), rw("RefMarche"), "Prévu")
+                    RefEtape = GridPlanMarche.Columns.Item(8 + NbreColAjout + Ne).Name.Split("_")(1)
+                    ReponseDatePrevu = GetDatePrevuRealise(RefEtape, rw("CodeProcAO").ToString, rw("RevuePrioPost").ToString().Replace("é", "e"), rw("RefMarche"), "Prévu")
                     Dim ValEtp As String = ""
 
                     'Le RefMarche n'existe pas encore dans la table t_planmarche
@@ -984,12 +1022,18 @@ Public Class PlanMarche
                     GridPlanMarche.Rows.Item(n).Cells(8 + NbreColAjout + Ne).ReadOnly = True
                     GridPlanMarche.Rows.Item(n).Cells(8 + NbreColAjout + Ne).Style.Alignment = DataGridViewContentAlignment.TopCenter
                 Next
+                'Commentaire
+                GridPlanMarche.Rows.Item(n).Cells(9 + NbreColAjout + NbreEtape).Value = MettreApost(rw("Commentaire").ToString)
+                GridPlanMarche.Rows.Item(n).Cells(9 + NbreColAjout + NbreEtape).ReadOnly = False
+                GridPlanMarche.Rows.Item(n).Cells(9 + NbreColAjout + NbreEtape).Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+                GridPlanMarche.Rows.Item(n).Cells(9 + NbreColAjout + NbreEtape).Style.Font = New Font("Times New Roman", 9, FontStyle.Bold)
 
                 'La ligne Plan Réalisé ***************************************************************************
                 Dim m As Decimal = GridPlanMarche.Rows.Add()
                 GridPlanMarche.Rows.Item(m).DefaultCellStyle.BackColor = CouleurRealise.Color
                 GridPlanMarche.Rows.Item(m).DefaultCellStyle.ForeColor = CouleurTexte2.Color
                 GridPlanMarche.Rows.Item(m).Height = 15
+                GridPlanMarche.Rows.Item(m).ReadOnly = True
 
                 GridPlanMarche.Rows.Item(m).Cells(0).Value = "R" & rw("RefMarche").ToString
                 GridPlanMarche.Rows.Item(m).Cells(0).ReadOnly = True
@@ -1059,11 +1103,10 @@ Public Class PlanMarche
                 'Next
 
                 Dim ReponseDateRealise As String = ""
-                Dim TitrEtape As String = ""
-
+                Dim RefEtapes As String = ""
                 For Ne As Integer = 1 To NbreColoEtape
-                    TitrEtape = GridPlanMarche.Columns.Item(8 + NbreColAjout + Ne).HeaderText
-                    ReponseDateRealise = GetDatePrevuRealise(TitrEtape, rw("CodeProcAO").ToString, rw("RevuePrioPost").ToString().Replace("é", "e"), rw("RefMarche"), "Réalise")
+                    RefEtapes = GridPlanMarche.Columns.Item(8 + NbreColAjout + Ne).Name.Split("_")(1)
+                    ReponseDateRealise = GetDatePrevuRealise(RefEtapes, rw("CodeProcAO").ToString, rw("RevuePrioPost").ToString().Replace("é", "e"), rw("RefMarche"), "Réalise")
                     Dim Result1 As String = ""
 
                     'Le RefMarche n'existe pas encore dans la table t_planmarche
@@ -1096,6 +1139,7 @@ Public Class PlanMarche
         GridPlanMarche.Rows.Item(p).DefaultCellStyle.BackColor = CouleurTotaux.Color
         GridPlanMarche.Rows.Item(p).DefaultCellStyle.ForeColor = CouleurTexteTot.Color
         GridPlanMarche.Rows.Item(p).DefaultCellStyle.Font = New Font("Times New Roman", 10, FontStyle.Bold)
+        GridPlanMarche.Rows.Item(p).ReadOnly = True
 
         GridPlanMarche.Rows.Item(p).Cells(2).Value = "TOTAUX"
         GridPlanMarche.Rows.Item(p).Cells(2).ReadOnly = True
@@ -1115,27 +1159,29 @@ Public Class PlanMarche
         FinChargement()
 
         'End If
-
-
     End Sub
 
-
-    Private Function GetDatePrevuRealise(TitreEtape As String, CodeProcAO As String, Revue As String, RefMarche As Decimal, Optional TypeDate As String = "") As String
+    Private Function GetDatePrevuRealise(RefEtape As String, CodeProcAO As String, Revue As String, RefMarche As Decimal, Optional TypeDate As String = "") As String
         Dim ReponseEtapes As String = ""
         Try
-            Dim TypesMarches() As String = (MarcheAConsulter.Text).Split("_"c)
+            Dim TypesMarches As String = MarcheAConsulter.Text.Split("_"c)(0).ToString
             If Val(ExecuteScallar("SELECT COUNT(*) from t_planmarche WHERE RefMarche='" & RefMarche & "'")) > 0 Then
+                FinChargement()
 
-                Dim dt As DataTable = ExcecuteSelectQuery("SELECT RefEtape FROM t_etapemarche WHERE TypeMarche='" & EnleverApost(TypesMarches(0).ToString) & "' and CodeProcAO='" & CodeProcAO & "' AND " & Revue & "='OUI' AND CodeProjet='" & ProjetEnCours & "' and TitreEtape='" & EnleverApost(TitreEtape.ToString) & "'")
-                If dt.Rows.Count > 0 Then
-                    For Each rw In dt.Rows
-                        If TypeDate = "Prévu" Then
-                            query = "select FinPrevue from t_planmarche where RefMarche='" & RefMarche & "' and RefEtape='" & rw("RefEtape") & "'"
-                        ElseIf TypeDate = "Réalise" Then
-                            query = "select FinEffective from t_planmarche where RefMarche='" & RefMarche & "' and RefEtape='" & rw("RefEtape") & "'"
-                        End If
-                        ReponseEtapes = ExecuteScallar(query)
-                    Next
+                'Etape applicable
+                query = "SELECT COUNT(E.RefEtape) FROM t_etapemarche as E, t_liaisonetape as L WHERE L.RefEtape=E.RefEtape and E.TypeMarche='" & EnleverApost(TypesMarches.ToString) & "' and L.CodeProcAO='" & CodeProcAO & "' AND E." & Revue & "='OUI' AND E.CodeProjet='" & ProjetEnCours & "' and E.RefEtape='" & RefEtape & "'"
+                'InputBox("Fodj", "Fodj", query)
+
+                Dim NombreEtapes As Decimal = Val(ExecuteScallar(query))
+                If NombreEtapes > 0 Then
+                    If TypeDate = "Prévu" Then
+                        query = "SELECT P.FinPrevue FROM t_etapemarche as E, t_liaisonetape as L, t_planmarche as P WHERE L.RefEtape=E.RefEtape and E.RefEtape=P.RefEtape and E.TypeMarche='" & EnleverApost(TypesMarches.ToString) & "' and L.CodeProcAO='" & CodeProcAO & "' AND E." & Revue & "='OUI' AND E.CodeProjet='" & ProjetEnCours & "' and E.RefEtape='" & RefEtape & "' and P.RefMarche='" & RefMarche & "'"
+                    ElseIf TypeDate = "Réalise" Then
+                        query = "SELECT P.FinEffective FROM t_etapemarche as E, t_liaisonetape as L, t_planmarche as P WHERE L.RefEtape=E.RefEtape and E.RefEtape=P.RefEtape and E.TypeMarche='" & EnleverApost(TypesMarches.ToString) & "' and L.CodeProcAO='" & CodeProcAO & "' AND E." & Revue & "='OUI' AND E.CodeProjet='" & ProjetEnCours & "' and E.RefEtape='" & RefEtape & "' and P.RefMarche='" & RefMarche & "'"
+                    End If
+                    'InputBox("Honore", "Honore", query)
+
+                    ReponseEtapes = ExecuteScallar(query).ToString
                 Else
                     ReponseEtapes = "N/A"
                 End If
@@ -1187,7 +1233,7 @@ Public Class PlanMarche
                         Dim CodeMethode As Decimal = 0
                         'Verifier s'il existe une methode pour eviter le bugs l'ors du chargement des etapes
                         If Val(ExecuteScallar("select CodeProcAO from t_marche where RefMarche='" & Mid(ChaineRefMarche, 2) & "'")) <= 0 Then
-                            SuccesMsg("Veuillez ajouter une méthode pour ce marché pour pouvoir continué")
+                            SuccesMsg("Veuillez ajouter une méthode pour ce marché pour pouvoir continué.")
                             Exit Sub
                         End If
 
@@ -1198,7 +1244,7 @@ Public Class PlanMarche
                             NewEtapeMarche.CodeConvention = CmbConvention.Text
                         Else
                             Dim Criteres() As String = (MarcheAConsulter.Text).Split("_"c)
-                            NewEtapeMarche.RefPPM = CurrentRefPPM
+                            'NewEtapeMarche.RefPPM = CurrentRefPPM
                             If ModePPM = "Genere" Then
                                 NewEtapeMarche.Bailleur = Criteres(2)
                                 If NewEtapeMarche.Bailleur = "Tous" Then
@@ -1208,6 +1254,9 @@ Public Class PlanMarche
                                 End If
                             End If
                         End If
+
+                        NewEtapeMarche.TypesMarches = MarcheAConsulter.Text.Split("_"c)(0).ToString
+                        NewEtapeMarche.RefPPM = RefPPM(MarcheAConsulter.SelectedIndex) 'RefPPM(MarcheAConsulter.SelectedIndex)
                         NewEtapeMarche.ShowDialog()
                     End If
                 End If
@@ -1215,6 +1264,7 @@ Public Class PlanMarche
         End If
 
         Exit Sub
+
         If (VoirPlan = True) Then
 
             Dim DatSet As New DataSet
@@ -2280,7 +2330,7 @@ Public Class PlanMarche
                         'Insertion du ppm
                         Dim CodeNewPlan As String = String.Empty
                         Try
-                            ExecuteNonQuery("insert into t_ppm_marche values (NULL,'" & EnleverApost(NumeroMarcheAConsulter.ToString) & "','" & EnleverApost(TypeMarche) & "','" & EnleverApost(periode) & "','Tous',NULL,'PPSD','" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "','" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "','" & CodeProjet & "','" & CodeUtilisateur & "', '" & EnleverApost(NumeroPlan.ToString) & "',NULL)")
+                            ExecuteNonQuery("insert into t_ppm_marche values (NULL,'" & EnleverApost(NumeroMarcheAConsulter.ToString) & "','" & EnleverApost(TypeMarche) & "','" & EnleverApost(periode) & "','Tous',NULL,'PPSD','" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "','" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "','" & CodeProjet & "','" & CodeUtilisateur & "', '" & EnleverApost(NumeroPlan.ToString) & "',NULL,NULL,NULL)")
                             CodeNewPlan = ExecuteScallar("SELECT MAX(RefPPM) FROM t_ppm_marche")
                         Catch ex As Exception
                             FinChargement()
@@ -2300,8 +2350,8 @@ Public Class PlanMarche
                             Try
                                 Dim LesInitialBalleurs As String = ""
                                 Dim LesConventions As String = ""
-                                ' Dim ConventionCheffil As String = ""
-                                ' Dim MaxMontantConvention As Decimal = 0
+                                Dim ConventionCheffil As String = ""
+                                Dim MaxMontantConvention As Decimal = 0
                                 Dim InitialCoursBailleur As String = ""
                                 Dim ConventEnCours As String = ""
 
@@ -2320,15 +2370,15 @@ Public Class PlanMarche
                                             LesConventions = LesConventions & " | " & ConventEnCours
                                         End If
 
-                                        'If MaxMontantConvention < MontConvEnCours Then 'Info Chef file
-                                        '    MaxMontantConvention = MontConvEnCours
-                                        '    ConventionCheffil = ConventEnCours
-                                        'End If
+                                        If MaxMontantConvention < MontConvEnCours Then 'Info Chef file
+                                            MaxMontantConvention = MontConvEnCours
+                                            ConventionCheffil = ConventEnCours
+                                        End If
                                     End If
                                 Next
 
                                 Dim IdMethodePPM As Decimal = Val(ExecuteScallar("SELECT CodeProcAO FROM t_procao WHERE AbregeAO='" & EnleverApost(MethodePPM) & "' AND TypeMarcheAO='" & TypeMarche & "'"))
-                                query = "insert into t_marche(CodeProjet,TypeMarche,NumeroComptable,DescriptionMarche,MontantEstimatif,RevuePrioPost,PeriodeMarche,InitialeBailleur,CodeConvention,CodeProcAO,RefPPM,DerniereMaj,Convention_ChefFile,NiveauActu,ModePPM) values('" & EnleverApost(CodeProjet) & "','" & EnleverApost(TypeMarche) & "',NULL,'" & EnleverApost(Description) & "','" & EnleverApost(Montant) & "','" & EnleverApost(TypeExamen) & "','" & EnleverApost(periode) & "','" & LesInitialBalleurs & "','" & LesConventions & "','" & IdMethodePPM & "','" & CodeNewPlan & "','" & Now.ToShortDateString & " " & Now.ToLongTimeString & "','" & ChefFile & "', NULL,'PPSD')"
+                                query = "insert into t_marche(CodeProjet,TypeMarche,NumeroComptable,DescriptionMarche,MontantEstimatif,RevuePrioPost,PeriodeMarche,InitialeBailleur,CodeConvention,CodeProcAO,RefPPM,DerniereMaj,Convention_ChefFile,NiveauActu,ModePPM,ConventionChefFilProjet) values('" & EnleverApost(CodeProjet) & "','" & EnleverApost(TypeMarche) & "',NULL,'" & EnleverApost(Description) & "','" & EnleverApost(Montant) & "','" & EnleverApost(TypeExamen) & "','" & EnleverApost(periode) & "','" & LesInitialBalleurs & "','" & LesConventions & "','" & IdMethodePPM & "','" & CodeNewPlan & "','" & Now.ToShortDateString & " " & Now.ToLongTimeString & "','" & ConventionCheffil & "', NULL,'PPSD','" & ChefFile & "')"
                                 ExecuteNonQuery(query)
                             Catch ex As Exception
                                 FailMsg(ex.ToString)
@@ -2387,6 +2437,8 @@ Public Class PlanMarche
         If MarcheAConsulter.SelectedIndex > -1 Then
             BtActualiserPlan.Enabled = True
             btAjout.Enabled = True
+            PanelDatePPM.Enabled = True
+
             If cmbDevise.SelectedIndex = -1 Then
                 SuccesMsg("Veuillez choisir la deuxième devise")
                 MarcheAConsulter.Text = ""
@@ -2416,6 +2468,7 @@ Public Class PlanMarche
             BtActualiserPlan.Enabled = False
             btAjout.Enabled = False
             BtRegenererPlan.Enabled = False
+            PanelDatePPM.Enabled = False
         End If
         RemplirTableauPPM(CurrentRefPPM)
     End Sub
@@ -2467,16 +2520,20 @@ Public Class PlanMarche
         End If
         RemplirMarcheAConsulter()
         MarcheAConsulter.Text = ""
+        DateApproPlan.EditValue = Nothing
+        DateAvisGeneral.EditValue = Nothing
+
         MarcheAConsulter.Enabled = False
         cmbDevise.Enabled = False
+        GridPlanMarche.Columns.Clear()
         GridPlanMarche.Rows.Clear()
         NumRevision.Text = ""
-        Dim NbCol As Decimal = GridPlanMarche.ColumnCount
-        If (NbCol > 0) Then
-            For i As Integer = 1 To NbCol - 1
-                GridPlanMarche.Columns.Remove("A")
-            Next
-        End If
+        'Dim NbCol As Decimal = GridPlanMarche.ColumnCount
+        'If (NbCol > 0) Then
+        '    For i As Integer = 1 To NbCol - 1
+        '        GridPlanMarche.Columns.Remove("A")
+        '    Next
+        'End If
     End Sub
 
     Private Sub RemplirTypeMarche()
@@ -2689,14 +2746,6 @@ Public Class PlanMarche
         End Try
     End Sub
 
-    Private Sub GridPlanMarche_CellMouseUp(sender As Object, e As DataGridViewCellMouseEventArgs) Handles GridPlanMarche.CellMouseUp
-        'RefMarche = GridPlanMarche.Rows.Item(GridPlanMarche.CurrentCell.RowIndex).Cells(0).Value
-    End Sub
-
-    Private Sub GridPlanMarche_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles GridPlanMarche.CellMouseClick
-        'RefMarche = GridPlanMarche.Rows.Item(GridPlanMarche.CurrentCell.RowIndex).Cells(0).Value
-    End Sub
-
     Private Sub GridPlanMarche_MouseClick(sender As Object, e As MouseEventArgs) Handles GridPlanMarche.MouseClick
         If ModePPM = "PPSD" Then
             If (e.Button = System.Windows.Forms.MouseButtons.Right) Then
@@ -2843,7 +2892,7 @@ Public Class PlanMarche
                         LibellePPMS = cmbTypeMarche.Text & "_" & DateDebutMarche.Text & " - " & DateFinMarche.Text & "_" & BailleurConcerne.Text & "_" & CmbConvention.Text
                         ElaboPPMS = "Bailleur"
                     End If
-                    ExecuteNonQuery("INSERT INTO t_ppm_marche VALUES(NULL,'" & EnleverApost(LibellePPMS.ToString) & "','" & EnleverApost(cmbTypeMarche.Text) & "','" & DateDebutMarche.Text & " - " & DateFinMarche.Text & "','" & EnleverApost(BailleurConcerne.Text) & "','" & EnleverApost(CmbConvention.Text) & "','Genere','" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "','" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "','" & ProjetEnCours & "','" & CodeUtilisateur & "','" & EnleverApost(txtNumPlan.Text) & "','" & EnleverApost(ElaboPPMS.ToString) & "')")
+                    ExecuteNonQuery("INSERT INTO t_ppm_marche VALUES(NULL,'" & EnleverApost(LibellePPMS.ToString) & "','" & EnleverApost(cmbTypeMarche.Text) & "','" & DateDebutMarche.Text & " - " & DateFinMarche.Text & "','" & EnleverApost(BailleurConcerne.Text) & "','" & EnleverApost(CmbConvention.Text) & "','Genere','" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "','" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "','" & ProjetEnCours & "','" & CodeUtilisateur & "','" & EnleverApost(txtNumPlan.Text) & "','" & EnleverApost(ElaboPPMS.ToString) & "',NULL,NULL)")
 
                     Dim LastIDPlan As Decimal = Val(ExecuteScallar("Select MAX(RefPPM) FROM t_ppm_marche"))
                     result = RechercherLesInfos(LastIDPlan)
@@ -2954,12 +3003,12 @@ Public Class PlanMarche
 
             If ElaboPPM = "Tous les bailleurs" Then
                 'Insertion du marché
-                query = "INSERT INTO T_Marche(CodeProjet,NumeroComptable,TypeMarche,DescriptionMarche,PeriodeMarche,InitialeBailleur,CodeConvention,Convention_ChefFile,JoursCompte,RefPPM, ModePPM) "
+                query = "INSERT INTO T_Marche(CodeProjet,NumeroComptable,TypeMarche,DescriptionMarche,PeriodeMarche,InitialeBailleur,CodeConvention,ConventionChefFilProjet,JoursCompte,RefPPM, ModePPM) "
                 query &= "VALUES('" & ProjetEnCours & "','" & rwAlloc("NumeroComptable") & "','" & EnleverApost(cmbTypeMarche.Text) & "','" & EnleverApost(LibelleCompte) & "','" & Trim(Periode) & "','" & lesBailleurs & "','" & lesConventions & "','" & ChefFile & "','" & JoursCompte & "','" & RefPlan & "','Tous_Bailleurs')"
                 ExecuteNonQuery(query)
             Else
                 'Insertion du marché
-                query = "INSERT INTO T_Marche(CodeProjet,NumeroComptable,TypeMarche,DescriptionMarche,PeriodeMarche,InitialeBailleur,CodeConvention,Convention_ChefFile,JoursCompte,RefPPM,ModePPM) "
+                query = "INSERT INTO T_Marche(CodeProjet,NumeroComptable,TypeMarche,DescriptionMarche,PeriodeMarche,InitialeBailleur,CodeConvention,ConventionChefFilProjet,JoursCompte,RefPPM,ModePPM) "
                 query &= "VALUES('" & ProjetEnCours & "','" & rwAlloc("NumeroComptable") & "','" & EnleverApost(cmbTypeMarche.Text) & "','" & EnleverApost(LibelleCompte) & "','" & Trim(Periode) & "','" & EnleverApost(BailleurConcerne.Text) & "','" & EnleverApost(CmbConvention.Text) & "','" & EnleverApost(CmbConvention.Text) & "','" & JoursCompte & "','" & RefPlan & "','Bailleur')"
                 ExecuteNonQuery(query)
             End If
@@ -2981,18 +3030,28 @@ Public Class PlanMarche
 
             'Recuperation du montant estimatif du marche
             Dim MontantEstim As Decimal = 0
+            Dim MaxMontant As Decimal = 0
+            Dim ConventionChefFil As String = ""
+
             Dim dtRepartition As DataTable
             If ElaboPPM = "Tous les bailleurs" Then
-                query = "select P.RefBesoinPartition,R.MontantBailleur from T_BesoinPartition as P,T_Bailleur as B,T_RepartitionParBailleur as R, T_COMP_SOUS_CLASSE as S where P.NumeroComptable='" & rwAlloc("NumeroComptable") & "' AND P.CodePartition IN(select DISTINCT CodePartition from T_Partition where LENGTH(LibelleCourt)>='5' AND DateDebutPartition>='" & dateconvert(DateDebutMarche.Text) & "' AND DateDebutPartition<='" & dateconvert(DateFinMarche.Text) & "' and CodeProjet='" & ProjetEnCours & "') AND S.CODE_SC=P.NumeroComptable AND S.TypeCompte='" & CodeTypeMarche & "' AND S.CompteMarche='O' and P.TypeBesoin='" & EnleverApost(cmbTypeMarche.Text) & "' and B.CodeBailleur=R.CodeBailleur and R.RefBesoinPartition=P.RefBesoinPartition and R.MontantBailleur<>'0'"
+                query = "select P.RefBesoinPartition,R.MontantBailleur, R.CodeConvention from T_BesoinPartition as P,T_Bailleur as B,T_RepartitionParBailleur as R, T_COMP_SOUS_CLASSE as S where P.NumeroComptable='" & rwAlloc("NumeroComptable") & "' AND P.CodePartition IN(select DISTINCT CodePartition from T_Partition where LENGTH(LibelleCourt)>='5' AND DateDebutPartition>='" & dateconvert(DateDebutMarche.Text) & "' AND DateDebutPartition<='" & dateconvert(DateFinMarche.Text) & "' and CodeProjet='" & ProjetEnCours & "') AND S.CODE_SC=P.NumeroComptable AND S.TypeCompte='" & CodeTypeMarche & "' AND S.CompteMarche='O' and P.TypeBesoin='" & EnleverApost(cmbTypeMarche.Text) & "' and B.CodeBailleur=R.CodeBailleur and R.RefBesoinPartition=P.RefBesoinPartition and R.MontantBailleur<>'0'"
                 dtRepartition = ExcecuteSelectQuery(query)
                 For Each rwRepartition As DataRow In dtRepartition.Rows
                     ExecuteNonQuery("UPDATE T_RepartitionParBailleur SET RefMarche='" & DernierIndex & "' where RefBesoinPartition='" & rwRepartition("RefBesoinPartition") & "' AND MontantBailleur<>'0'")
                     ExecuteNonQuery("DELETE from T_BesoinMarche where RefMarche='" & DernierIndex & "' AND RefBesoinPartition='" & rwRepartition("RefBesoinPartition") & "'")
                     ExecuteNonQuery("INSERT INTO T_BesoinMarche(RefBesoinPartition,RefMarche) VALUES('" & rwRepartition("RefBesoinPartition") & "','" & DernierIndex & "')")
                     MontantEstim += rwRepartition("MontantBailleur")
+
+                    'Recherche de la convention qui finance le plus
+                    If rwRepartition("MontantBailleur") > MaxMontant Then
+                        MaxMontant = rwRepartition("MontantBailleur")
+                        ConventionChefFil = rwRepartition("CodeConvention")
+                    End If
+
                 Next
             Else
-                query = "select P.RefBesoinPartition,R.MontantBailleur from T_BesoinPartition as P,T_Bailleur as B,T_RepartitionParBailleur as R, T_COMP_SOUS_CLASSE as S where P.NumeroComptable='" & rwAlloc("NumeroComptable") & "' AND P.CodePartition IN(select DISTINCT CodePartition from T_Partition where LENGTH(LibelleCourt)>='5' AND DateDebutPartition>='" & dateconvert(DateDebutMarche.Text) & "' AND DateDebutPartition<='" & dateconvert(DateFinMarche.Text) & "' and CodeProjet='" & ProjetEnCours & "') AND S.CODE_SC=P.NumeroComptable AND S.TypeCompte='" & CodeTypeMarche & "' AND S.CompteMarche='O' and P.TypeBesoin='" & EnleverApost(cmbTypeMarche.Text) & "' and B.CodeBailleur=R.CodeBailleur and R.RefBesoinPartition=P.RefBesoinPartition and B.InitialeBailleur='" & EnleverApost(BailleurConcerne.Text) & "' and R.MontantBailleur<>'0' and R.CodeConvention='" & EnleverApost(CmbConvention.Text) & "'"
+                query = "select P.RefBesoinPartition,R.MontantBailleur,R.CodeConvention from T_BesoinPartition as P,T_Bailleur as B,T_RepartitionParBailleur as R, T_COMP_SOUS_CLASSE as S where P.NumeroComptable='" & rwAlloc("NumeroComptable") & "' AND P.CodePartition IN(select DISTINCT CodePartition from T_Partition where LENGTH(LibelleCourt)>='5' AND DateDebutPartition>='" & dateconvert(DateDebutMarche.Text) & "' AND DateDebutPartition<='" & dateconvert(DateFinMarche.Text) & "' and CodeProjet='" & ProjetEnCours & "') AND S.CODE_SC=P.NumeroComptable AND S.TypeCompte='" & CodeTypeMarche & "' AND S.CompteMarche='O' and P.TypeBesoin='" & EnleverApost(cmbTypeMarche.Text) & "' and B.CodeBailleur=R.CodeBailleur and R.RefBesoinPartition=P.RefBesoinPartition and B.InitialeBailleur='" & EnleverApost(BailleurConcerne.Text) & "' and R.MontantBailleur<>'0' and R.CodeConvention='" & EnleverApost(CmbConvention.Text) & "'"
                 dtRepartition = ExcecuteSelectQuery(query)
 
                 For Each rwRepartition As DataRow In dtRepartition.Rows
@@ -3001,17 +3060,22 @@ Public Class PlanMarche
                     ExecuteNonQuery("INSERT INTO T_BesoinMarche(RefBesoinPartition,RefMarche) VALUES('" & rwRepartition("RefBesoinPartition") & "','" & DernierIndex & "')")
                     MontantEstim += rwRepartition("MontantBailleur")
 
+                    'Recherche de la convention qui finance le plus
+                    If rwRepartition("MontantBailleur") > MaxMontant Then
+                        MaxMontant = rwRepartition("MontantBailleur")
+                        ConventionChefFil = rwRepartition("CodeConvention")
+                    End If
                 Next
             End If
 
             'Verification de methode auto
             ' Index 0 = LaMethode; 1= LaRevue; 2=ExceptMethode; 3=CodeMethode; 4=KodSeuil
-            Dim ResultatRecherche As String() = GetMethodRevuSeuilExcept(CDec(MontantEstim))
+            Dim ResultatRecherche As String() = GetMethodRevuSeuilExcept(CDec(MontantEstim), ConventionChefFil)
             'If (ExceptMethode <> "") Then LaRevue = LaRevue & "*"
             If (ResultatRecherche(2).ToString <> "") Then ResultatRecherche(1) = ResultatRecherche(1) & "*"
 
             'Mise à jour des montants estimatifs, Méthodes et Revues dans la table marché *************************************************************
-            ExecuteNonQuery("UPDATE T_Marche SET MontantEstimatif='" & MontantEstim & "', MethodeMarche ='" & ResultatRecherche(0) & "', RevuePrioPost ='" & ResultatRecherche(1) & "', CodeProcAO ='" & ResultatRecherche(3) & "', CodeSeuil ='" & ResultatRecherche(4) & "', DerniereMaj ='" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "' WHERE RefMarche='" & DernierIndex & "'")
+            ExecuteNonQuery("UPDATE T_Marche SET MontantEstimatif='" & MontantEstim & "', MethodeMarche ='" & ResultatRecherche(0) & "', RevuePrioPost ='" & ResultatRecherche(1) & "', CodeProcAO ='" & ResultatRecherche(3) & "', CodeSeuil ='" & ResultatRecherche(4) & "', DerniereMaj ='" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "', Convention_ChefFile='" & EnleverApost(ConventionChefFil.ToString) & "' WHERE RefMarche='" & DernierIndex & "'")
         Next
         Me.Cursor = Cursors.Default
         Return 0
@@ -3075,8 +3139,8 @@ Public Class PlanMarche
                     End If
                 End If
 
-                query = "INSERT INTO t_ppm_historiquemarche(CodeProjet,RefMarche,NumeroComptable,TypeMarche,DescriptionMarche,PeriodeMarche,InitialeBailleur,CodeConvention,Convention_ChefFile,JoursCompte,RefPPM, ModePPM,NiveauActu, NumeroDAO, CodeLot, Forfait_TpsPasse, MontantEstimatif, MethodeMarche, QualifPrePost, RevuePrioPost, CodeProcAO, CodeSeuil, DateActualisation) "
-                query &= "VALUES('" & ProjetEnCours & "','" & rw("RefMarche") & "','" & rw("NumeroComptable").ToString & "','" & rw("TypeMarche").ToString & "','" & rw("DescriptionMarche").ToString & "','" & rw("PeriodeMarche").ToString & "','" & rw("InitialeBailleur").ToString & "','" & rw("CodeConvention").ToString & "','" & rw("Convention_ChefFile").ToString & "','" & rw("JoursCompte").ToString & "','" & RefPlan & "','" & rw("ModePPM").ToString & "','" & NiveauActu & "', '" & rw("NumeroDAO").ToString & "', '" & rw("CodeLot").ToString & "', '" & rw("Forfait_TpsPasse").ToString & "', '" & rw("MontantEstimatif") & "', '" & rw("MethodeMarche") & "', '" & rw("QualifPrePost").ToString & "', '" & rw("RevuePrioPost").ToString & "', '" & rw("CodeProcAO") & "', '" & rw("CodeSeuil") & "', '" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "')"
+                query = "INSERT INTO t_ppm_historiquemarche(CodeProjet,RefMarche,NumeroComptable,TypeMarche,DescriptionMarche,PeriodeMarche,InitialeBailleur,CodeConvention,Convention_ChefFile,JoursCompte,RefPPM, ModePPM,NiveauActu, NumeroDAO, CodeLot, Forfait_TpsPasse, MontantEstimatif, MethodeMarche, QualifPrePost, RevuePrioPost, CodeProcAO, CodeSeuil, DateActualisation,ConventionChefFilProjet) "
+                query &= "VALUES('" & ProjetEnCours & "','" & rw("RefMarche") & "','" & rw("NumeroComptable").ToString & "','" & rw("TypeMarche").ToString & "','" & rw("DescriptionMarche").ToString & "','" & rw("PeriodeMarche").ToString & "','" & rw("InitialeBailleur").ToString & "','" & rw("CodeConvention").ToString & "','" & rw("Convention_ChefFile").ToString & "','" & rw("JoursCompte").ToString & "','" & RefPlan & "','" & rw("ModePPM").ToString & "','" & NiveauActu & "', '" & rw("NumeroDAO").ToString & "', '" & rw("CodeLot").ToString & "', '" & rw("Forfait_TpsPasse").ToString & "', '" & rw("MontantEstimatif") & "', '" & rw("MethodeMarche") & "', '" & rw("QualifPrePost").ToString & "', '" & rw("RevuePrioPost").ToString & "', '" & rw("CodeProcAO") & "', '" & rw("CodeSeuil") & "', '" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "','" & rw("ConventionChefFilProjet").ToString & "')"
                 ExecuteNonQuery(query)
             Next
 
@@ -3152,12 +3216,12 @@ Public Class PlanMarche
 
                     If ElaboPPM = "Tous les bailleurs" Then
                         'Insertion du marché
-                        query = "INSERT INTO T_Marche(CodeProjet,NumeroComptable,TypeMarche,DescriptionMarche,PeriodeMarche,InitialeBailleur,CodeConvention,Convention_ChefFile,JoursCompte,RefPPM, ModePPM) "
+                        query = "INSERT INTO T_Marche(CodeProjet,NumeroComptable,TypeMarche,DescriptionMarche,PeriodeMarche,InitialeBailleur,CodeConvention,ConventionChefFilProjet,JoursCompte,RefPPM, ModePPM) "
                         query &= "VALUES('" & ProjetEnCours & "','" & rwAlloc("NumeroComptable") & "','" & TypeMarche & "','" & EnleverApost(LibelleComptes) & "','" & Trim(Periode) & "','" & lesBailleurs0 & "','" & lesConventions0 & "','" & ChefFile & "','" & JoursCompte & "','" & RefPlan & "','Tous_Bailleurs')"
                         ExecuteNonQuery(query)
                     Else
                         'Insertion du marché
-                        query = "INSERT INTO T_Marche(CodeProjet,NumeroComptable,TypeMarche,DescriptionMarche,PeriodeMarche,InitialeBailleur,CodeConvention,Convention_ChefFile,ModePPM,JoursCompte,RefPPM) "
+                        query = "INSERT INTO T_Marche(CodeProjet,NumeroComptable,TypeMarche,DescriptionMarche,PeriodeMarche,InitialeBailleur,CodeConvention,ConventionChefFilProjet,ModePPM,JoursCompte,RefPPM) "
                         query &= "VALUES('" & ProjetEnCours & "','" & rwAlloc("NumeroComptable") & "','" & TypeMarche & "','" & EnleverApost(LibelleComptes) & "','" & Trim(Periode) & "','" & Bailleur & "','" & Convention & "','" & Convention & "','Bailleur','" & JoursCompte & "','" & RefPlan & "')"
                         ExecuteNonQuery(query)
                     End If
@@ -3167,9 +3231,11 @@ Public Class PlanMarche
 
                     'Recuperation du montant estimatif du marche
                     Dim MontantEstim0 As Decimal = 0
+                    Dim ConventionChefFil As String = ""
+                    Dim MaxMontant As Decimal = 0
 
                     If ElaboPPM = "Tous les bailleurs" Then
-                        query = "select P.RefBesoinPartition,R.MontantBailleur from T_BesoinPartition as P,T_Bailleur as B,T_RepartitionParBailleur as R, T_COMP_SOUS_CLASSE as S where P.NumeroComptable='" & rwAlloc("NumeroComptable") & "' AND P.CodePartition IN(select DISTINCT CodePartition from T_Partition where LENGTH(LibelleCourt)>='5' AND DateDebutPartition>='" & dateconvert(DateDebut) & "' AND DateDebutPartition<='" & dateconvert(DateFin) & "' and CodeProjet='" & ProjetEnCours & "') AND S.CODE_SC=P.NumeroComptable AND S.TypeCompte='" & CodeTypeMarche & "' AND S.CompteMarche='O' and P.TypeBesoin='" & TypeMarche & "' and B.CodeBailleur=R.CodeBailleur and R.RefBesoinPartition=P.RefBesoinPartition and R.MontantBailleur<>'0'"
+                        query = "select P.RefBesoinPartition,R.MontantBailleur, R.CodeConvention from T_BesoinPartition as P,T_Bailleur as B,T_RepartitionParBailleur as R, T_COMP_SOUS_CLASSE as S where P.NumeroComptable='" & rwAlloc("NumeroComptable") & "' AND P.CodePartition IN(select DISTINCT CodePartition from T_Partition where LENGTH(LibelleCourt)>='5' AND DateDebutPartition>='" & dateconvert(DateDebut) & "' AND DateDebutPartition<='" & dateconvert(DateFin) & "' and CodeProjet='" & ProjetEnCours & "') AND S.CODE_SC=P.NumeroComptable AND S.TypeCompte='" & CodeTypeMarche & "' AND S.CompteMarche='O' and P.TypeBesoin='" & TypeMarche & "' and B.CodeBailleur=R.CodeBailleur and R.RefBesoinPartition=P.RefBesoinPartition and R.MontantBailleur<>'0'"
                         Dim dtRepartition0 As DataTable = ExcecuteSelectQuery(query)
                         For Each rwRepartition As DataRow In dtRepartition0.Rows
                             ExecuteNonQuery("UPDATE T_RepartitionParBailleur SET RefMarche='" & DernierIndex0 & "' where RefBesoinPartition='" & rwRepartition("RefBesoinPartition") & "' AND MontantBailleur<>'0'")
@@ -3177,9 +3243,15 @@ Public Class PlanMarche
                             ExecuteNonQuery("INSERT INTO T_BesoinMarche(RefBesoinPartition,RefMarche) VALUES('" & rwRepartition("RefBesoinPartition") & "','" & DernierIndex0 & "')")
 
                             MontantEstim0 += rwRepartition("MontantBailleur")
+
+                            'Recherche de la convention qui finance le plus
+                            If rwRepartition("MontantBailleur") > MaxMontant Then
+                                MaxMontant = rwRepartition("MontantBailleur")
+                                ConventionChefFil = rwRepartition("CodeConvention")
+                            End If
                         Next
                     Else
-                        query = "select P.RefBesoinPartition,R.MontantBailleur from T_BesoinPartition as P,T_Bailleur as B,T_RepartitionParBailleur as R, T_COMP_SOUS_CLASSE as S where P.NumeroComptable='" & rwAlloc("NumeroComptable") & "' AND P.CodePartition IN(select DISTINCT CodePartition from T_Partition where LENGTH(LibelleCourt)>='5' AND DateDebutPartition>='" & dateconvert(DateDebut) & "' AND DateDebutPartition<='" & dateconvert(DateFin) & "' and CodeProjet='" & ProjetEnCours & "') AND S.CODE_SC=P.NumeroComptable AND S.TypeCompte='" & CodeTypeMarche & "' AND S.CompteMarche='O' and P.TypeBesoin='" & TypeMarche & "' and B.CodeBailleur=R.CodeBailleur and R.RefBesoinPartition=P.RefBesoinPartition and B.InitialeBailleur='" & Bailleur & "' and R.MontantBailleur<>'0' and R.CodeConvention='" & Convention & "'"
+                        query = "select P.RefBesoinPartition,R.MontantBailleur, R.CodeConvention from T_BesoinPartition as P,T_Bailleur as B,T_RepartitionParBailleur as R, T_COMP_SOUS_CLASSE as S where P.NumeroComptable='" & rwAlloc("NumeroComptable") & "' AND P.CodePartition IN(select DISTINCT CodePartition from T_Partition where LENGTH(LibelleCourt)>='5' AND DateDebutPartition>='" & dateconvert(DateDebut) & "' AND DateDebutPartition<='" & dateconvert(DateFin) & "' and CodeProjet='" & ProjetEnCours & "') AND S.CODE_SC=P.NumeroComptable AND S.TypeCompte='" & CodeTypeMarche & "' AND S.CompteMarche='O' and P.TypeBesoin='" & TypeMarche & "' and B.CodeBailleur=R.CodeBailleur and R.RefBesoinPartition=P.RefBesoinPartition and B.InitialeBailleur='" & Bailleur & "' and R.MontantBailleur<>'0' and R.CodeConvention='" & Convention & "'"
                         Dim dtRepartition0 As DataTable = ExcecuteSelectQuery(query)
                         For Each rwRepartition As DataRow In dtRepartition0.Rows
                             ExecuteNonQuery("UPDATE T_RepartitionParBailleur SET RefMarche='" & DernierIndex0 & "' where RefBesoinPartition='" & rwRepartition("RefBesoinPartition") & "' and CodeConvention='" & Convention & "' AND MontantBailleur<>'0'")
@@ -3187,20 +3259,28 @@ Public Class PlanMarche
                             ExecuteNonQuery("INSERT INTO T_BesoinMarche(RefBesoinPartition,RefMarche) VALUES('" & rwRepartition("RefBesoinPartition") & "','" & DernierIndex0 & "')")
 
                             MontantEstim0 += rwRepartition("MontantBailleur")
+
+                            'Recherche de la convention qui finance le plus
+                            If rwRepartition("MontantBailleur") > MaxMontant Then
+                                MaxMontant = rwRepartition("MontantBailleur")
+                                ConventionChefFil = rwRepartition("CodeConvention")
+                            End If
                         Next
                     End If
 
                     'Verification de methode auto
                     ' Index 0 = LaMethode; 1= LaRevue; 2=ExceptMethode; 3=CodeMethode; 4=KodSeuil
-                    Dim ResultatRecherche As String() = GetMethodRevuSeuilExcept(CDec(MontantEstim0))
+                    Dim ResultatRecherche As String() = GetMethodRevuSeuilExcept(CDec(MontantEstim0), ConventionChefFil)
                     'If (ExceptMethode <> "") Then LaRevue = LaRevue & "*"
                     If (ResultatRecherche(2).ToString <> "") Then ResultatRecherche(1) = ResultatRecherche(1) & "*"
 
                     'Mise à jour des montants estimatifs, Méthodes et Revues dans la table marché *************************************************************
-                    ExecuteNonQuery("UPDATE T_Marche SET MontantEstimatif='" & MontantEstim0 & "', MethodeMarche ='" & ResultatRecherche(0) & "', RevuePrioPost ='" & ResultatRecherche(1) & "', CodeProcAO ='" & ResultatRecherche(3) & "', CodeSeuil='" & ResultatRecherche(4) & "', DerniereMaj ='" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "' WHERE RefMarche='" & DernierIndex0 & "'")
+                    ExecuteNonQuery("UPDATE T_Marche SET MontantEstimatif='" & MontantEstim0 & "', MethodeMarche ='" & ResultatRecherche(0) & "', RevuePrioPost ='" & ResultatRecherche(1) & "', CodeProcAO ='" & ResultatRecherche(3) & "', CodeSeuil='" & ResultatRecherche(4) & "', DerniereMaj ='" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "', Convention_ChefFile='" & ConventionChefFil & "' WHERE RefMarche='" & DernierIndex0 & "'")
                 Else
                     'Si le numéro comptable est déjà enregistré
                     Dim NouveauMontant As Decimal = 0
+                    Dim MaxMontantConvention As Decimal = 0
+                    Dim ConventionChefFils As String = ""
 
                     If ElaboPPM = "Tous les bailleurs" Then
                         query = "select SUM(R.MontantBailleur) from T_BesoinPartition as P,T_Bailleur as B,T_RepartitionParBailleur as R, T_COMP_SOUS_CLASSE as S where P.NumeroComptable='" & rwAlloc("NumeroComptable") & "' AND P.CodePartition IN(select DISTINCT CodePartition from T_Partition where LENGTH(LibelleCourt)>='5' AND DateDebutPartition>='" & dateconvert(DateDebut) & "' AND DateDebutPartition<='" & dateconvert(DateFin) & "' and CodeProjet='" & ProjetEnCours & "') AND S.CODE_SC=P.NumeroComptable AND S.TypeCompte='" & CodeTypeMarche & "' AND S.CompteMarche='O' and P.TypeBesoin='" & TypeMarche & "' and B.CodeBailleur=R.CodeBailleur and R.RefBesoinPartition=P.RefBesoinPartition and R.MontantBailleur<>'0'"
@@ -3271,12 +3351,12 @@ Public Class PlanMarche
 
                                 If ElaboPPM = "Tous les bailleurs" Then
                                     'Insertion du marché
-                                    query = "INSERT INTO T_Marche(CodeProjet,NumeroComptable,TypeMarche,DescriptionMarche,PeriodeMarche,InitialeBailleur,CodeConvention,Convention_ChefFile,JoursCompte,RefPPM, ModePPM) "
+                                    query = "INSERT INTO T_Marche(CodeProjet,NumeroComptable,TypeMarche,DescriptionMarche,PeriodeMarche,InitialeBailleur,CodeConvention,ConventionChefFilProjet,JoursCompte,RefPPM, ModePPM) "
                                     query &= "VALUES('" & ProjetEnCours & "','" & rwAlloc("NumeroComptable") & "','" & TypeMarche & "','" & EnleverApost(LibelleComptes) & "','" & Trim(Periode) & "','" & ListeInitialBailleur & "','" & ListeConvention & "','" & ChefFile & "','" & JoursCompte & "','" & RefPlan & "','Tous_Bailleurs')"
                                     ExecuteNonQuery(query)
                                 Else
                                     'Insertion du marché
-                                    query = "INSERT INTO T_Marche(CodeProjet,NumeroComptable,TypeMarche,DescriptionMarche,PeriodeMarche,InitialeBailleur,CodeConvention,Convention_ChefFile,ModePPM,JoursCompte,RefPPM) "
+                                    query = "INSERT INTO T_Marche(CodeProjet,NumeroComptable,TypeMarche,DescriptionMarche,PeriodeMarche,InitialeBailleur,CodeConvention,ConventionChefFilProjet,ModePPM,JoursCompte,RefPPM) "
                                     query &= "VALUES('" & ProjetEnCours & "','" & rwAlloc("NumeroComptable") & "','" & TypeMarche & "','" & EnleverApost(LibelleComptes) & "','" & Trim(Periode) & "','" & Bailleur & "','" & Convention & "','" & Convention & "','Bailleur','" & JoursCompte & "','" & RefPlan & "')"
                                     ExecuteNonQuery(query)
                                 End If
@@ -3286,20 +3366,32 @@ Public Class PlanMarche
 
                                 'Recuperation du montant estimatif du marche
                                 If ElaboPPM = "Tous les bailleurs" Then
-                                    query = "select P.RefBesoinPartition,R.MontantBailleur from T_BesoinPartition as P, T_Bailleur as B, T_RepartitionParBailleur as R, T_COMP_SOUS_CLASSE as S where P.NumeroComptable='" & rwAlloc("NumeroComptable") & "' AND P.CodePartition IN(select DISTINCT CodePartition from T_Partition where LENGTH(LibelleCourt)>='5' AND DateDebutPartition>='" & dateconvert(DateDebut) & "' AND DateDebutPartition<='" & dateconvert(DateFin) & "' and CodeProjet='" & ProjetEnCours & "') AND S.CODE_SC=P.NumeroComptable AND S.TypeCompte='" & CodeTypeMarche & "' AND S.CompteMarche='O' and P.TypeBesoin='" & TypeMarche & "' and B.CodeBailleur=R.CodeBailleur and R.RefBesoinPartition=P.RefBesoinPartition and R.MontantBailleur<>'0' and P.RefBesoinPartition NOT IN(SELECT RefBesoinPartition FROM t_besoinmarche)"
+                                    query = "select P.RefBesoinPartition,R.MontantBailleur,R.CodeConvention from T_BesoinPartition as P, T_Bailleur as B, T_RepartitionParBailleur as R, T_COMP_SOUS_CLASSE as S where P.NumeroComptable='" & rwAlloc("NumeroComptable") & "' AND P.CodePartition IN(select DISTINCT CodePartition from T_Partition where LENGTH(LibelleCourt)>='5' AND DateDebutPartition>='" & dateconvert(DateDebut) & "' AND DateDebutPartition<='" & dateconvert(DateFin) & "' and CodeProjet='" & ProjetEnCours & "') AND S.CODE_SC=P.NumeroComptable AND S.TypeCompte='" & CodeTypeMarche & "' AND S.CompteMarche='O' and P.TypeBesoin='" & TypeMarche & "' and B.CodeBailleur=R.CodeBailleur and R.RefBesoinPartition=P.RefBesoinPartition and R.MontantBailleur<>'0' and P.RefBesoinPartition NOT IN(SELECT RefBesoinPartition FROM t_besoinmarche)"
                                     Dim dtRepartition0 As DataTable = ExcecuteSelectQuery(query)
                                     For Each rwRepartition As DataRow In dtRepartition0.Rows
                                         ExecuteNonQuery("UPDATE T_RepartitionParBailleur SET RefMarche='" & DernierIndex1 & "' where RefBesoinPartition='" & rwRepartition("RefBesoinPartition") & "' AND MontantBailleur<>'0'")
                                         ExecuteNonQuery("DELETE from T_BesoinMarche where RefMarche='" & DernierIndex1 & "' AND RefBesoinPartition='" & rwRepartition("RefBesoinPartition") & "'")
                                         ExecuteNonQuery("INSERT INTO T_BesoinMarche(RefBesoinPartition,RefMarche) VALUES('" & rwRepartition("RefBesoinPartition") & "','" & DernierIndex1 & "')")
+
+                                        'Recherche de la convention qui finance le plus
+                                        If rwRepartition("MontantBailleur") > MaxMontantConvention Then
+                                            MaxMontantConvention = rwRepartition("MontantBailleur")
+                                            ConventionChefFils = rwRepartition("CodeConvention")
+                                        End If
                                     Next
                                 Else
-                                    query = "select P.RefBesoinPartition,R.MontantBailleur from T_BesoinPartition as P,T_Bailleur as B,T_RepartitionParBailleur as R, T_COMP_SOUS_CLASSE as S where P.NumeroComptable='" & rwAlloc("NumeroComptable") & "' AND P.CodePartition IN(select DISTINCT CodePartition from T_Partition where LENGTH(LibelleCourt)>='5' AND DateDebutPartition>='" & dateconvert(DateDebut) & "' AND DateDebutPartition<='" & dateconvert(DateFin) & "' and CodeProjet='" & ProjetEnCours & "') AND S.CODE_SC=P.NumeroComptable AND S.TypeCompte='" & CodeTypeMarche & "' AND S.CompteMarche='O' and P.TypeBesoin='" & TypeMarche & "' and B.CodeBailleur=R.CodeBailleur and R.RefBesoinPartition=P.RefBesoinPartition and B.InitialeBailleur='" & Bailleur & "' and R.MontantBailleur<>'0' and R.CodeConvention='" & Convention & "' and P.RefBesoinPartition NOT IN(SELECT RefBesoinPartition FROM t_besoinmarche)"
+                                    query = "select P.RefBesoinPartition,R.MontantBailleur,R.CodeConvention from T_BesoinPartition as P,T_Bailleur as B,T_RepartitionParBailleur as R, T_COMP_SOUS_CLASSE as S where P.NumeroComptable='" & rwAlloc("NumeroComptable") & "' AND P.CodePartition IN(select DISTINCT CodePartition from T_Partition where LENGTH(LibelleCourt)>='5' AND DateDebutPartition>='" & dateconvert(DateDebut) & "' AND DateDebutPartition<='" & dateconvert(DateFin) & "' and CodeProjet='" & ProjetEnCours & "') AND S.CODE_SC=P.NumeroComptable AND S.TypeCompte='" & CodeTypeMarche & "' AND S.CompteMarche='O' and P.TypeBesoin='" & TypeMarche & "' and B.CodeBailleur=R.CodeBailleur and R.RefBesoinPartition=P.RefBesoinPartition and B.InitialeBailleur='" & Bailleur & "' and R.MontantBailleur<>'0' and R.CodeConvention='" & Convention & "' and P.RefBesoinPartition NOT IN(SELECT RefBesoinPartition FROM t_besoinmarche)"
                                     Dim dtRepartition0 As DataTable = ExcecuteSelectQuery(query)
                                     For Each rwRepartition As DataRow In dtRepartition0.Rows
                                         ExecuteNonQuery("UPDATE T_RepartitionParBailleur SET RefMarche='" & DernierIndex1 & "' where RefBesoinPartition='" & rwRepartition("RefBesoinPartition") & "' and CodeConvention='" & Convention & "' AND MontantBailleur<>'0'")
                                         ExecuteNonQuery("DELETE from T_BesoinMarche where RefMarche='" & DernierIndex1 & "' AND RefBesoinPartition='" & rwRepartition("RefBesoinPartition") & "'")
                                         ExecuteNonQuery("INSERT INTO T_BesoinMarche(RefBesoinPartition,RefMarche) VALUES('" & rwRepartition("RefBesoinPartition") & "','" & DernierIndex1 & "')")
+
+                                        'Recherche de la convention qui finance le plus
+                                        If rwRepartition("MontantBailleur") > MaxMontantConvention Then
+                                            MaxMontantConvention = rwRepartition("MontantBailleur")
+                                            ConventionChefFils = rwRepartition("CodeConvention")
+                                        End If
                                     Next
                                 End If
 
@@ -3312,37 +3404,49 @@ Public Class PlanMarche
 
                                 'Referencé les nouvelles lignes ajoutées
                                 If ElaboPPM = "Tous les bailleurs" Then
-                                    query = "select P.RefBesoinPartition from T_BesoinPartition as P, T_Bailleur as B, T_RepartitionParBailleur as R, T_COMP_SOUS_CLASSE as S where P.NumeroComptable='" & rwAlloc("NumeroComptable") & "' AND P.CodePartition IN(select DISTINCT CodePartition from T_Partition where LENGTH(LibelleCourt)>='5' AND DateDebutPartition>='" & dateconvert(DateDebut) & "' AND DateDebutPartition<='" & dateconvert(DateFin) & "' and CodeProjet='" & ProjetEnCours & "') AND S.CODE_SC=P.NumeroComptable AND S.TypeCompte='" & CodeTypeMarche & "' AND S.CompteMarche='O' and P.TypeBesoin='" & TypeMarche & "' and B.CodeBailleur=R.CodeBailleur and R.RefBesoinPartition=P.RefBesoinPartition and R.MontantBailleur<>'0'"
+                                    query = "select P.RefBesoinPartition, R.MontantBailleur, R.CodeConvention from T_BesoinPartition as P, T_Bailleur as B, T_RepartitionParBailleur as R, T_COMP_SOUS_CLASSE as S where P.NumeroComptable='" & rwAlloc("NumeroComptable") & "' AND P.CodePartition IN(select DISTINCT CodePartition from T_Partition where LENGTH(LibelleCourt)>='5' AND DateDebutPartition>='" & dateconvert(DateDebut) & "' AND DateDebutPartition<='" & dateconvert(DateFin) & "' and CodeProjet='" & ProjetEnCours & "') AND S.CODE_SC=P.NumeroComptable AND S.TypeCompte='" & CodeTypeMarche & "' AND S.CompteMarche='O' and P.TypeBesoin='" & TypeMarche & "' and B.CodeBailleur=R.CodeBailleur and R.RefBesoinPartition=P.RefBesoinPartition and R.MontantBailleur<>'0'"
                                     Dim dts As DataTable = ExcecuteSelectQuery(query)
                                     For Each rwRepartition As DataRow In dts.Rows
                                         ExecuteNonQuery("UPDATE T_RepartitionParBailleur SET RefMarche='" & NumeroMarche & "' where RefBesoinPartition='" & rwRepartition("RefBesoinPartition") & "' AND MontantBailleur<>'0'")
                                         ExecuteNonQuery("DELETE from T_BesoinMarche where RefMarche='" & NumeroMarche & "' AND RefBesoinPartition='" & rwRepartition("RefBesoinPartition") & "'")
                                         ExecuteNonQuery("INSERT INTO T_BesoinMarche(RefBesoinPartition,RefMarche) VALUES('" & rwRepartition("RefBesoinPartition") & "','" & NumeroMarche & "')")
+
+                                        'Recherche de la convention qui finance le plus
+                                        If rwRepartition("MontantBailleur") > MaxMontantConvention Then
+                                            MaxMontantConvention = rwRepartition("MontantBailleur")
+                                            ConventionChefFils = rwRepartition("CodeConvention")
+                                        End If
                                     Next
                                 Else
-                                    query = "select P.RefBesoinPartition from T_BesoinPartition as P,T_Bailleur as B,T_RepartitionParBailleur as R, T_COMP_SOUS_CLASSE as S where P.NumeroComptable='" & rwAlloc("NumeroComptable") & "' AND P.CodePartition IN(select DISTINCT CodePartition from T_Partition where LENGTH(LibelleCourt)>='5' AND DateDebutPartition>='" & dateconvert(DateDebut) & "' AND DateDebutPartition<='" & dateconvert(DateFin) & "' and CodeProjet='" & ProjetEnCours & "') AND S.CODE_SC=P.NumeroComptable AND S.TypeCompte='" & CodeTypeMarche & "' AND S.CompteMarche='O' and P.TypeBesoin='" & TypeMarche & "' and B.CodeBailleur=R.CodeBailleur and R.RefBesoinPartition=P.RefBesoinPartition and B.InitialeBailleur='" & Bailleur & "' and R.MontantBailleur<>'0' and R.CodeConvention='" & Convention & "'"
+                                    query = "select P.RefBesoinPartition, R.MontantBailleur, R.CodeConvention from T_BesoinPartition as P,T_Bailleur as B,T_RepartitionParBailleur as R, T_COMP_SOUS_CLASSE as S where P.NumeroComptable='" & rwAlloc("NumeroComptable") & "' AND P.CodePartition IN(select DISTINCT CodePartition from T_Partition where LENGTH(LibelleCourt)>='5' AND DateDebutPartition>='" & dateconvert(DateDebut) & "' AND DateDebutPartition<='" & dateconvert(DateFin) & "' and CodeProjet='" & ProjetEnCours & "') AND S.CODE_SC=P.NumeroComptable AND S.TypeCompte='" & CodeTypeMarche & "' AND S.CompteMarche='O' and P.TypeBesoin='" & TypeMarche & "' and B.CodeBailleur=R.CodeBailleur and R.RefBesoinPartition=P.RefBesoinPartition and B.InitialeBailleur='" & Bailleur & "' and R.MontantBailleur<>'0' and R.CodeConvention='" & Convention & "'"
                                     Dim dtts As DataTable = ExcecuteSelectQuery(query)
 
                                     For Each rwRepartition As DataRow In dtts.Rows
                                         ExecuteNonQuery("UPDATE T_RepartitionParBailleur SET RefMarche='" & NumeroMarche & "' where RefBesoinPartition='" & rwRepartition("RefBesoinPartition") & "' and CodeConvention='" & Convention & "' AND MontantBailleur<>'0'")
                                         ExecuteNonQuery("DELETE from T_BesoinMarche where RefMarche='" & NumeroMarche & "' AND RefBesoinPartition='" & rwRepartition("RefBesoinPartition") & "'")
                                         ExecuteNonQuery("INSERT INTO T_BesoinMarche(RefBesoinPartition,RefMarche) VALUES('" & rwRepartition("RefBesoinPartition") & "','" & NumeroMarche & "')")
+
+                                        'Recherche de la convention qui finance le plus
+                                        If rwRepartition("MontantBailleur") > MaxMontantConvention Then
+                                            MaxMontantConvention = rwRepartition("MontantBailleur")
+                                            ConventionChefFils = rwRepartition("CodeConvention")
+                                        End If
                                     Next
                                 End If
                             End If
 
-                            Dim ResultatRecherche As String() = GetMethodRevuSeuilExcept(CDec(NewMonatantMarche))
+                            Dim ResultatRecherche As String() = GetMethodRevuSeuilExcept(CDec(NewMonatantMarche), ConventionChefFils)
                             If (ResultatRecherche(2).ToString <> "") Then ResultatRecherche(1) = ResultatRecherche(1) & "*"
 
                             'Mise à jour des montants estimatifs, Méthodes et Revues dans la table marché *************************************************************
-                            ExecuteNonQuery("UPDATE T_Marche SET MontantEstimatif='" & NewMonatantMarche & "', MethodeMarche ='" & ResultatRecherche(0) & "',RevuePrioPost ='" & ResultatRecherche(1) & "', CodeProcAO ='" & ResultatRecherche(3) & "', CodeSeuil='" & ResultatRecherche(4) & "', DerniereMaj ='" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "' WHERE RefMarche='" & NewRefMarche & "'")
+                            ExecuteNonQuery("UPDATE T_Marche SET MontantEstimatif='" & NewMonatantMarche & "', MethodeMarche ='" & ResultatRecherche(0) & "',RevuePrioPost ='" & ResultatRecherche(1) & "', CodeProcAO ='" & ResultatRecherche(3) & "', CodeSeuil='" & ResultatRecherche(4) & "', DerniereMaj ='" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "', Convention_ChefFile='" & ConventionChefFils & "' WHERE RefMarche='" & NewRefMarche & "'")
                             PlanModifier = True
                         Else
                             'Nouveau montant inferieur au montant existant
                             'Mettre la ligne du marche a jour en cas de non utilisation
                             If LigneMarcheUtiliser = False And dLigneMarche.Rows.Count = 1 Then
                                 'Mise du montant du marché
-                                Dim ResultatRecherche As String() = GetMethodRevuSeuilExcept(MontantenCours - NouveauMontant)
+                                Dim ResultatRecherche As String() = GetMethodRevuSeuilExcept(MontantenCours - NouveauMontant, ChefFile)
                                 If (ResultatRecherche(2).ToString <> "") Then ResultatRecherche(1) = ResultatRecherche(1) & "*"
 
                                 'Mise à jour des montants estimatifs, Méthodes et Revues dans la table marché *************************************************************
@@ -3365,6 +3469,7 @@ Public Class PlanMarche
         End Try
     End Sub
 #End Region
+
 
 #Region "Code non utiliser"
 
@@ -3610,7 +3715,8 @@ Public Class PlanMarche
         End Try
         Return LesConventions
     End Function
-    Private Function GetMethodRevuSeuilExcept(ByVal MontantaComparer As Decimal) As String()
+
+    Private Function GetMethodRevuSeuilExcept(ByVal MontantaComparer As Decimal, ByVal CodeConvention As String) As String()
 
         Dim LaMethode0 As String = ""
         Dim LaRevue0 As String = ""
@@ -3631,7 +3737,8 @@ Public Class PlanMarche
             If (MethodeAuto0 = True) Then
 
                 If ElaboPPM = "Tous les bailleurs" Then
-                    Dim InitialeBailleur As String = ExecuteScallar("SELECT B.InitialeBailleur FROM t_bailleur as B, t_convention as C WHERE C.CodeBailleur=B.CodeBailleur AND C.CodeConvention='" & ChefFile & "'")
+                    ' Dim InitialeBailleur As String = ExecuteScallar("SELECT B.InitialeBailleur FROM t_bailleur as B, t_convention as C WHERE C.CodeBailleur=B.CodeBailleur AND C.CodeConvention='" & ChefFile & "'")
+                    Dim InitialeBailleur As String = ExecuteScallar("SELECT B.InitialeBailleur FROM t_bailleur as B, t_convention as C WHERE C.CodeBailleur=B.CodeBailleur AND C.CodeConvention='" & CodeConvention & "'")
                     query = "select P.CodeProcAO, P.AbregeAO, P.TypeMarcheAO, S.MontantPlanche, S.PlancheInclu, S.MontantPlafond, S.PlafondInclu, S.TypeExamenAO, S.ExceptionRevue, S.CodeSeuil from T_ProcAO as P, T_Seuil as S where P.CodeProcAO=S.CodeProcAO and P.TypeMarcheAO='" & EnleverApost(cmbTypeMarche.Text) & "' and P.CodeProjet='" & ProjetEnCours & "' and S.Bailleur='" & InitialeBailleur & "' and P.RechAuto='OUI' order by S.MontantPlanche"
                 Else
                     query = "select P.CodeProcAO, P.AbregeAO, P.TypeMarcheAO, S.MontantPlanche, S.PlancheInclu, S.MontantPlafond, S.PlafondInclu, S.TypeExamenAO, S.ExceptionRevue, S.CodeSeuil from T_ProcAO as P, T_Seuil as S where P.CodeProcAO=S.CodeProcAO and P.TypeMarcheAO='" & EnleverApost(cmbTypeMarche.Text) & "' and P.CodeProjet='" & ProjetEnCours & "' and S.Bailleur='" & EnleverApost(BailleurConcerne.Text) & "' and P.RechAuto='OUI' order by S.MontantPlanche"
@@ -3639,9 +3746,20 @@ Public Class PlanMarche
 
                 Dim dt = ExcecuteSelectQuery(query)
                 For Each rw As DataRow In dt.Rows
+                    'MontantPlanche
+                    'MontantPlafond
+
                     If (rw("PlancheInclu").ToString = "OUI") Then
                         If (rw("PlafondInclu").ToString = "OUI") Then
-                            If CDec(rw("MontantPlanche")) <= MontantaComparer Then
+
+                            If (rw("MontantPlanche") = "TM") Then
+                                LaMethode0 = rw("CodeProcAO")
+                                LaRevue0 = rw("TypeExamenAO")
+                                ExceptMethode0 = rw("ExceptionRevue")
+                                CodeMethode0 = rw("CodeProcAO")
+                                KodSeuil = rw("CodeSeuil")
+
+                            ElseIf CDec(rw("MontantPlanche")) <= MontantaComparer Then
                                 LaMethode0 = rw("CodeProcAO")
                                 LaRevue0 = rw("TypeExamenAO")
                                 ExceptMethode0 = rw("ExceptionRevue")
@@ -3720,4 +3838,30 @@ Public Class PlanMarche
         End If
     End Sub
 
+    Private Sub DateApproPlan_LostFocus(sender As Object, e As EventArgs) Handles DateApproPlan.LostFocus
+        If MarcheAConsulter.SelectedIndex <> -1 Then
+            ExecuteNonQuery("update t_ppm_marche set DateApprobation='" & DateApproPlan.Text & "' where RefPPM='" & RefPPM(MarcheAConsulter.SelectedIndex) & "'")
+        End If
+    End Sub
+
+    Private Sub DateAvisGeneral_LostFocus(sender As Object, e As EventArgs) Handles DateAvisGeneral.LostFocus
+        If MarcheAConsulter.SelectedIndex <> -1 Then
+            ExecuteNonQuery("update t_ppm_marche set DateAvisGle='" & DateAvisGeneral.Text & "' where RefPPM='" & RefPPM(MarcheAConsulter.SelectedIndex) & "'")
+        End If
+    End Sub
+
+    Private Sub GridPlanMarche_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles GridPlanMarche.CellEndEdit
+        Try
+            If GridPlanMarche.RowCount > 0 Then
+                Dim ChaineRefMarche As String = Convert.ToString(GridPlanMarche.Rows.Item(GridPlanMarche.CurrentRow.Index).Cells(0).Value)
+                If Mid(ChaineRefMarche.ToString, 1, 1) = "P" Then
+                    Dim NbresColon As Integer = GridPlanMarche.Columns.Count - 1
+                    Dim Commentatires As String = Convert.ToString(GridPlanMarche.Rows.Item(GridPlanMarche.CurrentRow.Index).Cells(NbresColon).Value)
+                    ExecuteNonQuery("update t_marche set Commentaire='" & EnleverApost(Commentatires.ToString) & "' where RefMarche ='" & Mid(ChaineRefMarche, 2) & "'")
+                End If
+            End If
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
+    End Sub
 End Class

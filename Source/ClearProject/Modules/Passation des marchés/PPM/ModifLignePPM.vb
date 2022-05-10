@@ -184,6 +184,17 @@
     End Sub
 
     Private Sub txtMontant_EditValueChanged(sender As Object, e As EventArgs) Handles txtMontant.EditValueChanged
+        If ViewRepartBailleur.RowCount > 0 Then
+            GridRepartBailleur.DataSource = Nothing
+            dtBailleur.Rows.Clear()
+            TxtMontAffecte.Text = 0
+            CmbBailleur.Enabled = True
+            CmbBailleur.ResetText()
+            CmbConv.Enabled = True
+            CmbConv.ResetText()
+            TxtMontBailleur.Enabled = True
+            TxtMontBailleur.ResetText()
+        End If
         TxtMontTotal.Text = AfficherMonnaie(IIf(txtMontant.Text <> "", txtMontant.Text, 0))
     End Sub
     Private Sub SupprimerLaLigne_Click(sender As Object, e As EventArgs) Handles SupprimerLaLigne.Click
@@ -194,100 +205,104 @@
     End Sub
 
     Private Sub BtEnrgPPSD_Click(sender As Object, e As EventArgs) Handles BtEnrgPPSD.Click
-        Dim erreur As String = ""
-        'si la description de la ligne n'est pas renseigné
-        If TxtDesc.IsRequiredControl("Veuillez renseigner la description.") Then
-            TxtDesc.Select()
-            Exit Sub
-        End If
-        'si le type d'examen n'est pas renseigné      
-        If cmbTypeExamen.IsRequiredControl("Veuillez choisir le type d'examen dans la liste.") Then
-            cmbTypeExamen.Select()
-            Exit Sub
-        End If
-        'si le montant de la ligne n'est pas renseigné            
-        If txtMontant.IsRequiredControl("Veuillez renseigner le montant.") Then
-            txtMontant.Select()
-            Exit Sub
-        End If
-        'si le montant de la ligne n'est pas renseigné            
-        If cmbMethode.IsRequiredControl("Veuillez choisir la méthode de passation des marchés dans la liste.") Then
-            cmbMethode.Select()
-            Exit Sub
-        End If
-        'si  la repartition du montant n'est pas renseigné
-        If CDec(IIf(txtMontant.Text = "", 0, txtMontant.Text)) <> IIf(TxtMontAffecte.Text = "", 0, CDec(TxtMontAffecte.Text.ToString.Replace(" ", ""))) Then
-            erreur = "La repartition du montant n'est pas correct" + ControlChars.CrLf
-        End If
-        Dim Pourcentage As Decimal = 0
-        For i = 0 To ViewRepartBailleur.RowCount - 1
-            Pourcentage += CDec(ViewRepartBailleur.GetRowCellValue(i, "%"))
-        Next
-        If Pourcentage < 100 Or Pourcentage > 100 Then
-            erreur = "La repartition du montant n'est pas correct" + ControlChars.CrLf
-        End If
+        If ViewRepartBailleur.RowCount > 0 Then
+            Dim erreur As String = ""
+            'si la description de la ligne n'est pas renseigné
+            If TxtDesc.IsRequiredControl("Veuillez renseigner la description.") Then
+                TxtDesc.Select()
+                Exit Sub
+            End If
+            'si le type d'examen n'est pas renseigné      
+            If cmbTypeExamen.IsRequiredControl("Veuillez choisir le type d'examen dans la liste.") Then
+                cmbTypeExamen.Select()
+                Exit Sub
+            End If
+            'si le montant de la ligne n'est pas renseigné            
+            If txtMontant.IsRequiredControl("Veuillez renseigner le montant.") Then
+                txtMontant.Select()
+                Exit Sub
+            End If
+            'si le montant de la ligne n'est pas renseigné            
+            If cmbMethode.IsRequiredControl("Veuillez choisir la méthode de passation des marchés dans la liste.") Then
+                cmbMethode.Select()
+                Exit Sub
+            End If
+            'si  la repartition du montant n'est pas renseigné
+            If CDec(IIf(txtMontant.Text = "", 0, txtMontant.Text)) <> IIf(TxtMontAffecte.Text = "", 0, CDec(TxtMontAffecte.Text.ToString.Replace(" ", ""))) Then
+                erreur = "La repartition du montant n'est pas correct" + ControlChars.CrLf
+            End If
+            Dim Pourcentage As Decimal = 0
+            For i = 0 To ViewRepartBailleur.RowCount - 1
+                Pourcentage += CDec(ViewRepartBailleur.GetRowCellValue(i, "%"))
+            Next
 
-        If erreur = "" Then
-            'Savoir si la revue ou la méthode de passation du marche en cours de modification a changé
-            If (CodeAncienneMethode <> CodeProcAO(cmbMethode.SelectedIndex)) Or (cmbTypeExamen.Text <> AncienneRevu) Then
+            If Pourcentage < 100 Or Pourcentage > 100 Then
+                erreur = "La repartition du montant n'est pas correct" + ControlChars.CrLf
+            End If
 
-                'Verifier s'il existe des date de prevision ou de realisation des etapes
-                If Val(ExecuteScallar("SELECT COUNT(*) from t_planmarche where RefMarche='" & RefMarcheMod & "'")) > 0 Then
-                    'Personnalisation du message
-                    Dim Message As String = ""
-                    If (CodeAncienneMethode <> CodeProcAO(cmbMethode.SelectedIndex)) And (cmbTypeExamen.Text <> AncienneRevu) Then
-                        Message = "Vous avez changer la revue et la méthode du marché. Si vous continuer toutes les dates de prévisions et de réalisations des étapes de ce marché seront supprimer." & vbNewLine & "Êtes-vous sûrs de vouloir continuer?"
-                    ElseIf (CodeAncienneMethode <> CodeProcAO(cmbMethode.SelectedIndex)) Then
-                        Message = "Vous avez changer la méthode du marché. Si vous continuer toutes les dates de prévisions et de réalisations des étapes de ce marché seront supprimer." & vbNewLine & "Êtes-vous sûrs de vouloir continuer?"
-                    Else
-                        Message = "Vous avez changer la revue du marché. Si vous continuer toutes les dates de prévisions et de réalisations des étapes de ce marché seront supprimer." & vbNewLine & "Êtes-vous sûrs de vouloir continuer?"
+            If erreur = "" Then
+                    'Savoir si la revue ou la méthode de passation du marche en cours de modification a changé
+                    If (CodeAncienneMethode <> CodeProcAO(cmbMethode.SelectedIndex)) Or (cmbTypeExamen.Text <> AncienneRevu) Then
+
+                        'Verifier s'il existe des date de prevision ou de realisation des etapes
+                        If Val(ExecuteScallar("SELECT COUNT(*) from t_planmarche where RefMarche='" & RefMarcheMod & "'")) > 0 Then
+                            'Personnalisation du message
+                            Dim Message As String = ""
+                            If (CodeAncienneMethode <> CodeProcAO(cmbMethode.SelectedIndex)) And (cmbTypeExamen.Text <> AncienneRevu) Then
+                                Message = "Vous avez changer la revue et la méthode du marché. Si vous continuer toutes les dates de prévisions et de réalisations des étapes de ce marché seront supprimer." & vbNewLine & "Êtes-vous sûrs de vouloir continuer?"
+                            ElseIf (CodeAncienneMethode <> CodeProcAO(cmbMethode.SelectedIndex)) Then
+                                Message = "Vous avez changer la méthode du marché. Si vous continuer toutes les dates de prévisions et de réalisations des étapes de ce marché seront supprimer." & vbNewLine & "Êtes-vous sûrs de vouloir continuer?"
+                            Else
+                                Message = "Vous avez changer la revue du marché. Si vous continuer toutes les dates de prévisions et de réalisations des étapes de ce marché seront supprimer." & vbNewLine & "Êtes-vous sûrs de vouloir continuer?"
+                            End If
+
+                            If ConfirmMsg(Message) = DialogResult.No Then
+                                Exit Sub
+                            End If
+                            ExecuteNonQuery("delete from t_planmarche WHERE RefMarche='" & RefMarcheMod & "'")
+                        End If
+                    End If
+                DebutChargement(True, "Traitement des modifications en cours...")
+
+                ExecuteNonQuery("DELETE FROM t_ppm_repartitionbailleur WHERE RefPPM='" & IDPlan & "' AND RefMarche='" & RefMarcheMod & "'")
+
+                    Dim lesBailleurs As String = ViewRepartBailleur.GetRowCellValue(0, "Bailleur").ToString
+                    Dim lesConventions As String = ViewRepartBailleur.GetRowCellValue(0, "Convention").ToString
+                    Dim montantSup As Decimal = ViewRepartBailleur.GetRowCellValue(0, "Montant").ToString.Replace(" ", "")
+                    Dim ChefFile As String = ViewRepartBailleur.GetRowCellValue(0, "Convention").ToString
+                    ExecuteNonQuery("insert into t_ppm_repartitionbailleur values(NULL,'" & IDPlan & "','" & RefMarcheMod & "','" & ViewRepartBailleur.GetRowCellValue(0, "Convention").ToString & "','" & ViewRepartBailleur.GetRowCellValue(0, "Montant").ToString.Replace(" ", "") & "')")
+
+                    If ViewRepartBailleur.RowCount > 1 Then
+                        For i = 1 To ViewRepartBailleur.RowCount - 1
+                            ExecuteNonQuery("insert into t_ppm_repartitionbailleur values(NULL,'" & IDPlan & "','" & RefMarcheMod & "','" & ViewRepartBailleur.GetRowCellValue(i, "Convention").ToString & "','" & ViewRepartBailleur.GetRowCellValue(i, "Montant").ToString.Replace(" ", "") & "')")
+                            lesBailleurs = lesBailleurs & " | " & ViewRepartBailleur.GetRowCellValue(i, "Bailleur").ToString
+                            lesConventions = lesConventions & " | " & ViewRepartBailleur.GetRowCellValue(i, "Convention").ToString
+
+                            If ViewRepartBailleur.GetRowCellValue(i, "Montant").ToString > montantSup Then
+                                montantSup = ViewRepartBailleur.GetRowCellValue(i, "Montant").ToString.Replace(" ", "")
+                                ChefFile = ViewRepartBailleur.GetRowCellValue(i, "Convention").ToString
+                            End If
+                        Next
                     End If
 
-                    If ConfirmMsg(Message) = DialogResult.No Then
-                        Exit Sub
-                    End If
-                    ExecuteNonQuery("delete from t_planmarche WHERE RefMarche='" & RefMarcheMod & "'")
+                    ExecuteNonQuery("UPDATE t_marche SET DescriptionMarche='" & EnleverApost(TxtDesc.Text) & "', MontantEstimatif='" & txtMontant.Text.Replace(" ", "") & "', RevuePrioPost='" & EnleverApost(cmbTypeExamen.Text) & "', InitialeBailleur='" & lesBailleurs & "', CodeConvention='" & lesConventions & "', Convention_ChefFile='" & EnleverApost(ChefFile.ToString) & "', ConventionChefFilProjet='" & ConventionChefFils & "', CodeProcAO='" & CodeProcAO(cmbMethode.SelectedIndex) & "', DerniereMaj='" & Now.ToString & "' WHERE RefPPM='" & IDPlan & "' AND RefMarche='" & RefMarcheMod & "'")
+                    FinChargement()
+                    SuccesMsg("Ligne modifiée avec succès.")
+
+                    'PlanMarche.cmbDevise.Text = "US$"
+                    'PlanMarche.RemplirMarcheAConsulter()
+                    'query = "SELECT max(RefPPM), LibellePPM FROM t_ppm_marche WHERE CodeProjet='" & ProjetEnCours & "'"
+                    'Dim dtPPM As DataTable = ExcecuteSelectQuery(query)
+                    'For Each rwPPM As DataRow In dtPPM.Rows
+                    '    PlanMarche.MarcheAConsulter.Text = (MettreApost(rwPPM("LibellePPM")))
+                    'Next
+                    Me.Close()
+                    PlanMarche.BtActualiserPlan.PerformClick()
+                Else
+                    SuccesMsg(erreur)
                 End If
             End If
-            DebutChargement(True, "Traitement des modifications en cours...")
 
-            ExecuteNonQuery("DELETE FROM t_ppm_repartitionbailleur WHERE RefPPM='" & IDPlan & "' AND RefMarche='" & RefMarcheMod & "'")
-
-            Dim lesBailleurs As String = ViewRepartBailleur.GetRowCellValue(0, "Bailleur").ToString
-            Dim lesConventions As String = ViewRepartBailleur.GetRowCellValue(0, "Convention").ToString
-            ' Dim montantSup As Decimal = ViewRepartBailleur.GetRowCellValue(0, "Montant").ToString.Replace(" ", "")
-            Dim ChefFile As String = ViewRepartBailleur.GetRowCellValue(0, "Convention").ToString
-            ExecuteNonQuery("insert into t_ppm_repartitionbailleur values(NULL,'" & IDPlan & "','" & RefMarcheMod & "','" & ViewRepartBailleur.GetRowCellValue(0, "Convention").ToString & "','" & ViewRepartBailleur.GetRowCellValue(0, "Montant").ToString.Replace(" ", "") & "')")
-
-            If ViewRepartBailleur.RowCount > 1 Then
-                For i = 1 To ViewRepartBailleur.RowCount - 1
-                    ExecuteNonQuery("insert into t_ppm_repartitionbailleur values(NULL,'" & IDPlan & "','" & RefMarcheMod & "','" & ViewRepartBailleur.GetRowCellValue(i, "Convention").ToString & "','" & ViewRepartBailleur.GetRowCellValue(i, "Montant").ToString.Replace(" ", "") & "')")
-                    lesBailleurs = lesBailleurs & " | " & ViewRepartBailleur.GetRowCellValue(i, "Bailleur").ToString
-                    lesConventions = lesConventions & " | " & ViewRepartBailleur.GetRowCellValue(i, "Convention").ToString
-
-                    'If ViewRepartBailleur.GetRowCellValue(i, "Montant").ToString > montantSup Then
-                    '    montantSup = ViewRepartBailleur.GetRowCellValue(i, "Montant").ToString.Replace(" ", "")
-                    '    ChefFile = ViewRepartBailleur.GetRowCellValue(i, "Convention").ToString
-                    'End If
-                Next
-            End If
-
-            ExecuteNonQuery("UPDATE t_marche SET DescriptionMarche='" & EnleverApost(TxtDesc.Text) & "', MontantEstimatif='" & txtMontant.Text.Replace(" ", "") & "', RevuePrioPost='" & EnleverApost(cmbTypeExamen.Text) & "', InitialeBailleur='" & lesBailleurs & "', CodeConvention='" & lesConventions & "', Convention_ChefFile='" & ConventionChefFils & "', CodeProcAO='" & CodeProcAO(cmbMethode.SelectedIndex) & "', DerniereMaj='" & Now.ToString & "' WHERE RefPPM='" & IDPlan & "' AND RefMarche='" & RefMarcheMod & "'")
-            FinChargement()
-            SuccesMsg("Ligne modifiée avec succès.")
-
-            'PlanMarche.cmbDevise.Text = "US$"
-            'PlanMarche.RemplirMarcheAConsulter()
-            'query = "SELECT max(RefPPM), LibellePPM FROM t_ppm_marche WHERE CodeProjet='" & ProjetEnCours & "'"
-            'Dim dtPPM As DataTable = ExcecuteSelectQuery(query)
-            'For Each rwPPM As DataRow In dtPPM.Rows
-            '    PlanMarche.MarcheAConsulter.Text = (MettreApost(rwPPM("LibellePPM")))
-            'Next
-            Me.Close()
-            PlanMarche.BtActualiserPlan.PerformClick()
-        Else
-            SuccesMsg(erreur)
-        End If
     End Sub
     Private Sub btAnnuler_Click(sender As Object, e As EventArgs) Handles btAnnuler.Click
         Me.Close()

@@ -45,6 +45,7 @@ Partial Class RaisonAttribuerSuivant
         'LabelControl1
         '
         Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl1.Appearance.ForeColor = System.Drawing.Color.Black
         Me.LabelControl1.Location = New System.Drawing.Point(12, 12)
         Me.LabelControl1.Name = "LabelControl1"
         Me.LabelControl1.Size = New System.Drawing.Size(368, 18)
@@ -54,7 +55,7 @@ Partial Class RaisonAttribuerSuivant
         'TxtRaisonChange
         '
         Me.TxtRaisonChange.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TxtRaisonChange.EditValue = ""
         Me.TxtRaisonChange.Location = New System.Drawing.Point(12, 33)
         Me.TxtRaisonChange.Name = "TxtRaisonChange"
@@ -67,7 +68,7 @@ Partial Class RaisonAttribuerSuivant
         'GroupControl1
         '
         Me.GroupControl1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupControl1.AppearanceCaption.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupControl1.AppearanceCaption.Options.UseFont = True
         Me.GroupControl1.AppearanceCaption.Options.UseTextOptions = True
@@ -98,7 +99,7 @@ Partial Class RaisonAttribuerSuivant
         'TxtSoumisAttrib
         '
         Me.TxtSoumisAttrib.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TxtSoumisAttrib.Location = New System.Drawing.Point(242, 3)
         Me.TxtSoumisAttrib.Name = "TxtSoumisAttrib"
         Me.TxtSoumisAttrib.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -147,7 +148,7 @@ Partial Class RaisonAttribuerSuivant
         'TxtRaisonChoix
         '
         Me.TxtRaisonChoix.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TxtRaisonChoix.EditValue = ""
         Me.TxtRaisonChoix.Location = New System.Drawing.Point(12, 260)
         Me.TxtRaisonChoix.Name = "TxtRaisonChoix"
@@ -191,7 +192,7 @@ Partial Class RaisonAttribuerSuivant
         'TxtSoumDisq
         '
         Me.TxtSoumDisq.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TxtSoumDisq.Location = New System.Drawing.Point(394, 10)
         Me.TxtSoumDisq.Name = "TxtSoumDisq"
         Me.TxtSoumDisq.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))

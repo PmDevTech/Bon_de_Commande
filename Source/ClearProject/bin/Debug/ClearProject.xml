@@ -664,7 +664,7 @@ ClearProject
 </member>
 <member name="P:ClearProject.My.Resources.Resources.Logo_ClearProject_Valide">
 <summary>
-  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icon).
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
 </summary>
 </member>
 <member name="P:ClearProject.My.Resources.Resources.Logo_Template___RE_Logo_1616">
@@ -987,6 +987,11 @@ ClearProject
   Recherche une ressource localisée de type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:ClearProject.My.Resources.Resources.th__5_">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:ClearProject.My.Resources.Resources.ti_contact_128x128">
 <summary>
   Recherche une ressource localisée de type System.Drawing.Bitmap.
@@ -1008,6 +1013,11 @@ ClearProject
 </summary>
 </member>
 <member name="P:ClearProject.My.Resources.Resources.UserKey_32x32">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ClearProject.My.Resources.Resources.Valid1">
 <summary>
   Recherche une ressource localisée de type System.Drawing.Bitmap.
 </summary>

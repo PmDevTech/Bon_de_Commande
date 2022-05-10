@@ -20,708 +20,706 @@ Partial Class NewDao
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim SuperToolTip465 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem487 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem453 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem23 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem488 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip466 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem489 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem454 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem24 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem490 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip467 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem491 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem455 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem25 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem492 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip468 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem493 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem456 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem26 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem494 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip469 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem495 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem457 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem27 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem496 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip470 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem497 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem458 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem28 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem498 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip471 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem499 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem459 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip472 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem500 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem460 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip473 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem501 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem461 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip474 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem502 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem462 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip475 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem503 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem463 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip476 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem504 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem464 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip477 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem505 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem465 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip478 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem506 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem466 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip479 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem507 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem467 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip480 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem508 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem468 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip481 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem509 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem469 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip482 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem510 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem470 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip483 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem511 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem471 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip484 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem512 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem472 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip255 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem272 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem249 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip1 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem1 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem1 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem1 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem2 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip2 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem3 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem2 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem2 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem4 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip3 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem5 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem3 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem3 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem6 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip4 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem7 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem4 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem4 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem8 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip5 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem9 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem5 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem5 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem10 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip6 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem11 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem6 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem6 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem12 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip7 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem13 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem7 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip8 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem14 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem8 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip9 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem15 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem9 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip10 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem16 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem10 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip11 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem17 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem11 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip12 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem18 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem12 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip13 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem19 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem13 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip14 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem20 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem14 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip15 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem21 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem15 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip16 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem22 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem16 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip17 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem23 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem17 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip18 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem24 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem18 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip19 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem25 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem19 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Dim SuperToolTip20 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
         Dim ToolTipTitleItem26 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem20 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip485 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem513 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem473 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip486 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem514 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem474 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip487 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem515 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem475 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip488 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem516 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem476 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip489 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem517 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem477 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip490 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem518 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem478 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip491 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem519 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem479 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip492 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem520 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem480 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip493 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem521 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem481 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip494 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem522 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem482 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip495 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem523 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem483 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip499 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem527 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem487 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip496 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem524 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem484 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip497 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem525 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem485 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip498 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem526 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem486 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip500 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem528 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem488 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip501 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem529 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem489 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip502 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem530 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem490 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip503 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem531 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem491 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip504 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem532 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem492 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip505 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem533 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem493 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip510 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem538 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem498 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip506 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem534 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem494 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip507 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem535 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem495 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip508 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem536 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem496 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip509 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem537 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem497 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip519 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem547 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem507 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip511 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem539 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem499 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip512 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem540 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem500 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip513 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem541 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem501 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip514 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem542 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem502 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip515 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem543 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem503 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip516 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem544 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem504 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip517 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem545 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem505 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip518 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem546 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem506 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip520 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem548 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem508 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip521 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem549 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem509 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip292 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem309 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem286 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip522 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem550 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem510 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip523 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem551 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem511 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip524 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem552 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem512 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip525 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem553 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem513 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip526 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem554 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem514 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip527 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem555 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem515 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip528 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem556 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem516 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip529 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem557 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem517 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip530 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem558 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem518 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip531 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem559 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem519 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip532 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem560 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem520 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip533 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem561 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem521 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip534 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem562 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem522 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip540 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem568 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem528 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip535 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem563 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem523 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip536 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem564 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem524 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip537 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem565 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem525 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip538 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem566 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem526 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip539 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem567 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem527 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip543 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem571 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem531 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip541 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem569 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem529 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip542 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem570 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem530 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip544 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem572 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem532 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip549 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem577 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem537 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip545 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem573 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem533 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip546 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem574 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem534 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip547 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem575 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem535 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip548 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem576 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem536 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip555 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem583 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem543 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip550 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem578 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem538 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip551 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem579 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem539 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip552 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem580 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem540 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip553 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem581 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem541 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip554 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem582 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem542 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip562 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem590 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem550 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip556 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem584 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem544 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip557 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem585 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem545 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip558 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem586 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem546 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip559 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem587 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem547 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip560 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem588 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem548 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip561 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem589 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem549 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip563 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem591 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem551 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip564 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem592 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem552 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip565 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem593 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem553 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip566 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem594 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem554 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip567 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem595 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem555 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip568 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem596 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem556 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip569 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem597 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem557 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip570 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem598 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem558 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip571 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem599 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem559 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip572 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem600 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem560 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip573 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem601 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem561 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip574 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem602 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem562 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip575 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem603 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem563 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip576 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem604 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem564 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip577 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem605 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem565 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip578 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem606 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem566 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip579 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem607 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem567 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip580 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem608 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem568 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip581 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem609 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem569 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip582 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem610 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem570 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip594 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem622 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem582 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip583 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem611 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem571 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip584 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem612 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem572 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip585 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem613 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem573 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip586 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem614 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem574 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip587 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem615 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem575 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip588 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem616 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem576 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip589 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem617 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem577 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip590 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem618 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem578 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip591 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem619 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem579 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip592 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem620 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem580 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip593 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem621 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem581 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip595 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem623 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem583 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip366 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem383 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem360 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip21 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem27 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem21 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip22 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem28 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem22 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip23 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem29 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem23 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip24 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem30 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem24 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip25 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem31 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem25 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip26 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem32 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem26 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip27 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem33 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem27 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip28 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem34 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem28 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip29 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem35 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem29 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip30 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem36 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem30 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip31 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem37 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem31 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip32 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem38 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem32 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip33 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem39 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem33 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip37 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem43 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem37 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip34 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem40 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem34 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip35 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem41 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem35 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip36 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem42 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem36 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip38 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem44 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem38 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip39 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem45 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem39 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip40 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem46 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem40 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip41 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem47 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem41 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip42 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem48 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem42 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip43 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem49 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem43 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip44 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem50 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem44 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip45 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem51 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem45 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip46 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem52 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem46 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip47 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem53 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem47 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip48 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem54 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem48 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip57 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem63 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem57 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip49 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem55 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem49 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip50 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem56 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem50 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip51 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem57 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem51 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip52 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem58 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem52 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip53 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem59 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem53 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip54 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem60 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem54 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip55 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem61 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem55 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip56 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem62 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem56 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip58 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem64 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem58 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip59 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem65 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem59 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip60 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem66 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem60 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip61 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem67 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem61 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip62 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem68 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem62 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip63 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem69 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem63 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip64 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem70 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem64 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip65 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem71 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem65 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip66 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem72 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem66 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip67 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem73 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem67 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip68 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem74 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem68 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip69 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem75 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem69 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip70 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem76 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem70 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip71 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem77 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem71 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip72 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem78 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem72 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip73 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem79 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem73 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip79 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem85 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem79 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip74 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem80 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem74 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip75 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem81 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem75 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip76 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem82 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem76 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip77 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem83 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem77 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip78 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem84 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem78 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip82 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem88 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem82 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip80 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem86 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem80 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip81 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem87 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem81 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip83 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem89 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem83 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip88 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem94 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem88 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip84 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem90 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem84 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip85 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem91 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem85 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip86 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem92 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem86 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip87 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem93 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem87 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip94 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem100 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem94 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip89 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem95 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem89 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip90 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem96 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem90 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip91 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem97 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem91 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip92 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem98 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem92 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip93 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem99 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem93 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip101 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem107 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem101 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip95 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem101 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem95 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip96 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem102 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem96 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip97 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem103 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem97 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip98 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem104 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem98 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip99 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem105 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem99 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip100 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem106 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem100 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip102 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem108 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem102 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip103 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem109 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem103 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip104 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem110 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem104 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip105 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem111 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem105 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip106 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem112 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem106 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip107 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem113 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem107 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip108 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem114 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem108 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip109 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem115 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem109 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip110 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem116 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem110 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip111 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem117 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem111 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip112 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem118 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem112 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip113 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem119 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem113 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip114 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem120 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem114 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip115 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem121 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem115 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip116 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem122 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem116 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip117 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem123 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem117 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip118 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem124 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem118 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip119 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem125 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem119 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip120 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem126 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem120 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip121 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem127 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem121 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip133 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem139 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem133 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip122 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem128 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem122 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip123 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem129 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem123 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip124 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem130 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem124 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip125 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem131 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem125 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip126 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem132 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem126 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip127 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem133 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem127 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip128 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem134 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem128 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip129 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem135 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem129 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip130 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem136 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem130 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip131 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem137 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem131 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip132 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem138 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem132 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Dim SuperToolTip134 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
         Dim ToolTipTitleItem140 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem134 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip600 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem628 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem588 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip596 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem624 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem584 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip597 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem625 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem585 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip598 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem626 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem586 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip599 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem627 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem587 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip601 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem629 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem589 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip606 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem634 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem594 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip602 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem630 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem590 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip603 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem631 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem591 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip604 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem632 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem592 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip605 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem633 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem593 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip607 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem635 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem595 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip608 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem636 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem596 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip609 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem637 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem597 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip610 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem638 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem598 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip611 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem639 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem599 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip612 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem640 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem600 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip613 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem641 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem601 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip617 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem645 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem605 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip614 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem642 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem602 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip615 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem643 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem603 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip616 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem644 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem604 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip618 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem646 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem606 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip619 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem647 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem607 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip620 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem648 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem608 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip621 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem649 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem609 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip622 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem650 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem610 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip623 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem651 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem611 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip624 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem652 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem612 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip625 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem653 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem613 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip626 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem654 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem614 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip627 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem655 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem615 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip628 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem656 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem616 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip629 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem657 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem617 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip630 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem658 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem618 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip631 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem659 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem619 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip632 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem660 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem620 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip643 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem671 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem631 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip633 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem661 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem621 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip634 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem662 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem622 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip635 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem663 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem623 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip636 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem664 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem624 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip637 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem665 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem625 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip638 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem666 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem626 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip639 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem667 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem627 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip640 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem668 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem628 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip641 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem669 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem629 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip642 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem670 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem630 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip647 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem675 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem635 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip644 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem672 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem632 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip645 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem673 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem633 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip646 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem674 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem634 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip651 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem679 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem639 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip648 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem676 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem636 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip649 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem677 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem637 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip650 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem678 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem638 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip652 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem680 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem640 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip653 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem681 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem641 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip654 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem682 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem642 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip660 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem688 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem648 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip425 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem442 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem419 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip655 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem683 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem643 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip656 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem684 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem644 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip657 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem685 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem645 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip658 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem686 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem646 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip659 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem687 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem647 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip670 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem698 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem658 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip661 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem689 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem649 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip662 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem690 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem650 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip663 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem691 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem651 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip664 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem692 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem652 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip665 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem693 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem653 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip666 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem694 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem654 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip667 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem695 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem655 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip668 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem696 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem656 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip669 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem697 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem657 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip674 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem702 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem662 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip671 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem699 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem659 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip672 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem700 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem660 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip673 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem701 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem661 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip678 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem706 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem666 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip675 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem703 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem663 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip676 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem704 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem664 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip677 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem705 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem665 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip679 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem707 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip680 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem708 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip681 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem709 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip685 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem713 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem667 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem29 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem714 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip682 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem710 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip683 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem711 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip684 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem712 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim OptionsSpelling75 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
-        Dim OptionsSpelling81 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
-        Dim OptionsSpelling82 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
-        Dim OptionsSpelling78 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
+        Dim SuperToolTip135 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem141 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem135 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip136 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem142 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem136 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip141 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem147 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem141 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip137 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem143 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem137 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip138 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem144 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem138 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip139 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem145 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem139 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip140 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem146 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem140 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip142 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem148 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem142 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip147 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem153 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem147 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip143 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem149 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem143 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip144 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem150 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem144 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip145 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem151 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem145 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip146 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem152 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem146 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip148 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem154 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem148 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip149 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem155 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem149 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip150 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem156 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem150 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip151 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem157 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem151 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip152 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem158 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem152 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip153 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem159 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem153 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip154 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem160 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem154 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip158 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem164 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem158 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip155 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem161 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem155 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip156 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem162 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem156 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip157 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem163 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem157 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip159 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem165 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem159 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip160 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem166 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem160 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip161 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem167 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem161 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip162 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem168 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem162 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip163 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem169 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem163 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip164 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem170 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem164 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip165 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem171 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem165 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip166 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem172 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem166 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip167 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem173 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem167 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip168 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem174 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem168 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip169 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem175 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem169 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip170 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem176 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem170 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip171 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem177 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem171 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip172 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem178 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem172 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip173 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem179 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem173 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip184 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem190 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem184 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip174 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem180 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem174 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip175 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem181 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem175 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip176 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem182 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem176 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip177 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem183 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem177 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip178 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem184 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem178 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip179 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem185 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem179 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip180 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem186 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem180 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip181 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem187 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem181 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip182 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem188 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem182 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip183 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem189 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem183 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip188 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem194 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem188 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip185 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem191 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem185 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip186 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem192 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem186 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip187 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem193 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem187 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip192 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem198 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem192 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip189 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem195 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem189 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip190 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem196 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem190 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip191 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem197 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem191 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip193 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem199 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem193 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip194 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem200 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem194 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip195 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem201 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem195 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip202 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem208 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem202 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip196 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem202 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem196 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip197 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem203 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem197 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip198 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem204 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem198 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip199 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem205 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem199 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip200 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem206 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem200 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip201 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem207 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem201 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip212 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem218 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem212 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip203 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem209 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem203 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip204 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem210 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem204 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip205 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem211 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem205 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip206 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem212 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem206 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip207 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem213 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem207 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip208 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem214 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem208 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip209 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem215 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem209 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip210 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem216 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem210 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip211 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem217 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem211 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip216 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem222 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem216 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip213 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem219 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem213 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip214 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem220 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem214 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip215 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem221 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem215 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip220 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem226 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem220 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip217 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem223 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem217 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip218 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem224 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem218 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip219 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem225 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem219 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip221 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem227 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip222 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem228 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip223 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem229 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip227 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem233 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem221 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem7 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem234 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip224 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem230 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip225 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem231 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip226 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem232 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim OptionsSpelling1 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
+        Dim OptionsSpelling2 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
         Dim OptionsSpelling3 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
         Dim OptionsSpelling4 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
-        Dim OptionsSpelling83 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
-        Dim OptionsSpelling79 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
+        Dim OptionsSpelling5 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
+        Dim OptionsSpelling6 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
         Dim OptionsSpelling7 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
         Dim OptionsSpelling8 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
         Dim OptionsSpelling9 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
-        Dim OptionsSpelling84 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
-        Dim OptionsSpelling80 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
+        Dim OptionsSpelling10 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
+        Dim OptionsSpelling11 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
         Dim OptionsSpelling12 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
         Dim OptionsSpelling13 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
         Dim OptionsSpelling14 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
@@ -783,56 +781,66 @@ Partial Class NewDao
         Dim OptionsSpelling70 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
         Dim OptionsSpelling71 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
         Dim OptionsSpelling72 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(NewDao))
-        Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle33 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle34 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle35 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle36 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle37 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle38 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle39 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle40 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle41 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle42 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle43 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle44 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle45 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle46 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim SuperToolTip686 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem715 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem668 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem30 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem716 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip687 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem717 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem669 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem31 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem718 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip688 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem719 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem670 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem32 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem720 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip689 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem721 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem671 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem33 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem722 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip690 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem723 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem672 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip691 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem724 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem673 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip692 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem725 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem674 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip693 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem726 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem675 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Dim OptionsSpelling73 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
+        Dim OptionsSpelling74 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
+        Dim OptionsSpelling75 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
+        Dim OptionsSpelling76 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
+        Dim OptionsSpelling77 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
+        Dim OptionsSpelling78 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
+        Dim OptionsSpelling79 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
+        Dim OptionsSpelling80 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
+        Dim OptionsSpelling81 As DevExpress.XtraSpellChecker.OptionsSpelling = New DevExpress.XtraSpellChecker.OptionsSpelling()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(NewDao))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim SuperToolTip228 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem235 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem222 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem8 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem236 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip229 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem237 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem223 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem9 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem238 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip230 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem239 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem224 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem10 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem240 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip231 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem241 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem225 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem11 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem242 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim SuperToolTip232 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem243 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem226 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip233 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem244 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem227 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip234 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem245 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem228 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip235 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem246 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem229 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Me.RibbonDAO = New DevExpress.XtraBars.Ribbon.RibbonControl()
         Me.BtNouveau = New DevExpress.XtraBars.BarButtonItem()
         Me.BtArchives = New DevExpress.XtraBars.BarButtonItem()
@@ -1128,7 +1136,6 @@ Partial Class NewDao
         Me.TxtLibLot = New System.Windows.Forms.TextBox()
         Me.TxtPrixDao = New System.Windows.Forms.TextBox()
         Me.TxtAdresseCompte = New DevExpress.XtraEditors.TextEdit()
-        Me.TxtNumCompte = New DevExpress.XtraEditors.TextEdit()
         Me.TxtMethodeMarche = New DevExpress.XtraEditors.TextEdit()
         Me.TxtLibelleDao = New System.Windows.Forms.TextBox()
         Me.TxtNumDao = New DevExpress.XtraEditors.TextEdit()
@@ -1198,7 +1205,15 @@ Partial Class NewDao
         Me.TitreReclam = New DevExpress.XtraEditors.TextEdit()
         Me.NomReclama = New DevExpress.XtraEditors.TextEdit()
         Me.NomEmprunteur = New DevExpress.XtraEditors.TextEdit()
-        Me.CalesDAO = New DevExpress.XtraEditors.TextEdit()
+        Me.RefSpecificationModif = New DevExpress.XtraEditors.TextEdit()
+        Me.CodeCategorie = New DevExpress.XtraEditors.TextEdit()
+        Me.LigneBudgetaire = New DevExpress.XtraEditors.TextEdit()
+        Me.LieurRemiseFourniture = New DevExpress.XtraEditors.TextEdit()
+        Me.PrecedurVoiElectronic = New DevExpress.XtraEditors.MemoEdit()
+        Me.NatureDocument = New DevExpress.XtraEditors.TextEdit()
+        Me.ListeVariante = New DevExpress.XtraEditors.MemoEdit()
+        Me.ProjetSimilaireJustificatif = New DevExpress.XtraEditors.MemoEdit()
+        Me.RefLotDQE = New DevExpress.XtraEditors.TextEdit()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.XtraTabControl1 = New DevExpress.XtraTab.XtraTabControl()
         Me.PageDonneBase = New DevExpress.XtraTab.XtraTabPage()
@@ -1223,11 +1238,15 @@ Partial Class NewDao
         Me.CmbNumLotDB = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LabelControl29 = New DevExpress.XtraEditors.LabelControl()
         Me.GroupControl4 = New DevExpress.XtraEditors.GroupControl()
+        Me.LabelControl93 = New DevExpress.XtraEditors.LabelControl()
         Me.CmbCompte = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LabelControl9 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl8 = New DevExpress.XtraEditors.LabelControl()
+        Me.NaturePrix = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.GroupMarche = New DevExpress.XtraEditors.GroupControl()
+        Me.LabelControl78 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl76 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl62 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl14 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl34 = New DevExpress.XtraEditors.LabelControl()
@@ -1258,14 +1277,8 @@ Partial Class NewDao
         Me.XtraScrollableControl2 = New DevExpress.XtraEditors.XtraScrollableControl()
         Me.GroupControl10 = New DevExpress.XtraEditors.GroupControl()
         Me.GroupControl9 = New DevExpress.XtraEditors.GroupControl()
-        Me.GCnegociation = New DevExpress.XtraEditors.GroupControl()
-        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
-        Me.LabelControl82 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl83 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl84 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl85 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl86 = New DevExpress.XtraEditors.LabelControl()
         Me.gcCommission = New DevExpress.XtraEditors.GroupControl()
+        Me.CheckEdit2 = New DevExpress.XtraEditors.CheckEdit()
         Me.GroupControl5 = New DevExpress.XtraEditors.GroupControl()
         Me.LgCojo = New DevExpress.XtraGrid.GridControl()
         Me.ContextMenuStripCojo = New System.Windows.Forms.ContextMenuStrip(Me.components)
@@ -1280,6 +1293,23 @@ Partial Class NewDao
         Me.LabelControl36 = New DevExpress.XtraEditors.LabelControl()
         Me.CmbCivCojo = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LabelControl19 = New DevExpress.XtraEditors.LabelControl()
+        Me.GCnegociation = New DevExpress.XtraEditors.GroupControl()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.LabelControl82 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl83 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl84 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl85 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl86 = New DevExpress.XtraEditors.LabelControl()
+        Me.GroupControl16 = New DevExpress.XtraEditors.GroupControl()
+        Me.AttestationReguFiscal = New DevExpress.XtraEditors.CheckEdit()
+        Me.AttestationCNPS = New DevExpress.XtraEditors.CheckEdit()
+        Me.GroupBox10 = New System.Windows.Forms.GroupBox()
+        Me.ServiceApresVente = New DevExpress.XtraEditors.CheckEdit()
+        Me.FormationUtilisateur = New DevExpress.XtraEditors.CheckEdit()
+        Me.LabelControl96 = New DevExpress.XtraEditors.LabelControl()
+        Me.MaterielRequis = New DevExpress.XtraEditors.CheckEdit()
+        Me.DateVisite = New DevExpress.XtraEditors.DateEdit()
+        Me.VisiteduSite = New DevExpress.XtraEditors.CheckEdit()
         Me.GroupSection = New DevExpress.XtraEditors.GroupControl()
         Me.GridSection = New System.Windows.Forms.DataGridView()
         Me.RefSection = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -1292,8 +1322,30 @@ Partial Class NewDao
         Me.BtSupSection = New DevExpress.XtraEditors.SimpleButton()
         Me.BtAjoutSection = New DevExpress.XtraEditors.SimpleButton()
         Me.CombSection = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.CheckEdit2 = New DevExpress.XtraEditors.CheckEdit()
         Me.GroupControl11 = New DevExpress.XtraEditors.GroupControl()
+        Me.gcConciliation = New DevExpress.XtraEditors.GroupControl()
+        Me.LabelControl101 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl100 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl99 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl98 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl92 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl91 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl90 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl89 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl88 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl87 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl80 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl79 = New DevExpress.XtraEditors.LabelControl()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.LabelControl77 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl26 = New DevExpress.XtraEditors.LabelControl()
+        Me.BtCvConcil = New DevExpress.XtraEditors.SimpleButton()
+        Me.LabelControl24 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl23 = New DevExpress.XtraEditors.LabelControl()
+        Me.CmbRemunConcil = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.LabelControl22 = New DevExpress.XtraEditors.LabelControl()
+        Me.RdConcilOui = New DevExpress.XtraEditors.CheckEdit()
+        Me.RdConcilNon = New DevExpress.XtraEditors.CheckEdit()
         Me.GroupControl15 = New DevExpress.XtraEditors.GroupControl()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
         Me.LabelControl74 = New DevExpress.XtraEditors.LabelControl()
@@ -1307,6 +1359,21 @@ Partial Class NewDao
         Me.GroupControl8 = New DevExpress.XtraEditors.GroupControl()
         Me.CheckEntite = New DevExpress.XtraEditors.CheckEdit()
         Me.CheckNonEntite = New DevExpress.XtraEditors.CheckEdit()
+        Me.GbMaitreOuvrageDelegue = New DevExpress.XtraEditors.GroupControl()
+        Me.DelaiGarantie = New DevExpress.XtraEditors.SpinEdit()
+        Me.LabelControl97 = New DevExpress.XtraEditors.LabelControl()
+        Me.GroupBox9 = New System.Windows.Forms.GroupBox()
+        Me.LabelControl95 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl94 = New DevExpress.XtraEditors.LabelControl()
+        Me.Variante = New DevExpress.XtraEditors.CheckEdit()
+        Me.DocumentExige = New DevExpress.XtraEditors.CheckEdit()
+        Me.GarantiExige = New DevExpress.XtraEditors.CheckEdit()
+        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.CheckVoiElectro = New DevExpress.XtraEditors.CheckEdit()
+        Me.AutorisationFabrican = New DevExpress.XtraEditors.CheckEdit()
+        Me.LabelControl69 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl67 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl65 = New DevExpress.XtraEditors.LabelControl()
         Me.gcOffre = New DevExpress.XtraEditors.GroupControl()
         Me.LabelControl21 = New DevExpress.XtraEditors.LabelControl()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -1317,8 +1384,9 @@ Partial Class NewDao
         Me.LabelControl20 = New DevExpress.XtraEditors.LabelControl()
         Me.DateReunion = New DevExpress.XtraEditors.DateEdit()
         Me.LabelControl66 = New DevExpress.XtraEditors.LabelControl()
-        Me.ChecRevisionPrix = New DevExpress.XtraEditors.CheckEdit()
         Me.CmbDelai = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.FormePaiement = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.LabelControl63 = New DevExpress.XtraEditors.LabelControl()
         Me.NumDelai = New DevExpress.XtraEditors.SpinEdit()
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl18 = New DevExpress.XtraEditors.LabelControl()
@@ -1335,27 +1403,7 @@ Partial Class NewDao
         Me.LabelControl11 = New DevExpress.XtraEditors.LabelControl()
         Me.CmbLangue = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LabelControl10 = New DevExpress.XtraEditors.LabelControl()
-        Me.gcConciliation = New DevExpress.XtraEditors.GroupControl()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.LabelControl77 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl26 = New DevExpress.XtraEditors.LabelControl()
-        Me.BtCvConcil = New DevExpress.XtraEditors.SimpleButton()
-        Me.LabelControl24 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl23 = New DevExpress.XtraEditors.LabelControl()
-        Me.CmbRemunConcil = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.LabelControl22 = New DevExpress.XtraEditors.LabelControl()
-        Me.RdConcilOui = New DevExpress.XtraEditors.CheckEdit()
-        Me.RdConcilNon = New DevExpress.XtraEditors.CheckEdit()
-        Me.GbMaitreOuvrageDelegue = New DevExpress.XtraEditors.GroupControl()
-        Me.MargePreferenc = New DevExpress.XtraEditors.CheckEdit()
-        Me.ServiceVente = New DevExpress.XtraEditors.CheckEdit()
-        Me.AutorisationFabrican = New DevExpress.XtraEditors.CheckEdit()
-        Me.MonaieAcheteur = New DevExpress.XtraEditors.CheckEdit()
-        Me.LabelControl69 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl67 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl65 = New DevExpress.XtraEditors.LabelControl()
-        Me.FormePaiement = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.LabelControl63 = New DevExpress.XtraEditors.LabelControl()
+        Me.CalPannelDAO = New DevExpress.XtraEditors.PanelControl()
         Me.PageConformTechnique = New DevExpress.XtraTab.XtraTabPage()
         Me.GroupControl26 = New DevExpress.XtraEditors.GroupControl()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
@@ -1386,6 +1434,8 @@ Partial Class NewDao
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ContextMenuStriptDQE = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ToolStripMenuItemModifLignDQE = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupControl13 = New DevExpress.XtraEditors.GroupControl()
         Me.CmbSousLot1 = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LblSLot = New DevExpress.XtraEditors.LabelControl()
@@ -1427,8 +1477,10 @@ Partial Class NewDao
         Me.BtEnrgItem = New DevExpress.XtraEditors.SimpleButton()
         Me.ZoomTrackBarControl2 = New DevExpress.XtraEditors.ZoomTrackBarControl()
         Me.GroupControl12 = New DevExpress.XtraEditors.GroupControl()
-        Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
+        Me.Panel3Ecraser = New System.Windows.Forms.Panel()
         Me.chkEraseDQE = New DevExpress.XtraEditors.CheckEdit()
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
+        Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
         Me.CmbSousLotDQE = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LabelControl58 = New DevExpress.XtraEditors.LabelControl()
         Me.CmbLotDQE = New DevExpress.XtraEditors.ComboBoxEdit()
@@ -1436,22 +1488,25 @@ Partial Class NewDao
         Me.btImportDQE = New DevExpress.XtraEditors.SimpleButton()
         Me.PageSpecTech = New DevExpress.XtraTab.XtraTabPage()
         Me.GroupControl6 = New DevExpress.XtraEditors.GroupControl()
-        Me.ListServiConnex = New DevExpress.XtraGrid.GridControl()
-        Me.ViewConnexe = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.LabelControl64 = New DevExpress.XtraEditors.LabelControl()
+        Me.GridServiConnex = New System.Windows.Forms.DataGridView()
+        Me.IdService = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Num = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Libelles = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.BtSupServicConnex = New DevExpress.XtraEditors.SimpleButton()
+        Me.LabelControl64 = New DevExpress.XtraEditors.LabelControl()
         Me.GroupControl21 = New DevExpress.XtraEditors.GroupControl()
         Me.ListeSpecTech = New DevExpress.XtraTreeList.TreeList()
         Me.Identifiant = New DevExpress.XtraTreeList.Columns.TreeListColumn()
-        Me.CodeSpec = New DevExpress.XtraTreeList.Columns.TreeListColumn()
-        Me.Libellé = New DevExpress.XtraTreeList.Columns.TreeListColumn()
-        Me.Quantité = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.RefArticle = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.LibelleArticle = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+        Me.Quantite = New DevExpress.XtraTreeList.Columns.TreeListColumn()
         Me.LieuLivre = New DevExpress.XtraTreeList.Columns.TreeListColumn()
         Me.CodeCateg = New DevExpress.XtraTreeList.Columns.TreeListColumn()
         Me.NumLot = New DevExpress.XtraTreeList.Columns.TreeListColumn()
         Me.NumSousLot = New DevExpress.XtraTreeList.Columns.TreeListColumn()
-        Me.Edit = New DevExpress.XtraTreeList.Columns.TreeListColumn()
         Me.ContextMenuSpectTech = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.AjouterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuModifierSpecTech = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuSupprimerSpecTech = New System.Windows.Forms.ToolStripMenuItem()
         Me.GridSpecifTech = New DevExpress.XtraGrid.GridControl()
@@ -1468,7 +1523,6 @@ Partial Class NewDao
         Me.TreeListColumn9 = New DevExpress.XtraTreeList.Columns.TreeListColumn()
         Me.GroupControl19 = New DevExpress.XtraEditors.GroupControl()
         Me.LabelControl7 = New DevExpress.XtraEditors.LabelControl()
-        Me.ChkLieuLivraison = New DevExpress.XtraEditors.CheckEdit()
         Me.GroupControl20 = New DevExpress.XtraEditors.GroupControl()
         Me.LabelControl54 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl53 = New DevExpress.XtraEditors.LabelControl()
@@ -1518,6 +1572,8 @@ Partial Class NewDao
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ValiderLeDossierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EnvoyerLeDossierAuBailleurToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BailleurToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SoumissionnaireToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AnnulerLeDossierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
@@ -1533,7 +1589,6 @@ Partial Class NewDao
         Me.ShowParagraphFormItem1 = New DevExpress.XtraRichEdit.UI.ShowParagraphFormItem()
         Me.ShowEditStyleFormItem1 = New DevExpress.XtraRichEdit.UI.ShowEditStyleFormItem()
         Me.ShowInsertTableCellsFormItem1 = New DevExpress.XtraRichEdit.UI.ShowInsertTableCellsFormItem()
-        Me.Codessss = New DevExpress.XtraEditors.TextEdit()
         CType(Me.RibbonDAO, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RepositoryItemFontEdit1, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RepositoryItemRichEditFontSizeEdit1, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1542,7 +1597,6 @@ Partial Class NewDao
         CType(Me.RepositoryItemBorderLineWeight1, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RepositoryItemFloatingObjectOutlineWeight1, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.TxtAdresseCompte.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.TxtNumCompte.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.TxtMethodeMarche.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.TxtNumDao.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.TxtCvConcil.Properties, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1610,7 +1664,15 @@ Partial Class NewDao
         CType(Me.TitreReclam.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.NomReclama.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.NomEmprunteur.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.CalesDAO.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RefSpecificationModif.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.CodeCategorie.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LigneBudgetaire.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LieurRemiseFourniture.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.PrecedurVoiElectronic.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.NatureDocument.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ListeVariante.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ProjetSimilaireJustificatif.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RefLotDQE.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).BeginInit
         Me.XtraTabControl1.SuspendLayout
         Me.PageDonneBase.SuspendLayout
@@ -1631,6 +1693,7 @@ Partial Class NewDao
         CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).BeginInit
         Me.GroupControl4.SuspendLayout
         CType(Me.CmbCompte.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.NaturePrix.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit
         Me.GroupControl1.SuspendLayout
         CType(Me.GroupMarche, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1660,11 +1723,9 @@ Partial Class NewDao
         Me.GroupControl10.SuspendLayout
         CType(Me.GroupControl9, System.ComponentModel.ISupportInitialize).BeginInit
         Me.GroupControl9.SuspendLayout
-        CType(Me.GCnegociation, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.GCnegociation.SuspendLayout
-        Me.GroupBox5.SuspendLayout
         CType(Me.gcCommission, System.ComponentModel.ISupportInitialize).BeginInit
         Me.gcCommission.SuspendLayout
+        CType(Me.CheckEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.GroupControl5, System.ComponentModel.ISupportInitialize).BeginInit
         Me.GroupControl5.SuspendLayout
         CType(Me.LgCojo, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1672,15 +1733,34 @@ Partial Class NewDao
         CType(Me.ViewCojo, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.CmbTitreCojo.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.CmbCivCojo.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GCnegociation, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GCnegociation.SuspendLayout
+        Me.GroupBox5.SuspendLayout
+        CType(Me.GroupControl16, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupControl16.SuspendLayout
+        CType(Me.AttestationReguFiscal.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.AttestationCNPS.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupBox10.SuspendLayout
+        CType(Me.ServiceApresVente.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.FormationUtilisateur.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.MaterielRequis.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.DateVisite.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.DateVisite.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.VisiteduSite.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.GroupSection, System.ComponentModel.ISupportInitialize).BeginInit
         Me.GroupSection.SuspendLayout
         CType(Me.GridSection, System.ComponentModel.ISupportInitialize).BeginInit
         Me.Panel1.SuspendLayout
         Me.GroupBoxInfoSect.SuspendLayout
         CType(Me.CombSection.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.CheckEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.GroupControl11, System.ComponentModel.ISupportInitialize).BeginInit
         Me.GroupControl11.SuspendLayout
+        CType(Me.gcConciliation, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.gcConciliation.SuspendLayout
+        Me.GroupBox4.SuspendLayout
+        CType(Me.CmbRemunConcil.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RdConcilOui.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RdConcilNon.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.GroupControl15, System.ComponentModel.ISupportInitialize).BeginInit
         Me.GroupControl15.SuspendLayout
         Me.GroupBox8.SuspendLayout
@@ -1691,6 +1771,16 @@ Partial Class NewDao
         Me.GroupControl8.SuspendLayout
         CType(Me.CheckEntite.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.CheckNonEntite.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GbMaitreOuvrageDelegue, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GbMaitreOuvrageDelegue.SuspendLayout
+        CType(Me.DelaiGarantie.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupBox9.SuspendLayout
+        CType(Me.Variante.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.DocumentExige.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GarantiExige.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupBox7.SuspendLayout
+        CType(Me.CheckVoiElectro.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.AutorisationFabrican.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.gcOffre, System.ComponentModel.ISupportInitialize).BeginInit
         Me.gcOffre.SuspendLayout
         Me.GroupBox2.SuspendLayout
@@ -1699,8 +1789,8 @@ Partial Class NewDao
         CType(Me.HeureReunion.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.DateReunion.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.DateReunion.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.ChecRevisionPrix.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.CmbDelai.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.FormePaiement.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.NumDelai.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.CmbEclaircissement.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.NumEclaircissement.Properties, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1710,19 +1800,7 @@ Partial Class NewDao
         CType(Me.CmbDevise.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.NumValidite.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.CmbLangue.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.gcConciliation, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.gcConciliation.SuspendLayout
-        Me.GroupBox4.SuspendLayout
-        CType(Me.CmbRemunConcil.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RdConcilOui.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RdConcilNon.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.GbMaitreOuvrageDelegue, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.GbMaitreOuvrageDelegue.SuspendLayout
-        CType(Me.MargePreferenc.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.ServiceVente.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.AutorisationFabrican.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.MonaieAcheteur.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.FormePaiement.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.CalPannelDAO, System.ComponentModel.ISupportInitialize).BeginInit
         Me.PageConformTechnique.SuspendLayout
         CType(Me.GroupControl26, System.ComponentModel.ISupportInitialize).BeginInit
         Me.GroupControl26.SuspendLayout
@@ -1743,6 +1821,7 @@ Partial Class NewDao
         CType(Me.GroupControl7, System.ComponentModel.ISupportInitialize).BeginInit
         Me.GroupControl7.SuspendLayout
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.ContextMenuStriptDQE.SuspendLayout
         CType(Me.GroupControl13, System.ComponentModel.ISupportInitialize).BeginInit
         Me.GroupControl13.SuspendLayout
         CType(Me.CmbSousLot1.Properties, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1769,16 +1848,17 @@ Partial Class NewDao
         CType(Me.ZoomTrackBarControl2.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.GroupControl12, System.ComponentModel.ISupportInitialize).BeginInit
         Me.GroupControl12.SuspendLayout
+        Me.Panel3Ecraser.SuspendLayout
+        CType(Me.chkEraseDQE.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit
         Me.PanelControl2.SuspendLayout
-        CType(Me.chkEraseDQE.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.CmbSousLotDQE.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.CmbLotDQE.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         Me.PageSpecTech.SuspendLayout
         CType(Me.GroupControl6, System.ComponentModel.ISupportInitialize).BeginInit
         Me.GroupControl6.SuspendLayout
-        CType(Me.ListServiConnex, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.ViewConnexe, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridServiConnex, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.Panel2.SuspendLayout
         CType(Me.GroupControl21, System.ComponentModel.ISupportInitialize).BeginInit
         Me.GroupControl21.SuspendLayout
         CType(Me.ListeSpecTech, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1788,7 +1868,6 @@ Partial Class NewDao
         CType(Me.SaveDonnee, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.GroupControl19, System.ComponentModel.ISupportInitialize).BeginInit
         Me.GroupControl19.SuspendLayout
-        CType(Me.ChkLieuLivraison.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.GroupControl20, System.ComponentModel.ISupportInitialize).BeginInit
         Me.GroupControl20.SuspendLayout
         CType(Me.NumQteBien.Properties, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1817,7 +1896,6 @@ Partial Class NewDao
         CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).BeginInit
         Me.SplitContainerControl1.SuspendLayout
         CType(Me.RichEditBarController1, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.Codessss.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
         'RibbonDAO
@@ -1855,19 +1933,19 @@ Partial Class NewDao
         Me.BtNouveau.Id = 1
         Me.BtNouveau.LargeGlyph = Global.ClearProject.My.Resources.Resources.Ribbon_New_32x32
         Me.BtNouveau.Name = "BtNouveau"
-        ToolTipTitleItem487.Appearance.Image = Global.ClearProject.My.Resources.Resources.Ribbon_New_16x16
-        ToolTipTitleItem487.Appearance.Options.UseImage = True
-        ToolTipTitleItem487.Image = Global.ClearProject.My.Resources.Resources.Ribbon_New_16x16
-        ToolTipTitleItem487.Text = "Nouveau dossier"
-        ToolTipItem453.LeftIndent = 6
-        ToolTipItem453.Text = "Cliquer pour créer un nouveau DAO"
-        ToolTipTitleItem488.LeftIndent = 6
-        ToolTipTitleItem488.Text = "Dossier d'Appel d'Offres"
-        SuperToolTip465.Items.Add(ToolTipTitleItem487)
-        SuperToolTip465.Items.Add(ToolTipItem453)
-        SuperToolTip465.Items.Add(ToolTipSeparatorItem23)
-        SuperToolTip465.Items.Add(ToolTipTitleItem488)
-        Me.BtNouveau.SuperTip = SuperToolTip465
+        ToolTipTitleItem1.Appearance.Image = Global.ClearProject.My.Resources.Resources.Ribbon_New_16x16
+        ToolTipTitleItem1.Appearance.Options.UseImage = True
+        ToolTipTitleItem1.Image = Global.ClearProject.My.Resources.Resources.Ribbon_New_16x16
+        ToolTipTitleItem1.Text = "Nouveau dossier"
+        ToolTipItem1.LeftIndent = 6
+        ToolTipItem1.Text = "Cliquer pour créer un nouveau DAO"
+        ToolTipTitleItem2.LeftIndent = 6
+        ToolTipTitleItem2.Text = "Dossier d'Appel d'Offres"
+        SuperToolTip1.Items.Add(ToolTipTitleItem1)
+        SuperToolTip1.Items.Add(ToolTipItem1)
+        SuperToolTip1.Items.Add(ToolTipSeparatorItem1)
+        SuperToolTip1.Items.Add(ToolTipTitleItem2)
+        Me.BtNouveau.SuperTip = SuperToolTip1
         '
         'BtArchives
         '
@@ -1876,19 +1954,19 @@ Partial Class NewDao
         Me.BtArchives.Id = 2
         Me.BtArchives.LargeGlyph = Global.ClearProject.My.Resources.Resources.Ribbon_OPEN_32x32
         Me.BtArchives.Name = "BtArchives"
-        ToolTipTitleItem489.Appearance.Image = Global.ClearProject.My.Resources.Resources.Ribbon_OPEN_16x16
-        ToolTipTitleItem489.Appearance.Options.UseImage = True
-        ToolTipTitleItem489.Image = Global.ClearProject.My.Resources.Resources.Ribbon_OPEN_16x16
-        ToolTipTitleItem489.Text = "Ouvrir dossier"
-        ToolTipItem454.LeftIndent = 6
-        ToolTipItem454.Text = "Cliquer pour ouvrir un DAO déjà édité"
-        ToolTipTitleItem490.LeftIndent = 6
-        ToolTipTitleItem490.Text = "Dossier d'Appel d'Offres"
-        SuperToolTip466.Items.Add(ToolTipTitleItem489)
-        SuperToolTip466.Items.Add(ToolTipItem454)
-        SuperToolTip466.Items.Add(ToolTipSeparatorItem24)
-        SuperToolTip466.Items.Add(ToolTipTitleItem490)
-        Me.BtArchives.SuperTip = SuperToolTip466
+        ToolTipTitleItem3.Appearance.Image = Global.ClearProject.My.Resources.Resources.Ribbon_OPEN_16x16
+        ToolTipTitleItem3.Appearance.Options.UseImage = True
+        ToolTipTitleItem3.Image = Global.ClearProject.My.Resources.Resources.Ribbon_OPEN_16x16
+        ToolTipTitleItem3.Text = "Ouvrir dossier"
+        ToolTipItem2.LeftIndent = 6
+        ToolTipItem2.Text = "Cliquer pour ouvrir un DAO déjà édité"
+        ToolTipTitleItem4.LeftIndent = 6
+        ToolTipTitleItem4.Text = "Dossier d'Appel d'Offres"
+        SuperToolTip2.Items.Add(ToolTipTitleItem3)
+        SuperToolTip2.Items.Add(ToolTipItem2)
+        SuperToolTip2.Items.Add(ToolTipSeparatorItem2)
+        SuperToolTip2.Items.Add(ToolTipTitleItem4)
+        Me.BtArchives.SuperTip = SuperToolTip2
         Me.BtArchives.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'BtFermerDAO
@@ -1898,19 +1976,19 @@ Partial Class NewDao
         Me.BtFermerDAO.Glyph = Global.ClearProject.My.Resources.Resources.CloseDetails_16x16
         Me.BtFermerDAO.Id = 3
         Me.BtFermerDAO.Name = "BtFermerDAO"
-        ToolTipTitleItem491.Appearance.Image = Global.ClearProject.My.Resources.Resources.CloseDetails_16x16
-        ToolTipTitleItem491.Appearance.Options.UseImage = True
-        ToolTipTitleItem491.Image = Global.ClearProject.My.Resources.Resources.CloseDetails_16x16
-        ToolTipTitleItem491.Text = "Fermer"
-        ToolTipItem455.LeftIndent = 6
-        ToolTipItem455.Text = "Cliquer pour fermer le dossier en cours"
-        ToolTipTitleItem492.LeftIndent = 6
-        ToolTipTitleItem492.Text = "Dossier d'Appel d'Offres"
-        SuperToolTip467.Items.Add(ToolTipTitleItem491)
-        SuperToolTip467.Items.Add(ToolTipItem455)
-        SuperToolTip467.Items.Add(ToolTipSeparatorItem25)
-        SuperToolTip467.Items.Add(ToolTipTitleItem492)
-        Me.BtFermerDAO.SuperTip = SuperToolTip467
+        ToolTipTitleItem5.Appearance.Image = Global.ClearProject.My.Resources.Resources.CloseDetails_16x16
+        ToolTipTitleItem5.Appearance.Options.UseImage = True
+        ToolTipTitleItem5.Image = Global.ClearProject.My.Resources.Resources.CloseDetails_16x16
+        ToolTipTitleItem5.Text = "Fermer"
+        ToolTipItem3.LeftIndent = 6
+        ToolTipItem3.Text = "Cliquer pour fermer le dossier en cours"
+        ToolTipTitleItem6.LeftIndent = 6
+        ToolTipTitleItem6.Text = "Dossier d'Appel d'Offres"
+        SuperToolTip3.Items.Add(ToolTipTitleItem5)
+        SuperToolTip3.Items.Add(ToolTipItem3)
+        SuperToolTip3.Items.Add(ToolTipSeparatorItem3)
+        SuperToolTip3.Items.Add(ToolTipTitleItem6)
+        Me.BtFermerDAO.SuperTip = SuperToolTip3
         '
         'BtEnregistrer
         '
@@ -1919,19 +1997,19 @@ Partial Class NewDao
         Me.BtEnregistrer.Glyph = Global.ClearProject.My.Resources.Resources.Ribbon_Save_16x16
         Me.BtEnregistrer.Id = 4
         Me.BtEnregistrer.Name = "BtEnregistrer"
-        ToolTipTitleItem493.Appearance.Image = Global.ClearProject.My.Resources.Resources.Ribbon_Save_16x16
-        ToolTipTitleItem493.Appearance.Options.UseImage = True
-        ToolTipTitleItem493.Image = Global.ClearProject.My.Resources.Resources.Ribbon_Save_16x16
-        ToolTipTitleItem493.Text = "Enregistrer"
-        ToolTipItem456.LeftIndent = 6
-        ToolTipItem456.Text = "Cliquer pour enregistrer les modifications " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "apportées au dossier en cours"
-        ToolTipTitleItem494.LeftIndent = 6
-        ToolTipTitleItem494.Text = "Dossier d'Appel d'Offres"
-        SuperToolTip468.Items.Add(ToolTipTitleItem493)
-        SuperToolTip468.Items.Add(ToolTipItem456)
-        SuperToolTip468.Items.Add(ToolTipSeparatorItem26)
-        SuperToolTip468.Items.Add(ToolTipTitleItem494)
-        Me.BtEnregistrer.SuperTip = SuperToolTip468
+        ToolTipTitleItem7.Appearance.Image = Global.ClearProject.My.Resources.Resources.Ribbon_Save_16x16
+        ToolTipTitleItem7.Appearance.Options.UseImage = True
+        ToolTipTitleItem7.Image = Global.ClearProject.My.Resources.Resources.Ribbon_Save_16x16
+        ToolTipTitleItem7.Text = "Enregistrer"
+        ToolTipItem4.LeftIndent = 6
+        ToolTipItem4.Text = "Cliquer pour enregistrer les modifications " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "apportées au dossier en cours"
+        ToolTipTitleItem8.LeftIndent = 6
+        ToolTipTitleItem8.Text = "Dossier d'Appel d'Offres"
+        SuperToolTip4.Items.Add(ToolTipTitleItem7)
+        SuperToolTip4.Items.Add(ToolTipItem4)
+        SuperToolTip4.Items.Add(ToolTipSeparatorItem4)
+        SuperToolTip4.Items.Add(ToolTipTitleItem8)
+        Me.BtEnregistrer.SuperTip = SuperToolTip4
         '
         'BtImprimer
         '
@@ -1940,19 +2018,19 @@ Partial Class NewDao
         Me.BtImprimer.Glyph = Global.ClearProject.My.Resources.Resources.imprimer_16
         Me.BtImprimer.Id = 5
         Me.BtImprimer.Name = "BtImprimer"
-        ToolTipTitleItem495.Appearance.Image = Global.ClearProject.My.Resources.Resources.imprimer_16
-        ToolTipTitleItem495.Appearance.Options.UseImage = True
-        ToolTipTitleItem495.Image = Global.ClearProject.My.Resources.Resources.imprimer_16
-        ToolTipTitleItem495.Text = "Imprimer"
-        ToolTipItem457.LeftIndent = 6
-        ToolTipItem457.Text = "Cliquer pour envoyer le dossier" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "à l'imprimante par défaut."
-        ToolTipTitleItem496.LeftIndent = 6
-        ToolTipTitleItem496.Text = "Dossier d'Appel d'Offres"
-        SuperToolTip469.Items.Add(ToolTipTitleItem495)
-        SuperToolTip469.Items.Add(ToolTipItem457)
-        SuperToolTip469.Items.Add(ToolTipSeparatorItem27)
-        SuperToolTip469.Items.Add(ToolTipTitleItem496)
-        Me.BtImprimer.SuperTip = SuperToolTip469
+        ToolTipTitleItem9.Appearance.Image = Global.ClearProject.My.Resources.Resources.imprimer_16
+        ToolTipTitleItem9.Appearance.Options.UseImage = True
+        ToolTipTitleItem9.Image = Global.ClearProject.My.Resources.Resources.imprimer_16
+        ToolTipTitleItem9.Text = "Imprimer"
+        ToolTipItem5.LeftIndent = 6
+        ToolTipItem5.Text = "Cliquer pour envoyer le dossier" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "à l'imprimante par défaut."
+        ToolTipTitleItem10.LeftIndent = 6
+        ToolTipTitleItem10.Text = "Dossier d'Appel d'Offres"
+        SuperToolTip5.Items.Add(ToolTipTitleItem9)
+        SuperToolTip5.Items.Add(ToolTipItem5)
+        SuperToolTip5.Items.Add(ToolTipSeparatorItem5)
+        SuperToolTip5.Items.Add(ToolTipTitleItem10)
+        Me.BtImprimer.SuperTip = SuperToolTip5
         Me.BtImprimer.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'BtApercu
@@ -1963,19 +2041,19 @@ Partial Class NewDao
         Me.BtApercu.Glyph = Global.ClearProject.My.Resources.Resources.Preview_16x16
         Me.BtApercu.Id = 6
         Me.BtApercu.Name = "BtApercu"
-        ToolTipTitleItem497.Appearance.Image = Global.ClearProject.My.Resources.Resources.Preview_16x16
-        ToolTipTitleItem497.Appearance.Options.UseImage = True
-        ToolTipTitleItem497.Image = Global.ClearProject.My.Resources.Resources.Preview_16x16
-        ToolTipTitleItem497.Text = "Aperçu"
-        ToolTipItem458.LeftIndent = 6
-        ToolTipItem458.Text = "Cliquer pour afficher un aperçu du dossier"
-        ToolTipTitleItem498.LeftIndent = 6
-        ToolTipTitleItem498.Text = "Dossier d'appel d'Offres"
-        SuperToolTip470.Items.Add(ToolTipTitleItem497)
-        SuperToolTip470.Items.Add(ToolTipItem458)
-        SuperToolTip470.Items.Add(ToolTipSeparatorItem28)
-        SuperToolTip470.Items.Add(ToolTipTitleItem498)
-        Me.BtApercu.SuperTip = SuperToolTip470
+        ToolTipTitleItem11.Appearance.Image = Global.ClearProject.My.Resources.Resources.Preview_16x16
+        ToolTipTitleItem11.Appearance.Options.UseImage = True
+        ToolTipTitleItem11.Image = Global.ClearProject.My.Resources.Resources.Preview_16x16
+        ToolTipTitleItem11.Text = "Aperçu"
+        ToolTipItem6.LeftIndent = 6
+        ToolTipItem6.Text = "Cliquer pour afficher un aperçu du dossier"
+        ToolTipTitleItem12.LeftIndent = 6
+        ToolTipTitleItem12.Text = "Dossier d'appel d'Offres"
+        SuperToolTip6.Items.Add(ToolTipTitleItem11)
+        SuperToolTip6.Items.Add(ToolTipItem6)
+        SuperToolTip6.Items.Add(ToolTipSeparatorItem6)
+        SuperToolTip6.Items.Add(ToolTipTitleItem12)
+        Me.BtApercu.SuperTip = SuperToolTip6
         Me.BtApercu.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'FileNewItem1
@@ -1984,11 +2062,11 @@ Partial Class NewDao
         Me.FileNewItem1.Enabled = False
         Me.FileNewItem1.Id = 14
         Me.FileNewItem1.Name = "FileNewItem1"
-        ToolTipTitleItem499.Text = "New (Ctrl+N)"
-        ToolTipItem459.Text = "Create a new document."
-        SuperToolTip471.Items.Add(ToolTipTitleItem499)
-        SuperToolTip471.Items.Add(ToolTipItem459)
-        Me.FileNewItem1.SuperTip = SuperToolTip471
+        ToolTipTitleItem13.Text = "New (Ctrl+N)"
+        ToolTipItem7.Text = "Create a new document."
+        SuperToolTip7.Items.Add(ToolTipTitleItem13)
+        SuperToolTip7.Items.Add(ToolTipItem7)
+        Me.FileNewItem1.SuperTip = SuperToolTip7
         '
         'FileOPENItem1
         '
@@ -1996,11 +2074,11 @@ Partial Class NewDao
         Me.FileOPENItem1.Enabled = False
         Me.FileOPENItem1.Id = 15
         Me.FileOPENItem1.Name = "FileOPENItem1"
-        ToolTipTitleItem500.Text = "Open (Ctrl+O)"
-        ToolTipItem460.Text = "Open a document."
-        SuperToolTip472.Items.Add(ToolTipTitleItem500)
-        SuperToolTip472.Items.Add(ToolTipItem460)
-        Me.FileOPENItem1.SuperTip = SuperToolTip472
+        ToolTipTitleItem14.Text = "Open (Ctrl+O)"
+        ToolTipItem8.Text = "Open a document."
+        SuperToolTip8.Items.Add(ToolTipTitleItem14)
+        SuperToolTip8.Items.Add(ToolTipItem8)
+        Me.FileOPENItem1.SuperTip = SuperToolTip8
         '
         'FileSaveItem1
         '
@@ -2008,11 +2086,11 @@ Partial Class NewDao
         Me.FileSaveItem1.Enabled = False
         Me.FileSaveItem1.Id = 16
         Me.FileSaveItem1.Name = "FileSaveItem1"
-        ToolTipTitleItem501.Text = "Save (Ctrl+S)"
-        ToolTipItem461.Text = "Save the document."
-        SuperToolTip473.Items.Add(ToolTipTitleItem501)
-        SuperToolTip473.Items.Add(ToolTipItem461)
-        Me.FileSaveItem1.SuperTip = SuperToolTip473
+        ToolTipTitleItem15.Text = "Save (Ctrl+S)"
+        ToolTipItem9.Text = "Save the document."
+        SuperToolTip9.Items.Add(ToolTipTitleItem15)
+        SuperToolTip9.Items.Add(ToolTipItem9)
+        Me.FileSaveItem1.SuperTip = SuperToolTip9
         '
         'FileSaveAsItem1
         '
@@ -2020,12 +2098,12 @@ Partial Class NewDao
         Me.FileSaveAsItem1.Enabled = False
         Me.FileSaveAsItem1.Id = 17
         Me.FileSaveAsItem1.Name = "FileSaveAsItem1"
-        ToolTipTitleItem502.Text = "Save As (F12)"
-        ToolTipItem462.Text = "Open the Save As dialog box to select a file format and save the document to a ne" &
+        ToolTipTitleItem16.Text = "Save As (F12)"
+        ToolTipItem10.Text = "Open the Save As dialog box to select a file format and save the document to a ne" &
     "w location."
-        SuperToolTip474.Items.Add(ToolTipTitleItem502)
-        SuperToolTip474.Items.Add(ToolTipItem462)
-        Me.FileSaveAsItem1.SuperTip = SuperToolTip474
+        SuperToolTip10.Items.Add(ToolTipTitleItem16)
+        SuperToolTip10.Items.Add(ToolTipItem10)
+        Me.FileSaveAsItem1.SuperTip = SuperToolTip10
         '
         'QuickPrintItem1
         '
@@ -2033,11 +2111,11 @@ Partial Class NewDao
         Me.QuickPrintItem1.Enabled = False
         Me.QuickPrintItem1.Id = 18
         Me.QuickPrintItem1.Name = "QuickPrintItem1"
-        ToolTipTitleItem503.Text = "&Quick Print"
-        ToolTipItem463.Text = "Send the document directly to the default printer without making changes."
-        SuperToolTip475.Items.Add(ToolTipTitleItem503)
-        SuperToolTip475.Items.Add(ToolTipItem463)
-        Me.QuickPrintItem1.SuperTip = SuperToolTip475
+        ToolTipTitleItem17.Text = "&Quick Print"
+        ToolTipItem11.Text = "Send the document directly to the default printer without making changes."
+        SuperToolTip11.Items.Add(ToolTipTitleItem17)
+        SuperToolTip11.Items.Add(ToolTipItem11)
+        Me.QuickPrintItem1.SuperTip = SuperToolTip11
         '
         'PrintItem1
         '
@@ -2045,11 +2123,11 @@ Partial Class NewDao
         Me.PrintItem1.Enabled = False
         Me.PrintItem1.Id = 19
         Me.PrintItem1.Name = "PrintItem1"
-        ToolTipTitleItem504.Text = "&Print (Ctrl+P)"
-        ToolTipItem464.Text = "Select a printer, number of copies, and other printing options before printing."
-        SuperToolTip476.Items.Add(ToolTipTitleItem504)
-        SuperToolTip476.Items.Add(ToolTipItem464)
-        Me.PrintItem1.SuperTip = SuperToolTip476
+        ToolTipTitleItem18.Text = "&Print (Ctrl+P)"
+        ToolTipItem12.Text = "Select a printer, number of copies, and other printing options before printing."
+        SuperToolTip12.Items.Add(ToolTipTitleItem18)
+        SuperToolTip12.Items.Add(ToolTipItem12)
+        Me.PrintItem1.SuperTip = SuperToolTip12
         '
         'PrintPreviewItem1
         '
@@ -2057,11 +2135,11 @@ Partial Class NewDao
         Me.PrintPreviewItem1.Enabled = False
         Me.PrintPreviewItem1.Id = 20
         Me.PrintPreviewItem1.Name = "PrintPreviewItem1"
-        ToolTipTitleItem505.Text = "Print Pre&view"
-        ToolTipItem465.Text = "Preview pages before printing."
-        SuperToolTip477.Items.Add(ToolTipTitleItem505)
-        SuperToolTip477.Items.Add(ToolTipItem465)
-        Me.PrintPreviewItem1.SuperTip = SuperToolTip477
+        ToolTipTitleItem19.Text = "Print Pre&view"
+        ToolTipItem13.Text = "Preview pages before printing."
+        SuperToolTip13.Items.Add(ToolTipTitleItem19)
+        SuperToolTip13.Items.Add(ToolTipItem13)
+        Me.PrintPreviewItem1.SuperTip = SuperToolTip13
         '
         'UndoItem1
         '
@@ -2069,11 +2147,11 @@ Partial Class NewDao
         Me.UndoItem1.Enabled = False
         Me.UndoItem1.Id = 21
         Me.UndoItem1.Name = "UndoItem1"
-        ToolTipTitleItem506.Text = "Undo (Ctrl+Z)"
-        ToolTipItem466.Text = "Undo"
-        SuperToolTip478.Items.Add(ToolTipTitleItem506)
-        SuperToolTip478.Items.Add(ToolTipItem466)
-        Me.UndoItem1.SuperTip = SuperToolTip478
+        ToolTipTitleItem20.Text = "Undo (Ctrl+Z)"
+        ToolTipItem14.Text = "Undo"
+        SuperToolTip14.Items.Add(ToolTipTitleItem20)
+        SuperToolTip14.Items.Add(ToolTipItem14)
+        Me.UndoItem1.SuperTip = SuperToolTip14
         '
         'RedoItem1
         '
@@ -2081,11 +2159,11 @@ Partial Class NewDao
         Me.RedoItem1.Enabled = False
         Me.RedoItem1.Id = 22
         Me.RedoItem1.Name = "RedoItem1"
-        ToolTipTitleItem507.Text = "Redo (Ctrl+Y)"
-        ToolTipItem467.Text = "Redo"
-        SuperToolTip479.Items.Add(ToolTipTitleItem507)
-        SuperToolTip479.Items.Add(ToolTipItem467)
-        Me.RedoItem1.SuperTip = SuperToolTip479
+        ToolTipTitleItem21.Text = "Redo (Ctrl+Y)"
+        ToolTipItem15.Text = "Redo"
+        SuperToolTip15.Items.Add(ToolTipTitleItem21)
+        SuperToolTip15.Items.Add(ToolTipItem15)
+        Me.RedoItem1.SuperTip = SuperToolTip15
         '
         'PasteItem1
         '
@@ -2093,11 +2171,11 @@ Partial Class NewDao
         Me.PasteItem1.Enabled = False
         Me.PasteItem1.Id = 23
         Me.PasteItem1.Name = "PasteItem1"
-        ToolTipTitleItem508.Text = "Paste (Ctrl+V)"
-        ToolTipItem468.Text = "Paste the contents of the Clipboard."
-        SuperToolTip480.Items.Add(ToolTipTitleItem508)
-        SuperToolTip480.Items.Add(ToolTipItem468)
-        Me.PasteItem1.SuperTip = SuperToolTip480
+        ToolTipTitleItem22.Text = "Paste (Ctrl+V)"
+        ToolTipItem16.Text = "Paste the contents of the Clipboard."
+        SuperToolTip16.Items.Add(ToolTipTitleItem22)
+        SuperToolTip16.Items.Add(ToolTipItem16)
+        Me.PasteItem1.SuperTip = SuperToolTip16
         '
         'CutItem1
         '
@@ -2105,11 +2183,11 @@ Partial Class NewDao
         Me.CutItem1.Enabled = False
         Me.CutItem1.Id = 24
         Me.CutItem1.Name = "CutItem1"
-        ToolTipTitleItem509.Text = "Cut (Ctrl+X)"
-        ToolTipItem469.Text = "Cut the selection from the document and put it on the Clipboard."
-        SuperToolTip481.Items.Add(ToolTipTitleItem509)
-        SuperToolTip481.Items.Add(ToolTipItem469)
-        Me.CutItem1.SuperTip = SuperToolTip481
+        ToolTipTitleItem23.Text = "Cut (Ctrl+X)"
+        ToolTipItem17.Text = "Cut the selection from the document and put it on the Clipboard."
+        SuperToolTip17.Items.Add(ToolTipTitleItem23)
+        SuperToolTip17.Items.Add(ToolTipItem17)
+        Me.CutItem1.SuperTip = SuperToolTip17
         '
         'CopyItem1
         '
@@ -2117,11 +2195,11 @@ Partial Class NewDao
         Me.CopyItem1.Enabled = False
         Me.CopyItem1.Id = 25
         Me.CopyItem1.Name = "CopyItem1"
-        ToolTipTitleItem510.Text = "Copy (Ctrl+C)"
-        ToolTipItem470.Text = "Copy the selection and put it on the Clipboard."
-        SuperToolTip482.Items.Add(ToolTipTitleItem510)
-        SuperToolTip482.Items.Add(ToolTipItem470)
-        Me.CopyItem1.SuperTip = SuperToolTip482
+        ToolTipTitleItem24.Text = "Copy (Ctrl+C)"
+        ToolTipItem18.Text = "Copy the selection and put it on the Clipboard."
+        SuperToolTip18.Items.Add(ToolTipTitleItem24)
+        SuperToolTip18.Items.Add(ToolTipItem18)
+        Me.CopyItem1.SuperTip = SuperToolTip18
         '
         'PasteSpecialItem1
         '
@@ -2129,11 +2207,11 @@ Partial Class NewDao
         Me.PasteSpecialItem1.Enabled = False
         Me.PasteSpecialItem1.Id = 26
         Me.PasteSpecialItem1.Name = "PasteSpecialItem1"
-        ToolTipTitleItem511.Text = "Paste Special (Ctrl+Alt+V)"
-        ToolTipItem471.Text = "Paste Special"
-        SuperToolTip483.Items.Add(ToolTipTitleItem511)
-        SuperToolTip483.Items.Add(ToolTipItem471)
-        Me.PasteSpecialItem1.SuperTip = SuperToolTip483
+        ToolTipTitleItem25.Text = "Paste Special (Ctrl+Alt+V)"
+        ToolTipItem19.Text = "Paste Special"
+        SuperToolTip19.Items.Add(ToolTipTitleItem25)
+        SuperToolTip19.Items.Add(ToolTipItem19)
+        Me.PasteSpecialItem1.SuperTip = SuperToolTip19
         '
         'BarButtonGroup1
         '
@@ -2151,11 +2229,11 @@ Partial Class NewDao
         Me.ChangeFontNameItem1.Enabled = False
         Me.ChangeFontNameItem1.Id = 27
         Me.ChangeFontNameItem1.Name = "ChangeFontNameItem1"
-        ToolTipTitleItem512.Text = "Font"
-        ToolTipItem472.Text = "Change the font face."
-        SuperToolTip484.Items.Add(ToolTipTitleItem512)
-        SuperToolTip484.Items.Add(ToolTipItem472)
-        Me.ChangeFontNameItem1.SuperTip = SuperToolTip484
+        ToolTipTitleItem26.Text = "Font"
+        ToolTipItem20.Text = "Change the font face."
+        SuperToolTip20.Items.Add(ToolTipTitleItem26)
+        SuperToolTip20.Items.Add(ToolTipItem20)
+        Me.ChangeFontNameItem1.SuperTip = SuperToolTip20
         '
         'RepositoryItemFontEdit1
         '
@@ -2169,11 +2247,11 @@ Partial Class NewDao
         Me.ChangeFontSizeItem1.Enabled = False
         Me.ChangeFontSizeItem1.Id = 28
         Me.ChangeFontSizeItem1.Name = "ChangeFontSizeItem1"
-        ToolTipTitleItem272.Text = "Font Size"
-        ToolTipItem249.Text = "Change the font size."
-        SuperToolTip255.Items.Add(ToolTipTitleItem272)
-        SuperToolTip255.Items.Add(ToolTipItem249)
-        Me.ChangeFontSizeItem1.SuperTip = SuperToolTip255
+        ToolTipTitleItem27.Text = "Font Size"
+        ToolTipItem21.Text = "Change the font size."
+        SuperToolTip21.Items.Add(ToolTipTitleItem27)
+        SuperToolTip21.Items.Add(ToolTipItem21)
+        Me.ChangeFontSizeItem1.SuperTip = SuperToolTip21
         '
         'RepositoryItemRichEditFontSizeEdit1
         '
@@ -2188,11 +2266,11 @@ Partial Class NewDao
         Me.FontSizeIncreaseItem1.Enabled = False
         Me.FontSizeIncreaseItem1.Id = 29
         Me.FontSizeIncreaseItem1.Name = "FontSizeIncreaseItem1"
-        ToolTipTitleItem26.Text = "Grow Font (Ctrl+Maj+.)"
-        ToolTipItem20.Text = "Increase the font size."
-        SuperToolTip20.Items.Add(ToolTipTitleItem26)
-        SuperToolTip20.Items.Add(ToolTipItem20)
-        Me.FontSizeIncreaseItem1.SuperTip = SuperToolTip20
+        ToolTipTitleItem28.Text = "Grow Font (Ctrl+Maj+.)"
+        ToolTipItem22.Text = "Increase the font size."
+        SuperToolTip22.Items.Add(ToolTipTitleItem28)
+        SuperToolTip22.Items.Add(ToolTipItem22)
+        Me.FontSizeIncreaseItem1.SuperTip = SuperToolTip22
         '
         'FontSizeDecreaseItem1
         '
@@ -2200,11 +2278,11 @@ Partial Class NewDao
         Me.FontSizeDecreaseItem1.Enabled = False
         Me.FontSizeDecreaseItem1.Id = 30
         Me.FontSizeDecreaseItem1.Name = "FontSizeDecreaseItem1"
-        ToolTipTitleItem513.Text = "Shrink Font (Ctrl+Maj+,)"
-        ToolTipItem473.Text = "Decrease the font size."
-        SuperToolTip485.Items.Add(ToolTipTitleItem513)
-        SuperToolTip485.Items.Add(ToolTipItem473)
-        Me.FontSizeDecreaseItem1.SuperTip = SuperToolTip485
+        ToolTipTitleItem29.Text = "Shrink Font (Ctrl+Maj+,)"
+        ToolTipItem23.Text = "Decrease the font size."
+        SuperToolTip23.Items.Add(ToolTipTitleItem29)
+        SuperToolTip23.Items.Add(ToolTipItem23)
+        Me.FontSizeDecreaseItem1.SuperTip = SuperToolTip23
         '
         'BarButtonGroup2
         '
@@ -2226,11 +2304,11 @@ Partial Class NewDao
         Me.ToggleFontBoldItem1.Enabled = False
         Me.ToggleFontBoldItem1.Id = 31
         Me.ToggleFontBoldItem1.Name = "ToggleFontBoldItem1"
-        ToolTipTitleItem514.Text = "Bold (Ctrl+B)"
-        ToolTipItem474.Text = "Make the selected text bold."
-        SuperToolTip486.Items.Add(ToolTipTitleItem514)
-        SuperToolTip486.Items.Add(ToolTipItem474)
-        Me.ToggleFontBoldItem1.SuperTip = SuperToolTip486
+        ToolTipTitleItem30.Text = "Bold (Ctrl+B)"
+        ToolTipItem24.Text = "Make the selected text bold."
+        SuperToolTip24.Items.Add(ToolTipTitleItem30)
+        SuperToolTip24.Items.Add(ToolTipItem24)
+        Me.ToggleFontBoldItem1.SuperTip = SuperToolTip24
         '
         'ToggleFontItalicItem1
         '
@@ -2238,11 +2316,11 @@ Partial Class NewDao
         Me.ToggleFontItalicItem1.Enabled = False
         Me.ToggleFontItalicItem1.Id = 32
         Me.ToggleFontItalicItem1.Name = "ToggleFontItalicItem1"
-        ToolTipTitleItem515.Text = "Italic (Ctrl+I)"
-        ToolTipItem475.Text = "Italicize the selected text."
-        SuperToolTip487.Items.Add(ToolTipTitleItem515)
-        SuperToolTip487.Items.Add(ToolTipItem475)
-        Me.ToggleFontItalicItem1.SuperTip = SuperToolTip487
+        ToolTipTitleItem31.Text = "Italic (Ctrl+I)"
+        ToolTipItem25.Text = "Italicize the selected text."
+        SuperToolTip25.Items.Add(ToolTipTitleItem31)
+        SuperToolTip25.Items.Add(ToolTipItem25)
+        Me.ToggleFontItalicItem1.SuperTip = SuperToolTip25
         '
         'ToggleFontUnderlineItem1
         '
@@ -2250,11 +2328,11 @@ Partial Class NewDao
         Me.ToggleFontUnderlineItem1.Enabled = False
         Me.ToggleFontUnderlineItem1.Id = 33
         Me.ToggleFontUnderlineItem1.Name = "ToggleFontUnderlineItem1"
-        ToolTipTitleItem516.Text = "Underline (Ctrl+U)"
-        ToolTipItem476.Text = "Underline the selected text."
-        SuperToolTip488.Items.Add(ToolTipTitleItem516)
-        SuperToolTip488.Items.Add(ToolTipItem476)
-        Me.ToggleFontUnderlineItem1.SuperTip = SuperToolTip488
+        ToolTipTitleItem32.Text = "Underline (Ctrl+U)"
+        ToolTipItem26.Text = "Underline the selected text."
+        SuperToolTip26.Items.Add(ToolTipTitleItem32)
+        SuperToolTip26.Items.Add(ToolTipItem26)
+        Me.ToggleFontUnderlineItem1.SuperTip = SuperToolTip26
         '
         'ToggleFontDoubleUnderlineItem1
         '
@@ -2262,11 +2340,11 @@ Partial Class NewDao
         Me.ToggleFontDoubleUnderlineItem1.Enabled = False
         Me.ToggleFontDoubleUnderlineItem1.Id = 34
         Me.ToggleFontDoubleUnderlineItem1.Name = "ToggleFontDoubleUnderlineItem1"
-        ToolTipTitleItem517.Text = "Double Underline (Ctrl+Maj+D)"
-        ToolTipItem477.Text = "Double underline"
-        SuperToolTip489.Items.Add(ToolTipTitleItem517)
-        SuperToolTip489.Items.Add(ToolTipItem477)
-        Me.ToggleFontDoubleUnderlineItem1.SuperTip = SuperToolTip489
+        ToolTipTitleItem33.Text = "Double Underline (Ctrl+Maj+D)"
+        ToolTipItem27.Text = "Double underline"
+        SuperToolTip27.Items.Add(ToolTipTitleItem33)
+        SuperToolTip27.Items.Add(ToolTipItem27)
+        Me.ToggleFontDoubleUnderlineItem1.SuperTip = SuperToolTip27
         '
         'ToggleFontStrikeoutItem1
         '
@@ -2274,11 +2352,11 @@ Partial Class NewDao
         Me.ToggleFontStrikeoutItem1.Enabled = False
         Me.ToggleFontStrikeoutItem1.Id = 35
         Me.ToggleFontStrikeoutItem1.Name = "ToggleFontStrikeoutItem1"
-        ToolTipTitleItem518.Text = "Strikethrough"
-        ToolTipItem478.Text = "Draw a line through the middle of the selected text."
-        SuperToolTip490.Items.Add(ToolTipTitleItem518)
-        SuperToolTip490.Items.Add(ToolTipItem478)
-        Me.ToggleFontStrikeoutItem1.SuperTip = SuperToolTip490
+        ToolTipTitleItem34.Text = "Strikethrough"
+        ToolTipItem28.Text = "Draw a line through the middle of the selected text."
+        SuperToolTip28.Items.Add(ToolTipTitleItem34)
+        SuperToolTip28.Items.Add(ToolTipItem28)
+        Me.ToggleFontStrikeoutItem1.SuperTip = SuperToolTip28
         '
         'ToggleFontDoubleStrikeoutItem1
         '
@@ -2286,11 +2364,11 @@ Partial Class NewDao
         Me.ToggleFontDoubleStrikeoutItem1.Enabled = False
         Me.ToggleFontDoubleStrikeoutItem1.Id = 36
         Me.ToggleFontDoubleStrikeoutItem1.Name = "ToggleFontDoubleStrikeoutItem1"
-        ToolTipTitleItem519.Text = "Double Strikethrough"
-        ToolTipItem479.Text = "Double strikethrough"
-        SuperToolTip491.Items.Add(ToolTipTitleItem519)
-        SuperToolTip491.Items.Add(ToolTipItem479)
-        Me.ToggleFontDoubleStrikeoutItem1.SuperTip = SuperToolTip491
+        ToolTipTitleItem35.Text = "Double Strikethrough"
+        ToolTipItem29.Text = "Double strikethrough"
+        SuperToolTip29.Items.Add(ToolTipTitleItem35)
+        SuperToolTip29.Items.Add(ToolTipItem29)
+        Me.ToggleFontDoubleStrikeoutItem1.SuperTip = SuperToolTip29
         '
         'ToggleFontSuperscriptItem1
         '
@@ -2298,11 +2376,11 @@ Partial Class NewDao
         Me.ToggleFontSuperscriptItem1.Enabled = False
         Me.ToggleFontSuperscriptItem1.Id = 37
         Me.ToggleFontSuperscriptItem1.Name = "ToggleFontSuperscriptItem1"
-        ToolTipTitleItem520.Text = "Superscript (Ctrl+Maj++)"
-        ToolTipItem480.Text = "Create small letters above the line of text."
-        SuperToolTip492.Items.Add(ToolTipTitleItem520)
-        SuperToolTip492.Items.Add(ToolTipItem480)
-        Me.ToggleFontSuperscriptItem1.SuperTip = SuperToolTip492
+        ToolTipTitleItem36.Text = "Superscript (Ctrl+Maj++)"
+        ToolTipItem30.Text = "Create small letters above the line of text."
+        SuperToolTip30.Items.Add(ToolTipTitleItem36)
+        SuperToolTip30.Items.Add(ToolTipItem30)
+        Me.ToggleFontSuperscriptItem1.SuperTip = SuperToolTip30
         '
         'ToggleFontSubscriptItem1
         '
@@ -2310,11 +2388,11 @@ Partial Class NewDao
         Me.ToggleFontSubscriptItem1.Enabled = False
         Me.ToggleFontSubscriptItem1.Id = 38
         Me.ToggleFontSubscriptItem1.Name = "ToggleFontSubscriptItem1"
-        ToolTipTitleItem521.Text = "Subscript (Ctrl++)"
-        ToolTipItem481.Text = "Create small letters below the text baseline."
-        SuperToolTip493.Items.Add(ToolTipTitleItem521)
-        SuperToolTip493.Items.Add(ToolTipItem481)
-        Me.ToggleFontSubscriptItem1.SuperTip = SuperToolTip493
+        ToolTipTitleItem37.Text = "Subscript (Ctrl++)"
+        ToolTipItem31.Text = "Create small letters below the text baseline."
+        SuperToolTip31.Items.Add(ToolTipTitleItem37)
+        SuperToolTip31.Items.Add(ToolTipItem31)
+        Me.ToggleFontSubscriptItem1.SuperTip = SuperToolTip31
         '
         'BarButtonGroup3
         '
@@ -2330,11 +2408,11 @@ Partial Class NewDao
         Me.ChangeFontColorItem1.Enabled = False
         Me.ChangeFontColorItem1.Id = 39
         Me.ChangeFontColorItem1.Name = "ChangeFontColorItem1"
-        ToolTipTitleItem522.Text = "Font Color"
-        ToolTipItem482.Text = "Change the font color."
-        SuperToolTip494.Items.Add(ToolTipTitleItem522)
-        SuperToolTip494.Items.Add(ToolTipItem482)
-        Me.ChangeFontColorItem1.SuperTip = SuperToolTip494
+        ToolTipTitleItem38.Text = "Font Color"
+        ToolTipItem32.Text = "Change the font color."
+        SuperToolTip32.Items.Add(ToolTipTitleItem38)
+        SuperToolTip32.Items.Add(ToolTipItem32)
+        Me.ChangeFontColorItem1.SuperTip = SuperToolTip32
         '
         'ChangeFontBackColorItem1
         '
@@ -2342,11 +2420,11 @@ Partial Class NewDao
         Me.ChangeFontBackColorItem1.Enabled = False
         Me.ChangeFontBackColorItem1.Id = 40
         Me.ChangeFontBackColorItem1.Name = "ChangeFontBackColorItem1"
-        ToolTipTitleItem523.Text = "Text Highlight Color"
-        ToolTipItem483.Text = "Make text look like it was marked with a highlighter pen."
-        SuperToolTip495.Items.Add(ToolTipTitleItem523)
-        SuperToolTip495.Items.Add(ToolTipItem483)
-        Me.ChangeFontBackColorItem1.SuperTip = SuperToolTip495
+        ToolTipTitleItem39.Text = "Text Highlight Color"
+        ToolTipItem33.Text = "Make text look like it was marked with a highlighter pen."
+        SuperToolTip33.Items.Add(ToolTipTitleItem39)
+        SuperToolTip33.Items.Add(ToolTipItem33)
+        Me.ChangeFontBackColorItem1.SuperTip = SuperToolTip33
         '
         'ChangeTextCaseItem1
         '
@@ -2355,12 +2433,12 @@ Partial Class NewDao
         Me.ChangeTextCaseItem1.Id = 41
         Me.ChangeTextCaseItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.MakeTextUpperCaseItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.MakeTextLowerCaseItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTextCaseItem1)})
         Me.ChangeTextCaseItem1.Name = "ChangeTextCaseItem1"
-        ToolTipTitleItem527.Text = "Change Case"
-        ToolTipItem487.Text = "Change all the selected text to UPPERCASE, lowercase, or other common capitalizat" &
+        ToolTipTitleItem43.Text = "Change Case"
+        ToolTipItem37.Text = "Change all the selected text to UPPERCASE, lowercase, or other common capitalizat" &
     "ions."
-        SuperToolTip499.Items.Add(ToolTipTitleItem527)
-        SuperToolTip499.Items.Add(ToolTipItem487)
-        Me.ChangeTextCaseItem1.SuperTip = SuperToolTip499
+        SuperToolTip37.Items.Add(ToolTipTitleItem43)
+        SuperToolTip37.Items.Add(ToolTipItem37)
+        Me.ChangeTextCaseItem1.SuperTip = SuperToolTip37
         '
         'MakeTextUpperCaseItem1
         '
@@ -2368,11 +2446,11 @@ Partial Class NewDao
         Me.MakeTextUpperCaseItem1.Enabled = False
         Me.MakeTextUpperCaseItem1.Id = 42
         Me.MakeTextUpperCaseItem1.Name = "MakeTextUpperCaseItem1"
-        ToolTipTitleItem524.Text = "UPPERCASE"
-        ToolTipItem484.Text = "Change all the selected text to UPPERCASE."
-        SuperToolTip496.Items.Add(ToolTipTitleItem524)
-        SuperToolTip496.Items.Add(ToolTipItem484)
-        Me.MakeTextUpperCaseItem1.SuperTip = SuperToolTip496
+        ToolTipTitleItem40.Text = "UPPERCASE"
+        ToolTipItem34.Text = "Change all the selected text to UPPERCASE."
+        SuperToolTip34.Items.Add(ToolTipTitleItem40)
+        SuperToolTip34.Items.Add(ToolTipItem34)
+        Me.MakeTextUpperCaseItem1.SuperTip = SuperToolTip34
         '
         'MakeTextLowerCaseItem1
         '
@@ -2380,11 +2458,11 @@ Partial Class NewDao
         Me.MakeTextLowerCaseItem1.Enabled = False
         Me.MakeTextLowerCaseItem1.Id = 43
         Me.MakeTextLowerCaseItem1.Name = "MakeTextLowerCaseItem1"
-        ToolTipTitleItem525.Text = "lowercase"
-        ToolTipItem485.Text = "Change all the selected text to lowercase."
-        SuperToolTip497.Items.Add(ToolTipTitleItem525)
-        SuperToolTip497.Items.Add(ToolTipItem485)
-        Me.MakeTextLowerCaseItem1.SuperTip = SuperToolTip497
+        ToolTipTitleItem41.Text = "lowercase"
+        ToolTipItem35.Text = "Change all the selected text to lowercase."
+        SuperToolTip35.Items.Add(ToolTipTitleItem41)
+        SuperToolTip35.Items.Add(ToolTipItem35)
+        Me.MakeTextLowerCaseItem1.SuperTip = SuperToolTip35
         '
         'ToggleTextCaseItem1
         '
@@ -2392,11 +2470,11 @@ Partial Class NewDao
         Me.ToggleTextCaseItem1.Enabled = False
         Me.ToggleTextCaseItem1.Id = 44
         Me.ToggleTextCaseItem1.Name = "ToggleTextCaseItem1"
-        ToolTipTitleItem526.Text = "tOGGLE cASE"
-        ToolTipItem486.Text = "tOGGLE cASE."
-        SuperToolTip498.Items.Add(ToolTipTitleItem526)
-        SuperToolTip498.Items.Add(ToolTipItem486)
-        Me.ToggleTextCaseItem1.SuperTip = SuperToolTip498
+        ToolTipTitleItem42.Text = "tOGGLE cASE"
+        ToolTipItem36.Text = "tOGGLE cASE."
+        SuperToolTip36.Items.Add(ToolTipTitleItem42)
+        SuperToolTip36.Items.Add(ToolTipItem36)
+        Me.ToggleTextCaseItem1.SuperTip = SuperToolTip36
         '
         'ClearFormattingItem1
         '
@@ -2404,11 +2482,11 @@ Partial Class NewDao
         Me.ClearFormattingItem1.Enabled = False
         Me.ClearFormattingItem1.Id = 45
         Me.ClearFormattingItem1.Name = "ClearFormattingItem1"
-        ToolTipTitleItem528.Text = "Clear Formatting (Ctrl+Space)"
-        ToolTipItem488.Text = "Clear all the formatting from the selection, leaving only plain text."
-        SuperToolTip500.Items.Add(ToolTipTitleItem528)
-        SuperToolTip500.Items.Add(ToolTipItem488)
-        Me.ClearFormattingItem1.SuperTip = SuperToolTip500
+        ToolTipTitleItem44.Text = "Clear Formatting (Ctrl+Space)"
+        ToolTipItem38.Text = "Clear all the formatting from the selection, leaving only plain text."
+        SuperToolTip38.Items.Add(ToolTipTitleItem44)
+        SuperToolTip38.Items.Add(ToolTipItem38)
+        Me.ClearFormattingItem1.SuperTip = SuperToolTip38
         '
         'BarButtonGroup4
         '
@@ -2425,11 +2503,11 @@ Partial Class NewDao
         Me.ToggleBulletedListItem1.Enabled = False
         Me.ToggleBulletedListItem1.Id = 46
         Me.ToggleBulletedListItem1.Name = "ToggleBulletedListItem1"
-        ToolTipTitleItem529.Text = "Bullets"
-        ToolTipItem489.Text = "Start a bulleted list."
-        SuperToolTip501.Items.Add(ToolTipTitleItem529)
-        SuperToolTip501.Items.Add(ToolTipItem489)
-        Me.ToggleBulletedListItem1.SuperTip = SuperToolTip501
+        ToolTipTitleItem45.Text = "Bullets"
+        ToolTipItem39.Text = "Start a bulleted list."
+        SuperToolTip39.Items.Add(ToolTipTitleItem45)
+        SuperToolTip39.Items.Add(ToolTipItem39)
+        Me.ToggleBulletedListItem1.SuperTip = SuperToolTip39
         '
         'ToggleNumberingListItem1
         '
@@ -2437,11 +2515,11 @@ Partial Class NewDao
         Me.ToggleNumberingListItem1.Enabled = False
         Me.ToggleNumberingListItem1.Id = 47
         Me.ToggleNumberingListItem1.Name = "ToggleNumberingListItem1"
-        ToolTipTitleItem530.Text = "Numbering"
-        ToolTipItem490.Text = "Start a numbered list."
-        SuperToolTip502.Items.Add(ToolTipTitleItem530)
-        SuperToolTip502.Items.Add(ToolTipItem490)
-        Me.ToggleNumberingListItem1.SuperTip = SuperToolTip502
+        ToolTipTitleItem46.Text = "Numbering"
+        ToolTipItem40.Text = "Start a numbered list."
+        SuperToolTip40.Items.Add(ToolTipTitleItem46)
+        SuperToolTip40.Items.Add(ToolTipItem40)
+        Me.ToggleNumberingListItem1.SuperTip = SuperToolTip40
         '
         'ToggleMultiLevelListItem1
         '
@@ -2449,11 +2527,11 @@ Partial Class NewDao
         Me.ToggleMultiLevelListItem1.Enabled = False
         Me.ToggleMultiLevelListItem1.Id = 48
         Me.ToggleMultiLevelListItem1.Name = "ToggleMultiLevelListItem1"
-        ToolTipTitleItem531.Text = "Multilevel list"
-        ToolTipItem491.Text = "Start a multilevel list."
-        SuperToolTip503.Items.Add(ToolTipTitleItem531)
-        SuperToolTip503.Items.Add(ToolTipItem491)
-        Me.ToggleMultiLevelListItem1.SuperTip = SuperToolTip503
+        ToolTipTitleItem47.Text = "Multilevel list"
+        ToolTipItem41.Text = "Start a multilevel list."
+        SuperToolTip41.Items.Add(ToolTipTitleItem47)
+        SuperToolTip41.Items.Add(ToolTipItem41)
+        Me.ToggleMultiLevelListItem1.SuperTip = SuperToolTip41
         '
         'BarButtonGroup5
         '
@@ -2470,11 +2548,11 @@ Partial Class NewDao
         Me.DecreaseIndentItem1.Enabled = False
         Me.DecreaseIndentItem1.Id = 49
         Me.DecreaseIndentItem1.Name = "DecreaseIndentItem1"
-        ToolTipTitleItem532.Text = "Decrease Indent"
-        ToolTipItem492.Text = "Decrease the indent level of the paragraph."
-        SuperToolTip504.Items.Add(ToolTipTitleItem532)
-        SuperToolTip504.Items.Add(ToolTipItem492)
-        Me.DecreaseIndentItem1.SuperTip = SuperToolTip504
+        ToolTipTitleItem48.Text = "Decrease Indent"
+        ToolTipItem42.Text = "Decrease the indent level of the paragraph."
+        SuperToolTip42.Items.Add(ToolTipTitleItem48)
+        SuperToolTip42.Items.Add(ToolTipItem42)
+        Me.DecreaseIndentItem1.SuperTip = SuperToolTip42
         '
         'IncreaseIndentItem1
         '
@@ -2482,11 +2560,11 @@ Partial Class NewDao
         Me.IncreaseIndentItem1.Enabled = False
         Me.IncreaseIndentItem1.Id = 50
         Me.IncreaseIndentItem1.Name = "IncreaseIndentItem1"
-        ToolTipTitleItem533.Text = "Increase Indent"
-        ToolTipItem493.Text = "Increase the indent level of the paragraph."
-        SuperToolTip505.Items.Add(ToolTipTitleItem533)
-        SuperToolTip505.Items.Add(ToolTipItem493)
-        Me.IncreaseIndentItem1.SuperTip = SuperToolTip505
+        ToolTipTitleItem49.Text = "Increase Indent"
+        ToolTipItem43.Text = "Increase the indent level of the paragraph."
+        SuperToolTip43.Items.Add(ToolTipTitleItem49)
+        SuperToolTip43.Items.Add(ToolTipItem43)
+        Me.IncreaseIndentItem1.SuperTip = SuperToolTip43
         '
         'ToggleShowWhitespaceItem1
         '
@@ -2494,11 +2572,11 @@ Partial Class NewDao
         Me.ToggleShowWhitespaceItem1.Enabled = False
         Me.ToggleShowWhitespaceItem1.Id = 51
         Me.ToggleShowWhitespaceItem1.Name = "ToggleShowWhitespaceItem1"
-        ToolTipTitleItem538.Text = "Show/Hide ¶ (Ctrl+Maj+8)"
-        ToolTipItem498.Text = "Show paragraph marks and other hidden formatting symbols."
-        SuperToolTip510.Items.Add(ToolTipTitleItem538)
-        SuperToolTip510.Items.Add(ToolTipItem498)
-        Me.ToggleShowWhitespaceItem1.SuperTip = SuperToolTip510
+        ToolTipTitleItem50.Text = "Show/Hide ¶ (Ctrl+Maj+8)"
+        ToolTipItem44.Text = "Show paragraph marks and other hidden formatting symbols."
+        SuperToolTip44.Items.Add(ToolTipTitleItem50)
+        SuperToolTip44.Items.Add(ToolTipItem44)
+        Me.ToggleShowWhitespaceItem1.SuperTip = SuperToolTip44
         '
         'BarButtonGroup6
         '
@@ -2516,11 +2594,11 @@ Partial Class NewDao
         Me.ToggleParagraphAlignmentLeftItem1.Enabled = False
         Me.ToggleParagraphAlignmentLeftItem1.Id = 52
         Me.ToggleParagraphAlignmentLeftItem1.Name = "ToggleParagraphAlignmentLeftItem1"
-        ToolTipTitleItem534.Text = "Align Text Left (Ctrl+L)"
-        ToolTipItem494.Text = "Align text to the left."
-        SuperToolTip506.Items.Add(ToolTipTitleItem534)
-        SuperToolTip506.Items.Add(ToolTipItem494)
-        Me.ToggleParagraphAlignmentLeftItem1.SuperTip = SuperToolTip506
+        ToolTipTitleItem51.Text = "Align Text Left (Ctrl+L)"
+        ToolTipItem45.Text = "Align text to the left."
+        SuperToolTip45.Items.Add(ToolTipTitleItem51)
+        SuperToolTip45.Items.Add(ToolTipItem45)
+        Me.ToggleParagraphAlignmentLeftItem1.SuperTip = SuperToolTip45
         '
         'ToggleParagraphAlignmentCenterItem1
         '
@@ -2528,11 +2606,11 @@ Partial Class NewDao
         Me.ToggleParagraphAlignmentCenterItem1.Enabled = False
         Me.ToggleParagraphAlignmentCenterItem1.Id = 53
         Me.ToggleParagraphAlignmentCenterItem1.Name = "ToggleParagraphAlignmentCenterItem1"
-        ToolTipTitleItem535.Text = "Center (Ctrl+E)"
-        ToolTipItem495.Text = "Center text."
-        SuperToolTip507.Items.Add(ToolTipTitleItem535)
-        SuperToolTip507.Items.Add(ToolTipItem495)
-        Me.ToggleParagraphAlignmentCenterItem1.SuperTip = SuperToolTip507
+        ToolTipTitleItem52.Text = "Center (Ctrl+E)"
+        ToolTipItem46.Text = "Center text."
+        SuperToolTip46.Items.Add(ToolTipTitleItem52)
+        SuperToolTip46.Items.Add(ToolTipItem46)
+        Me.ToggleParagraphAlignmentCenterItem1.SuperTip = SuperToolTip46
         '
         'ToggleParagraphAlignmentRightItem1
         '
@@ -2540,11 +2618,11 @@ Partial Class NewDao
         Me.ToggleParagraphAlignmentRightItem1.Enabled = False
         Me.ToggleParagraphAlignmentRightItem1.Id = 54
         Me.ToggleParagraphAlignmentRightItem1.Name = "ToggleParagraphAlignmentRightItem1"
-        ToolTipTitleItem536.Text = "Align Text Right (Ctrl+R)"
-        ToolTipItem496.Text = "Align text to the right."
-        SuperToolTip508.Items.Add(ToolTipTitleItem536)
-        SuperToolTip508.Items.Add(ToolTipItem496)
-        Me.ToggleParagraphAlignmentRightItem1.SuperTip = SuperToolTip508
+        ToolTipTitleItem53.Text = "Align Text Right (Ctrl+R)"
+        ToolTipItem47.Text = "Align text to the right."
+        SuperToolTip47.Items.Add(ToolTipTitleItem53)
+        SuperToolTip47.Items.Add(ToolTipItem47)
+        Me.ToggleParagraphAlignmentRightItem1.SuperTip = SuperToolTip47
         '
         'ToggleParagraphAlignmentJustifyItem1
         '
@@ -2552,13 +2630,13 @@ Partial Class NewDao
         Me.ToggleParagraphAlignmentJustifyItem1.Enabled = False
         Me.ToggleParagraphAlignmentJustifyItem1.Id = 55
         Me.ToggleParagraphAlignmentJustifyItem1.Name = "ToggleParagraphAlignmentJustifyItem1"
-        ToolTipTitleItem537.Text = "Justify (Ctrl+J)"
-        ToolTipItem497.Text = "Align text to both left and right margins, adding extra space between words as ne" &
+        ToolTipTitleItem54.Text = "Justify (Ctrl+J)"
+        ToolTipItem48.Text = "Align text to both left and right margins, adding extra space between words as ne" &
     "cessary." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "This creates a clean look along the left and right side of the page." &
     ""
-        SuperToolTip509.Items.Add(ToolTipTitleItem537)
-        SuperToolTip509.Items.Add(ToolTipItem497)
-        Me.ToggleParagraphAlignmentJustifyItem1.SuperTip = SuperToolTip509
+        SuperToolTip48.Items.Add(ToolTipTitleItem54)
+        SuperToolTip48.Items.Add(ToolTipItem48)
+        Me.ToggleParagraphAlignmentJustifyItem1.SuperTip = SuperToolTip48
         '
         'BarButtonGroup7
         '
@@ -2575,12 +2653,12 @@ Partial Class NewDao
         Me.ChangeParagraphLineSpacingItem1.Id = 56
         Me.ChangeParagraphLineSpacingItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.SetSingleParagraphSpacingItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetSesquialteralParagraphSpacingItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetDoubleParagraphSpacingItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ShowLineSpacingFormItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.AddSpacingBeforeParagraphItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.RemoveSpacingBeforeParagraphItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.AddSpacingAfterParagraphItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.RemoveSpacingAfterParagraphItem1)})
         Me.ChangeParagraphLineSpacingItem1.Name = "ChangeParagraphLineSpacingItem1"
-        ToolTipTitleItem547.Text = "Line Spacing"
-        ToolTipItem507.Text = "Change the spacing between lines of text." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can also customize the amount of" &
+        ToolTipTitleItem63.Text = "Line Spacing"
+        ToolTipItem57.Text = "Change the spacing between lines of text." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can also customize the amount of" &
     " space added before and after paragraphs."
-        SuperToolTip519.Items.Add(ToolTipTitleItem547)
-        SuperToolTip519.Items.Add(ToolTipItem507)
-        Me.ChangeParagraphLineSpacingItem1.SuperTip = SuperToolTip519
+        SuperToolTip57.Items.Add(ToolTipTitleItem63)
+        SuperToolTip57.Items.Add(ToolTipItem57)
+        Me.ChangeParagraphLineSpacingItem1.SuperTip = SuperToolTip57
         '
         'SetSingleParagraphSpacingItem1
         '
@@ -2588,11 +2666,11 @@ Partial Class NewDao
         Me.SetSingleParagraphSpacingItem1.Enabled = False
         Me.SetSingleParagraphSpacingItem1.Id = 57
         Me.SetSingleParagraphSpacingItem1.Name = "SetSingleParagraphSpacingItem1"
-        ToolTipTitleItem539.Text = "1.0 (Ctrl+1)"
-        ToolTipItem499.Text = " "
-        SuperToolTip511.Items.Add(ToolTipTitleItem539)
-        SuperToolTip511.Items.Add(ToolTipItem499)
-        Me.SetSingleParagraphSpacingItem1.SuperTip = SuperToolTip511
+        ToolTipTitleItem55.Text = "1.0 (Ctrl+1)"
+        ToolTipItem49.Text = " "
+        SuperToolTip49.Items.Add(ToolTipTitleItem55)
+        SuperToolTip49.Items.Add(ToolTipItem49)
+        Me.SetSingleParagraphSpacingItem1.SuperTip = SuperToolTip49
         '
         'SetSesquialteralParagraphSpacingItem1
         '
@@ -2600,11 +2678,11 @@ Partial Class NewDao
         Me.SetSesquialteralParagraphSpacingItem1.Enabled = False
         Me.SetSesquialteralParagraphSpacingItem1.Id = 58
         Me.SetSesquialteralParagraphSpacingItem1.Name = "SetSesquialteralParagraphSpacingItem1"
-        ToolTipTitleItem540.Text = "1.5 (Ctrl+5)"
-        ToolTipItem500.Text = " "
-        SuperToolTip512.Items.Add(ToolTipTitleItem540)
-        SuperToolTip512.Items.Add(ToolTipItem500)
-        Me.SetSesquialteralParagraphSpacingItem1.SuperTip = SuperToolTip512
+        ToolTipTitleItem56.Text = "1.5 (Ctrl+5)"
+        ToolTipItem50.Text = " "
+        SuperToolTip50.Items.Add(ToolTipTitleItem56)
+        SuperToolTip50.Items.Add(ToolTipItem50)
+        Me.SetSesquialteralParagraphSpacingItem1.SuperTip = SuperToolTip50
         '
         'SetDoubleParagraphSpacingItem1
         '
@@ -2612,11 +2690,11 @@ Partial Class NewDao
         Me.SetDoubleParagraphSpacingItem1.Enabled = False
         Me.SetDoubleParagraphSpacingItem1.Id = 59
         Me.SetDoubleParagraphSpacingItem1.Name = "SetDoubleParagraphSpacingItem1"
-        ToolTipTitleItem541.Text = "2.0 (Ctrl+2)"
-        ToolTipItem501.Text = " "
-        SuperToolTip513.Items.Add(ToolTipTitleItem541)
-        SuperToolTip513.Items.Add(ToolTipItem501)
-        Me.SetDoubleParagraphSpacingItem1.SuperTip = SuperToolTip513
+        ToolTipTitleItem57.Text = "2.0 (Ctrl+2)"
+        ToolTipItem51.Text = " "
+        SuperToolTip51.Items.Add(ToolTipTitleItem57)
+        SuperToolTip51.Items.Add(ToolTipItem51)
+        Me.SetDoubleParagraphSpacingItem1.SuperTip = SuperToolTip51
         '
         'ShowLineSpacingFormItem1
         '
@@ -2624,11 +2702,11 @@ Partial Class NewDao
         Me.ShowLineSpacingFormItem1.Enabled = False
         Me.ShowLineSpacingFormItem1.Id = 60
         Me.ShowLineSpacingFormItem1.Name = "ShowLineSpacingFormItem1"
-        ToolTipTitleItem542.Text = "Line Spacing Options..."
-        ToolTipItem502.Text = " "
-        SuperToolTip514.Items.Add(ToolTipTitleItem542)
-        SuperToolTip514.Items.Add(ToolTipItem502)
-        Me.ShowLineSpacingFormItem1.SuperTip = SuperToolTip514
+        ToolTipTitleItem58.Text = "Line Spacing Options..."
+        ToolTipItem52.Text = " "
+        SuperToolTip52.Items.Add(ToolTipTitleItem58)
+        SuperToolTip52.Items.Add(ToolTipItem52)
+        Me.ShowLineSpacingFormItem1.SuperTip = SuperToolTip52
         '
         'AddSpacingBeforeParagraphItem1
         '
@@ -2636,11 +2714,11 @@ Partial Class NewDao
         Me.AddSpacingBeforeParagraphItem1.Enabled = False
         Me.AddSpacingBeforeParagraphItem1.Id = 61
         Me.AddSpacingBeforeParagraphItem1.Name = "AddSpacingBeforeParagraphItem1"
-        ToolTipTitleItem543.Text = "Add Space &Before Paragraph"
-        ToolTipItem503.Text = " "
-        SuperToolTip515.Items.Add(ToolTipTitleItem543)
-        SuperToolTip515.Items.Add(ToolTipItem503)
-        Me.AddSpacingBeforeParagraphItem1.SuperTip = SuperToolTip515
+        ToolTipTitleItem59.Text = "Add Space &Before Paragraph"
+        ToolTipItem53.Text = " "
+        SuperToolTip53.Items.Add(ToolTipTitleItem59)
+        SuperToolTip53.Items.Add(ToolTipItem53)
+        Me.AddSpacingBeforeParagraphItem1.SuperTip = SuperToolTip53
         '
         'RemoveSpacingBeforeParagraphItem1
         '
@@ -2648,11 +2726,11 @@ Partial Class NewDao
         Me.RemoveSpacingBeforeParagraphItem1.Enabled = False
         Me.RemoveSpacingBeforeParagraphItem1.Id = 62
         Me.RemoveSpacingBeforeParagraphItem1.Name = "RemoveSpacingBeforeParagraphItem1"
-        ToolTipTitleItem544.Text = "Remove Space &Before Paragraph"
-        ToolTipItem504.Text = " "
-        SuperToolTip516.Items.Add(ToolTipTitleItem544)
-        SuperToolTip516.Items.Add(ToolTipItem504)
-        Me.RemoveSpacingBeforeParagraphItem1.SuperTip = SuperToolTip516
+        ToolTipTitleItem60.Text = "Remove Space &Before Paragraph"
+        ToolTipItem54.Text = " "
+        SuperToolTip54.Items.Add(ToolTipTitleItem60)
+        SuperToolTip54.Items.Add(ToolTipItem54)
+        Me.RemoveSpacingBeforeParagraphItem1.SuperTip = SuperToolTip54
         '
         'AddSpacingAfterParagraphItem1
         '
@@ -2660,11 +2738,11 @@ Partial Class NewDao
         Me.AddSpacingAfterParagraphItem1.Enabled = False
         Me.AddSpacingAfterParagraphItem1.Id = 63
         Me.AddSpacingAfterParagraphItem1.Name = "AddSpacingAfterParagraphItem1"
-        ToolTipTitleItem545.Text = "Add Space &After Paragraph"
-        ToolTipItem505.Text = " "
-        SuperToolTip517.Items.Add(ToolTipTitleItem545)
-        SuperToolTip517.Items.Add(ToolTipItem505)
-        Me.AddSpacingAfterParagraphItem1.SuperTip = SuperToolTip517
+        ToolTipTitleItem61.Text = "Add Space &After Paragraph"
+        ToolTipItem55.Text = " "
+        SuperToolTip55.Items.Add(ToolTipTitleItem61)
+        SuperToolTip55.Items.Add(ToolTipItem55)
+        Me.AddSpacingAfterParagraphItem1.SuperTip = SuperToolTip55
         '
         'RemoveSpacingAfterParagraphItem1
         '
@@ -2672,11 +2750,11 @@ Partial Class NewDao
         Me.RemoveSpacingAfterParagraphItem1.Enabled = False
         Me.RemoveSpacingAfterParagraphItem1.Id = 64
         Me.RemoveSpacingAfterParagraphItem1.Name = "RemoveSpacingAfterParagraphItem1"
-        ToolTipTitleItem546.Text = "Remove Space &After Paragraph"
-        ToolTipItem506.Text = " "
-        SuperToolTip518.Items.Add(ToolTipTitleItem546)
-        SuperToolTip518.Items.Add(ToolTipItem506)
-        Me.RemoveSpacingAfterParagraphItem1.SuperTip = SuperToolTip518
+        ToolTipTitleItem62.Text = "Remove Space &After Paragraph"
+        ToolTipItem56.Text = " "
+        SuperToolTip56.Items.Add(ToolTipTitleItem62)
+        SuperToolTip56.Items.Add(ToolTipItem56)
+        Me.RemoveSpacingAfterParagraphItem1.SuperTip = SuperToolTip56
         '
         'ChangeParagraphBackColorItem1
         '
@@ -2684,11 +2762,11 @@ Partial Class NewDao
         Me.ChangeParagraphBackColorItem1.Enabled = False
         Me.ChangeParagraphBackColorItem1.Id = 65
         Me.ChangeParagraphBackColorItem1.Name = "ChangeParagraphBackColorItem1"
-        ToolTipTitleItem548.Text = "Shading"
-        ToolTipItem508.Text = "Change the background behind the selected paragraph."
-        SuperToolTip520.Items.Add(ToolTipTitleItem548)
-        SuperToolTip520.Items.Add(ToolTipItem508)
-        Me.ChangeParagraphBackColorItem1.SuperTip = SuperToolTip520
+        ToolTipTitleItem64.Text = "Shading"
+        ToolTipItem58.Text = "Change the background behind the selected paragraph."
+        SuperToolTip58.Items.Add(ToolTipTitleItem64)
+        SuperToolTip58.Items.Add(ToolTipItem58)
+        Me.ChangeParagraphBackColorItem1.SuperTip = SuperToolTip58
         '
         'ChangeStyleItem1
         '
@@ -2696,11 +2774,11 @@ Partial Class NewDao
         Me.ChangeStyleItem1.Enabled = False
         Me.ChangeStyleItem1.Id = 66
         Me.ChangeStyleItem1.Name = "ChangeStyleItem1"
-        ToolTipTitleItem549.Text = "Quick Styles"
-        ToolTipItem509.Text = "Format titles, quotes, and other text using this gallery of styles."
-        SuperToolTip521.Items.Add(ToolTipTitleItem549)
-        SuperToolTip521.Items.Add(ToolTipItem509)
-        Me.ChangeStyleItem1.SuperTip = SuperToolTip521
+        ToolTipTitleItem65.Text = "Quick Styles"
+        ToolTipItem59.Text = "Format titles, quotes, and other text using this gallery of styles."
+        SuperToolTip59.Items.Add(ToolTipTitleItem65)
+        SuperToolTip59.Items.Add(ToolTipItem59)
+        Me.ChangeStyleItem1.SuperTip = SuperToolTip59
         '
         'RepositoryItemRichEditStyleEdit1
         '
@@ -2715,11 +2793,11 @@ Partial Class NewDao
         Me.FindItem1.Enabled = False
         Me.FindItem1.Id = 67
         Me.FindItem1.Name = "FindItem1"
-        ToolTipTitleItem309.Text = "Find (Ctrl+F)"
-        ToolTipItem286.Text = "Find text in the document."
-        SuperToolTip292.Items.Add(ToolTipTitleItem309)
-        SuperToolTip292.Items.Add(ToolTipItem286)
-        Me.FindItem1.SuperTip = SuperToolTip292
+        ToolTipTitleItem66.Text = "Find (Ctrl+F)"
+        ToolTipItem60.Text = "Find text in the document."
+        SuperToolTip60.Items.Add(ToolTipTitleItem66)
+        SuperToolTip60.Items.Add(ToolTipItem60)
+        Me.FindItem1.SuperTip = SuperToolTip60
         '
         'ReplaceItem1
         '
@@ -2727,11 +2805,11 @@ Partial Class NewDao
         Me.ReplaceItem1.Enabled = False
         Me.ReplaceItem1.Id = 68
         Me.ReplaceItem1.Name = "ReplaceItem1"
-        ToolTipTitleItem550.Text = "Replace (Ctrl+H)"
-        ToolTipItem510.Text = "Replace text in the document."
-        SuperToolTip522.Items.Add(ToolTipTitleItem550)
-        SuperToolTip522.Items.Add(ToolTipItem510)
-        Me.ReplaceItem1.SuperTip = SuperToolTip522
+        ToolTipTitleItem67.Text = "Replace (Ctrl+H)"
+        ToolTipItem61.Text = "Replace text in the document."
+        SuperToolTip61.Items.Add(ToolTipTitleItem67)
+        SuperToolTip61.Items.Add(ToolTipItem61)
+        Me.ReplaceItem1.SuperTip = SuperToolTip61
         '
         'InsertPageBreakItem1
         '
@@ -2739,11 +2817,11 @@ Partial Class NewDao
         Me.InsertPageBreakItem1.Enabled = False
         Me.InsertPageBreakItem1.Id = 69
         Me.InsertPageBreakItem1.Name = "InsertPageBreakItem1"
-        ToolTipTitleItem551.Text = "Page (Ctrl+Return)"
-        ToolTipItem511.Text = "Start the next page at the current position."
-        SuperToolTip523.Items.Add(ToolTipTitleItem551)
-        SuperToolTip523.Items.Add(ToolTipItem511)
-        Me.InsertPageBreakItem1.SuperTip = SuperToolTip523
+        ToolTipTitleItem68.Text = "Page (Ctrl+Return)"
+        ToolTipItem62.Text = "Start the next page at the current position."
+        SuperToolTip62.Items.Add(ToolTipTitleItem68)
+        SuperToolTip62.Items.Add(ToolTipItem62)
+        Me.InsertPageBreakItem1.SuperTip = SuperToolTip62
         '
         'InsertTableItem1
         '
@@ -2751,11 +2829,11 @@ Partial Class NewDao
         Me.InsertTableItem1.Enabled = False
         Me.InsertTableItem1.Id = 70
         Me.InsertTableItem1.Name = "InsertTableItem1"
-        ToolTipTitleItem552.Text = "Table"
-        ToolTipItem512.Text = "Insert a table into the document."
-        SuperToolTip524.Items.Add(ToolTipTitleItem552)
-        SuperToolTip524.Items.Add(ToolTipItem512)
-        Me.InsertTableItem1.SuperTip = SuperToolTip524
+        ToolTipTitleItem69.Text = "Table"
+        ToolTipItem63.Text = "Insert a table into the document."
+        SuperToolTip63.Items.Add(ToolTipTitleItem69)
+        SuperToolTip63.Items.Add(ToolTipItem63)
+        Me.InsertTableItem1.SuperTip = SuperToolTip63
         '
         'InsertPictureItem1
         '
@@ -2763,11 +2841,11 @@ Partial Class NewDao
         Me.InsertPictureItem1.Enabled = False
         Me.InsertPictureItem1.Id = 71
         Me.InsertPictureItem1.Name = "InsertPictureItem1"
-        ToolTipTitleItem553.Text = "Inline Picture"
-        ToolTipItem513.Text = "Insert inline picture from a file."
-        SuperToolTip525.Items.Add(ToolTipTitleItem553)
-        SuperToolTip525.Items.Add(ToolTipItem513)
-        Me.InsertPictureItem1.SuperTip = SuperToolTip525
+        ToolTipTitleItem70.Text = "Inline Picture"
+        ToolTipItem64.Text = "Insert inline picture from a file."
+        SuperToolTip64.Items.Add(ToolTipTitleItem70)
+        SuperToolTip64.Items.Add(ToolTipItem64)
+        Me.InsertPictureItem1.SuperTip = SuperToolTip64
         '
         'InsertFloatingPictureItem1
         '
@@ -2775,11 +2853,11 @@ Partial Class NewDao
         Me.InsertFloatingPictureItem1.Enabled = False
         Me.InsertFloatingPictureItem1.Id = 72
         Me.InsertFloatingPictureItem1.Name = "InsertFloatingPictureItem1"
-        ToolTipTitleItem554.Text = "Picture"
-        ToolTipItem514.Text = "Insert a picture from a file."
-        SuperToolTip526.Items.Add(ToolTipTitleItem554)
-        SuperToolTip526.Items.Add(ToolTipItem514)
-        Me.InsertFloatingPictureItem1.SuperTip = SuperToolTip526
+        ToolTipTitleItem71.Text = "Picture"
+        ToolTipItem65.Text = "Insert a picture from a file."
+        SuperToolTip65.Items.Add(ToolTipTitleItem71)
+        SuperToolTip65.Items.Add(ToolTipItem65)
+        Me.InsertFloatingPictureItem1.SuperTip = SuperToolTip65
         '
         'InsertBookmarkItem1
         '
@@ -2787,12 +2865,12 @@ Partial Class NewDao
         Me.InsertBookmarkItem1.Enabled = False
         Me.InsertBookmarkItem1.Id = 73
         Me.InsertBookmarkItem1.Name = "InsertBookmarkItem1"
-        ToolTipTitleItem555.Text = "Bookmark"
-        ToolTipItem515.Text = "Create a bookmark to assign a name to a specific point in a document" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can m" &
+        ToolTipTitleItem72.Text = "Bookmark"
+        ToolTipItem66.Text = "Create a bookmark to assign a name to a specific point in a document" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can m" &
     "ake hyperlinks that jump directly to a bookmarked location."
-        SuperToolTip527.Items.Add(ToolTipTitleItem555)
-        SuperToolTip527.Items.Add(ToolTipItem515)
-        Me.InsertBookmarkItem1.SuperTip = SuperToolTip527
+        SuperToolTip66.Items.Add(ToolTipTitleItem72)
+        SuperToolTip66.Items.Add(ToolTipItem66)
+        Me.InsertBookmarkItem1.SuperTip = SuperToolTip66
         '
         'InsertHyperlinkItem1
         '
@@ -2800,11 +2878,11 @@ Partial Class NewDao
         Me.InsertHyperlinkItem1.Enabled = False
         Me.InsertHyperlinkItem1.Id = 74
         Me.InsertHyperlinkItem1.Name = "InsertHyperlinkItem1"
-        ToolTipTitleItem556.Text = "Hyperlink (Ctrl+K)"
-        ToolTipItem516.Text = "Create a link to a Web page, a picture, an e-mail address, or a program."
-        SuperToolTip528.Items.Add(ToolTipTitleItem556)
-        SuperToolTip528.Items.Add(ToolTipItem516)
-        Me.InsertHyperlinkItem1.SuperTip = SuperToolTip528
+        ToolTipTitleItem73.Text = "Hyperlink (Ctrl+K)"
+        ToolTipItem67.Text = "Create a link to a Web page, a picture, an e-mail address, or a program."
+        SuperToolTip67.Items.Add(ToolTipTitleItem73)
+        SuperToolTip67.Items.Add(ToolTipItem67)
+        Me.InsertHyperlinkItem1.SuperTip = SuperToolTip67
         '
         'EditPageHeaderItem1
         '
@@ -2812,12 +2890,12 @@ Partial Class NewDao
         Me.EditPageHeaderItem1.Enabled = False
         Me.EditPageHeaderItem1.Id = 75
         Me.EditPageHeaderItem1.Name = "EditPageHeaderItem1"
-        ToolTipTitleItem557.Text = "Header"
-        ToolTipItem517.Text = "Edit the header of the document." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "The content in the header will appear at the " &
+        ToolTipTitleItem74.Text = "Header"
+        ToolTipItem68.Text = "Edit the header of the document." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "The content in the header will appear at the " &
     "top of each printed page."
-        SuperToolTip529.Items.Add(ToolTipTitleItem557)
-        SuperToolTip529.Items.Add(ToolTipItem517)
-        Me.EditPageHeaderItem1.SuperTip = SuperToolTip529
+        SuperToolTip68.Items.Add(ToolTipTitleItem74)
+        SuperToolTip68.Items.Add(ToolTipItem68)
+        Me.EditPageHeaderItem1.SuperTip = SuperToolTip68
         '
         'EditPageFooterItem1
         '
@@ -2825,12 +2903,12 @@ Partial Class NewDao
         Me.EditPageFooterItem1.Enabled = False
         Me.EditPageFooterItem1.Id = 76
         Me.EditPageFooterItem1.Name = "EditPageFooterItem1"
-        ToolTipTitleItem558.Text = "Footer"
-        ToolTipItem518.Text = "Edit the footer of the document." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "The content in the footer will appear at the " &
+        ToolTipTitleItem75.Text = "Footer"
+        ToolTipItem69.Text = "Edit the footer of the document." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "The content in the footer will appear at the " &
     "bottom of each printed page."
-        SuperToolTip530.Items.Add(ToolTipTitleItem558)
-        SuperToolTip530.Items.Add(ToolTipItem518)
-        Me.EditPageFooterItem1.SuperTip = SuperToolTip530
+        SuperToolTip69.Items.Add(ToolTipTitleItem75)
+        SuperToolTip69.Items.Add(ToolTipItem69)
+        Me.EditPageFooterItem1.SuperTip = SuperToolTip69
         '
         'InsertPageNumberItem1
         '
@@ -2838,11 +2916,11 @@ Partial Class NewDao
         Me.InsertPageNumberItem1.Enabled = False
         Me.InsertPageNumberItem1.Id = 77
         Me.InsertPageNumberItem1.Name = "InsertPageNumberItem1"
-        ToolTipTitleItem559.Text = "Page Number"
-        ToolTipItem519.Text = "Insert page numbers into the document."
-        SuperToolTip531.Items.Add(ToolTipTitleItem559)
-        SuperToolTip531.Items.Add(ToolTipItem519)
-        Me.InsertPageNumberItem1.SuperTip = SuperToolTip531
+        ToolTipTitleItem76.Text = "Page Number"
+        ToolTipItem70.Text = "Insert page numbers into the document."
+        SuperToolTip70.Items.Add(ToolTipTitleItem76)
+        SuperToolTip70.Items.Add(ToolTipItem70)
+        Me.InsertPageNumberItem1.SuperTip = SuperToolTip70
         '
         'InsertPageCountItem1
         '
@@ -2850,11 +2928,11 @@ Partial Class NewDao
         Me.InsertPageCountItem1.Enabled = False
         Me.InsertPageCountItem1.Id = 78
         Me.InsertPageCountItem1.Name = "InsertPageCountItem1"
-        ToolTipTitleItem560.Text = "Page Count"
-        ToolTipItem520.Text = "Insert total page count into the document."
-        SuperToolTip532.Items.Add(ToolTipTitleItem560)
-        SuperToolTip532.Items.Add(ToolTipItem520)
-        Me.InsertPageCountItem1.SuperTip = SuperToolTip532
+        ToolTipTitleItem77.Text = "Page Count"
+        ToolTipItem71.Text = "Insert total page count into the document."
+        SuperToolTip71.Items.Add(ToolTipTitleItem77)
+        SuperToolTip71.Items.Add(ToolTipItem71)
+        Me.InsertPageCountItem1.SuperTip = SuperToolTip71
         '
         'InsertTextBoxItem1
         '
@@ -2862,11 +2940,11 @@ Partial Class NewDao
         Me.InsertTextBoxItem1.Enabled = False
         Me.InsertTextBoxItem1.Id = 79
         Me.InsertTextBoxItem1.Name = "InsertTextBoxItem1"
-        ToolTipTitleItem561.Text = "Text Box"
-        ToolTipItem521.Text = "Insert a text box into the document."
-        SuperToolTip533.Items.Add(ToolTipTitleItem561)
-        SuperToolTip533.Items.Add(ToolTipItem521)
-        Me.InsertTextBoxItem1.SuperTip = SuperToolTip533
+        ToolTipTitleItem78.Text = "Text Box"
+        ToolTipItem72.Text = "Insert a text box into the document."
+        SuperToolTip72.Items.Add(ToolTipTitleItem78)
+        SuperToolTip72.Items.Add(ToolTipItem72)
+        Me.InsertTextBoxItem1.SuperTip = SuperToolTip72
         '
         'InsertSymbolItem1
         '
@@ -2874,12 +2952,12 @@ Partial Class NewDao
         Me.InsertSymbolItem1.Enabled = False
         Me.InsertSymbolItem1.Id = 80
         Me.InsertSymbolItem1.Name = "InsertSymbolItem1"
-        ToolTipTitleItem562.Text = "Symbol"
-        ToolTipItem522.Text = "Insert symbols that are not on your keyboard, such as copyright symbols, trademar" &
+        ToolTipTitleItem79.Text = "Symbol"
+        ToolTipItem73.Text = "Insert symbols that are not on your keyboard, such as copyright symbols, trademar" &
     "k symbols, paragraph marks and Unicode characters."
-        SuperToolTip534.Items.Add(ToolTipTitleItem562)
-        SuperToolTip534.Items.Add(ToolTipItem522)
-        Me.InsertSymbolItem1.SuperTip = SuperToolTip534
+        SuperToolTip73.Items.Add(ToolTipTitleItem79)
+        SuperToolTip73.Items.Add(ToolTipItem73)
+        Me.InsertSymbolItem1.SuperTip = SuperToolTip73
         '
         'ChangeSectionPageMarginsItem1
         '
@@ -2888,11 +2966,11 @@ Partial Class NewDao
         Me.ChangeSectionPageMarginsItem1.Id = 81
         Me.ChangeSectionPageMarginsItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.SetNormalSectionPageMarginsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetNarrowSectionPageMarginsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetModerateSectionPageMarginsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetWideSectionPageMarginsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ShowPageMarginsSetupFormItem1)})
         Me.ChangeSectionPageMarginsItem1.Name = "ChangeSectionPageMarginsItem1"
-        ToolTipTitleItem568.Text = "Margins"
-        ToolTipItem528.Text = "Select the margin sizes for the entire document or the current section."
-        SuperToolTip540.Items.Add(ToolTipTitleItem568)
-        SuperToolTip540.Items.Add(ToolTipItem528)
-        Me.ChangeSectionPageMarginsItem1.SuperTip = SuperToolTip540
+        ToolTipTitleItem85.Text = "Margins"
+        ToolTipItem79.Text = "Select the margin sizes for the entire document or the current section."
+        SuperToolTip79.Items.Add(ToolTipTitleItem85)
+        SuperToolTip79.Items.Add(ToolTipItem79)
+        Me.ChangeSectionPageMarginsItem1.SuperTip = SuperToolTip79
         '
         'SetNormalSectionPageMarginsItem1
         '
@@ -2900,11 +2978,11 @@ Partial Class NewDao
         Me.SetNormalSectionPageMarginsItem1.Enabled = False
         Me.SetNormalSectionPageMarginsItem1.Id = 82
         Me.SetNormalSectionPageMarginsItem1.Name = "SetNormalSectionPageMarginsItem1"
-        ToolTipTitleItem563.Text = "Normal" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Top:" & Global.Microsoft.VisualBasic.ChrW(9) & "     0,79""" & Global.Microsoft.VisualBasic.ChrW(9) & "Bottom:" & Global.Microsoft.VisualBasic.ChrW(9) & "     0,79""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Left:" & Global.Microsoft.VisualBasic.ChrW(9) & "     1,18""" & Global.Microsoft.VisualBasic.ChrW(9) & "Right:" & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & "     0,59"""
-        ToolTipItem523.Text = " "
-        SuperToolTip535.Items.Add(ToolTipTitleItem563)
-        SuperToolTip535.Items.Add(ToolTipItem523)
-        Me.SetNormalSectionPageMarginsItem1.SuperTip = SuperToolTip535
+        ToolTipTitleItem80.Text = "Normal" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Top:" & Global.Microsoft.VisualBasic.ChrW(9) & "     0,79""" & Global.Microsoft.VisualBasic.ChrW(9) & "Bottom:" & Global.Microsoft.VisualBasic.ChrW(9) & "     0,79""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Left:" & Global.Microsoft.VisualBasic.ChrW(9) & "     1,18""" & Global.Microsoft.VisualBasic.ChrW(9) & "Right:" & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & "     0,59"""
+        ToolTipItem74.Text = " "
+        SuperToolTip74.Items.Add(ToolTipTitleItem80)
+        SuperToolTip74.Items.Add(ToolTipItem74)
+        Me.SetNormalSectionPageMarginsItem1.SuperTip = SuperToolTip74
         '
         'SetNarrowSectionPageMarginsItem1
         '
@@ -2912,11 +2990,11 @@ Partial Class NewDao
         Me.SetNarrowSectionPageMarginsItem1.Enabled = False
         Me.SetNarrowSectionPageMarginsItem1.Id = 83
         Me.SetNarrowSectionPageMarginsItem1.Name = "SetNarrowSectionPageMarginsItem1"
-        ToolTipTitleItem564.Text = "Narrow" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Top:" & Global.Microsoft.VisualBasic.ChrW(9) & "      0,5""" & Global.Microsoft.VisualBasic.ChrW(9) & "Bottom:" & Global.Microsoft.VisualBasic.ChrW(9) & "      0,5""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Left:" & Global.Microsoft.VisualBasic.ChrW(9) & "      0,5""" & Global.Microsoft.VisualBasic.ChrW(9) & "Right:" & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & "      0,5"""
-        ToolTipItem524.Text = " "
-        SuperToolTip536.Items.Add(ToolTipTitleItem564)
-        SuperToolTip536.Items.Add(ToolTipItem524)
-        Me.SetNarrowSectionPageMarginsItem1.SuperTip = SuperToolTip536
+        ToolTipTitleItem81.Text = "Narrow" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Top:" & Global.Microsoft.VisualBasic.ChrW(9) & "      0,5""" & Global.Microsoft.VisualBasic.ChrW(9) & "Bottom:" & Global.Microsoft.VisualBasic.ChrW(9) & "      0,5""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Left:" & Global.Microsoft.VisualBasic.ChrW(9) & "      0,5""" & Global.Microsoft.VisualBasic.ChrW(9) & "Right:" & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & "      0,5"""
+        ToolTipItem75.Text = " "
+        SuperToolTip75.Items.Add(ToolTipTitleItem81)
+        SuperToolTip75.Items.Add(ToolTipItem75)
+        Me.SetNarrowSectionPageMarginsItem1.SuperTip = SuperToolTip75
         '
         'SetModerateSectionPageMarginsItem1
         '
@@ -2925,12 +3003,12 @@ Partial Class NewDao
         Me.SetModerateSectionPageMarginsItem1.Enabled = False
         Me.SetModerateSectionPageMarginsItem1.Id = 84
         Me.SetModerateSectionPageMarginsItem1.Name = "SetModerateSectionPageMarginsItem1"
-        ToolTipTitleItem565.Text = "Moderate" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Top:" & Global.Microsoft.VisualBasic.ChrW(9) & "        1""" & Global.Microsoft.VisualBasic.ChrW(9) & "Bottom:" & Global.Microsoft.VisualBasic.ChrW(9) & "        1""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Left:" & Global.Microsoft.VisualBasic.ChrW(9) & "     0,75""" & Global.Microsoft.VisualBasic.ChrW(9) & "Right:" & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & "     0,75""" &
+        ToolTipTitleItem82.Text = "Moderate" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Top:" & Global.Microsoft.VisualBasic.ChrW(9) & "        1""" & Global.Microsoft.VisualBasic.ChrW(9) & "Bottom:" & Global.Microsoft.VisualBasic.ChrW(9) & "        1""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Left:" & Global.Microsoft.VisualBasic.ChrW(9) & "     0,75""" & Global.Microsoft.VisualBasic.ChrW(9) & "Right:" & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & "     0,75""" &
     ""
-        ToolTipItem525.Text = " "
-        SuperToolTip537.Items.Add(ToolTipTitleItem565)
-        SuperToolTip537.Items.Add(ToolTipItem525)
-        Me.SetModerateSectionPageMarginsItem1.SuperTip = SuperToolTip537
+        ToolTipItem76.Text = " "
+        SuperToolTip76.Items.Add(ToolTipTitleItem82)
+        SuperToolTip76.Items.Add(ToolTipItem76)
+        Me.SetModerateSectionPageMarginsItem1.SuperTip = SuperToolTip76
         '
         'SetWideSectionPageMarginsItem1
         '
@@ -2938,11 +3016,11 @@ Partial Class NewDao
         Me.SetWideSectionPageMarginsItem1.Enabled = False
         Me.SetWideSectionPageMarginsItem1.Id = 85
         Me.SetWideSectionPageMarginsItem1.Name = "SetWideSectionPageMarginsItem1"
-        ToolTipTitleItem566.Text = "Wide" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Top:" & Global.Microsoft.VisualBasic.ChrW(9) & "        1""" & Global.Microsoft.VisualBasic.ChrW(9) & "Bottom:" & Global.Microsoft.VisualBasic.ChrW(9) & "        1""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Left:" & Global.Microsoft.VisualBasic.ChrW(9) & "        2""" & Global.Microsoft.VisualBasic.ChrW(9) & "Right:" & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & "        2"""
-        ToolTipItem526.Text = " "
-        SuperToolTip538.Items.Add(ToolTipTitleItem566)
-        SuperToolTip538.Items.Add(ToolTipItem526)
-        Me.SetWideSectionPageMarginsItem1.SuperTip = SuperToolTip538
+        ToolTipTitleItem83.Text = "Wide" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Top:" & Global.Microsoft.VisualBasic.ChrW(9) & "        1""" & Global.Microsoft.VisualBasic.ChrW(9) & "Bottom:" & Global.Microsoft.VisualBasic.ChrW(9) & "        1""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Left:" & Global.Microsoft.VisualBasic.ChrW(9) & "        2""" & Global.Microsoft.VisualBasic.ChrW(9) & "Right:" & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & "        2"""
+        ToolTipItem77.Text = " "
+        SuperToolTip77.Items.Add(ToolTipTitleItem83)
+        SuperToolTip77.Items.Add(ToolTipItem77)
+        Me.SetWideSectionPageMarginsItem1.SuperTip = SuperToolTip77
         '
         'ShowPageMarginsSetupFormItem1
         '
@@ -2950,11 +3028,11 @@ Partial Class NewDao
         Me.ShowPageMarginsSetupFormItem1.Enabled = False
         Me.ShowPageMarginsSetupFormItem1.Id = 86
         Me.ShowPageMarginsSetupFormItem1.Name = "ShowPageMarginsSetupFormItem1"
-        ToolTipTitleItem567.Text = "Custom Margins"
-        ToolTipItem527.Text = " "
-        SuperToolTip539.Items.Add(ToolTipTitleItem567)
-        SuperToolTip539.Items.Add(ToolTipItem527)
-        Me.ShowPageMarginsSetupFormItem1.SuperTip = SuperToolTip539
+        ToolTipTitleItem84.Text = "Custom Margins"
+        ToolTipItem78.Text = " "
+        SuperToolTip78.Items.Add(ToolTipTitleItem84)
+        SuperToolTip78.Items.Add(ToolTipItem78)
+        Me.ShowPageMarginsSetupFormItem1.SuperTip = SuperToolTip78
         '
         'ChangeSectionPageOrientationItem1
         '
@@ -2963,11 +3041,11 @@ Partial Class NewDao
         Me.ChangeSectionPageOrientationItem1.Id = 87
         Me.ChangeSectionPageOrientationItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.SetPortraitPageOrientationItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetLandscapePageOrientationItem1)})
         Me.ChangeSectionPageOrientationItem1.Name = "ChangeSectionPageOrientationItem1"
-        ToolTipTitleItem571.Text = "Orientation"
-        ToolTipItem531.Text = "Switch the pages between portrait and landscape layouts."
-        SuperToolTip543.Items.Add(ToolTipTitleItem571)
-        SuperToolTip543.Items.Add(ToolTipItem531)
-        Me.ChangeSectionPageOrientationItem1.SuperTip = SuperToolTip543
+        ToolTipTitleItem88.Text = "Orientation"
+        ToolTipItem82.Text = "Switch the pages between portrait and landscape layouts."
+        SuperToolTip82.Items.Add(ToolTipTitleItem88)
+        SuperToolTip82.Items.Add(ToolTipItem82)
+        Me.ChangeSectionPageOrientationItem1.SuperTip = SuperToolTip82
         '
         'SetPortraitPageOrientationItem1
         '
@@ -2975,11 +3053,11 @@ Partial Class NewDao
         Me.SetPortraitPageOrientationItem1.Enabled = False
         Me.SetPortraitPageOrientationItem1.Id = 88
         Me.SetPortraitPageOrientationItem1.Name = "SetPortraitPageOrientationItem1"
-        ToolTipTitleItem569.Text = "Portrait"
-        ToolTipItem529.Text = " "
-        SuperToolTip541.Items.Add(ToolTipTitleItem569)
-        SuperToolTip541.Items.Add(ToolTipItem529)
-        Me.SetPortraitPageOrientationItem1.SuperTip = SuperToolTip541
+        ToolTipTitleItem86.Text = "Portrait"
+        ToolTipItem80.Text = " "
+        SuperToolTip80.Items.Add(ToolTipTitleItem86)
+        SuperToolTip80.Items.Add(ToolTipItem80)
+        Me.SetPortraitPageOrientationItem1.SuperTip = SuperToolTip80
         '
         'SetLandscapePageOrientationItem1
         '
@@ -2987,11 +3065,11 @@ Partial Class NewDao
         Me.SetLandscapePageOrientationItem1.Enabled = False
         Me.SetLandscapePageOrientationItem1.Id = 89
         Me.SetLandscapePageOrientationItem1.Name = "SetLandscapePageOrientationItem1"
-        ToolTipTitleItem570.Text = "Landscape"
-        ToolTipItem530.Text = " "
-        SuperToolTip542.Items.Add(ToolTipTitleItem570)
-        SuperToolTip542.Items.Add(ToolTipItem530)
-        Me.SetLandscapePageOrientationItem1.SuperTip = SuperToolTip542
+        ToolTipTitleItem87.Text = "Landscape"
+        ToolTipItem81.Text = " "
+        SuperToolTip81.Items.Add(ToolTipTitleItem87)
+        SuperToolTip81.Items.Add(ToolTipItem81)
+        Me.SetLandscapePageOrientationItem1.SuperTip = SuperToolTip81
         '
         'ChangeSectionPaperKindItem1
         '
@@ -2999,11 +3077,11 @@ Partial Class NewDao
         Me.ChangeSectionPaperKindItem1.Enabled = False
         Me.ChangeSectionPaperKindItem1.Id = 90
         Me.ChangeSectionPaperKindItem1.Name = "ChangeSectionPaperKindItem1"
-        ToolTipTitleItem572.Text = "Size"
-        ToolTipItem532.Text = "Choose a paper size for the current section."
-        SuperToolTip544.Items.Add(ToolTipTitleItem572)
-        SuperToolTip544.Items.Add(ToolTipItem532)
-        Me.ChangeSectionPaperKindItem1.SuperTip = SuperToolTip544
+        ToolTipTitleItem89.Text = "Size"
+        ToolTipItem83.Text = "Choose a paper size for the current section."
+        SuperToolTip83.Items.Add(ToolTipTitleItem89)
+        SuperToolTip83.Items.Add(ToolTipItem83)
+        Me.ChangeSectionPaperKindItem1.SuperTip = SuperToolTip83
         '
         'ChangeSectionColumnsItem1
         '
@@ -3012,11 +3090,11 @@ Partial Class NewDao
         Me.ChangeSectionColumnsItem1.Id = 91
         Me.ChangeSectionColumnsItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.SetSectionOneColumnItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetSectionTwoColumnsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetSectionThreeColumnsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ShowColumnsSetupFormItem1)})
         Me.ChangeSectionColumnsItem1.Name = "ChangeSectionColumnsItem1"
-        ToolTipTitleItem577.Text = "Columns"
-        ToolTipItem537.Text = "Split text into two or more columns."
-        SuperToolTip549.Items.Add(ToolTipTitleItem577)
-        SuperToolTip549.Items.Add(ToolTipItem537)
-        Me.ChangeSectionColumnsItem1.SuperTip = SuperToolTip549
+        ToolTipTitleItem94.Text = "Columns"
+        ToolTipItem88.Text = "Split text into two or more columns."
+        SuperToolTip88.Items.Add(ToolTipTitleItem94)
+        SuperToolTip88.Items.Add(ToolTipItem88)
+        Me.ChangeSectionColumnsItem1.SuperTip = SuperToolTip88
         '
         'SetSectionOneColumnItem1
         '
@@ -3024,11 +3102,11 @@ Partial Class NewDao
         Me.SetSectionOneColumnItem1.Enabled = False
         Me.SetSectionOneColumnItem1.Id = 92
         Me.SetSectionOneColumnItem1.Name = "SetSectionOneColumnItem1"
-        ToolTipTitleItem573.Text = "One"
-        ToolTipItem533.Text = "One column."
-        SuperToolTip545.Items.Add(ToolTipTitleItem573)
-        SuperToolTip545.Items.Add(ToolTipItem533)
-        Me.SetSectionOneColumnItem1.SuperTip = SuperToolTip545
+        ToolTipTitleItem90.Text = "One"
+        ToolTipItem84.Text = "One column."
+        SuperToolTip84.Items.Add(ToolTipTitleItem90)
+        SuperToolTip84.Items.Add(ToolTipItem84)
+        Me.SetSectionOneColumnItem1.SuperTip = SuperToolTip84
         '
         'SetSectionTwoColumnsItem1
         '
@@ -3036,11 +3114,11 @@ Partial Class NewDao
         Me.SetSectionTwoColumnsItem1.Enabled = False
         Me.SetSectionTwoColumnsItem1.Id = 93
         Me.SetSectionTwoColumnsItem1.Name = "SetSectionTwoColumnsItem1"
-        ToolTipTitleItem574.Text = "Two"
-        ToolTipItem534.Text = "Two columns."
-        SuperToolTip546.Items.Add(ToolTipTitleItem574)
-        SuperToolTip546.Items.Add(ToolTipItem534)
-        Me.SetSectionTwoColumnsItem1.SuperTip = SuperToolTip546
+        ToolTipTitleItem91.Text = "Two"
+        ToolTipItem85.Text = "Two columns."
+        SuperToolTip85.Items.Add(ToolTipTitleItem91)
+        SuperToolTip85.Items.Add(ToolTipItem85)
+        Me.SetSectionTwoColumnsItem1.SuperTip = SuperToolTip85
         '
         'SetSectionThreeColumnsItem1
         '
@@ -3048,11 +3126,11 @@ Partial Class NewDao
         Me.SetSectionThreeColumnsItem1.Enabled = False
         Me.SetSectionThreeColumnsItem1.Id = 94
         Me.SetSectionThreeColumnsItem1.Name = "SetSectionThreeColumnsItem1"
-        ToolTipTitleItem575.Text = "Three"
-        ToolTipItem535.Text = "Three columns."
-        SuperToolTip547.Items.Add(ToolTipTitleItem575)
-        SuperToolTip547.Items.Add(ToolTipItem535)
-        Me.SetSectionThreeColumnsItem1.SuperTip = SuperToolTip547
+        ToolTipTitleItem92.Text = "Three"
+        ToolTipItem86.Text = "Three columns."
+        SuperToolTip86.Items.Add(ToolTipTitleItem92)
+        SuperToolTip86.Items.Add(ToolTipItem86)
+        Me.SetSectionThreeColumnsItem1.SuperTip = SuperToolTip86
         '
         'ShowColumnsSetupFormItem1
         '
@@ -3060,11 +3138,11 @@ Partial Class NewDao
         Me.ShowColumnsSetupFormItem1.Enabled = False
         Me.ShowColumnsSetupFormItem1.Id = 95
         Me.ShowColumnsSetupFormItem1.Name = "ShowColumnsSetupFormItem1"
-        ToolTipTitleItem576.Text = "More Columns"
-        ToolTipItem536.Text = "Show the Column dialog box to customize column widths."
-        SuperToolTip548.Items.Add(ToolTipTitleItem576)
-        SuperToolTip548.Items.Add(ToolTipItem536)
-        Me.ShowColumnsSetupFormItem1.SuperTip = SuperToolTip548
+        ToolTipTitleItem93.Text = "More Columns"
+        ToolTipItem87.Text = "Show the Column dialog box to customize column widths."
+        SuperToolTip87.Items.Add(ToolTipTitleItem93)
+        SuperToolTip87.Items.Add(ToolTipItem87)
+        Me.ShowColumnsSetupFormItem1.SuperTip = SuperToolTip87
         '
         'InsertBreakItem1
         '
@@ -3073,11 +3151,11 @@ Partial Class NewDao
         Me.InsertBreakItem1.Id = 96
         Me.InsertBreakItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.InsertPageBreakItem2), New DevExpress.XtraBars.LinkPersistInfo(Me.InsertColumnBreakItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.InsertSectionBreakNextPageItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.InsertSectionBreakEvenPageItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.InsertSectionBreakOddPageItem1)})
         Me.InsertBreakItem1.Name = "InsertBreakItem1"
-        ToolTipTitleItem583.Text = "Breaks"
-        ToolTipItem543.Text = "Add page, section, or column breaks to the document."
-        SuperToolTip555.Items.Add(ToolTipTitleItem583)
-        SuperToolTip555.Items.Add(ToolTipItem543)
-        Me.InsertBreakItem1.SuperTip = SuperToolTip555
+        ToolTipTitleItem100.Text = "Breaks"
+        ToolTipItem94.Text = "Add page, section, or column breaks to the document."
+        SuperToolTip94.Items.Add(ToolTipTitleItem100)
+        SuperToolTip94.Items.Add(ToolTipItem94)
+        Me.InsertBreakItem1.SuperTip = SuperToolTip94
         '
         'InsertPageBreakItem2
         '
@@ -3085,11 +3163,11 @@ Partial Class NewDao
         Me.InsertPageBreakItem2.Enabled = False
         Me.InsertPageBreakItem2.Id = 97
         Me.InsertPageBreakItem2.Name = "InsertPageBreakItem2"
-        ToolTipTitleItem578.Text = "Page (Ctrl+Return)"
-        ToolTipItem538.Text = "Start the next page at the current position."
-        SuperToolTip550.Items.Add(ToolTipTitleItem578)
-        SuperToolTip550.Items.Add(ToolTipItem538)
-        Me.InsertPageBreakItem2.SuperTip = SuperToolTip550
+        ToolTipTitleItem95.Text = "Page (Ctrl+Return)"
+        ToolTipItem89.Text = "Start the next page at the current position."
+        SuperToolTip89.Items.Add(ToolTipTitleItem95)
+        SuperToolTip89.Items.Add(ToolTipItem89)
+        Me.InsertPageBreakItem2.SuperTip = SuperToolTip89
         '
         'InsertColumnBreakItem1
         '
@@ -3097,11 +3175,11 @@ Partial Class NewDao
         Me.InsertColumnBreakItem1.Enabled = False
         Me.InsertColumnBreakItem1.Id = 98
         Me.InsertColumnBreakItem1.Name = "InsertColumnBreakItem1"
-        ToolTipTitleItem579.Text = "Column (Ctrl+Maj+Return)"
-        ToolTipItem539.Text = "Indicate that the text following the column break will begin in the next column."
-        SuperToolTip551.Items.Add(ToolTipTitleItem579)
-        SuperToolTip551.Items.Add(ToolTipItem539)
-        Me.InsertColumnBreakItem1.SuperTip = SuperToolTip551
+        ToolTipTitleItem96.Text = "Column (Ctrl+Maj+Return)"
+        ToolTipItem90.Text = "Indicate that the text following the column break will begin in the next column."
+        SuperToolTip90.Items.Add(ToolTipTitleItem96)
+        SuperToolTip90.Items.Add(ToolTipItem90)
+        Me.InsertColumnBreakItem1.SuperTip = SuperToolTip90
         '
         'InsertSectionBreakNextPageItem1
         '
@@ -3109,11 +3187,11 @@ Partial Class NewDao
         Me.InsertSectionBreakNextPageItem1.Enabled = False
         Me.InsertSectionBreakNextPageItem1.Id = 99
         Me.InsertSectionBreakNextPageItem1.Name = "InsertSectionBreakNextPageItem1"
-        ToolTipTitleItem580.Text = "Section (Next Page)"
-        ToolTipItem540.Text = "Insert a section break and start the new section on the next page."
-        SuperToolTip552.Items.Add(ToolTipTitleItem580)
-        SuperToolTip552.Items.Add(ToolTipItem540)
-        Me.InsertSectionBreakNextPageItem1.SuperTip = SuperToolTip552
+        ToolTipTitleItem97.Text = "Section (Next Page)"
+        ToolTipItem91.Text = "Insert a section break and start the new section on the next page."
+        SuperToolTip91.Items.Add(ToolTipTitleItem97)
+        SuperToolTip91.Items.Add(ToolTipItem91)
+        Me.InsertSectionBreakNextPageItem1.SuperTip = SuperToolTip91
         '
         'InsertSectionBreakEvenPageItem1
         '
@@ -3121,11 +3199,11 @@ Partial Class NewDao
         Me.InsertSectionBreakEvenPageItem1.Enabled = False
         Me.InsertSectionBreakEvenPageItem1.Id = 100
         Me.InsertSectionBreakEvenPageItem1.Name = "InsertSectionBreakEvenPageItem1"
-        ToolTipTitleItem581.Text = "Section (Even Page)"
-        ToolTipItem541.Text = "Insert a section break and start the new section on the next even-numbered page."
-        SuperToolTip553.Items.Add(ToolTipTitleItem581)
-        SuperToolTip553.Items.Add(ToolTipItem541)
-        Me.InsertSectionBreakEvenPageItem1.SuperTip = SuperToolTip553
+        ToolTipTitleItem98.Text = "Section (Even Page)"
+        ToolTipItem92.Text = "Insert a section break and start the new section on the next even-numbered page."
+        SuperToolTip92.Items.Add(ToolTipTitleItem98)
+        SuperToolTip92.Items.Add(ToolTipItem92)
+        Me.InsertSectionBreakEvenPageItem1.SuperTip = SuperToolTip92
         '
         'InsertSectionBreakOddPageItem1
         '
@@ -3133,11 +3211,11 @@ Partial Class NewDao
         Me.InsertSectionBreakOddPageItem1.Enabled = False
         Me.InsertSectionBreakOddPageItem1.Id = 101
         Me.InsertSectionBreakOddPageItem1.Name = "InsertSectionBreakOddPageItem1"
-        ToolTipTitleItem582.Text = "Section (Odd Page)"
-        ToolTipItem542.Text = "Insert a section break and start the new section on the next odd-numbered page."
-        SuperToolTip554.Items.Add(ToolTipTitleItem582)
-        SuperToolTip554.Items.Add(ToolTipItem542)
-        Me.InsertSectionBreakOddPageItem1.SuperTip = SuperToolTip554
+        ToolTipTitleItem99.Text = "Section (Odd Page)"
+        ToolTipItem93.Text = "Insert a section break and start the new section on the next odd-numbered page."
+        SuperToolTip93.Items.Add(ToolTipTitleItem99)
+        SuperToolTip93.Items.Add(ToolTipItem93)
+        Me.InsertSectionBreakOddPageItem1.SuperTip = SuperToolTip93
         '
         'ChangeSectionLineNumberingItem1
         '
@@ -3146,11 +3224,11 @@ Partial Class NewDao
         Me.ChangeSectionLineNumberingItem1.Id = 102
         Me.ChangeSectionLineNumberingItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.SetSectionLineNumberingNoneItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetSectionLineNumberingContinuousItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetSectionLineNumberingRestartNewPageItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetSectionLineNumberingRestartNewSectionItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleParagraphSuppressLineNumbersItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ShowLineNumberingFormItem1)})
         Me.ChangeSectionLineNumberingItem1.Name = "ChangeSectionLineNumberingItem1"
-        ToolTipTitleItem590.Text = "Line Numbers"
-        ToolTipItem550.Text = "Add line numbers in the margin alongside of each line of the document."
-        SuperToolTip562.Items.Add(ToolTipTitleItem590)
-        SuperToolTip562.Items.Add(ToolTipItem550)
-        Me.ChangeSectionLineNumberingItem1.SuperTip = SuperToolTip562
+        ToolTipTitleItem107.Text = "Line Numbers"
+        ToolTipItem101.Text = "Add line numbers in the margin alongside of each line of the document."
+        SuperToolTip101.Items.Add(ToolTipTitleItem107)
+        SuperToolTip101.Items.Add(ToolTipItem101)
+        Me.ChangeSectionLineNumberingItem1.SuperTip = SuperToolTip101
         '
         'SetSectionLineNumberingNoneItem1
         '
@@ -3158,11 +3236,11 @@ Partial Class NewDao
         Me.SetSectionLineNumberingNoneItem1.Enabled = False
         Me.SetSectionLineNumberingNoneItem1.Id = 103
         Me.SetSectionLineNumberingNoneItem1.Name = "SetSectionLineNumberingNoneItem1"
-        ToolTipTitleItem584.Text = "None"
-        ToolTipItem544.Text = "No line numbers."
-        SuperToolTip556.Items.Add(ToolTipTitleItem584)
-        SuperToolTip556.Items.Add(ToolTipItem544)
-        Me.SetSectionLineNumberingNoneItem1.SuperTip = SuperToolTip556
+        ToolTipTitleItem101.Text = "None"
+        ToolTipItem95.Text = "No line numbers."
+        SuperToolTip95.Items.Add(ToolTipTitleItem101)
+        SuperToolTip95.Items.Add(ToolTipItem95)
+        Me.SetSectionLineNumberingNoneItem1.SuperTip = SuperToolTip95
         '
         'SetSectionLineNumberingContinuousItem1
         '
@@ -3170,11 +3248,11 @@ Partial Class NewDao
         Me.SetSectionLineNumberingContinuousItem1.Enabled = False
         Me.SetSectionLineNumberingContinuousItem1.Id = 104
         Me.SetSectionLineNumberingContinuousItem1.Name = "SetSectionLineNumberingContinuousItem1"
-        ToolTipTitleItem585.Text = "Continuous"
-        ToolTipItem545.Text = "Continuous"
-        SuperToolTip557.Items.Add(ToolTipTitleItem585)
-        SuperToolTip557.Items.Add(ToolTipItem545)
-        Me.SetSectionLineNumberingContinuousItem1.SuperTip = SuperToolTip557
+        ToolTipTitleItem102.Text = "Continuous"
+        ToolTipItem96.Text = "Continuous"
+        SuperToolTip96.Items.Add(ToolTipTitleItem102)
+        SuperToolTip96.Items.Add(ToolTipItem96)
+        Me.SetSectionLineNumberingContinuousItem1.SuperTip = SuperToolTip96
         '
         'SetSectionLineNumberingRestartNewPageItem1
         '
@@ -3182,11 +3260,11 @@ Partial Class NewDao
         Me.SetSectionLineNumberingRestartNewPageItem1.Enabled = False
         Me.SetSectionLineNumberingRestartNewPageItem1.Id = 105
         Me.SetSectionLineNumberingRestartNewPageItem1.Name = "SetSectionLineNumberingRestartNewPageItem1"
-        ToolTipTitleItem586.Text = "Restart Each Page"
-        ToolTipItem546.Text = "Restart Each Page"
-        SuperToolTip558.Items.Add(ToolTipTitleItem586)
-        SuperToolTip558.Items.Add(ToolTipItem546)
-        Me.SetSectionLineNumberingRestartNewPageItem1.SuperTip = SuperToolTip558
+        ToolTipTitleItem103.Text = "Restart Each Page"
+        ToolTipItem97.Text = "Restart Each Page"
+        SuperToolTip97.Items.Add(ToolTipTitleItem103)
+        SuperToolTip97.Items.Add(ToolTipItem97)
+        Me.SetSectionLineNumberingRestartNewPageItem1.SuperTip = SuperToolTip97
         '
         'SetSectionLineNumberingRestartNewSectionItem1
         '
@@ -3194,11 +3272,11 @@ Partial Class NewDao
         Me.SetSectionLineNumberingRestartNewSectionItem1.Enabled = False
         Me.SetSectionLineNumberingRestartNewSectionItem1.Id = 106
         Me.SetSectionLineNumberingRestartNewSectionItem1.Name = "SetSectionLineNumberingRestartNewSectionItem1"
-        ToolTipTitleItem587.Text = "Restart Each Section"
-        ToolTipItem547.Text = "Restart Each Section"
-        SuperToolTip559.Items.Add(ToolTipTitleItem587)
-        SuperToolTip559.Items.Add(ToolTipItem547)
-        Me.SetSectionLineNumberingRestartNewSectionItem1.SuperTip = SuperToolTip559
+        ToolTipTitleItem104.Text = "Restart Each Section"
+        ToolTipItem98.Text = "Restart Each Section"
+        SuperToolTip98.Items.Add(ToolTipTitleItem104)
+        SuperToolTip98.Items.Add(ToolTipItem98)
+        Me.SetSectionLineNumberingRestartNewSectionItem1.SuperTip = SuperToolTip98
         '
         'ToggleParagraphSuppressLineNumbersItem1
         '
@@ -3206,11 +3284,11 @@ Partial Class NewDao
         Me.ToggleParagraphSuppressLineNumbersItem1.Enabled = False
         Me.ToggleParagraphSuppressLineNumbersItem1.Id = 107
         Me.ToggleParagraphSuppressLineNumbersItem1.Name = "ToggleParagraphSuppressLineNumbersItem1"
-        ToolTipTitleItem588.Text = "Suppress Line Numbers for Current Paragraph"
-        ToolTipItem548.Text = "Suppress Line Numbers for Current Paragraph"
-        SuperToolTip560.Items.Add(ToolTipTitleItem588)
-        SuperToolTip560.Items.Add(ToolTipItem548)
-        Me.ToggleParagraphSuppressLineNumbersItem1.SuperTip = SuperToolTip560
+        ToolTipTitleItem105.Text = "Suppress Line Numbers for Current Paragraph"
+        ToolTipItem99.Text = "Suppress Line Numbers for Current Paragraph"
+        SuperToolTip99.Items.Add(ToolTipTitleItem105)
+        SuperToolTip99.Items.Add(ToolTipItem99)
+        Me.ToggleParagraphSuppressLineNumbersItem1.SuperTip = SuperToolTip99
         '
         'ShowLineNumberingFormItem1
         '
@@ -3218,11 +3296,11 @@ Partial Class NewDao
         Me.ShowLineNumberingFormItem1.Enabled = False
         Me.ShowLineNumberingFormItem1.Id = 108
         Me.ShowLineNumberingFormItem1.Name = "ShowLineNumberingFormItem1"
-        ToolTipTitleItem589.Text = "Line Numbering Options"
-        ToolTipItem549.Text = "Line Numbering Options"
-        SuperToolTip561.Items.Add(ToolTipTitleItem589)
-        SuperToolTip561.Items.Add(ToolTipItem549)
-        Me.ShowLineNumberingFormItem1.SuperTip = SuperToolTip561
+        ToolTipTitleItem106.Text = "Line Numbering Options"
+        ToolTipItem100.Text = "Line Numbering Options"
+        SuperToolTip100.Items.Add(ToolTipTitleItem106)
+        SuperToolTip100.Items.Add(ToolTipItem100)
+        Me.ShowLineNumberingFormItem1.SuperTip = SuperToolTip100
         '
         'InsertMergeFieldItem1
         '
@@ -3230,11 +3308,11 @@ Partial Class NewDao
         Me.InsertMergeFieldItem1.Enabled = False
         Me.InsertMergeFieldItem1.Id = 109
         Me.InsertMergeFieldItem1.Name = "InsertMergeFieldItem1"
-        ToolTipTitleItem591.Text = "Insert Merge Field"
-        ToolTipItem551.Text = "Add a field from a list of recipients or from a data table to the document."
-        SuperToolTip563.Items.Add(ToolTipTitleItem591)
-        SuperToolTip563.Items.Add(ToolTipItem551)
-        Me.InsertMergeFieldItem1.SuperTip = SuperToolTip563
+        ToolTipTitleItem108.Text = "Insert Merge Field"
+        ToolTipItem102.Text = "Add a field from a list of recipients or from a data table to the document."
+        SuperToolTip102.Items.Add(ToolTipTitleItem108)
+        SuperToolTip102.Items.Add(ToolTipItem102)
+        Me.InsertMergeFieldItem1.SuperTip = SuperToolTip102
         '
         'ShowAllFieldCodesItem1
         '
@@ -3242,11 +3320,11 @@ Partial Class NewDao
         Me.ShowAllFieldCodesItem1.Enabled = False
         Me.ShowAllFieldCodesItem1.Id = 110
         Me.ShowAllFieldCodesItem1.Name = "ShowAllFieldCodesItem1"
-        ToolTipTitleItem592.Text = "Show All Field Codes"
-        ToolTipItem552.Text = "Show All Field Codes"
-        SuperToolTip564.Items.Add(ToolTipTitleItem592)
-        SuperToolTip564.Items.Add(ToolTipItem552)
-        Me.ShowAllFieldCodesItem1.SuperTip = SuperToolTip564
+        ToolTipTitleItem109.Text = "Show All Field Codes"
+        ToolTipItem103.Text = "Show All Field Codes"
+        SuperToolTip103.Items.Add(ToolTipTitleItem109)
+        SuperToolTip103.Items.Add(ToolTipItem103)
+        Me.ShowAllFieldCodesItem1.SuperTip = SuperToolTip103
         '
         'ShowAllFieldResultsItem1
         '
@@ -3254,11 +3332,11 @@ Partial Class NewDao
         Me.ShowAllFieldResultsItem1.Enabled = False
         Me.ShowAllFieldResultsItem1.Id = 111
         Me.ShowAllFieldResultsItem1.Name = "ShowAllFieldResultsItem1"
-        ToolTipTitleItem593.Text = "Show All Field Results"
-        ToolTipItem553.Text = "Show All Field Results"
-        SuperToolTip565.Items.Add(ToolTipTitleItem593)
-        SuperToolTip565.Items.Add(ToolTipItem553)
-        Me.ShowAllFieldResultsItem1.SuperTip = SuperToolTip565
+        ToolTipTitleItem110.Text = "Show All Field Results"
+        ToolTipItem104.Text = "Show All Field Results"
+        SuperToolTip104.Items.Add(ToolTipTitleItem110)
+        SuperToolTip104.Items.Add(ToolTipItem104)
+        Me.ShowAllFieldResultsItem1.SuperTip = SuperToolTip104
         '
         'ToggleViewMergedDataItem1
         '
@@ -3266,12 +3344,12 @@ Partial Class NewDao
         Me.ToggleViewMergedDataItem1.Enabled = False
         Me.ToggleViewMergedDataItem1.Id = 112
         Me.ToggleViewMergedDataItem1.Name = "ToggleViewMergedDataItem1"
-        ToolTipTitleItem594.Text = "View Merged Data"
-        ToolTipItem554.Text = "Replaces the merge fields in your document with actual data from your recipient l" &
+        ToolTipTitleItem111.Text = "View Merged Data"
+        ToolTipItem105.Text = "Replaces the merge fields in your document with actual data from your recipient l" &
     "ist so you can see what it looks like."
-        SuperToolTip566.Items.Add(ToolTipTitleItem594)
-        SuperToolTip566.Items.Add(ToolTipItem554)
-        Me.ToggleViewMergedDataItem1.SuperTip = SuperToolTip566
+        SuperToolTip105.Items.Add(ToolTipTitleItem111)
+        SuperToolTip105.Items.Add(ToolTipItem105)
+        Me.ToggleViewMergedDataItem1.SuperTip = SuperToolTip105
         '
         'SwitchToSimpleViewItem1
         '
@@ -3279,12 +3357,12 @@ Partial Class NewDao
         Me.SwitchToSimpleViewItem1.Enabled = False
         Me.SwitchToSimpleViewItem1.Id = 113
         Me.SwitchToSimpleViewItem1.Name = "SwitchToSimpleViewItem1"
-        ToolTipTitleItem595.Text = "Simple View"
-        ToolTipItem555.Text = "View the document as a simple memo." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "This view ignores the page layout to draw " &
+        ToolTipTitleItem112.Text = "Simple View"
+        ToolTipItem106.Text = "View the document as a simple memo." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "This view ignores the page layout to draw " &
     "attention to text editing."
-        SuperToolTip567.Items.Add(ToolTipTitleItem595)
-        SuperToolTip567.Items.Add(ToolTipItem555)
-        Me.SwitchToSimpleViewItem1.SuperTip = SuperToolTip567
+        SuperToolTip106.Items.Add(ToolTipTitleItem112)
+        SuperToolTip106.Items.Add(ToolTipItem106)
+        Me.SwitchToSimpleViewItem1.SuperTip = SuperToolTip106
         '
         'SwitchToDraftViewItem1
         '
@@ -3292,12 +3370,12 @@ Partial Class NewDao
         Me.SwitchToDraftViewItem1.Enabled = False
         Me.SwitchToDraftViewItem1.Id = 114
         Me.SwitchToDraftViewItem1.Name = "SwitchToDraftViewItem1"
-        ToolTipTitleItem596.Text = "Draft View"
-        ToolTipItem556.Text = "View the document as a draft to quickly edit the text." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Certain elements of the" &
+        ToolTipTitleItem113.Text = "Draft View"
+        ToolTipItem107.Text = "View the document as a draft to quickly edit the text." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Certain elements of the" &
     " document such as headers and footers will not be visible in this view."
-        SuperToolTip568.Items.Add(ToolTipTitleItem596)
-        SuperToolTip568.Items.Add(ToolTipItem556)
-        Me.SwitchToDraftViewItem1.SuperTip = SuperToolTip568
+        SuperToolTip107.Items.Add(ToolTipTitleItem113)
+        SuperToolTip107.Items.Add(ToolTipItem107)
+        Me.SwitchToDraftViewItem1.SuperTip = SuperToolTip107
         '
         'SwitchToPrintLayoutViewItem1
         '
@@ -3305,11 +3383,11 @@ Partial Class NewDao
         Me.SwitchToPrintLayoutViewItem1.Enabled = False
         Me.SwitchToPrintLayoutViewItem1.Id = 115
         Me.SwitchToPrintLayoutViewItem1.Name = "SwitchToPrintLayoutViewItem1"
-        ToolTipTitleItem597.Text = "Print Layout"
-        ToolTipItem557.Text = "View the document as it will appear on the printed page."
-        SuperToolTip569.Items.Add(ToolTipTitleItem597)
-        SuperToolTip569.Items.Add(ToolTipItem557)
-        Me.SwitchToPrintLayoutViewItem1.SuperTip = SuperToolTip569
+        ToolTipTitleItem114.Text = "Print Layout"
+        ToolTipItem108.Text = "View the document as it will appear on the printed page."
+        SuperToolTip108.Items.Add(ToolTipTitleItem114)
+        SuperToolTip108.Items.Add(ToolTipItem108)
+        Me.SwitchToPrintLayoutViewItem1.SuperTip = SuperToolTip108
         '
         'ToggleShowHorizontalRulerItem1
         '
@@ -3317,11 +3395,11 @@ Partial Class NewDao
         Me.ToggleShowHorizontalRulerItem1.Enabled = False
         Me.ToggleShowHorizontalRulerItem1.Id = 116
         Me.ToggleShowHorizontalRulerItem1.Name = "ToggleShowHorizontalRulerItem1"
-        ToolTipTitleItem598.Text = "Horizontal Ruler"
-        ToolTipItem558.Text = "View the horizontal ruler, used to measure and line up objects in the document"
-        SuperToolTip570.Items.Add(ToolTipTitleItem598)
-        SuperToolTip570.Items.Add(ToolTipItem558)
-        Me.ToggleShowHorizontalRulerItem1.SuperTip = SuperToolTip570
+        ToolTipTitleItem115.Text = "Horizontal Ruler"
+        ToolTipItem109.Text = "View the horizontal ruler, used to measure and line up objects in the document"
+        SuperToolTip109.Items.Add(ToolTipTitleItem115)
+        SuperToolTip109.Items.Add(ToolTipItem109)
+        Me.ToggleShowHorizontalRulerItem1.SuperTip = SuperToolTip109
         '
         'ToggleShowVerticalRulerItem1
         '
@@ -3329,11 +3407,11 @@ Partial Class NewDao
         Me.ToggleShowVerticalRulerItem1.Enabled = False
         Me.ToggleShowVerticalRulerItem1.Id = 117
         Me.ToggleShowVerticalRulerItem1.Name = "ToggleShowVerticalRulerItem1"
-        ToolTipTitleItem599.Text = "Vertical Ruler"
-        ToolTipItem559.Text = "View the vertical ruler, used to measure and line up objects in the document"
-        SuperToolTip571.Items.Add(ToolTipTitleItem599)
-        SuperToolTip571.Items.Add(ToolTipItem559)
-        Me.ToggleShowVerticalRulerItem1.SuperTip = SuperToolTip571
+        ToolTipTitleItem116.Text = "Vertical Ruler"
+        ToolTipItem110.Text = "View the vertical ruler, used to measure and line up objects in the document"
+        SuperToolTip110.Items.Add(ToolTipTitleItem116)
+        SuperToolTip110.Items.Add(ToolTipItem110)
+        Me.ToggleShowVerticalRulerItem1.SuperTip = SuperToolTip110
         '
         'ZoomOutItem1
         '
@@ -3341,11 +3419,11 @@ Partial Class NewDao
         Me.ZoomOutItem1.Enabled = False
         Me.ZoomOutItem1.Id = 118
         Me.ZoomOutItem1.Name = "ZoomOutItem1"
-        ToolTipTitleItem600.Text = "Zoom Out"
-        ToolTipItem560.Text = "Zoom Out"
-        SuperToolTip572.Items.Add(ToolTipTitleItem600)
-        SuperToolTip572.Items.Add(ToolTipItem560)
-        Me.ZoomOutItem1.SuperTip = SuperToolTip572
+        ToolTipTitleItem117.Text = "Zoom Out"
+        ToolTipItem111.Text = "Zoom Out"
+        SuperToolTip111.Items.Add(ToolTipTitleItem117)
+        SuperToolTip111.Items.Add(ToolTipItem111)
+        Me.ZoomOutItem1.SuperTip = SuperToolTip111
         '
         'ZoomInItem1
         '
@@ -3353,11 +3431,11 @@ Partial Class NewDao
         Me.ZoomInItem1.Enabled = False
         Me.ZoomInItem1.Id = 119
         Me.ZoomInItem1.Name = "ZoomInItem1"
-        ToolTipTitleItem601.Text = "Zoom In"
-        ToolTipItem561.Text = "Zoom In"
-        SuperToolTip573.Items.Add(ToolTipTitleItem601)
-        SuperToolTip573.Items.Add(ToolTipItem561)
-        Me.ZoomInItem1.SuperTip = SuperToolTip573
+        ToolTipTitleItem118.Text = "Zoom In"
+        ToolTipItem112.Text = "Zoom In"
+        SuperToolTip112.Items.Add(ToolTipTitleItem118)
+        SuperToolTip112.Items.Add(ToolTipItem112)
+        Me.ZoomInItem1.SuperTip = SuperToolTip112
         '
         'GoToPageHeaderItem1
         '
@@ -3365,11 +3443,11 @@ Partial Class NewDao
         Me.GoToPageHeaderItem1.Enabled = False
         Me.GoToPageHeaderItem1.Id = 120
         Me.GoToPageHeaderItem1.Name = "GoToPageHeaderItem1"
-        ToolTipTitleItem602.Text = "Go to Header"
-        ToolTipItem562.Text = "Activate the header on this page so that you can edit it."
-        SuperToolTip574.Items.Add(ToolTipTitleItem602)
-        SuperToolTip574.Items.Add(ToolTipItem562)
-        Me.GoToPageHeaderItem1.SuperTip = SuperToolTip574
+        ToolTipTitleItem119.Text = "Go to Header"
+        ToolTipItem113.Text = "Activate the header on this page so that you can edit it."
+        SuperToolTip113.Items.Add(ToolTipTitleItem119)
+        SuperToolTip113.Items.Add(ToolTipItem113)
+        Me.GoToPageHeaderItem1.SuperTip = SuperToolTip113
         '
         'GoToPageFooterItem1
         '
@@ -3377,11 +3455,11 @@ Partial Class NewDao
         Me.GoToPageFooterItem1.Enabled = False
         Me.GoToPageFooterItem1.Id = 121
         Me.GoToPageFooterItem1.Name = "GoToPageFooterItem1"
-        ToolTipTitleItem603.Text = "Go to Footer"
-        ToolTipItem563.Text = "Activate the footer on this page so that you can edit it."
-        SuperToolTip575.Items.Add(ToolTipTitleItem603)
-        SuperToolTip575.Items.Add(ToolTipItem563)
-        Me.GoToPageFooterItem1.SuperTip = SuperToolTip575
+        ToolTipTitleItem120.Text = "Go to Footer"
+        ToolTipItem114.Text = "Activate the footer on this page so that you can edit it."
+        SuperToolTip114.Items.Add(ToolTipTitleItem120)
+        SuperToolTip114.Items.Add(ToolTipItem114)
+        Me.GoToPageFooterItem1.SuperTip = SuperToolTip114
         '
         'GoToNextHeaderFooterItem1
         '
@@ -3389,11 +3467,11 @@ Partial Class NewDao
         Me.GoToNextHeaderFooterItem1.Enabled = False
         Me.GoToNextHeaderFooterItem1.Id = 122
         Me.GoToNextHeaderFooterItem1.Name = "GoToNextHeaderFooterItem1"
-        ToolTipTitleItem604.Text = "Show Next"
-        ToolTipItem564.Text = "Navigate to the next section's header or footer"
-        SuperToolTip576.Items.Add(ToolTipTitleItem604)
-        SuperToolTip576.Items.Add(ToolTipItem564)
-        Me.GoToNextHeaderFooterItem1.SuperTip = SuperToolTip576
+        ToolTipTitleItem121.Text = "Show Next"
+        ToolTipItem115.Text = "Navigate to the next section's header or footer"
+        SuperToolTip115.Items.Add(ToolTipTitleItem121)
+        SuperToolTip115.Items.Add(ToolTipItem115)
+        Me.GoToNextHeaderFooterItem1.SuperTip = SuperToolTip115
         '
         'GoToPreviousHeaderFooterItem1
         '
@@ -3401,11 +3479,11 @@ Partial Class NewDao
         Me.GoToPreviousHeaderFooterItem1.Enabled = False
         Me.GoToPreviousHeaderFooterItem1.Id = 123
         Me.GoToPreviousHeaderFooterItem1.Name = "GoToPreviousHeaderFooterItem1"
-        ToolTipTitleItem605.Text = "Show Previous"
-        ToolTipItem565.Text = "Navigate to the previous section's header or footer"
-        SuperToolTip577.Items.Add(ToolTipTitleItem605)
-        SuperToolTip577.Items.Add(ToolTipItem565)
-        Me.GoToPreviousHeaderFooterItem1.SuperTip = SuperToolTip577
+        ToolTipTitleItem122.Text = "Show Previous"
+        ToolTipItem116.Text = "Navigate to the previous section's header or footer"
+        SuperToolTip116.Items.Add(ToolTipTitleItem122)
+        SuperToolTip116.Items.Add(ToolTipItem116)
+        Me.GoToPreviousHeaderFooterItem1.SuperTip = SuperToolTip116
         '
         'ToggleLinkToPreviousItem1
         '
@@ -3413,12 +3491,12 @@ Partial Class NewDao
         Me.ToggleLinkToPreviousItem1.Enabled = False
         Me.ToggleLinkToPreviousItem1.Id = 124
         Me.ToggleLinkToPreviousItem1.Name = "ToggleLinkToPreviousItem1"
-        ToolTipTitleItem606.Text = "Link to Previous"
-        ToolTipItem566.Text = "Link to the previous section so that the header and footer in the current section" &
+        ToolTipTitleItem123.Text = "Link to Previous"
+        ToolTipItem117.Text = "Link to the previous section so that the header and footer in the current section" &
     " contain the same content as in the previous section."
-        SuperToolTip578.Items.Add(ToolTipTitleItem606)
-        SuperToolTip578.Items.Add(ToolTipItem566)
-        Me.ToggleLinkToPreviousItem1.SuperTip = SuperToolTip578
+        SuperToolTip117.Items.Add(ToolTipTitleItem123)
+        SuperToolTip117.Items.Add(ToolTipItem117)
+        Me.ToggleLinkToPreviousItem1.SuperTip = SuperToolTip117
         '
         'ToggleDifferentFirstPageItem1
         '
@@ -3426,11 +3504,11 @@ Partial Class NewDao
         Me.ToggleDifferentFirstPageItem1.Enabled = False
         Me.ToggleDifferentFirstPageItem1.Id = 125
         Me.ToggleDifferentFirstPageItem1.Name = "ToggleDifferentFirstPageItem1"
-        ToolTipTitleItem607.Text = "Different First Page"
-        ToolTipItem567.Text = "Specify a unique header and footer for the first page of the document."
-        SuperToolTip579.Items.Add(ToolTipTitleItem607)
-        SuperToolTip579.Items.Add(ToolTipItem567)
-        Me.ToggleDifferentFirstPageItem1.SuperTip = SuperToolTip579
+        ToolTipTitleItem124.Text = "Different First Page"
+        ToolTipItem118.Text = "Specify a unique header and footer for the first page of the document."
+        SuperToolTip118.Items.Add(ToolTipTitleItem124)
+        SuperToolTip118.Items.Add(ToolTipItem118)
+        Me.ToggleDifferentFirstPageItem1.SuperTip = SuperToolTip118
         '
         'ToggleDifferentOddAndEvenPagesItem1
         '
@@ -3438,12 +3516,12 @@ Partial Class NewDao
         Me.ToggleDifferentOddAndEvenPagesItem1.Enabled = False
         Me.ToggleDifferentOddAndEvenPagesItem1.Id = 126
         Me.ToggleDifferentOddAndEvenPagesItem1.Name = "ToggleDifferentOddAndEvenPagesItem1"
-        ToolTipTitleItem608.Text = "Different Odd && Even Pages"
-        ToolTipItem568.Text = "Specify that odd-numbered pages should have a different header and footer from ev" &
+        ToolTipTitleItem125.Text = "Different Odd && Even Pages"
+        ToolTipItem119.Text = "Specify that odd-numbered pages should have a different header and footer from ev" &
     "en-numbered pages."
-        SuperToolTip580.Items.Add(ToolTipTitleItem608)
-        SuperToolTip580.Items.Add(ToolTipItem568)
-        Me.ToggleDifferentOddAndEvenPagesItem1.SuperTip = SuperToolTip580
+        SuperToolTip119.Items.Add(ToolTipTitleItem125)
+        SuperToolTip119.Items.Add(ToolTipItem119)
+        Me.ToggleDifferentOddAndEvenPagesItem1.SuperTip = SuperToolTip119
         '
         'ClosePageHeaderFooterItem1
         '
@@ -3451,12 +3529,12 @@ Partial Class NewDao
         Me.ClosePageHeaderFooterItem1.Enabled = False
         Me.ClosePageHeaderFooterItem1.Id = 127
         Me.ClosePageHeaderFooterItem1.Name = "ClosePageHeaderFooterItem1"
-        ToolTipTitleItem609.Text = "Close Header and Footer"
-        ToolTipItem569.Text = "Close the Header and Footer Tools." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can also double click the document area" &
+        ToolTipTitleItem126.Text = "Close Header and Footer"
+        ToolTipItem120.Text = "Close the Header and Footer Tools." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can also double click the document area" &
     " to return to editing it."
-        SuperToolTip581.Items.Add(ToolTipTitleItem609)
-        SuperToolTip581.Items.Add(ToolTipItem569)
-        Me.ClosePageHeaderFooterItem1.SuperTip = SuperToolTip581
+        SuperToolTip120.Items.Add(ToolTipTitleItem126)
+        SuperToolTip120.Items.Add(ToolTipItem120)
+        Me.ClosePageHeaderFooterItem1.SuperTip = SuperToolTip120
         '
         'ChangeTableCellsShadingItem1
         '
@@ -3464,11 +3542,11 @@ Partial Class NewDao
         Me.ChangeTableCellsShadingItem1.Enabled = False
         Me.ChangeTableCellsShadingItem1.Id = 128
         Me.ChangeTableCellsShadingItem1.Name = "ChangeTableCellsShadingItem1"
-        ToolTipTitleItem610.Text = "Shading"
-        ToolTipItem570.Text = "Color the background behind the selected cells."
-        SuperToolTip582.Items.Add(ToolTipTitleItem610)
-        SuperToolTip582.Items.Add(ToolTipItem570)
-        Me.ChangeTableCellsShadingItem1.SuperTip = SuperToolTip582
+        ToolTipTitleItem127.Text = "Shading"
+        ToolTipItem121.Text = "Color the background behind the selected cells."
+        SuperToolTip121.Items.Add(ToolTipTitleItem127)
+        SuperToolTip121.Items.Add(ToolTipItem121)
+        Me.ChangeTableCellsShadingItem1.SuperTip = SuperToolTip121
         '
         'ChangeTableBordersItem1
         '
@@ -3477,11 +3555,11 @@ Partial Class NewDao
         Me.ChangeTableBordersItem1.Id = 129
         Me.ChangeTableBordersItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsBottomBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsTopBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsLeftBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsRightBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ResetTableCellsAllBordersItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsAllBordersItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsOutsideBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsInsideBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsInsideHorizontalBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableCellsInsideVerticalBorderItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleShowTableGridLinesItem1)})
         Me.ChangeTableBordersItem1.Name = "ChangeTableBordersItem1"
-        ToolTipTitleItem622.Text = "Borders"
-        ToolTipItem582.Text = "Customize the borders of the selected cells."
-        SuperToolTip594.Items.Add(ToolTipTitleItem622)
-        SuperToolTip594.Items.Add(ToolTipItem582)
-        Me.ChangeTableBordersItem1.SuperTip = SuperToolTip594
+        ToolTipTitleItem139.Text = "Borders"
+        ToolTipItem133.Text = "Customize the borders of the selected cells."
+        SuperToolTip133.Items.Add(ToolTipTitleItem139)
+        SuperToolTip133.Items.Add(ToolTipItem133)
+        Me.ChangeTableBordersItem1.SuperTip = SuperToolTip133
         '
         'ToggleTableCellsBottomBorderItem1
         '
@@ -3489,11 +3567,11 @@ Partial Class NewDao
         Me.ToggleTableCellsBottomBorderItem1.Enabled = False
         Me.ToggleTableCellsBottomBorderItem1.Id = 130
         Me.ToggleTableCellsBottomBorderItem1.Name = "ToggleTableCellsBottomBorderItem1"
-        ToolTipTitleItem611.Text = "Bottom Border"
-        ToolTipItem571.Text = "Customize the borders of the selected cells."
-        SuperToolTip583.Items.Add(ToolTipTitleItem611)
-        SuperToolTip583.Items.Add(ToolTipItem571)
-        Me.ToggleTableCellsBottomBorderItem1.SuperTip = SuperToolTip583
+        ToolTipTitleItem128.Text = "Bottom Border"
+        ToolTipItem122.Text = "Customize the borders of the selected cells."
+        SuperToolTip122.Items.Add(ToolTipTitleItem128)
+        SuperToolTip122.Items.Add(ToolTipItem122)
+        Me.ToggleTableCellsBottomBorderItem1.SuperTip = SuperToolTip122
         '
         'ToggleTableCellsTopBorderItem1
         '
@@ -3501,11 +3579,11 @@ Partial Class NewDao
         Me.ToggleTableCellsTopBorderItem1.Enabled = False
         Me.ToggleTableCellsTopBorderItem1.Id = 131
         Me.ToggleTableCellsTopBorderItem1.Name = "ToggleTableCellsTopBorderItem1"
-        ToolTipTitleItem612.Text = "Top Border"
-        ToolTipItem572.Text = "Customize the borders of the selected cells."
-        SuperToolTip584.Items.Add(ToolTipTitleItem612)
-        SuperToolTip584.Items.Add(ToolTipItem572)
-        Me.ToggleTableCellsTopBorderItem1.SuperTip = SuperToolTip584
+        ToolTipTitleItem129.Text = "Top Border"
+        ToolTipItem123.Text = "Customize the borders of the selected cells."
+        SuperToolTip123.Items.Add(ToolTipTitleItem129)
+        SuperToolTip123.Items.Add(ToolTipItem123)
+        Me.ToggleTableCellsTopBorderItem1.SuperTip = SuperToolTip123
         '
         'ToggleTableCellsLeftBorderItem1
         '
@@ -3513,11 +3591,11 @@ Partial Class NewDao
         Me.ToggleTableCellsLeftBorderItem1.Enabled = False
         Me.ToggleTableCellsLeftBorderItem1.Id = 132
         Me.ToggleTableCellsLeftBorderItem1.Name = "ToggleTableCellsLeftBorderItem1"
-        ToolTipTitleItem613.Text = "Left Border"
-        ToolTipItem573.Text = "Customize the borders of the selected cells."
-        SuperToolTip585.Items.Add(ToolTipTitleItem613)
-        SuperToolTip585.Items.Add(ToolTipItem573)
-        Me.ToggleTableCellsLeftBorderItem1.SuperTip = SuperToolTip585
+        ToolTipTitleItem130.Text = "Left Border"
+        ToolTipItem124.Text = "Customize the borders of the selected cells."
+        SuperToolTip124.Items.Add(ToolTipTitleItem130)
+        SuperToolTip124.Items.Add(ToolTipItem124)
+        Me.ToggleTableCellsLeftBorderItem1.SuperTip = SuperToolTip124
         '
         'ToggleTableCellsRightBorderItem1
         '
@@ -3525,11 +3603,11 @@ Partial Class NewDao
         Me.ToggleTableCellsRightBorderItem1.Enabled = False
         Me.ToggleTableCellsRightBorderItem1.Id = 133
         Me.ToggleTableCellsRightBorderItem1.Name = "ToggleTableCellsRightBorderItem1"
-        ToolTipTitleItem614.Text = "Right Border"
-        ToolTipItem574.Text = "Customize the borders of the selected cells."
-        SuperToolTip586.Items.Add(ToolTipTitleItem614)
-        SuperToolTip586.Items.Add(ToolTipItem574)
-        Me.ToggleTableCellsRightBorderItem1.SuperTip = SuperToolTip586
+        ToolTipTitleItem131.Text = "Right Border"
+        ToolTipItem125.Text = "Customize the borders of the selected cells."
+        SuperToolTip125.Items.Add(ToolTipTitleItem131)
+        SuperToolTip125.Items.Add(ToolTipItem125)
+        Me.ToggleTableCellsRightBorderItem1.SuperTip = SuperToolTip125
         '
         'ResetTableCellsAllBordersItem1
         '
@@ -3537,11 +3615,11 @@ Partial Class NewDao
         Me.ResetTableCellsAllBordersItem1.Enabled = False
         Me.ResetTableCellsAllBordersItem1.Id = 134
         Me.ResetTableCellsAllBordersItem1.Name = "ResetTableCellsAllBordersItem1"
-        ToolTipTitleItem615.Text = "No Border"
-        ToolTipItem575.Text = "Customize the borders of the selected cells."
-        SuperToolTip587.Items.Add(ToolTipTitleItem615)
-        SuperToolTip587.Items.Add(ToolTipItem575)
-        Me.ResetTableCellsAllBordersItem1.SuperTip = SuperToolTip587
+        ToolTipTitleItem132.Text = "No Border"
+        ToolTipItem126.Text = "Customize the borders of the selected cells."
+        SuperToolTip126.Items.Add(ToolTipTitleItem132)
+        SuperToolTip126.Items.Add(ToolTipItem126)
+        Me.ResetTableCellsAllBordersItem1.SuperTip = SuperToolTip126
         '
         'ToggleTableCellsAllBordersItem1
         '
@@ -3549,11 +3627,11 @@ Partial Class NewDao
         Me.ToggleTableCellsAllBordersItem1.Enabled = False
         Me.ToggleTableCellsAllBordersItem1.Id = 135
         Me.ToggleTableCellsAllBordersItem1.Name = "ToggleTableCellsAllBordersItem1"
-        ToolTipTitleItem616.Text = "All Borders"
-        ToolTipItem576.Text = "Customize the borders of the selected cells."
-        SuperToolTip588.Items.Add(ToolTipTitleItem616)
-        SuperToolTip588.Items.Add(ToolTipItem576)
-        Me.ToggleTableCellsAllBordersItem1.SuperTip = SuperToolTip588
+        ToolTipTitleItem133.Text = "All Borders"
+        ToolTipItem127.Text = "Customize the borders of the selected cells."
+        SuperToolTip127.Items.Add(ToolTipTitleItem133)
+        SuperToolTip127.Items.Add(ToolTipItem127)
+        Me.ToggleTableCellsAllBordersItem1.SuperTip = SuperToolTip127
         '
         'ToggleTableCellsOutsideBorderItem1
         '
@@ -3561,11 +3639,11 @@ Partial Class NewDao
         Me.ToggleTableCellsOutsideBorderItem1.Enabled = False
         Me.ToggleTableCellsOutsideBorderItem1.Id = 136
         Me.ToggleTableCellsOutsideBorderItem1.Name = "ToggleTableCellsOutsideBorderItem1"
-        ToolTipTitleItem617.Text = "Outside Border"
-        ToolTipItem577.Text = "Customize the borders of the selected cells."
-        SuperToolTip589.Items.Add(ToolTipTitleItem617)
-        SuperToolTip589.Items.Add(ToolTipItem577)
-        Me.ToggleTableCellsOutsideBorderItem1.SuperTip = SuperToolTip589
+        ToolTipTitleItem134.Text = "Outside Border"
+        ToolTipItem128.Text = "Customize the borders of the selected cells."
+        SuperToolTip128.Items.Add(ToolTipTitleItem134)
+        SuperToolTip128.Items.Add(ToolTipItem128)
+        Me.ToggleTableCellsOutsideBorderItem1.SuperTip = SuperToolTip128
         '
         'ToggleTableCellsInsideBorderItem1
         '
@@ -3573,11 +3651,11 @@ Partial Class NewDao
         Me.ToggleTableCellsInsideBorderItem1.Enabled = False
         Me.ToggleTableCellsInsideBorderItem1.Id = 137
         Me.ToggleTableCellsInsideBorderItem1.Name = "ToggleTableCellsInsideBorderItem1"
-        ToolTipTitleItem618.Text = "Inside Border"
-        ToolTipItem578.Text = "Customize the borders of the selected cells."
-        SuperToolTip590.Items.Add(ToolTipTitleItem618)
-        SuperToolTip590.Items.Add(ToolTipItem578)
-        Me.ToggleTableCellsInsideBorderItem1.SuperTip = SuperToolTip590
+        ToolTipTitleItem135.Text = "Inside Border"
+        ToolTipItem129.Text = "Customize the borders of the selected cells."
+        SuperToolTip129.Items.Add(ToolTipTitleItem135)
+        SuperToolTip129.Items.Add(ToolTipItem129)
+        Me.ToggleTableCellsInsideBorderItem1.SuperTip = SuperToolTip129
         '
         'ToggleTableCellsInsideHorizontalBorderItem1
         '
@@ -3585,11 +3663,11 @@ Partial Class NewDao
         Me.ToggleTableCellsInsideHorizontalBorderItem1.Enabled = False
         Me.ToggleTableCellsInsideHorizontalBorderItem1.Id = 138
         Me.ToggleTableCellsInsideHorizontalBorderItem1.Name = "ToggleTableCellsInsideHorizontalBorderItem1"
-        ToolTipTitleItem619.Text = "Inside Horizontal Border"
-        ToolTipItem579.Text = "Customize the borders of the selected cells."
-        SuperToolTip591.Items.Add(ToolTipTitleItem619)
-        SuperToolTip591.Items.Add(ToolTipItem579)
-        Me.ToggleTableCellsInsideHorizontalBorderItem1.SuperTip = SuperToolTip591
+        ToolTipTitleItem136.Text = "Inside Horizontal Border"
+        ToolTipItem130.Text = "Customize the borders of the selected cells."
+        SuperToolTip130.Items.Add(ToolTipTitleItem136)
+        SuperToolTip130.Items.Add(ToolTipItem130)
+        Me.ToggleTableCellsInsideHorizontalBorderItem1.SuperTip = SuperToolTip130
         '
         'ToggleTableCellsInsideVerticalBorderItem1
         '
@@ -3597,11 +3675,11 @@ Partial Class NewDao
         Me.ToggleTableCellsInsideVerticalBorderItem1.Enabled = False
         Me.ToggleTableCellsInsideVerticalBorderItem1.Id = 139
         Me.ToggleTableCellsInsideVerticalBorderItem1.Name = "ToggleTableCellsInsideVerticalBorderItem1"
-        ToolTipTitleItem620.Text = "Inside Vertical Border"
-        ToolTipItem580.Text = "Customize the borders of the selected cells."
-        SuperToolTip592.Items.Add(ToolTipTitleItem620)
-        SuperToolTip592.Items.Add(ToolTipItem580)
-        Me.ToggleTableCellsInsideVerticalBorderItem1.SuperTip = SuperToolTip592
+        ToolTipTitleItem137.Text = "Inside Vertical Border"
+        ToolTipItem131.Text = "Customize the borders of the selected cells."
+        SuperToolTip131.Items.Add(ToolTipTitleItem137)
+        SuperToolTip131.Items.Add(ToolTipItem131)
+        Me.ToggleTableCellsInsideVerticalBorderItem1.SuperTip = SuperToolTip131
         '
         'ToggleShowTableGridLinesItem1
         '
@@ -3609,11 +3687,11 @@ Partial Class NewDao
         Me.ToggleShowTableGridLinesItem1.Enabled = False
         Me.ToggleShowTableGridLinesItem1.Id = 140
         Me.ToggleShowTableGridLinesItem1.Name = "ToggleShowTableGridLinesItem1"
-        ToolTipTitleItem621.Text = "View Gridlines"
-        ToolTipItem581.Text = "Show or hide the gridlines within the table."
-        SuperToolTip593.Items.Add(ToolTipTitleItem621)
-        SuperToolTip593.Items.Add(ToolTipItem581)
-        Me.ToggleShowTableGridLinesItem1.SuperTip = SuperToolTip593
+        ToolTipTitleItem138.Text = "View Gridlines"
+        ToolTipItem132.Text = "Show or hide the gridlines within the table."
+        SuperToolTip132.Items.Add(ToolTipTitleItem138)
+        SuperToolTip132.Items.Add(ToolTipItem132)
+        Me.ToggleShowTableGridLinesItem1.SuperTip = SuperToolTip132
         '
         'ChangeTableBorderLineStyleItem1
         '
@@ -3621,10 +3699,10 @@ Partial Class NewDao
         Me.ChangeTableBorderLineStyleItem1.Enabled = False
         Me.ChangeTableBorderLineStyleItem1.Id = 141
         Me.ChangeTableBorderLineStyleItem1.Name = "ChangeTableBorderLineStyleItem1"
-        ToolTipItem583.Text = "Change the style of the line used to draw borders."
-        SuperToolTip595.Items.Add(ToolTipTitleItem623)
-        SuperToolTip595.Items.Add(ToolTipItem583)
-        Me.ChangeTableBorderLineStyleItem1.SuperTip = SuperToolTip595
+        ToolTipItem134.Text = "Change the style of the line used to draw borders."
+        SuperToolTip134.Items.Add(ToolTipTitleItem140)
+        SuperToolTip134.Items.Add(ToolTipItem134)
+        Me.ChangeTableBorderLineStyleItem1.SuperTip = SuperToolTip134
         '
         'RepositoryItemBorderLineStyle1
         '
@@ -3639,10 +3717,10 @@ Partial Class NewDao
         Me.ChangeTableBorderLineWeightItem1.Enabled = False
         Me.ChangeTableBorderLineWeightItem1.Id = 142
         Me.ChangeTableBorderLineWeightItem1.Name = "ChangeTableBorderLineWeightItem1"
-        ToolTipItem360.Text = "Change the width of the line used to draw borders."
-        SuperToolTip366.Items.Add(ToolTipTitleItem383)
-        SuperToolTip366.Items.Add(ToolTipItem360)
-        Me.ChangeTableBorderLineWeightItem1.SuperTip = SuperToolTip366
+        ToolTipItem135.Text = "Change the width of the line used to draw borders."
+        SuperToolTip135.Items.Add(ToolTipTitleItem141)
+        SuperToolTip135.Items.Add(ToolTipItem135)
+        Me.ChangeTableBorderLineWeightItem1.SuperTip = SuperToolTip135
         '
         'RepositoryItemBorderLineWeight1
         '
@@ -3657,11 +3735,11 @@ Partial Class NewDao
         Me.ChangeTableBorderColorItem1.Enabled = False
         Me.ChangeTableBorderColorItem1.Id = 143
         Me.ChangeTableBorderColorItem1.Name = "ChangeTableBorderColorItem1"
-        ToolTipTitleItem140.Text = "Pen Color"
-        ToolTipItem134.Text = "Change the pen color."
-        SuperToolTip134.Items.Add(ToolTipTitleItem140)
-        SuperToolTip134.Items.Add(ToolTipItem134)
-        Me.ChangeTableBorderColorItem1.SuperTip = SuperToolTip134
+        ToolTipTitleItem142.Text = "Pen Color"
+        ToolTipItem136.Text = "Change the pen color."
+        SuperToolTip136.Items.Add(ToolTipTitleItem142)
+        SuperToolTip136.Items.Add(ToolTipItem136)
+        Me.ChangeTableBorderColorItem1.SuperTip = SuperToolTip136
         '
         'SelectTableElementsItem1
         '
@@ -3670,11 +3748,11 @@ Partial Class NewDao
         Me.SelectTableElementsItem1.Id = 144
         Me.SelectTableElementsItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.SelectTableCellItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SelectTableColumnItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SelectTableRowItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SelectTableItem1)})
         Me.SelectTableElementsItem1.Name = "SelectTableElementsItem1"
-        ToolTipTitleItem628.Text = "Select"
-        ToolTipItem588.Text = "Select the current cell, row, column, or entire table"
-        SuperToolTip600.Items.Add(ToolTipTitleItem628)
-        SuperToolTip600.Items.Add(ToolTipItem588)
-        Me.SelectTableElementsItem1.SuperTip = SuperToolTip600
+        ToolTipTitleItem147.Text = "Select"
+        ToolTipItem141.Text = "Select the current cell, row, column, or entire table"
+        SuperToolTip141.Items.Add(ToolTipTitleItem147)
+        SuperToolTip141.Items.Add(ToolTipItem141)
+        Me.SelectTableElementsItem1.SuperTip = SuperToolTip141
         '
         'SelectTableCellItem1
         '
@@ -3682,11 +3760,11 @@ Partial Class NewDao
         Me.SelectTableCellItem1.Enabled = False
         Me.SelectTableCellItem1.Id = 145
         Me.SelectTableCellItem1.Name = "SelectTableCellItem1"
-        ToolTipTitleItem624.Text = "Select Cell"
-        ToolTipItem584.Text = "Select Cell"
-        SuperToolTip596.Items.Add(ToolTipTitleItem624)
-        SuperToolTip596.Items.Add(ToolTipItem584)
-        Me.SelectTableCellItem1.SuperTip = SuperToolTip596
+        ToolTipTitleItem143.Text = "Select Cell"
+        ToolTipItem137.Text = "Select Cell"
+        SuperToolTip137.Items.Add(ToolTipTitleItem143)
+        SuperToolTip137.Items.Add(ToolTipItem137)
+        Me.SelectTableCellItem1.SuperTip = SuperToolTip137
         '
         'SelectTableColumnItem1
         '
@@ -3694,11 +3772,11 @@ Partial Class NewDao
         Me.SelectTableColumnItem1.Enabled = False
         Me.SelectTableColumnItem1.Id = 146
         Me.SelectTableColumnItem1.Name = "SelectTableColumnItem1"
-        ToolTipTitleItem625.Text = "Select Column"
-        ToolTipItem585.Text = "Select Column"
-        SuperToolTip597.Items.Add(ToolTipTitleItem625)
-        SuperToolTip597.Items.Add(ToolTipItem585)
-        Me.SelectTableColumnItem1.SuperTip = SuperToolTip597
+        ToolTipTitleItem144.Text = "Select Column"
+        ToolTipItem138.Text = "Select Column"
+        SuperToolTip138.Items.Add(ToolTipTitleItem144)
+        SuperToolTip138.Items.Add(ToolTipItem138)
+        Me.SelectTableColumnItem1.SuperTip = SuperToolTip138
         '
         'SelectTableRowItem1
         '
@@ -3706,11 +3784,11 @@ Partial Class NewDao
         Me.SelectTableRowItem1.Enabled = False
         Me.SelectTableRowItem1.Id = 147
         Me.SelectTableRowItem1.Name = "SelectTableRowItem1"
-        ToolTipTitleItem626.Text = "Select Row"
-        ToolTipItem586.Text = "Select Row"
-        SuperToolTip598.Items.Add(ToolTipTitleItem626)
-        SuperToolTip598.Items.Add(ToolTipItem586)
-        Me.SelectTableRowItem1.SuperTip = SuperToolTip598
+        ToolTipTitleItem145.Text = "Select Row"
+        ToolTipItem139.Text = "Select Row"
+        SuperToolTip139.Items.Add(ToolTipTitleItem145)
+        SuperToolTip139.Items.Add(ToolTipItem139)
+        Me.SelectTableRowItem1.SuperTip = SuperToolTip139
         '
         'SelectTableItem1
         '
@@ -3718,11 +3796,11 @@ Partial Class NewDao
         Me.SelectTableItem1.Enabled = False
         Me.SelectTableItem1.Id = 148
         Me.SelectTableItem1.Name = "SelectTableItem1"
-        ToolTipTitleItem627.Text = "Select Table"
-        ToolTipItem587.Text = "Select Table"
-        SuperToolTip599.Items.Add(ToolTipTitleItem627)
-        SuperToolTip599.Items.Add(ToolTipItem587)
-        Me.SelectTableItem1.SuperTip = SuperToolTip599
+        ToolTipTitleItem146.Text = "Select Table"
+        ToolTipItem140.Text = "Select Table"
+        SuperToolTip140.Items.Add(ToolTipTitleItem146)
+        SuperToolTip140.Items.Add(ToolTipItem140)
+        Me.SelectTableItem1.SuperTip = SuperToolTip140
         '
         'ShowTablePropertiesFormItem1
         '
@@ -3730,12 +3808,12 @@ Partial Class NewDao
         Me.ShowTablePropertiesFormItem1.Enabled = False
         Me.ShowTablePropertiesFormItem1.Id = 149
         Me.ShowTablePropertiesFormItem1.Name = "ShowTablePropertiesFormItem1"
-        ToolTipTitleItem629.Text = "Properties"
-        ToolTipItem589.Text = "Show the Table Properties dialog box to change advanced table properties, such as" &
+        ToolTipTitleItem148.Text = "Properties"
+        ToolTipItem142.Text = "Show the Table Properties dialog box to change advanced table properties, such as" &
     " indentation and text wrapping options."
-        SuperToolTip601.Items.Add(ToolTipTitleItem629)
-        SuperToolTip601.Items.Add(ToolTipItem589)
-        Me.ShowTablePropertiesFormItem1.SuperTip = SuperToolTip601
+        SuperToolTip142.Items.Add(ToolTipTitleItem148)
+        SuperToolTip142.Items.Add(ToolTipItem142)
+        Me.ShowTablePropertiesFormItem1.SuperTip = SuperToolTip142
         '
         'DeleteTableElementsItem1
         '
@@ -3744,11 +3822,11 @@ Partial Class NewDao
         Me.DeleteTableElementsItem1.Id = 150
         Me.DeleteTableElementsItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.ShowDeleteTableCellsFormItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.DeleteTableColumnsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.DeleteTableRowsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.DeleteTableItem1)})
         Me.DeleteTableElementsItem1.Name = "DeleteTableElementsItem1"
-        ToolTipTitleItem634.Text = "Delete"
-        ToolTipItem594.Text = "Delete rows, columns, cells, or the entire Table"
-        SuperToolTip606.Items.Add(ToolTipTitleItem634)
-        SuperToolTip606.Items.Add(ToolTipItem594)
-        Me.DeleteTableElementsItem1.SuperTip = SuperToolTip606
+        ToolTipTitleItem153.Text = "Delete"
+        ToolTipItem147.Text = "Delete rows, columns, cells, or the entire Table"
+        SuperToolTip147.Items.Add(ToolTipTitleItem153)
+        SuperToolTip147.Items.Add(ToolTipItem147)
+        Me.DeleteTableElementsItem1.SuperTip = SuperToolTip147
         '
         'ShowDeleteTableCellsFormItem1
         '
@@ -3756,11 +3834,11 @@ Partial Class NewDao
         Me.ShowDeleteTableCellsFormItem1.Enabled = False
         Me.ShowDeleteTableCellsFormItem1.Id = 151
         Me.ShowDeleteTableCellsFormItem1.Name = "ShowDeleteTableCellsFormItem1"
-        ToolTipTitleItem630.Text = "Delete Cells"
-        ToolTipItem590.Text = "Delete rows, columns, or cells"
-        SuperToolTip602.Items.Add(ToolTipTitleItem630)
-        SuperToolTip602.Items.Add(ToolTipItem590)
-        Me.ShowDeleteTableCellsFormItem1.SuperTip = SuperToolTip602
+        ToolTipTitleItem149.Text = "Delete Cells"
+        ToolTipItem143.Text = "Delete rows, columns, or cells"
+        SuperToolTip143.Items.Add(ToolTipTitleItem149)
+        SuperToolTip143.Items.Add(ToolTipItem143)
+        Me.ShowDeleteTableCellsFormItem1.SuperTip = SuperToolTip143
         '
         'DeleteTableColumnsItem1
         '
@@ -3768,11 +3846,11 @@ Partial Class NewDao
         Me.DeleteTableColumnsItem1.Enabled = False
         Me.DeleteTableColumnsItem1.Id = 152
         Me.DeleteTableColumnsItem1.Name = "DeleteTableColumnsItem1"
-        ToolTipTitleItem631.Text = "Delete Columns"
-        ToolTipItem591.Text = "Delete Columns"
-        SuperToolTip603.Items.Add(ToolTipTitleItem631)
-        SuperToolTip603.Items.Add(ToolTipItem591)
-        Me.DeleteTableColumnsItem1.SuperTip = SuperToolTip603
+        ToolTipTitleItem150.Text = "Delete Columns"
+        ToolTipItem144.Text = "Delete Columns"
+        SuperToolTip144.Items.Add(ToolTipTitleItem150)
+        SuperToolTip144.Items.Add(ToolTipItem144)
+        Me.DeleteTableColumnsItem1.SuperTip = SuperToolTip144
         '
         'DeleteTableRowsItem1
         '
@@ -3780,11 +3858,11 @@ Partial Class NewDao
         Me.DeleteTableRowsItem1.Enabled = False
         Me.DeleteTableRowsItem1.Id = 153
         Me.DeleteTableRowsItem1.Name = "DeleteTableRowsItem1"
-        ToolTipTitleItem632.Text = "Delete Rows"
-        ToolTipItem592.Text = "Delete Rows"
-        SuperToolTip604.Items.Add(ToolTipTitleItem632)
-        SuperToolTip604.Items.Add(ToolTipItem592)
-        Me.DeleteTableRowsItem1.SuperTip = SuperToolTip604
+        ToolTipTitleItem151.Text = "Delete Rows"
+        ToolTipItem145.Text = "Delete Rows"
+        SuperToolTip145.Items.Add(ToolTipTitleItem151)
+        SuperToolTip145.Items.Add(ToolTipItem145)
+        Me.DeleteTableRowsItem1.SuperTip = SuperToolTip145
         '
         'DeleteTableItem1
         '
@@ -3792,11 +3870,11 @@ Partial Class NewDao
         Me.DeleteTableItem1.Enabled = False
         Me.DeleteTableItem1.Id = 154
         Me.DeleteTableItem1.Name = "DeleteTableItem1"
-        ToolTipTitleItem633.Text = "Delete Table"
-        ToolTipItem593.Text = "Delete Entire Table"
-        SuperToolTip605.Items.Add(ToolTipTitleItem633)
-        SuperToolTip605.Items.Add(ToolTipItem593)
-        Me.DeleteTableItem1.SuperTip = SuperToolTip605
+        ToolTipTitleItem152.Text = "Delete Table"
+        ToolTipItem146.Text = "Delete Entire Table"
+        SuperToolTip146.Items.Add(ToolTipTitleItem152)
+        SuperToolTip146.Items.Add(ToolTipItem146)
+        Me.DeleteTableItem1.SuperTip = SuperToolTip146
         '
         'InsertTableRowAboveItem1
         '
@@ -3804,11 +3882,11 @@ Partial Class NewDao
         Me.InsertTableRowAboveItem1.Enabled = False
         Me.InsertTableRowAboveItem1.Id = 155
         Me.InsertTableRowAboveItem1.Name = "InsertTableRowAboveItem1"
-        ToolTipTitleItem635.Text = "Insert Rows Above"
-        ToolTipItem595.Text = "Add a new row directly above the selected row."
-        SuperToolTip607.Items.Add(ToolTipTitleItem635)
-        SuperToolTip607.Items.Add(ToolTipItem595)
-        Me.InsertTableRowAboveItem1.SuperTip = SuperToolTip607
+        ToolTipTitleItem154.Text = "Insert Rows Above"
+        ToolTipItem148.Text = "Add a new row directly above the selected row."
+        SuperToolTip148.Items.Add(ToolTipTitleItem154)
+        SuperToolTip148.Items.Add(ToolTipItem148)
+        Me.InsertTableRowAboveItem1.SuperTip = SuperToolTip148
         '
         'InsertTableRowBelowItem1
         '
@@ -3816,11 +3894,11 @@ Partial Class NewDao
         Me.InsertTableRowBelowItem1.Enabled = False
         Me.InsertTableRowBelowItem1.Id = 156
         Me.InsertTableRowBelowItem1.Name = "InsertTableRowBelowItem1"
-        ToolTipTitleItem636.Text = "Insert Rows Below"
-        ToolTipItem596.Text = "Add a new row directly below the selected row."
-        SuperToolTip608.Items.Add(ToolTipTitleItem636)
-        SuperToolTip608.Items.Add(ToolTipItem596)
-        Me.InsertTableRowBelowItem1.SuperTip = SuperToolTip608
+        ToolTipTitleItem155.Text = "Insert Rows Below"
+        ToolTipItem149.Text = "Add a new row directly below the selected row."
+        SuperToolTip149.Items.Add(ToolTipTitleItem155)
+        SuperToolTip149.Items.Add(ToolTipItem149)
+        Me.InsertTableRowBelowItem1.SuperTip = SuperToolTip149
         '
         'InsertTableColumnToLeftItem1
         '
@@ -3828,11 +3906,11 @@ Partial Class NewDao
         Me.InsertTableColumnToLeftItem1.Enabled = False
         Me.InsertTableColumnToLeftItem1.Id = 157
         Me.InsertTableColumnToLeftItem1.Name = "InsertTableColumnToLeftItem1"
-        ToolTipTitleItem637.Text = "Insert Columns to the Left"
-        ToolTipItem597.Text = "Add a new column directly to the left of the selected column"
-        SuperToolTip609.Items.Add(ToolTipTitleItem637)
-        SuperToolTip609.Items.Add(ToolTipItem597)
-        Me.InsertTableColumnToLeftItem1.SuperTip = SuperToolTip609
+        ToolTipTitleItem156.Text = "Insert Columns to the Left"
+        ToolTipItem150.Text = "Add a new column directly to the left of the selected column"
+        SuperToolTip150.Items.Add(ToolTipTitleItem156)
+        SuperToolTip150.Items.Add(ToolTipItem150)
+        Me.InsertTableColumnToLeftItem1.SuperTip = SuperToolTip150
         '
         'InsertTableColumnToRightItem1
         '
@@ -3840,11 +3918,11 @@ Partial Class NewDao
         Me.InsertTableColumnToRightItem1.Enabled = False
         Me.InsertTableColumnToRightItem1.Id = 158
         Me.InsertTableColumnToRightItem1.Name = "InsertTableColumnToRightItem1"
-        ToolTipTitleItem638.Text = "Insert Columns to the Right"
-        ToolTipItem598.Text = "Add a new column directly to the right of the selected column"
-        SuperToolTip610.Items.Add(ToolTipTitleItem638)
-        SuperToolTip610.Items.Add(ToolTipItem598)
-        Me.InsertTableColumnToRightItem1.SuperTip = SuperToolTip610
+        ToolTipTitleItem157.Text = "Insert Columns to the Right"
+        ToolTipItem151.Text = "Add a new column directly to the right of the selected column"
+        SuperToolTip151.Items.Add(ToolTipTitleItem157)
+        SuperToolTip151.Items.Add(ToolTipItem151)
+        Me.InsertTableColumnToRightItem1.SuperTip = SuperToolTip151
         '
         'MergeTableCellsItem1
         '
@@ -3852,11 +3930,11 @@ Partial Class NewDao
         Me.MergeTableCellsItem1.Enabled = False
         Me.MergeTableCellsItem1.Id = 159
         Me.MergeTableCellsItem1.Name = "MergeTableCellsItem1"
-        ToolTipTitleItem639.Text = "Merge Cells"
-        ToolTipItem599.Text = "Merge the selected cells into one cell."
-        SuperToolTip611.Items.Add(ToolTipTitleItem639)
-        SuperToolTip611.Items.Add(ToolTipItem599)
-        Me.MergeTableCellsItem1.SuperTip = SuperToolTip611
+        ToolTipTitleItem158.Text = "Merge Cells"
+        ToolTipItem152.Text = "Merge the selected cells into one cell."
+        SuperToolTip152.Items.Add(ToolTipTitleItem158)
+        SuperToolTip152.Items.Add(ToolTipItem152)
+        Me.MergeTableCellsItem1.SuperTip = SuperToolTip152
         '
         'ShowSplitTableCellsForm1
         '
@@ -3864,11 +3942,11 @@ Partial Class NewDao
         Me.ShowSplitTableCellsForm1.Enabled = False
         Me.ShowSplitTableCellsForm1.Id = 160
         Me.ShowSplitTableCellsForm1.Name = "ShowSplitTableCellsForm1"
-        ToolTipTitleItem640.Text = "Split Cells"
-        ToolTipItem600.Text = "Split the selected cells into multiple new cells"
-        SuperToolTip612.Items.Add(ToolTipTitleItem640)
-        SuperToolTip612.Items.Add(ToolTipItem600)
-        Me.ShowSplitTableCellsForm1.SuperTip = SuperToolTip612
+        ToolTipTitleItem159.Text = "Split Cells"
+        ToolTipItem153.Text = "Split the selected cells into multiple new cells"
+        SuperToolTip153.Items.Add(ToolTipTitleItem159)
+        SuperToolTip153.Items.Add(ToolTipItem153)
+        Me.ShowSplitTableCellsForm1.SuperTip = SuperToolTip153
         '
         'SplitTableItem1
         '
@@ -3876,12 +3954,12 @@ Partial Class NewDao
         Me.SplitTableItem1.Enabled = False
         Me.SplitTableItem1.Id = 161
         Me.SplitTableItem1.Name = "SplitTableItem1"
-        ToolTipTitleItem641.Text = "Split Table"
-        ToolTipItem601.Text = "Split the table into two tables." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "The selected row will become the first row of t" &
+        ToolTipTitleItem160.Text = "Split Table"
+        ToolTipItem154.Text = "Split the table into two tables." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "The selected row will become the first row of t" &
     "he new table."
-        SuperToolTip613.Items.Add(ToolTipTitleItem641)
-        SuperToolTip613.Items.Add(ToolTipItem601)
-        Me.SplitTableItem1.SuperTip = SuperToolTip613
+        SuperToolTip154.Items.Add(ToolTipTitleItem160)
+        SuperToolTip154.Items.Add(ToolTipItem154)
+        Me.SplitTableItem1.SuperTip = SuperToolTip154
         '
         'ToggleTableAutoFitItem1
         '
@@ -3890,13 +3968,13 @@ Partial Class NewDao
         Me.ToggleTableAutoFitItem1.Id = 162
         Me.ToggleTableAutoFitItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableAutoFitContentsItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableAutoFitWindowItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.ToggleTableFixedColumnWidthItem1)})
         Me.ToggleTableAutoFitItem1.Name = "ToggleTableAutoFitItem1"
-        ToolTipTitleItem645.Text = "AutoFit"
-        ToolTipItem605.Text = "Automatically resize the column widths based on the text in them." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can set " &
+        ToolTipTitleItem164.Text = "AutoFit"
+        ToolTipItem158.Text = "Automatically resize the column widths based on the text in them." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "You can set " &
     "the table width based on the window size or convert it back to use fixed column " &
     "widths."
-        SuperToolTip617.Items.Add(ToolTipTitleItem645)
-        SuperToolTip617.Items.Add(ToolTipItem605)
-        Me.ToggleTableAutoFitItem1.SuperTip = SuperToolTip617
+        SuperToolTip158.Items.Add(ToolTipTitleItem164)
+        SuperToolTip158.Items.Add(ToolTipItem158)
+        Me.ToggleTableAutoFitItem1.SuperTip = SuperToolTip158
         '
         'ToggleTableAutoFitContentsItem1
         '
@@ -3904,11 +3982,11 @@ Partial Class NewDao
         Me.ToggleTableAutoFitContentsItem1.Enabled = False
         Me.ToggleTableAutoFitContentsItem1.Id = 163
         Me.ToggleTableAutoFitContentsItem1.Name = "ToggleTableAutoFitContentsItem1"
-        ToolTipTitleItem642.Text = "AutoFit Contents"
-        ToolTipItem602.Text = "Auto-Fit Table to the contents."
-        SuperToolTip614.Items.Add(ToolTipTitleItem642)
-        SuperToolTip614.Items.Add(ToolTipItem602)
-        Me.ToggleTableAutoFitContentsItem1.SuperTip = SuperToolTip614
+        ToolTipTitleItem161.Text = "AutoFit Contents"
+        ToolTipItem155.Text = "Auto-Fit Table to the contents."
+        SuperToolTip155.Items.Add(ToolTipTitleItem161)
+        SuperToolTip155.Items.Add(ToolTipItem155)
+        Me.ToggleTableAutoFitContentsItem1.SuperTip = SuperToolTip155
         '
         'ToggleTableAutoFitWindowItem1
         '
@@ -3916,11 +3994,11 @@ Partial Class NewDao
         Me.ToggleTableAutoFitWindowItem1.Enabled = False
         Me.ToggleTableAutoFitWindowItem1.Id = 164
         Me.ToggleTableAutoFitWindowItem1.Name = "ToggleTableAutoFitWindowItem1"
-        ToolTipTitleItem643.Text = "AutoFit Window"
-        ToolTipItem603.Text = "Auto-Fit Table to the window."
-        SuperToolTip615.Items.Add(ToolTipTitleItem643)
-        SuperToolTip615.Items.Add(ToolTipItem603)
-        Me.ToggleTableAutoFitWindowItem1.SuperTip = SuperToolTip615
+        ToolTipTitleItem162.Text = "AutoFit Window"
+        ToolTipItem156.Text = "Auto-Fit Table to the window."
+        SuperToolTip156.Items.Add(ToolTipTitleItem162)
+        SuperToolTip156.Items.Add(ToolTipItem156)
+        Me.ToggleTableAutoFitWindowItem1.SuperTip = SuperToolTip156
         '
         'ToggleTableFixedColumnWidthItem1
         '
@@ -3928,11 +4006,11 @@ Partial Class NewDao
         Me.ToggleTableFixedColumnWidthItem1.Enabled = False
         Me.ToggleTableFixedColumnWidthItem1.Id = 165
         Me.ToggleTableFixedColumnWidthItem1.Name = "ToggleTableFixedColumnWidthItem1"
-        ToolTipTitleItem644.Text = "Fixed Column Width"
-        ToolTipItem604.Text = "Set table size to a fixed width."
-        SuperToolTip616.Items.Add(ToolTipTitleItem644)
-        SuperToolTip616.Items.Add(ToolTipItem604)
-        Me.ToggleTableFixedColumnWidthItem1.SuperTip = SuperToolTip616
+        ToolTipTitleItem163.Text = "Fixed Column Width"
+        ToolTipItem157.Text = "Set table size to a fixed width."
+        SuperToolTip157.Items.Add(ToolTipTitleItem163)
+        SuperToolTip157.Items.Add(ToolTipItem157)
+        Me.ToggleTableFixedColumnWidthItem1.SuperTip = SuperToolTip157
         '
         'ToggleTableCellsTopLeftAlignmentItem1
         '
@@ -3940,11 +4018,11 @@ Partial Class NewDao
         Me.ToggleTableCellsTopLeftAlignmentItem1.Enabled = False
         Me.ToggleTableCellsTopLeftAlignmentItem1.Id = 166
         Me.ToggleTableCellsTopLeftAlignmentItem1.Name = "ToggleTableCellsTopLeftAlignmentItem1"
-        ToolTipTitleItem646.Text = "Align Top Left"
-        ToolTipItem606.Text = "Align text to the top left corner of the cell."
-        SuperToolTip618.Items.Add(ToolTipTitleItem646)
-        SuperToolTip618.Items.Add(ToolTipItem606)
-        Me.ToggleTableCellsTopLeftAlignmentItem1.SuperTip = SuperToolTip618
+        ToolTipTitleItem165.Text = "Align Top Left"
+        ToolTipItem159.Text = "Align text to the top left corner of the cell."
+        SuperToolTip159.Items.Add(ToolTipTitleItem165)
+        SuperToolTip159.Items.Add(ToolTipItem159)
+        Me.ToggleTableCellsTopLeftAlignmentItem1.SuperTip = SuperToolTip159
         '
         'ToggleTableCellsMiddleLeftAlignmentItem1
         '
@@ -3952,11 +4030,11 @@ Partial Class NewDao
         Me.ToggleTableCellsMiddleLeftAlignmentItem1.Enabled = False
         Me.ToggleTableCellsMiddleLeftAlignmentItem1.Id = 167
         Me.ToggleTableCellsMiddleLeftAlignmentItem1.Name = "ToggleTableCellsMiddleLeftAlignmentItem1"
-        ToolTipTitleItem647.Text = "Align Center Left"
-        ToolTipItem607.Text = "Center text vertically and align it to the left side of the cell."
-        SuperToolTip619.Items.Add(ToolTipTitleItem647)
-        SuperToolTip619.Items.Add(ToolTipItem607)
-        Me.ToggleTableCellsMiddleLeftAlignmentItem1.SuperTip = SuperToolTip619
+        ToolTipTitleItem166.Text = "Align Center Left"
+        ToolTipItem160.Text = "Center text vertically and align it to the left side of the cell."
+        SuperToolTip160.Items.Add(ToolTipTitleItem166)
+        SuperToolTip160.Items.Add(ToolTipItem160)
+        Me.ToggleTableCellsMiddleLeftAlignmentItem1.SuperTip = SuperToolTip160
         '
         'ToggleTableCellsBottomLeftAlignmentItem1
         '
@@ -3964,11 +4042,11 @@ Partial Class NewDao
         Me.ToggleTableCellsBottomLeftAlignmentItem1.Enabled = False
         Me.ToggleTableCellsBottomLeftAlignmentItem1.Id = 168
         Me.ToggleTableCellsBottomLeftAlignmentItem1.Name = "ToggleTableCellsBottomLeftAlignmentItem1"
-        ToolTipTitleItem648.Text = "Align Bottom Left"
-        ToolTipItem608.Text = "Align text to the bottom left corner of the cell."
-        SuperToolTip620.Items.Add(ToolTipTitleItem648)
-        SuperToolTip620.Items.Add(ToolTipItem608)
-        Me.ToggleTableCellsBottomLeftAlignmentItem1.SuperTip = SuperToolTip620
+        ToolTipTitleItem167.Text = "Align Bottom Left"
+        ToolTipItem161.Text = "Align text to the bottom left corner of the cell."
+        SuperToolTip161.Items.Add(ToolTipTitleItem167)
+        SuperToolTip161.Items.Add(ToolTipItem161)
+        Me.ToggleTableCellsBottomLeftAlignmentItem1.SuperTip = SuperToolTip161
         '
         'ToggleTableCellsTopCenterAlignmentItem1
         '
@@ -3976,11 +4054,11 @@ Partial Class NewDao
         Me.ToggleTableCellsTopCenterAlignmentItem1.Enabled = False
         Me.ToggleTableCellsTopCenterAlignmentItem1.Id = 169
         Me.ToggleTableCellsTopCenterAlignmentItem1.Name = "ToggleTableCellsTopCenterAlignmentItem1"
-        ToolTipTitleItem649.Text = "Align Top Center"
-        ToolTipItem609.Text = "Center text and align it to the top of the cell."
-        SuperToolTip621.Items.Add(ToolTipTitleItem649)
-        SuperToolTip621.Items.Add(ToolTipItem609)
-        Me.ToggleTableCellsTopCenterAlignmentItem1.SuperTip = SuperToolTip621
+        ToolTipTitleItem168.Text = "Align Top Center"
+        ToolTipItem162.Text = "Center text and align it to the top of the cell."
+        SuperToolTip162.Items.Add(ToolTipTitleItem168)
+        SuperToolTip162.Items.Add(ToolTipItem162)
+        Me.ToggleTableCellsTopCenterAlignmentItem1.SuperTip = SuperToolTip162
         '
         'ToggleTableCellsMiddleCenterAlignmentItem1
         '
@@ -3988,11 +4066,11 @@ Partial Class NewDao
         Me.ToggleTableCellsMiddleCenterAlignmentItem1.Enabled = False
         Me.ToggleTableCellsMiddleCenterAlignmentItem1.Id = 170
         Me.ToggleTableCellsMiddleCenterAlignmentItem1.Name = "ToggleTableCellsMiddleCenterAlignmentItem1"
-        ToolTipTitleItem650.Text = "Align Center"
-        ToolTipItem610.Text = "Center text horizontally and vertically within the cell."
-        SuperToolTip622.Items.Add(ToolTipTitleItem650)
-        SuperToolTip622.Items.Add(ToolTipItem610)
-        Me.ToggleTableCellsMiddleCenterAlignmentItem1.SuperTip = SuperToolTip622
+        ToolTipTitleItem169.Text = "Align Center"
+        ToolTipItem163.Text = "Center text horizontally and vertically within the cell."
+        SuperToolTip163.Items.Add(ToolTipTitleItem169)
+        SuperToolTip163.Items.Add(ToolTipItem163)
+        Me.ToggleTableCellsMiddleCenterAlignmentItem1.SuperTip = SuperToolTip163
         '
         'ToggleTableCellsBottomCenterAlignmentItem1
         '
@@ -4000,11 +4078,11 @@ Partial Class NewDao
         Me.ToggleTableCellsBottomCenterAlignmentItem1.Enabled = False
         Me.ToggleTableCellsBottomCenterAlignmentItem1.Id = 171
         Me.ToggleTableCellsBottomCenterAlignmentItem1.Name = "ToggleTableCellsBottomCenterAlignmentItem1"
-        ToolTipTitleItem651.Text = "Align Bottom Center"
-        ToolTipItem611.Text = "Center text and align it to the bottom of the cell."
-        SuperToolTip623.Items.Add(ToolTipTitleItem651)
-        SuperToolTip623.Items.Add(ToolTipItem611)
-        Me.ToggleTableCellsBottomCenterAlignmentItem1.SuperTip = SuperToolTip623
+        ToolTipTitleItem170.Text = "Align Bottom Center"
+        ToolTipItem164.Text = "Center text and align it to the bottom of the cell."
+        SuperToolTip164.Items.Add(ToolTipTitleItem170)
+        SuperToolTip164.Items.Add(ToolTipItem164)
+        Me.ToggleTableCellsBottomCenterAlignmentItem1.SuperTip = SuperToolTip164
         '
         'ToggleTableCellsTopRightAlignmentItem1
         '
@@ -4012,11 +4090,11 @@ Partial Class NewDao
         Me.ToggleTableCellsTopRightAlignmentItem1.Enabled = False
         Me.ToggleTableCellsTopRightAlignmentItem1.Id = 172
         Me.ToggleTableCellsTopRightAlignmentItem1.Name = "ToggleTableCellsTopRightAlignmentItem1"
-        ToolTipTitleItem652.Text = "Align Top Right"
-        ToolTipItem612.Text = "Align text to the top right corner of the cell."
-        SuperToolTip624.Items.Add(ToolTipTitleItem652)
-        SuperToolTip624.Items.Add(ToolTipItem612)
-        Me.ToggleTableCellsTopRightAlignmentItem1.SuperTip = SuperToolTip624
+        ToolTipTitleItem171.Text = "Align Top Right"
+        ToolTipItem165.Text = "Align text to the top right corner of the cell."
+        SuperToolTip165.Items.Add(ToolTipTitleItem171)
+        SuperToolTip165.Items.Add(ToolTipItem165)
+        Me.ToggleTableCellsTopRightAlignmentItem1.SuperTip = SuperToolTip165
         '
         'ToggleTableCellsMiddleRightAlignmentItem1
         '
@@ -4024,11 +4102,11 @@ Partial Class NewDao
         Me.ToggleTableCellsMiddleRightAlignmentItem1.Enabled = False
         Me.ToggleTableCellsMiddleRightAlignmentItem1.Id = 173
         Me.ToggleTableCellsMiddleRightAlignmentItem1.Name = "ToggleTableCellsMiddleRightAlignmentItem1"
-        ToolTipTitleItem653.Text = "Align Center Right"
-        ToolTipItem613.Text = "Center text vertically and align it to the right side of the cell."
-        SuperToolTip625.Items.Add(ToolTipTitleItem653)
-        SuperToolTip625.Items.Add(ToolTipItem613)
-        Me.ToggleTableCellsMiddleRightAlignmentItem1.SuperTip = SuperToolTip625
+        ToolTipTitleItem172.Text = "Align Center Right"
+        ToolTipItem166.Text = "Center text vertically and align it to the right side of the cell."
+        SuperToolTip166.Items.Add(ToolTipTitleItem172)
+        SuperToolTip166.Items.Add(ToolTipItem166)
+        Me.ToggleTableCellsMiddleRightAlignmentItem1.SuperTip = SuperToolTip166
         '
         'ToggleTableCellsBottomRightAlignmentItem1
         '
@@ -4036,11 +4114,11 @@ Partial Class NewDao
         Me.ToggleTableCellsBottomRightAlignmentItem1.Enabled = False
         Me.ToggleTableCellsBottomRightAlignmentItem1.Id = 174
         Me.ToggleTableCellsBottomRightAlignmentItem1.Name = "ToggleTableCellsBottomRightAlignmentItem1"
-        ToolTipTitleItem654.Text = "Align Bottom Right"
-        ToolTipItem614.Text = "Align text to the bottom right corner of the cell."
-        SuperToolTip626.Items.Add(ToolTipTitleItem654)
-        SuperToolTip626.Items.Add(ToolTipItem614)
-        Me.ToggleTableCellsBottomRightAlignmentItem1.SuperTip = SuperToolTip626
+        ToolTipTitleItem173.Text = "Align Bottom Right"
+        ToolTipItem167.Text = "Align text to the bottom right corner of the cell."
+        SuperToolTip167.Items.Add(ToolTipTitleItem173)
+        SuperToolTip167.Items.Add(ToolTipItem167)
+        Me.ToggleTableCellsBottomRightAlignmentItem1.SuperTip = SuperToolTip167
         '
         'CheckSpellingItem1
         '
@@ -4048,11 +4126,11 @@ Partial Class NewDao
         Me.CheckSpellingItem1.Enabled = False
         Me.CheckSpellingItem1.Id = 175
         Me.CheckSpellingItem1.Name = "CheckSpellingItem1"
-        ToolTipTitleItem655.Text = "Spelling"
-        ToolTipItem615.Text = "Check the spelling of text in the document."
-        SuperToolTip627.Items.Add(ToolTipTitleItem655)
-        SuperToolTip627.Items.Add(ToolTipItem615)
-        Me.CheckSpellingItem1.SuperTip = SuperToolTip627
+        ToolTipTitleItem174.Text = "Spelling"
+        ToolTipItem168.Text = "Check the spelling of text in the document."
+        SuperToolTip168.Items.Add(ToolTipTitleItem174)
+        SuperToolTip168.Items.Add(ToolTipItem168)
+        Me.CheckSpellingItem1.SuperTip = SuperToolTip168
         '
         'ProtectDocumentItem1
         '
@@ -4060,11 +4138,11 @@ Partial Class NewDao
         Me.ProtectDocumentItem1.Enabled = False
         Me.ProtectDocumentItem1.Id = 176
         Me.ProtectDocumentItem1.Name = "ProtectDocumentItem1"
-        ToolTipTitleItem656.Text = "Protect Document"
-        ToolTipItem616.Text = "Help restrict people from editing the document by specifying a password."
-        SuperToolTip628.Items.Add(ToolTipTitleItem656)
-        SuperToolTip628.Items.Add(ToolTipItem616)
-        Me.ProtectDocumentItem1.SuperTip = SuperToolTip628
+        ToolTipTitleItem175.Text = "Protect Document"
+        ToolTipItem169.Text = "Help restrict people from editing the document by specifying a password."
+        SuperToolTip169.Items.Add(ToolTipTitleItem175)
+        SuperToolTip169.Items.Add(ToolTipItem169)
+        Me.ProtectDocumentItem1.SuperTip = SuperToolTip169
         '
         'ChangeRangeEditingPermissionsItem1
         '
@@ -4072,11 +4150,11 @@ Partial Class NewDao
         Me.ChangeRangeEditingPermissionsItem1.Enabled = False
         Me.ChangeRangeEditingPermissionsItem1.Id = 177
         Me.ChangeRangeEditingPermissionsItem1.Name = "ChangeRangeEditingPermissionsItem1"
-        ToolTipTitleItem657.Text = "Range Editing Permissions"
-        ToolTipItem617.Text = "Range Editing Permissions"
-        SuperToolTip629.Items.Add(ToolTipTitleItem657)
-        SuperToolTip629.Items.Add(ToolTipItem617)
-        Me.ChangeRangeEditingPermissionsItem1.SuperTip = SuperToolTip629
+        ToolTipTitleItem176.Text = "Range Editing Permissions"
+        ToolTipItem170.Text = "Range Editing Permissions"
+        SuperToolTip170.Items.Add(ToolTipTitleItem176)
+        SuperToolTip170.Items.Add(ToolTipItem170)
+        Me.ChangeRangeEditingPermissionsItem1.SuperTip = SuperToolTip170
         '
         'UnprotectDocumentItem1
         '
@@ -4084,11 +4162,11 @@ Partial Class NewDao
         Me.UnprotectDocumentItem1.Enabled = False
         Me.UnprotectDocumentItem1.Id = 178
         Me.UnprotectDocumentItem1.Name = "UnprotectDocumentItem1"
-        ToolTipTitleItem658.Text = "Unprotect Document"
-        ToolTipItem618.Text = "Unprotect Document"
-        SuperToolTip630.Items.Add(ToolTipTitleItem658)
-        SuperToolTip630.Items.Add(ToolTipItem618)
-        Me.UnprotectDocumentItem1.SuperTip = SuperToolTip630
+        ToolTipTitleItem177.Text = "Unprotect Document"
+        ToolTipItem171.Text = "Unprotect Document"
+        SuperToolTip171.Items.Add(ToolTipTitleItem177)
+        SuperToolTip171.Items.Add(ToolTipItem171)
+        Me.UnprotectDocumentItem1.SuperTip = SuperToolTip171
         '
         'InsertTableOfContentsItem1
         '
@@ -4096,12 +4174,12 @@ Partial Class NewDao
         Me.InsertTableOfContentsItem1.Enabled = False
         Me.InsertTableOfContentsItem1.Id = 179
         Me.InsertTableOfContentsItem1.Name = "InsertTableOfContentsItem1"
-        ToolTipTitleItem659.Text = "Table of Contents"
-        ToolTipItem619.Text = "Add the Table of Contents to the document." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Once you have added a Table of Cont" &
+        ToolTipTitleItem178.Text = "Table of Contents"
+        ToolTipItem172.Text = "Add the Table of Contents to the document." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Once you have added a Table of Cont" &
     "ents, click the Add Text button to add entries the the table."
-        SuperToolTip631.Items.Add(ToolTipTitleItem659)
-        SuperToolTip631.Items.Add(ToolTipItem619)
-        Me.InsertTableOfContentsItem1.SuperTip = SuperToolTip631
+        SuperToolTip172.Items.Add(ToolTipTitleItem178)
+        SuperToolTip172.Items.Add(ToolTipItem172)
+        Me.InsertTableOfContentsItem1.SuperTip = SuperToolTip172
         '
         'UpdateTableOfContentsItem1
         '
@@ -4109,12 +4187,12 @@ Partial Class NewDao
         Me.UpdateTableOfContentsItem1.Enabled = False
         Me.UpdateTableOfContentsItem1.Id = 180
         Me.UpdateTableOfContentsItem1.Name = "UpdateTableOfContentsItem1"
-        ToolTipTitleItem660.Text = "Update Table"
-        ToolTipItem620.Text = "Update the Table of Contents so that all the entries refer to the correct page nu" &
+        ToolTipTitleItem179.Text = "Update Table"
+        ToolTipItem173.Text = "Update the Table of Contents so that all the entries refer to the correct page nu" &
     "mber."
-        SuperToolTip632.Items.Add(ToolTipTitleItem660)
-        SuperToolTip632.Items.Add(ToolTipItem620)
-        Me.UpdateTableOfContentsItem1.SuperTip = SuperToolTip632
+        SuperToolTip173.Items.Add(ToolTipTitleItem179)
+        SuperToolTip173.Items.Add(ToolTipItem173)
+        Me.UpdateTableOfContentsItem1.SuperTip = SuperToolTip173
         '
         'AddParagraphsToTableOfContentItem1
         '
@@ -4123,11 +4201,11 @@ Partial Class NewDao
         Me.AddParagraphsToTableOfContentItem1.Id = 181
         Me.AddParagraphsToTableOfContentItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.SetParagraphHeadingLevelItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetParagraphHeadingLevelItem2), New DevExpress.XtraBars.LinkPersistInfo(Me.SetParagraphHeadingLevelItem3), New DevExpress.XtraBars.LinkPersistInfo(Me.SetParagraphHeadingLevelItem4), New DevExpress.XtraBars.LinkPersistInfo(Me.SetParagraphHeadingLevelItem5), New DevExpress.XtraBars.LinkPersistInfo(Me.SetParagraphHeadingLevelItem6), New DevExpress.XtraBars.LinkPersistInfo(Me.SetParagraphHeadingLevelItem7), New DevExpress.XtraBars.LinkPersistInfo(Me.SetParagraphHeadingLevelItem8), New DevExpress.XtraBars.LinkPersistInfo(Me.SetParagraphHeadingLevelItem9), New DevExpress.XtraBars.LinkPersistInfo(Me.SetParagraphHeadingLevelItem10)})
         Me.AddParagraphsToTableOfContentItem1.Name = "AddParagraphsToTableOfContentItem1"
-        ToolTipTitleItem671.Text = "Add Text"
-        ToolTipItem631.Text = "Add the current paragraph as an entry in the Table of Contents"
-        SuperToolTip643.Items.Add(ToolTipTitleItem671)
-        SuperToolTip643.Items.Add(ToolTipItem631)
-        Me.AddParagraphsToTableOfContentItem1.SuperTip = SuperToolTip643
+        ToolTipTitleItem190.Text = "Add Text"
+        ToolTipItem184.Text = "Add the current paragraph as an entry in the Table of Contents"
+        SuperToolTip184.Items.Add(ToolTipTitleItem190)
+        SuperToolTip184.Items.Add(ToolTipItem184)
+        Me.AddParagraphsToTableOfContentItem1.SuperTip = SuperToolTip184
         '
         'SetParagraphHeadingLevelItem1
         '
@@ -4136,11 +4214,11 @@ Partial Class NewDao
         Me.SetParagraphHeadingLevelItem1.Id = 182
         Me.SetParagraphHeadingLevelItem1.Name = "SetParagraphHeadingLevelItem1"
         Me.SetParagraphHeadingLevelItem1.OutlineLevel = 0
-        ToolTipTitleItem661.Text = "Do Not Show in Table of Contents"
-        ToolTipItem621.Text = "Do Not Show in Table of Contents"
-        SuperToolTip633.Items.Add(ToolTipTitleItem661)
-        SuperToolTip633.Items.Add(ToolTipItem621)
-        Me.SetParagraphHeadingLevelItem1.SuperTip = SuperToolTip633
+        ToolTipTitleItem180.Text = "Do Not Show in Table of Contents"
+        ToolTipItem174.Text = "Do Not Show in Table of Contents"
+        SuperToolTip174.Items.Add(ToolTipTitleItem180)
+        SuperToolTip174.Items.Add(ToolTipItem174)
+        Me.SetParagraphHeadingLevelItem1.SuperTip = SuperToolTip174
         '
         'SetParagraphHeadingLevelItem2
         '
@@ -4149,11 +4227,11 @@ Partial Class NewDao
         Me.SetParagraphHeadingLevelItem2.Id = 183
         Me.SetParagraphHeadingLevelItem2.Name = "SetParagraphHeadingLevelItem2"
         Me.SetParagraphHeadingLevelItem2.OutlineLevel = 1
-        ToolTipTitleItem662.Text = "Level 1"
-        ToolTipItem622.Text = "Level 1"
-        SuperToolTip634.Items.Add(ToolTipTitleItem662)
-        SuperToolTip634.Items.Add(ToolTipItem622)
-        Me.SetParagraphHeadingLevelItem2.SuperTip = SuperToolTip634
+        ToolTipTitleItem181.Text = "Level 1"
+        ToolTipItem175.Text = "Level 1"
+        SuperToolTip175.Items.Add(ToolTipTitleItem181)
+        SuperToolTip175.Items.Add(ToolTipItem175)
+        Me.SetParagraphHeadingLevelItem2.SuperTip = SuperToolTip175
         '
         'SetParagraphHeadingLevelItem3
         '
@@ -4162,11 +4240,11 @@ Partial Class NewDao
         Me.SetParagraphHeadingLevelItem3.Id = 184
         Me.SetParagraphHeadingLevelItem3.Name = "SetParagraphHeadingLevelItem3"
         Me.SetParagraphHeadingLevelItem3.OutlineLevel = 2
-        ToolTipTitleItem663.Text = "Level 2"
-        ToolTipItem623.Text = "Level 2"
-        SuperToolTip635.Items.Add(ToolTipTitleItem663)
-        SuperToolTip635.Items.Add(ToolTipItem623)
-        Me.SetParagraphHeadingLevelItem3.SuperTip = SuperToolTip635
+        ToolTipTitleItem182.Text = "Level 2"
+        ToolTipItem176.Text = "Level 2"
+        SuperToolTip176.Items.Add(ToolTipTitleItem182)
+        SuperToolTip176.Items.Add(ToolTipItem176)
+        Me.SetParagraphHeadingLevelItem3.SuperTip = SuperToolTip176
         '
         'SetParagraphHeadingLevelItem4
         '
@@ -4175,11 +4253,11 @@ Partial Class NewDao
         Me.SetParagraphHeadingLevelItem4.Id = 185
         Me.SetParagraphHeadingLevelItem4.Name = "SetParagraphHeadingLevelItem4"
         Me.SetParagraphHeadingLevelItem4.OutlineLevel = 3
-        ToolTipTitleItem664.Text = "Level 3"
-        ToolTipItem624.Text = "Level 3"
-        SuperToolTip636.Items.Add(ToolTipTitleItem664)
-        SuperToolTip636.Items.Add(ToolTipItem624)
-        Me.SetParagraphHeadingLevelItem4.SuperTip = SuperToolTip636
+        ToolTipTitleItem183.Text = "Level 3"
+        ToolTipItem177.Text = "Level 3"
+        SuperToolTip177.Items.Add(ToolTipTitleItem183)
+        SuperToolTip177.Items.Add(ToolTipItem177)
+        Me.SetParagraphHeadingLevelItem4.SuperTip = SuperToolTip177
         '
         'SetParagraphHeadingLevelItem5
         '
@@ -4188,11 +4266,11 @@ Partial Class NewDao
         Me.SetParagraphHeadingLevelItem5.Id = 186
         Me.SetParagraphHeadingLevelItem5.Name = "SetParagraphHeadingLevelItem5"
         Me.SetParagraphHeadingLevelItem5.OutlineLevel = 4
-        ToolTipTitleItem665.Text = "Level 4"
-        ToolTipItem625.Text = "Level 4"
-        SuperToolTip637.Items.Add(ToolTipTitleItem665)
-        SuperToolTip637.Items.Add(ToolTipItem625)
-        Me.SetParagraphHeadingLevelItem5.SuperTip = SuperToolTip637
+        ToolTipTitleItem184.Text = "Level 4"
+        ToolTipItem178.Text = "Level 4"
+        SuperToolTip178.Items.Add(ToolTipTitleItem184)
+        SuperToolTip178.Items.Add(ToolTipItem178)
+        Me.SetParagraphHeadingLevelItem5.SuperTip = SuperToolTip178
         '
         'SetParagraphHeadingLevelItem6
         '
@@ -4201,11 +4279,11 @@ Partial Class NewDao
         Me.SetParagraphHeadingLevelItem6.Id = 187
         Me.SetParagraphHeadingLevelItem6.Name = "SetParagraphHeadingLevelItem6"
         Me.SetParagraphHeadingLevelItem6.OutlineLevel = 5
-        ToolTipTitleItem666.Text = "Level 5"
-        ToolTipItem626.Text = "Level 5"
-        SuperToolTip638.Items.Add(ToolTipTitleItem666)
-        SuperToolTip638.Items.Add(ToolTipItem626)
-        Me.SetParagraphHeadingLevelItem6.SuperTip = SuperToolTip638
+        ToolTipTitleItem185.Text = "Level 5"
+        ToolTipItem179.Text = "Level 5"
+        SuperToolTip179.Items.Add(ToolTipTitleItem185)
+        SuperToolTip179.Items.Add(ToolTipItem179)
+        Me.SetParagraphHeadingLevelItem6.SuperTip = SuperToolTip179
         '
         'SetParagraphHeadingLevelItem7
         '
@@ -4214,11 +4292,11 @@ Partial Class NewDao
         Me.SetParagraphHeadingLevelItem7.Id = 188
         Me.SetParagraphHeadingLevelItem7.Name = "SetParagraphHeadingLevelItem7"
         Me.SetParagraphHeadingLevelItem7.OutlineLevel = 6
-        ToolTipTitleItem667.Text = "Level 6"
-        ToolTipItem627.Text = "Level 6"
-        SuperToolTip639.Items.Add(ToolTipTitleItem667)
-        SuperToolTip639.Items.Add(ToolTipItem627)
-        Me.SetParagraphHeadingLevelItem7.SuperTip = SuperToolTip639
+        ToolTipTitleItem186.Text = "Level 6"
+        ToolTipItem180.Text = "Level 6"
+        SuperToolTip180.Items.Add(ToolTipTitleItem186)
+        SuperToolTip180.Items.Add(ToolTipItem180)
+        Me.SetParagraphHeadingLevelItem7.SuperTip = SuperToolTip180
         '
         'SetParagraphHeadingLevelItem8
         '
@@ -4227,11 +4305,11 @@ Partial Class NewDao
         Me.SetParagraphHeadingLevelItem8.Id = 189
         Me.SetParagraphHeadingLevelItem8.Name = "SetParagraphHeadingLevelItem8"
         Me.SetParagraphHeadingLevelItem8.OutlineLevel = 7
-        ToolTipTitleItem668.Text = "Level 7"
-        ToolTipItem628.Text = "Level 7"
-        SuperToolTip640.Items.Add(ToolTipTitleItem668)
-        SuperToolTip640.Items.Add(ToolTipItem628)
-        Me.SetParagraphHeadingLevelItem8.SuperTip = SuperToolTip640
+        ToolTipTitleItem187.Text = "Level 7"
+        ToolTipItem181.Text = "Level 7"
+        SuperToolTip181.Items.Add(ToolTipTitleItem187)
+        SuperToolTip181.Items.Add(ToolTipItem181)
+        Me.SetParagraphHeadingLevelItem8.SuperTip = SuperToolTip181
         '
         'SetParagraphHeadingLevelItem9
         '
@@ -4240,11 +4318,11 @@ Partial Class NewDao
         Me.SetParagraphHeadingLevelItem9.Id = 190
         Me.SetParagraphHeadingLevelItem9.Name = "SetParagraphHeadingLevelItem9"
         Me.SetParagraphHeadingLevelItem9.OutlineLevel = 8
-        ToolTipTitleItem669.Text = "Level 8"
-        ToolTipItem629.Text = "Level 8"
-        SuperToolTip641.Items.Add(ToolTipTitleItem669)
-        SuperToolTip641.Items.Add(ToolTipItem629)
-        Me.SetParagraphHeadingLevelItem9.SuperTip = SuperToolTip641
+        ToolTipTitleItem188.Text = "Level 8"
+        ToolTipItem182.Text = "Level 8"
+        SuperToolTip182.Items.Add(ToolTipTitleItem188)
+        SuperToolTip182.Items.Add(ToolTipItem182)
+        Me.SetParagraphHeadingLevelItem9.SuperTip = SuperToolTip182
         '
         'SetParagraphHeadingLevelItem10
         '
@@ -4253,11 +4331,11 @@ Partial Class NewDao
         Me.SetParagraphHeadingLevelItem10.Id = 191
         Me.SetParagraphHeadingLevelItem10.Name = "SetParagraphHeadingLevelItem10"
         Me.SetParagraphHeadingLevelItem10.OutlineLevel = 9
-        ToolTipTitleItem670.Text = "Level 9"
-        ToolTipItem630.Text = "Level 9"
-        SuperToolTip642.Items.Add(ToolTipTitleItem670)
-        SuperToolTip642.Items.Add(ToolTipItem630)
-        Me.SetParagraphHeadingLevelItem10.SuperTip = SuperToolTip642
+        ToolTipTitleItem189.Text = "Level 9"
+        ToolTipItem183.Text = "Level 9"
+        SuperToolTip183.Items.Add(ToolTipTitleItem189)
+        SuperToolTip183.Items.Add(ToolTipItem183)
+        Me.SetParagraphHeadingLevelItem10.SuperTip = SuperToolTip183
         '
         'InsertCaptionPlaceholderItem1
         '
@@ -4266,12 +4344,12 @@ Partial Class NewDao
         Me.InsertCaptionPlaceholderItem1.Id = 192
         Me.InsertCaptionPlaceholderItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.InsertFiguresCaptionItems1), New DevExpress.XtraBars.LinkPersistInfo(Me.InsertTablesCaptionItems1), New DevExpress.XtraBars.LinkPersistInfo(Me.InsertEquationsCaptionItems1)})
         Me.InsertCaptionPlaceholderItem1.Name = "InsertCaptionPlaceholderItem1"
-        ToolTipTitleItem675.Text = "Insert Caption"
-        ToolTipItem635.Text = "Add a caption to a picture or other image." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "A caption is a line of text that ap" &
+        ToolTipTitleItem194.Text = "Insert Caption"
+        ToolTipItem188.Text = "Add a caption to a picture or other image." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "A caption is a line of text that ap" &
     "pears below an object to describe it."
-        SuperToolTip647.Items.Add(ToolTipTitleItem675)
-        SuperToolTip647.Items.Add(ToolTipItem635)
-        Me.InsertCaptionPlaceholderItem1.SuperTip = SuperToolTip647
+        SuperToolTip188.Items.Add(ToolTipTitleItem194)
+        SuperToolTip188.Items.Add(ToolTipItem188)
+        Me.InsertCaptionPlaceholderItem1.SuperTip = SuperToolTip188
         '
         'InsertFiguresCaptionItems1
         '
@@ -4279,11 +4357,11 @@ Partial Class NewDao
         Me.InsertFiguresCaptionItems1.Enabled = False
         Me.InsertFiguresCaptionItems1.Id = 193
         Me.InsertFiguresCaptionItems1.Name = "InsertFiguresCaptionItems1"
-        ToolTipTitleItem672.Text = "Figures Caption"
-        ToolTipItem632.Text = "Add a figure caption."
-        SuperToolTip644.Items.Add(ToolTipTitleItem672)
-        SuperToolTip644.Items.Add(ToolTipItem632)
-        Me.InsertFiguresCaptionItems1.SuperTip = SuperToolTip644
+        ToolTipTitleItem191.Text = "Figures Caption"
+        ToolTipItem185.Text = "Add a figure caption."
+        SuperToolTip185.Items.Add(ToolTipTitleItem191)
+        SuperToolTip185.Items.Add(ToolTipItem185)
+        Me.InsertFiguresCaptionItems1.SuperTip = SuperToolTip185
         '
         'InsertTablesCaptionItems1
         '
@@ -4291,11 +4369,11 @@ Partial Class NewDao
         Me.InsertTablesCaptionItems1.Enabled = False
         Me.InsertTablesCaptionItems1.Id = 194
         Me.InsertTablesCaptionItems1.Name = "InsertTablesCaptionItems1"
-        ToolTipTitleItem673.Text = "Tables Caption"
-        ToolTipItem633.Text = "Add a table caption."
-        SuperToolTip645.Items.Add(ToolTipTitleItem673)
-        SuperToolTip645.Items.Add(ToolTipItem633)
-        Me.InsertTablesCaptionItems1.SuperTip = SuperToolTip645
+        ToolTipTitleItem192.Text = "Tables Caption"
+        ToolTipItem186.Text = "Add a table caption."
+        SuperToolTip186.Items.Add(ToolTipTitleItem192)
+        SuperToolTip186.Items.Add(ToolTipItem186)
+        Me.InsertTablesCaptionItems1.SuperTip = SuperToolTip186
         '
         'InsertEquationsCaptionItems1
         '
@@ -4303,11 +4381,11 @@ Partial Class NewDao
         Me.InsertEquationsCaptionItems1.Enabled = False
         Me.InsertEquationsCaptionItems1.Id = 195
         Me.InsertEquationsCaptionItems1.Name = "InsertEquationsCaptionItems1"
-        ToolTipTitleItem674.Text = "Equations Caption"
-        ToolTipItem634.Text = "Add a equation caption."
-        SuperToolTip646.Items.Add(ToolTipTitleItem674)
-        SuperToolTip646.Items.Add(ToolTipItem634)
-        Me.InsertEquationsCaptionItems1.SuperTip = SuperToolTip646
+        ToolTipTitleItem193.Text = "Equations Caption"
+        ToolTipItem187.Text = "Add a equation caption."
+        SuperToolTip187.Items.Add(ToolTipTitleItem193)
+        SuperToolTip187.Items.Add(ToolTipItem187)
+        Me.InsertEquationsCaptionItems1.SuperTip = SuperToolTip187
         '
         'InsertTableOfFiguresPlaceholderItem1
         '
@@ -4316,12 +4394,12 @@ Partial Class NewDao
         Me.InsertTableOfFiguresPlaceholderItem1.Id = 196
         Me.InsertTableOfFiguresPlaceholderItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.InsertTableOfFiguresItems1), New DevExpress.XtraBars.LinkPersistInfo(Me.InsertTableOfTablesItems1), New DevExpress.XtraBars.LinkPersistInfo(Me.InsertTableOfEquationsItems1)})
         Me.InsertTableOfFiguresPlaceholderItem1.Name = "InsertTableOfFiguresPlaceholderItem1"
-        ToolTipTitleItem679.Text = "Insert Table of Figures"
-        ToolTipItem639.Text = "Insert a Table of Figures into the document." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "A Table of Figures includes a lis" &
+        ToolTipTitleItem198.Text = "Insert Table of Figures"
+        ToolTipItem192.Text = "Insert a Table of Figures into the document." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "A Table of Figures includes a lis" &
     "t of all of the figures, tables or equations in the document."
-        SuperToolTip651.Items.Add(ToolTipTitleItem679)
-        SuperToolTip651.Items.Add(ToolTipItem639)
-        Me.InsertTableOfFiguresPlaceholderItem1.SuperTip = SuperToolTip651
+        SuperToolTip192.Items.Add(ToolTipTitleItem198)
+        SuperToolTip192.Items.Add(ToolTipItem192)
+        Me.InsertTableOfFiguresPlaceholderItem1.SuperTip = SuperToolTip192
         '
         'InsertTableOfFiguresItems1
         '
@@ -4329,12 +4407,12 @@ Partial Class NewDao
         Me.InsertTableOfFiguresItems1.Enabled = False
         Me.InsertTableOfFiguresItems1.Id = 197
         Me.InsertTableOfFiguresItems1.Name = "InsertTableOfFiguresItems1"
-        ToolTipTitleItem676.Text = "Table of Figures"
-        ToolTipItem636.Text = "Insert a Table of Figures into the document." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "A Table of Figures includes a lis" &
+        ToolTipTitleItem195.Text = "Table of Figures"
+        ToolTipItem189.Text = "Insert a Table of Figures into the document." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "A Table of Figures includes a lis" &
     "t of all the figures in the document."
-        SuperToolTip648.Items.Add(ToolTipTitleItem676)
-        SuperToolTip648.Items.Add(ToolTipItem636)
-        Me.InsertTableOfFiguresItems1.SuperTip = SuperToolTip648
+        SuperToolTip189.Items.Add(ToolTipTitleItem195)
+        SuperToolTip189.Items.Add(ToolTipItem189)
+        Me.InsertTableOfFiguresItems1.SuperTip = SuperToolTip189
         '
         'InsertTableOfTablesItems1
         '
@@ -4342,12 +4420,12 @@ Partial Class NewDao
         Me.InsertTableOfTablesItems1.Enabled = False
         Me.InsertTableOfTablesItems1.Id = 198
         Me.InsertTableOfTablesItems1.Name = "InsertTableOfTablesItems1"
-        ToolTipTitleItem677.Text = "Table of Tables"
-        ToolTipItem637.Text = "Insert a Table of Tables into the document." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "A Table of Tables includes a list " &
+        ToolTipTitleItem196.Text = "Table of Tables"
+        ToolTipItem190.Text = "Insert a Table of Tables into the document." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "A Table of Tables includes a list " &
     "of all the tables in the document."
-        SuperToolTip649.Items.Add(ToolTipTitleItem677)
-        SuperToolTip649.Items.Add(ToolTipItem637)
-        Me.InsertTableOfTablesItems1.SuperTip = SuperToolTip649
+        SuperToolTip190.Items.Add(ToolTipTitleItem196)
+        SuperToolTip190.Items.Add(ToolTipItem190)
+        Me.InsertTableOfTablesItems1.SuperTip = SuperToolTip190
         '
         'InsertTableOfEquationsItems1
         '
@@ -4355,12 +4433,12 @@ Partial Class NewDao
         Me.InsertTableOfEquationsItems1.Enabled = False
         Me.InsertTableOfEquationsItems1.Id = 199
         Me.InsertTableOfEquationsItems1.Name = "InsertTableOfEquationsItems1"
-        ToolTipTitleItem678.Text = "Table of Equations"
-        ToolTipItem638.Text = "Insert a Table of Equations into the document." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "A Table of Equations includes a" &
+        ToolTipTitleItem197.Text = "Table of Equations"
+        ToolTipItem191.Text = "Insert a Table of Equations into the document." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "A Table of Equations includes a" &
     " list of all the equations in the document."
-        SuperToolTip650.Items.Add(ToolTipTitleItem678)
-        SuperToolTip650.Items.Add(ToolTipItem638)
-        Me.InsertTableOfEquationsItems1.SuperTip = SuperToolTip650
+        SuperToolTip191.Items.Add(ToolTipTitleItem197)
+        SuperToolTip191.Items.Add(ToolTipItem191)
+        Me.InsertTableOfEquationsItems1.SuperTip = SuperToolTip191
         '
         'ChangeFloatingObjectFillColorItem1
         '
@@ -4368,11 +4446,11 @@ Partial Class NewDao
         Me.ChangeFloatingObjectFillColorItem1.Enabled = False
         Me.ChangeFloatingObjectFillColorItem1.Id = 200
         Me.ChangeFloatingObjectFillColorItem1.Name = "ChangeFloatingObjectFillColorItem1"
-        ToolTipTitleItem680.Text = "Shape Fill"
-        ToolTipItem640.Text = "Fill the selected shape with a solid color."
-        SuperToolTip652.Items.Add(ToolTipTitleItem680)
-        SuperToolTip652.Items.Add(ToolTipItem640)
-        Me.ChangeFloatingObjectFillColorItem1.SuperTip = SuperToolTip652
+        ToolTipTitleItem199.Text = "Shape Fill"
+        ToolTipItem193.Text = "Fill the selected shape with a solid color."
+        SuperToolTip193.Items.Add(ToolTipTitleItem199)
+        SuperToolTip193.Items.Add(ToolTipItem193)
+        Me.ChangeFloatingObjectFillColorItem1.SuperTip = SuperToolTip193
         '
         'ChangeFloatingObjectOutlineColorItem1
         '
@@ -4380,11 +4458,11 @@ Partial Class NewDao
         Me.ChangeFloatingObjectOutlineColorItem1.Enabled = False
         Me.ChangeFloatingObjectOutlineColorItem1.Id = 201
         Me.ChangeFloatingObjectOutlineColorItem1.Name = "ChangeFloatingObjectOutlineColorItem1"
-        ToolTipTitleItem681.Text = "Shape Outline"
-        ToolTipItem641.Text = "Specify color for the outline of the selected shape."
-        SuperToolTip653.Items.Add(ToolTipTitleItem681)
-        SuperToolTip653.Items.Add(ToolTipItem641)
-        Me.ChangeFloatingObjectOutlineColorItem1.SuperTip = SuperToolTip653
+        ToolTipTitleItem200.Text = "Shape Outline"
+        ToolTipItem194.Text = "Specify color for the outline of the selected shape."
+        SuperToolTip194.Items.Add(ToolTipTitleItem200)
+        SuperToolTip194.Items.Add(ToolTipItem194)
+        Me.ChangeFloatingObjectOutlineColorItem1.SuperTip = SuperToolTip194
         '
         'ChangeFloatingObjectOutlineWeightItem1
         '
@@ -4392,10 +4470,10 @@ Partial Class NewDao
         Me.ChangeFloatingObjectOutlineWeightItem1.Enabled = False
         Me.ChangeFloatingObjectOutlineWeightItem1.Id = 202
         Me.ChangeFloatingObjectOutlineWeightItem1.Name = "ChangeFloatingObjectOutlineWeightItem1"
-        ToolTipItem642.Text = "Specify width for the outline of the selected shape."
-        SuperToolTip654.Items.Add(ToolTipTitleItem682)
-        SuperToolTip654.Items.Add(ToolTipItem642)
-        Me.ChangeFloatingObjectOutlineWeightItem1.SuperTip = SuperToolTip654
+        ToolTipItem195.Text = "Specify width for the outline of the selected shape."
+        SuperToolTip195.Items.Add(ToolTipTitleItem201)
+        SuperToolTip195.Items.Add(ToolTipItem195)
+        Me.ChangeFloatingObjectOutlineWeightItem1.SuperTip = SuperToolTip195
         '
         'RepositoryItemFloatingObjectOutlineWeight1
         '
@@ -4411,12 +4489,12 @@ Partial Class NewDao
         Me.ChangeFloatingObjectTextWrapTypeItem1.Id = 203
         Me.ChangeFloatingObjectTextWrapTypeItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectSquareTextWrapTypeItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectTightTextWrapTypeItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectThroughTextWrapTypeItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectTopAndBottomTextWrapTypeItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectBehindTextWrapTypeItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectInFrontOfTextWrapTypeItem1)})
         Me.ChangeFloatingObjectTextWrapTypeItem1.Name = "ChangeFloatingObjectTextWrapTypeItem1"
-        ToolTipTitleItem688.Text = "Wrap Text"
-        ToolTipItem648.Text = "Change the way text wraps around the selected object. To configure the object so " &
+        ToolTipTitleItem208.Text = "Wrap Text"
+        ToolTipItem202.Text = "Change the way text wraps around the selected object. To configure the object so " &
     "that it moves along with text the text around it, select ""In Line With Text"""
-        SuperToolTip660.Items.Add(ToolTipTitleItem688)
-        SuperToolTip660.Items.Add(ToolTipItem648)
-        Me.ChangeFloatingObjectTextWrapTypeItem1.SuperTip = SuperToolTip660
+        SuperToolTip202.Items.Add(ToolTipTitleItem208)
+        SuperToolTip202.Items.Add(ToolTipItem202)
+        Me.ChangeFloatingObjectTextWrapTypeItem1.SuperTip = SuperToolTip202
         '
         'SetFloatingObjectSquareTextWrapTypeItem1
         '
@@ -4424,11 +4502,11 @@ Partial Class NewDao
         Me.SetFloatingObjectSquareTextWrapTypeItem1.Enabled = False
         Me.SetFloatingObjectSquareTextWrapTypeItem1.Id = 204
         Me.SetFloatingObjectSquareTextWrapTypeItem1.Name = "SetFloatingObjectSquareTextWrapTypeItem1"
-        ToolTipTitleItem442.Text = "Square"
-        ToolTipItem419.Text = " "
-        SuperToolTip425.Items.Add(ToolTipTitleItem442)
-        SuperToolTip425.Items.Add(ToolTipItem419)
-        Me.SetFloatingObjectSquareTextWrapTypeItem1.SuperTip = SuperToolTip425
+        ToolTipTitleItem202.Text = "Square"
+        ToolTipItem196.Text = " "
+        SuperToolTip196.Items.Add(ToolTipTitleItem202)
+        SuperToolTip196.Items.Add(ToolTipItem196)
+        Me.SetFloatingObjectSquareTextWrapTypeItem1.SuperTip = SuperToolTip196
         '
         'SetFloatingObjectTightTextWrapTypeItem1
         '
@@ -4436,11 +4514,11 @@ Partial Class NewDao
         Me.SetFloatingObjectTightTextWrapTypeItem1.Enabled = False
         Me.SetFloatingObjectTightTextWrapTypeItem1.Id = 205
         Me.SetFloatingObjectTightTextWrapTypeItem1.Name = "SetFloatingObjectTightTextWrapTypeItem1"
-        ToolTipTitleItem683.Text = "Tight"
-        ToolTipItem643.Text = " "
-        SuperToolTip655.Items.Add(ToolTipTitleItem683)
-        SuperToolTip655.Items.Add(ToolTipItem643)
-        Me.SetFloatingObjectTightTextWrapTypeItem1.SuperTip = SuperToolTip655
+        ToolTipTitleItem203.Text = "Tight"
+        ToolTipItem197.Text = " "
+        SuperToolTip197.Items.Add(ToolTipTitleItem203)
+        SuperToolTip197.Items.Add(ToolTipItem197)
+        Me.SetFloatingObjectTightTextWrapTypeItem1.SuperTip = SuperToolTip197
         '
         'SetFloatingObjectThroughTextWrapTypeItem1
         '
@@ -4448,11 +4526,11 @@ Partial Class NewDao
         Me.SetFloatingObjectThroughTextWrapTypeItem1.Enabled = False
         Me.SetFloatingObjectThroughTextWrapTypeItem1.Id = 206
         Me.SetFloatingObjectThroughTextWrapTypeItem1.Name = "SetFloatingObjectThroughTextWrapTypeItem1"
-        ToolTipTitleItem684.Text = "Through"
-        ToolTipItem644.Text = " "
-        SuperToolTip656.Items.Add(ToolTipTitleItem684)
-        SuperToolTip656.Items.Add(ToolTipItem644)
-        Me.SetFloatingObjectThroughTextWrapTypeItem1.SuperTip = SuperToolTip656
+        ToolTipTitleItem204.Text = "Through"
+        ToolTipItem198.Text = " "
+        SuperToolTip198.Items.Add(ToolTipTitleItem204)
+        SuperToolTip198.Items.Add(ToolTipItem198)
+        Me.SetFloatingObjectThroughTextWrapTypeItem1.SuperTip = SuperToolTip198
         '
         'SetFloatingObjectTopAndBottomTextWrapTypeItem1
         '
@@ -4460,11 +4538,11 @@ Partial Class NewDao
         Me.SetFloatingObjectTopAndBottomTextWrapTypeItem1.Enabled = False
         Me.SetFloatingObjectTopAndBottomTextWrapTypeItem1.Id = 207
         Me.SetFloatingObjectTopAndBottomTextWrapTypeItem1.Name = "SetFloatingObjectTopAndBottomTextWrapTypeItem1"
-        ToolTipTitleItem685.Text = "Top and Bottom"
-        ToolTipItem645.Text = " "
-        SuperToolTip657.Items.Add(ToolTipTitleItem685)
-        SuperToolTip657.Items.Add(ToolTipItem645)
-        Me.SetFloatingObjectTopAndBottomTextWrapTypeItem1.SuperTip = SuperToolTip657
+        ToolTipTitleItem205.Text = "Top and Bottom"
+        ToolTipItem199.Text = " "
+        SuperToolTip199.Items.Add(ToolTipTitleItem205)
+        SuperToolTip199.Items.Add(ToolTipItem199)
+        Me.SetFloatingObjectTopAndBottomTextWrapTypeItem1.SuperTip = SuperToolTip199
         '
         'SetFloatingObjectBehindTextWrapTypeItem1
         '
@@ -4472,11 +4550,11 @@ Partial Class NewDao
         Me.SetFloatingObjectBehindTextWrapTypeItem1.Enabled = False
         Me.SetFloatingObjectBehindTextWrapTypeItem1.Id = 208
         Me.SetFloatingObjectBehindTextWrapTypeItem1.Name = "SetFloatingObjectBehindTextWrapTypeItem1"
-        ToolTipTitleItem686.Text = "Behind Text"
-        ToolTipItem646.Text = " "
-        SuperToolTip658.Items.Add(ToolTipTitleItem686)
-        SuperToolTip658.Items.Add(ToolTipItem646)
-        Me.SetFloatingObjectBehindTextWrapTypeItem1.SuperTip = SuperToolTip658
+        ToolTipTitleItem206.Text = "Behind Text"
+        ToolTipItem200.Text = " "
+        SuperToolTip200.Items.Add(ToolTipTitleItem206)
+        SuperToolTip200.Items.Add(ToolTipItem200)
+        Me.SetFloatingObjectBehindTextWrapTypeItem1.SuperTip = SuperToolTip200
         '
         'SetFloatingObjectInFrontOfTextWrapTypeItem1
         '
@@ -4484,11 +4562,11 @@ Partial Class NewDao
         Me.SetFloatingObjectInFrontOfTextWrapTypeItem1.Enabled = False
         Me.SetFloatingObjectInFrontOfTextWrapTypeItem1.Id = 209
         Me.SetFloatingObjectInFrontOfTextWrapTypeItem1.Name = "SetFloatingObjectInFrontOfTextWrapTypeItem1"
-        ToolTipTitleItem687.Text = "In Front of Text"
-        ToolTipItem647.Text = " "
-        SuperToolTip659.Items.Add(ToolTipTitleItem687)
-        SuperToolTip659.Items.Add(ToolTipItem647)
-        Me.SetFloatingObjectInFrontOfTextWrapTypeItem1.SuperTip = SuperToolTip659
+        ToolTipTitleItem207.Text = "In Front of Text"
+        ToolTipItem201.Text = " "
+        SuperToolTip201.Items.Add(ToolTipTitleItem207)
+        SuperToolTip201.Items.Add(ToolTipItem201)
+        Me.SetFloatingObjectInFrontOfTextWrapTypeItem1.SuperTip = SuperToolTip201
         '
         'ChangeFloatingObjectAlignmentItem1
         '
@@ -4497,12 +4575,12 @@ Partial Class NewDao
         Me.ChangeFloatingObjectAlignmentItem1.Id = 210
         Me.ChangeFloatingObjectAlignmentItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectTopLeftAlignmentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectTopCenterAlignmentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectTopRightAlignmentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectMiddleLeftAlignmentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectMiddleCenterAlignmentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectMiddleRightAlignmentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectBottomLeftAlignmentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectBottomCenterAlignmentItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.SetFloatingObjectBottomRightAlignmentItem1)})
         Me.ChangeFloatingObjectAlignmentItem1.Name = "ChangeFloatingObjectAlignmentItem1"
-        ToolTipTitleItem698.Text = "Position"
-        ToolTipItem658.Text = "Position the selected object on the page. Text is automatically set to wrap aroun" &
+        ToolTipTitleItem218.Text = "Position"
+        ToolTipItem212.Text = "Position the selected object on the page. Text is automatically set to wrap aroun" &
     "d the object"
-        SuperToolTip670.Items.Add(ToolTipTitleItem698)
-        SuperToolTip670.Items.Add(ToolTipItem658)
-        Me.ChangeFloatingObjectAlignmentItem1.SuperTip = SuperToolTip670
+        SuperToolTip212.Items.Add(ToolTipTitleItem218)
+        SuperToolTip212.Items.Add(ToolTipItem212)
+        Me.ChangeFloatingObjectAlignmentItem1.SuperTip = SuperToolTip212
         '
         'SetFloatingObjectTopLeftAlignmentItem1
         '
@@ -4510,11 +4588,11 @@ Partial Class NewDao
         Me.SetFloatingObjectTopLeftAlignmentItem1.Enabled = False
         Me.SetFloatingObjectTopLeftAlignmentItem1.Id = 211
         Me.SetFloatingObjectTopLeftAlignmentItem1.Name = "SetFloatingObjectTopLeftAlignmentItem1"
-        ToolTipTitleItem689.Text = "Top Left"
-        ToolTipItem649.Text = "Position in Top Left with Square Text Wrapping"
-        SuperToolTip661.Items.Add(ToolTipTitleItem689)
-        SuperToolTip661.Items.Add(ToolTipItem649)
-        Me.SetFloatingObjectTopLeftAlignmentItem1.SuperTip = SuperToolTip661
+        ToolTipTitleItem209.Text = "Top Left"
+        ToolTipItem203.Text = "Position in Top Left with Square Text Wrapping"
+        SuperToolTip203.Items.Add(ToolTipTitleItem209)
+        SuperToolTip203.Items.Add(ToolTipItem203)
+        Me.SetFloatingObjectTopLeftAlignmentItem1.SuperTip = SuperToolTip203
         '
         'SetFloatingObjectTopCenterAlignmentItem1
         '
@@ -4522,11 +4600,11 @@ Partial Class NewDao
         Me.SetFloatingObjectTopCenterAlignmentItem1.Enabled = False
         Me.SetFloatingObjectTopCenterAlignmentItem1.Id = 212
         Me.SetFloatingObjectTopCenterAlignmentItem1.Name = "SetFloatingObjectTopCenterAlignmentItem1"
-        ToolTipTitleItem690.Text = "Top Center"
-        ToolTipItem650.Text = "Position in Top Center with Square Text Wrapping"
-        SuperToolTip662.Items.Add(ToolTipTitleItem690)
-        SuperToolTip662.Items.Add(ToolTipItem650)
-        Me.SetFloatingObjectTopCenterAlignmentItem1.SuperTip = SuperToolTip662
+        ToolTipTitleItem210.Text = "Top Center"
+        ToolTipItem204.Text = "Position in Top Center with Square Text Wrapping"
+        SuperToolTip204.Items.Add(ToolTipTitleItem210)
+        SuperToolTip204.Items.Add(ToolTipItem204)
+        Me.SetFloatingObjectTopCenterAlignmentItem1.SuperTip = SuperToolTip204
         '
         'SetFloatingObjectTopRightAlignmentItem1
         '
@@ -4534,11 +4612,11 @@ Partial Class NewDao
         Me.SetFloatingObjectTopRightAlignmentItem1.Enabled = False
         Me.SetFloatingObjectTopRightAlignmentItem1.Id = 213
         Me.SetFloatingObjectTopRightAlignmentItem1.Name = "SetFloatingObjectTopRightAlignmentItem1"
-        ToolTipTitleItem691.Text = "Top Right"
-        ToolTipItem651.Text = "Position in Top Right with Square Text Wrapping"
-        SuperToolTip663.Items.Add(ToolTipTitleItem691)
-        SuperToolTip663.Items.Add(ToolTipItem651)
-        Me.SetFloatingObjectTopRightAlignmentItem1.SuperTip = SuperToolTip663
+        ToolTipTitleItem211.Text = "Top Right"
+        ToolTipItem205.Text = "Position in Top Right with Square Text Wrapping"
+        SuperToolTip205.Items.Add(ToolTipTitleItem211)
+        SuperToolTip205.Items.Add(ToolTipItem205)
+        Me.SetFloatingObjectTopRightAlignmentItem1.SuperTip = SuperToolTip205
         '
         'SetFloatingObjectMiddleLeftAlignmentItem1
         '
@@ -4546,11 +4624,11 @@ Partial Class NewDao
         Me.SetFloatingObjectMiddleLeftAlignmentItem1.Enabled = False
         Me.SetFloatingObjectMiddleLeftAlignmentItem1.Id = 214
         Me.SetFloatingObjectMiddleLeftAlignmentItem1.Name = "SetFloatingObjectMiddleLeftAlignmentItem1"
-        ToolTipTitleItem692.Text = "Middle Left"
-        ToolTipItem652.Text = "Position in Middle Left with Square Text Wrapping"
-        SuperToolTip664.Items.Add(ToolTipTitleItem692)
-        SuperToolTip664.Items.Add(ToolTipItem652)
-        Me.SetFloatingObjectMiddleLeftAlignmentItem1.SuperTip = SuperToolTip664
+        ToolTipTitleItem212.Text = "Middle Left"
+        ToolTipItem206.Text = "Position in Middle Left with Square Text Wrapping"
+        SuperToolTip206.Items.Add(ToolTipTitleItem212)
+        SuperToolTip206.Items.Add(ToolTipItem206)
+        Me.SetFloatingObjectMiddleLeftAlignmentItem1.SuperTip = SuperToolTip206
         '
         'SetFloatingObjectMiddleCenterAlignmentItem1
         '
@@ -4558,11 +4636,11 @@ Partial Class NewDao
         Me.SetFloatingObjectMiddleCenterAlignmentItem1.Enabled = False
         Me.SetFloatingObjectMiddleCenterAlignmentItem1.Id = 215
         Me.SetFloatingObjectMiddleCenterAlignmentItem1.Name = "SetFloatingObjectMiddleCenterAlignmentItem1"
-        ToolTipTitleItem693.Text = "Middle Center"
-        ToolTipItem653.Text = "Position in Middle Center with Square Text Wrapping"
-        SuperToolTip665.Items.Add(ToolTipTitleItem693)
-        SuperToolTip665.Items.Add(ToolTipItem653)
-        Me.SetFloatingObjectMiddleCenterAlignmentItem1.SuperTip = SuperToolTip665
+        ToolTipTitleItem213.Text = "Middle Center"
+        ToolTipItem207.Text = "Position in Middle Center with Square Text Wrapping"
+        SuperToolTip207.Items.Add(ToolTipTitleItem213)
+        SuperToolTip207.Items.Add(ToolTipItem207)
+        Me.SetFloatingObjectMiddleCenterAlignmentItem1.SuperTip = SuperToolTip207
         '
         'SetFloatingObjectMiddleRightAlignmentItem1
         '
@@ -4570,11 +4648,11 @@ Partial Class NewDao
         Me.SetFloatingObjectMiddleRightAlignmentItem1.Enabled = False
         Me.SetFloatingObjectMiddleRightAlignmentItem1.Id = 216
         Me.SetFloatingObjectMiddleRightAlignmentItem1.Name = "SetFloatingObjectMiddleRightAlignmentItem1"
-        ToolTipTitleItem694.Text = "Middle Right"
-        ToolTipItem654.Text = "Position in Middle Right with Square Text Wrapping"
-        SuperToolTip666.Items.Add(ToolTipTitleItem694)
-        SuperToolTip666.Items.Add(ToolTipItem654)
-        Me.SetFloatingObjectMiddleRightAlignmentItem1.SuperTip = SuperToolTip666
+        ToolTipTitleItem214.Text = "Middle Right"
+        ToolTipItem208.Text = "Position in Middle Right with Square Text Wrapping"
+        SuperToolTip208.Items.Add(ToolTipTitleItem214)
+        SuperToolTip208.Items.Add(ToolTipItem208)
+        Me.SetFloatingObjectMiddleRightAlignmentItem1.SuperTip = SuperToolTip208
         '
         'SetFloatingObjectBottomLeftAlignmentItem1
         '
@@ -4582,11 +4660,11 @@ Partial Class NewDao
         Me.SetFloatingObjectBottomLeftAlignmentItem1.Enabled = False
         Me.SetFloatingObjectBottomLeftAlignmentItem1.Id = 217
         Me.SetFloatingObjectBottomLeftAlignmentItem1.Name = "SetFloatingObjectBottomLeftAlignmentItem1"
-        ToolTipTitleItem695.Text = "Bottom Left"
-        ToolTipItem655.Text = "Position in Bottom Left with Square Text Wrapping"
-        SuperToolTip667.Items.Add(ToolTipTitleItem695)
-        SuperToolTip667.Items.Add(ToolTipItem655)
-        Me.SetFloatingObjectBottomLeftAlignmentItem1.SuperTip = SuperToolTip667
+        ToolTipTitleItem215.Text = "Bottom Left"
+        ToolTipItem209.Text = "Position in Bottom Left with Square Text Wrapping"
+        SuperToolTip209.Items.Add(ToolTipTitleItem215)
+        SuperToolTip209.Items.Add(ToolTipItem209)
+        Me.SetFloatingObjectBottomLeftAlignmentItem1.SuperTip = SuperToolTip209
         '
         'SetFloatingObjectBottomCenterAlignmentItem1
         '
@@ -4594,11 +4672,11 @@ Partial Class NewDao
         Me.SetFloatingObjectBottomCenterAlignmentItem1.Enabled = False
         Me.SetFloatingObjectBottomCenterAlignmentItem1.Id = 218
         Me.SetFloatingObjectBottomCenterAlignmentItem1.Name = "SetFloatingObjectBottomCenterAlignmentItem1"
-        ToolTipTitleItem696.Text = "Bottom Center"
-        ToolTipItem656.Text = "Position in Bottom Center with Square Text Wrapping"
-        SuperToolTip668.Items.Add(ToolTipTitleItem696)
-        SuperToolTip668.Items.Add(ToolTipItem656)
-        Me.SetFloatingObjectBottomCenterAlignmentItem1.SuperTip = SuperToolTip668
+        ToolTipTitleItem216.Text = "Bottom Center"
+        ToolTipItem210.Text = "Position in Bottom Center with Square Text Wrapping"
+        SuperToolTip210.Items.Add(ToolTipTitleItem216)
+        SuperToolTip210.Items.Add(ToolTipItem210)
+        Me.SetFloatingObjectBottomCenterAlignmentItem1.SuperTip = SuperToolTip210
         '
         'SetFloatingObjectBottomRightAlignmentItem1
         '
@@ -4606,11 +4684,11 @@ Partial Class NewDao
         Me.SetFloatingObjectBottomRightAlignmentItem1.Enabled = False
         Me.SetFloatingObjectBottomRightAlignmentItem1.Id = 219
         Me.SetFloatingObjectBottomRightAlignmentItem1.Name = "SetFloatingObjectBottomRightAlignmentItem1"
-        ToolTipTitleItem697.Text = "Bottom Right"
-        ToolTipItem657.Text = "Position in Bottom Right with Square Text Wrapping"
-        SuperToolTip669.Items.Add(ToolTipTitleItem697)
-        SuperToolTip669.Items.Add(ToolTipItem657)
-        Me.SetFloatingObjectBottomRightAlignmentItem1.SuperTip = SuperToolTip669
+        ToolTipTitleItem217.Text = "Bottom Right"
+        ToolTipItem211.Text = "Position in Bottom Right with Square Text Wrapping"
+        SuperToolTip211.Items.Add(ToolTipTitleItem217)
+        SuperToolTip211.Items.Add(ToolTipItem211)
+        Me.SetFloatingObjectBottomRightAlignmentItem1.SuperTip = SuperToolTip211
         '
         'FloatingObjectBringForwardSubItem1
         '
@@ -4619,12 +4697,12 @@ Partial Class NewDao
         Me.FloatingObjectBringForwardSubItem1.Id = 220
         Me.FloatingObjectBringForwardSubItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.FloatingObjectBringForwardItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.FloatingObjectBringToFrontItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.FloatingObjectBringInFrontOfTextItem1)})
         Me.FloatingObjectBringForwardSubItem1.Name = "FloatingObjectBringForwardSubItem1"
-        ToolTipTitleItem702.Text = "Bring to Front"
-        ToolTipItem662.Text = "Bring the selected object forward so that it is hidden by fewer object that are i" &
+        ToolTipTitleItem222.Text = "Bring to Front"
+        ToolTipItem216.Text = "Bring the selected object forward so that it is hidden by fewer object that are i" &
     "n front of it."
-        SuperToolTip674.Items.Add(ToolTipTitleItem702)
-        SuperToolTip674.Items.Add(ToolTipItem662)
-        Me.FloatingObjectBringForwardSubItem1.SuperTip = SuperToolTip674
+        SuperToolTip216.Items.Add(ToolTipTitleItem222)
+        SuperToolTip216.Items.Add(ToolTipItem216)
+        Me.FloatingObjectBringForwardSubItem1.SuperTip = SuperToolTip216
         '
         'FloatingObjectBringForwardItem1
         '
@@ -4632,12 +4710,12 @@ Partial Class NewDao
         Me.FloatingObjectBringForwardItem1.Enabled = False
         Me.FloatingObjectBringForwardItem1.Id = 221
         Me.FloatingObjectBringForwardItem1.Name = "FloatingObjectBringForwardItem1"
-        ToolTipTitleItem699.Text = "Bring Forward"
-        ToolTipItem659.Text = "Bring the selected object forward so that it is hidden by fewer object that are i" &
+        ToolTipTitleItem219.Text = "Bring Forward"
+        ToolTipItem213.Text = "Bring the selected object forward so that it is hidden by fewer object that are i" &
     "n front of it."
-        SuperToolTip671.Items.Add(ToolTipTitleItem699)
-        SuperToolTip671.Items.Add(ToolTipItem659)
-        Me.FloatingObjectBringForwardItem1.SuperTip = SuperToolTip671
+        SuperToolTip213.Items.Add(ToolTipTitleItem219)
+        SuperToolTip213.Items.Add(ToolTipItem213)
+        Me.FloatingObjectBringForwardItem1.SuperTip = SuperToolTip213
         '
         'FloatingObjectBringToFrontItem1
         '
@@ -4645,12 +4723,12 @@ Partial Class NewDao
         Me.FloatingObjectBringToFrontItem1.Enabled = False
         Me.FloatingObjectBringToFrontItem1.Id = 222
         Me.FloatingObjectBringToFrontItem1.Name = "FloatingObjectBringToFrontItem1"
-        ToolTipTitleItem700.Text = "Bring to Front"
-        ToolTipItem660.Text = "Bring the selected object in front of all other objects so that no part of it is " &
+        ToolTipTitleItem220.Text = "Bring to Front"
+        ToolTipItem214.Text = "Bring the selected object in front of all other objects so that no part of it is " &
     "hidden behind another object."
-        SuperToolTip672.Items.Add(ToolTipTitleItem700)
-        SuperToolTip672.Items.Add(ToolTipItem660)
-        Me.FloatingObjectBringToFrontItem1.SuperTip = SuperToolTip672
+        SuperToolTip214.Items.Add(ToolTipTitleItem220)
+        SuperToolTip214.Items.Add(ToolTipItem214)
+        Me.FloatingObjectBringToFrontItem1.SuperTip = SuperToolTip214
         '
         'FloatingObjectBringInFrontOfTextItem1
         '
@@ -4658,11 +4736,11 @@ Partial Class NewDao
         Me.FloatingObjectBringInFrontOfTextItem1.Enabled = False
         Me.FloatingObjectBringInFrontOfTextItem1.Id = 223
         Me.FloatingObjectBringInFrontOfTextItem1.Name = "FloatingObjectBringInFrontOfTextItem1"
-        ToolTipTitleItem701.Text = "Bring in Front of Text"
-        ToolTipItem661.Text = " "
-        SuperToolTip673.Items.Add(ToolTipTitleItem701)
-        SuperToolTip673.Items.Add(ToolTipItem661)
-        Me.FloatingObjectBringInFrontOfTextItem1.SuperTip = SuperToolTip673
+        ToolTipTitleItem221.Text = "Bring in Front of Text"
+        ToolTipItem215.Text = " "
+        SuperToolTip215.Items.Add(ToolTipTitleItem221)
+        SuperToolTip215.Items.Add(ToolTipItem215)
+        Me.FloatingObjectBringInFrontOfTextItem1.SuperTip = SuperToolTip215
         '
         'FloatingObjectSendBackwardSubItem1
         '
@@ -4671,12 +4749,12 @@ Partial Class NewDao
         Me.FloatingObjectSendBackwardSubItem1.Id = 224
         Me.FloatingObjectSendBackwardSubItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.FloatingObjectSendBackwardItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.FloatingObjectSendToBackItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.FloatingObjectSendBehindTextItem1)})
         Me.FloatingObjectSendBackwardSubItem1.Name = "FloatingObjectSendBackwardSubItem1"
-        ToolTipTitleItem706.Text = "Send to Back"
-        ToolTipItem666.Text = "Send the selected object backward so that it is hidden by the object that are in " &
+        ToolTipTitleItem226.Text = "Send to Back"
+        ToolTipItem220.Text = "Send the selected object backward so that it is hidden by the object that are in " &
     "front of it."
-        SuperToolTip678.Items.Add(ToolTipTitleItem706)
-        SuperToolTip678.Items.Add(ToolTipItem666)
-        Me.FloatingObjectSendBackwardSubItem1.SuperTip = SuperToolTip678
+        SuperToolTip220.Items.Add(ToolTipTitleItem226)
+        SuperToolTip220.Items.Add(ToolTipItem220)
+        Me.FloatingObjectSendBackwardSubItem1.SuperTip = SuperToolTip220
         '
         'FloatingObjectSendBackwardItem1
         '
@@ -4684,12 +4762,12 @@ Partial Class NewDao
         Me.FloatingObjectSendBackwardItem1.Enabled = False
         Me.FloatingObjectSendBackwardItem1.Id = 225
         Me.FloatingObjectSendBackwardItem1.Name = "FloatingObjectSendBackwardItem1"
-        ToolTipTitleItem703.Text = "Send Backward"
-        ToolTipItem663.Text = "Send the selected object backward so that it is hidden by the object that are in " &
+        ToolTipTitleItem223.Text = "Send Backward"
+        ToolTipItem217.Text = "Send the selected object backward so that it is hidden by the object that are in " &
     "front of it."
-        SuperToolTip675.Items.Add(ToolTipTitleItem703)
-        SuperToolTip675.Items.Add(ToolTipItem663)
-        Me.FloatingObjectSendBackwardItem1.SuperTip = SuperToolTip675
+        SuperToolTip217.Items.Add(ToolTipTitleItem223)
+        SuperToolTip217.Items.Add(ToolTipItem217)
+        Me.FloatingObjectSendBackwardItem1.SuperTip = SuperToolTip217
         '
         'FloatingObjectSendToBackItem1
         '
@@ -4697,11 +4775,11 @@ Partial Class NewDao
         Me.FloatingObjectSendToBackItem1.Enabled = False
         Me.FloatingObjectSendToBackItem1.Id = 226
         Me.FloatingObjectSendToBackItem1.Name = "FloatingObjectSendToBackItem1"
-        ToolTipTitleItem704.Text = "Send to Back"
-        ToolTipItem664.Text = "Send the selected object behind all other objects."
-        SuperToolTip676.Items.Add(ToolTipTitleItem704)
-        SuperToolTip676.Items.Add(ToolTipItem664)
-        Me.FloatingObjectSendToBackItem1.SuperTip = SuperToolTip676
+        ToolTipTitleItem224.Text = "Send to Back"
+        ToolTipItem218.Text = "Send the selected object behind all other objects."
+        SuperToolTip218.Items.Add(ToolTipTitleItem224)
+        SuperToolTip218.Items.Add(ToolTipItem218)
+        Me.FloatingObjectSendToBackItem1.SuperTip = SuperToolTip218
         '
         'FloatingObjectSendBehindTextItem1
         '
@@ -4709,11 +4787,11 @@ Partial Class NewDao
         Me.FloatingObjectSendBehindTextItem1.Enabled = False
         Me.FloatingObjectSendBehindTextItem1.Id = 227
         Me.FloatingObjectSendBehindTextItem1.Name = "FloatingObjectSendBehindTextItem1"
-        ToolTipTitleItem705.Text = "Send Behind Text"
-        ToolTipItem665.Text = " "
-        SuperToolTip677.Items.Add(ToolTipTitleItem705)
-        SuperToolTip677.Items.Add(ToolTipItem665)
-        Me.FloatingObjectSendBehindTextItem1.SuperTip = SuperToolTip677
+        ToolTipTitleItem225.Text = "Send Behind Text"
+        ToolTipItem219.Text = " "
+        SuperToolTip219.Items.Add(ToolTipTitleItem225)
+        SuperToolTip219.Items.Add(ToolTipItem219)
+        Me.FloatingObjectSendBehindTextItem1.SuperTip = SuperToolTip219
         '
         'BtPdf
         '
@@ -4721,12 +4799,12 @@ Partial Class NewDao
         Me.BtPdf.Glyph = Global.ClearProject.My.Resources.Resources.ExportToPDF_16x16
         Me.BtPdf.Id = 228
         Me.BtPdf.Name = "BtPdf"
-        ToolTipTitleItem707.Appearance.Image = Global.ClearProject.My.Resources.Resources.ExportToPDF_16x16
-        ToolTipTitleItem707.Appearance.Options.UseImage = True
-        ToolTipTitleItem707.Image = Global.ClearProject.My.Resources.Resources.ExportToPDF_16x16
-        ToolTipTitleItem707.Text = "Exporter en pdf"
-        SuperToolTip679.Items.Add(ToolTipTitleItem707)
-        Me.BtPdf.SuperTip = SuperToolTip679
+        ToolTipTitleItem227.Appearance.Image = Global.ClearProject.My.Resources.Resources.ExportToPDF_16x16
+        ToolTipTitleItem227.Appearance.Options.UseImage = True
+        ToolTipTitleItem227.Image = Global.ClearProject.My.Resources.Resources.ExportToPDF_16x16
+        ToolTipTitleItem227.Text = "Exporter en pdf"
+        SuperToolTip221.Items.Add(ToolTipTitleItem227)
+        Me.BtPdf.SuperTip = SuperToolTip221
         '
         'BtExcel
         '
@@ -4734,12 +4812,12 @@ Partial Class NewDao
         Me.BtExcel.Glyph = Global.ClearProject.My.Resources.Resources.ExportToExcel_16x16
         Me.BtExcel.Id = 229
         Me.BtExcel.Name = "BtExcel"
-        ToolTipTitleItem708.Appearance.Image = Global.ClearProject.My.Resources.Resources.ExportToExcel_16x16
-        ToolTipTitleItem708.Appearance.Options.UseImage = True
-        ToolTipTitleItem708.Image = Global.ClearProject.My.Resources.Resources.ExportToExcel_16x16
-        ToolTipTitleItem708.Text = "Exporter en MS Excel"
-        SuperToolTip680.Items.Add(ToolTipTitleItem708)
-        Me.BtExcel.SuperTip = SuperToolTip680
+        ToolTipTitleItem228.Appearance.Image = Global.ClearProject.My.Resources.Resources.ExportToExcel_16x16
+        ToolTipTitleItem228.Appearance.Options.UseImage = True
+        ToolTipTitleItem228.Image = Global.ClearProject.My.Resources.Resources.ExportToExcel_16x16
+        ToolTipTitleItem228.Text = "Exporter en MS Excel"
+        SuperToolTip222.Items.Add(ToolTipTitleItem228)
+        Me.BtExcel.SuperTip = SuperToolTip222
         '
         'BtWord
         '
@@ -4747,12 +4825,12 @@ Partial Class NewDao
         Me.BtWord.Glyph = Global.ClearProject.My.Resources.Resources.ExportToRTF_16x16
         Me.BtWord.Id = 230
         Me.BtWord.Name = "BtWord"
-        ToolTipTitleItem709.Appearance.Image = Global.ClearProject.My.Resources.Resources.ExportToRTF_16x16
-        ToolTipTitleItem709.Appearance.Options.UseImage = True
-        ToolTipTitleItem709.Image = Global.ClearProject.My.Resources.Resources.ExportToRTF_16x16
-        ToolTipTitleItem709.Text = "Exporter en MS Word"
-        SuperToolTip681.Items.Add(ToolTipTitleItem709)
-        Me.BtWord.SuperTip = SuperToolTip681
+        ToolTipTitleItem229.Appearance.Image = Global.ClearProject.My.Resources.Resources.ExportToRTF_16x16
+        ToolTipTitleItem229.Appearance.Options.UseImage = True
+        ToolTipTitleItem229.Image = Global.ClearProject.My.Resources.Resources.ExportToRTF_16x16
+        ToolTipTitleItem229.Text = "Exporter en MS Word"
+        SuperToolTip223.Items.Add(ToolTipTitleItem229)
+        Me.BtWord.SuperTip = SuperToolTip223
         '
         'ExportGroup
         '
@@ -4766,19 +4844,19 @@ Partial Class NewDao
         Me.ExportGroup.ItemLinks.Add(Me.BtImg)
         Me.ExportGroup.ItemLinks.Add(Me.BtMail)
         Me.ExportGroup.Name = "ExportGroup"
-        ToolTipTitleItem713.Appearance.Image = Global.ClearProject.My.Resources.Resources.Previous_16x16
-        ToolTipTitleItem713.Appearance.Options.UseImage = True
-        ToolTipTitleItem713.Image = Global.ClearProject.My.Resources.Resources.Previous_16x16
-        ToolTipTitleItem713.Text = "Exporter le rapport"
-        ToolTipItem667.LeftIndent = 6
-        ToolTipItem667.Text = "Cliquer pour exporter le dossier en cours" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "au format de votre choix "
-        ToolTipTitleItem714.LeftIndent = 6
-        ToolTipTitleItem714.Text = "Dossier d'Appel d'Offres"
-        SuperToolTip685.Items.Add(ToolTipTitleItem713)
-        SuperToolTip685.Items.Add(ToolTipItem667)
-        SuperToolTip685.Items.Add(ToolTipSeparatorItem29)
-        SuperToolTip685.Items.Add(ToolTipTitleItem714)
-        Me.ExportGroup.SuperTip = SuperToolTip685
+        ToolTipTitleItem233.Appearance.Image = Global.ClearProject.My.Resources.Resources.Previous_16x16
+        ToolTipTitleItem233.Appearance.Options.UseImage = True
+        ToolTipTitleItem233.Image = Global.ClearProject.My.Resources.Resources.Previous_16x16
+        ToolTipTitleItem233.Text = "Exporter le rapport"
+        ToolTipItem221.LeftIndent = 6
+        ToolTipItem221.Text = "Cliquer pour exporter le dossier en cours" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "au format de votre choix "
+        ToolTipTitleItem234.LeftIndent = 6
+        ToolTipTitleItem234.Text = "Dossier d'Appel d'Offres"
+        SuperToolTip227.Items.Add(ToolTipTitleItem233)
+        SuperToolTip227.Items.Add(ToolTipItem221)
+        SuperToolTip227.Items.Add(ToolTipSeparatorItem7)
+        SuperToolTip227.Items.Add(ToolTipTitleItem234)
+        Me.ExportGroup.SuperTip = SuperToolTip227
         Me.ExportGroup.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'BtText
@@ -4787,12 +4865,12 @@ Partial Class NewDao
         Me.BtText.Glyph = Global.ClearProject.My.Resources.Resources.ExportToTXT_16x16
         Me.BtText.Id = 232
         Me.BtText.Name = "BtText"
-        ToolTipTitleItem710.Appearance.Image = Global.ClearProject.My.Resources.Resources.ExportToTXT_16x16
-        ToolTipTitleItem710.Appearance.Options.UseImage = True
-        ToolTipTitleItem710.Image = Global.ClearProject.My.Resources.Resources.ExportToTXT_16x16
-        ToolTipTitleItem710.Text = "Exporter en texte brut"
-        SuperToolTip682.Items.Add(ToolTipTitleItem710)
-        Me.BtText.SuperTip = SuperToolTip682
+        ToolTipTitleItem230.Appearance.Image = Global.ClearProject.My.Resources.Resources.ExportToTXT_16x16
+        ToolTipTitleItem230.Appearance.Options.UseImage = True
+        ToolTipTitleItem230.Image = Global.ClearProject.My.Resources.Resources.ExportToTXT_16x16
+        ToolTipTitleItem230.Text = "Exporter en texte brut"
+        SuperToolTip224.Items.Add(ToolTipTitleItem230)
+        Me.BtText.SuperTip = SuperToolTip224
         '
         'BtImg
         '
@@ -4800,12 +4878,12 @@ Partial Class NewDao
         Me.BtImg.Glyph = Global.ClearProject.My.Resources.Resources.ExportToIMG_16x16
         Me.BtImg.Id = 233
         Me.BtImg.Name = "BtImg"
-        ToolTipTitleItem711.Appearance.Image = Global.ClearProject.My.Resources.Resources.ExportToIMG_16x16
-        ToolTipTitleItem711.Appearance.Options.UseImage = True
-        ToolTipTitleItem711.Image = Global.ClearProject.My.Resources.Resources.ExportToIMG_16x16
-        ToolTipTitleItem711.Text = "Exporter en image"
-        SuperToolTip683.Items.Add(ToolTipTitleItem711)
-        Me.BtImg.SuperTip = SuperToolTip683
+        ToolTipTitleItem231.Appearance.Image = Global.ClearProject.My.Resources.Resources.ExportToIMG_16x16
+        ToolTipTitleItem231.Appearance.Options.UseImage = True
+        ToolTipTitleItem231.Image = Global.ClearProject.My.Resources.Resources.ExportToIMG_16x16
+        ToolTipTitleItem231.Text = "Exporter en image"
+        SuperToolTip225.Items.Add(ToolTipTitleItem231)
+        Me.BtImg.SuperTip = SuperToolTip225
         '
         'BtMail
         '
@@ -4813,12 +4891,12 @@ Partial Class NewDao
         Me.BtMail.Glyph = Global.ClearProject.My.Resources.Resources.Outbox_16x16
         Me.BtMail.Id = 234
         Me.BtMail.Name = "BtMail"
-        ToolTipTitleItem712.Appearance.Image = Global.ClearProject.My.Resources.Resources.TopCustomers_16x16
-        ToolTipTitleItem712.Appearance.Options.UseImage = True
-        ToolTipTitleItem712.Image = Global.ClearProject.My.Resources.Resources.TopCustomers_16x16
-        ToolTipTitleItem712.Text = "Envoyer par mail"
-        SuperToolTip684.Items.Add(ToolTipTitleItem712)
-        Me.BtMail.SuperTip = SuperToolTip684
+        ToolTipTitleItem232.Appearance.Image = Global.ClearProject.My.Resources.Resources.TopCustomers_16x16
+        ToolTipTitleItem232.Appearance.Options.UseImage = True
+        ToolTipTitleItem232.Image = Global.ClearProject.My.Resources.Resources.TopCustomers_16x16
+        ToolTipTitleItem232.Text = "Envoyer par mail"
+        SuperToolTip226.Items.Add(ToolTipTitleItem232)
+        Me.BtMail.SuperTip = SuperToolTip226
         '
         'BtS1
         '
@@ -5177,21 +5255,23 @@ Partial Class NewDao
         'TxtLibLot
         '
         Me.TxtLibLot.Location = New System.Drawing.Point(54, 53)
+        Me.TxtLibLot.MaxLength = 500
         Me.TxtLibLot.Multiline = True
         Me.TxtLibLot.Name = "TxtLibLot"
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtLibLot, False)
         Me.TxtLibLot.Size = New System.Drawing.Size(244, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtLibLot, OptionsSpelling75)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtLibLot, OptionsSpelling1)
         Me.TxtLibLot.TabIndex = 8
         '
         'TxtPrixDao
         '
         Me.TxtPrixDao.Enabled = False
         Me.TxtPrixDao.Location = New System.Drawing.Point(116, 23)
+        Me.TxtPrixDao.MaxLength = 22
         Me.TxtPrixDao.Name = "TxtPrixDao"
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtPrixDao, False)
         Me.TxtPrixDao.Size = New System.Drawing.Size(182, 21)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtPrixDao, OptionsSpelling81)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtPrixDao, OptionsSpelling2)
         Me.TxtPrixDao.TabIndex = 6
         Me.TxtPrixDao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -5199,7 +5279,7 @@ Partial Class NewDao
         '
         Me.TxtAdresseCompte.EditValue = ""
         Me.TxtAdresseCompte.Enabled = False
-        Me.TxtAdresseCompte.Location = New System.Drawing.Point(5, 92)
+        Me.TxtAdresseCompte.Location = New System.Drawing.Point(5, 106)
         Me.TxtAdresseCompte.MenuManager = Me.RibbonDAO
         Me.TxtAdresseCompte.Name = "TxtAdresseCompte"
         Me.TxtAdresseCompte.Properties.Appearance.Options.UseTextOptions = True
@@ -5207,28 +5287,12 @@ Partial Class NewDao
         Me.TxtAdresseCompte.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtAdresseCompte, True)
         Me.TxtAdresseCompte.Size = New System.Drawing.Size(279, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtAdresseCompte, OptionsSpelling82)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtAdresseCompte, OptionsSpelling3)
         Me.TxtAdresseCompte.TabIndex = 20
-        '
-        'TxtNumCompte
-        '
-        Me.TxtNumCompte.EditValue = ""
-        Me.TxtNumCompte.Enabled = False
-        Me.TxtNumCompte.Location = New System.Drawing.Point(5, 70)
-        Me.TxtNumCompte.MenuManager = Me.RibbonDAO
-        Me.TxtNumCompte.Name = "TxtNumCompte"
-        Me.TxtNumCompte.Properties.Appearance.Options.UseTextOptions = True
-        Me.TxtNumCompte.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.TxtNumCompte.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
-        Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtNumCompte, True)
-        Me.TxtNumCompte.Size = New System.Drawing.Size(279, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtNumCompte, OptionsSpelling78)
-        Me.TxtNumCompte.TabIndex = 19
-        Me.TxtNumCompte.Visible = False
         '
         'TxtMethodeMarche
         '
-        Me.TxtMethodeMarche.Location = New System.Drawing.Point(117, 24)
+        Me.TxtMethodeMarche.Location = New System.Drawing.Point(293, 22)
         Me.TxtMethodeMarche.MenuManager = Me.RibbonDAO
         Me.TxtMethodeMarche.Name = "TxtMethodeMarche"
         Me.TxtMethodeMarche.Properties.Appearance.Options.UseTextOptions = True
@@ -5236,8 +5300,8 @@ Partial Class NewDao
         Me.TxtMethodeMarche.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
         Me.TxtMethodeMarche.Properties.ReadOnly = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtMethodeMarche, True)
-        Me.TxtMethodeMarche.Size = New System.Drawing.Size(154, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtMethodeMarche, OptionsSpelling3)
+        Me.TxtMethodeMarche.Size = New System.Drawing.Size(47, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtMethodeMarche, OptionsSpelling4)
         Me.TxtMethodeMarche.TabIndex = 11
         '
         'TxtLibelleDao
@@ -5246,12 +5310,12 @@ Partial Class NewDao
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TxtLibelleDao.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtLibelleDao.Location = New System.Drawing.Point(59, 59)
-        Me.TxtLibelleDao.MaxLength = 400
+        Me.TxtLibelleDao.MaxLength = 500
         Me.TxtLibelleDao.Multiline = True
         Me.TxtLibelleDao.Name = "TxtLibelleDao"
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtLibelleDao, False)
         Me.TxtLibelleDao.Size = New System.Drawing.Size(653, 53)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtLibelleDao, OptionsSpelling4)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtLibelleDao, OptionsSpelling5)
         Me.TxtLibelleDao.TabIndex = 3
         '
         'TxtNumDao
@@ -5275,7 +5339,7 @@ Partial Class NewDao
         Me.TxtNumDao.Properties.ValidateOnEnterKey = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtNumDao, True)
         Me.TxtNumDao.Size = New System.Drawing.Size(653, 26)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtNumDao, OptionsSpelling83)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtNumDao, OptionsSpelling6)
         Me.TxtNumDao.TabIndex = 0
         '
         'TxtCvConcil
@@ -5288,7 +5352,7 @@ Partial Class NewDao
         Me.TxtCvConcil.Properties.ReadOnly = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtCvConcil, True)
         Me.TxtCvConcil.Size = New System.Drawing.Size(287, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtCvConcil, OptionsSpelling79)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtCvConcil, OptionsSpelling7)
         Me.TxtCvConcil.TabIndex = 17
         '
         'TxtAdresseDesigneConcil
@@ -5299,7 +5363,7 @@ Partial Class NewDao
         Me.TxtAdresseDesigneConcil.Name = "TxtAdresseDesigneConcil"
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtAdresseDesigneConcil, True)
         Me.TxtAdresseDesigneConcil.Size = New System.Drawing.Size(361, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtAdresseDesigneConcil, OptionsSpelling7)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtAdresseDesigneConcil, OptionsSpelling8)
         Me.TxtAdresseDesigneConcil.TabIndex = 15
         '
         'TxtDesigneConcil
@@ -5310,7 +5374,7 @@ Partial Class NewDao
         Me.TxtDesigneConcil.Name = "TxtDesigneConcil"
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtDesigneConcil, True)
         Me.TxtDesigneConcil.Size = New System.Drawing.Size(361, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtDesigneConcil, OptionsSpelling8)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtDesigneConcil, OptionsSpelling9)
         Me.TxtDesigneConcil.TabIndex = 14
         '
         'TxtRemunConcil
@@ -5320,7 +5384,7 @@ Partial Class NewDao
         Me.TxtRemunConcil.Name = "TxtRemunConcil"
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtRemunConcil, False)
         Me.TxtRemunConcil.Size = New System.Drawing.Size(246, 21)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtRemunConcil, OptionsSpelling9)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtRemunConcil, OptionsSpelling10)
         Me.TxtRemunConcil.TabIndex = 12
         '
         'TxtNomConcil
@@ -5331,7 +5395,7 @@ Partial Class NewDao
         Me.TxtNomConcil.Name = "TxtNomConcil"
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtNomConcil, True)
         Me.TxtNomConcil.Size = New System.Drawing.Size(361, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtNomConcil, OptionsSpelling84)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtNomConcil, OptionsSpelling11)
         Me.TxtNomConcil.TabIndex = 4
         '
         'TxtFonctionCojo
@@ -5341,21 +5405,21 @@ Partial Class NewDao
         Me.TxtFonctionCojo.Name = "TxtFonctionCojo"
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtFonctionCojo, True)
         Me.TxtFonctionCojo.Size = New System.Drawing.Size(146, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtFonctionCojo, OptionsSpelling80)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtFonctionCojo, OptionsSpelling12)
         Me.TxtFonctionCojo.TabIndex = 15
         '
         'TxtMailCojo
         '
         Me.TxtMailCojo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TxtMailCojo.Location = New System.Drawing.Point(254, 79)
+        Me.TxtMailCojo.Location = New System.Drawing.Point(254, 81)
         Me.TxtMailCojo.MenuManager = Me.RibbonDAO
         Me.TxtMailCojo.Name = "TxtMailCojo"
         Me.TxtMailCojo.Properties.Mask.EditMask = "\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
         Me.TxtMailCojo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtMailCojo, True)
-        Me.TxtMailCojo.Size = New System.Drawing.Size(177, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtMailCojo, OptionsSpelling12)
+        Me.TxtMailCojo.Size = New System.Drawing.Size(204, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtMailCojo, OptionsSpelling13)
         Me.TxtMailCojo.TabIndex = 14
         '
         'TxtContactCojo
@@ -5367,19 +5431,19 @@ Partial Class NewDao
         Me.TxtContactCojo.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtContactCojo, True)
         Me.TxtContactCojo.Size = New System.Drawing.Size(146, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtContactCojo, OptionsSpelling13)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtContactCojo, OptionsSpelling14)
         Me.TxtContactCojo.TabIndex = 11
         '
         'TxtCojo
         '
         Me.TxtCojo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TxtCojo.Location = New System.Drawing.Point(112, 27)
+        Me.TxtCojo.Location = New System.Drawing.Point(112, 29)
         Me.TxtCojo.MenuManager = Me.RibbonDAO
         Me.TxtCojo.Name = "TxtCojo"
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtCojo, True)
-        Me.TxtCojo.Size = New System.Drawing.Size(319, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtCojo, OptionsSpelling14)
+        Me.TxtCojo.Size = New System.Drawing.Size(346, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtCojo, OptionsSpelling15)
         Me.TxtCojo.TabIndex = 0
         '
         'TxtDevise
@@ -5394,8 +5458,8 @@ Partial Class NewDao
         Me.TxtDevise.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.TxtDevise.Properties.ReadOnly = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtDevise, True)
-        Me.TxtDevise.Size = New System.Drawing.Size(108, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtDevise, OptionsSpelling15)
+        Me.TxtDevise.Size = New System.Drawing.Size(111, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtDevise, OptionsSpelling16)
         Me.TxtDevise.TabIndex = 10
         '
         'TxtPunit
@@ -5407,7 +5471,7 @@ Partial Class NewDao
         Me.TxtPunit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtPunit, True)
         Me.TxtPunit.Size = New System.Drawing.Size(156, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtPunit, OptionsSpelling16)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtPunit, OptionsSpelling17)
         Me.TxtPunit.TabIndex = 17
         '
         'TxtQte
@@ -5419,7 +5483,7 @@ Partial Class NewDao
         Me.TxtQte.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtQte, True)
         Me.TxtQte.Size = New System.Drawing.Size(156, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtQte, OptionsSpelling17)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtQte, OptionsSpelling18)
         Me.TxtQte.TabIndex = 15
         '
         'TxtUnite
@@ -5430,7 +5494,7 @@ Partial Class NewDao
         Me.TxtUnite.Properties.ReadOnly = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtUnite, True)
         Me.TxtUnite.Size = New System.Drawing.Size(101, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtUnite, OptionsSpelling18)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtUnite, OptionsSpelling19)
         Me.TxtUnite.TabIndex = 13
         '
         'TxtSection
@@ -5441,7 +5505,7 @@ Partial Class NewDao
         Me.TxtSection.Properties.ReadOnly = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtSection, True)
         Me.TxtSection.Size = New System.Drawing.Size(108, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtSection, OptionsSpelling19)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtSection, OptionsSpelling20)
         Me.TxtSection.TabIndex = 9
         '
         'TxtDesigneItem
@@ -5451,7 +5515,7 @@ Partial Class NewDao
         Me.TxtDesigneItem.Name = "TxtDesigneItem"
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtDesigneItem, True)
         Me.TxtDesigneItem.Size = New System.Drawing.Size(156, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtDesigneItem, OptionsSpelling20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtDesigneItem, OptionsSpelling21)
         Me.TxtDesigneItem.TabIndex = 7
         '
         'TxtNumItem
@@ -5466,7 +5530,7 @@ Partial Class NewDao
         Me.TxtNumItem.Properties.ReadOnly = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtNumItem, True)
         Me.TxtNumItem.Size = New System.Drawing.Size(39, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtNumItem, OptionsSpelling21)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtNumItem, OptionsSpelling22)
         Me.TxtNumItem.TabIndex = 4
         '
         'RefSectionItemCache
@@ -5481,7 +5545,7 @@ Partial Class NewDao
         Me.RefSectionItemCache.Properties.ReadOnly = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.RefSectionItemCache, True)
         Me.RefSectionItemCache.Size = New System.Drawing.Size(19, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.RefSectionItemCache, OptionsSpelling22)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.RefSectionItemCache, OptionsSpelling23)
         Me.RefSectionItemCache.TabIndex = 18
         '
         'TxtDesigneSection
@@ -5491,7 +5555,7 @@ Partial Class NewDao
         Me.TxtDesigneSection.Name = "TxtDesigneSection"
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtDesigneSection, True)
         Me.TxtDesigneSection.Size = New System.Drawing.Size(156, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtDesigneSection, OptionsSpelling23)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtDesigneSection, OptionsSpelling24)
         Me.TxtDesigneSection.TabIndex = 7
         '
         'TxtNumSection
@@ -5505,20 +5569,20 @@ Partial Class NewDao
         Me.TxtNumSection.Properties.MaxLength = 2
         Me.TxtNumSection.Properties.ReadOnly = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtNumSection, True)
-        Me.TxtNumSection.Size = New System.Drawing.Size(42, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtNumSection, OptionsSpelling24)
+        Me.TxtNumSection.Size = New System.Drawing.Size(52, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtNumSection, OptionsSpelling25)
         Me.TxtNumSection.TabIndex = 4
         '
         'TxtImportDQE
         '
         Me.TxtImportDQE.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TxtImportDQE.Location = New System.Drawing.Point(811, 3)
+        Me.TxtImportDQE.Location = New System.Drawing.Point(806, 3)
         Me.TxtImportDQE.MenuManager = Me.RibbonDAO
         Me.TxtImportDQE.Name = "TxtImportDQE"
         Me.TxtImportDQE.Properties.ReadOnly = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtImportDQE, True)
         Me.TxtImportDQE.Size = New System.Drawing.Size(38, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtImportDQE, OptionsSpelling25)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtImportDQE, OptionsSpelling26)
         Me.TxtImportDQE.TabIndex = 1
         Me.TxtImportDQE.Visible = False
         '
@@ -5532,7 +5596,7 @@ Partial Class NewDao
         Me.TxtLibLotSpecTech.Properties.ReadOnly = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtLibLotSpecTech, True)
         Me.TxtLibLotSpecTech.Size = New System.Drawing.Size(915, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtLibLotSpecTech, OptionsSpelling26)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtLibLotSpecTech, OptionsSpelling27)
         Me.TxtLibLotSpecTech.TabIndex = 9
         Me.TxtLibLotSpecTech.TabStop = False
         '
@@ -5545,8 +5609,8 @@ Partial Class NewDao
         Me.TxtLibCategBien.Name = "TxtLibCategBien"
         Me.TxtLibCategBien.Properties.ReadOnly = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtLibCategBien, True)
-        Me.TxtLibCategBien.Size = New System.Drawing.Size(776, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtLibCategBien, OptionsSpelling27)
+        Me.TxtLibCategBien.Size = New System.Drawing.Size(784, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtLibCategBien, OptionsSpelling28)
         Me.TxtLibCategBien.TabIndex = 10
         Me.TxtLibCategBien.TabStop = False
         '
@@ -5559,7 +5623,7 @@ Partial Class NewDao
         Me.TxtRefArticle.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtRefArticle, True)
         Me.TxtRefArticle.Size = New System.Drawing.Size(70, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtRefArticle, OptionsSpelling28)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtRefArticle, OptionsSpelling29)
         Me.TxtRefArticle.TabIndex = 3
         '
         'TxtLibelleBien
@@ -5572,7 +5636,7 @@ Partial Class NewDao
         Me.TxtLibelleBien.Name = "TxtLibelleBien"
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtLibelleBien, True)
         Me.TxtLibelleBien.Size = New System.Drawing.Size(444, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtLibelleBien, OptionsSpelling29)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtLibelleBien, OptionsSpelling30)
         Me.TxtLibelleBien.TabIndex = 6
         '
         'TxtLibelleCaract
@@ -5584,7 +5648,7 @@ Partial Class NewDao
         Me.TxtLibelleCaract.Name = "TxtLibelleCaract"
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtLibelleCaract, True)
         Me.TxtLibelleCaract.Size = New System.Drawing.Size(832, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtLibelleCaract, OptionsSpelling30)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtLibelleCaract, OptionsSpelling31)
         Me.TxtLibelleCaract.TabIndex = 3
         '
         'TxtValeurCaract
@@ -5596,7 +5660,7 @@ Partial Class NewDao
         Me.TxtValeurCaract.Name = "TxtValeurCaract"
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtValeurCaract, True)
         Me.TxtValeurCaract.Size = New System.Drawing.Size(832, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtValeurCaract, OptionsSpelling31)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtValeurCaract, OptionsSpelling32)
         Me.TxtValeurCaract.TabIndex = 6
         '
         'TxtUniteBien
@@ -5608,7 +5672,7 @@ Partial Class NewDao
         Me.TxtUniteBien.Properties.ReadOnly = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtUniteBien, True)
         Me.TxtUniteBien.Size = New System.Drawing.Size(95, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtUniteBien, OptionsSpelling32)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtUniteBien, OptionsSpelling33)
         Me.TxtUniteBien.TabIndex = 21
         Me.TxtUniteBien.TabStop = False
         '
@@ -5619,7 +5683,7 @@ Partial Class NewDao
         Me.TxtRefFournit.Name = "TxtRefFournit"
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtRefFournit, True)
         Me.TxtRefFournit.Size = New System.Drawing.Size(53, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtRefFournit, OptionsSpelling33)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtRefFournit, OptionsSpelling34)
         Me.TxtRefFournit.TabIndex = 22
         '
         'TxtLieuLivraison
@@ -5633,7 +5697,7 @@ Partial Class NewDao
         Me.TxtLieuLivraison.Properties.MaxLength = 250
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtLieuLivraison, True)
         Me.TxtLieuLivraison.Size = New System.Drawing.Size(877, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtLieuLivraison, OptionsSpelling34)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtLieuLivraison, OptionsSpelling35)
         Me.TxtLieuLivraison.TabIndex = 15
         '
         'TxtCritere
@@ -5648,7 +5712,7 @@ Partial Class NewDao
         Me.TxtCritere.Properties.ReadOnly = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtCritere, True)
         Me.TxtCritere.Size = New System.Drawing.Size(218, 251)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtCritere, OptionsSpelling35)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtCritere, OptionsSpelling36)
         Me.TxtCritere.TabIndex = 1
         '
         'TxtLibelleLot
@@ -5660,7 +5724,7 @@ Partial Class NewDao
         Me.TxtLibelleLot.Properties.ReadOnly = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtLibelleLot, True)
         Me.TxtLibelleLot.Size = New System.Drawing.Size(905, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtLibelleLot, OptionsSpelling36)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtLibelleLot, OptionsSpelling37)
         Me.TxtLibelleLot.TabIndex = 21
         '
         'TxtCriterePost
@@ -5676,7 +5740,7 @@ Partial Class NewDao
         Me.TxtCriterePost.Properties.MaxLength = 500
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtCriterePost, True)
         Me.TxtCriterePost.Size = New System.Drawing.Size(878, 42)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtCriterePost, OptionsSpelling37)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtCriterePost, OptionsSpelling38)
         Me.TxtCriterePost.TabIndex = 4
         '
         'txtLibLotDQE
@@ -5688,8 +5752,8 @@ Partial Class NewDao
         Me.txtLibLotDQE.Name = "txtLibLotDQE"
         Me.txtLibLotDQE.Properties.ReadOnly = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.txtLibLotDQE, True)
-        Me.txtLibLotDQE.Size = New System.Drawing.Size(892, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.txtLibLotDQE, OptionsSpelling38)
+        Me.txtLibLotDQE.Size = New System.Drawing.Size(887, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.txtLibLotDQE, OptionsSpelling39)
         Me.txtLibLotDQE.TabIndex = 8
         '
         'TxtSousLotDQE
@@ -5701,8 +5765,8 @@ Partial Class NewDao
         Me.TxtSousLotDQE.Name = "TxtSousLotDQE"
         Me.TxtSousLotDQE.Properties.ReadOnly = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtSousLotDQE, True)
-        Me.TxtSousLotDQE.Size = New System.Drawing.Size(892, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtSousLotDQE, OptionsSpelling39)
+        Me.TxtSousLotDQE.Size = New System.Drawing.Size(887, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtSousLotDQE, OptionsSpelling40)
         Me.TxtSousLotDQE.TabIndex = 11
         '
         'TextEdit3
@@ -5717,12 +5781,12 @@ Partial Class NewDao
         Me.TextEdit3.Properties.ReadOnly = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TextEdit3, True)
         Me.TextEdit3.Size = New System.Drawing.Size(21, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TextEdit3, OptionsSpelling40)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TextEdit3, OptionsSpelling41)
         Me.TextEdit3.TabIndex = 21
         '
         'TxtRefLot1
         '
-        Me.TxtRefLot1.Location = New System.Drawing.Point(48, 66)
+        Me.TxtRefLot1.Location = New System.Drawing.Point(12, 66)
         Me.TxtRefLot1.MenuManager = Me.RibbonDAO
         Me.TxtRefLot1.Name = "TxtRefLot1"
         Me.TxtRefLot1.Properties.Appearance.Options.UseTextOptions = True
@@ -5731,8 +5795,8 @@ Partial Class NewDao
         Me.TxtRefLot1.Properties.MaxLength = 3
         Me.TxtRefLot1.Properties.ReadOnly = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtRefLot1, True)
-        Me.TxtRefLot1.Size = New System.Drawing.Size(21, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtRefLot1, OptionsSpelling41)
+        Me.TxtRefLot1.Size = New System.Drawing.Size(31, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtRefLot1, OptionsSpelling42)
         Me.TxtRefLot1.TabIndex = 22
         Me.TxtRefLot1.Visible = False
         '
@@ -5744,7 +5808,7 @@ Partial Class NewDao
         Me.TxtSousSection.Properties.ReadOnly = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtSousSection, True)
         Me.TxtSousSection.Size = New System.Drawing.Size(108, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtSousSection, OptionsSpelling42)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtSousSection, OptionsSpelling43)
         Me.TxtSousSection.TabIndex = 22
         '
         'TxtSousLotSpecTech
@@ -5757,7 +5821,7 @@ Partial Class NewDao
         Me.TxtSousLotSpecTech.Properties.ReadOnly = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtSousLotSpecTech, True)
         Me.TxtSousLotSpecTech.Size = New System.Drawing.Size(915, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtSousLotSpecTech, OptionsSpelling43)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtSousLotSpecTech, OptionsSpelling44)
         Me.TxtSousLotSpecTech.TabIndex = 14
         Me.TxtSousLotSpecTech.TabStop = False
         '
@@ -5771,7 +5835,7 @@ Partial Class NewDao
         Me.TxtGroupConform.Properties.ReadOnly = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtGroupConform, True)
         Me.TxtGroupConform.Size = New System.Drawing.Size(218, 71)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtGroupConform, OptionsSpelling44)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtGroupConform, OptionsSpelling45)
         Me.TxtGroupConform.TabIndex = 28
         '
         'RefGroupConf
@@ -5781,7 +5845,7 @@ Partial Class NewDao
         Me.RefGroupConf.Properties.ReadOnly = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.RefGroupConf, True)
         Me.RefGroupConf.Size = New System.Drawing.Size(25, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.RefGroupConf, OptionsSpelling45)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.RefGroupConf, OptionsSpelling46)
         Me.RefGroupConf.TabIndex = 22
         Me.RefGroupConf.Visible = False
         '
@@ -5800,11 +5864,11 @@ Partial Class NewDao
         Me.TxtCautionLot.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtCautionLot.Properties.Mask.EditMask = "n0"
         Me.TxtCautionLot.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
-        Me.TxtCautionLot.Properties.MaxLength = 50
+        Me.TxtCautionLot.Properties.MaxLength = 20
         Me.TxtCautionLot.Properties.ValidateOnEnterKey = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtCautionLot, True)
         Me.TxtCautionLot.Size = New System.Drawing.Size(99, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtCautionLot, OptionsSpelling46)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtCautionLot, OptionsSpelling47)
         Me.TxtCautionLot.TabIndex = 10
         '
         'txtGroupe
@@ -5816,14 +5880,13 @@ Partial Class NewDao
         Me.txtGroupe.Name = "txtGroupe"
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.txtGroupe, True)
         Me.txtGroupe.Size = New System.Drawing.Size(878, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.txtGroupe, OptionsSpelling47)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.txtGroupe, OptionsSpelling48)
         Me.txtGroupe.TabIndex = 5
         '
         'txtFilePathDQE
         '
-        Me.txtFilePathDQE.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.txtFilePathDQE.Cursor = System.Windows.Forms.Cursors.Default
         Me.txtFilePathDQE.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtFilePathDQE.Enabled = False
         Me.txtFilePathDQE.Location = New System.Drawing.Point(0, 0)
         Me.txtFilePathDQE.Name = "txtFilePathDQE"
         Me.txtFilePathDQE.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -5834,31 +5897,32 @@ Partial Class NewDao
         Me.txtFilePathDQE.Properties.AppearanceDisabled.Options.UseForeColor = True
         Me.txtFilePathDQE.Properties.Mask.EditMask = "n0"
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.txtFilePathDQE, True)
-        Me.txtFilePathDQE.Size = New System.Drawing.Size(729, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.txtFilePathDQE, OptionsSpelling48)
+        Me.txtFilePathDQE.Size = New System.Drawing.Size(562, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.txtFilePathDQE, OptionsSpelling49)
         Me.txtFilePathDQE.TabIndex = 6
         '
         'txtCodeCateg
         '
-        Me.txtCodeCateg.Location = New System.Drawing.Point(785, 1)
+        Me.txtCodeCateg.Location = New System.Drawing.Point(106, 1)
         Me.txtCodeCateg.MenuManager = Me.RibbonDAO
         Me.txtCodeCateg.Name = "txtCodeCateg"
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.txtCodeCateg, True)
-        Me.txtCodeCateg.Size = New System.Drawing.Size(99, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.txtCodeCateg, OptionsSpelling49)
+        Me.txtCodeCateg.Size = New System.Drawing.Size(63, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.txtCodeCateg, OptionsSpelling50)
         Me.txtCodeCateg.TabIndex = 26
+        Me.txtCodeCateg.Visible = False
         '
         'NomJournal
         '
-        Me.NomJournal.Location = New System.Drawing.Point(117, 103)
+        Me.NomJournal.Location = New System.Drawing.Point(90, 72)
         Me.NomJournal.MenuManager = Me.RibbonDAO
         Me.NomJournal.Name = "NomJournal"
         Me.NomJournal.Properties.Appearance.Options.UseTextOptions = True
-        Me.NomJournal.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.NomJournal.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.NomJournal.Properties.MaxLength = 500
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.NomJournal, True)
-        Me.NomJournal.Size = New System.Drawing.Size(154, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.NomJournal, OptionsSpelling50)
+        Me.NomJournal.Size = New System.Drawing.Size(250, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.NomJournal, OptionsSpelling51)
         Me.NomJournal.TabIndex = 22
         '
         'NbreDelaiPub
@@ -5875,12 +5939,12 @@ Partial Class NewDao
         Me.NbreDelaiPub.Properties.MaxLength = 8
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.NbreDelaiPub, True)
         Me.NbreDelaiPub.Size = New System.Drawing.Size(92, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.NbreDelaiPub, OptionsSpelling51)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.NbreDelaiPub, OptionsSpelling52)
         Me.NbreDelaiPub.TabIndex = 4
         '
         'MontantMarche
         '
-        Me.MontantMarche.Location = New System.Drawing.Point(117, 48)
+        Me.MontantMarche.Location = New System.Drawing.Point(90, 22)
         Me.MontantMarche.Name = "MontantMarche"
         Me.MontantMarche.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MontantMarche.Properties.Appearance.Options.UseFont = True
@@ -5890,18 +5954,19 @@ Partial Class NewDao
         Me.MontantMarche.Properties.ReadOnly = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.MontantMarche, True)
         Me.MontantMarche.Size = New System.Drawing.Size(154, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.MontantMarche, OptionsSpelling52)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.MontantMarche, OptionsSpelling53)
         Me.MontantMarche.TabIndex = 15
         '
         'TxtLibelleserviceconnexe
         '
-        Me.TxtLibelleserviceconnexe.Location = New System.Drawing.Point(121, 27)
+        Me.TxtLibelleserviceconnexe.Location = New System.Drawing.Point(122, 6)
         Me.TxtLibelleserviceconnexe.Name = "TxtLibelleserviceconnexe"
-        Me.TxtLibelleserviceconnexe.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtLibelleserviceconnexe.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtLibelleserviceconnexe.Properties.Appearance.Options.UseFont = True
+        Me.TxtLibelleserviceconnexe.Properties.MaxLength = 500
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtLibelleserviceconnexe, True)
-        Me.TxtLibelleserviceconnexe.Size = New System.Drawing.Size(219, 22)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtLibelleserviceconnexe, OptionsSpelling53)
+        Me.TxtLibelleserviceconnexe.Size = New System.Drawing.Size(218, 22)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtLibelleserviceconnexe, OptionsSpelling54)
         Me.TxtLibelleserviceconnexe.TabIndex = 19
         '
         'TxtMaitreOuvrag
@@ -5913,18 +5978,19 @@ Partial Class NewDao
         Me.TxtMaitreOuvrag.Name = "TxtMaitreOuvrag"
         Me.TxtMaitreOuvrag.Properties.MaxLength = 100
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtMaitreOuvrag, True)
-        Me.TxtMaitreOuvrag.Size = New System.Drawing.Size(429, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtMaitreOuvrag, OptionsSpelling54)
+        Me.TxtMaitreOuvrag.Size = New System.Drawing.Size(432, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtMaitreOuvrag, OptionsSpelling55)
         Me.TxtMaitreOuvrag.TabIndex = 12
         '
         'ModeAchemin
         '
-        Me.ModeAchemin.Location = New System.Drawing.Point(108, 27)
+        Me.ModeAchemin.Location = New System.Drawing.Point(108, 26)
         Me.ModeAchemin.MenuManager = Me.RibbonDAO
         Me.ModeAchemin.Name = "ModeAchemin"
+        Me.ModeAchemin.Properties.MaxLength = 100
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.ModeAchemin, True)
-        Me.ModeAchemin.Size = New System.Drawing.Size(391, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.ModeAchemin, OptionsSpelling55)
+        Me.ModeAchemin.Size = New System.Drawing.Size(135, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.ModeAchemin, OptionsSpelling56)
         Me.ModeAchemin.TabIndex = 20
         '
         'PaysOuvertur
@@ -5933,7 +5999,7 @@ Partial Class NewDao
         Me.PaysOuvertur.Name = "PaysOuvertur"
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.PaysOuvertur, True)
         Me.PaysOuvertur.Size = New System.Drawing.Size(244, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.PaysOuvertur, OptionsSpelling56)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.PaysOuvertur, OptionsSpelling57)
         Me.PaysOuvertur.TabIndex = 41
         '
         'VillelieuOuvr
@@ -5942,7 +6008,7 @@ Partial Class NewDao
         Me.VillelieuOuvr.Name = "VillelieuOuvr"
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.VillelieuOuvr, True)
         Me.VillelieuOuvr.Size = New System.Drawing.Size(244, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.VillelieuOuvr, OptionsSpelling57)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.VillelieuOuvr, OptionsSpelling58)
         Me.VillelieuOuvr.TabIndex = 40
         '
         'BuroOuver
@@ -5951,7 +6017,7 @@ Partial Class NewDao
         Me.BuroOuver.Name = "BuroOuver"
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.BuroOuver, True)
         Me.BuroOuver.Size = New System.Drawing.Size(123, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.BuroOuver, OptionsSpelling58)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.BuroOuver, OptionsSpelling59)
         Me.BuroOuver.TabIndex = 39
         '
         'AdresslieuOuvr
@@ -5961,7 +6027,7 @@ Partial Class NewDao
         Me.AdresslieuOuvr.Properties.MaxLength = 100
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.AdresslieuOuvr, True)
         Me.AdresslieuOuvr.Size = New System.Drawing.Size(123, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.AdresslieuOuvr, OptionsSpelling59)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.AdresslieuOuvr, OptionsSpelling60)
         Me.AdresslieuOuvr.TabIndex = 38
         '
         'SourceOfficielle
@@ -5971,8 +6037,8 @@ Partial Class NewDao
         Me.SourceOfficielle.Location = New System.Drawing.Point(179, 20)
         Me.SourceOfficielle.Name = "SourceOfficielle"
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.SourceOfficielle, True)
-        Me.SourceOfficielle.Size = New System.Drawing.Size(318, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.SourceOfficielle, OptionsSpelling60)
+        Me.SourceOfficielle.Size = New System.Drawing.Size(321, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.SourceOfficielle, OptionsSpelling61)
         Me.SourceOfficielle.TabIndex = 48
         '
         'TxtTextSection
@@ -5980,10 +6046,11 @@ Partial Class NewDao
         Me.TxtTextSection.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TxtTextSection.Location = New System.Drawing.Point(3, 17)
         Me.TxtTextSection.Name = "TxtTextSection"
+        Me.TxtTextSection.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat
         Me.TxtTextSection.Properties.ReadOnly = True
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtTextSection, True)
-        Me.TxtTextSection.Size = New System.Drawing.Size(477, 35)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtTextSection, OptionsSpelling61)
+        Me.TxtTextSection.Size = New System.Drawing.Size(503, 35)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtTextSection, OptionsSpelling62)
         Me.TxtTextSection.TabIndex = 34
         '
         'TxtSaisiTextSection
@@ -5993,28 +6060,30 @@ Partial Class NewDao
         Me.TxtSaisiTextSection.Location = New System.Drawing.Point(8, 94)
         Me.TxtSaisiTextSection.Name = "TxtSaisiTextSection"
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtSaisiTextSection, True)
-        Me.TxtSaisiTextSection.Size = New System.Drawing.Size(390, 38)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtSaisiTextSection, OptionsSpelling62)
+        Me.TxtSaisiTextSection.Size = New System.Drawing.Size(414, 38)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtSaisiTextSection, OptionsSpelling63)
         Me.TxtSaisiTextSection.TabIndex = 37
         '
         'PrctLot
         '
-        Me.PrctLot.Location = New System.Drawing.Point(238, 54)
+        Me.PrctLot.Location = New System.Drawing.Point(294, 26)
         Me.PrctLot.MenuManager = Me.RibbonDAO
         Me.PrctLot.Name = "PrctLot"
+        Me.PrctLot.Properties.MaxLength = 10
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.PrctLot, True)
-        Me.PrctLot.Size = New System.Drawing.Size(66, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.PrctLot, OptionsSpelling63)
+        Me.PrctLot.Size = New System.Drawing.Size(71, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.PrctLot, OptionsSpelling64)
         Me.PrctLot.TabIndex = 49
         '
         'PrctArticle
         '
-        Me.PrctArticle.Location = New System.Drawing.Point(365, 53)
+        Me.PrctArticle.Location = New System.Drawing.Point(423, 26)
         Me.PrctArticle.MenuManager = Me.RibbonDAO
         Me.PrctArticle.Name = "PrctArticle"
+        Me.PrctArticle.Properties.MaxLength = 10
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.PrctArticle, True)
-        Me.PrctArticle.Size = New System.Drawing.Size(80, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.PrctArticle, OptionsSpelling64)
+        Me.PrctArticle.Size = New System.Drawing.Size(77, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.PrctArticle, OptionsSpelling65)
         Me.PrctArticle.TabIndex = 50
         '
         'TxtSaisiSouLot
@@ -6024,9 +6093,10 @@ Partial Class NewDao
         Me.TxtSaisiSouLot.Name = "TxtSaisiSouLot"
         Me.TxtSaisiSouLot.Properties.Appearance.Options.UseTextOptions = True
         Me.TxtSaisiSouLot.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.TxtSaisiSouLot.Properties.MaxLength = 300
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TxtSaisiSouLot, True)
         Me.TxtSaisiSouLot.Size = New System.Drawing.Size(295, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtSaisiSouLot, OptionsSpelling65)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TxtSaisiSouLot, OptionsSpelling66)
         Me.TxtSaisiSouLot.TabIndex = 37
         '
         'TelecopieReclam
@@ -6037,8 +6107,8 @@ Partial Class NewDao
         Me.TelecopieReclam.Name = "TelecopieReclam"
         Me.TelecopieReclam.Properties.MaxLength = 19
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TelecopieReclam, True)
-        Me.TelecopieReclam.Size = New System.Drawing.Size(176, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TelecopieReclam, OptionsSpelling66)
+        Me.TelecopieReclam.Size = New System.Drawing.Size(205, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TelecopieReclam, OptionsSpelling67)
         Me.TelecopieReclam.TabIndex = 42
         '
         'AdresseReclam
@@ -6049,8 +6119,8 @@ Partial Class NewDao
         Me.AdresseReclam.Name = "AdresseReclam"
         Me.AdresseReclam.Properties.MaxLength = 100
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.AdresseReclam, True)
-        Me.AdresseReclam.Size = New System.Drawing.Size(176, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.AdresseReclam, OptionsSpelling67)
+        Me.AdresseReclam.Size = New System.Drawing.Size(205, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.AdresseReclam, OptionsSpelling68)
         Me.AdresseReclam.TabIndex = 41
         '
         'AgenceReclam
@@ -6060,7 +6130,7 @@ Partial Class NewDao
         Me.AgenceReclam.Properties.MaxLength = 100
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.AgenceReclam, True)
         Me.AgenceReclam.Size = New System.Drawing.Size(123, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.AgenceReclam, OptionsSpelling68)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.AgenceReclam, OptionsSpelling69)
         Me.AgenceReclam.TabIndex = 40
         '
         'TitreReclam
@@ -6070,7 +6140,7 @@ Partial Class NewDao
         Me.TitreReclam.Properties.MaxLength = 100
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.TitreReclam, True)
         Me.TitreReclam.Size = New System.Drawing.Size(123, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.TitreReclam, OptionsSpelling69)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.TitreReclam, OptionsSpelling70)
         Me.TitreReclam.TabIndex = 39
         '
         'NomReclama
@@ -6081,8 +6151,8 @@ Partial Class NewDao
         Me.NomReclama.Name = "NomReclama"
         Me.NomReclama.Properties.MaxLength = 100
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.NomReclama, True)
-        Me.NomReclama.Size = New System.Drawing.Size(395, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.NomReclama, OptionsSpelling70)
+        Me.NomReclama.Size = New System.Drawing.Size(423, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.NomReclama, OptionsSpelling71)
         Me.NomReclama.TabIndex = 38
         '
         'NomEmprunteur
@@ -6091,18 +6161,119 @@ Partial Class NewDao
         Me.NomEmprunteur.Name = "NomEmprunteur"
         Me.SpellChecker1.SetShowSpellCheckMenu(Me.NomEmprunteur, True)
         Me.NomEmprunteur.Size = New System.Drawing.Size(402, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.NomEmprunteur, OptionsSpelling71)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.NomEmprunteur, OptionsSpelling72)
         Me.NomEmprunteur.TabIndex = 48
         '
-        'CalesDAO
+        'RefSpecificationModif
         '
-        Me.CalesDAO.Location = New System.Drawing.Point(959, 787)
-        Me.CalesDAO.Name = "CalesDAO"
-        Me.CalesDAO.Properties.MaxLength = 100
-        Me.SpellChecker1.SetShowSpellCheckMenu(Me.CalesDAO, True)
-        Me.CalesDAO.Size = New System.Drawing.Size(45, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.CalesDAO, OptionsSpelling72)
-        Me.CalesDAO.TabIndex = 43
+        Me.RefSpecificationModif.Location = New System.Drawing.Point(179, 2)
+        Me.RefSpecificationModif.MenuManager = Me.RibbonDAO
+        Me.RefSpecificationModif.Name = "RefSpecificationModif"
+        Me.SpellChecker1.SetShowSpellCheckMenu(Me.RefSpecificationModif, True)
+        Me.RefSpecificationModif.Size = New System.Drawing.Size(73, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.RefSpecificationModif, OptionsSpelling73)
+        Me.RefSpecificationModif.TabIndex = 29
+        Me.RefSpecificationModif.Visible = False
+        '
+        'CodeCategorie
+        '
+        Me.CodeCategorie.Location = New System.Drawing.Point(302, 1)
+        Me.CodeCategorie.MenuManager = Me.RibbonDAO
+        Me.CodeCategorie.Name = "CodeCategorie"
+        Me.SpellChecker1.SetShowSpellCheckMenu(Me.CodeCategorie, True)
+        Me.CodeCategorie.Size = New System.Drawing.Size(62, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.CodeCategorie, OptionsSpelling74)
+        Me.CodeCategorie.TabIndex = 30
+        Me.CodeCategorie.Visible = False
+        '
+        'LigneBudgetaire
+        '
+        Me.LigneBudgetaire.Location = New System.Drawing.Point(90, 99)
+        Me.LigneBudgetaire.MenuManager = Me.RibbonDAO
+        Me.LigneBudgetaire.Name = "LigneBudgetaire"
+        Me.LigneBudgetaire.Properties.Appearance.Options.UseTextOptions = True
+        Me.LigneBudgetaire.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.LigneBudgetaire.Properties.MaxLength = 500
+        Me.SpellChecker1.SetShowSpellCheckMenu(Me.LigneBudgetaire, True)
+        Me.LigneBudgetaire.Size = New System.Drawing.Size(250, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.LigneBudgetaire, OptionsSpelling75)
+        Me.LigneBudgetaire.TabIndex = 38
+        '
+        'LieurRemiseFourniture
+        '
+        Me.LieurRemiseFourniture.Location = New System.Drawing.Point(115, 125)
+        Me.LieurRemiseFourniture.MenuManager = Me.RibbonDAO
+        Me.LieurRemiseFourniture.Name = "LieurRemiseFourniture"
+        Me.LieurRemiseFourniture.Properties.Appearance.Options.UseTextOptions = True
+        Me.LieurRemiseFourniture.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.LieurRemiseFourniture.Properties.MaxLength = 500
+        Me.SpellChecker1.SetShowSpellCheckMenu(Me.LieurRemiseFourniture, True)
+        Me.LieurRemiseFourniture.Size = New System.Drawing.Size(225, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.LieurRemiseFourniture, OptionsSpelling76)
+        Me.LieurRemiseFourniture.TabIndex = 40
+        '
+        'PrecedurVoiElectronic
+        '
+        Me.PrecedurVoiElectronic.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PrecedurVoiElectronic.Enabled = False
+        Me.PrecedurVoiElectronic.Location = New System.Drawing.Point(3, 17)
+        Me.PrecedurVoiElectronic.Name = "PrecedurVoiElectronic"
+        Me.PrecedurVoiElectronic.Properties.MaxLength = 500
+        Me.SpellChecker1.SetShowSpellCheckMenu(Me.PrecedurVoiElectronic, True)
+        Me.PrecedurVoiElectronic.Size = New System.Drawing.Size(269, 35)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.PrecedurVoiElectronic, OptionsSpelling77)
+        Me.PrecedurVoiElectronic.TabIndex = 33
+        '
+        'NatureDocument
+        '
+        Me.NatureDocument.Enabled = False
+        Me.NatureDocument.Location = New System.Drawing.Point(294, 51)
+        Me.NatureDocument.MenuManager = Me.RibbonDAO
+        Me.NatureDocument.Name = "NatureDocument"
+        Me.NatureDocument.Properties.MaxLength = 100
+        Me.SpellChecker1.SetShowSpellCheckMenu(Me.NatureDocument, True)
+        Me.NatureDocument.Size = New System.Drawing.Size(206, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.NatureDocument, OptionsSpelling78)
+        Me.NatureDocument.TabIndex = 60
+        '
+        'ListeVariante
+        '
+        Me.ListeVariante.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ListeVariante.Enabled = False
+        Me.ListeVariante.Location = New System.Drawing.Point(3, 17)
+        Me.ListeVariante.Name = "ListeVariante"
+        Me.ListeVariante.Properties.MaxLength = 500
+        Me.SpellChecker1.SetShowSpellCheckMenu(Me.ListeVariante, True)
+        Me.ListeVariante.Size = New System.Drawing.Size(201, 35)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.ListeVariante, OptionsSpelling79)
+        Me.ListeVariante.TabIndex = 33
+        '
+        'ProjetSimilaireJustificatif
+        '
+        Me.ProjetSimilaireJustificatif.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ProjetSimilaireJustificatif.Location = New System.Drawing.Point(3, 17)
+        Me.ProjetSimilaireJustificatif.Name = "ProjetSimilaireJustificatif"
+        Me.ProjetSimilaireJustificatif.Properties.MaxLength = 500
+        Me.SpellChecker1.SetShowSpellCheckMenu(Me.ProjetSimilaireJustificatif, True)
+        Me.ProjetSimilaireJustificatif.Size = New System.Drawing.Size(316, 27)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.ProjetSimilaireJustificatif, OptionsSpelling80)
+        Me.ProjetSimilaireJustificatif.TabIndex = 33
+        '
+        'RefLotDQE
+        '
+        Me.RefLotDQE.Location = New System.Drawing.Point(183, 3)
+        Me.RefLotDQE.MenuManager = Me.RibbonDAO
+        Me.RefLotDQE.Name = "RefLotDQE"
+        Me.RefLotDQE.Properties.Appearance.Options.UseTextOptions = True
+        Me.RefLotDQE.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.RefLotDQE.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.RefLotDQE.Properties.MaxLength = 3
+        Me.RefLotDQE.Properties.ReadOnly = True
+        Me.SpellChecker1.SetShowSpellCheckMenu(Me.RefLotDQE, True)
+        Me.RefLotDQE.Size = New System.Drawing.Size(31, 20)
+        Me.SpellChecker1.SetSpellCheckerOptions(Me.RefLotDQE, OptionsSpelling81)
+        Me.RefLotDQE.TabIndex = 23
+        Me.RefLotDQE.Visible = False
         '
         'ImageList1
         '
@@ -6319,7 +6490,7 @@ Partial Class NewDao
         Me.GbEditionLot.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GbEditionLot.Location = New System.Drawing.Point(2, 21)
         Me.GbEditionLot.Name = "GbEditionLot"
-        Me.GbEditionLot.Size = New System.Drawing.Size(305, 426)
+        Me.GbEditionLot.Size = New System.Drawing.Size(305, 401)
         Me.GbEditionLot.TabIndex = 7
         Me.GbEditionLot.Text = "Edition des lots"
         '
@@ -6333,7 +6504,7 @@ Partial Class NewDao
         Me.GroupBox6.Size = New System.Drawing.Size(301, 50)
         Me.GroupBox6.TabIndex = 38
         Me.GroupBox6.TabStop = False
-        Me.GroupBox6.Text = "Libellé sous lot"
+        Me.GroupBox6.Text = "Saisir des  sous lots"
         '
         'LabelControl5
         '
@@ -6348,8 +6519,8 @@ Partial Class NewDao
         Me.GridSousLot.AllowUserToAddRows = False
         Me.GridSousLot.AllowUserToDeleteRows = False
         Me.GridSousLot.AllowUserToResizeRows = False
-        DataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.GridSousLot.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle32
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.GridSousLot.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.GridSousLot.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -6363,7 +6534,7 @@ Partial Class NewDao
         Me.GridSousLot.Name = "GridSousLot"
         Me.GridSousLot.ReadOnly = True
         Me.GridSousLot.RowHeadersVisible = False
-        Me.GridSousLot.Size = New System.Drawing.Size(301, 257)
+        Me.GridSousLot.Size = New System.Drawing.Size(301, 237)
         Me.GridSousLot.TabIndex = 15
         '
         'RefSousLots
@@ -6372,16 +6543,18 @@ Partial Class NewDao
         Me.RefSousLots.Name = "RefSousLots"
         Me.RefSousLots.ReadOnly = True
         Me.RefSousLots.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.RefSousLots.Visible = False
         '
         'RefLot
         '
         Me.RefLot.HeaderText = "RefLots"
         Me.RefLot.Name = "RefLot"
         Me.RefLot.ReadOnly = True
+        Me.RefLot.Visible = False
         '
         'LibelleSousLots
         '
-        Me.LibelleSousLots.HeaderText = "Liste des sous sots"
+        Me.LibelleSousLots.HeaderText = "Liste des sous lots"
         Me.LibelleSousLots.Name = "LibelleSousLots"
         Me.LibelleSousLots.ReadOnly = True
         Me.LibelleSousLots.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
@@ -6474,23 +6647,34 @@ Partial Class NewDao
         '
         'GroupControl4
         '
+        Me.GroupControl4.Controls.Add(Me.LabelControl93)
         Me.GroupControl4.Controls.Add(Me.TxtPrixDao)
         Me.GroupControl4.Controls.Add(Me.TxtAdresseCompte)
-        Me.GroupControl4.Controls.Add(Me.TxtNumCompte)
         Me.GroupControl4.Controls.Add(Me.CmbCompte)
         Me.GroupControl4.Controls.Add(Me.LabelControl9)
         Me.GroupControl4.Controls.Add(Me.LabelControl8)
+        Me.GroupControl4.Controls.Add(Me.NaturePrix)
         Me.GroupControl4.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.GroupControl4.Location = New System.Drawing.Point(2, 447)
+        Me.GroupControl4.Location = New System.Drawing.Point(2, 422)
         Me.GroupControl4.Name = "GroupControl4"
-        Me.GroupControl4.Size = New System.Drawing.Size(305, 71)
+        Me.GroupControl4.Size = New System.Drawing.Size(305, 96)
         Me.GroupControl4.TabIndex = 6
         Me.GroupControl4.Text = "Frais du dossier"
+        '
+        'LabelControl93
+        '
+        Me.LabelControl93.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl93.LineVisible = True
+        Me.LabelControl93.Location = New System.Drawing.Point(5, 54)
+        Me.LabelControl93.Name = "LabelControl93"
+        Me.LabelControl93.Size = New System.Drawing.Size(74, 13)
+        Me.LabelControl93.TabIndex = 21
+        Me.LabelControl93.Text = "Nature des prix"
         '
         'CmbCompte
         '
         Me.CmbCompte.Enabled = False
-        Me.CmbCompte.Location = New System.Drawing.Point(116, 47)
+        Me.CmbCompte.Location = New System.Drawing.Point(116, 71)
         Me.CmbCompte.MenuManager = Me.RibbonDAO
         Me.CmbCompte.Name = "CmbCompte"
         Me.CmbCompte.Properties.Appearance.Options.UseTextOptions = True
@@ -6503,7 +6687,7 @@ Partial Class NewDao
         '
         Me.LabelControl9.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl9.LineVisible = True
-        Me.LabelControl9.Location = New System.Drawing.Point(5, 51)
+        Me.LabelControl9.Location = New System.Drawing.Point(5, 75)
         Me.LabelControl9.Name = "LabelControl9"
         Me.LabelControl9.Size = New System.Drawing.Size(99, 13)
         Me.LabelControl9.TabIndex = 8
@@ -6518,6 +6702,19 @@ Partial Class NewDao
         Me.LabelControl8.Size = New System.Drawing.Size(64, 13)
         Me.LabelControl8.TabIndex = 7
         Me.LabelControl8.Text = "Prix de vente"
+        '
+        'NaturePrix
+        '
+        Me.NaturePrix.EditValue = ""
+        Me.NaturePrix.Location = New System.Drawing.Point(116, 47)
+        Me.NaturePrix.MenuManager = Me.RibbonDAO
+        Me.NaturePrix.Name = "NaturePrix"
+        Me.NaturePrix.Properties.Appearance.Options.UseTextOptions = True
+        Me.NaturePrix.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.NaturePrix.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.NaturePrix.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.NaturePrix.Size = New System.Drawing.Size(182, 20)
+        Me.NaturePrix.TabIndex = 19
         '
         'GroupControl1
         '
@@ -6540,6 +6737,10 @@ Partial Class NewDao
         '
         'GroupMarche
         '
+        Me.GroupMarche.Controls.Add(Me.LieurRemiseFourniture)
+        Me.GroupMarche.Controls.Add(Me.LabelControl78)
+        Me.GroupMarche.Controls.Add(Me.LigneBudgetaire)
+        Me.GroupMarche.Controls.Add(Me.LabelControl76)
         Me.GroupMarche.Controls.Add(Me.NomJournal)
         Me.GroupMarche.Controls.Add(Me.LabelControl62)
         Me.GroupMarche.Controls.Add(Me.LabelControl14)
@@ -6550,27 +6751,47 @@ Partial Class NewDao
         Me.GroupMarche.Controls.Add(Me.rdAttrLot)
         Me.GroupMarche.Controls.Add(Me.TxtMethodeMarche)
         Me.GroupMarche.Enabled = False
-        Me.GroupMarche.Location = New System.Drawing.Point(50, 152)
+        Me.GroupMarche.Location = New System.Drawing.Point(30, 152)
         Me.GroupMarche.Name = "GroupMarche"
-        Me.GroupMarche.Size = New System.Drawing.Size(276, 149)
+        Me.GroupMarche.Size = New System.Drawing.Size(344, 149)
         Me.GroupMarche.TabIndex = 49
         Me.GroupMarche.Text = "Marché"
+        '
+        'LabelControl78
+        '
+        Me.LabelControl78.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl78.LineVisible = True
+        Me.LabelControl78.Location = New System.Drawing.Point(6, 129)
+        Me.LabelControl78.Name = "LabelControl78"
+        Me.LabelControl78.Size = New System.Drawing.Size(105, 13)
+        Me.LabelControl78.TabIndex = 39
+        Me.LabelControl78.Text = "Lieu remise des offres"
+        '
+        'LabelControl76
+        '
+        Me.LabelControl76.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl76.LineVisible = True
+        Me.LabelControl76.Location = New System.Drawing.Point(5, 102)
+        Me.LabelControl76.Name = "LabelControl76"
+        Me.LabelControl76.Size = New System.Drawing.Size(80, 13)
+        Me.LabelControl76.TabIndex = 37
+        Me.LabelControl76.Text = "Ligne budgetaire"
         '
         'LabelControl62
         '
         Me.LabelControl62.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl62.LineVisible = True
-        Me.LabelControl62.Location = New System.Drawing.Point(6, 28)
+        Me.LabelControl62.Location = New System.Drawing.Point(250, 26)
         Me.LabelControl62.Name = "LabelControl62"
-        Me.LabelControl62.Size = New System.Drawing.Size(102, 13)
+        Me.LabelControl62.Size = New System.Drawing.Size(42, 13)
         Me.LabelControl62.TabIndex = 36
-        Me.LabelControl62.Text = "Méthode de selection"
+        Me.LabelControl62.Text = "Méthode"
         '
         'LabelControl14
         '
         Me.LabelControl14.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl14.LineVisible = True
-        Me.LabelControl14.Location = New System.Drawing.Point(6, 107)
+        Me.LabelControl14.Location = New System.Drawing.Point(6, 75)
         Me.LabelControl14.Name = "LabelControl14"
         Me.LabelControl14.Size = New System.Drawing.Size(72, 13)
         Me.LabelControl14.TabIndex = 21
@@ -6580,7 +6801,7 @@ Partial Class NewDao
         '
         Me.LabelControl34.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl34.LineVisible = True
-        Me.LabelControl34.Location = New System.Drawing.Point(6, 52)
+        Me.LabelControl34.Location = New System.Drawing.Point(6, 26)
         Me.LabelControl34.Name = "LabelControl34"
         Me.LabelControl34.Size = New System.Drawing.Size(78, 13)
         Me.LabelControl34.TabIndex = 35
@@ -6589,7 +6810,7 @@ Partial Class NewDao
         'TxtNbreLot
         '
         Me.TxtNbreLot.EditValue = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.TxtNbreLot.Location = New System.Drawing.Point(117, 74)
+        Me.TxtNbreLot.Location = New System.Drawing.Point(90, 47)
         Me.TxtNbreLot.MenuManager = Me.RibbonDAO
         Me.TxtNbreLot.Name = "TxtNbreLot"
         Me.TxtNbreLot.Properties.Appearance.Options.UseTextOptions = True
@@ -6599,14 +6820,14 @@ Partial Class NewDao
         Me.TxtNbreLot.Properties.Mask.EditMask = "N00"
         Me.TxtNbreLot.Properties.MaxValue = New Decimal(New Integer() {50, 0, 0, 0})
         Me.TxtNbreLot.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.TxtNbreLot.Size = New System.Drawing.Size(43, 20)
+        Me.TxtNbreLot.Size = New System.Drawing.Size(69, 20)
         Me.TxtNbreLot.TabIndex = 18
         '
         'LabelControl3
         '
         Me.LabelControl3.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl3.LineVisible = True
-        Me.LabelControl3.Location = New System.Drawing.Point(6, 78)
+        Me.LabelControl3.Location = New System.Drawing.Point(6, 51)
         Me.LabelControl3.Name = "LabelControl3"
         Me.LabelControl3.Size = New System.Drawing.Size(72, 13)
         Me.LabelControl3.TabIndex = 5
@@ -6615,12 +6836,12 @@ Partial Class NewDao
         'rdAttrLot
         '
         Me.rdAttrLot.EditValue = True
-        Me.rdAttrLot.Location = New System.Drawing.Point(165, 74)
+        Me.rdAttrLot.Location = New System.Drawing.Point(165, 47)
         Me.rdAttrLot.Name = "rdAttrLot"
         Me.rdAttrLot.Properties.Caption = "Attribution par lot"
         Me.rdAttrLot.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio
         Me.rdAttrLot.Properties.RadioGroupIndex = 0
-        Me.rdAttrLot.Size = New System.Drawing.Size(106, 19)
+        Me.rdAttrLot.Size = New System.Drawing.Size(127, 19)
         Me.rdAttrLot.TabIndex = 8
         '
         'GroupControlPub
@@ -6643,9 +6864,9 @@ Partial Class NewDao
         Me.GroupControlPub.Controls.Add(Me.LabelControl35)
         Me.GroupControlPub.Controls.Add(Me.LabelControl32)
         Me.GroupControlPub.Enabled = False
-        Me.GroupControlPub.Location = New System.Drawing.Point(331, 152)
+        Me.GroupControlPub.Location = New System.Drawing.Point(379, 152)
         Me.GroupControlPub.Name = "GroupControlPub"
-        Me.GroupControlPub.Size = New System.Drawing.Size(382, 149)
+        Me.GroupControlPub.Size = New System.Drawing.Size(334, 149)
         Me.GroupControlPub.TabIndex = 48
         Me.GroupControlPub.Text = "Publication"
         '
@@ -6695,7 +6916,7 @@ Partial Class NewDao
         Me.LabelControl15.Name = "LabelControl15"
         Me.LabelControl15.Size = New System.Drawing.Size(121, 13)
         Me.LabelControl15.TabIndex = 40
-        Me.LabelControl15.Text = "Delai de dépot de dossier"
+        Me.LabelControl15.Text = "Délai de dépot de dossier"
         '
         'HeureReporte
         '
@@ -6893,7 +7114,7 @@ Partial Class NewDao
         'XtraScrollableControl2
         '
         Me.XtraScrollableControl2.Controls.Add(Me.GroupControl10)
-        Me.XtraScrollableControl2.Controls.Add(Me.CalesDAO)
+        Me.XtraScrollableControl2.Controls.Add(Me.CalPannelDAO)
         Me.XtraScrollableControl2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.XtraScrollableControl2.Location = New System.Drawing.Point(0, 0)
         Me.XtraScrollableControl2.Name = "XtraScrollableControl2"
@@ -6910,7 +7131,7 @@ Partial Class NewDao
         Me.GroupControl10.Location = New System.Drawing.Point(0, 0)
         Me.GroupControl10.Name = "GroupControl10"
         Me.GroupControl10.ShowCaption = False
-        Me.GroupControl10.Size = New System.Drawing.Size(1015, 807)
+        Me.GroupControl10.Size = New System.Drawing.Size(1032, 520)
         Me.GroupControl10.TabIndex = 42
         Me.GroupControl10.Text = "Consultant"
         '
@@ -6918,91 +7139,21 @@ Partial Class NewDao
         '
         Me.GroupControl9.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.GroupControl9.CaptionLocation = DevExpress.Utils.Locations.Left
-        Me.GroupControl9.Controls.Add(Me.GCnegociation)
         Me.GroupControl9.Controls.Add(Me.gcCommission)
+        Me.GroupControl9.Controls.Add(Me.GCnegociation)
+        Me.GroupControl9.Controls.Add(Me.GroupControl16)
         Me.GroupControl9.Controls.Add(Me.GroupSection)
         Me.GroupControl9.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GroupControl9.Location = New System.Drawing.Point(513, 0)
+        Me.GroupControl9.Location = New System.Drawing.Point(507, 0)
         Me.GroupControl9.Name = "GroupControl9"
         Me.GroupControl9.ShowCaption = False
-        Me.GroupControl9.Size = New System.Drawing.Size(502, 807)
+        Me.GroupControl9.Size = New System.Drawing.Size(525, 520)
         Me.GroupControl9.TabIndex = 39
         Me.GroupControl9.Text = "Consultant"
         '
-        'GCnegociation
-        '
-        Me.GCnegociation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GCnegociation.Controls.Add(Me.GroupBox5)
-        Me.GCnegociation.Location = New System.Drawing.Point(3, 4)
-        Me.GCnegociation.Name = "GCnegociation"
-        Me.GCnegociation.Size = New System.Drawing.Size(496, 111)
-        Me.GCnegociation.TabIndex = 44
-        Me.GCnegociation.Text = "Réclamation"
-        '
-        'GroupBox5
-        '
-        Me.GroupBox5.Controls.Add(Me.TelecopieReclam)
-        Me.GroupBox5.Controls.Add(Me.AdresseReclam)
-        Me.GroupBox5.Controls.Add(Me.AgenceReclam)
-        Me.GroupBox5.Controls.Add(Me.TitreReclam)
-        Me.GroupBox5.Controls.Add(Me.LabelControl82)
-        Me.GroupBox5.Controls.Add(Me.LabelControl83)
-        Me.GroupBox5.Controls.Add(Me.LabelControl84)
-        Me.GroupBox5.Controls.Add(Me.NomReclama)
-        Me.GroupBox5.Controls.Add(Me.LabelControl85)
-        Me.GroupBox5.Controls.Add(Me.LabelControl86)
-        Me.GroupBox5.Dock = System.Windows.Forms.DockStyle.Top
-        Me.GroupBox5.Location = New System.Drawing.Point(2, 21)
-        Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(492, 90)
-        Me.GroupBox5.TabIndex = 36
-        Me.GroupBox5.TabStop = False
-        '
-        'LabelControl82
-        '
-        Me.LabelControl82.Location = New System.Drawing.Point(4, 19)
-        Me.LabelControl82.Name = "LabelControl82"
-        Me.LabelControl82.Size = New System.Drawing.Size(73, 13)
-        Me.LabelControl82.TabIndex = 3
-        Me.LabelControl82.Text = "A l’attention de"
-        '
-        'LabelControl83
-        '
-        Me.LabelControl83.Location = New System.Drawing.Point(4, 44)
-        Me.LabelControl83.Name = "LabelControl83"
-        Me.LabelControl83.Size = New System.Drawing.Size(63, 13)
-        Me.LabelControl83.TabIndex = 7
-        Me.LabelControl83.Text = "Titre/position"
-        '
-        'LabelControl84
-        '
-        Me.LabelControl84.Location = New System.Drawing.Point(4, 67)
-        Me.LabelControl84.Name = "LabelControl84"
-        Me.LabelControl84.Size = New System.Drawing.Size(39, 13)
-        Me.LabelControl84.TabIndex = 8
-        Me.LabelControl84.Text = "Agence "
-        '
-        'LabelControl85
-        '
-        Me.LabelControl85.Location = New System.Drawing.Point(224, 44)
-        Me.LabelControl85.Name = "LabelControl85"
-        Me.LabelControl85.Size = New System.Drawing.Size(80, 13)
-        Me.LabelControl85.TabIndex = 3
-        Me.LabelControl85.Text = "Adresse courriel "
-        '
-        'LabelControl86
-        '
-        Me.LabelControl86.Location = New System.Drawing.Point(224, 67)
-        Me.LabelControl86.Name = "LabelControl86"
-        Me.LabelControl86.Size = New System.Drawing.Size(48, 13)
-        Me.LabelControl86.TabIndex = 5
-        Me.LabelControl86.Text = "Télécopie "
-        '
         'gcCommission
         '
-        Me.gcCommission.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.gcCommission.Controls.Add(Me.CheckEdit2)
         Me.gcCommission.Controls.Add(Me.GroupControl5)
         Me.gcCommission.Controls.Add(Me.CmbTitreCojo)
         Me.gcCommission.Controls.Add(Me.LabelControl47)
@@ -7016,22 +7167,34 @@ Partial Class NewDao
         Me.gcCommission.Controls.Add(Me.CmbCivCojo)
         Me.gcCommission.Controls.Add(Me.LabelControl19)
         Me.gcCommission.Controls.Add(Me.TxtCojo)
-        Me.gcCommission.Location = New System.Drawing.Point(3, 123)
+        Me.gcCommission.Dock = System.Windows.Forms.DockStyle.Top
+        Me.gcCommission.Location = New System.Drawing.Point(0, 243)
         Me.gcCommission.Name = "gcCommission"
-        Me.gcCommission.Size = New System.Drawing.Size(496, 230)
+        Me.gcCommission.Size = New System.Drawing.Size(525, 235)
         Me.gcCommission.TabIndex = 3
         Me.gcCommission.Text = "Commission d'Ouverture"
         '
+        'CheckEdit2
+        '
+        Me.CheckEdit2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CheckEdit2.EditValue = True
+        Me.CheckEdit2.Location = New System.Drawing.Point(401, 1)
+        Me.CheckEdit2.Name = "CheckEdit2"
+        Me.CheckEdit2.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckEdit2.Properties.Appearance.Options.UseFont = True
+        Me.CheckEdit2.Properties.Caption = "Evaluateur"
+        Me.CheckEdit2.Size = New System.Drawing.Size(81, 20)
+        Me.CheckEdit2.TabIndex = 20
+        Me.CheckEdit2.Visible = False
+        '
         'GroupControl5
         '
-        Me.GroupControl5.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupControl5.Controls.Add(Me.LgCojo)
-        Me.GroupControl5.Location = New System.Drawing.Point(3, 102)
+        Me.GroupControl5.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.GroupControl5.Location = New System.Drawing.Point(2, 107)
         Me.GroupControl5.Name = "GroupControl5"
         Me.GroupControl5.ShowCaption = False
-        Me.GroupControl5.Size = New System.Drawing.Size(485, 128)
+        Me.GroupControl5.Size = New System.Drawing.Size(521, 126)
         Me.GroupControl5.TabIndex = 22
         '
         'LgCojo
@@ -7042,7 +7205,7 @@ Partial Class NewDao
         Me.LgCojo.Location = New System.Drawing.Point(2, 2)
         Me.LgCojo.MainView = Me.ViewCojo
         Me.LgCojo.Name = "LgCojo"
-        Me.LgCojo.Size = New System.Drawing.Size(481, 124)
+        Me.LgCojo.Size = New System.Drawing.Size(517, 122)
         Me.LgCojo.TabIndex = 43
         Me.LgCojo.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ViewCojo})
         '
@@ -7207,11 +7370,11 @@ Partial Class NewDao
         '
         Me.CmbTitreCojo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.CmbTitreCojo.Location = New System.Drawing.Point(254, 53)
+        Me.CmbTitreCojo.Location = New System.Drawing.Point(254, 55)
         Me.CmbTitreCojo.Name = "CmbTitreCojo"
         Me.CmbTitreCojo.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.CmbTitreCojo.Properties.Items.AddRange(New Object() {"Président", "Membre", "Observateur", "Rapporteur"})
-        Me.CmbTitreCojo.Size = New System.Drawing.Size(177, 20)
+        Me.CmbTitreCojo.Size = New System.Drawing.Size(204, 20)
         Me.CmbTitreCojo.TabIndex = 21
         '
         'LabelControl47
@@ -7225,7 +7388,7 @@ Partial Class NewDao
         'BtAjoutCojo
         '
         Me.BtAjoutCojo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BtAjoutCojo.Location = New System.Drawing.Point(437, 26)
+        Me.BtAjoutCojo.Location = New System.Drawing.Point(468, 26)
         Me.BtAjoutCojo.Name = "BtAjoutCojo"
         Me.BtAjoutCojo.Size = New System.Drawing.Size(49, 72)
         Me.BtAjoutCojo.TabIndex = 17
@@ -7273,6 +7436,184 @@ Partial Class NewDao
         Me.LabelControl19.TabIndex = 8
         Me.LabelControl19.Text = "Nom"
         '
+        'GCnegociation
+        '
+        Me.GCnegociation.Controls.Add(Me.GroupBox5)
+        Me.GCnegociation.Dock = System.Windows.Forms.DockStyle.Top
+        Me.GCnegociation.Location = New System.Drawing.Point(0, 132)
+        Me.GCnegociation.Name = "GCnegociation"
+        Me.GCnegociation.Size = New System.Drawing.Size(525, 111)
+        Me.GCnegociation.TabIndex = 44
+        Me.GCnegociation.Text = "Réclamation"
+        '
+        'GroupBox5
+        '
+        Me.GroupBox5.Controls.Add(Me.TelecopieReclam)
+        Me.GroupBox5.Controls.Add(Me.AdresseReclam)
+        Me.GroupBox5.Controls.Add(Me.AgenceReclam)
+        Me.GroupBox5.Controls.Add(Me.TitreReclam)
+        Me.GroupBox5.Controls.Add(Me.LabelControl82)
+        Me.GroupBox5.Controls.Add(Me.LabelControl83)
+        Me.GroupBox5.Controls.Add(Me.LabelControl84)
+        Me.GroupBox5.Controls.Add(Me.NomReclama)
+        Me.GroupBox5.Controls.Add(Me.LabelControl85)
+        Me.GroupBox5.Controls.Add(Me.LabelControl86)
+        Me.GroupBox5.Dock = System.Windows.Forms.DockStyle.Top
+        Me.GroupBox5.Location = New System.Drawing.Point(2, 21)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(521, 90)
+        Me.GroupBox5.TabIndex = 36
+        Me.GroupBox5.TabStop = False
+        '
+        'LabelControl82
+        '
+        Me.LabelControl82.Location = New System.Drawing.Point(4, 19)
+        Me.LabelControl82.Name = "LabelControl82"
+        Me.LabelControl82.Size = New System.Drawing.Size(73, 13)
+        Me.LabelControl82.TabIndex = 3
+        Me.LabelControl82.Text = "A l’attention de"
+        '
+        'LabelControl83
+        '
+        Me.LabelControl83.Location = New System.Drawing.Point(4, 44)
+        Me.LabelControl83.Name = "LabelControl83"
+        Me.LabelControl83.Size = New System.Drawing.Size(63, 13)
+        Me.LabelControl83.TabIndex = 7
+        Me.LabelControl83.Text = "Titre/position"
+        '
+        'LabelControl84
+        '
+        Me.LabelControl84.Location = New System.Drawing.Point(4, 67)
+        Me.LabelControl84.Name = "LabelControl84"
+        Me.LabelControl84.Size = New System.Drawing.Size(39, 13)
+        Me.LabelControl84.TabIndex = 8
+        Me.LabelControl84.Text = "Agence "
+        '
+        'LabelControl85
+        '
+        Me.LabelControl85.Location = New System.Drawing.Point(224, 44)
+        Me.LabelControl85.Name = "LabelControl85"
+        Me.LabelControl85.Size = New System.Drawing.Size(80, 13)
+        Me.LabelControl85.TabIndex = 3
+        Me.LabelControl85.Text = "Adresse courriel "
+        '
+        'LabelControl86
+        '
+        Me.LabelControl86.Location = New System.Drawing.Point(224, 67)
+        Me.LabelControl86.Name = "LabelControl86"
+        Me.LabelControl86.Size = New System.Drawing.Size(48, 13)
+        Me.LabelControl86.TabIndex = 5
+        Me.LabelControl86.Text = "Télécopie "
+        '
+        'GroupControl16
+        '
+        Me.GroupControl16.Controls.Add(Me.AttestationReguFiscal)
+        Me.GroupControl16.Controls.Add(Me.AttestationCNPS)
+        Me.GroupControl16.Controls.Add(Me.GroupBox10)
+        Me.GroupControl16.Controls.Add(Me.ServiceApresVente)
+        Me.GroupControl16.Controls.Add(Me.FormationUtilisateur)
+        Me.GroupControl16.Controls.Add(Me.LabelControl96)
+        Me.GroupControl16.Controls.Add(Me.MaterielRequis)
+        Me.GroupControl16.Controls.Add(Me.DateVisite)
+        Me.GroupControl16.Controls.Add(Me.VisiteduSite)
+        Me.GroupControl16.Dock = System.Windows.Forms.DockStyle.Top
+        Me.GroupControl16.Location = New System.Drawing.Point(0, 0)
+        Me.GroupControl16.Name = "GroupControl16"
+        Me.GroupControl16.Size = New System.Drawing.Size(525, 132)
+        Me.GroupControl16.TabIndex = 45
+        '
+        'AttestationReguFiscal
+        '
+        Me.AttestationReguFiscal.Location = New System.Drawing.Point(335, 79)
+        Me.AttestationReguFiscal.Name = "AttestationReguFiscal"
+        Me.AttestationReguFiscal.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.AttestationReguFiscal.Properties.Appearance.Options.UseFont = True
+        Me.AttestationReguFiscal.Properties.Caption = "Attestation de régularité fiscale"
+        Me.AttestationReguFiscal.Size = New System.Drawing.Size(176, 19)
+        Me.AttestationReguFiscal.TabIndex = 73
+        '
+        'AttestationCNPS
+        '
+        Me.AttestationCNPS.Location = New System.Drawing.Point(335, 103)
+        Me.AttestationCNPS.Name = "AttestationCNPS"
+        Me.AttestationCNPS.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.AttestationCNPS.Properties.Appearance.Options.UseFont = True
+        Me.AttestationCNPS.Properties.Caption = "Attestation sociale"
+        Me.AttestationCNPS.Size = New System.Drawing.Size(115, 19)
+        Me.AttestationCNPS.TabIndex = 72
+        '
+        'GroupBox10
+        '
+        Me.GroupBox10.Controls.Add(Me.ProjetSimilaireJustificatif)
+        Me.GroupBox10.Location = New System.Drawing.Point(5, 79)
+        Me.GroupBox10.Name = "GroupBox10"
+        Me.GroupBox10.Size = New System.Drawing.Size(322, 47)
+        Me.GroupBox10.TabIndex = 71
+        Me.GroupBox10.TabStop = False
+        Me.GroupBox10.Text = "Projets similaires executés et justificatifs demandés"
+        '
+        'ServiceApresVente
+        '
+        Me.ServiceApresVente.Location = New System.Drawing.Point(319, 52)
+        Me.ServiceApresVente.Name = "ServiceApresVente"
+        Me.ServiceApresVente.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ServiceApresVente.Properties.Appearance.Options.UseFont = True
+        Me.ServiceApresVente.Properties.Caption = "Un service après-vente est requis "
+        Me.ServiceApresVente.Size = New System.Drawing.Size(192, 19)
+        Me.ServiceApresVente.TabIndex = 70
+        '
+        'FormationUtilisateur
+        '
+        Me.FormationUtilisateur.Location = New System.Drawing.Point(8, 52)
+        Me.FormationUtilisateur.Name = "FormationUtilisateur"
+        Me.FormationUtilisateur.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.FormationUtilisateur.Properties.Appearance.Options.UseFont = True
+        Me.FormationUtilisateur.Properties.Caption = "La formation des utilisateurs est requise"
+        Me.FormationUtilisateur.Size = New System.Drawing.Size(220, 19)
+        Me.FormationUtilisateur.TabIndex = 69
+        '
+        'LabelControl96
+        '
+        Me.LabelControl96.Location = New System.Drawing.Point(171, 28)
+        Me.LabelControl96.Name = "LabelControl96"
+        Me.LabelControl96.Size = New System.Drawing.Size(77, 13)
+        Me.LabelControl96.TabIndex = 68
+        Me.LabelControl96.Text = "Date de la visite"
+        '
+        'MaterielRequis
+        '
+        Me.MaterielRequis.Location = New System.Drawing.Point(380, 24)
+        Me.MaterielRequis.Name = "MaterielRequis"
+        Me.MaterielRequis.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MaterielRequis.Properties.Appearance.Options.UseFont = True
+        Me.MaterielRequis.Properties.Caption = "Matériel requis "
+        Me.MaterielRequis.Size = New System.Drawing.Size(98, 19)
+        Me.MaterielRequis.TabIndex = 67
+        '
+        'DateVisite
+        '
+        Me.DateVisite.EditValue = Nothing
+        Me.DateVisite.Enabled = False
+        Me.DateVisite.Location = New System.Drawing.Point(254, 26)
+        Me.DateVisite.MenuManager = Me.RibbonDAO
+        Me.DateVisite.Name = "DateVisite"
+        Me.DateVisite.Properties.Appearance.Options.UseTextOptions = True
+        Me.DateVisite.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.DateVisite.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateVisite.Properties.VistaTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.DateVisite.Size = New System.Drawing.Size(106, 20)
+        Me.DateVisite.TabIndex = 59
+        '
+        'VisiteduSite
+        '
+        Me.VisiteduSite.Location = New System.Drawing.Point(7, 25)
+        Me.VisiteduSite.Name = "VisiteduSite"
+        Me.VisiteduSite.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.VisiteduSite.Properties.Appearance.Options.UseFont = True
+        Me.VisiteduSite.Properties.Caption = "Une visite du site est prévue "
+        Me.VisiteduSite.Size = New System.Drawing.Size(164, 19)
+        Me.VisiteduSite.TabIndex = 58
+        '
         'GroupSection
         '
         Me.GroupSection.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -7280,19 +7621,18 @@ Partial Class NewDao
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupSection.Controls.Add(Me.GridSection)
         Me.GroupSection.Controls.Add(Me.Panel1)
-        Me.GroupSection.Controls.Add(Me.CheckEdit2)
-        Me.GroupSection.Location = New System.Drawing.Point(3, 357)
+        Me.GroupSection.Location = New System.Drawing.Point(4, 480)
         Me.GroupSection.Name = "GroupSection"
-        Me.GroupSection.Size = New System.Drawing.Size(496, 447)
+        Me.GroupSection.Size = New System.Drawing.Size(521, 38)
         Me.GroupSection.TabIndex = 24
-        Me.GroupSection.Text = "Saisie des section du DOA"
+        Me.GroupSection.Text = "Saisie des sections du DAO"
         '
         'GridSection
         '
         Me.GridSection.AllowUserToAddRows = False
         Me.GridSection.AllowUserToDeleteRows = False
-        DataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.GridSection.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle17
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.GridSection.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
         Me.GridSection.BackgroundColor = System.Drawing.Color.White
         Me.GridSection.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.GridSection.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
@@ -7305,7 +7645,7 @@ Partial Class NewDao
         Me.GridSection.Name = "GridSection"
         Me.GridSection.ReadOnly = True
         Me.GridSection.RowHeadersVisible = False
-        Me.GridSection.Size = New System.Drawing.Size(492, 280)
+        Me.GridSection.Size = New System.Drawing.Size(517, 0)
         Me.GridSection.TabIndex = 1
         '
         'RefSection
@@ -7332,8 +7672,8 @@ Partial Class NewDao
         '
         'LigneModif
         '
-        DataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.LigneModif.DefaultCellStyle = DataGridViewCellStyle33
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.LigneModif.DefaultCellStyle = DataGridViewCellStyle3
         Me.LigneModif.HeaderText = "LigneModif"
         Me.LigneModif.Name = "LigneModif"
         Me.LigneModif.ReadOnly = True
@@ -7350,7 +7690,7 @@ Partial Class NewDao
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(2, 21)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(492, 144)
+        Me.Panel1.Size = New System.Drawing.Size(517, 144)
         Me.Panel1.TabIndex = 37
         '
         'GroupBoxInfoSect
@@ -7360,7 +7700,7 @@ Partial Class NewDao
         Me.GroupBoxInfoSect.Controls.Add(Me.TxtTextSection)
         Me.GroupBoxInfoSect.Location = New System.Drawing.Point(3, 28)
         Me.GroupBoxInfoSect.Name = "GroupBoxInfoSect"
-        Me.GroupBoxInfoSect.Size = New System.Drawing.Size(483, 55)
+        Me.GroupBoxInfoSect.Size = New System.Drawing.Size(509, 55)
         Me.GroupBoxInfoSect.TabIndex = 34
         Me.GroupBoxInfoSect.TabStop = False
         Me.GroupBoxInfoSect.Text = "Information"
@@ -7379,7 +7719,7 @@ Partial Class NewDao
         Me.BtSupSection.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BtSupSection.Image = Global.ClearProject.My.Resources.Resources.Close_32x32
         Me.BtSupSection.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.BtSupSection.Location = New System.Drawing.Point(446, 93)
+        Me.BtSupSection.Location = New System.Drawing.Point(470, 93)
         Me.BtSupSection.Name = "BtSupSection"
         Me.BtSupSection.Size = New System.Drawing.Size(39, 38)
         Me.BtSupSection.TabIndex = 36
@@ -7391,7 +7731,7 @@ Partial Class NewDao
         Me.BtAjoutSection.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BtAjoutSection.Image = Global.ClearProject.My.Resources.Resources.Ribbon_Save_32x32
         Me.BtAjoutSection.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.BtAjoutSection.Location = New System.Drawing.Point(404, 94)
+        Me.BtAjoutSection.Location = New System.Drawing.Point(428, 94)
         Me.BtAjoutSection.Name = "BtAjoutSection"
         Me.BtAjoutSection.Size = New System.Drawing.Size(39, 38)
         Me.BtAjoutSection.TabIndex = 35
@@ -7406,46 +7746,262 @@ Partial Class NewDao
         Me.CombSection.Name = "CombSection"
         Me.CombSection.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.CombSection.Properties.Items.AddRange(New Object() {"ST(Spécification techique)", "IE (Inspections et Essais)", "Section IS 1.2(a)", "Section IS 4.8(a),4.8(b) et 5.1", "Section IS 11.1 (j)", "Section IS 13.1", "Section IS 14.7", "Section IS 14.8 (b) (i) et (c) (v)", "Section IS 14.8 (a) (iii), b (ii) et (c) (v)", "Section IS 16.4", "Section IS 18.3 (a)", "Section IS 19.1", "Section IS 19.3(d)", "Section IS 19.9 (a)", "Section IS 19.9 (b)", "Section IS 20.3", "Section IS 22.1", "Section IS 25.1", "Section IS 25.6", "Section IS 30.3", "Section IS 42.1 (a)", "Section IS 42.1 (b)", "Section IS 45.1", "Section IS 34.6 (i)", "Section IS 34.6 (ii)", "Section IS 34.6 (iii)", "Section IS 34.6 (iv)", "Section IS 34.6 (f)", "Section IS 37.1 (a) (1)", "Section IS 37.1 (a) (2)", "Section CCAG 26.1", "Section CCAG 26.2", "Section CCAG 27.1", "Section CCAG 28.3", "Section CCAG 28.5, CCAG 28.6", "Section CCAG 33.4"})
-        Me.CombSection.Size = New System.Drawing.Size(389, 20)
+        Me.CombSection.Size = New System.Drawing.Size(412, 20)
         Me.CombSection.TabIndex = 34
         Me.CombSection.ToolTip = "Veuillez selectionnez une clause"
-        '
-        'CheckEdit2
-        '
-        Me.CheckEdit2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.CheckEdit2.EditValue = True
-        Me.CheckEdit2.Location = New System.Drawing.Point(465, 28)
-        Me.CheckEdit2.Name = "CheckEdit2"
-        Me.CheckEdit2.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckEdit2.Properties.Appearance.Options.UseFont = True
-        Me.CheckEdit2.Properties.Caption = "Evaluateur"
-        Me.CheckEdit2.Size = New System.Drawing.Size(81, 20)
-        Me.CheckEdit2.TabIndex = 20
         '
         'GroupControl11
         '
         Me.GroupControl11.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.GroupControl11.CaptionLocation = DevExpress.Utils.Locations.Left
+        Me.GroupControl11.Controls.Add(Me.gcConciliation)
         Me.GroupControl11.Controls.Add(Me.GroupControl15)
         Me.GroupControl11.Controls.Add(Me.GroupControl8)
-        Me.GroupControl11.Controls.Add(Me.gcOffre)
-        Me.GroupControl11.Controls.Add(Me.gcConciliation)
         Me.GroupControl11.Controls.Add(Me.GbMaitreOuvrageDelegue)
+        Me.GroupControl11.Controls.Add(Me.gcOffre)
         Me.GroupControl11.Dock = System.Windows.Forms.DockStyle.Left
         Me.GroupControl11.Location = New System.Drawing.Point(0, 0)
         Me.GroupControl11.Name = "GroupControl11"
         Me.GroupControl11.ShowCaption = False
-        Me.GroupControl11.Size = New System.Drawing.Size(513, 807)
+        Me.GroupControl11.Size = New System.Drawing.Size(507, 520)
         Me.GroupControl11.TabIndex = 1
         Me.GroupControl11.Text = "Consultant"
+        '
+        'gcConciliation
+        '
+        Me.gcConciliation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.gcConciliation.Controls.Add(Me.LabelControl101)
+        Me.gcConciliation.Controls.Add(Me.LabelControl100)
+        Me.gcConciliation.Controls.Add(Me.LabelControl99)
+        Me.gcConciliation.Controls.Add(Me.LabelControl98)
+        Me.gcConciliation.Controls.Add(Me.LabelControl92)
+        Me.gcConciliation.Controls.Add(Me.LabelControl91)
+        Me.gcConciliation.Controls.Add(Me.LabelControl90)
+        Me.gcConciliation.Controls.Add(Me.LabelControl89)
+        Me.gcConciliation.Controls.Add(Me.LabelControl88)
+        Me.gcConciliation.Controls.Add(Me.LabelControl87)
+        Me.gcConciliation.Controls.Add(Me.LabelControl80)
+        Me.gcConciliation.Controls.Add(Me.LabelControl79)
+        Me.gcConciliation.Controls.Add(Me.GroupBox4)
+        Me.gcConciliation.Controls.Add(Me.LabelControl26)
+        Me.gcConciliation.Controls.Add(Me.BtCvConcil)
+        Me.gcConciliation.Controls.Add(Me.TxtCvConcil)
+        Me.gcConciliation.Controls.Add(Me.LabelControl24)
+        Me.gcConciliation.Controls.Add(Me.TxtAdresseDesigneConcil)
+        Me.gcConciliation.Controls.Add(Me.TxtDesigneConcil)
+        Me.gcConciliation.Controls.Add(Me.LabelControl23)
+        Me.gcConciliation.Controls.Add(Me.CmbRemunConcil)
+        Me.gcConciliation.Controls.Add(Me.TxtRemunConcil)
+        Me.gcConciliation.Controls.Add(Me.LabelControl22)
+        Me.gcConciliation.Controls.Add(Me.TxtNomConcil)
+        Me.gcConciliation.Controls.Add(Me.RdConcilOui)
+        Me.gcConciliation.Controls.Add(Me.RdConcilNon)
+        Me.gcConciliation.Location = New System.Drawing.Point(-2, 596)
+        Me.gcConciliation.Name = "gcConciliation"
+        Me.gcConciliation.Size = New System.Drawing.Size(507, 0)
+        Me.gcConciliation.TabIndex = 6
+        Me.gcConciliation.Text = "Conciliation"
+        '
+        'LabelControl101
+        '
+        Me.LabelControl101.Location = New System.Drawing.Point(71, 104)
+        Me.LabelControl101.Name = "LabelControl101"
+        Me.LabelControl101.Size = New System.Drawing.Size(61, 13)
+        Me.LabelControl101.TabIndex = 64
+        Me.LabelControl101.Text = "Désigner par"
+        '
+        'LabelControl100
+        '
+        Me.LabelControl100.Location = New System.Drawing.Point(93, 129)
+        Me.LabelControl100.Name = "LabelControl100"
+        Me.LabelControl100.Size = New System.Drawing.Size(39, 13)
+        Me.LabelControl100.TabIndex = 63
+        Me.LabelControl100.Text = "Adresse"
+        '
+        'LabelControl99
+        '
+        Me.LabelControl99.Location = New System.Drawing.Point(60, 155)
+        Me.LabelControl99.Name = "LabelControl99"
+        Me.LabelControl99.Size = New System.Drawing.Size(72, 13)
+        Me.LabelControl99.TabIndex = 62
+        Me.LabelControl99.Text = "CV Conciliateur"
+        '
+        'LabelControl98
+        '
+        Me.LabelControl98.Location = New System.Drawing.Point(65, 78)
+        Me.LabelControl98.Name = "LabelControl98"
+        Me.LabelControl98.Size = New System.Drawing.Size(67, 13)
+        Me.LabelControl98.TabIndex = 61
+        Me.LabelControl98.Text = "Rénumeration"
+        '
+        'LabelControl92
+        '
+        Me.LabelControl92.Location = New System.Drawing.Point(60, -210)
+        Me.LabelControl92.Name = "LabelControl92"
+        Me.LabelControl92.Size = New System.Drawing.Size(72, 13)
+        Me.LabelControl92.TabIndex = 60
+        Me.LabelControl92.Text = "CV Conciliateur"
+        '
+        'LabelControl91
+        '
+        Me.LabelControl91.Location = New System.Drawing.Point(93, -236)
+        Me.LabelControl91.Name = "LabelControl91"
+        Me.LabelControl91.Size = New System.Drawing.Size(39, 13)
+        Me.LabelControl91.TabIndex = 59
+        Me.LabelControl91.Text = "Adresse"
+        '
+        'LabelControl90
+        '
+        Me.LabelControl90.Location = New System.Drawing.Point(65, -288)
+        Me.LabelControl90.Name = "LabelControl90"
+        Me.LabelControl90.Size = New System.Drawing.Size(67, 13)
+        Me.LabelControl90.TabIndex = 58
+        Me.LabelControl90.Text = "Rénumeration"
+        '
+        'LabelControl89
+        '
+        Me.LabelControl89.Location = New System.Drawing.Point(71, -258)
+        Me.LabelControl89.Name = "LabelControl89"
+        Me.LabelControl89.Size = New System.Drawing.Size(61, 13)
+        Me.LabelControl89.TabIndex = 57
+        Me.LabelControl89.Text = "Designer par"
+        '
+        'LabelControl88
+        '
+        Me.LabelControl88.Location = New System.Drawing.Point(60, -556)
+        Me.LabelControl88.Name = "LabelControl88"
+        Me.LabelControl88.Size = New System.Drawing.Size(72, 13)
+        Me.LabelControl88.TabIndex = 56
+        Me.LabelControl88.Text = "CV Conciliateur"
+        '
+        'LabelControl87
+        '
+        Me.LabelControl87.Location = New System.Drawing.Point(93, -578)
+        Me.LabelControl87.Name = "LabelControl87"
+        Me.LabelControl87.Size = New System.Drawing.Size(39, 13)
+        Me.LabelControl87.TabIndex = 55
+        Me.LabelControl87.Text = "Adresse"
+        '
+        'LabelControl80
+        '
+        Me.LabelControl80.Location = New System.Drawing.Point(71, -605)
+        Me.LabelControl80.Name = "LabelControl80"
+        Me.LabelControl80.Size = New System.Drawing.Size(61, 13)
+        Me.LabelControl80.TabIndex = 54
+        Me.LabelControl80.Text = "Désigner par"
+        '
+        'LabelControl79
+        '
+        Me.LabelControl79.Location = New System.Drawing.Point(65, -632)
+        Me.LabelControl79.Name = "LabelControl79"
+        Me.LabelControl79.Size = New System.Drawing.Size(67, 13)
+        Me.LabelControl79.TabIndex = 53
+        Me.LabelControl79.Text = "Rénumeration"
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.NomEmprunteur)
+        Me.GroupBox4.Controls.Add(Me.LabelControl77)
+        Me.GroupBox4.Location = New System.Drawing.Point(2, 176)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(500, 46)
+        Me.GroupBox4.TabIndex = 52
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "Emprunteur"
+        '
+        'LabelControl77
+        '
+        Me.LabelControl77.Location = New System.Drawing.Point(5, 24)
+        Me.LabelControl77.Name = "LabelControl77"
+        Me.LabelControl77.Size = New System.Drawing.Size(80, 13)
+        Me.LabelControl77.TabIndex = 46
+        Me.LabelControl77.Text = "Nom emprunteur"
+        '
+        'LabelControl26
+        '
+        Me.LabelControl26.Location = New System.Drawing.Point(93, -1088)
+        Me.LabelControl26.Name = "LabelControl26"
+        Me.LabelControl26.Size = New System.Drawing.Size(39, 13)
+        Me.LabelControl26.TabIndex = 19
+        Me.LabelControl26.Text = "Adresse"
+        '
+        'BtCvConcil
+        '
+        Me.BtCvConcil.Enabled = False
+        Me.BtCvConcil.Location = New System.Drawing.Point(431, 152)
+        Me.BtCvConcil.Name = "BtCvConcil"
+        Me.BtCvConcil.Size = New System.Drawing.Size(68, 19)
+        Me.BtCvConcil.TabIndex = 18
+        Me.BtCvConcil.Text = "..."
+        '
+        'LabelControl24
+        '
+        Me.LabelControl24.Location = New System.Drawing.Point(55, -1066)
+        Me.LabelControl24.Name = "LabelControl24"
+        Me.LabelControl24.Size = New System.Drawing.Size(77, 13)
+        Me.LabelControl24.TabIndex = 16
+        Me.LabelControl24.Text = "Curriculum Vitae"
+        '
+        'LabelControl23
+        '
+        Me.LabelControl23.Location = New System.Drawing.Point(75, -1114)
+        Me.LabelControl23.Name = "LabelControl23"
+        Me.LabelControl23.Size = New System.Drawing.Size(57, 13)
+        Me.LabelControl23.TabIndex = 13
+        Me.LabelControl23.Text = "Désigné par"
+        '
+        'CmbRemunConcil
+        '
+        Me.CmbRemunConcil.Enabled = False
+        Me.CmbRemunConcil.Location = New System.Drawing.Point(393, 73)
+        Me.CmbRemunConcil.MenuManager = Me.RibbonDAO
+        Me.CmbRemunConcil.Name = "CmbRemunConcil"
+        Me.CmbRemunConcil.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.CmbRemunConcil.Properties.Items.AddRange(New Object() {"Heure", "Jour", "Semaine", "Mois", "An", "Forfait"})
+        Me.CmbRemunConcil.Size = New System.Drawing.Size(106, 20)
+        Me.CmbRemunConcil.TabIndex = 9
+        '
+        'LabelControl22
+        '
+        Me.LabelControl22.Location = New System.Drawing.Point(65, -1144)
+        Me.LabelControl22.Name = "LabelControl22"
+        Me.LabelControl22.Size = New System.Drawing.Size(67, 13)
+        Me.LabelControl22.TabIndex = 11
+        Me.LabelControl22.Text = "Rémunération"
+        '
+        'RdConcilOui
+        '
+        Me.RdConcilOui.Location = New System.Drawing.Point(15, 46)
+        Me.RdConcilOui.MenuManager = Me.RibbonDAO
+        Me.RdConcilOui.Name = "RdConcilOui"
+        Me.RdConcilOui.Properties.Caption = "Nom du conciliateur"
+        Me.RdConcilOui.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio
+        Me.RdConcilOui.Properties.RadioGroupIndex = 2
+        Me.RdConcilOui.Size = New System.Drawing.Size(117, 19)
+        Me.RdConcilOui.TabIndex = 3
+        Me.RdConcilOui.TabStop = False
+        '
+        'RdConcilNon
+        '
+        Me.RdConcilNon.EditValue = True
+        Me.RdConcilNon.Location = New System.Drawing.Point(15, 21)
+        Me.RdConcilNon.MenuManager = Me.RibbonDAO
+        Me.RdConcilNon.Name = "RdConcilNon"
+        Me.RdConcilNon.Properties.Caption = "Sans objet"
+        Me.RdConcilNon.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio
+        Me.RdConcilNon.Properties.RadioGroupIndex = 2
+        Me.RdConcilNon.Size = New System.Drawing.Size(92, 19)
+        Me.RdConcilNon.TabIndex = 2
         '
         'GroupControl15
         '
         Me.GroupControl15.Controls.Add(Me.GroupBox8)
         Me.GroupControl15.Controls.Add(Me.GroupBox3)
-        Me.GroupControl15.Location = New System.Drawing.Point(3, 409)
+        Me.GroupControl15.Dock = System.Windows.Forms.DockStyle.Top
+        Me.GroupControl15.Location = New System.Drawing.Point(0, 436)
         Me.GroupControl15.Name = "GroupControl15"
-        Me.GroupControl15.Size = New System.Drawing.Size(504, 151)
+        Me.GroupControl15.Size = New System.Drawing.Size(507, 157)
         Me.GroupControl15.TabIndex = 45
         '
         'GroupBox8
@@ -7455,9 +8011,9 @@ Partial Class NewDao
         Me.GroupBox8.Controls.Add(Me.LabelControl75)
         Me.GroupBox8.Controls.Add(Me.DateSource)
         Me.GroupBox8.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.GroupBox8.Location = New System.Drawing.Point(2, 103)
+        Me.GroupBox8.Location = New System.Drawing.Point(2, 109)
         Me.GroupBox8.Name = "GroupBox8"
-        Me.GroupBox8.Size = New System.Drawing.Size(500, 46)
+        Me.GroupBox8.Size = New System.Drawing.Size(503, 46)
         Me.GroupBox8.TabIndex = 51
         Me.GroupBox8.TabStop = False
         Me.GroupBox8.Text = "Source officielle pour les cours de change"
@@ -7506,7 +8062,7 @@ Partial Class NewDao
         Me.GroupBox3.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupBox3.Location = New System.Drawing.Point(2, 21)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(500, 80)
+        Me.GroupBox3.Size = New System.Drawing.Size(503, 80)
         Me.GroupBox3.TabIndex = 48
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Lieu ouverture des offres"
@@ -7548,9 +8104,10 @@ Partial Class NewDao
         Me.GroupControl8.Controls.Add(Me.TxtMaitreOuvrag)
         Me.GroupControl8.Controls.Add(Me.CheckEntite)
         Me.GroupControl8.Controls.Add(Me.CheckNonEntite)
-        Me.GroupControl8.Location = New System.Drawing.Point(3, 324)
+        Me.GroupControl8.Dock = System.Windows.Forms.DockStyle.Top
+        Me.GroupControl8.Location = New System.Drawing.Point(0, 358)
         Me.GroupControl8.Name = "GroupControl8"
-        Me.GroupControl8.Size = New System.Drawing.Size(504, 78)
+        Me.GroupControl8.Size = New System.Drawing.Size(507, 78)
         Me.GroupControl8.TabIndex = 13
         Me.GroupControl8.Text = "Maître d'Ouvrage Délégué"
         '
@@ -7576,13 +8133,179 @@ Partial Class NewDao
         Me.CheckNonEntite.Size = New System.Drawing.Size(99, 19)
         Me.CheckNonEntite.TabIndex = 0
         '
+        'GbMaitreOuvrageDelegue
+        '
+        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.DelaiGarantie)
+        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.LabelControl97)
+        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.GroupBox9)
+        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.LabelControl95)
+        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.LabelControl94)
+        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.Variante)
+        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.NatureDocument)
+        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.DocumentExige)
+        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.GarantiExige)
+        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.GroupBox7)
+        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.CheckVoiElectro)
+        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.AutorisationFabrican)
+        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.LabelControl69)
+        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.ModeAchemin)
+        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.LabelControl67)
+        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.LabelControl65)
+        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.PrctLot)
+        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.PrctArticle)
+        Me.GbMaitreOuvrageDelegue.Dock = System.Windows.Forms.DockStyle.Top
+        Me.GbMaitreOuvrageDelegue.Location = New System.Drawing.Point(0, 166)
+        Me.GbMaitreOuvrageDelegue.Name = "GbMaitreOuvrageDelegue"
+        Me.GbMaitreOuvrageDelegue.Size = New System.Drawing.Size(507, 192)
+        Me.GbMaitreOuvrageDelegue.TabIndex = 7
+        Me.GbMaitreOuvrageDelegue.Text = "Généralité"
+        '
+        'DelaiGarantie
+        '
+        Me.DelaiGarantie.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.DelaiGarantie.Enabled = False
+        Me.DelaiGarantie.Location = New System.Drawing.Point(198, 79)
+        Me.DelaiGarantie.MenuManager = Me.RibbonDAO
+        Me.DelaiGarantie.Name = "DelaiGarantie"
+        Me.DelaiGarantie.Properties.Appearance.Options.UseTextOptions = True
+        Me.DelaiGarantie.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.DelaiGarantie.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.DelaiGarantie.Properties.IsFloatValue = False
+        Me.DelaiGarantie.Properties.Mask.EditMask = "N00"
+        Me.DelaiGarantie.Properties.MaxValue = New Decimal(New Integer() {9999, 0, 0, 0})
+        Me.DelaiGarantie.Size = New System.Drawing.Size(52, 20)
+        Me.DelaiGarantie.TabIndex = 44
+        '
+        'LabelControl97
+        '
+        Me.LabelControl97.Location = New System.Drawing.Point(258, 83)
+        Me.LabelControl97.Name = "LabelControl97"
+        Me.LabelControl97.Size = New System.Drawing.Size(21, 13)
+        Me.LabelControl97.TabIndex = 64
+        Me.LabelControl97.Text = "Mois"
+        '
+        'GroupBox9
+        '
+        Me.GroupBox9.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox9.Controls.Add(Me.ListeVariante)
+        Me.GroupBox9.Location = New System.Drawing.Point(294, 133)
+        Me.GroupBox9.Name = "GroupBox9"
+        Me.GroupBox9.Size = New System.Drawing.Size(207, 55)
+        Me.GroupBox9.TabIndex = 53
+        Me.GroupBox9.TabStop = False
+        Me.GroupBox9.Text = "Décrivez les variantes autorisées"
+        '
+        'LabelControl95
+        '
+        Me.LabelControl95.Location = New System.Drawing.Point(112, 83)
+        Me.LabelControl95.Name = "LabelControl95"
+        Me.LabelControl95.Size = New System.Drawing.Size(84, 13)
+        Me.LabelControl95.TabIndex = 62
+        Me.LabelControl95.Text = "Délai de garantie "
+        '
+        'LabelControl94
+        '
+        Me.LabelControl94.Location = New System.Drawing.Point(146, 55)
+        Me.LabelControl94.Name = "LabelControl94"
+        Me.LabelControl94.Size = New System.Drawing.Size(133, 13)
+        Me.LabelControl94.TabIndex = 61
+        Me.LabelControl94.Text = "Nature de la documentation"
+        '
+        'Variante
+        '
+        Me.Variante.Location = New System.Drawing.Point(294, 108)
+        Me.Variante.Name = "Variante"
+        Me.Variante.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Variante.Properties.Appearance.Options.UseFont = True
+        Me.Variante.Properties.Caption = "Variantes techniques autorisées "
+        Me.Variante.Size = New System.Drawing.Size(181, 19)
+        Me.Variante.TabIndex = 55
+        '
+        'DocumentExige
+        '
+        Me.DocumentExige.Location = New System.Drawing.Point(4, 52)
+        Me.DocumentExige.Name = "DocumentExige"
+        Me.DocumentExige.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DocumentExige.Properties.Appearance.Options.UseFont = True
+        Me.DocumentExige.Properties.Caption = "Documentation exigée "
+        Me.DocumentExige.Size = New System.Drawing.Size(137, 19)
+        Me.DocumentExige.TabIndex = 57
+        '
+        'GarantiExige
+        '
+        Me.GarantiExige.Location = New System.Drawing.Point(4, 80)
+        Me.GarantiExige.Name = "GarantiExige"
+        Me.GarantiExige.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GarantiExige.Properties.Appearance.Options.UseFont = True
+        Me.GarantiExige.Properties.Caption = "Garantie exigée "
+        Me.GarantiExige.Size = New System.Drawing.Size(101, 19)
+        Me.GarantiExige.TabIndex = 56
+        '
+        'GroupBox7
+        '
+        Me.GroupBox7.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox7.Controls.Add(Me.PrecedurVoiElectronic)
+        Me.GroupBox7.Location = New System.Drawing.Point(4, 134)
+        Me.GroupBox7.Name = "GroupBox7"
+        Me.GroupBox7.Size = New System.Drawing.Size(275, 55)
+        Me.GroupBox7.TabIndex = 52
+        Me.GroupBox7.TabStop = False
+        Me.GroupBox7.Text = "Décrivez la procédure de remise"
+        '
+        'CheckVoiElectro
+        '
+        Me.CheckVoiElectro.Location = New System.Drawing.Point(4, 108)
+        Me.CheckVoiElectro.Name = "CheckVoiElectro"
+        Me.CheckVoiElectro.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckVoiElectro.Properties.Appearance.Options.UseFont = True
+        Me.CheckVoiElectro.Properties.Caption = "Remise des offres par voie electronique"
+        Me.CheckVoiElectro.Size = New System.Drawing.Size(213, 19)
+        Me.CheckVoiElectro.TabIndex = 53
+        '
+        'AutorisationFabrican
+        '
+        Me.AutorisationFabrican.Location = New System.Drawing.Point(294, 80)
+        Me.AutorisationFabrican.Name = "AutorisationFabrican"
+        Me.AutorisationFabrican.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.AutorisationFabrican.Properties.Appearance.Options.UseFont = True
+        Me.AutorisationFabrican.Properties.Caption = "L’autorisation du fabricant est requise "
+        Me.AutorisationFabrican.Size = New System.Drawing.Size(207, 19)
+        Me.AutorisationFabrican.TabIndex = 54
+        '
+        'LabelControl69
+        '
+        Me.LabelControl69.Location = New System.Drawing.Point(374, 30)
+        Me.LabelControl69.Name = "LabelControl69"
+        Me.LabelControl69.Size = New System.Drawing.Size(43, 13)
+        Me.LabelControl69.TabIndex = 45
+        Me.LabelControl69.Text = "% article"
+        '
+        'LabelControl67
+        '
+        Me.LabelControl67.Location = New System.Drawing.Point(4, 30)
+        Me.LabelControl67.Name = "LabelControl67"
+        Me.LabelControl67.Size = New System.Drawing.Size(98, 13)
+        Me.LabelControl67.TabIndex = 43
+        Me.LabelControl67.Text = "Mode acheminement"
+        '
+        'LabelControl65
+        '
+        Me.LabelControl65.Location = New System.Drawing.Point(253, 30)
+        Me.LabelControl65.Name = "LabelControl65"
+        Me.LabelControl65.Size = New System.Drawing.Size(26, 13)
+        Me.LabelControl65.TabIndex = 41
+        Me.LabelControl65.Text = "% lot"
+        '
         'gcOffre
         '
         Me.gcOffre.Controls.Add(Me.LabelControl21)
         Me.gcOffre.Controls.Add(Me.GroupBox2)
         Me.gcOffre.Controls.Add(Me.GroupBox1)
-        Me.gcOffre.Controls.Add(Me.ChecRevisionPrix)
         Me.gcOffre.Controls.Add(Me.CmbDelai)
+        Me.gcOffre.Controls.Add(Me.FormePaiement)
+        Me.gcOffre.Controls.Add(Me.LabelControl63)
         Me.gcOffre.Controls.Add(Me.NumDelai)
         Me.gcOffre.Controls.Add(Me.LabelControl4)
         Me.gcOffre.Controls.Add(Me.LabelControl18)
@@ -7600,9 +8323,10 @@ Partial Class NewDao
         Me.gcOffre.Controls.Add(Me.LabelControl11)
         Me.gcOffre.Controls.Add(Me.CmbLangue)
         Me.gcOffre.Controls.Add(Me.LabelControl10)
-        Me.gcOffre.Location = New System.Drawing.Point(3, 4)
+        Me.gcOffre.Dock = System.Windows.Forms.DockStyle.Top
+        Me.gcOffre.Location = New System.Drawing.Point(0, 0)
         Me.gcOffre.Name = "gcOffre"
-        Me.gcOffre.Size = New System.Drawing.Size(504, 166)
+        Me.gcOffre.Size = New System.Drawing.Size(507, 166)
         Me.gcOffre.TabIndex = 0
         Me.gcOffre.Text = "Offre"
         '
@@ -7620,7 +8344,7 @@ Partial Class NewDao
         Me.GroupBox2.Controls.Add(Me.NumGroupement)
         Me.GroupBox2.Location = New System.Drawing.Point(256, 118)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(245, 43)
+        Me.GroupBox2.Size = New System.Drawing.Size(249, 43)
         Me.GroupBox2.TabIndex = 43
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Groupement"
@@ -7708,15 +8432,6 @@ Partial Class NewDao
         Me.LabelControl66.TabIndex = 42
         Me.LabelControl66.Text = "Prévue pour le"
         '
-        'ChecRevisionPrix
-        '
-        Me.ChecRevisionPrix.Location = New System.Drawing.Point(255, 92)
-        Me.ChecRevisionPrix.MenuManager = Me.RibbonDAO
-        Me.ChecRevisionPrix.Name = "ChecRevisionPrix"
-        Me.ChecRevisionPrix.Properties.Caption = "Prix révisables"
-        Me.ChecRevisionPrix.Size = New System.Drawing.Size(102, 19)
-        Me.ChecRevisionPrix.TabIndex = 40
-        '
         'CmbDelai
         '
         Me.CmbDelai.Location = New System.Drawing.Point(168, 92)
@@ -7726,6 +8441,25 @@ Partial Class NewDao
         Me.CmbDelai.Properties.Items.AddRange(New Object() {"Jours", "Semaines", "Mois"})
         Me.CmbDelai.Size = New System.Drawing.Size(80, 20)
         Me.CmbDelai.TabIndex = 9
+        '
+        'FormePaiement
+        '
+        Me.FormePaiement.Location = New System.Drawing.Point(361, 93)
+        Me.FormePaiement.MenuManager = Me.RibbonDAO
+        Me.FormePaiement.Name = "FormePaiement"
+        Me.FormePaiement.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.FormePaiement.Properties.Items.AddRange(New Object() {"Chèque"})
+        Me.FormePaiement.Properties.MaxLength = 50
+        Me.FormePaiement.Size = New System.Drawing.Size(141, 20)
+        Me.FormePaiement.TabIndex = 40
+        '
+        'LabelControl63
+        '
+        Me.LabelControl63.Location = New System.Drawing.Point(257, 95)
+        Me.LabelControl63.Name = "LabelControl63"
+        Me.LabelControl63.Size = New System.Drawing.Size(92, 13)
+        Me.LabelControl63.TabIndex = 8
+        Me.LabelControl63.Text = "Forme de paiement"
         '
         'NumDelai
         '
@@ -7757,7 +8491,7 @@ Partial Class NewDao
         Me.LabelControl18.Name = "LabelControl18"
         Me.LabelControl18.Size = New System.Drawing.Size(111, 13)
         Me.LabelControl18.TabIndex = 7
-        Me.LabelControl18.Text = "Délai execution marché"
+        Me.LabelControl18.Text = "Délai exécution marché"
         '
         'CmbEclaircissement
         '
@@ -7778,6 +8512,7 @@ Partial Class NewDao
         Me.NumEclaircissement.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
         Me.NumEclaircissement.Properties.IsFloatValue = False
         Me.NumEclaircissement.Properties.Mask.EditMask = "N00"
+        Me.NumEclaircissement.Properties.MaxValue = New Decimal(New Integer() {10000, 0, 0, 0})
         Me.NumEclaircissement.Size = New System.Drawing.Size(43, 20)
         Me.NumEclaircissement.TabIndex = 9
         '
@@ -7811,6 +8546,8 @@ Partial Class NewDao
         Me.NumNbreCopie.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
         Me.NumNbreCopie.Properties.IsFloatValue = False
         Me.NumNbreCopie.Properties.Mask.EditMask = "N00"
+        Me.NumNbreCopie.Properties.MaxValue = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.NumNbreCopie.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 0})
         Me.NumNbreCopie.Size = New System.Drawing.Size(66, 20)
         Me.NumNbreCopie.TabIndex = 8
         '
@@ -7890,222 +8627,12 @@ Partial Class NewDao
         Me.LabelControl10.TabIndex = 0
         Me.LabelControl10.Text = "Langue"
         '
-        'gcConciliation
+        'CalPannelDAO
         '
-        Me.gcConciliation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.gcConciliation.Controls.Add(Me.GroupBox4)
-        Me.gcConciliation.Controls.Add(Me.LabelControl26)
-        Me.gcConciliation.Controls.Add(Me.BtCvConcil)
-        Me.gcConciliation.Controls.Add(Me.TxtCvConcil)
-        Me.gcConciliation.Controls.Add(Me.LabelControl24)
-        Me.gcConciliation.Controls.Add(Me.TxtAdresseDesigneConcil)
-        Me.gcConciliation.Controls.Add(Me.TxtDesigneConcil)
-        Me.gcConciliation.Controls.Add(Me.LabelControl23)
-        Me.gcConciliation.Controls.Add(Me.CmbRemunConcil)
-        Me.gcConciliation.Controls.Add(Me.TxtRemunConcil)
-        Me.gcConciliation.Controls.Add(Me.LabelControl22)
-        Me.gcConciliation.Controls.Add(Me.TxtNomConcil)
-        Me.gcConciliation.Controls.Add(Me.RdConcilOui)
-        Me.gcConciliation.Controls.Add(Me.RdConcilNon)
-        Me.gcConciliation.Location = New System.Drawing.Point(3, 564)
-        Me.gcConciliation.Name = "gcConciliation"
-        Me.gcConciliation.Size = New System.Drawing.Size(504, 240)
-        Me.gcConciliation.TabIndex = 6
-        Me.gcConciliation.Text = "Conciliation"
-        '
-        'GroupBox4
-        '
-        Me.GroupBox4.Controls.Add(Me.NomEmprunteur)
-        Me.GroupBox4.Controls.Add(Me.LabelControl77)
-        Me.GroupBox4.Location = New System.Drawing.Point(2, 182)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(500, 46)
-        Me.GroupBox4.TabIndex = 52
-        Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "Emprunteur"
-        '
-        'LabelControl77
-        '
-        Me.LabelControl77.Location = New System.Drawing.Point(5, 24)
-        Me.LabelControl77.Name = "LabelControl77"
-        Me.LabelControl77.Size = New System.Drawing.Size(80, 13)
-        Me.LabelControl77.TabIndex = 46
-        Me.LabelControl77.Text = "Nom emprunteur"
-        '
-        'LabelControl26
-        '
-        Me.LabelControl26.Location = New System.Drawing.Point(96, 129)
-        Me.LabelControl26.Name = "LabelControl26"
-        Me.LabelControl26.Size = New System.Drawing.Size(39, 13)
-        Me.LabelControl26.TabIndex = 19
-        Me.LabelControl26.Text = "Adresse"
-        '
-        'BtCvConcil
-        '
-        Me.BtCvConcil.Enabled = False
-        Me.BtCvConcil.Location = New System.Drawing.Point(431, 152)
-        Me.BtCvConcil.Name = "BtCvConcil"
-        Me.BtCvConcil.Size = New System.Drawing.Size(68, 19)
-        Me.BtCvConcil.TabIndex = 18
-        Me.BtCvConcil.Text = "..."
-        '
-        'LabelControl24
-        '
-        Me.LabelControl24.Location = New System.Drawing.Point(58, 156)
-        Me.LabelControl24.Name = "LabelControl24"
-        Me.LabelControl24.Size = New System.Drawing.Size(77, 13)
-        Me.LabelControl24.TabIndex = 16
-        Me.LabelControl24.Text = "Curriculum Vitae"
-        '
-        'LabelControl23
-        '
-        Me.LabelControl23.Location = New System.Drawing.Point(78, 104)
-        Me.LabelControl23.Name = "LabelControl23"
-        Me.LabelControl23.Size = New System.Drawing.Size(57, 13)
-        Me.LabelControl23.TabIndex = 13
-        Me.LabelControl23.Text = "Désigné par"
-        '
-        'CmbRemunConcil
-        '
-        Me.CmbRemunConcil.Enabled = False
-        Me.CmbRemunConcil.Location = New System.Drawing.Point(393, 73)
-        Me.CmbRemunConcil.MenuManager = Me.RibbonDAO
-        Me.CmbRemunConcil.Name = "CmbRemunConcil"
-        Me.CmbRemunConcil.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.CmbRemunConcil.Properties.Items.AddRange(New Object() {"Heure", "Jour", "Semaine", "Mois", "An", "Forfait"})
-        Me.CmbRemunConcil.Size = New System.Drawing.Size(106, 20)
-        Me.CmbRemunConcil.TabIndex = 9
-        '
-        'LabelControl22
-        '
-        Me.LabelControl22.Location = New System.Drawing.Point(68, 77)
-        Me.LabelControl22.Name = "LabelControl22"
-        Me.LabelControl22.Size = New System.Drawing.Size(67, 13)
-        Me.LabelControl22.TabIndex = 11
-        Me.LabelControl22.Text = "Rémunération"
-        '
-        'RdConcilOui
-        '
-        Me.RdConcilOui.Location = New System.Drawing.Point(15, 46)
-        Me.RdConcilOui.MenuManager = Me.RibbonDAO
-        Me.RdConcilOui.Name = "RdConcilOui"
-        Me.RdConcilOui.Properties.Caption = "Nom du conciliateur"
-        Me.RdConcilOui.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio
-        Me.RdConcilOui.Properties.RadioGroupIndex = 2
-        Me.RdConcilOui.Size = New System.Drawing.Size(117, 19)
-        Me.RdConcilOui.TabIndex = 3
-        Me.RdConcilOui.TabStop = False
-        '
-        'RdConcilNon
-        '
-        Me.RdConcilNon.EditValue = True
-        Me.RdConcilNon.Location = New System.Drawing.Point(15, 21)
-        Me.RdConcilNon.MenuManager = Me.RibbonDAO
-        Me.RdConcilNon.Name = "RdConcilNon"
-        Me.RdConcilNon.Properties.Caption = "Sans objet"
-        Me.RdConcilNon.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio
-        Me.RdConcilNon.Properties.RadioGroupIndex = 2
-        Me.RdConcilNon.Size = New System.Drawing.Size(92, 19)
-        Me.RdConcilNon.TabIndex = 2
-        '
-        'GbMaitreOuvrageDelegue
-        '
-        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.MargePreferenc)
-        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.ServiceVente)
-        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.AutorisationFabrican)
-        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.MonaieAcheteur)
-        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.LabelControl69)
-        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.ModeAchemin)
-        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.LabelControl67)
-        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.LabelControl65)
-        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.FormePaiement)
-        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.LabelControl63)
-        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.PrctLot)
-        Me.GbMaitreOuvrageDelegue.Controls.Add(Me.PrctArticle)
-        Me.GbMaitreOuvrageDelegue.Location = New System.Drawing.Point(3, 174)
-        Me.GbMaitreOuvrageDelegue.Name = "GbMaitreOuvrageDelegue"
-        Me.GbMaitreOuvrageDelegue.Size = New System.Drawing.Size(504, 146)
-        Me.GbMaitreOuvrageDelegue.TabIndex = 7
-        Me.GbMaitreOuvrageDelegue.Text = "Généralité"
-        '
-        'MargePreferenc
-        '
-        Me.MargePreferenc.Location = New System.Drawing.Point(2, 125)
-        Me.MargePreferenc.MenuManager = Me.RibbonDAO
-        Me.MargePreferenc.Name = "MargePreferenc"
-        Me.MargePreferenc.Properties.Caption = "Une marge de préférence sera appliquée"
-        Me.MargePreferenc.Size = New System.Drawing.Size(221, 19)
-        Me.MargePreferenc.TabIndex = 48
-        '
-        'ServiceVente
-        '
-        Me.ServiceVente.Location = New System.Drawing.Point(217, 101)
-        Me.ServiceVente.MenuManager = Me.RibbonDAO
-        Me.ServiceVente.Name = "ServiceVente"
-        Me.ServiceVente.Properties.Caption = "Un service après-vente est requis"
-        Me.ServiceVente.Size = New System.Drawing.Size(183, 19)
-        Me.ServiceVente.TabIndex = 47
-        '
-        'AutorisationFabrican
-        '
-        Me.AutorisationFabrican.Location = New System.Drawing.Point(2, 100)
-        Me.AutorisationFabrican.MenuManager = Me.RibbonDAO
-        Me.AutorisationFabrican.Name = "AutorisationFabrican"
-        Me.AutorisationFabrican.Properties.Caption = "L'autorisation du fabriquant est requise"
-        Me.AutorisationFabrican.Size = New System.Drawing.Size(217, 19)
-        Me.AutorisationFabrican.TabIndex = 46
-        '
-        'MonaieAcheteur
-        '
-        Me.MonaieAcheteur.Location = New System.Drawing.Point(2, 78)
-        Me.MonaieAcheteur.MenuManager = Me.RibbonDAO
-        Me.MonaieAcheteur.Name = "MonaieAcheteur"
-        Me.MonaieAcheteur.Properties.Caption = "Le soumissionnaire est tenu d’exprimer dans la monnaie du pays de l’acheteur "
-        Me.MonaieAcheteur.Size = New System.Drawing.Size(410, 19)
-        Me.MonaieAcheteur.TabIndex = 41
-        '
-        'LabelControl69
-        '
-        Me.LabelControl69.Location = New System.Drawing.Point(317, 57)
-        Me.LabelControl69.Name = "LabelControl69"
-        Me.LabelControl69.Size = New System.Drawing.Size(43, 13)
-        Me.LabelControl69.TabIndex = 45
-        Me.LabelControl69.Text = "% article"
-        '
-        'LabelControl67
-        '
-        Me.LabelControl67.Location = New System.Drawing.Point(4, 30)
-        Me.LabelControl67.Name = "LabelControl67"
-        Me.LabelControl67.Size = New System.Drawing.Size(98, 13)
-        Me.LabelControl67.TabIndex = 43
-        Me.LabelControl67.Text = "Mode acheminement"
-        '
-        'LabelControl65
-        '
-        Me.LabelControl65.Location = New System.Drawing.Point(206, 58)
-        Me.LabelControl65.Name = "LabelControl65"
-        Me.LabelControl65.Size = New System.Drawing.Size(26, 13)
-        Me.LabelControl65.TabIndex = 41
-        Me.LabelControl65.Text = "% lot"
-        '
-        'FormePaiement
-        '
-        Me.FormePaiement.Location = New System.Drawing.Point(108, 54)
-        Me.FormePaiement.MenuManager = Me.RibbonDAO
-        Me.FormePaiement.Name = "FormePaiement"
-        Me.FormePaiement.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.FormePaiement.Properties.Items.AddRange(New Object() {"Cheque"})
-        Me.FormePaiement.Size = New System.Drawing.Size(80, 20)
-        Me.FormePaiement.TabIndex = 40
-        '
-        'LabelControl63
-        '
-        Me.LabelControl63.Location = New System.Drawing.Point(4, 58)
-        Me.LabelControl63.Name = "LabelControl63"
-        Me.LabelControl63.Size = New System.Drawing.Size(92, 13)
-        Me.LabelControl63.TabIndex = 8
-        Me.LabelControl63.Text = "Forme de paiement"
+        Me.CalPannelDAO.Location = New System.Drawing.Point(970, 795)
+        Me.CalPannelDAO.Name = "CalPannelDAO"
+        Me.CalPannelDAO.Size = New System.Drawing.Size(44, 23)
+        Me.CalPannelDAO.TabIndex = 113
         '
         'PageConformTechnique
         '
@@ -8355,9 +8882,9 @@ Partial Class NewDao
         Me.GroupControl7.AppearanceCaption.Options.UseTextOptions = True
         Me.GroupControl7.AppearanceCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GroupControl7.Controls.Add(Me.DataGridView1)
-        Me.GroupControl7.Location = New System.Drawing.Point(3, 113)
+        Me.GroupControl7.Location = New System.Drawing.Point(5, 117)
         Me.GroupControl7.Name = "GroupControl7"
-        Me.GroupControl7.Size = New System.Drawing.Size(1026, 407)
+        Me.GroupControl7.Size = New System.Drawing.Size(1025, 400)
         Me.GroupControl7.TabIndex = 8
         Me.GroupControl7.Text = "Dévis Quantitatif et Estimatif"
         '
@@ -8365,20 +8892,21 @@ Partial Class NewDao
         '
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
-        DataGridViewCellStyle34.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle34
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.DataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8})
+        Me.DataGridView1.ContextMenuStrip = Me.ContextMenuStriptDQE
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(2, 21)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
-        Me.DataGridView1.Size = New System.Drawing.Size(1022, 384)
+        Me.DataGridView1.Size = New System.Drawing.Size(1021, 377)
         Me.DataGridView1.TabIndex = 3
         '
         'DataGridViewTextBoxColumn1
@@ -8393,8 +8921,8 @@ Partial Class NewDao
         '
         'DataGridViewTextBoxColumn2
         '
-        DataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle35
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle5
         Me.DataGridViewTextBoxColumn2.HeaderText = "Code"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
         Me.DataGridViewTextBoxColumn2.ReadOnly = True
@@ -8403,50 +8931,67 @@ Partial Class NewDao
         '
         'DataGridViewTextBoxColumn4
         '
+        Me.DataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.DataGridViewTextBoxColumn4.HeaderText = "Désignation"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         Me.DataGridViewTextBoxColumn4.ReadOnly = True
         Me.DataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.DataGridViewTextBoxColumn4.Width = 300
         '
         'DataGridViewTextBoxColumn5
         '
-        DataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle36
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle6
         Me.DataGridViewTextBoxColumn5.HeaderText = "Unité"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         Me.DataGridViewTextBoxColumn5.ReadOnly = True
         Me.DataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewTextBoxColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.DataGridViewTextBoxColumn5.Width = 130
         '
         'DataGridViewTextBoxColumn6
         '
-        DataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle37
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle7
         Me.DataGridViewTextBoxColumn6.HeaderText = "Quantité"
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
         Me.DataGridViewTextBoxColumn6.ReadOnly = True
         Me.DataGridViewTextBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.DataGridViewTextBoxColumn6.Width = 120
         '
         'DataGridViewTextBoxColumn7
         '
-        DataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle38
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle8
         Me.DataGridViewTextBoxColumn7.HeaderText = "Prix Unitaire HTVA"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.ReadOnly = True
         Me.DataGridViewTextBoxColumn7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.DataGridViewTextBoxColumn7.Visible = False
         Me.DataGridViewTextBoxColumn7.Width = 160
         '
         'DataGridViewTextBoxColumn8
         '
-        DataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle39
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle9
         Me.DataGridViewTextBoxColumn8.HeaderText = "Montant HTVA"
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         Me.DataGridViewTextBoxColumn8.ReadOnly = True
         Me.DataGridViewTextBoxColumn8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.DataGridViewTextBoxColumn8.Visible = False
         Me.DataGridViewTextBoxColumn8.Width = 160
+        '
+        'ContextMenuStriptDQE
+        '
+        Me.ContextMenuStriptDQE.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItemModifLignDQE})
+        Me.ContextMenuStriptDQE.Name = "ContextMenuStrip1"
+        Me.ContextMenuStriptDQE.Size = New System.Drawing.Size(120, 26)
+        '
+        'ToolStripMenuItemModifLignDQE
+        '
+        Me.ToolStripMenuItemModifLignDQE.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
+        Me.ToolStripMenuItemModifLignDQE.Name = "ToolStripMenuItemModifLignDQE"
+        Me.ToolStripMenuItemModifLignDQE.Size = New System.Drawing.Size(119, 22)
+        Me.ToolStripMenuItemModifLignDQE.Text = "Modifier"
         '
         'GroupControl13
         '
@@ -8463,11 +9008,12 @@ Partial Class NewDao
         Me.GroupControl13.Controls.Add(Me.RdSection)
         Me.GroupControl13.Controls.Add(Me.GbSectionDQE)
         Me.GroupControl13.Controls.Add(Me.GbItemDQE)
-        Me.GroupControl13.Location = New System.Drawing.Point(552, 315)
+        Me.GroupControl13.Location = New System.Drawing.Point(5, 117)
         Me.GroupControl13.Name = "GroupControl13"
-        Me.GroupControl13.Size = New System.Drawing.Size(272, 61)
+        Me.GroupControl13.Size = New System.Drawing.Size(1022, 396)
         Me.GroupControl13.TabIndex = 1
         Me.GroupControl13.Text = "Saisie manuelle"
+        Me.GroupControl13.Visible = False
         '
         'CmbSousLot1
         '
@@ -8499,7 +9045,7 @@ Partial Class NewDao
         Me.GroupControl17.Controls.Add(Me.GridDQE)
         Me.GroupControl17.Location = New System.Drawing.Point(231, 24)
         Me.GroupControl17.Name = "GroupControl17"
-        Me.GroupControl17.Size = New System.Drawing.Size(127, 34)
+        Me.GroupControl17.Size = New System.Drawing.Size(877, 369)
         Me.GroupControl17.TabIndex = 8
         Me.GroupControl17.Text = "Dévis Quantitatif et Estimatif"
         '
@@ -8507,8 +9053,8 @@ Partial Class NewDao
         '
         Me.GridDQE.AllowUserToAddRows = False
         Me.GridDQE.AllowUserToDeleteRows = False
-        DataGridViewCellStyle40.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.GridDQE.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle40
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.GridDQE.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle10
         Me.GridDQE.BackgroundColor = System.Drawing.Color.White
         Me.GridDQE.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.GridDQE.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
@@ -8520,7 +9066,7 @@ Partial Class NewDao
         Me.GridDQE.Name = "GridDQE"
         Me.GridDQE.ReadOnly = True
         Me.GridDQE.RowHeadersVisible = False
-        Me.GridDQE.Size = New System.Drawing.Size(123, 11)
+        Me.GridDQE.Size = New System.Drawing.Size(873, 346)
         Me.GridDQE.TabIndex = 3
         '
         'Column13
@@ -8535,8 +9081,8 @@ Partial Class NewDao
         '
         'Column7
         '
-        DataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column7.DefaultCellStyle = DataGridViewCellStyle41
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column7.DefaultCellStyle = DataGridViewCellStyle11
         Me.Column7.HeaderText = "Code"
         Me.Column7.Name = "Column7"
         Me.Column7.ReadOnly = True
@@ -8553,8 +9099,8 @@ Partial Class NewDao
         '
         'Column9
         '
-        DataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column9.DefaultCellStyle = DataGridViewCellStyle42
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column9.DefaultCellStyle = DataGridViewCellStyle12
         Me.Column9.HeaderText = "Unité"
         Me.Column9.Name = "Column9"
         Me.Column9.ReadOnly = True
@@ -8563,8 +9109,8 @@ Partial Class NewDao
         '
         'Column10
         '
-        DataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column10.DefaultCellStyle = DataGridViewCellStyle43
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column10.DefaultCellStyle = DataGridViewCellStyle13
         Me.Column10.HeaderText = "Quantité"
         Me.Column10.Name = "Column10"
         Me.Column10.ReadOnly = True
@@ -8572,8 +9118,8 @@ Partial Class NewDao
         '
         'Column11
         '
-        DataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column11.DefaultCellStyle = DataGridViewCellStyle44
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column11.DefaultCellStyle = DataGridViewCellStyle14
         Me.Column11.HeaderText = "Prix Unitaire HTVA"
         Me.Column11.Name = "Column11"
         Me.Column11.ReadOnly = True
@@ -8582,8 +9128,8 @@ Partial Class NewDao
         '
         'Column12
         '
-        DataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column12.DefaultCellStyle = DataGridViewCellStyle45
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column12.DefaultCellStyle = DataGridViewCellStyle15
         Me.Column12.HeaderText = "Montant HTVA"
         Me.Column12.Name = "Column12"
         Me.Column12.ReadOnly = True
@@ -8654,7 +9200,7 @@ Partial Class NewDao
         Me.GbSectionDQE.Enabled = False
         Me.GbSectionDQE.Location = New System.Drawing.Point(4, 117)
         Me.GbSectionDQE.Name = "GbSectionDQE"
-        Me.GbSectionDQE.Size = New System.Drawing.Size(225, 0)
+        Me.GbSectionDQE.Size = New System.Drawing.Size(225, 335)
         Me.GbSectionDQE.TabIndex = 7
         Me.GbSectionDQE.Text = "Edition Section"
         '
@@ -8672,8 +9218,8 @@ Partial Class NewDao
         '
         'GridSousSection
         '
-        DataGridViewCellStyle46.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.GridSousSection.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle46
+        DataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.GridSousSection.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle16
         Me.GridSousSection.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.GridSousSection.BackgroundColor = System.Drawing.Color.White
@@ -8681,11 +9227,11 @@ Partial Class NewDao
         Me.GridSousSection.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.GridSousSection.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GridSousSection.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn3})
-        Me.GridSousSection.Location = New System.Drawing.Point(1, 17)
+        Me.GridSousSection.Location = New System.Drawing.Point(1, 24)
         Me.GridSousSection.MultiSelect = False
         Me.GridSousSection.Name = "GridSousSection"
         Me.GridSousSection.RowHeadersVisible = False
-        Me.GridSousSection.Size = New System.Drawing.Size(221, 215)
+        Me.GridSousSection.Size = New System.Drawing.Size(221, 127)
         Me.GridSousSection.TabIndex = 4
         '
         'DataGridViewTextBoxColumn3
@@ -8726,22 +9272,22 @@ Partial Class NewDao
         '
         Me.BtSuppSection.Image = Global.ClearProject.My.Resources.Resources.Close_16x16
         Me.BtSuppSection.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.BtSuppSection.Location = New System.Drawing.Point(116, 21)
+        Me.BtSuppSection.Location = New System.Drawing.Point(115, 21)
         Me.BtSuppSection.Name = "BtSuppSection"
-        Me.BtSuppSection.Size = New System.Drawing.Size(20, 20)
-        ToolTipTitleItem715.Appearance.Image = Global.ClearProject.My.Resources.Resources.Close_16x16
-        ToolTipTitleItem715.Appearance.Options.UseImage = True
-        ToolTipTitleItem715.Image = Global.ClearProject.My.Resources.Resources.Close_16x16
-        ToolTipTitleItem715.Text = "Supprimer"
-        ToolTipItem668.LeftIndent = 6
-        ToolTipItem668.Text = "Supprimer la section sélectionnée"
-        ToolTipTitleItem716.LeftIndent = 6
-        ToolTipTitleItem716.Text = "Dévis Quantitatif et Estimatif"
-        SuperToolTip686.Items.Add(ToolTipTitleItem715)
-        SuperToolTip686.Items.Add(ToolTipItem668)
-        SuperToolTip686.Items.Add(ToolTipSeparatorItem30)
-        SuperToolTip686.Items.Add(ToolTipTitleItem716)
-        Me.BtSuppSection.SuperTip = SuperToolTip686
+        Me.BtSuppSection.Size = New System.Drawing.Size(21, 20)
+        ToolTipTitleItem235.Appearance.Image = Global.ClearProject.My.Resources.Resources.Close_16x16
+        ToolTipTitleItem235.Appearance.Options.UseImage = True
+        ToolTipTitleItem235.Image = Global.ClearProject.My.Resources.Resources.Close_16x16
+        ToolTipTitleItem235.Text = "Supprimer"
+        ToolTipItem222.LeftIndent = 6
+        ToolTipItem222.Text = "Supprimer la section sélectionnée"
+        ToolTipTitleItem236.LeftIndent = 6
+        ToolTipTitleItem236.Text = "Dévis Quantitatif et Estimatif"
+        SuperToolTip228.Items.Add(ToolTipTitleItem235)
+        SuperToolTip228.Items.Add(ToolTipItem222)
+        SuperToolTip228.Items.Add(ToolTipSeparatorItem8)
+        SuperToolTip228.Items.Add(ToolTipTitleItem236)
+        Me.BtSuppSection.SuperTip = SuperToolTip228
         Me.BtSuppSection.TabIndex = 1
         '
         'BtEnrgSection
@@ -8751,19 +9297,19 @@ Partial Class NewDao
         Me.BtEnrgSection.Location = New System.Drawing.Point(137, 21)
         Me.BtEnrgSection.Name = "BtEnrgSection"
         Me.BtEnrgSection.Size = New System.Drawing.Size(86, 20)
-        ToolTipTitleItem717.Appearance.Image = Global.ClearProject.My.Resources.Resources.Ribbon_Save_16x16
-        ToolTipTitleItem717.Appearance.Options.UseImage = True
-        ToolTipTitleItem717.Image = Global.ClearProject.My.Resources.Resources.Ribbon_Save_16x16
-        ToolTipTitleItem717.Text = "Enregistrer"
-        ToolTipItem669.LeftIndent = 6
-        ToolTipItem669.Text = "Enregistrer la section en cours d'édition"
-        ToolTipTitleItem718.LeftIndent = 6
-        ToolTipTitleItem718.Text = "Dévis Quantitatif et Estimatif"
-        SuperToolTip687.Items.Add(ToolTipTitleItem717)
-        SuperToolTip687.Items.Add(ToolTipItem669)
-        SuperToolTip687.Items.Add(ToolTipSeparatorItem31)
-        SuperToolTip687.Items.Add(ToolTipTitleItem718)
-        Me.BtEnrgSection.SuperTip = SuperToolTip687
+        ToolTipTitleItem237.Appearance.Image = Global.ClearProject.My.Resources.Resources.Ribbon_Save_16x16
+        ToolTipTitleItem237.Appearance.Options.UseImage = True
+        ToolTipTitleItem237.Image = Global.ClearProject.My.Resources.Resources.Ribbon_Save_16x16
+        ToolTipTitleItem237.Text = "Enregistrer"
+        ToolTipItem223.LeftIndent = 6
+        ToolTipItem223.Text = "Enregistrer la section en cours d'édition"
+        ToolTipTitleItem238.LeftIndent = 6
+        ToolTipTitleItem238.Text = "Dévis Quantitatif et Estimatif"
+        SuperToolTip229.Items.Add(ToolTipTitleItem237)
+        SuperToolTip229.Items.Add(ToolTipItem223)
+        SuperToolTip229.Items.Add(ToolTipSeparatorItem9)
+        SuperToolTip229.Items.Add(ToolTipTitleItem238)
+        Me.BtEnrgSection.SuperTip = SuperToolTip229
         Me.BtEnrgSection.TabIndex = 0
         Me.BtEnrgSection.Text = "Enregistrer"
         '
@@ -8812,7 +9358,7 @@ Partial Class NewDao
         Me.GbItemDQE.Enabled = False
         Me.GbItemDQE.Location = New System.Drawing.Point(4, 117)
         Me.GbItemDQE.Name = "GbItemDQE"
-        Me.GbItemDQE.Size = New System.Drawing.Size(225, 0)
+        Me.GbItemDQE.Size = New System.Drawing.Size(225, 335)
         Me.GbItemDQE.TabIndex = 9
         Me.GbItemDQE.Text = "Edition Item"
         Me.GbItemDQE.Visible = False
@@ -8908,19 +9454,19 @@ Partial Class NewDao
         Me.BtSuppItem.Location = New System.Drawing.Point(115, 23)
         Me.BtSuppItem.Name = "BtSuppItem"
         Me.BtSuppItem.Size = New System.Drawing.Size(20, 20)
-        ToolTipTitleItem719.Appearance.Image = Global.ClearProject.My.Resources.Resources.Close_16x16
-        ToolTipTitleItem719.Appearance.Options.UseImage = True
-        ToolTipTitleItem719.Image = Global.ClearProject.My.Resources.Resources.Close_16x16
-        ToolTipTitleItem719.Text = "Supprimer"
-        ToolTipItem670.LeftIndent = 6
-        ToolTipItem670.Text = "Supprimer l'item sélectionné"
-        ToolTipTitleItem720.LeftIndent = 6
-        ToolTipTitleItem720.Text = "Dévis Quantitatif et Estimatif"
-        SuperToolTip688.Items.Add(ToolTipTitleItem719)
-        SuperToolTip688.Items.Add(ToolTipItem670)
-        SuperToolTip688.Items.Add(ToolTipSeparatorItem32)
-        SuperToolTip688.Items.Add(ToolTipTitleItem720)
-        Me.BtSuppItem.SuperTip = SuperToolTip688
+        ToolTipTitleItem239.Appearance.Image = Global.ClearProject.My.Resources.Resources.Close_16x16
+        ToolTipTitleItem239.Appearance.Options.UseImage = True
+        ToolTipTitleItem239.Image = Global.ClearProject.My.Resources.Resources.Close_16x16
+        ToolTipTitleItem239.Text = "Supprimer"
+        ToolTipItem224.LeftIndent = 6
+        ToolTipItem224.Text = "Supprimer l'item sélectionné"
+        ToolTipTitleItem240.LeftIndent = 6
+        ToolTipTitleItem240.Text = "Dévis Quantitatif et Estimatif"
+        SuperToolTip230.Items.Add(ToolTipTitleItem239)
+        SuperToolTip230.Items.Add(ToolTipItem224)
+        SuperToolTip230.Items.Add(ToolTipSeparatorItem10)
+        SuperToolTip230.Items.Add(ToolTipTitleItem240)
+        Me.BtSuppItem.SuperTip = SuperToolTip230
         Me.BtSuppItem.TabIndex = 1
         '
         'BtEnrgItem
@@ -8930,19 +9476,19 @@ Partial Class NewDao
         Me.BtEnrgItem.Location = New System.Drawing.Point(137, 23)
         Me.BtEnrgItem.Name = "BtEnrgItem"
         Me.BtEnrgItem.Size = New System.Drawing.Size(85, 20)
-        ToolTipTitleItem721.Appearance.Image = Global.ClearProject.My.Resources.Resources.Ribbon_Save_16x16
-        ToolTipTitleItem721.Appearance.Options.UseImage = True
-        ToolTipTitleItem721.Image = Global.ClearProject.My.Resources.Resources.Ribbon_Save_16x16
-        ToolTipTitleItem721.Text = "Enregistrer"
-        ToolTipItem671.LeftIndent = 6
-        ToolTipItem671.Text = "Enregistrer l'item en cours d'édition"
-        ToolTipTitleItem722.LeftIndent = 6
-        ToolTipTitleItem722.Text = "Dévis Quantitatif et Estimatif"
-        SuperToolTip689.Items.Add(ToolTipTitleItem721)
-        SuperToolTip689.Items.Add(ToolTipItem671)
-        SuperToolTip689.Items.Add(ToolTipSeparatorItem33)
-        SuperToolTip689.Items.Add(ToolTipTitleItem722)
-        Me.BtEnrgItem.SuperTip = SuperToolTip689
+        ToolTipTitleItem241.Appearance.Image = Global.ClearProject.My.Resources.Resources.Ribbon_Save_16x16
+        ToolTipTitleItem241.Appearance.Options.UseImage = True
+        ToolTipTitleItem241.Image = Global.ClearProject.My.Resources.Resources.Ribbon_Save_16x16
+        ToolTipTitleItem241.Text = "Enregistrer"
+        ToolTipItem225.LeftIndent = 6
+        ToolTipItem225.Text = "Enregistrer l'item en cours d'édition"
+        ToolTipTitleItem242.LeftIndent = 6
+        ToolTipTitleItem242.Text = "Dévis Quantitatif et Estimatif"
+        SuperToolTip231.Items.Add(ToolTipTitleItem241)
+        SuperToolTip231.Items.Add(ToolTipItem225)
+        SuperToolTip231.Items.Add(ToolTipSeparatorItem11)
+        SuperToolTip231.Items.Add(ToolTipTitleItem242)
+        Me.BtEnrgItem.SuperTip = SuperToolTip231
         Me.BtEnrgItem.TabIndex = 0
         Me.BtEnrgItem.Text = "Enregistrer"
         '
@@ -8966,8 +9512,10 @@ Partial Class NewDao
         '
         Me.GroupControl12.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupControl12.Controls.Add(Me.Panel3Ecraser)
+        Me.GroupControl12.Controls.Add(Me.SimpleButton1)
+        Me.GroupControl12.Controls.Add(Me.RefLotDQE)
         Me.GroupControl12.Controls.Add(Me.PanelControl2)
-        Me.GroupControl12.Controls.Add(Me.chkEraseDQE)
         Me.GroupControl12.Controls.Add(Me.TxtSousLotDQE)
         Me.GroupControl12.Controls.Add(Me.CmbSousLotDQE)
         Me.GroupControl12.Controls.Add(Me.LabelControl58)
@@ -8978,9 +9526,41 @@ Partial Class NewDao
         Me.GroupControl12.Controls.Add(Me.TxtImportDQE)
         Me.GroupControl12.Location = New System.Drawing.Point(4, 4)
         Me.GroupControl12.Name = "GroupControl12"
-        Me.GroupControl12.Size = New System.Drawing.Size(1028, 107)
+        Me.GroupControl12.Size = New System.Drawing.Size(1023, 107)
         Me.GroupControl12.TabIndex = 0
         Me.GroupControl12.Text = "Importer (sélectionner un fichier)"
+        '
+        'Panel3Ecraser
+        '
+        Me.Panel3Ecraser.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel3Ecraser.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel3Ecraser.Controls.Add(Me.chkEraseDQE)
+        Me.Panel3Ecraser.Location = New System.Drawing.Point(846, 79)
+        Me.Panel3Ecraser.Name = "Panel3Ecraser"
+        Me.Panel3Ecraser.Size = New System.Drawing.Size(70, 25)
+        Me.Panel3Ecraser.TabIndex = 25
+        '
+        'chkEraseDQE
+        '
+        Me.chkEraseDQE.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.chkEraseDQE.Location = New System.Drawing.Point(0, 0)
+        Me.chkEraseDQE.MenuManager = Me.RibbonDAO
+        Me.chkEraseDQE.Name = "chkEraseDQE"
+        Me.chkEraseDQE.Properties.Caption = "Ecraser"
+        Me.chkEraseDQE.Size = New System.Drawing.Size(66, 19)
+        Me.chkEraseDQE.TabIndex = 12
+        '
+        'SimpleButton1
+        '
+        Me.SimpleButton1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.SimpleButton1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.SimpleButton1.Image = Global.ClearProject.My.Resources.Resources.Ribbon_OPEN_16x16
+        Me.SimpleButton1.Location = New System.Drawing.Point(697, 79)
+        Me.SimpleButton1.Name = "SimpleButton1"
+        Me.SimpleButton1.Size = New System.Drawing.Size(143, 24)
+        Me.SimpleButton1.TabIndex = 24
+        Me.SimpleButton1.Text = "Séléctionner un fichier"
+        Me.SimpleButton1.ToolTip = "Veuillez choisir le fichier à importer"
         '
         'PanelControl2
         '
@@ -8989,20 +9569,11 @@ Partial Class NewDao
         Me.PanelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.PanelControl2.Controls.Add(Me.txtFilePathDQE)
         Me.PanelControl2.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PanelControl2.Location = New System.Drawing.Point(126, 79)
+        Me.PanelControl2.Enabled = False
+        Me.PanelControl2.Location = New System.Drawing.Point(129, 80)
         Me.PanelControl2.Name = "PanelControl2"
-        Me.PanelControl2.Size = New System.Drawing.Size(729, 23)
+        Me.PanelControl2.Size = New System.Drawing.Size(562, 23)
         Me.PanelControl2.TabIndex = 15
-        '
-        'chkEraseDQE
-        '
-        Me.chkEraseDQE.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.chkEraseDQE.Location = New System.Drawing.Point(861, 81)
-        Me.chkEraseDQE.MenuManager = Me.RibbonDAO
-        Me.chkEraseDQE.Name = "chkEraseDQE"
-        Me.chkEraseDQE.Properties.Caption = "Ecraser"
-        Me.chkEraseDQE.Size = New System.Drawing.Size(58, 19)
-        Me.chkEraseDQE.TabIndex = 12
         '
         'CmbSousLotDQE
         '
@@ -9013,6 +9584,7 @@ Partial Class NewDao
         Me.CmbSousLotDQE.Properties.Appearance.Options.UseTextOptions = True
         Me.CmbSousLotDQE.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.CmbSousLotDQE.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.CmbSousLotDQE.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         Me.CmbSousLotDQE.Size = New System.Drawing.Size(52, 20)
         Me.CmbSousLotDQE.TabIndex = 10
         '
@@ -9033,6 +9605,7 @@ Partial Class NewDao
         Me.CmbLotDQE.Properties.Appearance.Options.UseTextOptions = True
         Me.CmbLotDQE.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.CmbLotDQE.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.CmbLotDQE.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         Me.CmbLotDQE.Size = New System.Drawing.Size(52, 20)
         Me.CmbLotDQE.TabIndex = 4
         '
@@ -9048,7 +9621,7 @@ Partial Class NewDao
         '
         Me.btImportDQE.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btImportDQE.Image = Global.ClearProject.My.Resources.Resources.Ribbon_Save_16x16
-        Me.btImportDQE.Location = New System.Drawing.Point(929, 79)
+        Me.btImportDQE.Location = New System.Drawing.Point(924, 79)
         Me.btImportDQE.Name = "btImportDQE"
         Me.btImportDQE.Size = New System.Drawing.Size(90, 24)
         Me.btImportDQE.TabIndex = 2
@@ -9073,182 +9646,88 @@ Partial Class NewDao
         Me.GroupControl6.AppearanceCaption.Options.UseFont = True
         Me.GroupControl6.AppearanceCaption.Options.UseTextOptions = True
         Me.GroupControl6.AppearanceCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GroupControl6.Controls.Add(Me.ListServiConnex)
-        Me.GroupControl6.Controls.Add(Me.LabelControl64)
-        Me.GroupControl6.Controls.Add(Me.BtSupServicConnex)
-        Me.GroupControl6.Controls.Add(Me.TxtLibelleserviceconnexe)
+        Me.GroupControl6.Controls.Add(Me.GridServiConnex)
+        Me.GroupControl6.Controls.Add(Me.Panel2)
         Me.GroupControl6.Location = New System.Drawing.Point(599, 278)
         Me.GroupControl6.Name = "GroupControl6"
         Me.GroupControl6.Size = New System.Drawing.Size(430, 242)
         Me.GroupControl6.TabIndex = 23
         Me.GroupControl6.Text = "Services connexes"
         '
-        'ListServiConnex
+        'GridServiConnex
         '
-        Me.ListServiConnex.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ListServiConnex.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ListServiConnex.Location = New System.Drawing.Point(2, 55)
-        Me.ListServiConnex.MainView = Me.ViewConnexe
-        Me.ListServiConnex.Name = "ListServiConnex"
-        Me.ListServiConnex.Size = New System.Drawing.Size(426, 184)
-        Me.ListServiConnex.TabIndex = 44
-        Me.ListServiConnex.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ViewConnexe})
+        Me.GridServiConnex.AllowUserToAddRows = False
+        Me.GridServiConnex.AllowUserToDeleteRows = False
+        Me.GridServiConnex.AllowUserToResizeRows = False
+        DataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.GridServiConnex.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle17
+        Me.GridServiConnex.BackgroundColor = System.Drawing.Color.White
+        Me.GridServiConnex.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.GridServiConnex.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        Me.GridServiConnex.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdService, Me.Num, Me.Libelles})
+        Me.GridServiConnex.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GridServiConnex.Location = New System.Drawing.Point(2, 58)
+        Me.GridServiConnex.MultiSelect = False
+        Me.GridServiConnex.Name = "GridServiConnex"
+        Me.GridServiConnex.ReadOnly = True
+        Me.GridServiConnex.RowHeadersVisible = False
+        Me.GridServiConnex.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.GridServiConnex.Size = New System.Drawing.Size(426, 182)
+        Me.GridServiConnex.TabIndex = 20
         '
-        'ViewConnexe
+        'IdService
         '
-        Me.ViewConnexe.ActiveFilterEnabled = False
-        Me.ViewConnexe.Appearance.ColumnFilterButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.ViewConnexe.Appearance.ColumnFilterButton.BorderColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.ViewConnexe.Appearance.ColumnFilterButton.ForeColor = System.Drawing.Color.Black
-        Me.ViewConnexe.Appearance.ColumnFilterButton.Options.UseBackColor = True
-        Me.ViewConnexe.Appearance.ColumnFilterButton.Options.UseBorderColor = True
-        Me.ViewConnexe.Appearance.ColumnFilterButton.Options.UseForeColor = True
-        Me.ViewConnexe.Appearance.ColumnFilterButtonActive.BackColor = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(216, Byte), Integer))
-        Me.ViewConnexe.Appearance.ColumnFilterButtonActive.BorderColor = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(216, Byte), Integer))
-        Me.ViewConnexe.Appearance.ColumnFilterButtonActive.ForeColor = System.Drawing.Color.Black
-        Me.ViewConnexe.Appearance.ColumnFilterButtonActive.Options.UseBackColor = True
-        Me.ViewConnexe.Appearance.ColumnFilterButtonActive.Options.UseBorderColor = True
-        Me.ViewConnexe.Appearance.ColumnFilterButtonActive.Options.UseForeColor = True
-        Me.ViewConnexe.Appearance.Empty.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
-        Me.ViewConnexe.Appearance.Empty.BackColor2 = System.Drawing.Color.White
-        Me.ViewConnexe.Appearance.Empty.Options.UseBackColor = True
-        Me.ViewConnexe.Appearance.EvenRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(221, Byte), Integer), CType(CType(227, Byte), Integer), CType(CType(245, Byte), Integer))
-        Me.ViewConnexe.Appearance.EvenRow.BorderColor = System.Drawing.Color.FromArgb(CType(CType(221, Byte), Integer), CType(CType(227, Byte), Integer), CType(CType(245, Byte), Integer))
-        Me.ViewConnexe.Appearance.EvenRow.ForeColor = System.Drawing.Color.Black
-        Me.ViewConnexe.Appearance.EvenRow.Options.UseBackColor = True
-        Me.ViewConnexe.Appearance.EvenRow.Options.UseBorderColor = True
-        Me.ViewConnexe.Appearance.EvenRow.Options.UseForeColor = True
-        Me.ViewConnexe.Appearance.FilterCloseButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.ViewConnexe.Appearance.FilterCloseButton.BorderColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.ViewConnexe.Appearance.FilterCloseButton.ForeColor = System.Drawing.Color.Black
-        Me.ViewConnexe.Appearance.FilterCloseButton.Options.UseBackColor = True
-        Me.ViewConnexe.Appearance.FilterCloseButton.Options.UseBorderColor = True
-        Me.ViewConnexe.Appearance.FilterCloseButton.Options.UseForeColor = True
-        Me.ViewConnexe.Appearance.FilterPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
-        Me.ViewConnexe.Appearance.FilterPanel.BackColor2 = System.Drawing.Color.White
-        Me.ViewConnexe.Appearance.FilterPanel.ForeColor = System.Drawing.Color.Black
-        Me.ViewConnexe.Appearance.FilterPanel.Options.UseBackColor = True
-        Me.ViewConnexe.Appearance.FilterPanel.Options.UseForeColor = True
-        Me.ViewConnexe.Appearance.FixedLine.BackColor = System.Drawing.Color.FromArgb(CType(CType(117, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(122, Byte), Integer))
-        Me.ViewConnexe.Appearance.FixedLine.Options.UseBackColor = True
-        Me.ViewConnexe.Appearance.FocusedCell.BackColor = System.Drawing.Color.White
-        Me.ViewConnexe.Appearance.FocusedCell.ForeColor = System.Drawing.Color.Black
-        Me.ViewConnexe.Appearance.FocusedCell.Options.UseBackColor = True
-        Me.ViewConnexe.Appearance.FocusedCell.Options.UseForeColor = True
-        Me.ViewConnexe.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(171, Byte), Integer), CType(CType(177, Byte), Integer))
-        Me.ViewConnexe.Appearance.FocusedRow.ForeColor = System.Drawing.Color.White
-        Me.ViewConnexe.Appearance.FocusedRow.Options.UseBackColor = True
-        Me.ViewConnexe.Appearance.FocusedRow.Options.UseForeColor = True
-        Me.ViewConnexe.Appearance.FooterPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.ViewConnexe.Appearance.FooterPanel.BorderColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.ViewConnexe.Appearance.FooterPanel.ForeColor = System.Drawing.Color.Black
-        Me.ViewConnexe.Appearance.FooterPanel.Options.UseBackColor = True
-        Me.ViewConnexe.Appearance.FooterPanel.Options.UseBorderColor = True
-        Me.ViewConnexe.Appearance.FooterPanel.Options.UseForeColor = True
-        Me.ViewConnexe.Appearance.GroupButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(178, Byte), Integer), CType(CType(209, Byte), Integer), CType(CType(188, Byte), Integer))
-        Me.ViewConnexe.Appearance.GroupButton.BorderColor = System.Drawing.Color.FromArgb(CType(CType(178, Byte), Integer), CType(CType(209, Byte), Integer), CType(CType(188, Byte), Integer))
-        Me.ViewConnexe.Appearance.GroupButton.Options.UseBackColor = True
-        Me.ViewConnexe.Appearance.GroupButton.Options.UseBorderColor = True
-        Me.ViewConnexe.Appearance.GroupFooter.BackColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(221, Byte), Integer))
-        Me.ViewConnexe.Appearance.GroupFooter.BorderColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(221, Byte), Integer))
-        Me.ViewConnexe.Appearance.GroupFooter.ForeColor = System.Drawing.Color.Black
-        Me.ViewConnexe.Appearance.GroupFooter.Options.UseBackColor = True
-        Me.ViewConnexe.Appearance.GroupFooter.Options.UseBorderColor = True
-        Me.ViewConnexe.Appearance.GroupFooter.Options.UseForeColor = True
-        Me.ViewConnexe.Appearance.GroupPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
-        Me.ViewConnexe.Appearance.GroupPanel.BackColor2 = System.Drawing.Color.White
-        Me.ViewConnexe.Appearance.GroupPanel.ForeColor = System.Drawing.Color.Black
-        Me.ViewConnexe.Appearance.GroupPanel.Options.UseBackColor = True
-        Me.ViewConnexe.Appearance.GroupPanel.Options.UseForeColor = True
-        Me.ViewConnexe.Appearance.GroupRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(221, Byte), Integer))
-        Me.ViewConnexe.Appearance.GroupRow.BorderColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(221, Byte), Integer))
-        Me.ViewConnexe.Appearance.GroupRow.ForeColor = System.Drawing.Color.Black
-        Me.ViewConnexe.Appearance.GroupRow.Options.UseBackColor = True
-        Me.ViewConnexe.Appearance.GroupRow.Options.UseBorderColor = True
-        Me.ViewConnexe.Appearance.GroupRow.Options.UseForeColor = True
-        Me.ViewConnexe.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(216, Byte), Integer))
-        Me.ViewConnexe.Appearance.HeaderPanel.BorderColor = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(216, Byte), Integer))
-        Me.ViewConnexe.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.Black
-        Me.ViewConnexe.Appearance.HeaderPanel.Options.UseBackColor = True
-        Me.ViewConnexe.Appearance.HeaderPanel.Options.UseBorderColor = True
-        Me.ViewConnexe.Appearance.HeaderPanel.Options.UseForeColor = True
-        Me.ViewConnexe.Appearance.HideSelectionRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(186, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(215, Byte), Integer))
-        Me.ViewConnexe.Appearance.HideSelectionRow.ForeColor = System.Drawing.Color.FromArgb(CType(CType(104, Byte), Integer), CType(CType(130, Byte), Integer), CType(CType(134, Byte), Integer))
-        Me.ViewConnexe.Appearance.HideSelectionRow.Options.UseBackColor = True
-        Me.ViewConnexe.Appearance.HideSelectionRow.Options.UseForeColor = True
-        Me.ViewConnexe.Appearance.HorzLine.BackColor = System.Drawing.Color.FromArgb(CType(CType(172, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(180, Byte), Integer))
-        Me.ViewConnexe.Appearance.HorzLine.BorderColor = System.Drawing.Color.FromArgb(CType(CType(117, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(122, Byte), Integer))
-        Me.ViewConnexe.Appearance.HorzLine.Options.UseBackColor = True
-        Me.ViewConnexe.Appearance.HorzLine.Options.UseBorderColor = True
-        Me.ViewConnexe.Appearance.OddRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
-        Me.ViewConnexe.Appearance.OddRow.BorderColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
-        Me.ViewConnexe.Appearance.OddRow.ForeColor = System.Drawing.Color.Black
-        Me.ViewConnexe.Appearance.OddRow.Options.UseBackColor = True
-        Me.ViewConnexe.Appearance.OddRow.Options.UseBorderColor = True
-        Me.ViewConnexe.Appearance.OddRow.Options.UseForeColor = True
-        Me.ViewConnexe.Appearance.Preview.BackColor = System.Drawing.Color.FromArgb(CType(CType(250, Byte), Integer), CType(CType(250, Byte), Integer), CType(CType(240, Byte), Integer))
-        Me.ViewConnexe.Appearance.Preview.Font = New System.Drawing.Font("Verdana", 7.5!)
-        Me.ViewConnexe.Appearance.Preview.ForeColor = System.Drawing.Color.FromArgb(CType(CType(104, Byte), Integer), CType(CType(130, Byte), Integer), CType(CType(134, Byte), Integer))
-        Me.ViewConnexe.Appearance.Preview.Options.UseBackColor = True
-        Me.ViewConnexe.Appearance.Preview.Options.UseFont = True
-        Me.ViewConnexe.Appearance.Preview.Options.UseForeColor = True
-        Me.ViewConnexe.Appearance.Row.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
-        Me.ViewConnexe.Appearance.Row.ForeColor = System.Drawing.Color.Black
-        Me.ViewConnexe.Appearance.Row.Options.UseBackColor = True
-        Me.ViewConnexe.Appearance.Row.Options.UseForeColor = True
-        Me.ViewConnexe.Appearance.RowSeparator.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
-        Me.ViewConnexe.Appearance.RowSeparator.BackColor2 = System.Drawing.Color.White
-        Me.ViewConnexe.Appearance.RowSeparator.Options.UseBackColor = True
-        Me.ViewConnexe.Appearance.SelectedRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(159, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(207, Byte), Integer))
-        Me.ViewConnexe.Appearance.SelectedRow.ForeColor = System.Drawing.Color.Black
-        Me.ViewConnexe.Appearance.SelectedRow.Options.UseBackColor = True
-        Me.ViewConnexe.Appearance.SelectedRow.Options.UseForeColor = True
-        Me.ViewConnexe.Appearance.TopNewRow.BackColor = System.Drawing.Color.White
-        Me.ViewConnexe.Appearance.TopNewRow.Options.UseBackColor = True
-        Me.ViewConnexe.Appearance.VertLine.BackColor = System.Drawing.Color.FromArgb(CType(CType(172, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(180, Byte), Integer))
-        Me.ViewConnexe.Appearance.VertLine.BorderColor = System.Drawing.Color.FromArgb(CType(CType(117, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(122, Byte), Integer))
-        Me.ViewConnexe.Appearance.VertLine.Options.UseBackColor = True
-        Me.ViewConnexe.Appearance.VertLine.Options.UseBorderColor = True
-        Me.ViewConnexe.GridControl = Me.ListServiConnex
-        Me.ViewConnexe.Name = "ViewConnexe"
-        Me.ViewConnexe.OptionsBehavior.Editable = False
-        Me.ViewConnexe.OptionsBehavior.ReadOnly = True
-        Me.ViewConnexe.OptionsCustomization.AllowColumnMoving = False
-        Me.ViewConnexe.OptionsCustomization.AllowFilter = False
-        Me.ViewConnexe.OptionsCustomization.AllowGroup = False
-        Me.ViewConnexe.OptionsCustomization.AllowSort = False
-        Me.ViewConnexe.OptionsFilter.AllowFilterEditor = False
-        Me.ViewConnexe.OptionsFilter.AllowFilterIncrementalSearch = False
-        Me.ViewConnexe.OptionsPrint.AutoWidth = False
-        Me.ViewConnexe.OptionsSelection.EnableAppearanceFocusedCell = False
-        Me.ViewConnexe.OptionsSelection.EnableAppearanceFocusedRow = False
-        Me.ViewConnexe.OptionsView.ColumnAutoWidth = False
-        Me.ViewConnexe.OptionsView.EnableAppearanceEvenRow = True
-        Me.ViewConnexe.OptionsView.EnableAppearanceOddRow = True
-        Me.ViewConnexe.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never
-        Me.ViewConnexe.OptionsView.ShowGroupExpandCollapseButtons = False
-        Me.ViewConnexe.OptionsView.ShowGroupPanel = False
-        Me.ViewConnexe.OptionsView.ShowVerticalLines = DevExpress.Utils.DefaultBoolean.[False]
-        Me.ViewConnexe.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow
+        Me.IdService.HeaderText = "IdService"
+        Me.IdService.Name = "IdService"
+        Me.IdService.ReadOnly = True
+        Me.IdService.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.IdService.Visible = False
         '
-        'LabelControl64
+        'Num
         '
-        Me.LabelControl64.Location = New System.Drawing.Point(5, 30)
-        Me.LabelControl64.Name = "LabelControl64"
-        Me.LabelControl64.Size = New System.Drawing.Size(110, 13)
-        Me.LabelControl64.TabIndex = 18
-        Me.LabelControl64.Text = "Libellé service connexe"
+        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Num.DefaultCellStyle = DataGridViewCellStyle18
+        Me.Num.HeaderText = "N°"
+        Me.Num.Name = "Num"
+        Me.Num.ReadOnly = True
+        Me.Num.Width = 50
+        '
+        'Libelles
+        '
+        Me.Libelles.HeaderText = "Libellé"
+        Me.Libelles.Name = "Libelles"
+        Me.Libelles.ReadOnly = True
+        Me.Libelles.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Libelles.Width = 425
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.TxtLibelleserviceconnexe)
+        Me.Panel2.Controls.Add(Me.BtSupServicConnex)
+        Me.Panel2.Controls.Add(Me.LabelControl64)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel2.Location = New System.Drawing.Point(2, 23)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(426, 35)
+        Me.Panel2.TabIndex = 21
         '
         'BtSupServicConnex
         '
         Me.BtSupServicConnex.Image = Global.ClearProject.My.Resources.Resources.Delete_16x16
-        Me.BtSupServicConnex.Location = New System.Drawing.Point(348, 27)
+        Me.BtSupServicConnex.Location = New System.Drawing.Point(346, 6)
         Me.BtSupServicConnex.Name = "BtSupServicConnex"
-        Me.BtSupServicConnex.Size = New System.Drawing.Size(79, 22)
+        Me.BtSupServicConnex.Size = New System.Drawing.Size(75, 22)
         Me.BtSupServicConnex.TabIndex = 9
         Me.BtSupServicConnex.Text = "Supprimer"
         Me.BtSupServicConnex.ToolTip = "Supprimer"
+        '
+        'LabelControl64
+        '
+        Me.LabelControl64.Location = New System.Drawing.Point(6, 9)
+        Me.LabelControl64.Name = "LabelControl64"
+        Me.LabelControl64.Size = New System.Drawing.Size(110, 13)
+        Me.LabelControl64.TabIndex = 18
+        Me.LabelControl64.Text = "Libellé service connexe"
         '
         'GroupControl21
         '
@@ -9264,20 +9743,20 @@ Partial Class NewDao
         Me.GroupControl21.Controls.Add(Me.SaveDonnee)
         Me.GroupControl21.Location = New System.Drawing.Point(2, 278)
         Me.GroupControl21.Name = "GroupControl21"
-        Me.GroupControl21.Size = New System.Drawing.Size(594, 242)
+        Me.GroupControl21.Size = New System.Drawing.Size(591, 242)
         Me.GroupControl21.TabIndex = 3
         Me.GroupControl21.TabStop = True
         Me.GroupControl21.Text = "Spécifications techniques"
         '
         'ListeSpecTech
         '
-        Me.ListeSpecTech.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.Identifiant, Me.CodeSpec, Me.Libellé, Me.Quantité, Me.LieuLivre, Me.CodeCateg, Me.NumLot, Me.NumSousLot, Me.Edit})
+        Me.ListeSpecTech.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.Identifiant, Me.RefArticle, Me.LibelleArticle, Me.Quantite, Me.LieuLivre, Me.CodeCateg, Me.NumLot, Me.NumSousLot})
         Me.ListeSpecTech.ContextMenuStrip = Me.ContextMenuSpectTech
         Me.ListeSpecTech.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ListeSpecTech.Location = New System.Drawing.Point(2, 23)
         Me.ListeSpecTech.Name = "ListeSpecTech"
         Me.ListeSpecTech.OptionsBehavior.Editable = False
-        Me.ListeSpecTech.Size = New System.Drawing.Size(590, 217)
+        Me.ListeSpecTech.Size = New System.Drawing.Size(587, 217)
         Me.ListeSpecTech.TabIndex = 95
         '
         'Identifiant
@@ -9285,79 +9764,85 @@ Partial Class NewDao
         Me.Identifiant.Caption = "Identifiant"
         Me.Identifiant.FieldName = "Identifiant"
         Me.Identifiant.Name = "Identifiant"
-        Me.Identifiant.Visible = True
-        Me.Identifiant.VisibleIndex = 8
+        Me.Identifiant.Width = 64
         '
-        'CodeSpec
+        'RefArticle
         '
-        Me.CodeSpec.Caption = "Code"
-        Me.CodeSpec.FieldName = "Code"
-        Me.CodeSpec.Name = "CodeSpec"
-        Me.CodeSpec.Visible = True
-        Me.CodeSpec.VisibleIndex = 7
+        Me.RefArticle.AppearanceCell.Options.UseTextOptions = True
+        Me.RefArticle.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.RefArticle.Caption = "Ref Article"
+        Me.RefArticle.FieldName = "RefArticle"
+        Me.RefArticle.Name = "RefArticle"
+        Me.RefArticle.OptionsColumn.FixedWidth = True
+        Me.RefArticle.Visible = True
+        Me.RefArticle.VisibleIndex = 0
+        Me.RefArticle.Width = 65
         '
-        'Libellé
+        'LibelleArticle
         '
-        Me.Libellé.Caption = "Libellé"
-        Me.Libellé.FieldName = "Libelle"
-        Me.Libellé.Name = "Libellé"
-        Me.Libellé.Visible = True
-        Me.Libellé.VisibleIndex = 0
+        Me.LibelleArticle.Caption = "Libellé article"
+        Me.LibelleArticle.FieldName = "LibelleArticle"
+        Me.LibelleArticle.Name = "LibelleArticle"
+        Me.LibelleArticle.Visible = True
+        Me.LibelleArticle.VisibleIndex = 1
+        Me.LibelleArticle.Width = 63
         '
-        'Quantité
+        'Quantite
         '
-        Me.Quantité.Caption = "Quantité"
-        Me.Quantité.FieldName = "Quantite"
-        Me.Quantité.Name = "Quantité"
-        Me.Quantité.Visible = True
-        Me.Quantité.VisibleIndex = 1
+        Me.Quantite.AppearanceCell.Options.UseTextOptions = True
+        Me.Quantite.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.Quantite.Caption = "Quantité"
+        Me.Quantite.FieldName = "Quantite"
+        Me.Quantite.Name = "Quantite"
+        Me.Quantite.OptionsColumn.FixedWidth = True
+        Me.Quantite.Visible = True
+        Me.Quantite.VisibleIndex = 2
+        Me.Quantite.Width = 65
         '
         'LieuLivre
         '
         Me.LieuLivre.Caption = "Lieu de livraison"
         Me.LieuLivre.FieldName = "LieuLivre"
         Me.LieuLivre.Name = "LieuLivre"
+        Me.LieuLivre.OptionsColumn.FixedWidth = True
         Me.LieuLivre.Visible = True
-        Me.LieuLivre.VisibleIndex = 2
+        Me.LieuLivre.VisibleIndex = 3
+        Me.LieuLivre.Width = 100
         '
         'CodeCateg
         '
+        Me.CodeCateg.AllNodesSummary = True
         Me.CodeCateg.Caption = "CodeCateg"
         Me.CodeCateg.FieldName = "CodeCateg"
         Me.CodeCateg.Name = "CodeCateg"
-        Me.CodeCateg.Visible = True
-        Me.CodeCateg.VisibleIndex = 6
+        Me.CodeCateg.Width = 63
         '
         'NumLot
         '
         Me.NumLot.Caption = "NumLot"
         Me.NumLot.FieldName = "NumLot"
         Me.NumLot.Name = "NumLot"
-        Me.NumLot.Visible = True
-        Me.NumLot.VisibleIndex = 5
+        Me.NumLot.Width = 63
         '
         'NumSousLot
         '
         Me.NumSousLot.Caption = "NumSousLot"
         Me.NumSousLot.FieldName = "NumSousLot"
         Me.NumSousLot.Name = "NumSousLot"
-        Me.NumSousLot.Visible = True
-        Me.NumSousLot.VisibleIndex = 4
-        '
-        'Edit
-        '
-        Me.Edit.Caption = "Edit"
-        Me.Edit.FieldName = "Edit"
-        Me.Edit.Name = "Edit"
-        Me.Edit.UnboundType = DevExpress.XtraTreeList.Data.UnboundColumnType.[Boolean]
-        Me.Edit.Visible = True
-        Me.Edit.VisibleIndex = 3
+        Me.NumSousLot.Width = 63
         '
         'ContextMenuSpectTech
         '
-        Me.ContextMenuSpectTech.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuModifierSpecTech, Me.ToolStripMenuSupprimerSpecTech})
+        Me.ContextMenuSpectTech.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AjouterToolStripMenuItem, Me.ToolStripMenuModifierSpecTech, Me.ToolStripMenuSupprimerSpecTech})
         Me.ContextMenuSpectTech.Name = "ContextMenuStrip1"
-        Me.ContextMenuSpectTech.Size = New System.Drawing.Size(130, 48)
+        Me.ContextMenuSpectTech.Size = New System.Drawing.Size(130, 70)
+        '
+        'AjouterToolStripMenuItem
+        '
+        Me.AjouterToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.Add_16x16
+        Me.AjouterToolStripMenuItem.Name = "AjouterToolStripMenuItem"
+        Me.AjouterToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
+        Me.AjouterToolStripMenuItem.Text = "Ajouter"
         '
         'ToolStripMenuModifierSpecTech
         '
@@ -9380,7 +9865,7 @@ Partial Class NewDao
         Me.GridSpecifTech.Location = New System.Drawing.Point(2, 23)
         Me.GridSpecifTech.MainView = Me.ViewSpecTechn
         Me.GridSpecifTech.Name = "GridSpecifTech"
-        Me.GridSpecifTech.Size = New System.Drawing.Size(590, 217)
+        Me.GridSpecifTech.Size = New System.Drawing.Size(587, 217)
         Me.GridSpecifTech.TabIndex = 2
         Me.GridSpecifTech.TabStop = False
         Me.GridSpecifTech.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ViewSpecTechn})
@@ -9418,8 +9903,9 @@ Partial Class NewDao
         Me.SaveDonnee.Location = New System.Drawing.Point(2, 23)
         Me.SaveDonnee.Name = "SaveDonnee"
         Me.SaveDonnee.OptionsBehavior.Editable = False
-        Me.SaveDonnee.Size = New System.Drawing.Size(590, 217)
+        Me.SaveDonnee.Size = New System.Drawing.Size(587, 217)
         Me.SaveDonnee.TabIndex = 96
+        Me.SaveDonnee.Visible = False
         '
         'IdSav
         '
@@ -9502,10 +9988,10 @@ Partial Class NewDao
         Me.GroupControl19.AppearanceCaption.Options.UseFont = True
         Me.GroupControl19.AppearanceCaption.Options.UseTextOptions = True
         Me.GroupControl19.AppearanceCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GroupControl19.Controls.Add(Me.Codessss)
+        Me.GroupControl19.Controls.Add(Me.CodeCategorie)
+        Me.GroupControl19.Controls.Add(Me.RefSpecificationModif)
         Me.GroupControl19.Controls.Add(Me.LabelControl7)
         Me.GroupControl19.Controls.Add(Me.txtCodeCateg)
-        Me.GroupControl19.Controls.Add(Me.ChkLieuLivraison)
         Me.GroupControl19.Controls.Add(Me.GroupControl20)
         Me.GroupControl19.Controls.Add(Me.TxtLieuLivraison)
         Me.GroupControl19.Controls.Add(Me.LabelControl51)
@@ -9527,23 +10013,11 @@ Partial Class NewDao
         '
         'LabelControl7
         '
-        Me.LabelControl7.Location = New System.Drawing.Point(216, 56)
+        Me.LabelControl7.Location = New System.Drawing.Point(217, 56)
         Me.LabelControl7.Name = "LabelControl7"
         Me.LabelControl7.Size = New System.Drawing.Size(61, 13)
         Me.LabelControl7.TabIndex = 27
         Me.LabelControl7.Text = "Libellé article"
-        '
-        'ChkLieuLivraison
-        '
-        Me.ChkLieuLivraison.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ChkLieuLivraison.EditValue = True
-        Me.ChkLieuLivraison.Enabled = False
-        Me.ChkLieuLivraison.Location = New System.Drawing.Point(637, 3)
-        Me.ChkLieuLivraison.MenuManager = Me.RibbonDAO
-        Me.ChkLieuLivraison.Name = "ChkLieuLivraison"
-        Me.ChkLieuLivraison.Properties.Caption = "Idem pour tout le lot"
-        Me.ChkLieuLivraison.Size = New System.Drawing.Size(138, 19)
-        Me.ChkLieuLivraison.TabIndex = 24
         '
         'GroupControl20
         '
@@ -9671,11 +10145,11 @@ Partial Class NewDao
         '
         'LabelControl49
         '
-        Me.LabelControl49.Location = New System.Drawing.Point(30, 29)
+        Me.LabelControl49.Location = New System.Drawing.Point(36, 29)
         Me.LabelControl49.Name = "LabelControl49"
-        Me.LabelControl49.Size = New System.Drawing.Size(104, 13)
+        Me.LabelControl49.Size = New System.Drawing.Size(98, 13)
         Me.LabelControl49.TabIndex = 8
-        Me.LabelControl49.Text = "Libellé grouppe article"
+        Me.LabelControl49.Text = "Libellé groupe article"
         '
         'GroupControl18
         '
@@ -9934,33 +10408,33 @@ Partial Class NewDao
         '
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AfficherLeDossier, Me.ImprimerLeDossier, Me.ToolStripSeparator1, Me.ExporterLeDossier, Me.ModifierLeDossier, Me.ToolStripSeparator2, Me.SupprimerLeDossier, Me.ToolStripSeparator3, Me.ValiderLeDossierToolStripMenuItem, Me.EnvoyerLeDossierAuBailleurToolStripMenuItem, Me.AnnulerLeDossierToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(227, 198)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(185, 220)
         '
         'AfficherLeDossier
         '
         Me.AfficherLeDossier.Image = Global.ClearProject.My.Resources.Resources.View_16x16
         Me.AfficherLeDossier.Name = "AfficherLeDossier"
-        Me.AfficherLeDossier.Size = New System.Drawing.Size(226, 22)
+        Me.AfficherLeDossier.Size = New System.Drawing.Size(184, 22)
         Me.AfficherLeDossier.Text = "Afficher le dossier"
         '
         'ImprimerLeDossier
         '
         Me.ImprimerLeDossier.Image = Global.ClearProject.My.Resources.Resources.Group_Reports
         Me.ImprimerLeDossier.Name = "ImprimerLeDossier"
-        Me.ImprimerLeDossier.Size = New System.Drawing.Size(226, 22)
+        Me.ImprimerLeDossier.Size = New System.Drawing.Size(184, 22)
         Me.ImprimerLeDossier.Text = "Imprimer le dossier"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(223, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(181, 6)
         '
         'ExporterLeDossier
         '
         Me.ExporterLeDossier.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PdfToolStripMenuItem, Me.WordToolStripMenuItem})
-        Me.ExporterLeDossier.Image = Global.ClearProject.My.Resources.Resources.Outbox_16x16
+        Me.ExporterLeDossier.Image = Global.ClearProject.My.Resources.Resources.ExportToTXT_16x16
         Me.ExporterLeDossier.Name = "ExporterLeDossier"
-        Me.ExporterLeDossier.Size = New System.Drawing.Size(226, 22)
+        Me.ExporterLeDossier.Size = New System.Drawing.Size(184, 22)
         Me.ExporterLeDossier.Text = "Exporter le dossier"
         '
         'PdfToolStripMenuItem
@@ -9981,45 +10455,60 @@ Partial Class NewDao
         '
         Me.ModifierLeDossier.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
         Me.ModifierLeDossier.Name = "ModifierLeDossier"
-        Me.ModifierLeDossier.Size = New System.Drawing.Size(226, 22)
+        Me.ModifierLeDossier.Size = New System.Drawing.Size(184, 22)
         Me.ModifierLeDossier.Text = "Modifier le dossier"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(223, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(181, 6)
         '
         'SupprimerLeDossier
         '
         Me.SupprimerLeDossier.Image = Global.ClearProject.My.Resources.Resources.Trash_16x16
         Me.SupprimerLeDossier.Name = "SupprimerLeDossier"
-        Me.SupprimerLeDossier.Size = New System.Drawing.Size(226, 22)
+        Me.SupprimerLeDossier.Size = New System.Drawing.Size(184, 22)
         Me.SupprimerLeDossier.Text = "Supprimer le dossier"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(223, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(181, 6)
         '
         'ValiderLeDossierToolStripMenuItem
         '
         Me.ValiderLeDossierToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.ActiveRents_16x16
         Me.ValiderLeDossierToolStripMenuItem.Name = "ValiderLeDossierToolStripMenuItem"
-        Me.ValiderLeDossierToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
+        Me.ValiderLeDossierToolStripMenuItem.Size = New System.Drawing.Size(184, 22)
         Me.ValiderLeDossierToolStripMenuItem.Text = "Valider le dossier"
         '
         'EnvoyerLeDossierAuBailleurToolStripMenuItem
         '
+        Me.EnvoyerLeDossierAuBailleurToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BailleurToolStripMenuItem, Me.SoumissionnaireToolStripMenuItem})
         Me.EnvoyerLeDossierAuBailleurToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.Mail_16x16
         Me.EnvoyerLeDossierAuBailleurToolStripMenuItem.Name = "EnvoyerLeDossierAuBailleurToolStripMenuItem"
-        Me.EnvoyerLeDossierAuBailleurToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
-        Me.EnvoyerLeDossierAuBailleurToolStripMenuItem.Text = "Envoyer le dossier au bailleur"
+        Me.EnvoyerLeDossierAuBailleurToolStripMenuItem.Size = New System.Drawing.Size(184, 22)
+        Me.EnvoyerLeDossierAuBailleurToolStripMenuItem.Text = "Envoyer le dossier au"
+        '
+        'BailleurToolStripMenuItem
+        '
+        Me.BailleurToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.CustomerRevenue_16x16
+        Me.BailleurToolStripMenuItem.Name = "BailleurToolStripMenuItem"
+        Me.BailleurToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.BailleurToolStripMenuItem.Text = "Bailleur"
+        '
+        'SoumissionnaireToolStripMenuItem
+        '
+        Me.SoumissionnaireToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.CustomersByDate_16x16
+        Me.SoumissionnaireToolStripMenuItem.Name = "SoumissionnaireToolStripMenuItem"
+        Me.SoumissionnaireToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SoumissionnaireToolStripMenuItem.Text = "Soumissionnaire"
         '
         'AnnulerLeDossierToolStripMenuItem
         '
         Me.AnnulerLeDossierToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.Close_16x16
         Me.AnnulerLeDossierToolStripMenuItem.Name = "AnnulerLeDossierToolStripMenuItem"
-        Me.AnnulerLeDossierToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
+        Me.AnnulerLeDossierToolStripMenuItem.Size = New System.Drawing.Size(184, 22)
         Me.AnnulerLeDossierToolStripMenuItem.Text = "Annuler le dossier"
         '
         'ShapeContainer1
@@ -10372,11 +10861,11 @@ Partial Class NewDao
         Me.ShowFontFormItem1.Enabled = False
         Me.ShowFontFormItem1.Id = -1
         Me.ShowFontFormItem1.Name = "ShowFontFormItem1"
-        ToolTipTitleItem723.Text = "Font (Ctrl+D)"
-        ToolTipItem672.Text = "Show the Font dialog box."
-        SuperToolTip690.Items.Add(ToolTipTitleItem723)
-        SuperToolTip690.Items.Add(ToolTipItem672)
-        Me.ShowFontFormItem1.SuperTip = SuperToolTip690
+        ToolTipTitleItem243.Text = "Font (Ctrl+D)"
+        ToolTipItem226.Text = "Show the Font dialog box."
+        SuperToolTip232.Items.Add(ToolTipTitleItem243)
+        SuperToolTip232.Items.Add(ToolTipItem226)
+        Me.ShowFontFormItem1.SuperTip = SuperToolTip232
         '
         'ShowParagraphFormItem1
         '
@@ -10384,11 +10873,11 @@ Partial Class NewDao
         Me.ShowParagraphFormItem1.Enabled = False
         Me.ShowParagraphFormItem1.Id = -1
         Me.ShowParagraphFormItem1.Name = "ShowParagraphFormItem1"
-        ToolTipTitleItem724.Text = "Paragraph"
-        ToolTipItem673.Text = "Show the Paragraph dialog box."
-        SuperToolTip691.Items.Add(ToolTipTitleItem724)
-        SuperToolTip691.Items.Add(ToolTipItem673)
-        Me.ShowParagraphFormItem1.SuperTip = SuperToolTip691
+        ToolTipTitleItem244.Text = "Paragraph"
+        ToolTipItem227.Text = "Show the Paragraph dialog box."
+        SuperToolTip233.Items.Add(ToolTipTitleItem244)
+        SuperToolTip233.Items.Add(ToolTipItem227)
+        Me.ShowParagraphFormItem1.SuperTip = SuperToolTip233
         '
         'ShowEditStyleFormItem1
         '
@@ -10396,11 +10885,11 @@ Partial Class NewDao
         Me.ShowEditStyleFormItem1.Enabled = False
         Me.ShowEditStyleFormItem1.Id = -1
         Me.ShowEditStyleFormItem1.Name = "ShowEditStyleFormItem1"
-        ToolTipTitleItem725.Text = "Modify Style"
-        ToolTipItem674.Text = "Show the Edit Style dialog box."
-        SuperToolTip692.Items.Add(ToolTipTitleItem725)
-        SuperToolTip692.Items.Add(ToolTipItem674)
-        Me.ShowEditStyleFormItem1.SuperTip = SuperToolTip692
+        ToolTipTitleItem245.Text = "Modify Style"
+        ToolTipItem228.Text = "Show the Edit Style dialog box."
+        SuperToolTip234.Items.Add(ToolTipTitleItem245)
+        SuperToolTip234.Items.Add(ToolTipItem228)
+        Me.ShowEditStyleFormItem1.SuperTip = SuperToolTip234
         '
         'ShowInsertTableCellsFormItem1
         '
@@ -10408,21 +10897,11 @@ Partial Class NewDao
         Me.ShowInsertTableCellsFormItem1.Enabled = False
         Me.ShowInsertTableCellsFormItem1.Id = -1
         Me.ShowInsertTableCellsFormItem1.Name = "ShowInsertTableCellsFormItem1"
-        ToolTipTitleItem726.Text = "Insert Cells"
-        ToolTipItem675.Text = "Insert Cells"
-        SuperToolTip693.Items.Add(ToolTipTitleItem726)
-        SuperToolTip693.Items.Add(ToolTipItem675)
-        Me.ShowInsertTableCellsFormItem1.SuperTip = SuperToolTip693
-        '
-        'Codessss
-        '
-        Me.Codessss.Location = New System.Drawing.Point(294, 1)
-        Me.Codessss.MenuManager = Me.RibbonDAO
-        Me.Codessss.Name = "Codessss"
-        Me.SpellChecker1.SetShowSpellCheckMenu(Me.Codessss, True)
-        Me.Codessss.Size = New System.Drawing.Size(99, 20)
-        Me.SpellChecker1.SetSpellCheckerOptions(Me.Codessss, OptionsSpelling73)
-        Me.Codessss.TabIndex = 28
+        ToolTipTitleItem246.Text = "Insert Cells"
+        ToolTipItem229.Text = "Insert Cells"
+        SuperToolTip235.Items.Add(ToolTipTitleItem246)
+        SuperToolTip235.Items.Add(ToolTipItem229)
+        Me.ShowInsertTableCellsFormItem1.SuperTip = SuperToolTip235
         '
         'NewDao
         '
@@ -10432,7 +10911,7 @@ Partial Class NewDao
         Me.Controls.Add(Me.SplitContainerControl1)
         Me.Controls.Add(Me.RibbonDAO)
         Me.Name = "NewDao"
-        Me.Text = " Eloboration du dossier d'appel d'offre"
+        Me.Text = "Elaboration du dossier d'appel d'offre"
         CType(Me.RibbonDAO, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RepositoryItemFontEdit1, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RepositoryItemRichEditFontSizeEdit1, System.ComponentModel.ISupportInitialize).EndInit
@@ -10441,7 +10920,6 @@ Partial Class NewDao
         CType(Me.RepositoryItemBorderLineWeight1, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RepositoryItemFloatingObjectOutlineWeight1, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.TxtAdresseCompte.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.TxtNumCompte.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.TxtMethodeMarche.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.TxtNumDao.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.TxtCvConcil.Properties, System.ComponentModel.ISupportInitialize).EndInit
@@ -10509,7 +10987,15 @@ Partial Class NewDao
         CType(Me.TitreReclam.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.NomReclama.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.NomEmprunteur.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.CalesDAO.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RefSpecificationModif.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.CodeCategorie.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LigneBudgetaire.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LieurRemiseFourniture.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.PrecedurVoiElectronic.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.NatureDocument.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ListeVariante.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ProjetSimilaireJustificatif.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RefLotDQE.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).EndInit
         Me.XtraTabControl1.ResumeLayout(False)
         Me.PageDonneBase.ResumeLayout(False)
@@ -10532,6 +11018,7 @@ Partial Class NewDao
         Me.GroupControl4.ResumeLayout(False)
         Me.GroupControl4.PerformLayout
         CType(Me.CmbCompte.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.NaturePrix.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl1.ResumeLayout(False)
         Me.GroupControl1.PerformLayout
@@ -10564,13 +11051,10 @@ Partial Class NewDao
         Me.GroupControl10.ResumeLayout(False)
         CType(Me.GroupControl9, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl9.ResumeLayout(False)
-        CType(Me.GCnegociation, System.ComponentModel.ISupportInitialize).EndInit
-        Me.GCnegociation.ResumeLayout(False)
-        Me.GroupBox5.ResumeLayout(False)
-        Me.GroupBox5.PerformLayout
         CType(Me.gcCommission, System.ComponentModel.ISupportInitialize).EndInit
         Me.gcCommission.ResumeLayout(False)
         Me.gcCommission.PerformLayout
+        CType(Me.CheckEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.GroupControl5, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl5.ResumeLayout(False)
         CType(Me.LgCojo, System.ComponentModel.ISupportInitialize).EndInit
@@ -10578,6 +11062,22 @@ Partial Class NewDao
         CType(Me.ViewCojo, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.CmbTitreCojo.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.CmbCivCojo.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GCnegociation, System.ComponentModel.ISupportInitialize).EndInit
+        Me.GCnegociation.ResumeLayout(False)
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout
+        CType(Me.GroupControl16, System.ComponentModel.ISupportInitialize).EndInit
+        Me.GroupControl16.ResumeLayout(False)
+        Me.GroupControl16.PerformLayout
+        CType(Me.AttestationReguFiscal.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.AttestationCNPS.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        Me.GroupBox10.ResumeLayout(False)
+        CType(Me.ServiceApresVente.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.FormationUtilisateur.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.MaterielRequis.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.DateVisite.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.DateVisite.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.VisiteduSite.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.GroupSection, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupSection.ResumeLayout(False)
         CType(Me.GridSection, System.ComponentModel.ISupportInitialize).EndInit
@@ -10585,9 +11085,16 @@ Partial Class NewDao
         Me.Panel1.PerformLayout
         Me.GroupBoxInfoSect.ResumeLayout(False)
         CType(Me.CombSection.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.CheckEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.GroupControl11, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl11.ResumeLayout(False)
+        CType(Me.gcConciliation, System.ComponentModel.ISupportInitialize).EndInit
+        Me.gcConciliation.ResumeLayout(False)
+        Me.gcConciliation.PerformLayout
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout
+        CType(Me.CmbRemunConcil.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RdConcilOui.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RdConcilNon.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.GroupControl15, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl15.ResumeLayout(False)
         Me.GroupBox8.ResumeLayout(False)
@@ -10600,6 +11107,17 @@ Partial Class NewDao
         Me.GroupControl8.ResumeLayout(False)
         CType(Me.CheckEntite.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.CheckNonEntite.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GbMaitreOuvrageDelegue, System.ComponentModel.ISupportInitialize).EndInit
+        Me.GbMaitreOuvrageDelegue.ResumeLayout(False)
+        Me.GbMaitreOuvrageDelegue.PerformLayout
+        CType(Me.DelaiGarantie.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        Me.GroupBox9.ResumeLayout(False)
+        CType(Me.Variante.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.DocumentExige.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GarantiExige.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        Me.GroupBox7.ResumeLayout(False)
+        CType(Me.CheckVoiElectro.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.AutorisationFabrican.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.gcOffre, System.ComponentModel.ISupportInitialize).EndInit
         Me.gcOffre.ResumeLayout(False)
         Me.gcOffre.PerformLayout
@@ -10611,8 +11129,8 @@ Partial Class NewDao
         CType(Me.HeureReunion.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.DateReunion.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.DateReunion.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.ChecRevisionPrix.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.CmbDelai.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.FormePaiement.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.NumDelai.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.CmbEclaircissement.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.NumEclaircissement.Properties, System.ComponentModel.ISupportInitialize).EndInit
@@ -10622,22 +11140,7 @@ Partial Class NewDao
         CType(Me.CmbDevise.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.NumValidite.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.CmbLangue.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.gcConciliation, System.ComponentModel.ISupportInitialize).EndInit
-        Me.gcConciliation.ResumeLayout(False)
-        Me.gcConciliation.PerformLayout
-        Me.GroupBox4.ResumeLayout(False)
-        Me.GroupBox4.PerformLayout
-        CType(Me.CmbRemunConcil.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RdConcilOui.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RdConcilNon.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.GbMaitreOuvrageDelegue, System.ComponentModel.ISupportInitialize).EndInit
-        Me.GbMaitreOuvrageDelegue.ResumeLayout(False)
-        Me.GbMaitreOuvrageDelegue.PerformLayout
-        CType(Me.MargePreferenc.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.ServiceVente.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.AutorisationFabrican.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.MonaieAcheteur.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.FormePaiement.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.CalPannelDAO, System.ComponentModel.ISupportInitialize).EndInit
         Me.PageConformTechnique.ResumeLayout(False)
         CType(Me.GroupControl26, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl26.ResumeLayout(False)
@@ -10660,6 +11163,7 @@ Partial Class NewDao
         CType(Me.GroupControl7, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl7.ResumeLayout(False)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit
+        Me.ContextMenuStriptDQE.ResumeLayout(False)
         CType(Me.GroupControl13, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl13.ResumeLayout(False)
         Me.GroupControl13.PerformLayout
@@ -10690,17 +11194,18 @@ Partial Class NewDao
         CType(Me.GroupControl12, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl12.ResumeLayout(False)
         Me.GroupControl12.PerformLayout
+        Me.Panel3Ecraser.ResumeLayout(False)
+        CType(Me.chkEraseDQE.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).EndInit
         Me.PanelControl2.ResumeLayout(False)
-        CType(Me.chkEraseDQE.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.CmbSousLotDQE.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.CmbLotDQE.Properties, System.ComponentModel.ISupportInitialize).EndInit
         Me.PageSpecTech.ResumeLayout(False)
         CType(Me.GroupControl6, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl6.ResumeLayout(False)
-        Me.GroupControl6.PerformLayout
-        CType(Me.ListServiConnex, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.ViewConnexe, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridServiConnex, System.ComponentModel.ISupportInitialize).EndInit
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout
         CType(Me.GroupControl21, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl21.ResumeLayout(False)
         CType(Me.ListeSpecTech, System.ComponentModel.ISupportInitialize).EndInit
@@ -10711,7 +11216,6 @@ Partial Class NewDao
         CType(Me.GroupControl19, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl19.ResumeLayout(False)
         Me.GroupControl19.PerformLayout
-        CType(Me.ChkLieuLivraison.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.GroupControl20, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl20.ResumeLayout(False)
         Me.GroupControl20.PerformLayout
@@ -10743,7 +11247,6 @@ Partial Class NewDao
         CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).EndInit
         Me.SplitContainerControl1.ResumeLayout(False)
         CType(Me.RichEditBarController1, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.Codessss.Properties, System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(False)
 
     End Sub
@@ -10773,7 +11276,6 @@ Partial Class NewDao
     Friend WithEvents GroupControl4 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents TxtPrixDao As System.Windows.Forms.TextBox
     Friend WithEvents TxtAdresseCompte As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents TxtNumCompte As DevExpress.XtraEditors.TextEdit
     Friend WithEvents CmbCompte As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents LabelControl9 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl8 As DevExpress.XtraEditors.LabelControl
@@ -11206,7 +11708,6 @@ Partial Class NewDao
     Friend WithEvents TxtRefFournit As DevExpress.XtraEditors.TextEdit
     Friend WithEvents TxtLieuLivraison As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl51 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents ChkLieuLivraison As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents PagePostQualif As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents GroupControl23 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents GroupControl24 As DevExpress.XtraEditors.GroupControl
@@ -11289,13 +11790,6 @@ Partial Class NewDao
     Friend WithEvents rdAttrLot As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents GroupControl7 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
     Friend WithEvents chkEraseDQE As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents btImportDQE As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents PanelControl2 As DevExpress.XtraEditors.PanelControl
@@ -11315,14 +11809,13 @@ Partial Class NewDao
     Friend WithEvents Eliminatoire As DevExpress.XtraTreeList.Columns.TreeListColumn
     Friend WithEvents ListeSpecTech As DevExpress.XtraTreeList.TreeList
     Friend WithEvents Identifiant As DevExpress.XtraTreeList.Columns.TreeListColumn
-    Friend WithEvents CodeSpec As DevExpress.XtraTreeList.Columns.TreeListColumn
-    Friend WithEvents Libellé As DevExpress.XtraTreeList.Columns.TreeListColumn
-    Friend WithEvents Quantité As DevExpress.XtraTreeList.Columns.TreeListColumn
+    Friend WithEvents RefArticle As DevExpress.XtraTreeList.Columns.TreeListColumn
+    Friend WithEvents LibelleArticle As DevExpress.XtraTreeList.Columns.TreeListColumn
+    Friend WithEvents Quantite As DevExpress.XtraTreeList.Columns.TreeListColumn
     Friend WithEvents LieuLivre As DevExpress.XtraTreeList.Columns.TreeListColumn
     Friend WithEvents CodeCateg As DevExpress.XtraTreeList.Columns.TreeListColumn
     Friend WithEvents NumLot As DevExpress.XtraTreeList.Columns.TreeListColumn
     Friend WithEvents NumSousLot As DevExpress.XtraTreeList.Columns.TreeListColumn
-    Friend WithEvents Edit As DevExpress.XtraTreeList.Columns.TreeListColumn
     Friend WithEvents txtCodeCateg As DevExpress.XtraEditors.TextEdit
     Friend WithEvents SaveDonnee As DevExpress.XtraTreeList.TreeList
     Friend WithEvents IdSav As DevExpress.XtraTreeList.Columns.TreeListColumn
@@ -11361,8 +11854,6 @@ Partial Class NewDao
     Friend WithEvents LabelControl64 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents BtSupServicConnex As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents TxtLibelleserviceconnexe As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents ListServiConnex As DevExpress.XtraGrid.GridControl
-    Friend WithEvents ViewConnexe As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GroupControl8 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents TxtMaitreOuvrag As DevExpress.XtraEditors.TextEdit
     Friend WithEvents CheckEntite As DevExpress.XtraEditors.CheckEdit
@@ -11374,10 +11865,6 @@ Partial Class NewDao
     Friend WithEvents FormePaiement As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents LabelControl63 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl69 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents ChecRevisionPrix As DevExpress.XtraEditors.CheckEdit
-    Friend WithEvents MonaieAcheteur As DevExpress.XtraEditors.CheckEdit
-    Friend WithEvents ServiceVente As DevExpress.XtraEditors.CheckEdit
-    Friend WithEvents AutorisationFabrican As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents PaysOuvertur As DevExpress.XtraEditors.TextEdit
     Friend WithEvents VillelieuOuvr As DevExpress.XtraEditors.TextEdit
@@ -11392,7 +11879,6 @@ Partial Class NewDao
     Friend WithEvents SourceOfficielle As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl75 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents DateSource As DevExpress.XtraEditors.DateEdit
-    Friend WithEvents MargePreferenc As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents LabelControl81 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents GroupBox1 As GroupBox
@@ -11422,9 +11908,6 @@ Partial Class NewDao
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
     Friend WithEvents DatePublication As DevExpress.XtraEditors.DateEdit
-    Friend WithEvents RefSousLots As DataGridViewTextBoxColumn
-    Friend WithEvents RefLot As DataGridViewTextBoxColumn
-    Friend WithEvents LibelleSousLots As DataGridViewTextBoxColumn
     Friend WithEvents TxtSaisiSouLot As DevExpress.XtraEditors.TextEdit
     Friend WithEvents GCnegociation As DevExpress.XtraEditors.GroupControl
     Friend WithEvents GroupBox5 As GroupBox
@@ -11446,6 +11929,73 @@ Partial Class NewDao
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents NomEmprunteur As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl77 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents CalesDAO As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents Codessss As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents GridServiConnex As DataGridView
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents RefSpecificationModif As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents CodeCategorie As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents AjouterToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents IdService As DataGridViewTextBoxColumn
+    Friend WithEvents Num As DataGridViewTextBoxColumn
+    Friend WithEvents Libelles As DataGridViewTextBoxColumn
+    Friend WithEvents LieurRemiseFourniture As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LabelControl78 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LigneBudgetaire As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LabelControl76 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents CalPannelDAO As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents BailleurToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SoumissionnaireToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LabelControl88 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl87 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl80 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl79 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl92 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl91 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl90 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl89 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents VisiteduSite As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents DocumentExige As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents GarantiExige As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents Variante As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents AutorisationFabrican As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents GroupBox7 As GroupBox
+    Friend WithEvents PrecedurVoiElectronic As DevExpress.XtraEditors.MemoEdit
+    Friend WithEvents CheckVoiElectro As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents LabelControl93 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents NaturePrix As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents LabelControl94 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents NatureDocument As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents DateVisite As DevExpress.XtraEditors.DateEdit
+    Friend WithEvents MaterielRequis As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents DelaiGarantie As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents LabelControl97 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents GroupBox9 As GroupBox
+    Friend WithEvents ListeVariante As DevExpress.XtraEditors.MemoEdit
+    Friend WithEvents LabelControl95 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents GroupControl16 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents ServiceApresVente As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents FormationUtilisateur As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents LabelControl96 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents GroupBox10 As GroupBox
+    Friend WithEvents ProjetSimilaireJustificatif As DevExpress.XtraEditors.MemoEdit
+    Friend WithEvents LabelControl101 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl100 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl99 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl98 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents RefLotDQE As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents ContextMenuStriptDQE As ContextMenuStrip
+    Friend WithEvents ToolStripMenuItemModifLignDQE As ToolStripMenuItem
+    Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents Panel3Ecraser As Panel
+    Friend WithEvents RefSousLots As DataGridViewTextBoxColumn
+    Friend WithEvents RefLot As DataGridViewTextBoxColumn
+    Friend WithEvents LibelleSousLots As DataGridViewTextBoxColumn
+    Friend WithEvents AttestationCNPS As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents AttestationReguFiscal As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
 End Class

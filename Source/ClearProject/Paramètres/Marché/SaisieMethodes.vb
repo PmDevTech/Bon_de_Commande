@@ -9,7 +9,7 @@ Public Class SaisieMethodes
     Dim TailleCombMetho As Decimal = 23
 
     'Verifiant l'existance du code de la methode
-    Dim AbreMethode As New List(Of String) From {"AOI", "AON", "SFQC", "SFQ", "SCBD", "SMC", "SD", "SQC", "3CV", "ED", "CF", "QC", "REGIE", "PLC", "PSC", "PSL", "PSO"}
+    Dim AbreMethode As New List(Of String) From {"AOI", "AON", "DC", "SFQC", "SFQ", "SCBD", "SMC", "SD", "SQC", "3CV", "ED", "CF", "QC", "REGIE", "PLC", "PSC", "PSL", "PSO"}
 
 
     Private Sub SaisieMethodes_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -304,7 +304,12 @@ Public Class SaisieMethodes
                         query = "select CodeProcAO from T_ProcAO where AbregeAO='" & EnleverApost(Abreg) & "' and TypeMarcheAO='" & EnleverApost(TypeMarche) & "' and CodeProjet='" & ProjetEnCours & "'"
                         Dim dt As DataTable = ExcecuteSelectQuery(query)
                         For Each rw1 As DataRow In dt.Rows
-                            If Val(ExecuteScallar("select count(*) from T_DelaiEtape where CodeProcAO='" & CInt(rw1("CodeProcAO")) & "'")) > 0 Or Val(ExecuteScallar("select count(*) from t_marche where MethodeMarche='" & CInt(rw1("CodeProcAO")) & "'")) > 0 Then
+                            'Verifier s'il existe des etapes deja lié
+                            If Val(ExecuteScallar("select COUNT(l.CodeProcAO) from t_etapemarche as e, t_liaisonetape as l where l.RefEtape=e.RefEtape and l.CodeProjet='" & ProjetEnCours & "' and e.TypeMarche='" & EnleverApost(TypeMarche) & "' and l.CodeProcAO='" & rw1("CodeProcAO") & "'")) > 0 Then
+                                Return True
+                            End If
+
+                            If Val(ExecuteScallar("select count(*) from t_marche where TypeMarche='" & EnleverApost(TypeMarche.ToString) & "' and CodeProcAO='" & CInt(rw1("CodeProcAO")) & "'")) > 0 Then
                                 Return True
                             End If
                         Next

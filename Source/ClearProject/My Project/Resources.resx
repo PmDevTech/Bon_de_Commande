@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="MediaPerformance_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MediaPerformance_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -211,6 +211,9 @@
   <data name="rapport-sur-le-disque-icone-5417-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rapport-sur-le-disque-icone-5417-16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="SuiviEval2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SuiviEval2.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Group_Rental" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Group_Rental.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -265,8 +268,8 @@
   <data name="CourrierInt" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CourrierInt.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="kf-gnome-contacts-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\kf-gnome-contacts-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Inbox_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Inbox_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CourrierInt2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CourrierInt2.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -279,9 +282,6 @@
   </data>
   <data name="Missions" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Missions.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="abc-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\abc-16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Chat-icon 32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Chat-icon 32x32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -325,8 +325,8 @@
   <data name="kf-network-wireless-100-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\kf-network-wireless-100-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SuiviEval2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SuiviEval2.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="abc-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\abc-16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cc-os-support-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cc-os-support-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -454,8 +454,8 @@
   <data name="kf-ejecter-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\kf-ejecter-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Inbox_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Inbox_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="abc_Del_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\abc-Del-16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Ribbon_Info_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Ribbon_Info_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -592,6 +592,9 @@
   <data name="actualiser" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\actualiser.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="th (5)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\th (5).jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Budget2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Budget2.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -667,6 +670,9 @@
   <data name="Home_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Home_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="kf-gnome-contacts-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kf-gnome-contacts-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Preview_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Preview_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -727,7 +733,8 @@
   <data name="dk-calculator-01-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dk-calculator-01-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="abc_Del_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\abc-Del-16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Valid1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Valid1.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

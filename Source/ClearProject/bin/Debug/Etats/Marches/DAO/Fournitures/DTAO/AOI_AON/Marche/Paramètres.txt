@@ -1,0 +1,28 @@
+---------------------------------------------------------------------------------------------------------------
+Contrat_AOI_AON_1_IDA
+    Dans cet état il n'y a pas de paramètres
+----------------------------------------------------------------------------------------------------------------
+Contrat_AOI_AON_2_IDA
+    NumDAO
+    CodeProjet
+    NumMarche
+
+Dans cet état il y a la table tampon t_dao_article_tampon qui se trouve
+dans les sous rapports des articles que je t'ai envoyé en document word. 
+---------------------------------------------------------------------------------------------------------------
+Contrat_AOI_AON_3_IDA
+    NumDAO
+    NumMarche
+    CodeProjet
+    IdFournisseur
+
+Dans cet état on doit envoyer la lettre à tous les soumissionnaires qui ayant remis une offre
+---------------------------------------------------------------------------------------------------------------
+Contrat_AOI_AON_4_IDA +++++ Contrat_AOI_AON_AttributionMarche ----- NumDAO NumMarche CodeProjet
+    NumDAO
+    NumMarche
+    CodeProjet
+
+Dans cet état se trouve la lettre d'attribution de marché qui doit être envoyé au soumissionnaire
+retenu en sous-rapports
+---------------------------------------------------------------------------------------------------------

@@ -151,11 +151,11 @@ Partial Class ValiderAttributionMarche_Old
         Me.Avertissement.TabIndex = 9
         Me.Avertissement.Visible = False
         '
-        'ValiderAttributionMarche
+        'ValiderAttributionMarche_Old
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(384, 186)
+        Me.ClientSize = New System.Drawing.Size(376, 186)
         Me.ControlBox = False
         Me.Controls.Add(Me.Attente)
         Me.Controls.Add(Me.Avertissement)
@@ -170,7 +170,7 @@ Partial Class ValiderAttributionMarche_Old
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "ValiderAttributionMarche"
+        Me.Name = "ValiderAttributionMarche_Old"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

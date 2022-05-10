@@ -102,7 +102,7 @@ Public Class RapportEvaluationMI
                         WebBrowser1.Navigate(CheminRapportEvaluationPDF.ToString)
                         Threading.Thread.Sleep(5000)
                     Else
-                        SuccesMsg("Le rapport en cours de chargements n'existe pas")
+                        SuccesMsg("Le rapport en cours de chargements n'existe pas.")
                         InitialiserBoutons1(False)
                         BtGenerers.Enabled = True
                         FinChargement()
@@ -272,7 +272,7 @@ Public Class RapportEvaluationMI
                     FinChargement()
                     RapportModif = True
                 Else
-                    SuccesMsg("Le chemin d'accès spécifier n'existe pas")
+                    SuccesMsg("Le chemin d'accès spécifié n'existe pas.")
                 End If
             End If
         Catch ex As Exception
@@ -315,7 +315,7 @@ Public Class RapportEvaluationMI
                     FinChargement()
                     RapportModif = False
                 Else
-                    SuccesMsg("Le chemin spécifier n'existe pas")
+                    SuccesMsg("Le chemin spécifié n'existe pas.")
                 End If
             ElseIf RapportModif = False Then
                 SuccesMsg("Veuillez modifier le rapport avant d'actualiser")
@@ -344,12 +344,15 @@ Public Class RapportEvaluationMI
                             DebutChargement(True, "Envoi du rapport d'évaluation technique au bailleur...")
 
                             'Envoi du rapport au bailleur
-                            EnvoiMailRapport(NomBailleurRetenu, CmbDossier.Text, EmailDestinatauer, CheminDoc, EmailCoordinateurProjet, EmailResponsablePM, "RapportEvalTechAMI")
+                            If EnvoiMailRapport(NomBailleurRetenu, CmbDossier.Text, EmailDestinatauer, CheminDoc, EmailCoordinateurProjet, EmailResponsablePM, "Rapport des manifestations d'interêts", "AMI") = False Then
+                                FinChargement()
+                                Exit Sub
+                            End If
 
-                            SuccesMsg("Le rapport d'évaluation a été avec succès")
+                            SuccesMsg("Le rapport d'évaluation a été envoyé avec succès.")
                             FinChargement()
                         Else
-                            SuccesMsg("Le rapport à envoyer n'existe pas ou a été supprimer")
+                            SuccesMsg("Le rapport à envoyer n'existe pas ou a été supprimé.")
                         End If
                     Catch ep As IO.IOException
                         SuccesMsg("Le fichier est utilisé par une autre application" & vbNewLine & "Veuillez le fermer svp.")
@@ -371,7 +374,7 @@ Public Class RapportEvaluationMI
             Try
                 If ConfirmMsg("Confirmez-vous la validation du rapport ?") = DialogResult.Yes Then
                     ExecuteNonQuery("Update t_ami set ValidationsRapports= 'Valider' where NumeroDAMI='" & EnleverApost(CmbDossier.Text) & "'")
-                    SuccesMsg("Rapport d'évaluation validé avec succès")
+                    SuccesMsg("Rapport d'évaluation validé avec succès.")
                     ValidationsRapports = "Valider"
                     ValRejetEnvoi(False)
                 End If
@@ -395,7 +398,7 @@ Public Class RapportEvaluationMI
                     ExecuteNonQuery("Update t_ami set EvalTechnique=NULL, ValidationsRapports='Rejeter', CheminRapportEvaluation=NULL where NumeroDAMI='" & EnleverApost(CmbDossier.Text) & "'")
                     ExecuteNonQuery("Update t_noteconsultantparcriteres set ValidationNote='' where NumeroDp='" & EnleverApost(CmbDossier.Text) & "'")
                     ExecuteNonQuery("Update t_soumissionconsultant set NoteConsult=NULL, ReferenceNote=NULL, RangConsult=NULL, EvalTechOk=NULL where NumeroDp='" & EnleverApost(CmbDossier.Text) & "'")
-                    SuccesMsg("Rapport d'évaluation rejeté")
+                    SuccesMsg("Rapport d'évaluation rejeté.")
                     InitialiserBoutons1(False)
                     ChargerDossierAMI()
                 End If
@@ -433,7 +436,7 @@ Public Class RapportEvaluationMI
                         Exit Sub
                     End If
                 Else
-                    SuccesMsg("La version du rapport à exporté" & vbNewLine & "n'existe pas ou a été supprimer")
+                    SuccesMsg("La version du rapport à exporté" & vbNewLine & "n'existe pas ou a été supprimé.")
                 End If
             Catch ex As Exception
                 FailMsg(ex.ToString)
@@ -451,7 +454,7 @@ Public Class RapportEvaluationMI
                         Exit Sub
                     End If
                 Else
-                    SuccesMsg("La version du rapport à exporté" & vbNewLine & "n'existe pas ou a été supprimer")
+                    SuccesMsg("La version du rapport à exporté" & vbNewLine & "n'existe pas ou a été supprimé.")
                 End If
             End If
         Catch ex As Exception

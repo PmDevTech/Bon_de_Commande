@@ -18,7 +18,6 @@ Imports System.Text
 Imports System.Runtime.InteropServices
 Imports System.Security.Cryptography
 Imports System.IO.Compression
-Imports GemBox.Document
 
 Public Class NewAmi
 
@@ -29,7 +28,8 @@ Public Class NewAmi
     Dim CheminPublDoc As String = ""
 
     Dim dr As DataRow
-    Dim dt = New DataTable()
+    Dim CurenMarches As DataRow = Nothing
+    Dim dt As DataTable = New DataTable()
 
     '-1 etat initial
     ' 0 bouton nouvo clické
@@ -70,10 +70,7 @@ Public Class NewAmi
     End Sub
 
     Private Sub ChargerMarcher()
-
-        'query = "Select RefMarche, DescriptionMarche, MontantEstimatif, InitialeBailleur, CodeConvention from T_Marche where CodeProjet='" & ProjetEnCours & "' AND TypeMarche LIKE 'Consultants%' AND NumeroDAO IS NULL order by TypeMarche ASC"
-
-        query = "Select RefMarche, DescriptionMarche, MontantEstimatif, Convention_ChefFile from T_Marche where CodeProjet='" & ProjetEnCours & "' AND TypeMarche LIKE 'Consultants%' and NumeroMarche IS NULL"
+        query = "Select *  from T_Marche where CodeProjet='" & ProjetEnCours & "' AND TypeMarche LIKE 'Consultants%' and NumeroMarche IS NULL"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
 
         Dim Taille As Integer = 0
@@ -82,14 +79,30 @@ Public Class NewAmi
 
         Dim MontantMarcheRestant As Decimal = 0
         For Each rw As DataRow In dt.Rows
-            'Montant marche restant (à utiliser)
-            MontantMarcheRestant = CDec(rw("MontantEstimatif").ToString.Replace(" ", "")) - NewVerifierMontMarche(rw("RefMarche")) 'Montant consomé
-            If MontantMarcheRestant > 0 Then
-                ReDim Preserve TabRefMarche(Taille)
-                TabRefMarche(Taille) = rw("RefMarche")
-                Taille += 1
-                cmbMarches.Properties.Items.Add(MettreApost(rw("DescriptionMarche").ToString) & " | " & MontantMarcheRestant & " | " & GetInitialbailleur(rw("Convention_ChefFile").ToString) & "(" & rw("Convention_ChefFile").ToString & ")")
+
+            'Verification dans la table AMI
+            If Val(ExecuteScallar("SELECT COUNT(*) FROM t_ami where RefMarche='" & rw("RefMarche") & "' and StatutDoss<>'Annulé' and CodeProjet='" & ProjetEnCours & "'")) > 0 Then ' and NumeroDAMI NOT IN (SELECT NumeroDAO FROM t_marchesigne WHERE CodeProjet='" & ProjetEnCours & "' and TypeMarche='Consultants')")) Then
+                Continue For
             End If
+
+            'Verification dans la table DP
+            If Val(ExecuteScallar("SELECT COUNT(*) FROM t_dp where RefMarche='" & rw("RefMarche") & "' and Statut<>'Annulé' and CodeProjet='" & ProjetEnCours & "'")) > 0 Then
+                Continue For
+            End If
+
+            'Verification dans la table T_marchesigne
+            If Val(ExecuteScallar("SELECT COUNT(*) FROM t_marchesigne where RefMarche='" & rw("RefMarche") & "' and TypeMarche='" & rw("TypeMarche").ToString & "' and  EtatMarche<>'Annulé' and CodeProjet='" & ProjetEnCours & "'")) > 0 Then
+                Continue For
+            End If
+
+            'Montant marche restant (à utiliser)
+            ' MontantMarcheRestant = CDec(rw("MontantEstimatif").ToString.Replace(" ", "")) - NewVerifierMontMarche(rw("RefMarche")) 'Montant consomé
+            'If MontantMarcheRestant > 0 Then
+            ReDim Preserve TabRefMarche(Taille)
+            TabRefMarche(Taille) = rw("RefMarche")
+            Taille += 1
+            cmbMarches.Properties.Items.Add(MettreApost(rw("DescriptionMarche").ToString) & " | " & AfficherMonnaie(rw("MontantEstimatif")) & " | " & MettreApost(rw("InitialeBailleur").ToString) & " (" & rw("CodeConvention").ToString & ")")
+            'End If
         Next
     End Sub
 
@@ -168,6 +181,7 @@ Public Class NewAmi
         DocTDR.Text = ""
         CheminPublDoc = ""
 
+        CurenMarches = Nothing
         ' CheminPublPdf = ""
         ' ActualiserPub = False
         ' BtSaisiAnonoce.Text = "Saisisser l'annonce"
@@ -181,6 +195,7 @@ Public Class NewAmi
         MontantMarche.ResetText()
         AffichDoss = False
     End Sub
+
     Private Sub InitialiserMemebredelaCommission()
         CmbCivCojo.Text = ""
         TxtCojo.Text = ""
@@ -491,11 +506,11 @@ Public Class NewAmi
             Exit Sub
         End If
 
-        If cmbMarches.Text.Trim = "" Then
-            SuccesMsg("Veuillez selectionner un marché")
-            cmbMarches.Focus()
-            Exit Sub
-        End If
+        'If cmbMarches.Text.Trim = "" Then
+        '    SuccesMsg("Veuillez selectionner un marché")
+        '    cmbMarches.Focus()
+        '    Exit Sub
+        'End If
 
         'If DateDepot.IsRequiredControl("Veuillez saisir la date de depot") Then
         'If HeureDepot.IsRequiredControl("Veuillez saisir l'heure de depot") Then
@@ -572,6 +587,12 @@ Public Class NewAmi
         'Nouveau dossier
         If ActionTous = 0 Then
 
+            If cmbMarches.SelectedIndex = -1 Then
+                SuccesMsg("Veuillez selectionner un marché")
+                cmbMarches.Focus()
+                Exit Sub
+            End If
+
             'verification de l'existence du numero du dossier
             'dans la table AMI
             query = "select count(NumeroDAMI) from t_ami where NumeroDAMI='" & EnleverApost(TxtNumDp.Text) & "'"
@@ -614,8 +635,8 @@ Public Class NewAmi
 
             DatRow("NumeroDAMI") = NumAMIEnCours
             DatRow("RefMarche") = TabRefMarche(cmbMarches.SelectedIndex)
-            Dim CodeCoven As String = cmbMarches.Text.Split("|")(2)
-            DatRow("CodeConvention") = CodeCoven.ToString.Split("(")(1).Replace(")", "").Replace("(", "")
+            ' Dim CodeCoven As String = cmbMarches.Text.Split("|")(2)
+            DatRow("CodeConvention") = CurenMarches("Convention_ChefFile") ' CodeCoven.ToString.Split("(")(1).Replace(")", "").Replace("(", "")
 
             DatRow("DateEdition") = dateconvert(Now.ToShortDateString)
             DatRow("DateModif") = dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString
@@ -677,6 +698,13 @@ Public Class NewAmi
             ' CheminPublPdf = ""
             'En cours de modification
         ElseIf ActionTous = 1 Then
+
+            If cmbMarches.Text.Trim = "" Then
+                SuccesMsg("Veuillez selectionner un marché")
+                cmbMarches.Focus()
+                Exit Sub
+            End If
+
             'mise a jour
             Dim TrouverModif As Boolean = False
             DebutChargement(True, "Enregistrements des modifications...")
@@ -800,8 +828,6 @@ Public Class NewAmi
                 NumAMIEnCours = dr("N°").ToString
                 TxtLibDp.Text = MettreApost(rw("LibelleMiss").ToString)
                 NoteMinimaleAMI.Text = rw("NoteMinimaleAMI").ToString.Replace(".", ",")
-                ' Dim partOuverture() As String = rw("DateOuverture").ToString.Split(" "c)
-                ' Dim partDepot() As String = rw("DateLimitePropo").ToString.Split(" "c)
                 Datedepot.DateTime = CDate(rw("DateLimitePropo").ToString).ToShortDateString
                 HeureDepot.Time = CDate(rw("DateLimitePropo").ToString).ToLongTimeString
                 DateOuverture.DateTime = CDate(rw("DateOuverture").ToString).ToShortDateString
@@ -833,11 +859,11 @@ Public Class NewAmi
                 End If
             Next
 
-            query = "Select DescriptionMarche, MontantEstimatif, Convention_ChefFile  from T_Marche where CodeProjet='" & ProjetEnCours & "' AND RefMarche='" & RefMarcheModif & "'"
+            query = "Select DescriptionMarche, MontantEstimatif, InitialeBailleur,CodeConvention,ConventionChefFilProjet, Convention_ChefFile from T_Marche where CodeProjet='" & ProjetEnCours & "' AND  RefMarche='" & RefMarcheModif & "'"
             Dim dts As DataTable = ExcecuteSelectQuery(query)
 
             For Each rw In dts.Rows
-                cmbMarches.Text = MettreApost(rw("DescriptionMarche")) & " | " & AfficherMonnaie(rw("MontantEstimatif").ToString.Replace(" ", "")) & " | " & GetInitialbailleur(rw("Convention_ChefFile")) & "(" & rw("Convention_ChefFile") & ")"
+                cmbMarches.Text = MettreApost(rw("DescriptionMarche")) & " | " & AfficherMonnaie(rw("MontantEstimatif").ToString.Replace(" ", "")) & " | " & MettreApost(rw("InitialeBailleur")) & " (" & MettreApost(rw("CodeConvention").ToString) & ")"
             Next
 
             ChargementdesDonnees(NumAMIEnCours)
@@ -1126,11 +1152,11 @@ Public Class NewAmi
             MethodeMarche.ResetText()
             MontantMarche.ResetText()
         ElseIf ActionTous = 0 Then
-            query = "SELECT CodeProcAO FROM t_marche WHERE RefMarche='" & TabRefMarche(cmbMarches.SelectedIndex) & "'"
-            Dim CodeProcAO As String = ExecuteScallar(query)
-            If CodeProcAO <> "" Then
-                MethodeMarche.Text = GetMethode(CodeProcAO)
-                MontantMarche.Text = AfficherMonnaie(cmbMarches.Text.Split("|")(1)).Replace(" ", "")
+            Dim dt As DataTable = ExcecuteSelectQuery("SELECT * FROM t_marche WHERE RefMarche='" & TabRefMarche(cmbMarches.SelectedIndex) & "'")
+            If dt.Rows.Count > 0 Then
+                CurenMarches = dt.Rows(0)
+                MethodeMarche.Text = GetMethode(CurenMarches("CodeProcAO"))
+                MontantMarche.Text = AfficherMonnaie(CurenMarches("MontantEstimatif"))
             Else
                 MethodeMarche.ResetText()
             End If
@@ -1487,8 +1513,6 @@ Public Class NewAmi
 
                 DebutChargement()
 
-                ExecuteNonQuery("UPDATE t_ami set ValiderEditionAmi='Valider' where NumeroDAMI='" & EnleverApost(dr("N°").ToString) & "' and CodeProjet='" & ProjetEnCours & "'")
-
                 query = "SELECT CodeMem, Civil, NomMem, EmailMem FROM T_Commission WHERE NumeroDAO='" & EnleverApost(dr("N°").ToString) & "'"
                 Dim dt0 As DataTable = ExcecuteSelectQuery(query)
 
@@ -1496,10 +1520,15 @@ Public Class NewAmi
                 For Each rw0 In dt0.Rows
                     CodeCrypter = GenererToken(dr("N°").ToString, rw0("CodeMem"), "AMI", DB)
                     ExecuteNonQuery("Update T_Commission set AuthKey='" & CodeCrypter.ToString.Split(":")(0) & "' where CodeMem='" & rw0("CodeMem") & "' and NumeroDAO='" & EnleverApost(dr("N°").ToString) & "'")
-                    envoieMail(rw0("Civil").ToString & " " & MettreApost(rw0("NomMem").ToString), MettreApost(rw0("EmailMem").ToString), CodeCrypter)
+
+                    If envoieMail(rw0("Civil").ToString & " " & MettreApost(rw0("NomMem").ToString), MettreApost(rw0("EmailMem").ToString), CodeCrypter) = False Then
+                        Exit Sub
+                    End If
                 Next
+                ExecuteNonQuery("UPDATE t_ami set ValiderEditionAmi='Valider' where NumeroDAMI='" & EnleverApost(dr("N°").ToString) & "' and CodeProjet='" & ProjetEnCours & "'")
+
                 FinChargement()
-                SuccesMsg("Dossier validé avec succès")
+                SuccesMsg("Dossier validé avec succès.")
                 ArchivesAMI()
             End If
         End If
@@ -1701,13 +1730,16 @@ Public Class NewAmi
                     If dr("Méthode").ToString.ToUpper = "3CV" Then
                         Dim RefMarch As String = ExecuteScallar("select RefMarche from t_ami where NumeroDAMI='" & EnleverApost(dr("N°").ToString) & "'")
                         ExecuteNonQuery("Update t_marche Set Forfait_TpsPasse=NULL, NumeroDAO=NULL where RefMarche='" & RefMarch & "'")
+
+                        'Annulation des dates de réalisations.
+                        GetAnnuleDateRealisationPPM(RefMarch)
                     End If
 
                     SuccesMsg("Dossier annulé avec succès")
                     ChargerMarcher()
                     LayoutViewAMI.SetFocusedRowCellValue("Statut", "Annulé")
                     'Fermeture des formulaires
-                    FermerForm()
+                    FermerForm({"DepotAMI", "OuvertureAmi", "RapportEvaluationMI", "ListeRestreindreAMI"})
                 End If
             Else
                 FailMsg("Aucun dossier à Annuler")
@@ -1718,18 +1750,18 @@ Public Class NewAmi
 
     End Sub
 
-    Private Sub FermerForm()
-        Try
-            'Arret du processus et fermetures des formulairs ouverts
-            'For Each child As Object In Me.MdiChildren
-            For Each child As Object In ClearMdi.MdiChildren
-                If (child.Name = "DepotAMI") Or (child.Name = "OuvertureAmi") Or (child.Name = "RapportEvaluationMI") Or (child.Name = "ListeRestreindreAMI") Then
-                    child.Close()
-                End If
-            Next
-        Catch ex As Exception
-            FailMsg(ex.ToString)
-        End Try
-    End Sub
+    'Private Sub FermerForm()
+    '    Try
+    '        'Arret du processus et fermetures des formulairs ouverts
+    '        'For Each child As Object In Me.MdiChildren
+    '        For Each child As Object In ClearMdi.MdiChildren
+    '            If (child.Name = "DepotAMI") Or (child.Name = "OuvertureAmi") Or (child.Name = "RapportEvaluationMI") Or (child.Name = "ListeRestreindreAMI") Then
+    '                child.Close()
+    '            End If
+    '        Next
+    '    Catch ex As Exception
+    '        FailMsg(ex.ToString)
+    '    End Try
+    'End Sub
 
 End Class

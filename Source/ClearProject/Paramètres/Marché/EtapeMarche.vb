@@ -12,6 +12,7 @@ Public Class EtapeMarche
     Private Sub EtapeMarche_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.Icon = My.Resources.Logo_ClearProject_Valide
         LoadTypeMarche()
+        GridEtape.DataSource = Nothing
     End Sub
 
     Private Sub LoadTypeMarche()
@@ -48,7 +49,7 @@ Public Class EtapeMarche
         LigneSelect = 0
     End Sub
 
-    Private Sub ChargerEtape(IdMethode As String)
+    Private Sub ChargerEtape(Optional IdMethode As Decimal = 0) 'IdMethode
 
         Dim dtEtape = New DataTable()
         dtEtape.Columns.Clear()
@@ -70,7 +71,12 @@ Public Class EtapeMarche
         ' End If
         ' Dim dtEtape As DataTable = GridEtape.DataSource
 
-        query = "select * from T_EtapeMarche where CodeProjet='" & ProjetEnCours & "' and TypeMarche='" & EnleverApost(CmbTypeMarche.Text) & "' AND CodeProcAO='" & IdMethode & "' order by NumeroOrdre"
+        If IdMethode = 0 Then
+            query = "select * from T_EtapeMarche where CodeProjet='" & ProjetEnCours & "' and TypeMarche='" & EnleverApost(CmbTypeMarche.Text) & "' ORDER BY NumeroOrdre ASC"
+        Else
+            query = "select E.* from T_EtapeMarche as E, t_liaisonetape as L where L.RefEtape=E.RefEtape and E.CodeProjet='" & ProjetEnCours & "' and E.TypeMarche='" & EnleverApost(CmbTypeMarche.Text) & "' AND L.CodeProcAO='" & IdMethode & "' order by E.NumeroOrdre ASC"
+        End If
+
         Dim dt As DataTable = ExcecuteSelectQuery(query)
 
         'Chargement des numéros d'ordre des étapes
@@ -88,22 +94,22 @@ Public Class EtapeMarche
             ' Dim drS() As Object = {"", "", "", "", "", "", ""}
             Dim drS = dtEtape.NewRow()
 
-            drS(0) = IIf(cpt Mod 2, "x", "").ToString
-            drS(1) = rw("RefEtape")
-            drS(2) = rw("NumeroOrdre")
-            drS(3) = MettreApost(rw("TitreEtape").ToString)
-            drS(4) = rw("DelaiEtape")
+            drS("Code") = IIf(cpt Mod 2, "x", "").ToString
+            drS("Ref") = rw("RefEtape")
+            drS("N°") = rw("NumeroOrdre")
+            drS("Intitulé") = MettreApost(rw("TitreEtape").ToString)
+            drS("Délai") = rw("DelaiEtape")
 
-            If rw(5).ToString() = "OUI" Then
-                drS(5) = True
+            If rw("Priori").ToString() = "OUI" Then
+                drS("Priori") = True
             Else
-                drS(5) = False
+                drS("Priori") = False
             End If
 
-            If rw(6).ToString() = "OUI" Then
-                drS(6) = True
+            If rw("Posteriori").ToString() = "OUI" Then
+                drS("Posteriori") = True
             Else
-                drS(6) = False
+                drS("Posteriori") = False
             End If
             ' dtEtape.LoadDataRow(drS, True)
             dtEtape.Rows.Add(drS)
@@ -127,13 +133,14 @@ Public Class EtapeMarche
     End Sub
 
     Private Sub BtNewEtape_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles BtNewEtape.Click
-        If (cmbMethode.SelectedIndex > -1 And CmbTypeMarche.SelectedIndex <> -1) Then
+        'If (cmbMethode.SelectedIndex > -1 And CmbTypeMarche.SelectedIndex <> -1) Then
+        If (CmbTypeMarche.SelectedIndex <> -1) Then
             InitForm()
             GbNewEtape.Visible = True
             ' cmbNumOrdre.SelectedIndex = cmbNumOrdre.Properties.Items.Count - 1
             'txtIntitule.Select()
         Else
-            SuccesMsg("Veuillez sélectionner un type de marché et une méthode.")
+            SuccesMsg("Veuillez sélectionner un type de marché.") 'et une méthode.")
         End If
     End Sub
     Private Sub BtRetour_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles BtRetour.Click
@@ -208,6 +215,7 @@ Public Class EtapeMarche
         End If
         ExecuteNonQuery(query)
     End Sub
+
     Private Sub BtEnreg_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles BtEnreg.Click
 
         'Vérification des données
@@ -247,47 +255,55 @@ Public Class EtapeMarche
 
         If (PourModif = 0) Then   'Nouvel enregistrement
 
-            'Verifier que la ligne n'existe pas deja ******************************************
-            If Val(ExecuteScallar("select count(*) from T_EtapeMarche where CodeProjet='" & ProjetEnCours & "' and TitreEtape='" & EnleverApost(txtIntitule.Text) & "' and TypeMarche='" & EnleverApost(CmbTypeMarche.Text) & "' AND CodeProcAO='" & CodeMethode(cmbMethode.SelectedIndex) & "'")) > 0 Then
+            'Verifier si le libelle de l'etape n'existe pas  ******************************************
+            If Val(ExecuteScallar("select count(*) from T_EtapeMarche where CodeProjet='" & ProjetEnCours & "' and TitreEtape='" & EnleverApost(txtIntitule.Text) & "' and TypeMarche='" & EnleverApost(CmbTypeMarche.Text) & "'")) > 0 Then 'AND CodeProcAO='" & CodeMethode(cmbMethode.SelectedIndex) & "'")
                 SuccesMsg("Cette étape existe déjà.")
                 Exit Sub
             End If
 
             'numero d'ordre
-            NumOrdre = Val(ExecuteScallar("select count(*) from T_EtapeMarche where CodeProjet='" & ProjetEnCours & "' and TypeMarche='" & EnleverApost(CmbTypeMarche.Text) & "' AND CodeProcAO='" & CodeMethode(cmbMethode.SelectedIndex) & "'"))
+            NumOrdre = Val(ExecuteScallar("select count(*) from T_EtapeMarche where CodeProjet='" & ProjetEnCours & "' and TypeMarche='" & EnleverApost(CmbTypeMarche.Text) & "'")) ' AND CodeProcAO='" & CodeMethode(cmbMethode.SelectedIndex) & "'
 
             'Mise à jour de l'ordre des étapes avant d'ajouter la nouvelle
             ' UpdateNumeroOrdre(CmbTypeMarche.Text, CodeMethode(cmbMethode.SelectedIndex), Val(cmbNumOrdre.Text))
 
-            ExecuteNonQuery("INSERT INTO T_EtapeMarche VALUES(NULL,'" & ProjetEnCours & "','" & NumOrdre + 1 & "','" & EnleverApost(CmbTypeMarche.Text) & "','" & EnleverApost(txtIntitule.Text) & "','" & IIf(RdPriori.Checked, "OUI", "NON") & "','" & IIf(RdPosteriori.Checked, "OUI", "NON") & "','NON','NON','NON','NON','NON','NON','NON','" & CodeMethode(cmbMethode.SelectedIndex) & "','" & IIf(rdDelai.Checked, txtDelaiValue.Value & " " & cmbDelaiMesure.Text, "DAO") & "')")
+            ExecuteNonQuery("INSERT INTO T_EtapeMarche VALUES(NULL,'" & ProjetEnCours & "','" & NumOrdre + 1 & "','" & EnleverApost(CmbTypeMarche.Text) & "','" & EnleverApost(txtIntitule.Text) & "','" & IIf(RdPriori.Checked, "OUI", "NON") & "','" & IIf(RdPosteriori.Checked, "OUI", "NON") & "','NON','NON','NON','NON','NON','NON','NON',NULL,'" & IIf(rdDelai.Checked, txtDelaiValue.Value & " " & cmbDelaiMesure.Text, "DAO") & "')") ''" & CodeMethode(cmbMethode.SelectedIndex) & "'
             SuccesMsg("Enregistrement effectué avec succès")
 
         ElseIf PourModif > 0 Then ' Modification d'un enregistrement
             'Mise à jour de l'ordre des étapes avant de passer à la modification
             'DrX = ViewEtape.GetDataRow(ViewEtape.FocusedRowHandle)
             ' UpdateNumeroOrdre(CmbTypeMarche.Text, CodeMethode(cmbMethode.SelectedIndex), Val(cmbNumOrdre.Text), DrX("N°"))
-
+            DebutChargement(True, "Modification en cours...")
             If GetVerifierUtiliser(PourModif) = True Then
                 ExecuteNonQuery("UPDATE t_etapemarche SET TitreEtape='" & EnleverApost(txtIntitule.Text) & "' WHERE RefEtape='" & PourModif & "'")
+                FinChargement()
                 SuccesMsg("Cette étape est déjà en cours d'utilisation." & vbNewLine & "Seul l'intitulé a été modifié.")
             Else
                 ' ExecuteNonQuery("UPDATE t_etapemarche SET NumeroOrdre='" & cmbNumOrdre.Text & "', TitreEtape='" & EnleverApost(txtIntitule.Text.Trim()) & "', Priori='" & IIf(RdPriori.Checked, "OUI", "NON") & "', Posteriori='" & IIf(RdPosteriori.Checked, "OUI", "NON") & "', DelaiEtape='" & IIf(rdDelai.Checked, txtDelaiValue.Value & " " & cmbDelaiMesure.Text, "DAO") & "' WHERE RefEtape='" & PourModif & "'")
                 ExecuteNonQuery("UPDATE t_etapemarche SET TitreEtape='" & EnleverApost(txtIntitule.Text) & "', Priori='" & IIf(RdPriori.Checked, "OUI", "NON") & "', Posteriori='" & IIf(RdPosteriori.Checked, "OUI", "NON") & "', DelaiEtape='" & IIf(rdDelai.Checked, txtDelaiValue.Value & " " & cmbDelaiMesure.Text, "DAO") & "' WHERE RefEtape='" & PourModif & "'")
+                FinChargement()
                 SuccesMsg("Modification effectuée avec succès.")
             End If
             GridEtape_Click(GridEtape, New EventArgs)
 
         ElseIf ChangerDirection = True Then
             If ViewEtape.RowCount > 0 Then
+                DebutChargement(True, "Enregistrement en cours...")
                 '  ExecuteNonQuery("DELETE FROM T_EtapeMarche WHERE CodeProjet='" & ProjetEnCours & "' and TypeMarche='" & EnleverApost(CmbTypeMarche.Text) & "' and CodeProcAO='" & CodeMethode(cmbMethode.SelectedIndex) & "'")
                 For i = 0 To ViewEtape.RowCount - 1
                     'ExecuteNonQuery("INSERT INTO T_EtapeMarche VALUES(NULL,'" & ProjetEnCours & "','" & ViewEtape.GetRowCellValue(i, "N°") & "','" & EnleverApost(CmbTypeMarche.Text) & "','" & EnleverApost(ViewEtape.GetRowCellValue(i, "Intitulé").ToString) & "','" & IIf(ViewEtape.GetRowCellValue(i, "Priori") = True, "OUI", "NON") & "','" & IIf(ViewEtape.GetRowCellValue(i, "Posteriori") = True, "OUI", "NON") & "','NON','NON','NON','NON','NON','NON','NON','" & CodeMethode(cmbMethode.SelectedIndex) & "','" & EnleverApost(ViewEtape.GetRowCellValue(i, "Délai").ToString) & "')")
                     ExecuteNonQuery("UPDATE T_EtapeMarche SET NumeroOrdre='" & ViewEtape.GetRowCellValue(i, "N°") & "' WHERE RefEtape='" & ViewEtape.GetRowCellValue(i, "Ref") & "' and CodeProjet='" & ProjetEnCours & "'")
                 Next
-                SuccesMsg("Enregistrement effectué avec succès")
+                FinChargement()
+                SuccesMsg("Enregistrement effectué avec succès.")
             End If
         End If
-        ChargerEtape(CodeMethode(cmbMethode.SelectedIndex))
+        If cmbMethode.SelectedIndex <> -1 Then
+            ChargerEtape(CodeMethode(cmbMethode.SelectedIndex))
+        Else
+            ChargerEtape()
+        End If
         InitForm()
 
     End Sub
@@ -295,20 +311,25 @@ Public Class EtapeMarche
     Private Function GetVerifierUtiliser(ByVal RefEtape As Decimal) As Boolean
         Try
             Dim CodeProcAO As String = ExecuteScallar("select CodeProcAO from t_etapemarche where RefEtape='" & RefEtape & "'")
-            If (Val(ExecuteScallar("select count(*) from T_PlanMarche where RefEtape='" & RefEtape & "'")) > 0) Or (Val(ExecuteScallar("select count(*) from t_marche where CodeProcAO='" & CodeProcAO & "'")) > 0) Then
+
+            If (Val(ExecuteScallar("select count(*) from t_marche where CodeProcAO='" & CodeProcAO & "'")) > 0) Then
                 Return True
             End If
 
+            If (Val(ExecuteScallar("select count(*) from T_PlanMarche where RefEtape='" & RefEtape & "'")) > 0) Then
+                Return True
+            End If
         Catch ex As Exception
             FailMsg(ex.ToString)
         End Try
         Return False
     End Function
+
     Private Sub SupprimerEtape_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles SupprimerEtape.Click
 
         If (ViewEtape.RowCount > 0) Then
             If PourModif > 0 Then
-                SuccesMsg("Veuillez enregistrer les modifications en cours")
+                SuccesMsg("Veuillez enregistrer les modifications en cours.")
                 Exit Sub
             End If
 
@@ -326,12 +347,17 @@ Public Class EtapeMarche
 
                 'Mise à jour de l'ordre des étapes avant de passer à la suppression
                 ' UpdateNumeroOrdre(CmbTypeMarche.Text, CodeMethode(cmbMethode.SelectedIndex), DrX("N°"), DrX("N°"), "-")
-                ExecuteNonQuery("UPDATE t_etapemarche SET NumeroOrdre=NumeroOrdre-1 WHERE CodeProjet='" & ProjetEnCours & "' AND TypeMarche='" & EnleverApost(CmbTypeMarche.Text) & "' AND CodeProcAO='" & CodeMethode(cmbMethode.SelectedIndex) & "' AND NumeroOrdre>'" & CInt(DrX("N°")) & "'")
+                ExecuteNonQuery("UPDATE t_etapemarche SET NumeroOrdre=NumeroOrdre-1 WHERE CodeProjet='" & ProjetEnCours & "' AND TypeMarche='" & EnleverApost(CmbTypeMarche.Text) & "' AND NumeroOrdre>'" & CInt(DrX("N°")) & "'") 'CodeProcAO='" & CodeMethode(cmbMethode.SelectedIndex) & "'
                 ExecuteNonQuery("DELETE from T_EtapeMarche where RefEtape='" & CodEtap & "'")
+                ExecuteNonQuery("DELETE from t_liaisonetape where RefEtape='" & CodEtap & "' and CodeProjet='" & ProjetEnCours & "'")
                 SuccesMsg("Suppression effectuée avec succès")
 
                 ViewEtape.GetDataRow(ViewEtape.FocusedRowHandle).Delete()
-                ChargerEtape(CodeMethode(cmbMethode.SelectedIndex))
+                If cmbMethode.SelectedIndex <> -1 Then
+                    ChargerEtape(CodeMethode(cmbMethode.SelectedIndex))
+                Else
+                    ChargerEtape()
+                End If
             End If
         End If
     End Sub
@@ -426,173 +452,200 @@ Public Class EtapeMarche
             Exit Sub
         End If
 
-        SuccesMsg("Etat en cours de realisation")
-        Exit Sub
+        If CmbTypeMarche.IsRequiredControl("Veuillez sélectionner le type de marché à imprimer.") Then
+            CmbTypeMarche.Select()
+            Exit Sub
+        End If
 
-        If (CmbTypeMarche.Text <> "") Then
+        If cmbMethode.IsRequiredControl("Veuillez sélectionner une méthode.") Then
+            cmbMethode.Select()
+            Exit Sub
+        End If
 
-            Dim Cmd As MySqlCommand
-            query = "Truncate T_TampEtapeListe"
-            ExecuteNonQuery(query)
+        'If (CmbTypeMarche.Text <> "") Then
 
-            query = "Truncate T_TampEtapeMethode"
-            ExecuteNonQuery(query)
+        '    Dim Cmd As MySqlCommand
+        '    query = "Truncate T_TampEtapeListe"
+        '    ExecuteNonQuery(query)
 
-            Dim LesCodeMet(10) As String
-            Dim LesMethod(10) As String
-            Dim LesDelais(10) As Decimal
-            Dim nbMethod As Decimal = 0
+        '    query = "Truncate T_TampEtapeMethode"
+        '    ExecuteNonQuery(query)
 
-            query = "select AbregeAO, CodeProcAO from T_ProcAO where TypeMarcheAO='" & CmbTypeMarche.Text & "' and CodeProjet='" & ProjetEnCours & "' order by AbregeAO"
-            Dim dt As DataTable = ExcecuteSelectQuery(query)
-            For Each rw0 As DataRow In dt.Rows
-                LesMethod(nbMethod) = rw0(0).ToString
-                LesCodeMet(nbMethod) = rw0(1).ToString
-                nbMethod += 1
-            Next
+        '    Dim LesCodeMet(10) As String
+        '    Dim LesMethod(10) As String
+        '    Dim LesDelais(10) As Decimal
+        '    Dim nbMethod As Decimal = 0
 
-            Dim LigneEtape(50, 12) As String
-            For i As Integer = 0 To 49
-                For j As Integer = 0 To 11
-                    LigneEtape(i, j) = ""
-                Next
-            Next
+        '    query = "select AbregeAO, CodeProcAO from T_ProcAO where TypeMarcheAO='" & CmbTypeMarche.Text & "' and CodeProjet='" & ProjetEnCours & "' order by AbregeAO"
+        '    Dim dt As DataTable = ExcecuteSelectQuery(query)
+        '    For Each rw0 As DataRow In dt.Rows
+        '        LesMethod(nbMethod) = rw0(0).ToString
+        '        LesCodeMet(nbMethod) = rw0(1).ToString
+        '        nbMethod += 1
+        '    Next
 
-            Dim nbLigNe As Integer = 0
-            query = "select RefEtape, NumeroOrdre, TitreEtape from T_EtapeMarche where TypeMarche='" & CmbTypeMarche.Text & "' and CodeProjet='" & ProjetEnCours & "' order by NumeroOrdre"
-            Dim dt1 As DataTable = ExcecuteSelectQuery(query)
-            For Each rw0 As DataRow In dt1.Rows
+        '    Dim LigneEtape(50, 12) As String
+        '    For i As Integer = 0 To 49
+        '        For j As Integer = 0 To 11
+        '            LigneEtape(i, j) = ""
+        '        Next
+        '    Next
 
-                LigneEtape(nbLigNe, 0) = rw0(1).ToString
-                LigneEtape(nbLigNe, 1) = MettreApost(rw0(2).ToString)
+        '    Dim nbLigNe As Integer = 0
+        '    query = "select RefEtape, NumeroOrdre, TitreEtape from T_EtapeMarche where TypeMarche='" & CmbTypeMarche.Text & "' and CodeProjet='" & ProjetEnCours & "' order by NumeroOrdre"
+        '    Dim dt1 As DataTable = ExcecuteSelectQuery(query)
+        '    For Each rw0 As DataRow In dt1.Rows
 
-                For n As Decimal = 0 To nbMethod - 1
-                    query = "select DelaiEtape from T_DelaiEtape where RefEtape='" & rw0(0).ToString & "' and CodeProcAO='" & LesCodeMet(n) & "'"
-                    Dim dt2 As DataTable = ExcecuteSelectQuery(query)
-                    If dt2.Rows.Count > 0 Then
-                        For Each rw1 As DataRow In dt2.Rows
+        '        LigneEtape(nbLigNe, 0) = rw0(1).ToString
+        '        LigneEtape(nbLigNe, 1) = MettreApost(rw0(2).ToString)
 
-                            LigneEtape(nbLigNe, n + 2) = rw1(0).ToString
-                            Dim partDelai() As String = rw1(0).ToString.Split(" "c)
-                            Dim jrsDelai As Decimal = CInt(partDelai(0))
-                            If (partDelai(1) = "Semaines") Then
-                                jrsDelai = jrsDelai * 7
-                            ElseIf (partDelai(1) = "Mois") Then
-                                jrsDelai = jrsDelai * 31
-                            ElseIf (partDelai(1) = "Ans") Then
-                                jrsDelai = jrsDelai * 365
-                            End If
-                            LesDelais(n) += jrsDelai
+        '        For n As Decimal = 0 To nbMethod - 1
+        '            query = "select DelaiEtape from T_DelaiEtape where RefEtape='" & rw0(0).ToString & "' and CodeProcAO='" & LesCodeMet(n) & "'"
+        '            Dim dt2 As DataTable = ExcecuteSelectQuery(query)
+        '            If dt2.Rows.Count > 0 Then
+        '                For Each rw1 As DataRow In dt2.Rows
 
-                        Next
-                    End If
+        '                    LigneEtape(nbLigNe, n + 2) = rw1(0).ToString
+        '                    Dim partDelai() As String = rw1(0).ToString.Split(" "c)
+        '                    Dim jrsDelai As Decimal = CInt(partDelai(0))
+        '                    If (partDelai(1) = "Semaines") Then
+        '                        jrsDelai = jrsDelai * 7
+        '                    ElseIf (partDelai(1) = "Mois") Then
+        '                        jrsDelai = jrsDelai * 31
+        '                    ElseIf (partDelai(1) = "Ans") Then
+        '                        jrsDelai = jrsDelai * 365
+        '                    End If
+        '                    LesDelais(n) += jrsDelai
 
-                Next
+        '                Next
+        '            End If
 
-                nbLigNe += 1
+        '        Next
 
-            Next
+        '        nbLigNe += 1
 
-            '*************************************************************
-            ' Enregistrement des Methodes ********************************
-            Dim DatSet = New DataSet
-            query = "select * from T_TampEtapeMethode"
-            Dim sqlconn As New MySqlConnection
-            BDOPEN(sqlconn)
+        '    Next
 
-            Cmd = New MySqlCommand(query, sqlconn)
-            Dim DatAdapt = New MySqlDataAdapter(Cmd)
-            DatAdapt.Fill(DatSet, "T_TampEtapeMethode")
-            Dim DatTable = DatSet.Tables("T_TampEtapeMethode")
-            Dim DatRow = DatSet.Tables("T_TampEtapeMethode").NewRow()
+        '    '*************************************************************
+        '    ' Enregistrement des Methodes ********************************
+        Dim DatSet = New DataSet
+        '    query = "select * from T_TampEtapeMethode"
+        '    Dim sqlconn As New MySqlConnection
+        '    BDOPEN(sqlconn)
 
-            For k As Integer = 0 To (nbMethod - 1)
-                DatRow("Method" & (k + 1).ToString) = LesMethod(k)
-                DatRow("Delai" & (k + 1).ToString) = LesDelais(k)
-            Next
+        '    Cmd = New MySqlCommand(query, sqlconn)
+        '    Dim DatAdapt = New MySqlDataAdapter(Cmd)
+        '    DatAdapt.Fill(DatSet, "T_TampEtapeMethode")
+        '    Dim DatTable = DatSet.Tables("T_TampEtapeMethode")
+        '    Dim DatRow = DatSet.Tables("T_TampEtapeMethode").NewRow()
 
-            DatSet.Tables("T_TampEtapeMethode").Rows.Add(DatRow) 'ajout d'une nouvelle ligne 
-            Dim CmdBuilder = New MySqlCommandBuilder(DatAdapt) 'execution de l'enregistrement
-            DatAdapt.Update(DatSet, "T_TampEtapeMethode")
-            DatSet.Clear()
-            '**************************************************************
+        '    For k As Integer = 0 To (nbMethod - 1)
+        '        DatRow("Method" & (k + 1).ToString) = LesMethod(k)
+        '        DatRow("Delai" & (k + 1).ToString) = LesDelais(k)
+        '    Next
 
-            '*************************************************************
-            ' Enregistrement des etapes***********************************
+        '    DatSet.Tables("T_TampEtapeMethode").Rows.Add(DatRow) 'ajout d'une nouvelle ligne 
+        '    Dim CmdBuilder = New MySqlCommandBuilder(DatAdapt) 'execution de l'enregistrement
+        '    DatAdapt.Update(DatSet, "T_TampEtapeMethode")
+        '    DatSet.Clear()
+        '    '**************************************************************
 
-            DatSet = New DataSet
-            query = "select * from T_TampEtapeListe"
-            Cmd = New MySqlCommand(query, sqlconn)
-            DatAdapt = New MySqlDataAdapter(Cmd)
-            DatAdapt.Fill(DatSet, "T_TampEtapeListe")
-            DatTable = DatSet.Tables("T_TampEtapeListe")
+        '    '*************************************************************
+        '    ' Enregistrement des etapes***********************************
 
-            For i As Integer = 0 To nbLigNe - 1
-                DatRow = DatSet.Tables("T_TampEtapeListe").NewRow()
+        '    DatSet = New DataSet
+        '    query = "select * from T_TampEtapeListe"
+        '    Cmd = New MySqlCommand(query, sqlconn)
+        '    DatAdapt = New MySqlDataAdapter(Cmd)
+        '    DatAdapt.Fill(DatSet, "T_TampEtapeListe")
+        '    DatTable = DatSet.Tables("T_TampEtapeListe")
 
-                DatRow("NumEtape") = LigneEtape(i, 0)
-                DatRow("LibelleEtape") = LigneEtape(i, 1)
+        '    For i As Integer = 0 To nbLigNe - 1
+        '        DatRow = DatSet.Tables("T_TampEtapeListe").NewRow()
 
-                For j As Integer = 0 To nbMethod - 1
-                    DatRow("DelaiM" & (j + 1).ToString) = LigneEtape(i, j + 2)
-                Next
+        '        DatRow("NumEtape") = LigneEtape(i, 0)
+        '        DatRow("LibelleEtape") = LigneEtape(i, 1)
 
-                DatSet.Tables("T_TampEtapeListe").Rows.Add(DatRow) 'ajout d'une nouvelle ligne 
-            Next
+        '        For j As Integer = 0 To nbMethod - 1
+        '            DatRow("DelaiM" & (j + 1).ToString) = LigneEtape(i, j + 2)
+        '        Next
 
-            CmdBuilder = New MySqlCommandBuilder(DatAdapt) 'execution de l'enregistrement
-            DatAdapt.Update(DatSet, "T_TampEtapeListe")
-            DatSet.Clear()
-            BDQUIT(sqlconn)
-            '*************************************************************
+        '        DatSet.Tables("T_TampEtapeListe").Rows.Add(DatRow) 'ajout d'une nouvelle ligne 
+        '    Next
 
-            ' Affichage état ***************************
-            Dim reportEtape As New ReportDocument
-            Dim crtableLogoninfos As New TableLogOnInfos
+        '    CmdBuilder = New MySqlCommandBuilder(DatAdapt) 'execution de l'enregistrement
+        '    DatAdapt.Update(DatSet, "T_TampEtapeListe")
+        '    DatSet.Clear()
+        '    BDQUIT(sqlconn)
+        '    '*************************************************************
+
+        ' Affichage état ***************************
+        DebutChargement(True, "Chargement des etapes en cours...")
+        Dim reportEtape As New ReportDocument
+        Dim crtableLogoninfos As New TableLogOnInfos
             Dim crtableLogoninfo As New TableLogOnInfo
             Dim crConnectionInfo As New ConnectionInfo
             Dim CrTables As Tables
             Dim CrTable As Table
-            Dim Chemin As String = lineEtat & "\Marches\"
+        Dim Chemin As String = lineEtat & "\Marches\PPM\"
 
-            DatSet = New DataSet
-            reportEtape.Load(Chemin & "RecapEtapes.rpt")
+        DatSet = New DataSet
+        reportEtape.Load(Chemin & "Etapes_PPM.rpt")
 
-            With crConnectionInfo
-                .ServerName = ODBCNAME
-                .DatabaseName = DB
-                .UserID = USERNAME
-                .Password = PWD
-            End With
+        With crConnectionInfo
+            .ServerName = ODBCNAME
+            .DatabaseName = DB
+            .UserID = USERNAME
+            .Password = PWD
+        End With
 
-            CrTables = reportEtape.Database.Tables
-            For Each CrTable In CrTables
-                crtableLogoninfo = CrTable.LogOnInfo
-                crtableLogoninfo.ConnectionInfo = crConnectionInfo
-                CrTable.ApplyLogOnInfo(crtableLogoninfo)
-            Next
-            reportEtape.SetDataSource(DatSet)
-            reportEtape.SetParameterValue("CodeProjet", ProjetEnCours)
-            reportEtape.SetParameterValue("TypeMarcheEtat", CmbTypeMarche.Text)
+        CrTables = reportEtape.Database.Tables
+        For Each CrTable In CrTables
+            crtableLogoninfo = CrTable.LogOnInfo
+            crtableLogoninfo.ConnectionInfo = crConnectionInfo
+            CrTable.ApplyLogOnInfo(crtableLogoninfo)
+        Next
+        reportEtape.SetDataSource(DatSet)
+        reportEtape.SetParameterValue("CodeProjet", ProjetEnCours)
+        reportEtape.SetParameterValue("TypeMarche", EnleverApost(CmbTypeMarche.Text))
+        reportEtape.SetParameterValue("Methode", CodeMethode(cmbMethode.SelectedIndex))
 
-            FullScreenReport.FullView.ReportSource = reportEtape
-            FullScreenReport.ShowDialog()
+        FullScreenReport.FullView.ReportSource = reportEtape
+        FinChargement()
+        FullScreenReport.ShowDialog()
 
-        End If
+        'End If
     End Sub
 
 
-    Private Sub CmbTypeMarche_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbTypeMarche.SelectedIndexChanged
-        On Error Resume Next
-        LoadMethode(CmbTypeMarche.Text)
-    End Sub
-
-    Private Sub cmbMethode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbMethode.SelectedIndexChanged
+    Private Sub CmbTypeMarche_SelectedValueChanged(sender As Object, e As EventArgs) Handles CmbTypeMarche.SelectedValueChanged
         On Error Resume Next
         Dim dtEtape As DataTable = GridEtape.DataSource
         dtEtape.Rows.Clear()
         InitForm()
-        ChargerEtape(CodeMethode(cmbMethode.SelectedIndex))
+        If CmbTypeMarche.SelectedIndex <> -1 Then
+            LoadMethode(CmbTypeMarche.Text)
+            ChargerEtape()
+        Else
+            cmbMethode.ResetText()
+            cmbMethode.Properties.Items.Clear()
+        End If
+    End Sub
+
+    Private Sub cmbMethode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbMethode.SelectedIndexChanged
+        Try
+            'On Error Resume Next
+            If cmbMethode.SelectedIndex <> -1 Then
+                Dim dtEtape As DataTable = GridEtape.DataSource
+                dtEtape.Rows.Clear()
+                InitForm()
+                ChargerEtape(CodeMethode(cmbMethode.SelectedIndex))
+            ElseIf CmbTypeMarche.SelectedIndex <> -1 Then
+                ChargerEtape()
+            End If
+        Catch ex As Exception
+            FailMsg(ex.ToString)
+        End Try
     End Sub
 
     Private Sub rdDelaiDAO_CheckedChanged(sender As Object, e As EventArgs) Handles rdDelaiDAO.CheckedChanged
@@ -625,11 +678,11 @@ Public Class EtapeMarche
     Private Sub BtMonter_Click(sender As Object, e As EventArgs) Handles BtMonter.Click
         If ViewEtape.RowCount > 0 Then
             If PourModif > 0 Then
-                SuccesMsg("Veuillez enregistrer les modifications en cours")
+                SuccesMsg("Veuillez enregistrer les modifications en cours.")
                 Exit Sub
             End If
-            If GbNewEtape.Visible = False Then GbNewEtape.Visible = True
 
+            If GbNewEtape.Visible = False Then GbNewEtape.Visible = True
             Dim TablRemplcer(4) As String
             Dim NumHaut As Integer
             Dim lefocus As Integer
@@ -676,7 +729,7 @@ Public Class EtapeMarche
     Private Sub BtDescendre_Click(sender As Object, e As EventArgs) Handles BtDescendre.Click
         If ViewEtape.RowCount > 0 Then
             If PourModif > 0 Then
-                SuccesMsg("Veuillez enregistrer les modifications en cours")
+                SuccesMsg("Veuillez enregistrer les modifications en cours.")
                 Exit Sub
             End If
             If GbNewEtape.Visible = False Then GbNewEtape.Visible = True

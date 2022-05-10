@@ -19,6 +19,7 @@ Imports System.Text.RegularExpressions
 Public Class NewDp
 
     Dim dr As DataRow
+    Dim CurrenMarches As DataRow = Nothing
     Dim dt = New DataTable()
 
     Dim PourAjout As Boolean = False
@@ -322,6 +323,11 @@ Public Class NewDp
                 Exit Sub
             End If
 
+            If NomEmprunteur.IsRequiredControl("Veuillez saisir le nom de l'emprunteur") Then
+                NomEmprunteur.Select()
+                Exit Sub
+            End If
+
             If GridListeRestreinte.RowCount = 0 Then
                 SuccesMsg("Veuillez ajouter un consultant")
                 Exit Sub
@@ -329,60 +335,60 @@ Public Class NewDp
 
             'Dans la table DP
             query = "select count(NumeroDp) from t_dp where NumeroDp='" & EnleverApost(TxtNumDp.Text) & "'"
-            If Val(ExecuteScallar(query)) > 0 Then
-                SuccesMsg("Le numéro de la DP existe déjà")
-                TxtNumDp.Focus()
-                Exit Sub
-            End If
+                If Val(ExecuteScallar(query)) > 0 Then
+                    SuccesMsg("Le numéro de la DP existe déjà")
+                    TxtNumDp.Focus()
+                    Exit Sub
+                End If
 
-            'Dans la table DP
-            query = "select count(NumeroDAO) from t_dao where NumeroDAO='" & EnleverApost(TxtNumDp.Text) & "'"
-            If Val(ExecuteScallar(query)) > 0 Then
-                SuccesMsg("Le numéro de la DP existe déjà")
-                TxtNumDp.Focus()
-                Exit Sub
-            End If
+                'Dans la table DP
+                query = "select count(NumeroDAO) from t_dao where NumeroDAO='" & EnleverApost(TxtNumDp.Text) & "'"
+                If Val(ExecuteScallar(query)) > 0 Then
+                    SuccesMsg("Le numéro de la DP existe déjà")
+                    TxtNumDp.Focus()
+                    Exit Sub
+                End If
 
-            'Dans la table DP
-            query = "select count(NumeroDAMI) from T_AMI where NumeroDAMI='" & EnleverApost(TxtNumDp.Text) & "'"
-            If Val(ExecuteScallar(query)) > 0 Then
-                SuccesMsg("Le numéro de la DP existe déjà")
-                TxtNumDp.Focus()
-                Exit Sub
-            End If
+                'Dans la table DP
+                query = "select count(NumeroDAMI) from T_AMI where NumeroDAMI='" & EnleverApost(TxtNumDp.Text) & "'"
+                If Val(ExecuteScallar(query)) > 0 Then
+                    SuccesMsg("Le numéro de la DP existe déjà")
+                    TxtNumDp.Focus()
+                    Exit Sub
+                End If
 
-            Try
-                DebutChargement(True, "Enregistrement des données de base en cours...")
+                Try
+                    DebutChargement(True, "Enregistrement des données de base en cours...")
 
-                CreerDP()
-                EnregistrerConsultant()
-                'Insertion line donnée particulières
-                ExecuteNonQuery("INSERT INTO t_dp_donneparticuliere(RefDP,NumeroDp,CodeProjet) values(NULL,'" & EnleverApost(TxtNumDp.Text) & "', '" & ProjetEnCours & "')")
+                    CreerDP()
+                    EnregistrerConsultant()
+                    'Insertion line donnée particulières
+                    ExecuteNonQuery("INSERT INTO t_dp_donneparticuliere(RefDP,NumeroDp,CodeProjet) values(NULL,'" & EnleverApost(TxtNumDp.Text) & "', '" & ProjetEnCours & "')")
 
-                'OuvrirGroupPartic() ' Données particulières
-                BtImportTDR.Enabled = True  ' TDR
-                BtModifTDR.Enabled = True   ' TDR
-                TxtNumDp.Enabled = False
-                FinChargement()
-                SuccesMsg("Dossier enregistré avec succès")
+                    'OuvrirGroupPartic() ' Données particulières
+                    BtImportTDR.Enabled = True  ' TDR
+                    BtModifTDR.Enabled = True   ' TDR
+                    TxtNumDp.Enabled = False
+                    FinChargement()
+                    SuccesMsg("Dossier enregistré avec succès")
 
-                ArchivesDP()
-                ChargerMarcher()
-                ChargerDossierAMI()
+                    ArchivesDP()
+                    ChargerMarcher()
+                    ChargerDossierAMI()
 
-                'XtraTabDP.SelectedTabPageIndex = 1
-                'TabAMettreAJour(1) = True
-                DejaDansLaBD = True
-                VisibleOtherTabs(True)
-                CmbDossAMI.Properties.ReadOnly = True
-                CombMarche.Properties.ReadOnly = True
+                    'XtraTabDP.SelectedTabPageIndex = 1
+                    'TabAMettreAJour(1) = True
+                    DejaDansLaBD = True
+                    VisibleOtherTabs(True)
+                    CmbDossAMI.Properties.ReadOnly = True
+                    CombMarche.Properties.ReadOnly = True
 
-            Catch ex As Exception
-                FailMsg(ex.ToString)
-            End Try
-        Else
+                Catch ex As Exception
+                    FailMsg(ex.ToString)
+                End Try
+            Else
 
-            DebutChargement(True, "Enregistrement des données en cours...")
+                DebutChargement(True, "Enregistrement des données en cours...")
             Dim Trouver As Boolean = False
 
             Dim LstTabName As New List(Of String) From {"PageDonneesBase", "PageDonneesPartic", "PageEvaluation", "PageTDR", "PageAppercuDp"}
@@ -485,9 +491,19 @@ Public Class NewDp
                     If File.Exists(NomRepCheminSauve) = True Then
                         DebutChargement(True, "Chargement du dossier de la DP...")
                         Process.Start(NomRepCheminSauve)
+                        'Try
+                        '    Dim printer As New Process
+                        '    printer.StartInfo.Verb = "Print"
+                        '    printer.StartInfo.FileName = NomRepCheminSauve.ToString
+                        '    ' printer.StartInfo.FileName = CheminSauvGarde & "\" & NomFichier
+                        '    printer.StartInfo.CreateNoWindow = True
+                        '    printer.Start()
+                        'Catch ex As Exception
+                        '    ' FailMsg(ex.ToString)
+                        'End Try
                         FinChargement()
                     Else
-                        SuccesMsg("Le fichier spécifié n'existe pas ou a été supprimer")
+                        SuccesMsg("Le fichier spécifié n'existe pas ou a été supprimé")
                     End If
                 Else
                     SuccesMsg("Veuillez enregistrer ou fermer le dossier en cours")
@@ -574,52 +590,71 @@ Public Class NewDp
             NumDoss = EnleverApost(dr("N°").ToString)
 
             If dr("Statut").ToString = "Annulé" Then
-                FailMsg("Ce marché a été annulé")
+                FailMsg("Impossible de valider un marché annulé")
                 Exit Sub
             End If
 
             If dr("Statut").ToString = "Terminé" Then
-                FailMsg("Ce marché a été executé")
+                FailMsg("Impossible de valider un marché executé.")
                 Exit Sub
             End If
 
             'Verifier si tous les critères d'evaluation on tous une note
             If Val(ExecuteScallar("select count(*) from t_dp_critereeval where ((PointCritere='') or (PointCritere IS NULL)) and NumeroDp='" & EnleverApost(dr("N°").ToString) & "' and CodeProjet='" & ProjetEnCours & "'")) > 0 Then
-                SuccesMsg("Un critère d'évaluation n'a pas de note" & vbNewLine & "Veuillez donc la saisir")
+                SuccesMsg("Un critère d'évaluation n'a pas de note" & vbNewLine & "Veuillez donc la saisir.")
                 Exit Sub
+            End If
+
+            If dr("Méthode").ToString.ToUpper = "SFQC" Then
+                query = "select PoidsTech,PoidsFin from T_DP where NumeroDp='" & EnleverApost(NumDoss) & "' and CodeProjet='" & ProjetEnCours & "'"
+                dt = ExcecuteSelectQuery(query)
+                Dim CoefTech As Decimal = 0
+                Dim CoefFin As Decimal = 0
+                For Each rw As DataRow In dt.Rows
+                    CoefTech = CDec(rw("PoidsTech"))
+                    CoefFin = CDec(rw("PoidsFin"))
+                Next
+
+                If (CoefFin <= 0) Or CoefTech <= 0 Then
+                    FailMsg("Veuillez saisir le poids technique.")
+                    Exit Sub
+                End If
             End If
 
             'Dim ConfirmBalleur As String = ExecuteScallar("SELECT RaportEvalTechBailleur FROM t_dp WHERE NumeroDp='" & EnleverApost(dr("N°").ToString) & "' and CodeProjet='" & ProjetEnCours & "'").ToString
             Dim ConfirmBalleur As String = ExecuteScallar("SELECT DateOuvertureEffective FROM t_dp WHERE NumeroDp='" & EnleverApost(dr("N°").ToString) & "' and CodeProjet='" & ProjetEnCours & "'").ToString
-            If ConfirmBalleur.ToString <> "" Then
-                SuccesMsg("Ce dossier a été validé")
-                Exit Sub
+                If ConfirmBalleur.ToString <> "" Then
+                    SuccesMsg("Ce dossier a été validé.")
+                    Exit Sub
+                End If
+
+                If ConfirmMsg("Confirmez-vous la validation du dossier ?") = DialogResult.Yes Then
+
+                    DebutChargement(True, "Traitement de la validation du dossier en cours...")
+
+                    ExecuteNonQuery("UPDATE t_dp set DossValider='Valider' where NumeroDp='" & EnleverApost(dr("N°").ToString) & "' and CodeProjet='" & ProjetEnCours & "'")
+
+                    query = "SELECT CodeMem, Civil, NomMem, EmailMem FROM T_Commission WHERE NumeroDAO='" & EnleverApost(dr("N°").ToString) & "'"
+                    Dim dt0 As DataTable = ExcecuteSelectQuery(query)
+
+                    Dim CodeCrypter As String = String.Empty
+                    For Each rw0 In dt0.Rows
+                        CodeCrypter = GenererToken(dr("N°").ToString, rw0("CodeMem"), "DP", DB)
+                        ExecuteNonQuery("Update T_Commission set AuthKey='" & CodeCrypter.ToString.Split(":")(0) & "' where CodeMem='" & rw0("CodeMem") & "' and NumeroDAO='" & EnleverApost(dr("N°").ToString) & "'")
+
+                        If envoieMail(rw0("Civil").ToString & " " & MettreApost(rw0("NomMem").ToString), MettreApost(rw0("EmailMem").ToString), CodeCrypter) = False Then
+                            Exit Sub
+                        End If
+                    Next
+                    FinChargement()
+
+                    SuccesMsg("Dossier validé avec succès.")
+                    ' ArchivesDP()
+                    'Update validation dossier
+                    LayoutView1.SetFocusedRowCellValue("DossValider", "Valider")
+
+                End If
             End If
-
-            If ConfirmMsg("Confirmez-vous la validation du dossier ?") = DialogResult.Yes Then
-
-                DebutChargement(True, "Traitement de la validation du dossier en cours...")
-
-                ExecuteNonQuery("UPDATE t_dp set DossValider='Valider' where NumeroDp='" & EnleverApost(dr("N°").ToString) & "' and CodeProjet='" & ProjetEnCours & "'")
-
-                query = "SELECT CodeMem, Civil, NomMem, EmailMem FROM T_Commission WHERE NumeroDAO='" & EnleverApost(dr("N°").ToString) & "'"
-                Dim dt0 As DataTable = ExcecuteSelectQuery(query)
-
-                Dim CodeCrypter As String = String.Empty
-                For Each rw0 In dt0.Rows
-                    CodeCrypter = GenererToken(dr("N°").ToString, rw0("CodeMem"), "DP", DB)
-                    ExecuteNonQuery("Update T_Commission set AuthKey='" & CodeCrypter.ToString.Split(":")(0) & "' where CodeMem='" & rw0("CodeMem") & "' and NumeroDAO='" & EnleverApost(dr("N°").ToString) & "'")
-                    envoieMail(rw0("Civil").ToString & " " & MettreApost(rw0("NomMem").ToString), MettreApost(rw0("EmailMem").ToString), CodeCrypter)
-                Next
-                FinChargement()
-
-                SuccesMsg("Dossier validé avec succès")
-                ' ArchivesDP()
-                'Update validation dossier
-                LayoutView1.SetFocusedRowCellValue("DossValider", "Valider")
-
-            End If
-        End If
     End Sub
 
 
@@ -715,25 +750,51 @@ Public Class NewDp
 
     Private Sub ChargerMarcher()
 
-        'query = "Select RefMarche, DescriptionMarche, MontantEstimatif, Convention_ChefFile from T_Marche where CodeProjet='" & ProjetEnCours & "' AND TypeMarche LIKE 'Consultants%' AND NumeroDAO IS NULL order by TypeMarche ASC"
+        'query = "Select RefMarche, DescriptionMarche, MontantEstimatif, InitialeBailleur,CodeConvention,ConventionChefFilProjet, Convention_ChefFile from T_Marche where CodeProjet='" & ProjetEnCours & "' AND TypeMarche LIKE 'Consultants%' and NumeroMarche IS NULL"
+        'Dim dt As DataTable = ExcecuteSelectQuery(query)
 
-            query = "Select RefMarche, DescriptionMarche, MontantEstimatif, Convention_ChefFile from T_Marche where CodeProjet='" & ProjetEnCours & "' AND TypeMarche LIKE 'Consultants%' and NumeroMarche IS NULL"
+        'Dim Taille As Integer = 0
+        'CombMarche.Properties.Items.Clear()
+        '' CombMarche.ResetText()
+
+        'Dim MontantMarcheRestant As Decimal = 0
+        'For Each rw As DataRow In dt.Rows
+        '    'Montant marche restant (à utiliser)
+        '    MontantMarcheRestant = CDec(rw("MontantEstimatif").ToString.Replace(" ", "")) - NewVerifierMontMarche(rw("RefMarche")) 'Montant consomé
+        '    If MontantMarcheRestant > 0 Then
+        '        ReDim Preserve RefMarche(Taille)
+        '        RefMarche(Taille) = rw("RefMarche")
+        '        Taille += 1
+        '        CombMarche.Properties.Items.Add(MettreApost(rw("DescriptionMarche").ToString) & " | " & MontantMarcheRestant & " | " & MettreApost(rw("InitialeBailleur").ToString) & "(" & MettreApost(rw("CodeConvention").ToString) & ")")
+        '    End If
+        'Next
+
+        query = "Select * from T_Marche where CodeProjet='" & ProjetEnCours & "' AND TypeMarche LIKE 'Consultants%' and NumeroMarche IS NULL"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
-
         Dim Taille As Integer = 0
-        CombMarche.Properties.Items.Clear()
-        ' CombMarche.ResetText()
 
-        Dim MontantMarcheRestant As Decimal = 0
+        CombMarche.Properties.Items.Clear()
         For Each rw As DataRow In dt.Rows
-            'Montant marche restant (à utiliser)
-            MontantMarcheRestant = CDec(rw("MontantEstimatif").ToString.Replace(" ", "")) - NewVerifierMontMarche(rw("RefMarche")) 'Montant consomé
-            If MontantMarcheRestant > 0 Then
-                ReDim Preserve RefMarche(Taille)
-                RefMarche(Taille) = rw("RefMarche")
-                Taille += 1
-                CombMarche.Properties.Items.Add(MettreApost(rw("DescriptionMarche")) & " | " & MontantMarcheRestant & " | " & GetInitialbailleur(rw("Convention_ChefFile").ToString) & "(" & rw("Convention_ChefFile").ToString & ")")
+
+            'Verification dans la table AMI
+            If Val(ExecuteScallar("SELECT COUNT(*) FROM t_ami where RefMarche='" & rw("RefMarche") & "' and StatutDoss<>'Annulé' and CodeProjet='" & ProjetEnCours & "'")) > 0 Then
+                Continue For
             End If
+
+            'Verification dans la table DP
+            If Val(ExecuteScallar("SELECT COUNT(*) FROM t_dp where RefMarche='" & rw("RefMarche") & "' and Statut<>'Annulé' and CodeProjet='" & ProjetEnCours & "'")) > 0 Then
+                Continue For
+            End If
+
+            'Verification dans la table T_marchesigne
+            If Val(ExecuteScallar("SELECT COUNT(*) FROM t_marchesigne where RefMarche='" & rw("RefMarche") & "' and TypeMarche='" & rw("TypeMarche").ToString & "' and  EtatMarche<>'Annulé' and CodeProjet='" & ProjetEnCours & "'")) > 0 Then
+                Continue For
+            End If
+
+            ReDim Preserve RefMarche(Taille)
+            RefMarche(Taille) = rw("RefMarche")
+            Taille += 1
+            CombMarche.Properties.Items.Add(MettreApost(rw("DescriptionMarche").ToString) & " | " & AfficherMonnaie(rw("MontantEstimatif")) & " | " & MettreApost(rw("InitialeBailleur").ToString) & " (" & MettreApost(rw("CodeConvention").ToString) & ")")
         Next
     End Sub
 
@@ -884,6 +945,11 @@ Public Class NewDp
                     Return False
                 End If
 
+                If NomEmprunteur.IsRequiredControl("Veuillez saisir le nom de l'emprunteur") Then
+                    NomEmprunteur.Select()
+                    Return False
+                End If
+
                 'If GridListeRestreinte.RowCount = 0 Then
                 '    SuccesMsg("Veuillez ajouter un consultant")
                 '    Exit Sub
@@ -899,8 +965,9 @@ Public Class NewDp
 
                 Dim DateReporter As String = ""
                 If DateReporte.Text <> "" And HeureReporte.Text <> "" Then DateReporter = CDate(DateReporte.DateTime).ToShortDateString & " " & CDate(HeureReporte.Time).ToLongTimeString
+                ' NomEmprunteur
 
-                query = "Update t_dp set LibelleMiss='" & EnleverApost(TxtLibDp.Text) & "', TypeRemune='" & EnleverApost(CmbTypeRemune.Text) & "', ListeRestreinte = '" & GridListeRestreinte.RowCount & "', NumeroAMI = '" & EnleverApost(CmbDossAMI.Text) & "', "
+                query = "Update t_dp set LibelleMiss='" & EnleverApost(TxtLibDp.Text) & "', TypeRemune='" & EnleverApost(CmbTypeRemune.Text) & "', ListeRestreinte = '" & GridListeRestreinte.RowCount & "', NumeroAMI = '" & EnleverApost(CmbDossAMI.Text) & "', NomEmprunteur='" & EnleverApost(NomEmprunteur.Text) & "', "
                 query &= "DateLimitePropo='" & dateconvert(DateDepot.Text) & " " & CDate(HeureDepot.Time).ToLongTimeString & "', DateOuverture = '" & dateconvert(DateOuverture.Text) & " " & CDate(HeureOuverture.Time).ToLongTimeString & "', DateEnvoiDp='" & dateconvert(DateEnvoie.Text) & " " & CDate(HeureEnvoi.Time).ToLongTimeString & "', "
                 ' query &= "DatePub1='" & IIf(DatePub1.Text <> "", DatePub1.Text, "").ToString & "', DatePub2= '" & IIf(DatePub2.Text <> "", DatePub2.Text, "").ToString & "', MoyenPub='" & EnleverApost(LibellePublication.Text) & "', NbreJourTravail= '" & NumDelai.Text & " " & CmbDelai.Text & "', DelaiPublication= '" & NbreDelaiPub.Text & " " & JoursDelaiPub.Text & "', "
                 query &= " MoyenPub='" & EnleverApost(LibellePublication.Text) & "', NbreJourTravail= '" & NumDelai.Text & " " & CmbDelai.Text & "', DelaiPublication= '" & NbreDelaiPub.Text & " " & JoursDelaiPub.Text & "', "
@@ -921,7 +988,7 @@ Public Class NewDp
     Private Sub LoadPageDonneBase(ByVal NumDossier As String)
         If PourModif = True Then
             Try
-                query = "Select d.*, m.DescriptionMarche, m.MontantEstimatif,m.Convention_ChefFile from T_DP as d, T_Marche as m where d.RefMarche=m.RefMarche and d.NumeroDp='" & NumDossier & "' and  d.CodeProjet='" & ProjetEnCours & "'"
+                query = "Select d.*, m.DescriptionMarche, m.MontantEstimatif,m.Convention_ChefFile, m.InitialeBailleur,m.CodeConvention from T_DP as d, T_Marche as m where d.RefMarche=m.RefMarche and d.NumeroDp='" & NumDossier & "' and  d.CodeProjet='" & ProjetEnCours & "'"
                 Dim dt0 As DataTable = ExcecuteSelectQuery(query)
                 For Each rw In dt0.Rows
 
@@ -930,6 +997,7 @@ Public Class NewDp
                     CmbTypeRemune.Text = MettreApost(rw("TypeRemune").ToString)
 
                     TxtMethodeSelect.Text = MettreApost(rw("MethodeSelection").ToString)
+                    NomEmprunteur.Text = MettreApost(rw("NomEmprunteur").ToString)
                     MontantMarche.Text = AfficherMonnaie(rw("MontantMarche").ToString.Replace(" ", "").Replace("?", ""))
                     CmbDossAMI.Text = MettreApost(rw("NumeroAMI").ToString)
                     DateRecpDossConsult.Text = rw("DateRecpDossConsult").ToString
@@ -986,7 +1054,7 @@ Public Class NewDp
                         ' Dim dts As DataTable = ExcecuteSelectQuery(query)
                         ' For Each rw In dts.Rows
                         ' CodeConvention = rw("Convention_ChefFile").ToString
-                        CombMarche.Text = MettreApost(rw("DescriptionMarche").ToString) & " | " & AfficherMonnaie(rw("MontantMarche").ToString.Replace(" ", "")) & " | " & GetInitialbailleur(rw("Convention_ChefFile").ToString) & "(" & rw("Convention_ChefFile").ToString & ")"
+                        CombMarche.Text = MettreApost(rw("DescriptionMarche").ToString) & " | " & AfficherMonnaie(rw("MontantMarche").ToString.Replace(" ", "")) & " | " & MettreApost(rw("InitialeBailleur").ToString) & " (" & MettreApost(rw("CodeConvention").ToString) & ")"
                         ' Next
                     End If
                 Next
@@ -1142,12 +1210,13 @@ Public Class NewDp
         DatRow("DelaiPublication") = CInt(NbreDelaiPub.Text) & " " & JoursDelaiPub.Text
         If NumDelai.Value > 0 And CmbDelai.Text <> "" Then DatRow("NbreJourTravail") = NumDelai.Value & " " & CmbDelai.Text
 
-        DatRow("DateModif") = dateconvert(Now.ToShortDateString) & " " & Now.ToShortTimeString
-        DatRow("DateSaisie") = dateconvert(Now.ToShortDateString) & " " & Now.ToShortTimeString
+        DatRow("DateModif") = dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString
+        DatRow("DateSaisie") = dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString
         DatRow("Operateur") = CodeUtilisateur
         DatRow("CodeProjet") = ProjetEnCours
         DatRow("Statut") = "En cours"
         DatRow("DateRecpDossConsult") = DateRecpDossConsult.Text
+        DatRow("NomEmprunteur") = EnleverApost(NomEmprunteur.Text)
 
         DatSet.Tables("T_DP").Rows.Add(DatRow)
         Dim CmdBuilder = New MySqlCommandBuilder(DatAdapt)
@@ -1227,19 +1296,17 @@ Public Class NewDp
             GridListeRestreinte.Rows.Clear()
             AjoutManuelConult(True)
 
-            query = "SELECT CodeProcAO FROM t_marche WHERE RefMarche='" & RefMarche(CombMarche.SelectedIndex) & "'"
-            Dim CodeProcAO As String = ExecuteScallar(query)
-            If CodeProcAO <> "" Then
-                TxtMethodeSelect.Text = GetMethode(CodeProcAO)
+            Dim dtt As DataTable = ExcecuteSelectQuery("SELECT * FROM t_marche WHERE RefMarche='" & RefMarche(CombMarche.SelectedIndex) & "'")
+            If dtt.Rows.Count > 0 Then
+                CurrenMarches = dtt.Rows(0)
+                TxtMethodeSelect.Text = GetMethode(CurrenMarches("CodeProcAO"))
+                CodeMarcheEnCours = RefMarche(CombMarche.SelectedIndex)
+                MontantMarche.Text = AfficherMonnaie(CurrenMarches("MontantEstimatif"))
+                CodeConvention = CurrenMarches("Convention_ChefFile")
             Else
                 TxtMethodeSelect.ResetText()
+                MontantMarche.ResetText()
             End If
-
-            CodeMarcheEnCours = RefMarche(CombMarche.SelectedIndex)
-            ' MontantMarche.Text = AfficherMonnaie(CombMarche.Text.Split("|")(1))
-            MontantMarche.Text = CombMarche.Text.Split("|")(1).ToString.Replace(" ", "")
-            Dim CodConven As String = CombMarche.Text.Split("|")(2)
-            CodeConvention = CodConven.ToString.Split("(")(1).Replace(")", "")
         End If
     End Sub
 
@@ -1403,6 +1470,7 @@ Public Class NewDp
         CmbDelai.Properties.ReadOnly = value
         LibellePublication.Properties.ReadOnly = value
         LieuRemiseProposition.Properties.ReadOnly = value
+        NomEmprunteur.Properties.ReadOnly = value
         DateRecpDossConsult.Properties.ReadOnly = value
 
         'Critere evaluation
@@ -1486,6 +1554,8 @@ Public Class NewDp
         CmbDelai.Text = ""
         LibellePublication.Text = ""
         DateRecpDossConsult.EditValue = Nothing
+        CurrenMarches = Nothing
+        NomEmprunteur.Text = ""
     End Sub
 
     Private Sub RaseSaisieConsult()
@@ -1539,7 +1609,7 @@ Public Class NewDp
     End Sub
 
     Private Sub PDFToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PDFToolStripMenuItem.Click
-        If LayoutView1.RecordCount > 0 Then
+        If LayoutView1.RowCount > 0 Then
             Try
                 If (PourAjout = False And PourModif = False And DejaDansLaBD = False) Then
                     dr = LayoutView1.GetDataRow(LayoutView1.FocusedRowHandle)
@@ -1563,7 +1633,7 @@ Public Class NewDp
 
 
     Private Sub FormatWordToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FormatWordToolStripMenuItem.Click
-        If LayoutView1.RecordCount > 0 Then
+        If LayoutView1.RowCount > 0 Then
             Try
                 If (PourAjout = False And PourModif = False And DejaDansLaBD = False) Then
                     dr = LayoutView1.GetDataRow(LayoutView1.FocusedRowHandle)
@@ -1586,7 +1656,7 @@ Public Class NewDp
     End Sub
 
     Private Sub AnnulerLaDPToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AnnulerLaDPToolStripMenuItem.Click
-        If LayoutView1.RecordCount > 0 Then
+        If LayoutView1.RowCount > 0 Then
             Try
                 If PourModif = True Or PourAjout = True Or DejaDansLaBD = True Then
                     SuccesMsg("Veuillez enregistrer ou fermer le dossier en cours")
@@ -1659,15 +1729,18 @@ Public Class NewDp
                     For Each rw In dts.Rows
                         ExecuteNonQuery("Update t_marche set Forfait_TpsPasse=NULL, NumeroDAO=NULL where RefMarche='" & rw("RefMarche") & "'")
                         ExecuteNonQuery("Update t_ami set StatutDoss='En cours', DossUtiliser=NULL where NumeroDAMI='" & EnleverApost(rw("NumeroAMI").ToString) & "'")
+
+                        'Annulation des dates de réalisations.
+                        GetAnnuleDateRealisationPPM(rw("RefMarche"))
                     Next
 
-                    SuccesMsg("Dossier annulé avec succès")
+                    SuccesMsg("Dossier annulé avec succès.")
                     LayoutView1.SetFocusedRowCellValue("Statut", "Annulé")
                     ChargerMarcher()
                     ChargerDossierAMI()
 
                     'Fermeture des formulaires
-                    FermerForm()
+                    FermerForm({"DepotDP", "OuverturePropositions", "EvaluationConsultants"})
                 End If
             Catch ex As Exception
                 FailMsg(ex.ToString)
@@ -1675,25 +1748,10 @@ Public Class NewDp
         End If
     End Sub
 
-    Private Sub FermerForm()
-        Try
-            'Arret du processus et fermetures des formulairs ouverts
-            'For Each child As Object In Me.MdiChildren
-            For Each child As Object In ClearMdi.MdiChildren
-                If (child.Name = "DepotDP") Or (child.Name = "OuverturePropositions") Or (child.Name = "EvaluationConsultants") Then
-                    child.Close()
-                End If
-            Next
-        Catch ex As Exception
-            FailMsg(ex.ToString)
-        End Try
-    End Sub
-
     Public Function VerifierFormOuvert(ByVal NomForm As String) As Boolean
         Try
             For Each FormOuver In Application.OpenForms
                 If FormOuver.Name = NomForm.ToString Then
-
                     Return True
                 End If
             Next
@@ -1704,7 +1762,7 @@ Public Class NewDp
     End Function
 
     Private Sub AuBailleurToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AuBailleurToolStripMenuItem.Click
-        If LayoutView1.RecordCount > 0 Then
+        If LayoutView1.RowCount > 0 Then
             Try
                 dr = LayoutView1.GetDataRow(LayoutView1.FocusedRowHandle)
                 If dr("Statut").ToString = "Annulé" Then
@@ -1712,7 +1770,7 @@ Public Class NewDp
                     Exit Sub
                 End If
 
-                If dr("Statut").ToString = "Terminer" Then
+                If dr("Statut").ToString = "Terminé" Then
                     FailMsg("Ce marché a été executer")
                     Exit Sub
                 End If
@@ -1724,7 +1782,7 @@ Public Class NewDp
 
                 Dim MessageText As String = ""
                 If dr("DossValider").ToString = "Valider" Then
-                    MessageText = "Le bailleur de fond a déjà valider le dossier" & vbNewLine & "Voulez-vous l'envoye à nouveau ?"
+                    MessageText = "Le bailleur de fond a déjà validé le dossier" & vbNewLine & "Voulez-vous l'envoyer à nouveau ?"
                 Else
                     MessageText = "Confirmez-vous l'envoi de la demande" & vbNewLine & "de proposition au bailleur [ " & MettreApost(rwDossDPAMISA.Rows(0)("InitialeBailleur").ToString) & " ] ?"
                 End If
@@ -1736,14 +1794,14 @@ Public Class NewDp
                         If File.Exists(CheminFile) = True Then
                             DebutChargement(True, "Envoi de la demande de proposition au bailleur...")
                             'Envoi dla DP au bailleur 
-                            If EnvoiMailRapport(NomBailleurRetenu, dr("N°").ToString, EmailDestinatauer, CheminFile, EmailCoordinateurProjet, EmailResponsablePM, "Dossier") = False Then
+                            If EnvoiMailRapport(NomBailleurRetenu, dr("N°").ToString, EmailDestinatauer, CheminFile, EmailCoordinateurProjet, EmailResponsablePM, "Dossier", "DP") = False Then
                                 FinChargement()
                                 Exit Sub
                             End If
                             FinChargement()
-                            SuccesMsg("Dossier envoyé avec succès")
+                            SuccesMsg("Dossier envoyé avec succès.")
                         Else
-                            FailMsg("Le dossier à envoyer n'existe pas ou a été supprimé")
+                            FailMsg("Le dossier à envoyer n'existe pas ou a été supprimé.")
                         End If
                     Catch ep As IOException
                         SuccesMsg("Le fichier est utilisé par une autre application" & vbNewLine & "Veuillez le fermer svp.")
@@ -1760,7 +1818,7 @@ Public Class NewDp
     End Sub
 
     Private Sub AuxConsultantsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AuxConsultantsToolStripMenuItem.Click
-        If LayoutView1.RecordCount > 0 Then
+        If LayoutView1.RowCount > 0 Then
             Try
                 dr = LayoutView1.GetDataRow(LayoutView1.FocusedRowHandle)
                 If dr("Statut").ToString = "Annulé" Then
@@ -1775,12 +1833,12 @@ Public Class NewDp
                 'verifer si le bailleur de fonds a valider en tenant compte de la revu
                 Dim Revu As String = ExecuteScallar("select RevuePrioPost from t_marche as m, t_dp as d where d.RefMarche=m.RefMarche and d.NumeroDp='" & EnleverApost(dr("N°").ToString) & "'")
                 If Revu.ToString = "Priori" And dr("DossValider").ToString <> "Valider" Then
-                    FailMsg("Le bailleur de fonds doit valider le dossier avant d'envoyer aux consultants")
+                    FailMsg("Le bailleur de fonds doit valider le dossier avant d'envoyer aux consultants.")
                     Exit Sub
                 End If
 
                 If Revu.ToString <> "Priori" And dr("DossValider").ToString <> "Valider" Then
-                    FailMsg("Vous devez valider le dossier avant d'envoyer aux consultants")
+                    FailMsg("Vous devez valider le dossier avant d'envoyer aux consultants.")
                     Exit Sub
                 End If
 
@@ -1799,7 +1857,7 @@ Public Class NewDp
 
                             DebutChargement(True, "Envoie de la DP aux consultants...")
                             For Each rw In rWConsult.Rows
-                                If EnvoiMailRapport(MettreApost(rw("NomConsult").ToString), dr("N°").ToString, MettreApost(rw("EmailConsult").ToString), CheminFile, "", "", "Dossier", True) = False Then
+                                If EnvoiMailRapport(MettreApost(rw("NomConsult").ToString), dr("N°").ToString, MettreApost(rw("EmailConsult").ToString), CheminFile, "", "", "Dossier", "DP", True) = False Then
                                     FinChargement()
                                     Exit Sub
                                 End If
@@ -3367,7 +3425,8 @@ Public Class NewDp
             reports6.Load(Chemin & "6_DP_Paysage.rpt")
             reports7.Load(Chemin & "7_DP.rpt")
             reports9.Load(Chemin & "9_DP_Contrat_Annexes.rpt")
-            reports10.Load(Chemin & "10_DP_Paysage.rpt")
+            ' reports10.Load(Chemin & "10_DP_Paysage.rpt")
+            reports10.Load(Chemin & "10_DP.rpt")
             reports11.Load(Chemin & "11_DP_Contrat_Annexes.rpt")
             reports12.Load(Chemin & "12_DP.rpt")
             reports13.Load(Chemin & "13_DP_Annexes.rpt")
@@ -3438,7 +3497,7 @@ Public Class NewDp
 
             'Ajout de la page de garde
             Dim oWord As New Word.Application
-            Dim currentDoc As New Word.Document
+            Dim currentDoc As Word.Document
 
             Try
                 currentDoc = oWord.Documents.Add(Chemin1)
@@ -3485,7 +3544,7 @@ Public Class NewDp
                 mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientPortrait
                 myRange.InsertFile(Chemin9)
                 mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
-                mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientLandscape
+                mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientPortrait
                 myRange.InsertFile(Chemin10)
                 mySection1 = AjouterNouvelleSectionDocument(currentDoc, myRange)
                 mySection1.PageSetup.Orientation = Word.WdOrientation.wdOrientPortrait
@@ -3819,4 +3878,5 @@ Public Class NewDp
             End Try
         End If
     End Sub
+
 End Class

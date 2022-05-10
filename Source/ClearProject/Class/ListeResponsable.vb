@@ -114,20 +114,20 @@ Public Class ListeResponsable
 
         dtListeRespo.Rows.Clear()
         Dim cptr As Decimal = 0
-        query = "select COUNT(ID) from t_ppm_responsableetape where CodeProjet='" & ProjetEnCours & "' AND (Nom like '%" & EnleverApost(Plan_tiers.TxtRechecher.Text) & "%' or Prenoms like '%" & EnleverApost(Plan_tiers.TxtRechecher.Text) & "%' or Service like '%" & EnleverApost(Plan_tiers.TxtRechecher.Text) & "%' or Email like '%" & EnleverApost(Plan_tiers.TxtRechecher.Text) & "%' or Fonction like '%" & EnleverApost(Plan_tiers.TxtRechecher.Text) & "%')"
+        query = "select COUNT(ID) from t_ppm_responsableetape where CodeProjet='" & ProjetEnCours & "' AND (Nom like '%" & EnleverApost(ResponsableEtape.TxtRechecher.Text) & "%' or Prenoms like '%" & EnleverApost(ResponsableEtape.TxtRechecher.Text) & "%' or Service like '%" & EnleverApost(ResponsableEtape.TxtRechecher.Text) & "%' or Email like '%" & EnleverApost(ResponsableEtape.TxtRechecher.Text) & "%' or Fonction like '%" & EnleverApost(ResponsableEtape.TxtRechecher.Text) & "%')"
         Dim nbre = Val(ExecuteScallar(query))
         PageCount = nbre \ PageSize
         If nbre Mod PageSize <> 0 Then
             PageCount += 1
         End If
 
-        Plan_tiers.TxtPage.Text = "Page " & Page & "/" & PageCount
+        ResponsableEtape.TxtPage.Text = "Page " & Page & "/" & PageCount
 
         If (Page = 1) Then
-            query = "select * from t_ppm_responsableetape where CodeProjet='" & ProjetEnCours & "' AND (Nom like '%" & EnleverApost(Plan_tiers.TxtRechecher.Text) & "%' or Prenoms like '%" & EnleverApost(Plan_tiers.TxtRechecher.Text) & "%' or Service like '%" & EnleverApost(Plan_tiers.TxtRechecher.Text) & "%' or Email like '%" & EnleverApost(Plan_tiers.TxtRechecher.Text) & "%' or Fonction like '%" & EnleverApost(Plan_tiers.TxtRechecher.Text) & "%') Limit " & PageSize.ToString
+            query = "select * from t_ppm_responsableetape where CodeProjet='" & ProjetEnCours & "' AND (Nom like '%" & EnleverApost(ResponsableEtape.TxtRechecher.Text) & "%' or Prenoms like '%" & EnleverApost(ResponsableEtape.TxtRechecher.Text) & "%' or Service like '%" & EnleverApost(ResponsableEtape.TxtRechecher.Text) & "%' or Email like '%" & EnleverApost(ResponsableEtape.TxtRechecher.Text) & "%' or Fonction like '%" & EnleverApost(ResponsableEtape.TxtRechecher.Text) & "%') Limit " & PageSize.ToString
         Else
             Dim PreviousPageOffSet = (Page - 1) * PageSize
-            query = "select * from t_ppm_responsableetape where CodeProjet='" & ProjetEnCours & "' AND (Nom like '%" & EnleverApost(Plan_tiers.TxtRechecher.Text) & "%' or Prenoms like '%" & EnleverApost(Plan_tiers.TxtRechecher.Text) & "%' or Service like '%" & EnleverApost(Plan_tiers.TxtRechecher.Text) & "%' or Email like '%" & EnleverApost(Plan_tiers.TxtRechecher.Text) & "%' or Fonction like '%" & EnleverApost(Plan_tiers.TxtRechecher.Text) & "%') Limit " & PageSize.ToString & " OFFSET " & PreviousPageOffSet
+            query = "select * from t_ppm_responsableetape where CodeProjet='" & ProjetEnCours & "' AND (Nom like '%" & EnleverApost(ResponsableEtape.TxtRechecher.Text) & "%' or Prenoms like '%" & EnleverApost(ResponsableEtape.TxtRechecher.Text) & "%' or Service like '%" & EnleverApost(ResponsableEtape.TxtRechecher.Text) & "%' or Email like '%" & EnleverApost(ResponsableEtape.TxtRechecher.Text) & "%' or Fonction like '%" & EnleverApost(ResponsableEtape.TxtRechecher.Text) & "%') Limit " & PageSize.ToString & " OFFSET " & PreviousPageOffSet
         End If
 
         Dim dt = ExcecuteSelectQuery(query)
@@ -139,8 +139,8 @@ Public Class ListeResponsable
             drS(2) = MettreApost(rw("Nom").ToString) & " " & MettreApost(rw("Prenoms").ToString)
             drS(3) = MettreApost(rw("Service").ToString)
             drS(4) = MettreApost(rw("Fonction").ToString)
-            drS(4) = MettreApost(rw("Portable").ToString)
-            drS(5) = MettreApost(rw("EMAIL").ToString)
+            drS(5) = MettreApost(rw("Portable").ToString)
+            drS(6) = MettreApost(rw("EMAIL").ToString)
             dtListeRespo.Rows.Add(drS)
         Next
         GridControl.DataSource = dtListeRespo

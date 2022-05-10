@@ -37,7 +37,14 @@ Partial Class MarcheSigne
         Me.ConsulterLeDossierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ImprimerLeDossierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EnvoyerLeDossierAuBailleurToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExporterLeDossierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FormatPDFToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FormatWordToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExporterLaNotificationDintentionDattributionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EnvoyerLaNotificationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewMarche = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -91,6 +98,7 @@ Partial Class MarcheSigne
         Me.CmbEtat.Properties.Appearance.Options.UseFont = True
         Me.CmbEtat.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.CmbEtat.Properties.Items.AddRange(New Object() {"En cours", "Annulé", "Terminé"})
+        Me.CmbEtat.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         Me.CmbEtat.Size = New System.Drawing.Size(87, 22)
         Me.CmbEtat.TabIndex = 8
         '
@@ -155,6 +163,7 @@ Partial Class MarcheSigne
         Me.CmbDAO.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CmbDAO.Properties.Appearance.Options.UseFont = True
         Me.CmbDAO.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.CmbDAO.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         Me.CmbDAO.Size = New System.Drawing.Size(141, 22)
         Me.CmbDAO.TabIndex = 2
         '
@@ -165,6 +174,7 @@ Partial Class MarcheSigne
         Me.ChkDAO.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkDAO.Properties.Appearance.Options.UseFont = True
         Me.ChkDAO.Properties.Caption = "DAO"
+        Me.ChkDAO.Properties.ReadOnly = True
         Me.ChkDAO.Size = New System.Drawing.Size(51, 20)
         Me.ChkDAO.TabIndex = 1
         '
@@ -200,28 +210,72 @@ Partial Class MarcheSigne
         '
         'ContextMenuStrip1
         '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConsulterLeDossierToolStripMenuItem, Me.ToolStripSeparator1, Me.ImprimerLeDossierToolStripMenuItem})
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConsulterLeDossierToolStripMenuItem, Me.ToolStripSeparator1, Me.ImprimerLeDossierToolStripMenuItem, Me.EnvoyerLeDossierAuBailleurToolStripMenuItem, Me.ExporterLeDossierToolStripMenuItem, Me.ExporterLaNotificationDintentionDattributionToolStripMenuItem, Me.EnvoyerLaNotificationToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(178, 54)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(427, 164)
         '
         'ConsulterLeDossierToolStripMenuItem
         '
         Me.ConsulterLeDossierToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.Ribbon_OPEN_16x16
         Me.ConsulterLeDossierToolStripMenuItem.Name = "ConsulterLeDossierToolStripMenuItem"
-        Me.ConsulterLeDossierToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
-        Me.ConsulterLeDossierToolStripMenuItem.Text = "Consulter le dossier"
+        Me.ConsulterLeDossierToolStripMenuItem.Size = New System.Drawing.Size(426, 22)
+        Me.ConsulterLeDossierToolStripMenuItem.Text = "Consulter le marché"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(174, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(423, 6)
         '
         'ImprimerLeDossierToolStripMenuItem
         '
         Me.ImprimerLeDossierToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.Group_Reports
         Me.ImprimerLeDossierToolStripMenuItem.Name = "ImprimerLeDossierToolStripMenuItem"
-        Me.ImprimerLeDossierToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
-        Me.ImprimerLeDossierToolStripMenuItem.Text = "Imprimer le dossier"
+        Me.ImprimerLeDossierToolStripMenuItem.Size = New System.Drawing.Size(426, 22)
+        Me.ImprimerLeDossierToolStripMenuItem.Text = "Imprimer le marché"
+        Me.ImprimerLeDossierToolStripMenuItem.Visible = False
+        '
+        'EnvoyerLeDossierAuBailleurToolStripMenuItem
+        '
+        Me.EnvoyerLeDossierAuBailleurToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.Mail_16x16
+        Me.EnvoyerLeDossierAuBailleurToolStripMenuItem.Name = "EnvoyerLeDossierAuBailleurToolStripMenuItem"
+        Me.EnvoyerLeDossierAuBailleurToolStripMenuItem.Size = New System.Drawing.Size(426, 22)
+        Me.EnvoyerLeDossierAuBailleurToolStripMenuItem.Text = "Envoyer le marché au bailleur"
+        '
+        'ExporterLeDossierToolStripMenuItem
+        '
+        Me.ExporterLeDossierToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FormatPDFToolStripMenuItem, Me.FormatWordToolStripMenuItem})
+        Me.ExporterLeDossierToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.ExportToTXT_16x16
+        Me.ExporterLeDossierToolStripMenuItem.Name = "ExporterLeDossierToolStripMenuItem"
+        Me.ExporterLeDossierToolStripMenuItem.Size = New System.Drawing.Size(426, 22)
+        Me.ExporterLeDossierToolStripMenuItem.Text = "Exporter le marché"
+        '
+        'FormatPDFToolStripMenuItem
+        '
+        Me.FormatPDFToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.ExportToPDF_16x16
+        Me.FormatPDFToolStripMenuItem.Name = "FormatPDFToolStripMenuItem"
+        Me.FormatPDFToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
+        Me.FormatPDFToolStripMenuItem.Text = "Format PDF"
+        '
+        'FormatWordToolStripMenuItem
+        '
+        Me.FormatWordToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.ExportToRTF_16x16
+        Me.FormatWordToolStripMenuItem.Name = "FormatWordToolStripMenuItem"
+        Me.FormatWordToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
+        Me.FormatWordToolStripMenuItem.Text = "Format Word"
+        '
+        'ExporterLaNotificationDintentionDattributionToolStripMenuItem
+        '
+        Me.ExporterLaNotificationDintentionDattributionToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources._177
+        Me.ExporterLaNotificationDintentionDattributionToolStripMenuItem.Name = "ExporterLaNotificationDintentionDattributionToolStripMenuItem"
+        Me.ExporterLaNotificationDintentionDattributionToolStripMenuItem.Size = New System.Drawing.Size(426, 22)
+        Me.ExporterLaNotificationDintentionDattributionToolStripMenuItem.Text = "Notification d'attribution du marché"
+        '
+        'EnvoyerLaNotificationToolStripMenuItem
+        '
+        Me.EnvoyerLaNotificationToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.Outbox_16x16
+        Me.EnvoyerLaNotificationToolStripMenuItem.Name = "EnvoyerLaNotificationToolStripMenuItem"
+        Me.EnvoyerLaNotificationToolStripMenuItem.Size = New System.Drawing.Size(426, 22)
+        Me.EnvoyerLaNotificationToolStripMenuItem.Text = "Envoyer la notification d'attribution du marché au soumissionnaire"
         '
         'ViewMarche
         '
@@ -239,8 +293,6 @@ Partial Class MarcheSigne
         Me.ViewMarche.OptionsFilter.AllowFilterEditor = False
         Me.ViewMarche.OptionsFilter.AllowFilterIncrementalSearch = False
         Me.ViewMarche.OptionsPrint.AutoWidth = False
-        Me.ViewMarche.OptionsSelection.EnableAppearanceFocusedCell = False
-        Me.ViewMarche.OptionsSelection.EnableAppearanceFocusedRow = False
         Me.ViewMarche.OptionsView.ColumnAutoWidth = False
         Me.ViewMarche.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never
         Me.ViewMarche.OptionsView.ShowGroupExpandCollapseButtons = False
@@ -262,7 +314,7 @@ Partial Class MarcheSigne
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Marché signé"
+        Me.Text = " "
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl1.ResumeLayout(False)
         Me.PanelControl1.PerformLayout()
@@ -300,4 +352,11 @@ Partial Class MarcheSigne
     Friend WithEvents ConsulterLeDossierToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ImprimerLeDossierToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents EnvoyerLeDossierAuBailleurToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ExporterLeDossierToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FormatPDFToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FormatWordToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PrintDocument1 As Printing.PrintDocument
+    Friend WithEvents EnvoyerLaNotificationToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ExporterLaNotificationDintentionDattributionToolStripMenuItem As ToolStripMenuItem
 End Class

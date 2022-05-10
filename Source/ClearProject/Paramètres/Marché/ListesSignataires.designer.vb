@@ -285,6 +285,7 @@ Partial Class ListesSignataires
         Me.BtImprimer.Size = New System.Drawing.Size(28, 23)
         Me.BtImprimer.TabIndex = 25
         Me.BtImprimer.ToolTip = "Impression"
+        Me.BtImprimer.Visible = False
         '
         'LabelControl2
         '

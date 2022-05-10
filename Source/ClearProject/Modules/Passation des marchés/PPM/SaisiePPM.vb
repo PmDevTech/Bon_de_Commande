@@ -217,6 +217,17 @@ Public Class SaisiePPM
     End Sub
 
     Private Sub txtMontant_EditValueChanged(sender As Object, e As EventArgs) Handles txtMontant.EditValueChanged
+        If ViewRepartBailleur.RowCount > 0 Then
+            GridRepartBailleur.DataSource = Nothing
+            dtBailleur.Rows.Clear()
+            TxtMontAffecte.Text = 0
+            CmbBailleur.Enabled = True
+            CmbBailleur.ResetText()
+            CmbConv.Enabled = True
+            CmbConv.ResetText()
+            TxtMontBailleur.Enabled = True
+            TxtMontBailleur.ResetText()
+        End If
         TxtMontTotal.Text = txtMontant.Text
     End Sub
     Private Sub InitForm()
@@ -464,13 +475,13 @@ Public Class SaisiePPM
                 Dim periode = CDate(DateDebutMarche.Text) & " - " & CDate(DateFinMarche.Text)
                 Dim LibellePlan As String = cmbTypeMarche.Text & "_" & periode
 
-                ExecuteNonQuery("insert into t_ppm_marche values (NULL,'" & EnleverApost(LibellePlan) & "','" & EnleverApost(cmbTypeMarche.Text) & "','" & EnleverApost(periode) & "','Tous',NULL,'PPSD','" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "','" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "','" & ProjetEnCours & "','" & CodeUtilisateur & "', '" & EnleverApost(txtNumeroPlan.Text) & "',NULL)")
+                ExecuteNonQuery("insert into t_ppm_marche values (NULL,'" & EnleverApost(LibellePlan) & "','" & EnleverApost(cmbTypeMarche.Text) & "','" & EnleverApost(periode) & "','Tous',NULL,'PPSD','" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "','" & dateconvert(Now.ToShortDateString) & " " & Now.ToLongTimeString & "','" & ProjetEnCours & "','" & CodeUtilisateur & "', '" & EnleverApost(txtNumeroPlan.Text) & "',NULL,NULL,NULL)")
                 CodeNewPlan = ExecuteScallar("Select MAX(RefPPM) FROM t_ppm_marche")
 
                 'Enregistrements des marchés
                 For i = 0 To ViewPPM.RowCount - 1
                     Dim IdMethodePPM As Decimal = Val(ExecuteScallar("Select CodeProcAO FROM t_procao WHERE AbregeAO='" & EnleverApost(ViewPPM.GetRowCellValue(i, "Méthodes de passation des marchés").ToString) & "' AND TypeMarcheAO='" & EnleverApost(cmbTypeMarche.Text) & "'"))
-                    query = "insert into t_marche(CodeProjet,TypeMarche,NumeroComptable,DescriptionMarche,MontantEstimatif,RevuePrioPost,PeriodeMarche,InitialeBailleur,CodeConvention,CodeProcAO,RefPPM,DerniereMaj,Convention_ChefFile,NiveauActu,ModePPM) values('" & ProjetEnCours & "','" & EnleverApost(cmbTypeMarche.Text) & "',NULL,'" & EnleverApost(ViewPPM.GetRowCellValue(i, "Description").ToString) & "','" & ViewPPM.GetRowCellValue(i, "Montant estimatif").ToString.Replace(" ", "") & "','" & EnleverApost(ViewPPM.GetRowCellValue(i, "Type examen").ToString) & "','" & periode & "','" & ViewPPM.GetRowCellValue(i, "Bailleur").ToString & "','" & ViewPPM.GetRowCellValue(i, "Conventions").ToString & "','" & IdMethodePPM & "','" & CodeNewPlan & "','" & Now.ToShortDateString & " " & Now.ToLongTimeString & "','" & ConventionChefFil & "', NULL, 'PPSD')"
+                    query = "insert into t_marche(CodeProjet,TypeMarche,NumeroComptable,DescriptionMarche,MontantEstimatif,RevuePrioPost,PeriodeMarche,InitialeBailleur,CodeConvention,CodeProcAO,RefPPM,DerniereMaj,Convention_ChefFile,NiveauActu,ModePPM,ConventionChefFilProjet) values('" & ProjetEnCours & "','" & EnleverApost(cmbTypeMarche.Text) & "',NULL,'" & EnleverApost(ViewPPM.GetRowCellValue(i, "Description").ToString) & "','" & ViewPPM.GetRowCellValue(i, "Montant estimatif").ToString.Replace(" ", "") & "','" & EnleverApost(ViewPPM.GetRowCellValue(i, "Type examen").ToString) & "','" & periode & "','" & ViewPPM.GetRowCellValue(i, "Bailleur").ToString & "','" & ViewPPM.GetRowCellValue(i, "Conventions").ToString & "','" & IdMethodePPM & "','" & CodeNewPlan & "','" & Now.ToShortDateString & " " & Now.ToLongTimeString & "','" & EnleverApost(ViewPPM.GetRowCellValue(i, "ChefFile").ToString) & "', NULL, 'PPSD', '" & ConventionChefFil & "')"
                     ExecuteNonQuery(query)
 
                     Dim LastRefMarche As String = ExecuteScallar("SELECT MAX(RefMarche) FROM t_marche")
@@ -526,7 +537,7 @@ Public Class SaisiePPM
                 For i = 0 To ViewPPM.RowCount - 1
                     'ViewPPM.GetRowCellValue(i, "ChefFile").ToString
                     Dim IdMethodePPM As Decimal = Val(ExecuteScallar("SELECT CodeProcAO FROM t_procao WHERE AbregeAO='" & EnleverApost(ViewPPM.GetRowCellValue(i, "Méthodes de passation des marchés").ToString) & "' AND TypeMarcheAO='" & EnleverApost(cmbTypeMarche.Text) & "'"))
-                    query = "insert into t_marche(CodeProjet,TypeMarche,NumeroComptable,DescriptionMarche,MontantEstimatif,RevuePrioPost,PeriodeMarche,InitialeBailleur,CodeConvention,CodeProcAO,RefPPM,DerniereMaj,Convention_ChefFile,NiveauActu,ModePPM) values('" & ProjetEnCours & "','" & EnleverApost(cmbTypeMarche.Text) & "',NULL,'" & EnleverApost(ViewPPM.GetRowCellValue(i, "Description").ToString) & "','" & ViewPPM.GetRowCellValue(i, "Montant estimatif").ToString.Replace(" ", "") & "','" & EnleverApost(ViewPPM.GetRowCellValue(i, "Type examen").ToString) & "','" & periode & "','" & ViewPPM.GetRowCellValue(i, "Bailleur").ToString & "','" & ViewPPM.GetRowCellValue(i, "Conventions").ToString & "','" & IdMethodePPM & "','" & IDPlan & "','" & Now.ToShortDateString & " " & Now.ToLongTimeString & "','" & ConventionChefFil & "', NULL,'PPSD')"
+                    query = "insert into t_marche(CodeProjet,TypeMarche,NumeroComptable,DescriptionMarche,MontantEstimatif,RevuePrioPost,PeriodeMarche,InitialeBailleur,CodeConvention,CodeProcAO,RefPPM,DerniereMaj,Convention_ChefFile,NiveauActu,ModePPM,ConventionChefFilProjet) values('" & ProjetEnCours & "','" & EnleverApost(cmbTypeMarche.Text) & "',NULL,'" & EnleverApost(ViewPPM.GetRowCellValue(i, "Description").ToString) & "','" & ViewPPM.GetRowCellValue(i, "Montant estimatif").ToString.Replace(" ", "") & "','" & EnleverApost(ViewPPM.GetRowCellValue(i, "Type examen").ToString) & "','" & periode & "','" & ViewPPM.GetRowCellValue(i, "Bailleur").ToString & "','" & ViewPPM.GetRowCellValue(i, "Conventions").ToString & "','" & IdMethodePPM & "','" & IDPlan & "','" & Now.ToShortDateString & " " & Now.ToLongTimeString & "','" & EnleverApost(ViewPPM.GetRowCellValue(i, "ChefFile").ToString) & "', NULL,'PPSD','" & ConventionChefFil & "')"
                     ExecuteNonQuery(query)
                     Dim LastRefMarche As String = ExecuteScallar("SELECT MAX(RefMarche) FROM t_marche")
 

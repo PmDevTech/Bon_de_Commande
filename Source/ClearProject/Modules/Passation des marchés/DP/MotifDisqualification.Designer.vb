@@ -101,17 +101,19 @@ Partial Class MotifDisqualification
         Me.TxtMotif.Name = "TxtMotif"
         Me.TxtMotif.Properties.Appearance.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtMotif.Properties.Appearance.Options.UseFont = True
+        Me.TxtMotif.Properties.MaxLength = 500
         Me.TxtMotif.Size = New System.Drawing.Size(676, 72)
-        Me.TxtMotif.TabIndex = 1
+        Me.TxtMotif.TabIndex = 0
         '
         'LabelControl1
         '
-        Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl1.Location = New System.Drawing.Point(10, 67)
+        Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl1.Appearance.ForeColor = System.Drawing.Color.Black
+        Me.LabelControl1.Location = New System.Drawing.Point(9, 65)
         Me.LabelControl1.Name = "LabelControl1"
-        Me.LabelControl1.Size = New System.Drawing.Size(116, 15)
-        Me.LabelControl1.TabIndex = 9
-        Me.LabelControl1.Text = "Motif disqualification"
+        Me.LabelControl1.Size = New System.Drawing.Size(325, 16)
+        Me.LabelControl1.TabIndex = 2
+        Me.LabelControl1.Text = "Spécifiez la raison de la disqualification du soumissionaire"
         '
         'MotifDisqualification
         '
@@ -128,7 +130,7 @@ Partial Class MotifDisqualification
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Disqualification"
+        Me.Text = "Raison de la disqualification"
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl1.ResumeLayout(False)
         CType(Me.TxtNomConslt.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -144,6 +146,6 @@ Partial Class MotifDisqualification
     Friend WithEvents BtEnregMotif As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents BtQuitter As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents TxtMotif As DevExpress.XtraEditors.MemoEdit
-    Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents TxtNomConslt As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
 End Class

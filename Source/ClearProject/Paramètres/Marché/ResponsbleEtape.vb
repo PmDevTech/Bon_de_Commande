@@ -60,6 +60,7 @@
             .LoadPage(LgListRespoEtape, .CurrentPage)
         End With
     End Sub
+
     Private Sub SuppressionCompteToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SuppressionCompteToolStripMenuItem.Click
         Try
             If (ViewRespoEtape.RowCount > 0) Then

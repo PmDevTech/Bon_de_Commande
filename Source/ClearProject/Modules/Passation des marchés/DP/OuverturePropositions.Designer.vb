@@ -705,11 +705,11 @@ Partial Class OuverturePropositionsDp
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1006, 569)
+        Me.Controls.Add(Me.GroupControl2)
         Me.Controls.Add(Me.GroupControl1)
         Me.Controls.Add(Me.BtDureeSeance)
         Me.Controls.Add(Me.BtOuvertureOffre)
         Me.Controls.Add(Me.GbSoumissionnaire)
-        Me.Controls.Add(Me.GroupControl2)
         Me.Controls.Add(Me.GbOffres)
         Me.Name = "OuverturePropositionsDp"
         Me.Text = "Ouverture des propositions"

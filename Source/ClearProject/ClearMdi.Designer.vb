@@ -117,7 +117,7 @@ Partial Class ClearMdi
         Me.ElaboPPM = New DevExpress.XtraBars.BarButtonItem()
         Me.RespEtape = New DevExpress.XtraBars.BarButtonItem()
         Me.BtSignataire = New DevExpress.XtraBars.BarButtonItem()
-        Me.BtResposblePM = New DevExpress.XtraBars.BarButtonItem()
+        Me.BtLiaisonEtapes = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonMiniToolbar1 = New DevExpress.XtraBars.Ribbon.RibbonMiniToolbar(Me.components)
         Me.PageAccueil = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibTheme = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
@@ -348,7 +348,7 @@ Partial Class ClearMdi
         '
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
         Me.RibbonControl1.ExpandCollapseItem.Name = ""
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.skinGalleryBarItem, Me.BtBailleur, Me.BtConvention, Me.BtDevise, Me.BtGeo, Me.BtIndicateur, Me.BtAcces, Me.BtGestionAcces, Me.BtMethode, Me.BtEtape, Me.BtSeuil, Me.BtFournis, Me.BtRattrapRglt, Me.BtExercice, Me.BtJournal, Me.BtPlanComptable, Me.BtComptesBanque, Me.BarCompo, Me.BarSousCompo, Me.BtParamEtatCompte, Me.BtService, Me.BtFonction, Me.BtTypeRepartition, Me.BtDecoupAdmin, Me.BtCompteMarche, Me.BtChangeMdp, Me.BarConfigMail, Me.BarConfigSms, Me.BarTypeCourrier, Me.BarItineraireCourrier, Me.BtCompteTiers, Me.BarProjet, Me.BarNiveau, Me.BtCompteBancaire, Me.BarPS, Me.BtNexercice, Me.BtCexercice, Me.BtCjournaux, Me.BarCateg, Me.BarButtonItem1, Me.BarButtonItem2, Me.BarButtonItem3, Me.BarButtonItem6, Me.BarButtonItem7, Me.BarButtonItem8, Me.BarListItem1, Me.BarButtonItem9, Me.BarListItem2, Me.BtProjet, Me.BtSupl, Me.BarButtonItem10, Me.BarListItem3, Me.BarButtonItem12, Me.BarButtonGroup1, Me.BarTypeImmo, Me.BarButtonItem13, Me.BarButtonItem14, Me.BarButtonItem15, Me.btTauxApplicable, Me.BtGrade, Me.BtAvantage, Me.BtCategorie, Me.BtAccessoire, Me.BarButtonItem11, Me.BarButtonItem16, Me.BarButtonItem17, Me.BarButtonItem18, Me.BarButtonItem19, Me.BarButtonItem20, Me.BtPret, Me.BarTypeMat, Me.BarMarque, Me.BarSourceE, Me.BarCouleur, Me.BarCarrosserie, Me.btParamRH, Me.btCorrespSigFip, Me.BtTiers, Me.BtRessourcesRSf, Me.BtExerciceParDefaut, Me.BtSeuilAppro, Me.BtGRHSpecialite, Me.BtParamPaie, Me.btfamillearaticle, Me.Article, Me.BarTauxAppli, Me.BtMonaiDevisVersion1, Me.ElaboPPM, Me.RespEtape, Me.BtSignataire, Me.BtResposblePM})
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.skinGalleryBarItem, Me.BtBailleur, Me.BtConvention, Me.BtDevise, Me.BtGeo, Me.BtIndicateur, Me.BtAcces, Me.BtGestionAcces, Me.BtMethode, Me.BtEtape, Me.BtSeuil, Me.BtFournis, Me.BtRattrapRglt, Me.BtExercice, Me.BtJournal, Me.BtPlanComptable, Me.BtComptesBanque, Me.BarCompo, Me.BarSousCompo, Me.BtParamEtatCompte, Me.BtService, Me.BtFonction, Me.BtTypeRepartition, Me.BtDecoupAdmin, Me.BtCompteMarche, Me.BtChangeMdp, Me.BarConfigMail, Me.BarConfigSms, Me.BarTypeCourrier, Me.BarItineraireCourrier, Me.BtCompteTiers, Me.BarProjet, Me.BarNiveau, Me.BtCompteBancaire, Me.BarPS, Me.BtNexercice, Me.BtCexercice, Me.BtCjournaux, Me.BarCateg, Me.BarButtonItem1, Me.BarButtonItem2, Me.BarButtonItem3, Me.BarButtonItem6, Me.BarButtonItem7, Me.BarButtonItem8, Me.BarListItem1, Me.BarButtonItem9, Me.BarListItem2, Me.BtProjet, Me.BtSupl, Me.BarButtonItem10, Me.BarListItem3, Me.BarButtonItem12, Me.BarButtonGroup1, Me.BarTypeImmo, Me.BarButtonItem13, Me.BarButtonItem14, Me.BarButtonItem15, Me.btTauxApplicable, Me.BtGrade, Me.BtAvantage, Me.BtCategorie, Me.BtAccessoire, Me.BarButtonItem11, Me.BarButtonItem16, Me.BarButtonItem17, Me.BarButtonItem18, Me.BarButtonItem19, Me.BarButtonItem20, Me.BtPret, Me.BarTypeMat, Me.BarMarque, Me.BarSourceE, Me.BarCouleur, Me.BarCarrosserie, Me.btParamRH, Me.btCorrespSigFip, Me.BtTiers, Me.BtRessourcesRSf, Me.BtExerciceParDefaut, Me.BtSeuilAppro, Me.BtGRHSpecialite, Me.BtParamPaie, Me.btfamillearaticle, Me.Article, Me.BarTauxAppli, Me.BtMonaiDevisVersion1, Me.ElaboPPM, Me.RespEtape, Me.BtSignataire, Me.BtLiaisonEtapes})
         Me.RibbonControl1.ItemsVertAlign = DevExpress.Utils.VertAlignment.Top
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
         Me.RibbonControl1.MaxItemId = 162
@@ -1011,14 +1011,14 @@ Partial Class ClearMdi
         '
         'ElaboPPM
         '
-        Me.ElaboPPM.Caption = "Mode d'élaboration du PPM"
+        Me.ElaboPPM.Caption = "Mode d'élaboration du PPM/Responsable PPM"
         Me.ElaboPPM.Glyph = Global.ClearProject.My.Resources.Resources.Add_16x16
         Me.ElaboPPM.Id = 158
         Me.ElaboPPM.Name = "ElaboPPM"
         '
         'RespEtape
         '
-        Me.RespEtape.Caption = "Responsable extérieure étapes"
+        Me.RespEtape.Caption = "Responsable extérieur étapes"
         Me.RespEtape.Glyph = Global.ClearProject.My.Resources.Resources.Add_16x16
         Me.RespEtape.Id = 159
         Me.RespEtape.Name = "RespEtape"
@@ -1030,12 +1030,12 @@ Partial Class ClearMdi
         Me.BtSignataire.Id = 160
         Me.BtSignataire.Name = "BtSignataire"
         '
-        'BtResposblePM
+        'BtLiaisonEtapes
         '
-        Me.BtResposblePM.Caption = "Responsable passation marché"
-        Me.BtResposblePM.Glyph = Global.ClearProject.My.Resources.Resources.Add_16x16
-        Me.BtResposblePM.Id = 161
-        Me.BtResposblePM.Name = "BtResposblePM"
+        Me.BtLiaisonEtapes.Caption = "Liaison étapes passation des marchés"
+        Me.BtLiaisonEtapes.Glyph = Global.ClearProject.My.Resources.Resources.Add_16x16
+        Me.BtLiaisonEtapes.Id = 161
+        Me.BtLiaisonEtapes.Name = "BtLiaisonEtapes"
         '
         'PageAccueil
         '
@@ -1130,9 +1130,9 @@ Partial Class ClearMdi
         Me.RibbonPageGroup17.ItemLinks.Add(Me.BtMethode)
         Me.RibbonPageGroup17.ItemLinks.Add(Me.BtSeuil)
         Me.RibbonPageGroup17.ItemLinks.Add(Me.BtEtape)
+        Me.RibbonPageGroup17.ItemLinks.Add(Me.BtLiaisonEtapes)
         Me.RibbonPageGroup17.ItemLinks.Add(Me.BarButtonItem16)
         Me.RibbonPageGroup17.ItemLinks.Add(Me.RespEtape)
-        Me.RibbonPageGroup17.ItemLinks.Add(Me.BtResposblePM)
         Me.RibbonPageGroup17.ItemLinks.Add(Me.BtSignataire)
         Me.RibbonPageGroup17.Name = "RibbonPageGroup17"
         Me.RibbonPageGroup17.Text = "..."
@@ -2744,5 +2744,5 @@ Partial Class ClearMdi
     Friend WithEvents ElaboPPM As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents RespEtape As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BtSignataire As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents BtResposblePM As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BtLiaisonEtapes As DevExpress.XtraBars.BarButtonItem
 End Class

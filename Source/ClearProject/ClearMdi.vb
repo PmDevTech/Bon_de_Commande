@@ -1170,7 +1170,8 @@ Public Class ClearMdi
     End Sub
 
     Private Sub ElaboPPM_ItemClick(sender As Object, e As ItemClickEventArgs) Handles ElaboPPM.ItemClick
-        Dialog_form(ModePlanMarche)
+        'Dialog_form(ModePlanMarche)
+        Dialog_form(ModePPM_ResponsablPPM)
     End Sub
     Private Sub ResponsableEtape_ItemClick(sender As Object, e As ItemClickEventArgs) Handles RespEtape.ItemClick
         Dialog_form(ResponsableEtape)
@@ -1181,7 +1182,8 @@ Public Class ClearMdi
         Dialog_form(ListesSignataires)
     End Sub
 
-    Private Sub BtResposblePM_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BtResposblePM.ItemClick
-        Dialog_form(ResponsablePM)
+    Private Sub BtResposblePM_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BtLiaisonEtapes.ItemClick
+        ' Dialog_form(ResponsablePM)
+        Dialog_form(LiaisionEtapesPPM)
     End Sub
 End Class

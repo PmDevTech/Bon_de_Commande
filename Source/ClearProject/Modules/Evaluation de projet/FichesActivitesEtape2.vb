@@ -853,7 +853,7 @@ Public Class FichesActivitesEtape2
             DrX = ViewBesoin.GetDataRow(ViewBesoin.FocusedRowHandle)
             'Verifier si la ligne est utilisé
             If Val(ExecuteScallar("select count(*) from t_besoinmarche where RefBesoinPartition='" & DrX(1).ToString & "'")) > 0 Then
-                FailMsg("Impossible de modifier cette ligne." & vbNewLine & "car elle est utilisé pour elaboré un marché")
+                FailMsg("Impossible de modifier cette ligne." & vbNewLine & "Car elle est utilisée pour élaborer un marché.")
                 Exit Sub
             End If
             Dim RefBes As String = DrX(1).ToString
@@ -1017,7 +1017,7 @@ Public Class FichesActivitesEtape2
             DrX = ViewBesoin.GetDataRow(ViewBesoin.FocusedRowHandle)
             'Verifier si la ligne est utilisé
             If Val(ExecuteScallar("select count(*) from t_besoinmarche where RefBesoinPartition='" & DrX(1).ToString & "'")) > 0 Then
-                FailMsg("Impossible de supprimer cette ligne." & vbNewLine & "car elle est utilisé pour elaboré un marché")
+                FailMsg("Impossible de supprimer cette ligne." & vbNewLine & "Car elle est utilisée pour élaborer un marché.")
                 Exit Sub
             End If
 
