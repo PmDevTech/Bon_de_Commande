@@ -61,7 +61,7 @@ Public Class Liste_boncommande
             If supp = False Then
                 SuccesMsg("Veuillez cocher un marché/bon de commande")
             Else
-                SuccesMsg("Suppression effectué avec succès")
+                SuccesMsg("Suppression effectuée avec succès")
                 query = "select s.TypeMarche, s.NumeroMarche, m.DescriptionMarche, s.MontantHT, s.DateMarche, c.NOM_CPT, s.EtatMarche  from t_marchesigne s, t_marche m, t_comp_compte c  where s.refmarche=m.refmarche and s.attributaire=c.CODE_CPT and s.codeprojet='" & ProjetEnCours & "' ORDER BY length(s.NumeroMarche), s.NumeroMarche"
                 'remplirDataGridimmo4(query, LgListBoncommande, LblNombre, ViewBoncommande)
             End If
@@ -154,7 +154,7 @@ Public Class Liste_boncommande
     End Sub
 
     Private Sub BtAjouter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtAjouter.Click
-        BonCommande.Size = New Point(1010, 470)
+        BonCommande.Size = New Point(1071, 786)
         Dialog_form(BonCommande)
     End Sub
 
