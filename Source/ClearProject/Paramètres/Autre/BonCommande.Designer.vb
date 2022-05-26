@@ -19,18 +19,18 @@ Partial Class BonCommande
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.BtAnnuler = New DevExpress.XtraEditors.SimpleButton()
         Me.BtEnregistrer = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
-        Me.TxtLibelleLot = New DevExpress.XtraEditors.TextEdit()
+        Me.CmbCodeLot = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
-        Me.TxtCodeLot = New DevExpress.XtraEditors.TextEdit()
         Me.LabelNumDAO = New DevExpress.XtraEditors.LabelControl()
         Me.CmbNumDAO = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.Dateboncmde = New DevExpress.XtraEditors.DateEdit()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.Txtboncmde = New DevExpress.XtraEditors.TextEdit()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Txtboncmde = New DevExpress.XtraEditors.TextEdit()
         Me.TxtFournisseur = New DevExpress.XtraEditors.TextEdit()
         Me.TxtRCCM = New DevExpress.XtraEditors.TextEdit()
         Me.TxtCCFour = New DevExpress.XtraEditors.TextEdit()
@@ -45,7 +45,6 @@ Partial Class BonCommande
         Me.TxtAutreTaxe = New DevExpress.XtraEditors.TextEdit()
         Me.TxtLibAutreTaxe = New DevExpress.XtraEditors.TextEdit()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.TxtDescrpMarche = New DevExpress.XtraEditors.TextEdit()
         Me.TxtRemise = New DevExpress.XtraEditors.TextEdit()
         Me.TxtTVA = New DevExpress.XtraEditors.TextEdit()
         Me.TxtNewMont = New DevExpress.XtraEditors.TextEdit()
@@ -63,6 +62,7 @@ Partial Class BonCommande
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TxtMontLettre = New DevExpress.XtraEditors.MemoEdit()
+        Me.TxtIntituleMarche = New DevExpress.XtraEditors.MemoEdit()
         Me.GroupControl3 = New DevExpress.XtraEditors.GroupControl()
         Me.ListBonCmde = New DevExpress.XtraGrid.GridControl()
         Me.ViewLstCmde = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -78,15 +78,14 @@ Partial Class BonCommande
         Me.RdCheque = New DevExpress.XtraEditors.CheckEdit()
         Me.GroupControl4 = New DevExpress.XtraEditors.GroupControl()
         Me.Label19 = New System.Windows.Forms.Label()
-        Me.LieuLivraison = New DevExpress.XtraEditors.TextEdit()
-        Me.DelaiLivraison = New DevExpress.XtraEditors.TextEdit()
+        Me.TxtLieuLivraison = New DevExpress.XtraEditors.TextEdit()
+        Me.TxtDelaiLivraison = New DevExpress.XtraEditors.TextEdit()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.GroupControl5 = New DevExpress.XtraEditors.GroupControl()
         Me.GroupControl6 = New DevExpress.XtraEditors.GroupControl()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
-        CType(Me.TxtLibelleLot.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TxtCodeLot.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CmbCodeLot.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CmbNumDAO.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Dateboncmde.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Dateboncmde.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -99,7 +98,6 @@ Partial Class BonCommande
         Me.Panel1.SuspendLayout()
         CType(Me.TxtAutreTaxe.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TxtLibAutreTaxe.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TxtDescrpMarche.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TxtRemise.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TxtTVA.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TxtNewMont.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -108,6 +106,7 @@ Partial Class BonCommande
         CType(Me.TxtPu.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TxtQte.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TxtMontLettre.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TxtIntituleMarche.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl3.SuspendLayout()
         CType(Me.ListBonCmde, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -126,8 +125,8 @@ Partial Class BonCommande
         CType(Me.RdCheque.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl4.SuspendLayout()
-        CType(Me.LieuLivraison.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DelaiLivraison.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TxtLieuLivraison.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TxtDelaiLivraison.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl5.SuspendLayout()
         CType(Me.GroupControl6, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -154,46 +153,39 @@ Partial Class BonCommande
         '
         'GroupControl1
         '
-        Me.GroupControl1.Controls.Add(Me.TxtLibelleLot)
+        Me.GroupControl1.Controls.Add(Me.CmbCodeLot)
         Me.GroupControl1.Controls.Add(Me.LabelControl1)
-        Me.GroupControl1.Controls.Add(Me.TxtCodeLot)
         Me.GroupControl1.Controls.Add(Me.LabelNumDAO)
         Me.GroupControl1.Controls.Add(Me.CmbNumDAO)
         Me.GroupControl1.Controls.Add(Me.Dateboncmde)
         Me.GroupControl1.Controls.Add(Me.Label12)
-        Me.GroupControl1.Controls.Add(Me.Txtboncmde)
         Me.GroupControl1.Controls.Add(Me.Label1)
+        Me.GroupControl1.Controls.Add(Me.Txtboncmde)
         Me.GroupControl1.Location = New System.Drawing.Point(9, 77)
         Me.GroupControl1.Name = "GroupControl1"
         Me.GroupControl1.Size = New System.Drawing.Size(391, 140)
         Me.GroupControl1.TabIndex = 1
         Me.GroupControl1.Text = "Bon de commande"
         '
-        'TxtLibelleLot
+        'CmbCodeLot
         '
-        Me.TxtLibelleLot.Location = New System.Drawing.Point(178, 112)
-        Me.TxtLibelleLot.Name = "TxtLibelleLot"
-        Me.TxtLibelleLot.Size = New System.Drawing.Size(203, 20)
-        Me.TxtLibelleLot.TabIndex = 7
+        Me.CmbCodeLot.Location = New System.Drawing.Point(134, 54)
+        Me.CmbCodeLot.Name = "CmbCodeLot"
+        Me.CmbCodeLot.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.CmbCodeLot.Size = New System.Drawing.Size(72, 20)
+        Me.CmbCodeLot.TabIndex = 277
         '
         'LabelControl1
         '
-        Me.LabelControl1.Location = New System.Drawing.Point(12, 116)
+        Me.LabelControl1.Location = New System.Drawing.Point(12, 57)
         Me.LabelControl1.Name = "LabelControl1"
         Me.LabelControl1.Size = New System.Drawing.Size(87, 13)
         Me.LabelControl1.TabIndex = 276
         Me.LabelControl1.Text = "N° Lot / Libelle Lot"
         '
-        'TxtCodeLot
-        '
-        Me.TxtCodeLot.Location = New System.Drawing.Point(133, 112)
-        Me.TxtCodeLot.Name = "TxtCodeLot"
-        Me.TxtCodeLot.Size = New System.Drawing.Size(39, 20)
-        Me.TxtCodeLot.TabIndex = 6
-        '
         'LabelNumDAO
         '
-        Me.LabelNumDAO.Location = New System.Drawing.Point(12, 87)
+        Me.LabelNumDAO.Location = New System.Drawing.Point(12, 30)
         Me.LabelNumDAO.Name = "LabelNumDAO"
         Me.LabelNumDAO.Size = New System.Drawing.Size(37, 13)
         Me.LabelNumDAO.TabIndex = 270
@@ -201,7 +193,7 @@ Partial Class BonCommande
         '
         'CmbNumDAO
         '
-        Me.CmbNumDAO.Location = New System.Drawing.Point(133, 83)
+        Me.CmbNumDAO.Location = New System.Drawing.Point(134, 26)
         Me.CmbNumDAO.Name = "CmbNumDAO"
         Me.CmbNumDAO.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.CmbNumDAO.Size = New System.Drawing.Size(248, 20)
@@ -210,7 +202,7 @@ Partial Class BonCommande
         'Dateboncmde
         '
         Me.Dateboncmde.EditValue = Nothing
-        Me.Dateboncmde.Location = New System.Drawing.Point(133, 27)
+        Me.Dateboncmde.Location = New System.Drawing.Point(134, 81)
         Me.Dateboncmde.Margin = New System.Windows.Forms.Padding(2)
         Me.Dateboncmde.Name = "Dateboncmde"
         Me.Dateboncmde.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
@@ -221,28 +213,28 @@ Partial Class BonCommande
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(9, 30)
+        Me.Label12.Location = New System.Drawing.Point(10, 84)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(30, 13)
         Me.Label12.TabIndex = 11
         Me.Label12.Text = "Date"
         '
-        'Txtboncmde
-        '
-        Me.Txtboncmde.Location = New System.Drawing.Point(133, 55)
-        Me.Txtboncmde.Margin = New System.Windows.Forms.Padding(2)
-        Me.Txtboncmde.Name = "Txtboncmde"
-        Me.Txtboncmde.Size = New System.Drawing.Size(248, 20)
-        Me.Txtboncmde.TabIndex = 4
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(9, 57)
+        Me.Label1.Location = New System.Drawing.Point(10, 111)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(109, 13)
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "N° Bon de commande"
+        '
+        'Txtboncmde
+        '
+        Me.Txtboncmde.Location = New System.Drawing.Point(134, 109)
+        Me.Txtboncmde.Margin = New System.Windows.Forms.Padding(2)
+        Me.Txtboncmde.Name = "Txtboncmde"
+        Me.Txtboncmde.Size = New System.Drawing.Size(248, 20)
+        Me.Txtboncmde.TabIndex = 4
         '
         'TxtFournisseur
         '
@@ -332,7 +324,6 @@ Partial Class BonCommande
         Me.Panel1.Controls.Add(Me.TxtAutreTaxe)
         Me.Panel1.Controls.Add(Me.TxtLibAutreTaxe)
         Me.Panel1.Controls.Add(Me.Label16)
-        Me.Panel1.Controls.Add(Me.TxtDescrpMarche)
         Me.Panel1.Controls.Add(Me.TxtRemise)
         Me.Panel1.Controls.Add(Me.TxtTVA)
         Me.Panel1.Controls.Add(Me.TxtNewMont)
@@ -350,9 +341,10 @@ Partial Class BonCommande
         Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.TxtMontLettre)
+        Me.Panel1.Controls.Add(Me.TxtIntituleMarche)
         Me.Panel1.Location = New System.Drawing.Point(407, 77)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(312, 587)
+        Me.Panel1.Size = New System.Drawing.Size(312, 585)
         Me.Panel1.TabIndex = 6
         '
         'TxtAutreTaxe
@@ -375,18 +367,11 @@ Partial Class BonCommande
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(10, 84)
+        Me.Label16.Location = New System.Drawing.Point(10, 107)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(52, 14)
         Me.Label16.TabIndex = 271
         Me.Label16.Text = "Référence"
-        '
-        'TxtDescrpMarche
-        '
-        Me.TxtDescrpMarche.Location = New System.Drawing.Point(10, 45)
-        Me.TxtDescrpMarche.Name = "TxtDescrpMarche"
-        Me.TxtDescrpMarche.Size = New System.Drawing.Size(292, 20)
-        Me.TxtDescrpMarche.TabIndex = 19
         '
         'TxtRemise
         '
@@ -408,7 +393,7 @@ Partial Class BonCommande
         '
         'TxtNewMont
         '
-        Me.TxtNewMont.Location = New System.Drawing.Point(10, 275)
+        Me.TxtNewMont.Location = New System.Drawing.Point(10, 298)
         Me.TxtNewMont.Name = "TxtNewMont"
         Me.TxtNewMont.Properties.Appearance.BackColor = System.Drawing.SystemColors.Control
         Me.TxtNewMont.Properties.Appearance.Options.UseBackColor = True
@@ -418,21 +403,21 @@ Partial Class BonCommande
         '
         'TxtReference
         '
-        Me.TxtReference.Location = New System.Drawing.Point(10, 100)
+        Me.TxtReference.Location = New System.Drawing.Point(10, 123)
         Me.TxtReference.Name = "TxtReference"
         Me.TxtReference.Size = New System.Drawing.Size(292, 20)
         Me.TxtReference.TabIndex = 20
         '
         'TxtDesignation
         '
-        Me.TxtDesignation.Location = New System.Drawing.Point(10, 155)
+        Me.TxtDesignation.Location = New System.Drawing.Point(10, 178)
         Me.TxtDesignation.Name = "TxtDesignation"
         Me.TxtDesignation.Size = New System.Drawing.Size(292, 20)
         Me.TxtDesignation.TabIndex = 21
         '
         'TxtPu
         '
-        Me.TxtPu.Location = New System.Drawing.Point(158, 212)
+        Me.TxtPu.Location = New System.Drawing.Point(158, 235)
         Me.TxtPu.Name = "TxtPu"
         Me.TxtPu.Properties.Mask.EditMask = "d"
         Me.TxtPu.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
@@ -442,7 +427,7 @@ Partial Class BonCommande
         '
         'TxtQte
         '
-        Me.TxtQte.Location = New System.Drawing.Point(10, 212)
+        Me.TxtQte.Location = New System.Drawing.Point(10, 235)
         Me.TxtQte.Name = "TxtQte"
         Me.TxtQte.Properties.Mask.EditMask = "d"
         Me.TxtQte.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
@@ -484,7 +469,7 @@ Partial Class BonCommande
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Italic)
-        Me.Label9.Location = New System.Drawing.Point(10, 305)
+        Me.Label9.Location = New System.Drawing.Point(10, 330)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(90, 14)
         Me.Label9.TabIndex = 20
@@ -494,7 +479,7 @@ Partial Class BonCommande
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(96, 256)
+        Me.Label6.Location = New System.Drawing.Point(96, 279)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(125, 15)
         Me.Label6.TabIndex = 8
@@ -504,17 +489,17 @@ Partial Class BonCommande
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(10, 28)
+        Me.Label10.Location = New System.Drawing.Point(10, 12)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(113, 14)
+        Me.Label10.Size = New System.Drawing.Size(93, 14)
         Me.Label10.TabIndex = 10
-        Me.Label10.Text = "Description du marché"
+        Me.Label10.Text = "Intitulé du marché"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Italic)
-        Me.Label5.Location = New System.Drawing.Point(10, 195)
+        Me.Label5.Location = New System.Drawing.Point(10, 218)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(47, 14)
         Me.Label5.TabIndex = 6
@@ -524,7 +509,7 @@ Partial Class BonCommande
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Italic)
-        Me.Label4.Location = New System.Drawing.Point(158, 195)
+        Me.Label4.Location = New System.Drawing.Point(158, 219)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(65, 14)
         Me.Label4.TabIndex = 4
@@ -534,7 +519,7 @@ Partial Class BonCommande
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(10, 138)
+        Me.Label2.Location = New System.Drawing.Point(10, 161)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(63, 14)
         Me.Label2.TabIndex = 0
@@ -542,10 +527,19 @@ Partial Class BonCommande
         '
         'TxtMontLettre
         '
-        Me.TxtMontLettre.Location = New System.Drawing.Point(10, 324)
+        Me.TxtMontLettre.Location = New System.Drawing.Point(10, 349)
         Me.TxtMontLettre.Name = "TxtMontLettre"
-        Me.TxtMontLettre.Size = New System.Drawing.Size(292, 102)
+        Me.TxtMontLettre.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtMontLettre.Properties.Appearance.Options.UseFont = True
+        Me.TxtMontLettre.Size = New System.Drawing.Size(292, 82)
         Me.TxtMontLettre.TabIndex = 25
+        '
+        'TxtIntituleMarche
+        '
+        Me.TxtIntituleMarche.Location = New System.Drawing.Point(10, 29)
+        Me.TxtIntituleMarche.Name = "TxtIntituleMarche"
+        Me.TxtIntituleMarche.Size = New System.Drawing.Size(292, 69)
+        Me.TxtIntituleMarche.TabIndex = 19
         '
         'GroupControl3
         '
@@ -560,6 +554,8 @@ Partial Class BonCommande
         '
         Me.ListBonCmde.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ListBonCmde.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        GridLevelNode2.RelationName = "Level1"
+        Me.ListBonCmde.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
         Me.ListBonCmde.Location = New System.Drawing.Point(2, 21)
         Me.ListBonCmde.MainView = Me.ViewLstCmde
         Me.ListBonCmde.Name = "ListBonCmde"
@@ -684,17 +680,9 @@ Partial Class BonCommande
         Me.ViewLstCmde.Appearance.VertLine.Options.UseBorderColor = True
         Me.ViewLstCmde.GridControl = Me.ListBonCmde
         Me.ViewLstCmde.Name = "ViewLstCmde"
-        Me.ViewLstCmde.OptionsBehavior.Editable = False
-        Me.ViewLstCmde.OptionsBehavior.ReadOnly = True
-        Me.ViewLstCmde.OptionsCustomization.AllowColumnMoving = False
         Me.ViewLstCmde.OptionsCustomization.AllowFilter = False
-        Me.ViewLstCmde.OptionsCustomization.AllowGroup = False
-        Me.ViewLstCmde.OptionsCustomization.AllowSort = False
-        Me.ViewLstCmde.OptionsFilter.AllowFilterEditor = False
-        Me.ViewLstCmde.OptionsFilter.AllowFilterIncrementalSearch = False
         Me.ViewLstCmde.OptionsPrint.AutoWidth = False
-        Me.ViewLstCmde.OptionsSelection.EnableAppearanceFocusedCell = False
-        Me.ViewLstCmde.OptionsSelection.EnableAppearanceFocusedRow = False
+        Me.ViewLstCmde.OptionsSelection.EnableAppearanceHideSelection = False
         Me.ViewLstCmde.OptionsView.ColumnAutoWidth = False
         Me.ViewLstCmde.OptionsView.EnableAppearanceEvenRow = True
         Me.ViewLstCmde.OptionsView.EnableAppearanceOddRow = True
@@ -716,7 +704,7 @@ Partial Class BonCommande
         '
         'RdSansPassMarche
         '
-        Me.RdSansPassMarche.Location = New System.Drawing.Point(527, 31)
+        Me.RdSansPassMarche.Location = New System.Drawing.Point(547, 31)
         Me.RdSansPassMarche.Name = "RdSansPassMarche"
         Me.RdSansPassMarche.Properties.Caption = "Sans Passation de Marché"
         Me.RdSansPassMarche.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio
@@ -725,7 +713,7 @@ Partial Class BonCommande
         '
         'RdParPassMarche
         '
-        Me.RdParPassMarche.Location = New System.Drawing.Point(291, 31)
+        Me.RdParPassMarche.Location = New System.Drawing.Point(303, 31)
         Me.RdParPassMarche.Name = "RdParPassMarche"
         Me.RdParPassMarche.Properties.Caption = "Par Passation de Marché"
         Me.RdParPassMarche.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio
@@ -737,7 +725,7 @@ Partial Class BonCommande
         Me.PanelControl3.Controls.Add(Me.BtModifier)
         Me.PanelControl3.Controls.Add(Me.BtAnnuler)
         Me.PanelControl3.Controls.Add(Me.BtEnregistrer)
-        Me.PanelControl3.Location = New System.Drawing.Point(9, 673)
+        Me.PanelControl3.Location = New System.Drawing.Point(9, 672)
         Me.PanelControl3.Name = "PanelControl3"
         Me.PanelControl3.Size = New System.Drawing.Size(1043, 68)
         Me.PanelControl3.TabIndex = 7
@@ -756,6 +744,7 @@ Partial Class BonCommande
         Me.TxtIsntructionSpec.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TxtIsntructionSpec.Location = New System.Drawing.Point(2, 21)
         Me.TxtIsntructionSpec.Name = "TxtIsntructionSpec"
+        Me.TxtIsntructionSpec.Properties.MaxLength = 450
         Me.TxtIsntructionSpec.Size = New System.Drawing.Size(389, 65)
         Me.TxtIsntructionSpec.TabIndex = 18
         '
@@ -764,7 +753,7 @@ Partial Class BonCommande
         Me.GroupControl2.Controls.Add(Me.RdVirement)
         Me.GroupControl2.Controls.Add(Me.RdEspeces)
         Me.GroupControl2.Controls.Add(Me.RdCheque)
-        Me.GroupControl2.Location = New System.Drawing.Point(8, 409)
+        Me.GroupControl2.Location = New System.Drawing.Point(8, 407)
         Me.GroupControl2.Name = "GroupControl2"
         Me.GroupControl2.ScrollBarSmallChange = 3
         Me.GroupControl2.Size = New System.Drawing.Size(393, 62)
@@ -773,7 +762,7 @@ Partial Class BonCommande
         '
         'RdVirement
         '
-        Me.RdVirement.Location = New System.Drawing.Point(158, 31)
+        Me.RdVirement.Location = New System.Drawing.Point(160, 31)
         Me.RdVirement.Name = "RdVirement"
         Me.RdVirement.Properties.Caption = "Virement"
         Me.RdVirement.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio
@@ -782,7 +771,7 @@ Partial Class BonCommande
         '
         'RdEspeces
         '
-        Me.RdEspeces.Location = New System.Drawing.Point(251, 31)
+        Me.RdEspeces.Location = New System.Drawing.Point(259, 31)
         Me.RdEspeces.Name = "RdEspeces"
         Me.RdEspeces.Properties.Caption = "Espèces"
         Me.RdEspeces.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio
@@ -791,7 +780,7 @@ Partial Class BonCommande
         '
         'RdCheque
         '
-        Me.RdCheque.Location = New System.Drawing.Point(64, 31)
+        Me.RdCheque.Location = New System.Drawing.Point(66, 31)
         Me.RdCheque.Name = "RdCheque"
         Me.RdCheque.Properties.Caption = "Chèque"
         Me.RdCheque.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio
@@ -801,10 +790,10 @@ Partial Class BonCommande
         'GroupControl4
         '
         Me.GroupControl4.Controls.Add(Me.Label19)
-        Me.GroupControl4.Controls.Add(Me.LieuLivraison)
-        Me.GroupControl4.Controls.Add(Me.DelaiLivraison)
+        Me.GroupControl4.Controls.Add(Me.TxtLieuLivraison)
+        Me.GroupControl4.Controls.Add(Me.TxtDelaiLivraison)
         Me.GroupControl4.Controls.Add(Me.Label18)
-        Me.GroupControl4.Location = New System.Drawing.Point(9, 477)
+        Me.GroupControl4.Location = New System.Drawing.Point(9, 475)
         Me.GroupControl4.Name = "GroupControl4"
         Me.GroupControl4.Size = New System.Drawing.Size(393, 93)
         Me.GroupControl4.TabIndex = 4
@@ -819,19 +808,19 @@ Partial Class BonCommande
         Me.Label19.TabIndex = 268
         Me.Label19.Text = "Lieu de livraison"
         '
-        'LieuLivraison
+        'TxtLieuLivraison
         '
-        Me.LieuLivraison.Location = New System.Drawing.Point(133, 61)
-        Me.LieuLivraison.Name = "LieuLivraison"
-        Me.LieuLivraison.Size = New System.Drawing.Size(248, 20)
-        Me.LieuLivraison.TabIndex = 17
+        Me.TxtLieuLivraison.Location = New System.Drawing.Point(133, 61)
+        Me.TxtLieuLivraison.Name = "TxtLieuLivraison"
+        Me.TxtLieuLivraison.Size = New System.Drawing.Size(248, 20)
+        Me.TxtLieuLivraison.TabIndex = 17
         '
-        'DelaiLivraison
+        'TxtDelaiLivraison
         '
-        Me.DelaiLivraison.Location = New System.Drawing.Point(133, 31)
-        Me.DelaiLivraison.Name = "DelaiLivraison"
-        Me.DelaiLivraison.Size = New System.Drawing.Size(248, 20)
-        Me.DelaiLivraison.TabIndex = 16
+        Me.TxtDelaiLivraison.Location = New System.Drawing.Point(133, 31)
+        Me.TxtDelaiLivraison.Name = "TxtDelaiLivraison"
+        Me.TxtDelaiLivraison.Size = New System.Drawing.Size(248, 20)
+        Me.TxtDelaiLivraison.TabIndex = 16
         '
         'Label18
         '
@@ -845,7 +834,7 @@ Partial Class BonCommande
         'GroupControl5
         '
         Me.GroupControl5.Controls.Add(Me.TxtIsntructionSpec)
-        Me.GroupControl5.Location = New System.Drawing.Point(9, 576)
+        Me.GroupControl5.Location = New System.Drawing.Point(9, 574)
         Me.GroupControl5.Name = "GroupControl5"
         Me.GroupControl5.Size = New System.Drawing.Size(393, 88)
         Me.GroupControl5.TabIndex = 5
@@ -894,8 +883,7 @@ Partial Class BonCommande
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl1.ResumeLayout(False)
         Me.GroupControl1.PerformLayout()
-        CType(Me.TxtLibelleLot.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TxtCodeLot.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CmbCodeLot.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CmbNumDAO.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Dateboncmde.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Dateboncmde.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -909,7 +897,6 @@ Partial Class BonCommande
         Me.Panel1.PerformLayout()
         CType(Me.TxtAutreTaxe.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TxtLibAutreTaxe.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TxtDescrpMarche.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TxtRemise.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TxtTVA.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TxtNewMont.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -918,6 +905,7 @@ Partial Class BonCommande
         CType(Me.TxtPu.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TxtQte.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TxtMontLettre.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TxtIntituleMarche.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl3.ResumeLayout(False)
         CType(Me.ListBonCmde, System.ComponentModel.ISupportInitialize).EndInit()
@@ -937,8 +925,8 @@ Partial Class BonCommande
         CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl4.ResumeLayout(False)
         Me.GroupControl4.PerformLayout()
-        CType(Me.LieuLivraison.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DelaiLivraison.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TxtLieuLivraison.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TxtDelaiLivraison.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl5.ResumeLayout(False)
         CType(Me.GroupControl6, System.ComponentModel.ISupportInitialize).EndInit()
@@ -951,7 +939,6 @@ Partial Class BonCommande
     Friend WithEvents BtEnregistrer As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents GroupControl1 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
@@ -991,15 +978,14 @@ Partial Class BonCommande
     Friend WithEvents PanelControl3 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents BtModifier As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents Label16 As Label
-    Friend WithEvents TxtDescrpMarche As DevExpress.XtraEditors.TextEdit
     Friend WithEvents GroupControl2 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents TxtIsntructionSpec As DevExpress.XtraEditors.MemoEdit
     Friend WithEvents RdVirement As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents RdEspeces As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents RdCheque As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents GroupControl4 As DevExpress.XtraEditors.GroupControl
-    Friend WithEvents LieuLivraison As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents DelaiLivraison As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents TxtLieuLivraison As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents TxtDelaiLivraison As DevExpress.XtraEditors.TextEdit
     Friend WithEvents Label18 As Label
     Friend WithEvents Label19 As Label
     Friend WithEvents TxtLibAutreTaxe As DevExpress.XtraEditors.TextEdit
@@ -1007,8 +993,9 @@ Partial Class BonCommande
     Friend WithEvents GroupControl5 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents TxtFournisseur As DevExpress.XtraEditors.TextEdit
     Friend WithEvents TxtAutreTaxe As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents TxtLibelleLot As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents TxtCodeLot As DevExpress.XtraEditors.TextEdit
     Friend WithEvents GroupControl6 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents TxtIntituleMarche As DevExpress.XtraEditors.MemoEdit
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents CmbCodeLot As DevExpress.XtraEditors.ComboBoxEdit
 End Class

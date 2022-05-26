@@ -8,6 +8,7 @@ Imports CrystalDecisions.Shared
 Public Class Liste_boncommande
     Dim drx As DataRow
     Dim dtdoc = New DataTable()
+    Public AjoutModif As String = String.Empty
 
     Private Sub Liste_boncommande_Load(ByVal sender As System.Object, ByVal e As System.EventArgs)  Handles MyBase.Load
         Me.Icon = My.Resources.Logo_ClearProject_Valide
@@ -155,6 +156,7 @@ Public Class Liste_boncommande
 
     Private Sub BtAjouter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtAjouter.Click
         BonCommande.Size = New Point(1071, 786)
+        AjoutModif = "Ajout"
         Dialog_form(BonCommande)
     End Sub
 

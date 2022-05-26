@@ -1,4 +1,5 @@
 ﻿Imports System.Math
+Imports DevExpress.XtraEditors.Repository
 Imports MySql.Data.MySqlClient
 
 Public Class BonCommande
@@ -6,6 +7,9 @@ Public Class BonCommande
     Dim tauxDollar As Decimal = 1
     Dim CfaGere As Boolean = True
     Dim dtboncommande = New DataTable
+    Dim ID_NumDAO() As String
+    Dim ID_CodeLot() As String
+    Dim CodeFournis As String = ""
 
     Private Sub ChargerService()
         'CmbService.Properties.Items.Clear()
@@ -38,28 +42,68 @@ Public Class BonCommande
     End Sub
 
     Private Sub ChargerNumDAO()
+        CmbNumDAO.ResetText()
+        CmbNumDAO.Properties.Items.Clear()
+
+        Dim VerifMarche As Double = 0
+
+        'récupération des DAO dont l'évaluation et l'attribution ont été faite
+        query = "SELECT d.NumeroDAO, l.RefLot FROM t_dao d, t_lotdao l, t_soumissionfournisseurclassement s WHERE d.NumeroDAO = l.NumeroDAO AND l.NumeroDAO = s.NumeroDAO AND d.DateFinJugement is not null AND d.statut_DAO <> 'Annulé' and d.CodeProjet = '" & ProjetEnCours & "' and s.Selectionne = 'OUI' and s.Attribue = 'OUI' GROUP by l.RefLot ORDER BY d.NumeroDAO"
+        Dim dt As DataTable = ExcecuteSelectQuery(query)
+        ReDim ID_NumDAO(dt.Rows.Count)
+        Dim i As Integer = 0
+        For Each rw As DataRow In dt.Rows
+            query = "SELECT count(*) as Result from t_marchesigne WHERE NumeroDAO = '" & rw("NumeroDAO").ToString & "' and RefLot = '" & rw("RefLot").ToString & "' and CodeProjet = '" & ProjetEnCours & "'"
+            dt = ExcecuteSelectQuery(query)
+            For Each rw1 As DataRow In dt.Rows
+                VerifMarche = Val(rw1("Result").ToString)
+                If VerifMarche > 0 Then
+                    Continue For
+                End If
+            Next
+
+            query = "SELECT count(*) as Result from t_boncommande WHERE NumeroDAO = '" & rw("NumeroDAO").ToString & "' and RefLot = '" & rw("RefLot").ToString & "' and CodeProjet = '" & ProjetEnCours & "'"
+            For Each rw2 As DataRow In dt.Rows
+                VerifMarche = Val(rw2("Result").ToString)
+                If VerifMarche > 0 Then
+                    Continue For
+                End If
+            Next
+
+            CmbNumDAO.Properties.Items.Add(rw("NumeroDAO").ToString)
+            ID_NumDAO(i) = rw("NumeroDAO").ToString
+            i += 1
+        Next
 
     End Sub
 
-    Private Sub BonCommande_Load(sender As System.Object, e As System.EventArgs)  Handles MyBase.Load
+    Private Sub BonCommande_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Me.Icon = My.Resources.Logo_ClearProject_Valide
         RdParPassMarche.Checked = True
         RdSansPassMarche.Checked = False
         TxtAutreTaxe.Enabled = False
+
+        If Liste_boncommande.AjoutModif = "Ajout" Then
+            BtEnregistrer.Enabled = True
+            BtModifier.Enabled = False
+        Else
+            BtEnregistrer.Enabled = False
+            BtModifier.Enabled = True
+        End If
         'ChargerService()
         'Chargertiers()
         'RemplirListeActivites()
         'codeauto(TextEdit1)
         Initialiser()
+        LoadColonneListeBesoins()
     End Sub
 
     Private Sub Initialiser()
-        Dateboncmde.Text = ""
-        Dateboncmde.Focus()
-        Txtboncmde.Text = ""
         CmbNumDAO.ResetText()
-        TxtCodeLot.Text = ""
-        TxtLibelleLot.Text = ""
+        CmbNumDAO.Focus()
+        CmbCodeLot.ResetText()
+        Dateboncmde.Text = ""
+        Txtboncmde.Text = ""
         TxtFournisseur.Text = ""
         TxtAdresseFour.Text = ""
         TxtTelFour.Text = ""
@@ -68,10 +112,10 @@ Public Class BonCommande
         RdCheque.Checked = True
         RdVirement.Checked = False
         RdEspeces.Checked = False
-        DelaiLivraison.Text = ""
-        LieuLivraison.Text = ""
+        TxtDelaiLivraison.Text = ""
+        TxtLieuLivraison.Text = ""
         TxtIsntructionSpec.Text = ""
-        TxtDescrpMarche.Text = ""
+        TxtIntituleMarche.Text = ""
         TxtReference.Text = ""
         TxtDesignation.Text = ""
         TxtQte.Text = ""
@@ -124,26 +168,46 @@ Public Class BonCommande
 
     End Sub
 
-    Private Sub GridBonCommande()
-
+    Private Sub LoadColonneListeBesoins()
         dtboncommande.Columns.Clear()
         dtboncommande.Columns.Add("Choix", Type.GetType("System.Boolean"))
         dtboncommande.Columns.Add("Référence", Type.GetType("System.String"))
-        dtboncommande.Columns.Add("Designation", Type.GetType("System.String"))
+        dtboncommande.Columns.Add("Désignation", Type.GetType("System.String"))
         dtboncommande.Columns.Add("Quantité", Type.GetType("System.String"))
         dtboncommande.Columns.Add("Prix Unitaire", Type.GetType("System.String"))
         dtboncommande.Columns.Add("Prix Total", Type.GetType("System.String"))
+        ListBonCmde.DataSource = dtboncommande
+    End Sub
+
+    Private Sub GridBonCommande()
+
+        Dim NewLine As DataTable = ListBonCmde.DataSource
         Dim cpt As Decimal = 0
 
-        Dim drS = dtboncommande.NewRow()
+        Dim drS = NewLine.NewRow()
         cpt += 1
-        drS(0) = TabTrue(cpt - 1)
-        drS(1) = EnleverApost(TxtDesignation.Text)
-        drS(2) = AfficherMonnaie(CDbl(TxtQte.Text))
-        drS(3) = AfficherMonnaie(CDbl(TxtPu.Text))
-        drS(4) = AfficherMonnaie(CDbl(TxtNewMont.Text))
-        dtboncommande.Rows.Add(drS)
-        ListBonCmde.DataSource = dtboncommande
+        drS("Choix") = TabTrue(cpt - 1)
+        drS("Référence") = EnleverApost(TxtReference.Text)
+        drS("Désignation") = EnleverApost(TxtDesignation.Text)
+        drS("Quantité") = AfficherMonnaie(CDbl(TxtQte.Text))
+        drS("Prix Unitaire") = AfficherMonnaie(CDbl(TxtPu.Text))
+        drS("Prix Total") = AfficherMonnaie(CDbl(TxtNewMont.Text))
+        NewLine.Rows.Add(drS)
+
+
+        Dim edit As RepositoryItemCheckEdit = New RepositoryItemCheckEdit()
+        edit.ValueChecked = True
+        edit.ValueUnchecked = False
+        ViewLstCmde.Columns("Choix").ColumnEdit = edit
+        ListBonCmde.RepositoryItems.Add(edit)
+        ViewLstCmde.OptionsBehavior.Editable = True
+
+        ViewLstCmde.Columns("Référence").OptionsColumn.AllowEdit = False
+        ViewLstCmde.Columns("Désignation").OptionsColumn.AllowEdit = False
+        ViewLstCmde.Columns("Quantité").OptionsColumn.AllowEdit = False
+        ViewLstCmde.Columns("Prix Unitaire").OptionsColumn.AllowEdit = False
+        ViewLstCmde.Columns("Prix Total").OptionsColumn.AllowEdit = False
+
     End Sub
 
     Private Sub TxtQte_TextChanged(sender As Object, e As EventArgs) Handles TxtQte.TextChanged, TxtPu.TextChanged
@@ -153,7 +217,11 @@ Public Class BonCommande
             qte = IIf(TxtQte.Text = "", 0, TxtQte.Text)
             pu = IIf(TxtPu.Text = "", 0, TxtPu.Text)
             TxtNewMont.Text = CDbl(qte.ToString) * CDbl(pu.ToString)
-            TxtMontLettre.Text = MontantLettre(TxtNewMont.Text)
+            Try
+                TxtMontLettre.Text = MontantLettre(TxtNewMont.Text)
+            Catch ex As Exception
+                AlertMsg("Dépassement de caractère!")
+            End Try
         End If
     End Sub
 
@@ -161,8 +229,18 @@ Public Class BonCommande
         Select Case e.KeyChar
             Case ControlChars.CrLf
                 GridBonCommande()
+                InitFormulaireListeBesoins()
             Case Else
         End Select
+    End Sub
+
+    Private Sub InitFormulaireListeBesoins()
+        TxtReference.Text = ""
+        TxtDesignation.Text = ""
+        TxtQte.Text = ""
+        TxtPu.Text = ""
+        TxtNewMont.Text = ""
+        TxtMontLettre.Text = ""
     End Sub
 
     Private Sub BtAnnuler_Click(sender As Object, e As EventArgs) Handles BtAnnuler.Click
@@ -172,13 +250,31 @@ Public Class BonCommande
     Private Sub RdParPassMarche_CheckedChanged(sender As Object, e As EventArgs) Handles RdParPassMarche.CheckedChanged
         If RdParPassMarche.Checked Then
             RdSansPassMarche.Checked = False
+            TxtIntituleMarche.Enabled = False
+            TxtFournisseur.Enabled = False
+            CmbNumDAO.Enabled = True
+            CmbCodeLot.Enabled = True
+            TxtQte.Enabled = False
+            TxtPu.Enabled = False
+            TxtDesignation.Enabled = False
             Initialiser()
+            ChargerNumDAO()
         End If
     End Sub
 
     Private Sub RdSansPassMarche_CheckedChanged(sender As Object, e As EventArgs) Handles RdSansPassMarche.CheckedChanged
+        On Error Resume Next
         If RdSansPassMarche.Checked Then
             RdParPassMarche.Checked = False
+            TxtIntituleMarche.Enabled = True
+            TxtFournisseur.Enabled = True
+            CmbNumDAO.Enabled = False
+            CmbNumDAO.Properties.Items.Clear()
+            CmbCodeLot.Enabled = False
+            CmbCodeLot.Properties.Items.Clear()
+            TxtQte.Enabled = True
+            TxtPu.Enabled = True
+            TxtDesignation.Enabled = True
             Initialiser()
         End If
     End Sub
@@ -210,6 +306,202 @@ Public Class BonCommande
         Else
             TxtAutreTaxe.Enabled = False
             TxtAutreTaxe.Text = ""
+        End If
+    End Sub
+
+    Private Sub CmbNumDAO_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbNumDAO.SelectedIndexChanged
+
+        CmbCodeLot.ResetText()
+        CmbCodeLot.Properties.Items.Clear()
+
+        Dim VerifCodeLot As Double = 0
+
+        query = "SELECT IntituleDAO FROM t_dao WHERE CodeProjet = '" & ProjetEnCours & "' AND NumeroDAO = '" & ID_NumDAO(CmbNumDAO.SelectedIndex) & "'"
+        Dim Intitule = ExecuteScallar(query)
+        TxtIntituleMarche.Text = MettreApost(Intitule.ToString)
+
+        query = "SELECT * from t_lotdao WHERE NumeroDAO = '" & ID_NumDAO(CmbNumDAO.SelectedIndex) & "'"
+        Dim dt As DataTable = ExcecuteSelectQuery(query)
+        ReDim ID_CodeLot(dt.Rows.Count)
+        Dim i As Integer = 0
+        For Each rw As DataRow In dt.Rows
+            query = "SELECT count(*) as Result from t_marchesigne WHERE NumeroDAO = '" & rw("NumeroDAO").ToString & "' and RefLot = '" & rw("RefLot").ToString & "' and CodeProjet = '" & ProjetEnCours & "'"
+            dt = ExcecuteSelectQuery(query)
+            For Each rw1 As DataRow In dt.Rows
+                VerifCodeLot = Val(rw1("Result").ToString)
+                If VerifCodeLot > 0 Then
+                    Continue For
+                End If
+            Next
+
+            query = "SELECT count(*) as Result from t_boncommande WHERE NumeroDAO = '" & rw("NumeroDAO").ToString & "' and RefLot = '" & rw("RefLot").ToString & "' and CodeProjet = '" & ProjetEnCours & "'"
+            dt = ExcecuteSelectQuery(query)
+            For Each rw2 As DataRow In dt.Rows
+                VerifCodeLot = Val(rw2("Result").ToString)
+                If VerifCodeLot > 0 Then
+                    Continue For
+                End If
+            Next
+
+            CmbCodeLot.Properties.Items.Add(rw("CodeLot").ToString)
+            ID_CodeLot(i) = rw("CodeLot").ToString
+            i += 1
+        Next
+    End Sub
+
+    Private Sub CmbCodeLot_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbCodeLot.SelectedIndexChanged
+        On Error Resume Next
+
+        TxtFournisseur.Text = ""
+        TxtAdresseFour.Text = ""
+        TxtTelFour.Text = ""
+        TxtCCFour.Text = ""
+        TxtRCCM.Text = ""
+        TxtDesignation.Text = ""
+
+        'Dim CodeFournis As String = ""
+        Dim LibelleLot As String = ""
+        Dim ResultQTE As Double = 0
+
+        query = "SELECT CodeFournis, NomFournis, AdresseCompleteFournis, TelFournis, CompteContribuableFournis, RegistreCommerceFournis FROM t_fournisseur WHERE CodeProjet = '" & ProjetEnCours & "' and CodeFournis IN (SELECT CodeFournis FROM t_soumissionfournisseurclassement where CodeLot = '" & ID_CodeLot(CmbCodeLot.SelectedIndex) & "' and NumeroDAO = '" & ID_NumDAO(CmbNumDAO.SelectedIndex) & "')"
+        Dim dt As DataTable = ExcecuteSelectQuery(query)
+        For Each rw As DataRow In dt.Rows
+            CodeFournis = rw("CodeFournis").ToString
+            TxtFournisseur.Text = MettreApost(rw("NomFournis").ToString)
+            TxtAdresseFour.Text = MettreApost(rw("AdresseCompleteFournis").ToString)
+            TxtTelFour.Text = MettreApost(rw("TelFournis").ToString)
+            TxtCCFour.Text = MettreApost(rw("CompteContribuableFournis").ToString)
+            TxtRCCM.Text = MettreApost(rw("RegistreCommerceFournis").ToString)
+        Next
+
+        query = "SELECT PrixCorrigeOffre FROM t_soumissionfournisseurclassement WHERE CodeFournis = '" & CodeFournis.ToString & "' and CodeLot = '" & ID_CodeLot(CmbCodeLot.SelectedIndex) & "'"
+        ResultQTE = ExecuteScallar(query)
+        TxtNewMont.Text = AfficherMonnaie(ResultQTE.ToString)
+
+        query = "SELECT LibelleLot from t_lotdao WHERE NumeroDAO = '" & ID_NumDAO(CmbNumDAO.SelectedIndex) & "' AND CodeLot = '" & ID_CodeLot(CmbCodeLot.SelectedIndex) & "'"
+        LibelleLot = ExecuteScallar(query)
+        TxtDesignation.Text = MettreApost(LibelleLot.ToString)
+
+        'dt = ExcecuteSelectQuery(query)
+        'For Each rw1 As DataRow In dt.Rows
+        '    TxtNewMont.Text = AfficherMonnaie(rw1("PrixCorrigeOffre").ToString)
+        'Next
+
+
+        'query = "SELECT l.LibelleLot, SUM(s.QteFournit) as Qte FROM t_lotdao l, t_spectechfourniture s WHERE l.NumeroDAO = s.NumeroDAO and l.CodeLot = s.CodeLot and l.NumeroDAO = '" & CmbNumDAO.Text & "' and l.CodeLot = '" & CmbCodeLot.Text & "'"
+        'dt = ExcecuteSelectQuery(query)
+        'For Each rw As DataRow In dt.Rows
+        '    TxtDesignation.Text = EnleverApost(rw("LibelleLot").ToString)
+        '    TxtQte.Text = AfficherMonnaie(rw("QteFournit").ToString)
+        'Next
+
+        'query = "SELECT RefSoumis FROM t_soumissionfournisseur WHERE CodeFournis = '" & CodeFournis.ToString & "' and CodeLot = '" & CmbCodeLot.SelectedIndex & "'"
+        'dt = ExcecuteSelectQuery(query)
+        'For Each rw As DataRow In dt.Rows
+        '    query = ""
+        'Next
+    End Sub
+
+    Private Sub TxtNewMont_TextChanged(sender As Object, e As EventArgs) Handles TxtNewMont.TextChanged
+        If RdParPassMarche.Checked Then
+            Try
+                TxtMontLettre.Text = MontantLettre(TxtNewMont.Text)
+            Catch ex As Exception
+                AlertMsg("Dépassement de caractère!")
+            End Try
+        End If
+    End Sub
+
+    Private Sub BtEnregistrer_Click(sender As Object, e As EventArgs) Handles BtEnregistrer.Click
+        If RdParPassMarche.Checked Then
+
+            If CmbNumDAO.SelectedIndex = -1 Then
+                SuccesMsg("Veuillez sélectionner le numéro du DAO")
+                CmbNumDAO.Focus()
+            ElseIf CmbCodeLot.SelectedIndex = -1 Then
+                SuccesMsg("Veuillez sélectionner le code du lot")
+                CmbCodeLot.Focus()
+            ElseIf Dateboncmde.Text = "" Then
+                SuccesMsg("Veuillez choisir la date d'élaboration du bon de commande")
+                Dateboncmde.Focus()
+            ElseIf Txtboncmde.Text = "" Then
+                SuccesMsg("Veuillez saisir le numéro du bon de commande")
+                Txtboncmde.Focus()
+            ElseIf TxtLibAutreTaxe.Text <> "" Then
+                If TxtAutreTaxe.Text = "" Then
+                    SuccesMsg("Veuillez saisir le pourcentage de la taxe correspondant aux autres taxes")
+                    TxtAutreTaxe.Focus()
+                End If
+            Else
+                Dim ChoixElabBC As String = RdParPassMarche.Text
+                Dim dd As String = CDate(Dateboncmde.Text).ToString("dd/MM/yyy")
+                Dim DateBC As String = dateconvert(dd)
+
+                Dim ConditionPaiement As String = ""
+                If RdCheque.Checked Then
+                    ConditionPaiement = RdCheque.Text
+                ElseIf RdVirement.Checked Then
+                    ConditionPaiement = RdVirement.Text
+                Else
+                    ConditionPaiement = RdEspeces.Text
+                End If
+
+                Dim MontantHT As String = TxtNewMont.Text
+                Dim TVA As String = ""
+                Dim Remise As String = ""
+                Dim AutreTaxe As String = ""
+                Dim MontantTVA As Double = 0
+                Dim MontantRemise As Double = 0
+                Dim MontantAutreTaxe As Double = 0
+                Dim MontantNetHT As Double = 0
+                Dim MontantTOTAL As Double = 0
+                Dim MontantTotalTTC As Double = 0
+
+                If TxtRemise.Text = "" Then
+                    Remise = ""
+                    MontantRemise = 0
+                Else
+                    Remise = TxtRemise.Text
+                    MontantRemise = CDbl(MontantHT.ToString) * (CDbl(Remise) / 100)
+                End If
+
+                MontantNetHT = CDbl(MontantHT.ToString) - MontantRemise
+
+                If TxtTVA.Text = "" Then
+                    TVA = ""
+                    MontantTVA = 0
+                Else
+                    TVA = TxtTVA.Text
+                    MontantTVA = MontantNetHT * (CDbl(TVA) / 100)
+                End If
+
+                MontantTOTAL = MontantNetHT - MontantTVA
+
+                If TxtLibAutreTaxe.Text = "" Then
+                    AutreTaxe = ""
+                    MontantAutreTaxe = 0
+                Else
+                    AutreTaxe = TxtAutreTaxe.Text
+                    MontantAutreTaxe = MontantTOTAL * (CDbl(AutreTaxe) / 100)
+                End If
+
+                MontantTotalTTC = MontantTOTAL - MontantAutreTaxe
+
+                'probable que je fasse un update à ce niveau dans t_fournisseur car il provient de la passation des marchés
+
+                'insertion dans la table t_boncommande
+                query = "INSERT INTO t_boncommande values('" & EnleverApost(Txtboncmde.Text) & "', '" & CInt(CodeFournis.ToString) & "','" & ChoixElabBC.ToString & "','" & CmbNumDAO.Text & "','" & CmbCodeLot.Text & "','" & EnleverApost(TxtIntituleMarche.Text) & "','" & DateBC & "','" & ConditionPaiement & "','" & EnleverApost(TxtDelaiLivraison.Text) & "','" &
+                   EnleverApost(TxtLieuLivraison.Text) & "','" & EnleverApost(TxtIsntructionSpec.Text) & "','" & TVA.ToString & "','" & MontantTVA & "','" && "')"
+                ExecuteNonQuery(query)
+
+
+
+
+
+
+
+            End If
+
         End If
     End Sub
 End Class
