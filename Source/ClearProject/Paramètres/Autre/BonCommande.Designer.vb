@@ -19,7 +19,7 @@ Partial Class BonCommande
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.BtAnnuler = New DevExpress.XtraEditors.SimpleButton()
         Me.BtEnregistrer = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
@@ -554,8 +554,8 @@ Partial Class BonCommande
         '
         Me.ListBonCmde.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ListBonCmde.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        GridLevelNode2.RelationName = "Level1"
-        Me.ListBonCmde.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
+        GridLevelNode1.RelationName = "Level1"
+        Me.ListBonCmde.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
         Me.ListBonCmde.Location = New System.Drawing.Point(2, 21)
         Me.ListBonCmde.MainView = Me.ViewLstCmde
         Me.ListBonCmde.Name = "ListBonCmde"

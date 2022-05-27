@@ -30,3 +30,9 @@ ALTER TABLE `t_boncommande` ADD `MontantAutreTaxe` DOUBLE(19,2) NOT NULL AFTER `
 ALTER TABLE `t_boncommande` ADD `MontantNetHT` DOUBLE(19,2) NOT NULL AFTER `MontantAutreTaxe`, ADD `MontantTotal` DOUBLE(19,2) NOT NULL AFTER `MontantNetHT`, ADD `MontantTotalTTC` DOUBLE(19,2) NOT NULL AFTER `MontantTotal`;
 ALTER TABLE `t_boncommande` CHANGE `CodeFournisseur` `CodeFournisseur` SMALLINT(6) NOT NULL;
 ALTER TABLE `t_boncommande` CHANGE `DateCommande` `DateCommande` DATETIME NOT NULL;
+
+--27/05/2022---
+ALTER TABLE `t_boncommande` ADD `MontantBCHT` VARCHAR(20) NOT NULL AFTER `InstructionSpeciale`;
+ALTER TABLE `t_boncommande` CHANGE `MontantTVA` `MontantTVA` DOUBLE(19,5) NOT NULL, CHANGE `MontantRemise` `MontantRemise` DOUBLE(19,5) NOT NULL, CHANGE `MontantAutreTaxe` `MontantAutreTaxe` DOUBLE(19,5) NOT NULL, CHANGE `MontantNetHT` `MontantNetHT` DOUBLE(19,5) NOT NULL, CHANGE `MontantTotal` `MontantTotal` DOUBLE(19,5) NOT NULL, CHANGE `MontantTotalTTC` `MontantTotalTTC` DOUBLE(19,5) NOT NULL;
+ALTER TABLE `t_bc_listebesoins` CHANGE `PrixTotal` `PrixTotal` DOUBLE(19,5) NOT NULL;
+ALTER TABLE `t_bc_listebesoins` CHANGE `PrixUnitaire` `PrixUnitaire` DOUBLE(19,5) NOT NULL;

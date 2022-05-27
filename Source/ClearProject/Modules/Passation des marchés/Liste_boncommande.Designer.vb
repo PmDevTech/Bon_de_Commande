@@ -19,6 +19,7 @@ Partial Class Liste_boncommande
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.BackstageViewButtonItem1 = New DevExpress.XtraBars.Ribbon.BackstageViewButtonItem()
@@ -34,12 +35,6 @@ Partial Class Liste_boncommande
         Me.BackstageViewTabItem1 = New DevExpress.XtraBars.Ribbon.BackstageViewTabItem()
         Me.BtAjouter = New DevExpress.XtraEditors.SimpleButton()
         Me.PanelControl3 = New DevExpress.XtraEditors.PanelControl()
-        Me.LgListBoncommande = New DevExpress.XtraGrid.GridControl()
-        Me.ViewBoncommande = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
-        Me.RepositoryItemPictureEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit()
-        Me.RepositoryItemPictureEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit()
-        Me.RepositoryItemCheckEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
         Me.Checktous = New DevExpress.XtraEditors.CheckEdit()
@@ -48,20 +43,18 @@ Partial Class Liste_boncommande
         Me.BtActualiser = New DevExpress.XtraEditors.SimpleButton()
         Me.BtModifier = New DevExpress.XtraEditors.SimpleButton()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.GCListBoncommande = New DevExpress.XtraGrid.GridControl()
+        Me.ViewBoncommande = New DevExpress.XtraGrid.Views.Grid.GridView()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl3.SuspendLayout()
-        CType(Me.LgListBoncommande, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ViewBoncommande, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemPictureEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemPictureEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl2.SuspendLayout()
         CType(Me.Checktous.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GCListBoncommande, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ViewBoncommande, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelControl1
@@ -159,166 +152,12 @@ Partial Class Liste_boncommande
         '
         'PanelControl3
         '
-        Me.PanelControl3.Controls.Add(Me.LgListBoncommande)
+        Me.PanelControl3.Controls.Add(Me.GCListBoncommande)
         Me.PanelControl3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl3.Location = New System.Drawing.Point(2, 53)
         Me.PanelControl3.Name = "PanelControl3"
         Me.PanelControl3.Size = New System.Drawing.Size(991, 402)
         Me.PanelControl3.TabIndex = 16
-        '
-        'LgListBoncommande
-        '
-        Me.LgListBoncommande.Cursor = System.Windows.Forms.Cursors.Default
-        Me.LgListBoncommande.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LgListBoncommande.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LgListBoncommande.Location = New System.Drawing.Point(2, 2)
-        Me.LgListBoncommande.MainView = Me.ViewBoncommande
-        Me.LgListBoncommande.Name = "LgListBoncommande"
-        Me.LgListBoncommande.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1, Me.RepositoryItemPictureEdit1, Me.RepositoryItemPictureEdit2, Me.RepositoryItemCheckEdit2})
-        Me.LgListBoncommande.Size = New System.Drawing.Size(987, 398)
-        Me.LgListBoncommande.TabIndex = 10
-        Me.LgListBoncommande.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ViewBoncommande})
-        '
-        'ViewBoncommande
-        '
-        Me.ViewBoncommande.ActiveFilterEnabled = False
-        Me.ViewBoncommande.Appearance.ColumnFilterButton.BackColor = System.Drawing.Color.Silver
-        Me.ViewBoncommande.Appearance.ColumnFilterButton.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(212, Byte), Integer), CType(CType(212, Byte), Integer), CType(CType(212, Byte), Integer))
-        Me.ViewBoncommande.Appearance.ColumnFilterButton.BorderColor = System.Drawing.Color.Silver
-        Me.ViewBoncommande.Appearance.ColumnFilterButton.ForeColor = System.Drawing.Color.Gray
-        Me.ViewBoncommande.Appearance.ColumnFilterButton.Options.UseBackColor = True
-        Me.ViewBoncommande.Appearance.ColumnFilterButton.Options.UseBorderColor = True
-        Me.ViewBoncommande.Appearance.ColumnFilterButton.Options.UseForeColor = True
-        Me.ViewBoncommande.Appearance.ColumnFilterButtonActive.BackColor = System.Drawing.Color.FromArgb(CType(CType(212, Byte), Integer), CType(CType(212, Byte), Integer), CType(CType(212, Byte), Integer))
-        Me.ViewBoncommande.Appearance.ColumnFilterButtonActive.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
-        Me.ViewBoncommande.Appearance.ColumnFilterButtonActive.BorderColor = System.Drawing.Color.FromArgb(CType(CType(212, Byte), Integer), CType(CType(212, Byte), Integer), CType(CType(212, Byte), Integer))
-        Me.ViewBoncommande.Appearance.ColumnFilterButtonActive.ForeColor = System.Drawing.Color.Blue
-        Me.ViewBoncommande.Appearance.ColumnFilterButtonActive.Options.UseBackColor = True
-        Me.ViewBoncommande.Appearance.ColumnFilterButtonActive.Options.UseBorderColor = True
-        Me.ViewBoncommande.Appearance.ColumnFilterButtonActive.Options.UseForeColor = True
-        Me.ViewBoncommande.Appearance.Empty.BackColor = System.Drawing.Color.FromArgb(CType(CType(212, Byte), Integer), CType(CType(212, Byte), Integer), CType(CType(212, Byte), Integer))
-        Me.ViewBoncommande.Appearance.Empty.Options.UseBackColor = True
-        Me.ViewBoncommande.Appearance.EvenRow.BackColor = System.Drawing.Color.Silver
-        Me.ViewBoncommande.Appearance.EvenRow.BackColor2 = System.Drawing.Color.GhostWhite
-        Me.ViewBoncommande.Appearance.EvenRow.ForeColor = System.Drawing.Color.Black
-        Me.ViewBoncommande.Appearance.EvenRow.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
-        Me.ViewBoncommande.Appearance.EvenRow.Options.UseBackColor = True
-        Me.ViewBoncommande.Appearance.EvenRow.Options.UseForeColor = True
-        Me.ViewBoncommande.Appearance.FilterCloseButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(212, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(200, Byte), Integer))
-        Me.ViewBoncommande.Appearance.FilterCloseButton.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(154, Byte), Integer), CType(CType(154, Byte), Integer))
-        Me.ViewBoncommande.Appearance.FilterCloseButton.BorderColor = System.Drawing.Color.FromArgb(CType(CType(212, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(200, Byte), Integer))
-        Me.ViewBoncommande.Appearance.FilterCloseButton.ForeColor = System.Drawing.Color.Black
-        Me.ViewBoncommande.Appearance.FilterCloseButton.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
-        Me.ViewBoncommande.Appearance.FilterCloseButton.Options.UseBackColor = True
-        Me.ViewBoncommande.Appearance.FilterCloseButton.Options.UseBorderColor = True
-        Me.ViewBoncommande.Appearance.FilterCloseButton.Options.UseForeColor = True
-        Me.ViewBoncommande.Appearance.FilterPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.ViewBoncommande.Appearance.FilterPanel.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(212, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(200, Byte), Integer))
-        Me.ViewBoncommande.Appearance.FilterPanel.ForeColor = System.Drawing.Color.White
-        Me.ViewBoncommande.Appearance.FilterPanel.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
-        Me.ViewBoncommande.Appearance.FilterPanel.Options.UseBackColor = True
-        Me.ViewBoncommande.Appearance.FilterPanel.Options.UseForeColor = True
-        Me.ViewBoncommande.Appearance.FixedLine.BackColor = System.Drawing.Color.FromArgb(CType(CType(58, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(58, Byte), Integer))
-        Me.ViewBoncommande.Appearance.FixedLine.Options.UseBackColor = True
-        Me.ViewBoncommande.Appearance.FocusedRow.BackColor = System.Drawing.Color.Navy
-        Me.ViewBoncommande.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.Navy
-        Me.ViewBoncommande.Appearance.FocusedRow.ForeColor = System.Drawing.Color.White
-        Me.ViewBoncommande.Appearance.FocusedRow.Options.UseBackColor = True
-        Me.ViewBoncommande.Appearance.FocusedRow.Options.UseForeColor = True
-        Me.ViewBoncommande.Appearance.FooterPanel.BackColor = System.Drawing.Color.Silver
-        Me.ViewBoncommande.Appearance.FooterPanel.BorderColor = System.Drawing.Color.Silver
-        Me.ViewBoncommande.Appearance.FooterPanel.ForeColor = System.Drawing.Color.Black
-        Me.ViewBoncommande.Appearance.FooterPanel.Options.UseBackColor = True
-        Me.ViewBoncommande.Appearance.FooterPanel.Options.UseBorderColor = True
-        Me.ViewBoncommande.Appearance.FooterPanel.Options.UseForeColor = True
-        Me.ViewBoncommande.Appearance.GroupButton.BackColor = System.Drawing.Color.Silver
-        Me.ViewBoncommande.Appearance.GroupButton.BorderColor = System.Drawing.Color.Silver
-        Me.ViewBoncommande.Appearance.GroupButton.ForeColor = System.Drawing.Color.Black
-        Me.ViewBoncommande.Appearance.GroupButton.Options.UseBackColor = True
-        Me.ViewBoncommande.Appearance.GroupButton.Options.UseBorderColor = True
-        Me.ViewBoncommande.Appearance.GroupButton.Options.UseForeColor = True
-        Me.ViewBoncommande.Appearance.GroupFooter.BackColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(202, Byte), Integer), CType(CType(202, Byte), Integer))
-        Me.ViewBoncommande.Appearance.GroupFooter.BorderColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(202, Byte), Integer), CType(CType(202, Byte), Integer))
-        Me.ViewBoncommande.Appearance.GroupFooter.ForeColor = System.Drawing.Color.Black
-        Me.ViewBoncommande.Appearance.GroupFooter.Options.UseBackColor = True
-        Me.ViewBoncommande.Appearance.GroupFooter.Options.UseBorderColor = True
-        Me.ViewBoncommande.Appearance.GroupFooter.Options.UseForeColor = True
-        Me.ViewBoncommande.Appearance.GroupPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.ViewBoncommande.Appearance.GroupPanel.BackColor2 = System.Drawing.Color.White
-        Me.ViewBoncommande.Appearance.GroupPanel.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.ViewBoncommande.Appearance.GroupPanel.ForeColor = System.Drawing.Color.White
-        Me.ViewBoncommande.Appearance.GroupPanel.Options.UseBackColor = True
-        Me.ViewBoncommande.Appearance.GroupPanel.Options.UseFont = True
-        Me.ViewBoncommande.Appearance.GroupPanel.Options.UseForeColor = True
-        Me.ViewBoncommande.Appearance.GroupRow.BackColor = System.Drawing.Color.Gray
-        Me.ViewBoncommande.Appearance.GroupRow.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(240, Byte), Integer))
-        Me.ViewBoncommande.Appearance.GroupRow.Options.UseBackColor = True
-        Me.ViewBoncommande.Appearance.GroupRow.Options.UseForeColor = True
-        Me.ViewBoncommande.Appearance.HeaderPanel.BackColor = System.Drawing.Color.Silver
-        Me.ViewBoncommande.Appearance.HeaderPanel.BorderColor = System.Drawing.Color.Silver
-        Me.ViewBoncommande.Appearance.HeaderPanel.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.ViewBoncommande.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.Black
-        Me.ViewBoncommande.Appearance.HeaderPanel.Options.UseBackColor = True
-        Me.ViewBoncommande.Appearance.HeaderPanel.Options.UseBorderColor = True
-        Me.ViewBoncommande.Appearance.HeaderPanel.Options.UseFont = True
-        Me.ViewBoncommande.Appearance.HeaderPanel.Options.UseForeColor = True
-        Me.ViewBoncommande.Appearance.HideSelectionRow.BackColor = System.Drawing.Color.Navy
-        Me.ViewBoncommande.Appearance.HideSelectionRow.ForeColor = System.Drawing.Color.FromArgb(CType(CType(212, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(200, Byte), Integer))
-        Me.ViewBoncommande.Appearance.HideSelectionRow.Options.UseBackColor = True
-        Me.ViewBoncommande.Appearance.HideSelectionRow.Options.UseForeColor = True
-        Me.ViewBoncommande.Appearance.HorzLine.BackColor = System.Drawing.Color.Silver
-        Me.ViewBoncommande.Appearance.HorzLine.Options.UseBackColor = True
-        Me.ViewBoncommande.Appearance.OddRow.BackColor = System.Drawing.Color.White
-        Me.ViewBoncommande.Appearance.OddRow.BackColor2 = System.Drawing.Color.White
-        Me.ViewBoncommande.Appearance.OddRow.ForeColor = System.Drawing.Color.Black
-        Me.ViewBoncommande.Appearance.OddRow.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal
-        Me.ViewBoncommande.Appearance.OddRow.Options.UseBackColor = True
-        Me.ViewBoncommande.Appearance.OddRow.Options.UseForeColor = True
-        Me.ViewBoncommande.Appearance.Preview.BackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(252, Byte), Integer), CType(CType(252, Byte), Integer))
-        Me.ViewBoncommande.Appearance.Preview.BackColor2 = System.Drawing.Color.White
-        Me.ViewBoncommande.Appearance.Preview.ForeColor = System.Drawing.Color.Teal
-        Me.ViewBoncommande.Appearance.Preview.Options.UseBackColor = True
-        Me.ViewBoncommande.Appearance.Preview.Options.UseForeColor = True
-        Me.ViewBoncommande.Appearance.Row.BackColor = System.Drawing.Color.White
-        Me.ViewBoncommande.Appearance.Row.ForeColor = System.Drawing.Color.Black
-        Me.ViewBoncommande.Appearance.Row.Options.UseBackColor = True
-        Me.ViewBoncommande.Appearance.Row.Options.UseForeColor = True
-        Me.ViewBoncommande.Appearance.RowSeparator.BackColor = System.Drawing.Color.White
-        Me.ViewBoncommande.Appearance.RowSeparator.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(212, Byte), Integer), CType(CType(212, Byte), Integer), CType(CType(212, Byte), Integer))
-        Me.ViewBoncommande.Appearance.RowSeparator.Options.UseBackColor = True
-        Me.ViewBoncommande.Appearance.SelectedRow.BackColor = System.Drawing.Color.Navy
-        Me.ViewBoncommande.Appearance.SelectedRow.ForeColor = System.Drawing.Color.White
-        Me.ViewBoncommande.Appearance.SelectedRow.Options.UseBackColor = True
-        Me.ViewBoncommande.Appearance.SelectedRow.Options.UseForeColor = True
-        Me.ViewBoncommande.Appearance.VertLine.BackColor = System.Drawing.Color.Silver
-        Me.ViewBoncommande.Appearance.VertLine.Options.UseBackColor = True
-        Me.ViewBoncommande.GridControl = Me.LgListBoncommande
-        Me.ViewBoncommande.Name = "ViewBoncommande"
-        Me.ViewBoncommande.OptionsFilter.AllowFilterEditor = False
-        Me.ViewBoncommande.OptionsFilter.AllowFilterIncrementalSearch = False
-        Me.ViewBoncommande.OptionsSelection.EnableAppearanceHideSelection = False
-        Me.ViewBoncommande.OptionsSelection.MultiSelect = True
-        Me.ViewBoncommande.OptionsView.ShowGroupPanel = False
-        Me.ViewBoncommande.OptionsView.ShowVerticalLines = DevExpress.Utils.DefaultBoolean.[False]
-        Me.ViewBoncommande.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways
-        '
-        'RepositoryItemCheckEdit1
-        '
-        Me.RepositoryItemCheckEdit1.AutoHeight = False
-        Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
-        '
-        'RepositoryItemPictureEdit1
-        '
-        Me.RepositoryItemPictureEdit1.Name = "RepositoryItemPictureEdit1"
-        '
-        'RepositoryItemPictureEdit2
-        '
-        Me.RepositoryItemPictureEdit2.Name = "RepositoryItemPictureEdit2"
-        '
-        'RepositoryItemCheckEdit2
-        '
-        Me.RepositoryItemCheckEdit2.AutoHeight = False
-        Me.RepositoryItemCheckEdit2.Name = "RepositoryItemCheckEdit2"
         '
         'GroupControl1
         '
@@ -403,6 +242,148 @@ Partial Class Liste_boncommande
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
+        'GCListBoncommande
+        '
+        Me.GCListBoncommande.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GCListBoncommande.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        GridLevelNode1.RelationName = "Level1"
+        Me.GCListBoncommande.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
+        Me.GCListBoncommande.Location = New System.Drawing.Point(2, 2)
+        Me.GCListBoncommande.MainView = Me.ViewBoncommande
+        Me.GCListBoncommande.Name = "GCListBoncommande"
+        Me.GCListBoncommande.Size = New System.Drawing.Size(987, 398)
+        Me.GCListBoncommande.TabIndex = 44
+        Me.GCListBoncommande.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ViewBoncommande})
+        '
+        'ViewBoncommande
+        '
+        Me.ViewBoncommande.ActiveFilterEnabled = False
+        Me.ViewBoncommande.Appearance.ColumnFilterButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.ViewBoncommande.Appearance.ColumnFilterButton.BorderColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.ViewBoncommande.Appearance.ColumnFilterButton.ForeColor = System.Drawing.Color.Black
+        Me.ViewBoncommande.Appearance.ColumnFilterButton.Options.UseBackColor = True
+        Me.ViewBoncommande.Appearance.ColumnFilterButton.Options.UseBorderColor = True
+        Me.ViewBoncommande.Appearance.ColumnFilterButton.Options.UseForeColor = True
+        Me.ViewBoncommande.Appearance.ColumnFilterButtonActive.BackColor = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(216, Byte), Integer))
+        Me.ViewBoncommande.Appearance.ColumnFilterButtonActive.BorderColor = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(216, Byte), Integer))
+        Me.ViewBoncommande.Appearance.ColumnFilterButtonActive.ForeColor = System.Drawing.Color.Black
+        Me.ViewBoncommande.Appearance.ColumnFilterButtonActive.Options.UseBackColor = True
+        Me.ViewBoncommande.Appearance.ColumnFilterButtonActive.Options.UseBorderColor = True
+        Me.ViewBoncommande.Appearance.ColumnFilterButtonActive.Options.UseForeColor = True
+        Me.ViewBoncommande.Appearance.Empty.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
+        Me.ViewBoncommande.Appearance.Empty.BackColor2 = System.Drawing.Color.White
+        Me.ViewBoncommande.Appearance.Empty.Options.UseBackColor = True
+        Me.ViewBoncommande.Appearance.EvenRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(221, Byte), Integer), CType(CType(227, Byte), Integer), CType(CType(245, Byte), Integer))
+        Me.ViewBoncommande.Appearance.EvenRow.BorderColor = System.Drawing.Color.FromArgb(CType(CType(221, Byte), Integer), CType(CType(227, Byte), Integer), CType(CType(245, Byte), Integer))
+        Me.ViewBoncommande.Appearance.EvenRow.ForeColor = System.Drawing.Color.Black
+        Me.ViewBoncommande.Appearance.EvenRow.Options.UseBackColor = True
+        Me.ViewBoncommande.Appearance.EvenRow.Options.UseBorderColor = True
+        Me.ViewBoncommande.Appearance.EvenRow.Options.UseForeColor = True
+        Me.ViewBoncommande.Appearance.FilterCloseButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.ViewBoncommande.Appearance.FilterCloseButton.BorderColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.ViewBoncommande.Appearance.FilterCloseButton.ForeColor = System.Drawing.Color.Black
+        Me.ViewBoncommande.Appearance.FilterCloseButton.Options.UseBackColor = True
+        Me.ViewBoncommande.Appearance.FilterCloseButton.Options.UseBorderColor = True
+        Me.ViewBoncommande.Appearance.FilterCloseButton.Options.UseForeColor = True
+        Me.ViewBoncommande.Appearance.FilterPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
+        Me.ViewBoncommande.Appearance.FilterPanel.BackColor2 = System.Drawing.Color.White
+        Me.ViewBoncommande.Appearance.FilterPanel.ForeColor = System.Drawing.Color.Black
+        Me.ViewBoncommande.Appearance.FilterPanel.Options.UseBackColor = True
+        Me.ViewBoncommande.Appearance.FilterPanel.Options.UseForeColor = True
+        Me.ViewBoncommande.Appearance.FixedLine.BackColor = System.Drawing.Color.FromArgb(CType(CType(117, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(122, Byte), Integer))
+        Me.ViewBoncommande.Appearance.FixedLine.Options.UseBackColor = True
+        Me.ViewBoncommande.Appearance.FocusedCell.BackColor = System.Drawing.Color.White
+        Me.ViewBoncommande.Appearance.FocusedCell.ForeColor = System.Drawing.Color.Black
+        Me.ViewBoncommande.Appearance.FocusedCell.Options.UseBackColor = True
+        Me.ViewBoncommande.Appearance.FocusedCell.Options.UseForeColor = True
+        Me.ViewBoncommande.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(171, Byte), Integer), CType(CType(177, Byte), Integer))
+        Me.ViewBoncommande.Appearance.FocusedRow.ForeColor = System.Drawing.Color.White
+        Me.ViewBoncommande.Appearance.FocusedRow.Options.UseBackColor = True
+        Me.ViewBoncommande.Appearance.FocusedRow.Options.UseForeColor = True
+        Me.ViewBoncommande.Appearance.FooterPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.ViewBoncommande.Appearance.FooterPanel.BorderColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.ViewBoncommande.Appearance.FooterPanel.ForeColor = System.Drawing.Color.Black
+        Me.ViewBoncommande.Appearance.FooterPanel.Options.UseBackColor = True
+        Me.ViewBoncommande.Appearance.FooterPanel.Options.UseBorderColor = True
+        Me.ViewBoncommande.Appearance.FooterPanel.Options.UseForeColor = True
+        Me.ViewBoncommande.Appearance.GroupButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(178, Byte), Integer), CType(CType(209, Byte), Integer), CType(CType(188, Byte), Integer))
+        Me.ViewBoncommande.Appearance.GroupButton.BorderColor = System.Drawing.Color.FromArgb(CType(CType(178, Byte), Integer), CType(CType(209, Byte), Integer), CType(CType(188, Byte), Integer))
+        Me.ViewBoncommande.Appearance.GroupButton.Options.UseBackColor = True
+        Me.ViewBoncommande.Appearance.GroupButton.Options.UseBorderColor = True
+        Me.ViewBoncommande.Appearance.GroupFooter.BackColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(221, Byte), Integer))
+        Me.ViewBoncommande.Appearance.GroupFooter.BorderColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(221, Byte), Integer))
+        Me.ViewBoncommande.Appearance.GroupFooter.ForeColor = System.Drawing.Color.Black
+        Me.ViewBoncommande.Appearance.GroupFooter.Options.UseBackColor = True
+        Me.ViewBoncommande.Appearance.GroupFooter.Options.UseBorderColor = True
+        Me.ViewBoncommande.Appearance.GroupFooter.Options.UseForeColor = True
+        Me.ViewBoncommande.Appearance.GroupPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
+        Me.ViewBoncommande.Appearance.GroupPanel.BackColor2 = System.Drawing.Color.White
+        Me.ViewBoncommande.Appearance.GroupPanel.ForeColor = System.Drawing.Color.Black
+        Me.ViewBoncommande.Appearance.GroupPanel.Options.UseBackColor = True
+        Me.ViewBoncommande.Appearance.GroupPanel.Options.UseForeColor = True
+        Me.ViewBoncommande.Appearance.GroupRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(221, Byte), Integer))
+        Me.ViewBoncommande.Appearance.GroupRow.BorderColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(221, Byte), Integer))
+        Me.ViewBoncommande.Appearance.GroupRow.ForeColor = System.Drawing.Color.Black
+        Me.ViewBoncommande.Appearance.GroupRow.Options.UseBackColor = True
+        Me.ViewBoncommande.Appearance.GroupRow.Options.UseBorderColor = True
+        Me.ViewBoncommande.Appearance.GroupRow.Options.UseForeColor = True
+        Me.ViewBoncommande.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(216, Byte), Integer))
+        Me.ViewBoncommande.Appearance.HeaderPanel.BorderColor = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(216, Byte), Integer))
+        Me.ViewBoncommande.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.Black
+        Me.ViewBoncommande.Appearance.HeaderPanel.Options.UseBackColor = True
+        Me.ViewBoncommande.Appearance.HeaderPanel.Options.UseBorderColor = True
+        Me.ViewBoncommande.Appearance.HeaderPanel.Options.UseForeColor = True
+        Me.ViewBoncommande.Appearance.HideSelectionRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(186, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(215, Byte), Integer))
+        Me.ViewBoncommande.Appearance.HideSelectionRow.ForeColor = System.Drawing.Color.FromArgb(CType(CType(104, Byte), Integer), CType(CType(130, Byte), Integer), CType(CType(134, Byte), Integer))
+        Me.ViewBoncommande.Appearance.HideSelectionRow.Options.UseBackColor = True
+        Me.ViewBoncommande.Appearance.HideSelectionRow.Options.UseForeColor = True
+        Me.ViewBoncommande.Appearance.HorzLine.BackColor = System.Drawing.Color.FromArgb(CType(CType(172, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(180, Byte), Integer))
+        Me.ViewBoncommande.Appearance.HorzLine.BorderColor = System.Drawing.Color.FromArgb(CType(CType(117, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(122, Byte), Integer))
+        Me.ViewBoncommande.Appearance.HorzLine.Options.UseBackColor = True
+        Me.ViewBoncommande.Appearance.HorzLine.Options.UseBorderColor = True
+        Me.ViewBoncommande.Appearance.OddRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
+        Me.ViewBoncommande.Appearance.OddRow.BorderColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
+        Me.ViewBoncommande.Appearance.OddRow.ForeColor = System.Drawing.Color.Black
+        Me.ViewBoncommande.Appearance.OddRow.Options.UseBackColor = True
+        Me.ViewBoncommande.Appearance.OddRow.Options.UseBorderColor = True
+        Me.ViewBoncommande.Appearance.OddRow.Options.UseForeColor = True
+        Me.ViewBoncommande.Appearance.Preview.BackColor = System.Drawing.Color.FromArgb(CType(CType(250, Byte), Integer), CType(CType(250, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.ViewBoncommande.Appearance.Preview.Font = New System.Drawing.Font("Verdana", 7.5!)
+        Me.ViewBoncommande.Appearance.Preview.ForeColor = System.Drawing.Color.FromArgb(CType(CType(104, Byte), Integer), CType(CType(130, Byte), Integer), CType(CType(134, Byte), Integer))
+        Me.ViewBoncommande.Appearance.Preview.Options.UseBackColor = True
+        Me.ViewBoncommande.Appearance.Preview.Options.UseFont = True
+        Me.ViewBoncommande.Appearance.Preview.Options.UseForeColor = True
+        Me.ViewBoncommande.Appearance.Row.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
+        Me.ViewBoncommande.Appearance.Row.ForeColor = System.Drawing.Color.Black
+        Me.ViewBoncommande.Appearance.Row.Options.UseBackColor = True
+        Me.ViewBoncommande.Appearance.Row.Options.UseForeColor = True
+        Me.ViewBoncommande.Appearance.RowSeparator.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
+        Me.ViewBoncommande.Appearance.RowSeparator.BackColor2 = System.Drawing.Color.White
+        Me.ViewBoncommande.Appearance.RowSeparator.Options.UseBackColor = True
+        Me.ViewBoncommande.Appearance.SelectedRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(159, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(207, Byte), Integer))
+        Me.ViewBoncommande.Appearance.SelectedRow.ForeColor = System.Drawing.Color.Black
+        Me.ViewBoncommande.Appearance.SelectedRow.Options.UseBackColor = True
+        Me.ViewBoncommande.Appearance.SelectedRow.Options.UseForeColor = True
+        Me.ViewBoncommande.Appearance.TopNewRow.BackColor = System.Drawing.Color.White
+        Me.ViewBoncommande.Appearance.TopNewRow.Options.UseBackColor = True
+        Me.ViewBoncommande.Appearance.VertLine.BackColor = System.Drawing.Color.FromArgb(CType(CType(172, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(180, Byte), Integer))
+        Me.ViewBoncommande.Appearance.VertLine.BorderColor = System.Drawing.Color.FromArgb(CType(CType(117, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(122, Byte), Integer))
+        Me.ViewBoncommande.Appearance.VertLine.Options.UseBackColor = True
+        Me.ViewBoncommande.Appearance.VertLine.Options.UseBorderColor = True
+        Me.ViewBoncommande.GridControl = Me.GCListBoncommande
+        Me.ViewBoncommande.Name = "ViewBoncommande"
+        Me.ViewBoncommande.OptionsCustomization.AllowFilter = False
+        Me.ViewBoncommande.OptionsPrint.AutoWidth = False
+        Me.ViewBoncommande.OptionsSelection.EnableAppearanceHideSelection = False
+        Me.ViewBoncommande.OptionsView.ColumnAutoWidth = False
+        Me.ViewBoncommande.OptionsView.EnableAppearanceEvenRow = True
+        Me.ViewBoncommande.OptionsView.EnableAppearanceOddRow = True
+        Me.ViewBoncommande.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never
+        Me.ViewBoncommande.OptionsView.ShowGroupExpandCollapseButtons = False
+        Me.ViewBoncommande.OptionsView.ShowGroupPanel = False
+        Me.ViewBoncommande.OptionsView.ShowVerticalLines = DevExpress.Utils.DefaultBoolean.[False]
+        Me.ViewBoncommande.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow
+        '
         'Liste_boncommande
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -415,18 +396,14 @@ Partial Class Liste_boncommande
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl3.ResumeLayout(False)
-        CType(Me.LgListBoncommande, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ViewBoncommande, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemPictureEdit1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemPictureEdit2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl1.ResumeLayout(False)
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl2.ResumeLayout(False)
         Me.PanelControl2.PerformLayout()
         CType(Me.Checktous.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GCListBoncommande, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ViewBoncommande, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -451,13 +428,9 @@ Partial Class Liste_boncommande
     Friend WithEvents BtActualiser As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents BtModifier As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
-    Friend WithEvents LgListBoncommande As DevExpress.XtraGrid.GridControl
-    Friend WithEvents ViewBoncommande As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents LblNombre As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
-    Friend WithEvents RepositoryItemPictureEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit
-    Friend WithEvents RepositoryItemPictureEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit
-    Friend WithEvents RepositoryItemCheckEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
     Friend WithEvents BtImprimer As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents Checktous As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents GCListBoncommande As DevExpress.XtraGrid.GridControl
+    Friend WithEvents ViewBoncommande As DevExpress.XtraGrid.Views.Grid.GridView
 End Class
