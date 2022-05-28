@@ -36,3 +36,8 @@ ALTER TABLE `t_boncommande` ADD `MontantBCHT` VARCHAR(20) NOT NULL AFTER `Instru
 ALTER TABLE `t_boncommande` CHANGE `MontantTVA` `MontantTVA` DOUBLE(19,5) NOT NULL, CHANGE `MontantRemise` `MontantRemise` DOUBLE(19,5) NOT NULL, CHANGE `MontantAutreTaxe` `MontantAutreTaxe` DOUBLE(19,5) NOT NULL, CHANGE `MontantNetHT` `MontantNetHT` DOUBLE(19,5) NOT NULL, CHANGE `MontantTotal` `MontantTotal` DOUBLE(19,5) NOT NULL, CHANGE `MontantTotalTTC` `MontantTotalTTC` DOUBLE(19,5) NOT NULL;
 ALTER TABLE `t_bc_listebesoins` CHANGE `PrixTotal` `PrixTotal` DOUBLE(19,5) NOT NULL;
 ALTER TABLE `t_bc_listebesoins` CHANGE `PrixUnitaire` `PrixUnitaire` DOUBLE(19,5) NOT NULL;
+
+----28/05/2022---
+ALTER TABLE `t_bc_listebesoins` CHANGE `Quantite` `Quantite` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL, CHANGE `PrixUnitaire` `PrixUnitaire` DOUBLE(19,5) NULL;
+ALTER TABLE `t_bc_listebesoins` CHANGE `PrixUnitaire` `PrixUnitaire` VARCHAR(20) NULL DEFAULT NULL;
+

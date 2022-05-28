@@ -529,8 +529,11 @@ Partial Class BonCommande
         '
         Me.TxtMontLettre.Location = New System.Drawing.Point(10, 349)
         Me.TxtMontLettre.Name = "TxtMontLettre"
+        Me.TxtMontLettre.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.TxtMontLettre.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtMontLettre.Properties.Appearance.Options.UseBackColor = True
         Me.TxtMontLettre.Properties.Appearance.Options.UseFont = True
+        Me.TxtMontLettre.Properties.ReadOnly = True
         Me.TxtMontLettre.Size = New System.Drawing.Size(292, 82)
         Me.TxtMontLettre.TabIndex = 25
         '
