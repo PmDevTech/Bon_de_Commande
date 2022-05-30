@@ -543,18 +543,18 @@ Public Class BonCommande
                 SuccesMsg("Veuillez saisir le pourcentage de la taxe correspondant aux autres taxes")
                 TxtAutreTaxe.Focus()
             Else
-                Dim ChoixElabBC As String = RdParPassMarche.Text
+                Dim ChoixElabBC As String = "Par Passation de Marché"
                 Dim dd As String = CDate(Dateboncmde.Text).ToString("dd/MM/yyy")
                 Dim DateBC As String = dateconvert(dd)
                 Dim RefLot As String = ""
 
                 Dim ConditionPaiement As String = ""
                 If RdCheque.Checked Then
-                    ConditionPaiement = RdCheque.Text
+                    ConditionPaiement = "Chèque"
                 ElseIf RdVirement.Checked Then
-                    ConditionPaiement = RdVirement.Text
+                    ConditionPaiement = "Virement"
                 Else
-                    ConditionPaiement = RdEspeces.Text
+                    ConditionPaiement = "Espèces"
                 End If
 
                 Dim MontantHT As String = TxtNewMont.Text
@@ -654,18 +654,18 @@ Public Class BonCommande
                         Exit Sub
                     End If
 
-                    Dim ChoixElabBC As String = RdSansPassMarche.Text
+                    Dim ChoixElabBC As String = "Sans Passation de Marché"
                     Dim dd As String = CDate(Dateboncmde.Text).ToString("dd/MM/yyy")
                     Dim DateBC As String = dateconvert(dd)
                     Dim RefLot As String = ""
 
                     Dim ConditionPaiement As String = ""
                     If RdCheque.Checked Then
-                        ConditionPaiement = RdCheque.Text
+                        ConditionPaiement = "Chèque"
                     ElseIf RdVirement.Checked Then
-                        ConditionPaiement = RdVirement.Text
+                        ConditionPaiement = "Virement"
                     Else
-                        ConditionPaiement = RdEspeces.Text
+                        ConditionPaiement = "Espèces"
                     End If
 
                     Dim MontantHT As String = ""

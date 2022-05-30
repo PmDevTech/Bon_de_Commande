@@ -158,6 +158,67 @@ Public Class Liste_boncommande
 
     Private Sub BtImprimer_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtImprimer.Click
         'Dialog_form(Etat_eng)
+
+        Dim impr As Boolean = False
+
+        For i = 0 To ViewBoncommande.RowCount - 1
+
+            If CBool(ViewBoncommande.GetRowCellValue(i, "Choix")) = True Then
+
+                Dim reportfeuilletps As New ReportDocument
+                Dim crtableLogoninfos As New TableLogOnInfos
+                Dim crtableLogoninfo As New TableLogOnInfo
+                Dim crConnectionInfo As New ConnectionInfo
+                Dim CrTables As Tables
+                Dim CrTable As Table
+
+                'If TxtRechercher.Text <> "" And TxtRechercher.Text <> "Rechercher" Then
+                '    curMisID = TxtRechercher.Text
+                'ElseIf (GvRapportEnr.RowCount > 0) And TxtRechercher.Text = "Rechercher" Then
+                '    drx = GvRapportEnr.GetDataRow(GvRapportEnr.FocusedRowHandle)
+                '    query = "select d.MIS_ID from t_grh_rapport r, t_grh_demande d where r.DEM_NUM_ORD= d.DEM_NUM_ORD and d.DEM_NUM_ORD='" & drx(2).ToString & "'"
+                '    curMisID = ExecuteScallar(query)
+                'End If
+
+                Dim NumBonCommande As String = ""
+                NumBonCommande = ViewBoncommande.GetRowCellValue(i, "N° Bon Commande")
+
+                DebutChargement(True, "Le traitement de votre demande est en cours...")
+                Dim Chemin As String = lineEtat & "\Bon_Commande\Etat_BonCommande.rpt"
+
+                Dim DatSet = New DataSet
+                reportfeuilletps.Load(Chemin)
+
+                With crConnectionInfo
+                    .ServerName = ODBCNAME
+                    .DatabaseName = DB
+                    .UserID = USERNAME
+                    .Password = PWD
+                End With
+
+                CrTables = reportfeuilletps.Database.Tables
+                For Each CrTable In CrTables
+                    crtableLogoninfo = CrTable.LogOnInfo
+                    crtableLogoninfo.ConnectionInfo = crConnectionInfo
+                    CrTable.ApplyLogOnInfo(crtableLogoninfo)
+                Next
+
+                reportfeuilletps.SetDataSource(DatSet)
+                reportfeuilletps.SetParameterValue("NumBonCommande", NumBonCommande)
+                reportfeuilletps.SetParameterValue("CodeProjet", ProjetEnCours)
+                FullScreenReport.FullView.ReportSource = reportfeuilletps
+                FinChargement()
+                FullScreenReport.ShowDialog()
+
+                impr = True
+            End If
+
+        Next
+
+        If impr = False Then
+            SuccesMsg("Veuillez cocher un bon de commande")
+        End If
+
     End Sub
 
     Private Sub BtSupprimer_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtSupprimer.Click
@@ -208,9 +269,9 @@ Public Class Liste_boncommande
 
             If supp = False Then
                 SuccesMsg("Veuillez cocher un bon de commande")
-                BtActualiser_Click(sender, e)
             Else
                 SuccesMsg("Suppression effectuée avec succès")
+                BtActualiser_Click(sender, e)
                 'query = "select s.TypeMarche, s.NumeroMarche, m.DescriptionMarche, s.MontantHT, s.DateMarche, c.NOM_CPT, s.EtatMarche  from t_marchesigne s, t_marche m, t_comp_compte c  where s.refmarche=m.refmarche and s.attributaire=c.CODE_CPT and s.codeprojet='" & ProjetEnCours & "' ORDER BY length(s.NumeroMarche), s.NumeroMarche"
                 'remplirDataGridimmo4(query, LgListBoncommande, LblNombre, ViewBoncommande)
             End If
@@ -343,18 +404,5 @@ Public Class Liste_boncommande
         Catch ex As Exception
             FailMsg("Erreur : Information non disponible : " & ex.ToString())
         End Try
-    End Sub
-
-    Private Sub Checktous_Click(sender As Object, e As EventArgs) Handles Checktous.Click
-        'Try
-        '    If (ViewBoncommande.RowCount > 0 And Checktous.Checked = True) Then
-        '        Dim edit As RepositoryItemCheckEdit = New RepositoryItemCheckEdit()
-        '        edit.ValueChecked = True
-        '        ViewBoncommande.Columns("Choix").ColumnEdit = edit
-        '        GCListBoncommande.RepositoryItems.Add(edit)
-        '    End If
-        'Catch ex As Exception
-        '    FailMsg("Erreur : Information non disponible : " & ex.ToString())
-        'End Try
     End Sub
 End Class
