@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class BonCommande
     Inherits DevExpress.XtraEditors.XtraForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,12 +17,16 @@ Partial Class BonCommande
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Me.components = New System.ComponentModel.Container()
+        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.BtAnnuler = New DevExpress.XtraEditors.SimpleButton()
         Me.BtEnregistrer = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
+        Me.lc3 = New DevExpress.XtraEditors.LabelControl()
+        Me.lc2 = New DevExpress.XtraEditors.LabelControl()
+        Me.lc1 = New DevExpress.XtraEditors.LabelControl()
         Me.CmbCodeLot = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelNumDAO = New DevExpress.XtraEditors.LabelControl()
@@ -42,6 +46,10 @@ Partial Class BonCommande
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lc5 = New DevExpress.XtraEditors.LabelControl()
+        Me.lc6 = New DevExpress.XtraEditors.LabelControl()
+        Me.lc8 = New DevExpress.XtraEditors.LabelControl()
+        Me.lc7 = New DevExpress.XtraEditors.LabelControl()
         Me.TxtAutreTaxe = New DevExpress.XtraEditors.TextEdit()
         Me.TxtLibAutreTaxe = New DevExpress.XtraEditors.TextEdit()
         Me.Label16 = New System.Windows.Forms.Label()
@@ -83,6 +91,10 @@ Partial Class BonCommande
         Me.Label18 = New System.Windows.Forms.Label()
         Me.GroupControl5 = New DevExpress.XtraEditors.GroupControl()
         Me.GroupControl6 = New DevExpress.XtraEditors.GroupControl()
+        Me.lc4 = New DevExpress.XtraEditors.LabelControl()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ModifierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SupprimerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
         CType(Me.CmbCodeLot.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -131,6 +143,7 @@ Partial Class BonCommande
         Me.GroupControl5.SuspendLayout()
         CType(Me.GroupControl6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl6.SuspendLayout()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'BtAnnuler
@@ -153,6 +166,9 @@ Partial Class BonCommande
         '
         'GroupControl1
         '
+        Me.GroupControl1.Controls.Add(Me.lc3)
+        Me.GroupControl1.Controls.Add(Me.lc2)
+        Me.GroupControl1.Controls.Add(Me.lc1)
         Me.GroupControl1.Controls.Add(Me.CmbCodeLot)
         Me.GroupControl1.Controls.Add(Me.LabelControl1)
         Me.GroupControl1.Controls.Add(Me.LabelNumDAO)
@@ -166,6 +182,33 @@ Partial Class BonCommande
         Me.GroupControl1.Size = New System.Drawing.Size(391, 140)
         Me.GroupControl1.TabIndex = 1
         Me.GroupControl1.Text = "Bon de commande"
+        '
+        'lc3
+        '
+        Me.lc3.Appearance.ForeColor = System.Drawing.Color.Red
+        Me.lc3.Location = New System.Drawing.Point(40, 82)
+        Me.lc3.Name = "lc3"
+        Me.lc3.Size = New System.Drawing.Size(6, 13)
+        Me.lc3.TabIndex = 279
+        Me.lc3.Text = "*"
+        '
+        'lc2
+        '
+        Me.lc2.Appearance.ForeColor = System.Drawing.Color.Red
+        Me.lc2.Location = New System.Drawing.Point(103, 55)
+        Me.lc2.Name = "lc2"
+        Me.lc2.Size = New System.Drawing.Size(6, 13)
+        Me.lc2.TabIndex = 278
+        Me.lc2.Text = "*"
+        '
+        'lc1
+        '
+        Me.lc1.Appearance.ForeColor = System.Drawing.Color.Red
+        Me.lc1.Location = New System.Drawing.Point(52, 29)
+        Me.lc1.Name = "lc1"
+        Me.lc1.Size = New System.Drawing.Size(6, 13)
+        Me.lc1.TabIndex = 275
+        Me.lc1.Text = "*"
         '
         'CmbCodeLot
         '
@@ -328,6 +371,10 @@ Partial Class BonCommande
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.Control
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel1.Controls.Add(Me.lc5)
+        Me.Panel1.Controls.Add(Me.lc6)
+        Me.Panel1.Controls.Add(Me.lc8)
+        Me.Panel1.Controls.Add(Me.lc7)
         Me.Panel1.Controls.Add(Me.TxtAutreTaxe)
         Me.Panel1.Controls.Add(Me.TxtLibAutreTaxe)
         Me.Panel1.Controls.Add(Me.Label16)
@@ -353,6 +400,42 @@ Partial Class BonCommande
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(312, 585)
         Me.Panel1.TabIndex = 6
+        '
+        'lc5
+        '
+        Me.lc5.Appearance.ForeColor = System.Drawing.Color.Red
+        Me.lc5.Location = New System.Drawing.Point(105, 11)
+        Me.lc5.Name = "lc5"
+        Me.lc5.Size = New System.Drawing.Size(6, 13)
+        Me.lc5.TabIndex = 274
+        Me.lc5.Text = "*"
+        '
+        'lc6
+        '
+        Me.lc6.Appearance.ForeColor = System.Drawing.Color.Red
+        Me.lc6.Location = New System.Drawing.Point(73, 160)
+        Me.lc6.Name = "lc6"
+        Me.lc6.Size = New System.Drawing.Size(6, 13)
+        Me.lc6.TabIndex = 273
+        Me.lc6.Text = "*"
+        '
+        'lc8
+        '
+        Me.lc8.Appearance.ForeColor = System.Drawing.Color.Red
+        Me.lc8.Location = New System.Drawing.Point(223, 218)
+        Me.lc8.Name = "lc8"
+        Me.lc8.Size = New System.Drawing.Size(6, 13)
+        Me.lc8.TabIndex = 272
+        Me.lc8.Text = "*"
+        '
+        'lc7
+        '
+        Me.lc7.Appearance.ForeColor = System.Drawing.Color.Red
+        Me.lc7.Location = New System.Drawing.Point(57, 216)
+        Me.lc7.Name = "lc7"
+        Me.lc7.Size = New System.Drawing.Size(6, 13)
+        Me.lc7.TabIndex = 24
+        Me.lc7.Text = "*"
         '
         'TxtAutreTaxe
         '
@@ -553,6 +636,7 @@ Partial Class BonCommande
         '
         'GroupControl3
         '
+        Me.GroupControl3.ContextMenuStrip = Me.ContextMenuStrip1
         Me.GroupControl3.Controls.Add(Me.ListBonCmde)
         Me.GroupControl3.Location = New System.Drawing.Point(726, 77)
         Me.GroupControl3.Name = "GroupControl3"
@@ -564,8 +648,8 @@ Partial Class BonCommande
         '
         Me.ListBonCmde.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ListBonCmde.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        GridLevelNode1.RelationName = "Level1"
-        Me.ListBonCmde.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
+        GridLevelNode2.RelationName = "Level1"
+        Me.ListBonCmde.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
         Me.ListBonCmde.Location = New System.Drawing.Point(2, 21)
         Me.ListBonCmde.MainView = Me.ViewLstCmde
         Me.ListBonCmde.Name = "ListBonCmde"
@@ -852,6 +936,7 @@ Partial Class BonCommande
         '
         'GroupControl6
         '
+        Me.GroupControl6.Controls.Add(Me.lc4)
         Me.GroupControl6.Controls.Add(Me.Label11)
         Me.GroupControl6.Controls.Add(Me.Label3)
         Me.GroupControl6.Controls.Add(Me.Label7)
@@ -867,6 +952,35 @@ Partial Class BonCommande
         Me.GroupControl6.Size = New System.Drawing.Size(393, 178)
         Me.GroupControl6.TabIndex = 2
         Me.GroupControl6.Text = "Identification du Fournisseur"
+        '
+        'lc4
+        '
+        Me.lc4.Appearance.ForeColor = System.Drawing.Color.Red
+        Me.lc4.Location = New System.Drawing.Point(72, 33)
+        Me.lc4.Name = "lc4"
+        Me.lc4.Size = New System.Drawing.Size(6, 13)
+        Me.lc4.TabIndex = 280
+        Me.lc4.Text = "*"
+        '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ModifierToolStripMenuItem, Me.SupprimerToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(181, 70)
+        '
+        'ModifierToolStripMenuItem
+        '
+        Me.ModifierToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
+        Me.ModifierToolStripMenuItem.Name = "ModifierToolStripMenuItem"
+        Me.ModifierToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ModifierToolStripMenuItem.Text = "Modifier"
+        '
+        'SupprimerToolStripMenuItem
+        '
+        Me.SupprimerToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.Delete_16x16
+        Me.SupprimerToolStripMenuItem.Name = "SupprimerToolStripMenuItem"
+        Me.SupprimerToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SupprimerToolStripMenuItem.Text = "Supprimer"
         '
         'BonCommande
         '
@@ -942,6 +1056,7 @@ Partial Class BonCommande
         CType(Me.GroupControl6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl6.ResumeLayout(False)
         Me.GroupControl6.PerformLayout()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -1008,4 +1123,15 @@ Partial Class BonCommande
     Friend WithEvents TxtIntituleMarche As DevExpress.XtraEditors.MemoEdit
     Friend WithEvents Panel1 As Panel
     Friend WithEvents CmbCodeLot As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents lc7 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lc3 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lc2 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lc1 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lc6 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lc8 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lc4 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lc5 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
+    Friend WithEvents ModifierToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SupprimerToolStripMenuItem As ToolStripMenuItem
 End Class

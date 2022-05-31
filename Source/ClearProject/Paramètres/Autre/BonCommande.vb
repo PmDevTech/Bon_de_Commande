@@ -83,6 +83,7 @@ Public Class BonCommande
         RdParPassMarche.Checked = True
         RdParPassMarche.Enabled = True
         RdSansPassMarche.Checked = False
+        RdSansPassMarche.Enabled = True
         TxtAutreTaxe.Enabled = False
 
         If Liste_boncommande.AjoutModif = "Ajout" Then
@@ -341,8 +342,18 @@ Public Class BonCommande
     Private Sub TxtPu_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtPu.KeyPress
         Select Case e.KeyChar
             Case ControlChars.CrLf
-                GridBonCommande()
-                InitFormulaireListeBesoins()
+                If TxtIntituleMarche.Text = "" Then
+                    SuccesMsg("Veuillez saisir l'intitulé du marché")
+                ElseIf TxtDesignation.Text = "" Then
+                    SuccesMsg("Veuillez saisir la désignation")
+                ElseIf TxtQte.Text = "" Then
+                    SuccesMsg("Veuillez saisir la quantité")
+                ElseIf TxtPu.Text = "" Then
+                    SuccesMsg("Veuillez saisir le prix unitaire")
+                Else
+                    GridBonCommande()
+                    InitFormulaireListeBesoins()
+                End If
             Case Else
         End Select
     End Sub
@@ -372,6 +383,15 @@ Public Class BonCommande
             TxtQte.Enabled = False
             TxtPu.Enabled = False
             TxtDesignation.Enabled = False
+            lc1.Visible = True
+            lc2.Visible = True
+            'lc3.Visible = True
+            'lc4.Visible = True
+            'lc5.Visible = True
+            'lc6.Visible = True
+            'lc7.Visible = True
+            'lc8.Visible = True
+
             Initialiser()
             ChargerNumDAO()
         End If
@@ -390,6 +410,15 @@ Public Class BonCommande
             TxtQte.Enabled = True
             TxtPu.Enabled = True
             TxtDesignation.Enabled = True
+            lc1.Visible = False
+            lc2.Visible = False
+            'lc3.Visible = True
+            'lc4.Visible = True
+            'lc5.Visible = True
+            'lc6.Visible = True
+            'lc7.Visible = True
+            'lc8.Visible = True
+
             Initialiser()
         End If
     End Sub
@@ -939,15 +968,53 @@ Public Class BonCommande
 
     Private Sub ListBonCmde_DoubleClick(sender As Object, e As EventArgs) Handles ListBonCmde.DoubleClick
         If ViewLstCmde.RowCount > 0 Then
-            DrX = ViewLstCmde.GetDataRow(ViewLstCmde.FocusedRowHandle)
+            Dim bool As Boolean = False
 
-            TxtReference.Text = DrX("Référence").ToString
-            TxtDesignation.Text = MettreApost(DrX("Désignation").ToString)
-            TxtQte.Text = DrX("Quantité").ToString
-            TxtPu.Text = DrX("Prix Unitaire").ToString
-            TxtNewMont.Text = drx("Montant").ToString
+            For i = 0 To ViewLstCmde.RowCount - 1
 
+                If CBool(ViewLstCmde.GetRowCellValue(i, "Choix")) = True Then
+                    TxtReference.Text = ViewLstCmde.GetRowCellValue(i, "Référence").ToString()
+                    TxtDesignation.Text = MettreApost(ViewLstCmde.GetRowCellValue(i, "Désignation").ToString())
+                    TxtQte.Text = ViewLstCmde.GetRowCellValue(i, "Quantité").ToString()
+                    TxtPu.Text = ViewLstCmde.GetRowCellValue(i, "Prix Unitaire").ToString()
+                    TxtNewMont.Text = ViewLstCmde.GetRowCellValue(i, "Montant").ToString()
+                    ViewLstCmde.DeleteSelectedRows()
+                    bool = True
+                End If
+            Next
+
+            If bool = False Then
+                SuccesMsg("Veuillez cocher une ligne dans la liste des besoins")
+            End If
+
+        Else
+            SuccesMsg("Veuillez ajouter une ligne dans la liste des besoins")
         End If
-        ViewLstCmde.DeleteSelectedRows()
+
+    End Sub
+
+    Private Sub ModifierToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ModifierToolStripMenuItem.Click
+        ListBonCmde_DoubleClick(sender, e)
+    End Sub
+
+    Private Sub SupprimerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SupprimerToolStripMenuItem.Click
+        If ViewLstCmde.RowCount > 0 Then
+            Dim bool As Boolean = False
+
+            For i = 0 To ViewLstCmde.RowCount - 1
+
+                If CBool(ViewLstCmde.GetRowCellValue(i, "Choix")) = True Then
+                    ViewLstCmde.DeleteSelectedRows()
+                    bool = True
+                End If
+            Next
+
+            If bool = False Then
+                SuccesMsg("Veuillez cocher une ligne avant la suppression")
+            End If
+
+        Else
+            SuccesMsg("Vous n'avez pas ajouté de ligne dans la liste des besoins")
+        End If
     End Sub
 End Class

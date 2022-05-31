@@ -303,7 +303,7 @@ Module SuperModule
 
     Sub NumBonCommande_Auto(ByVal montext As DevExpress.XtraEditors.TextEdit)
         Try
-            query = "SELECT MAX(ID_BC) as Nbre FROM t_boncommande WHERE Annee=YEAR(NOW())"
+            query = "SELECT COUNT(ID_BC) as Nbre FROM t_boncommande WHERE Annee=YEAR(NOW())"
             Dim nbBonCommande As Decimal = 1
             Try
                 nbBonCommande = Val(ExecuteScallar(query).ToString()) + 1

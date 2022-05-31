@@ -45,6 +45,7 @@ Partial Class Liste_boncommande
         Me.BtActualiser = New DevExpress.XtraEditors.SimpleButton()
         Me.BtModifier = New DevExpress.XtraEditors.SimpleButton()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.TxtRechercher = New DevExpress.XtraEditors.TextEdit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl3.SuspendLayout()
@@ -55,6 +56,7 @@ Partial Class Liste_boncommande
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl2.SuspendLayout()
         CType(Me.Checktous.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TxtRechercher.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelControl1
@@ -314,6 +316,7 @@ Partial Class Liste_boncommande
         '
         'PanelControl2
         '
+        Me.PanelControl2.Controls.Add(Me.TxtRechercher)
         Me.PanelControl2.Controls.Add(Me.Checktous)
         Me.PanelControl2.Controls.Add(Me.LblNombre)
         Me.PanelControl2.Controls.Add(Me.BtImprimer)
@@ -385,6 +388,16 @@ Partial Class Liste_boncommande
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
+        'TxtRechercher
+        '
+        Me.TxtRechercher.EditValue = "Rechercher"
+        Me.TxtRechercher.Location = New System.Drawing.Point(457, 7)
+        Me.TxtRechercher.Name = "TxtRechercher"
+        Me.TxtRechercher.Size = New System.Drawing.Size(190, 20)
+        Me.TxtRechercher.TabIndex = 25
+        Me.TxtRechercher.Tag = "Rechercher"
+        Me.TxtRechercher.ToolTip = "Rechercher"
+        '
         'Liste_boncommande
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -405,6 +418,7 @@ Partial Class Liste_boncommande
         Me.PanelControl2.ResumeLayout(False)
         Me.PanelControl2.PerformLayout()
         CType(Me.Checktous.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TxtRechercher.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -434,4 +448,5 @@ Partial Class Liste_boncommande
     Friend WithEvents Checktous As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents GCListBoncommande As DevExpress.XtraGrid.GridControl
     Friend WithEvents ViewBoncommande As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents TxtRechercher As DevExpress.XtraEditors.TextEdit
 End Class
