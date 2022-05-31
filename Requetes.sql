@@ -1,6 +1,5 @@
 ------------------25/05/2022-----------------------
 CREATE TABLE `bdpdmtest2`.`t_bc_listebesoins` ( `Id_listebesoins` BIGINT(19) NOT NULL AUTO_INCREMENT , `RefBonCommande` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `RefListeBesoins` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `Designation` VARCHAR(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `Quantite` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `PrixUnitaire` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `PrixTotal` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , PRIMARY KEY (`Id_listebesoins`)) ENGINE = MyISAM;
-CREATE TABLE `bdpdmtest2`.`t_bc_fournisseur` ( `CodeFournisseur` BIGINT(19) NOT NULL AUTO_INCREMENT , `NomFournisseur` VARCHAR(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `AdresseFournisseur` VARCHAR(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `TelFournisseur` VARCHAR(70) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `NumCpteContribuable` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `NumRCCM` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , PRIMARY KEY (`CodeFournisseur`)) ENGINE = MyISAM;
 ALTER TABLE `t_boncommande` CHANGE `RefBon` `RefBonCommande` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
 ALTER TABLE `t_boncommande` CHANGE `RefMarche` `CodeFournisseur` BIGINT(19) NOT NULL;
 ALTER TABLE `t_boncommande` CHANGE `RefLot` `TypeElabBC` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
@@ -40,4 +39,12 @@ ALTER TABLE `t_bc_listebesoins` CHANGE `PrixUnitaire` `PrixUnitaire` DOUBLE(19,5
 ----28/05/2022---
 ALTER TABLE `t_bc_listebesoins` CHANGE `Quantite` `Quantite` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL, CHANGE `PrixUnitaire` `PrixUnitaire` DOUBLE(19,5) NULL;
 ALTER TABLE `t_bc_listebesoins` CHANGE `PrixUnitaire` `PrixUnitaire` VARCHAR(20) NULL DEFAULT NULL;
+
+---30/05/2022----
+ALTER TABLE `t_boncommande` CHANGE `MontantBCHT` `MontantBCHT` DOUBLE(19,2) NOT NULL;
+ALTER TABLE `t_boncommande` CHANGE `MontantTVA` `MontantTVA` DOUBLE(19,2) NOT NULL;
+ALTER TABLE `t_boncommande` CHANGE `MontantRemise` `MontantRemise` DOUBLE(19,2) NOT NULL;
+ALTER TABLE `t_boncommande` CHANGE `MontantAutreTaxe` `MontantAutreTaxe` DOUBLE(19,2) NOT NULL, CHANGE `MontantNetHT` `MontantNetHT` DOUBLE(19,2) NOT NULL, CHANGE `MontantTotal` `MontantTotal` DOUBLE(19,2) NOT NULL, CHANGE `MontantTotalTTC` `MontantTotalTTC` DOUBLE(19,2) NOT NULL;
+ALTER TABLE `t_boncommande` ADD `ID_BC` BIGINT(19) NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`ID_BC`);
+ALTER TABLE `t_boncommande` ADD `Annee` VARCHAR(10) NOT NULL AFTER `RefBonCommande`;
 

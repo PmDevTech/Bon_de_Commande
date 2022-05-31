@@ -301,4 +301,18 @@ Module SuperModule
         Return NewSec
     End Function
 
+    Sub NumBonCommande_Auto(ByVal montext As DevExpress.XtraEditors.TextEdit)
+        Try
+            query = "SELECT MAX(ID_BC) as Nbre FROM t_boncommande WHERE Annee=YEAR(NOW())"
+            Dim nbBonCommande As Decimal = 1
+            Try
+                nbBonCommande = Val(ExecuteScallar(query).ToString()) + 1
+            Catch ex As Exception
+            End Try
+            montext.Text = ProjetEnCours & "/" & Now.Year & "/N°" & nbBonCommande
+        Catch ex As Exception
+            SuccesMsg("Information non disponible : " & ex.ToString())
+        End Try
+    End Sub
+
 End Module

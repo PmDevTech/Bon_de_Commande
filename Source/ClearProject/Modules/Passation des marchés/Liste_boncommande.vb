@@ -159,212 +159,140 @@ Public Class Liste_boncommande
     Private Sub BtImprimer_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtImprimer.Click
         'Dialog_form(Etat_eng)
 
-        Dim impr As Boolean = False
+        If ViewBoncommande.RowCount > 0 Then
 
-        For i = 0 To ViewBoncommande.RowCount - 1
+            Dim impr As Boolean = False
 
-            If CBool(ViewBoncommande.GetRowCellValue(i, "Choix")) = True Then
+            For i = 0 To ViewBoncommande.RowCount - 1
 
-                Dim reportfeuilletps As New ReportDocument
-                Dim crtableLogoninfos As New TableLogOnInfos
-                Dim crtableLogoninfo As New TableLogOnInfo
-                Dim crConnectionInfo As New ConnectionInfo
-                Dim CrTables As Tables
-                Dim CrTable As Table
+                If CBool(ViewBoncommande.GetRowCellValue(i, "Choix")) = True Then
 
-                'If TxtRechercher.Text <> "" And TxtRechercher.Text <> "Rechercher" Then
-                '    curMisID = TxtRechercher.Text
-                'ElseIf (GvRapportEnr.RowCount > 0) And TxtRechercher.Text = "Rechercher" Then
-                '    drx = GvRapportEnr.GetDataRow(GvRapportEnr.FocusedRowHandle)
-                '    query = "select d.MIS_ID from t_grh_rapport r, t_grh_demande d where r.DEM_NUM_ORD= d.DEM_NUM_ORD and d.DEM_NUM_ORD='" & drx(2).ToString & "'"
-                '    curMisID = ExecuteScallar(query)
-                'End If
+                    Dim reportfeuilletps As New ReportDocument
+                    Dim crtableLogoninfos As New TableLogOnInfos
+                    Dim crtableLogoninfo As New TableLogOnInfo
+                    Dim crConnectionInfo As New ConnectionInfo
+                    Dim CrTables As Tables
+                    Dim CrTable As Table
 
-                Dim NumBonCommande As String = ""
-                NumBonCommande = ViewBoncommande.GetRowCellValue(i, "N° Bon Commande")
+                    'If TxtRechercher.Text <> "" And TxtRechercher.Text <> "Rechercher" Then
+                    '    curMisID = TxtRechercher.Text
+                    'ElseIf (GvRapportEnr.RowCount > 0) And TxtRechercher.Text = "Rechercher" Then
+                    '    drx = GvRapportEnr.GetDataRow(GvRapportEnr.FocusedRowHandle)
+                    '    query = "select d.MIS_ID from t_grh_rapport r, t_grh_demande d where r.DEM_NUM_ORD= d.DEM_NUM_ORD and d.DEM_NUM_ORD='" & drx(2).ToString & "'"
+                    '    curMisID = ExecuteScallar(query)
+                    'End If
 
-                DebutChargement(True, "Le traitement de votre demande est en cours...")
-                Dim Chemin As String = lineEtat & "\Bon_Commande\Etat_BonCommande.rpt"
+                    Dim NumBonCommande As String = ""
+                    NumBonCommande = ViewBoncommande.GetRowCellValue(i, "N° Bon Commande")
 
-                Dim DatSet = New DataSet
-                reportfeuilletps.Load(Chemin)
+                    DebutChargement(True, "Le traitement de votre demande est en cours...")
+                    Dim Chemin As String = lineEtat & "\Bon_Commande\Etat_BonCommande.rpt"
 
-                With crConnectionInfo
-                    .ServerName = ODBCNAME
-                    .DatabaseName = DB
-                    .UserID = USERNAME
-                    .Password = PWD
-                End With
+                    Dim DatSet = New DataSet
+                    reportfeuilletps.Load(Chemin)
 
-                CrTables = reportfeuilletps.Database.Tables
-                For Each CrTable In CrTables
-                    crtableLogoninfo = CrTable.LogOnInfo
-                    crtableLogoninfo.ConnectionInfo = crConnectionInfo
-                    CrTable.ApplyLogOnInfo(crtableLogoninfo)
-                Next
+                    With crConnectionInfo
+                        .ServerName = ODBCNAME
+                        .DatabaseName = DB
+                        .UserID = USERNAME
+                        .Password = PWD
+                    End With
 
-                reportfeuilletps.SetDataSource(DatSet)
-                reportfeuilletps.SetParameterValue("NumBonCommande", NumBonCommande)
-                reportfeuilletps.SetParameterValue("CodeProjet", ProjetEnCours)
-                FullScreenReport.FullView.ReportSource = reportfeuilletps
-                FinChargement()
-                FullScreenReport.ShowDialog()
+                    CrTables = reportfeuilletps.Database.Tables
+                    For Each CrTable In CrTables
+                        crtableLogoninfo = CrTable.LogOnInfo
+                        crtableLogoninfo.ConnectionInfo = crConnectionInfo
+                        CrTable.ApplyLogOnInfo(crtableLogoninfo)
+                    Next
 
-                impr = True
+                    reportfeuilletps.SetDataSource(DatSet)
+                    reportfeuilletps.SetParameterValue("NumBonCommande", NumBonCommande)
+                    reportfeuilletps.SetParameterValue("CodeProjet", ProjetEnCours)
+                    FullScreenReport.FullView.ReportSource = reportfeuilletps
+                    FinChargement()
+                    FullScreenReport.ShowDialog()
+
+                    impr = True
+                End If
+
+            Next
+
+            If impr = False Then
+                SuccesMsg("Veuillez cocher un bon de commande")
             End If
 
-        Next
-
-        If impr = False Then
-            SuccesMsg("Veuillez cocher un bon de commande")
+        Else
+            SuccesMsg("Veuillez élaborer un bon de commande")
         End If
 
     End Sub
 
     Private Sub BtSupprimer_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtSupprimer.Click
-        Dim supp As Boolean = False
 
-        If ConfirmMsg("Voulez-vous vraiment supprimer?") = DialogResult.Yes Then
+        If ViewBoncommande.RowCount > 0 Then
 
-            'suppression des données 
+            Dim supp As Boolean = False
             For i = 0 To ViewBoncommande.RowCount - 1
 
                 If CBool(ViewBoncommande.GetRowCellValue(i, "Choix")) = True Then
 
-                    Dim NumBC As String = ""
-                    Dim NumDAO As String = ""
-                    Dim TypeElab As String = ""
-                    NumBC = ViewBoncommande.GetRowCellValue(i, "N° Bon Commande").ToString
-                    NumDAO = ViewBoncommande.GetRowCellValue(i, "NumeroDAO").ToString
-                    TypeElab = ViewBoncommande.GetRowCellValue(i, "TypeElabBC").ToString
+                    If ConfirmMsg("Voulez-vous vraiment supprimer?") = DialogResult.Yes Then
+                        Dim NumBC As String = ""
+                        Dim NumDAO As String = ""
+                        Dim TypeElab As String = ""
+                        NumBC = ViewBoncommande.GetRowCellValue(i, "N° Bon Commande").ToString
+                        NumDAO = ViewBoncommande.GetRowCellValue(i, "NumeroDAO").ToString
+                        TypeElab = ViewBoncommande.GetRowCellValue(i, "TypeElabBC").ToString
 
-                    query = "delete from t_bc_listebesoins where RefBonCommande='" & NumBC & "'"
-                    ExecuteNonQuery(query)
-
-                    If TypeElab = "Sans Passation de Marché" Then
-                        query = "delete from t_fournisseur where NumeroDAO='" & NumDAO & "'"
+                        query = "delete from t_bc_listebesoins where RefBonCommande='" & NumBC & "'"
                         ExecuteNonQuery(query)
+
+                        If TypeElab = "Sans Passation de Marché" Then
+                            query = "delete from t_fournisseur where NumeroDAO='" & NumDAO & "'"
+                            ExecuteNonQuery(query)
+                        End If
+
+                        query = "delete from t_boncommande where RefBonCommande='" & NumBC & "'"
+                        ExecuteNonQuery(query)
+
+                        supp = True
                     End If
-
-                    query = "delete from t_boncommande where RefBonCommande='" & NumBC & "'"
-                    ExecuteNonQuery(query)
-
-                    supp = True
-
-                    'query = "select count(*) from t_gf_demandepd where NumeroMarche='" & val.ToString & "'"
-                    'nbre = ExecuteScallar(query)
-
-                    'If nbre = 0 Then
-                    '    query = "select refmarche from t_marche where NumeroMarche='" & val.ToString & "'"
-                    '    Dim nummarche As String = ExecuteScallar(query)
-                    '    DeleteRecords2("t_marche", "NumeroMarche", val)
-                    '    DeleteRecords2("t_marchesigne", "NumeroMarche", val)
-                    '    DeleteRecords2("t_acteng", "Refmarche", nummarche)
-                    'Else
-                    '    SuccesMsg("Ce marché ne peut être supprimé")
-                    'End If
                 End If
 
+                If supp = False Then
+                    SuccesMsg("Veuillez cocher un bon de commande")
+                Else
+                    SuccesMsg("Suppression effectuée avec succès")
+                    BtActualiser_Click(sender, e)
+                End If
             Next
-
-            If supp = False Then
-                SuccesMsg("Veuillez cocher un bon de commande")
-            Else
-                SuccesMsg("Suppression effectuée avec succès")
-                BtActualiser_Click(sender, e)
-                'query = "select s.TypeMarche, s.NumeroMarche, m.DescriptionMarche, s.MontantHT, s.DateMarche, c.NOM_CPT, s.EtatMarche  from t_marchesigne s, t_marche m, t_comp_compte c  where s.refmarche=m.refmarche and s.attributaire=c.CODE_CPT and s.codeprojet='" & ProjetEnCours & "' ORDER BY length(s.NumeroMarche), s.NumeroMarche"
-                'remplirDataGridimmo4(query, LgListBoncommande, LblNombre, ViewBoncommande)
-            End If
+        Else
+            SuccesMsg("Vous n'avez pas encore élaboré de bon de commande.")
         End If
     End Sub
 
     Private Sub BtModifier_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtModifier.Click
+        If ViewBoncommande.RowCount > 0 Then
+            Dim bool As Boolean = False
+            For i = 0 To ViewBoncommande.RowCount - 1
 
-        Dim bool As Boolean = False
-        For i = 0 To ViewBoncommande.RowCount - 1
+                If CBool(ViewBoncommande.GetRowCellValue(i, "Choix")) = True Then
+                    BonCommande.Size = New Point(1071, 786)
+                    AjoutModif = "Modifier"
+                    j = i
+                    Dialog_form(BonCommande)
+                    bool = True
+                End If
 
-            If CBool(ViewBoncommande.GetRowCellValue(i, "Choix")) = True Then
-                BonCommande.Size = New Point(1071, 786)
-                AjoutModif = "Modifier"
-                j = i
-                Dialog_form(BonCommande)
+            Next
 
-                '        query = "select * from t_marche where NumeroMarche='" & ViewBoncommande.GetRowCellValue(i, "Numéro Marché").ToString & "'"
-                '        Dim dt As DataTable = ExcecuteSelectQuery(query)
-                '        For Each rw As DataRow In dt.Rows
-
-                '            Modif_engagement.txtnbon.Text = ViewBoncommande.GetRowCellValue(i, "Numéro Marché").ToString
-                '            Modif_engagement.TxtLotMarche.Text = MettreApost(rw(5).ToString)
-                '            Modif_engagement.txtmontant.Text = rw(9).ToString
-                '            Modif_engagement.txttypemarche.Text = rw(4).ToString
-                '            Modif_engagement.CmbBaill.Text = rw(14).ToString
-                '            Modif_engagement.CmbConv.Text = rw(15).ToString
-                '            Modif_engagement.TxtPieceJointe.Text = ViewBoncommande.GetRowCellValue(i, "Numéro Marché").ToString & ".pdf"
-
-                '            query = "select AbregeAO, LibelleAO from T_ProcAO where AbregeAO ='" & rw(10).ToString & "'"
-                '            Dim dt5 As DataTable = ExcecuteSelectQuery(query)
-                '            For Each rw5 As DataRow In dt5.Rows
-                '                Modif_engagement.txtmethode.Text = rw5(0).ToString & " | " & MettreApost(rw5(1).ToString)
-                '            Next
-
-                '            query = "select DateMarche from t_marchesigne where NumeroMarche='" & ViewBoncommande.GetRowCellValue(i, "Numéro Marché").ToString & "'"
-                '            Modif_engagement.DateMarche.Text = ExecuteScallar(query)
-
-                '            'remplir les sous classe du plan comptable
-                '            Modif_engagement.txtcompte.Properties.Items.Clear()
-                '            query = "select * from T_COMP_SOUS_CLASSE where code_sc='" & rw(3).ToString & "' ORDER BY code_sc"
-                '            Dim dt1 As DataTable = ExcecuteSelectQuery(query)
-                '            For Each rw1 As DataRow In dt1.Rows
-                '                Modif_engagement.txtcompte.Text = rw1(0).ToString & " | " & MettreApost(rw1(2).ToString)
-                '            Next
-
-                '            query = "select c.NumCateg, c.LibelleCateg from t_marchesigne m, t_CategorieDepense c where m.CodeCateg=c.CodeCateg and m.NumeroMarche ='" & ViewBoncommande.GetRowCellValue(i, "Numéro Marché").ToString & "'"
-                '            Dim dt2 As DataTable = ExcecuteSelectQuery(query)
-                '            For Each rw2 As DataRow In dt2.Rows
-                '                Modif_engagement.CmbCatDep.Text = rw2(0).ToString & " | " & MettreApost(rw2(1).ToString)
-                '            Next
-
-                '            Dim codefrs As String = ""
-                '            query = "select Attributaire from t_marchesigne where NumeroMarche ='" & ViewBoncommande.GetRowCellValue(i, "Numéro Marché").ToString & "'"
-                '            codefrs = ExecuteScallar(query)
-
-                '            query = "select * from T_COMP_COMPTE where code_cpt='" & codefrs.ToString & "' and Code_Projet='" & ProjetEnCours & "' order by code_cpt"
-                '            Dim dt4 As DataTable = ExcecuteSelectQuery(query)
-                '            For Each rw4 As DataRow In dt4.Rows
-                '                Modif_engagement.TxtFournisMarche.Text = rw4(0).ToString & " | " & MettreApost(rw4(4).ToString)
-                '            Next
-
-                '            dtdoc.Columns.Clear()
-                '            dtdoc.Columns.Add("Activité", Type.GetType("System.String"))
-                '            dtdoc.Columns.Add("Libellé de l'activité", Type.GetType("System.String"))
-                '            dtdoc.Rows.Clear()
-                '            query = "select p.libellecourt, p.libellepartition from t_acteng a, t_partition p where a.LibelleCourt = p.LibelleCourt and a.RefMarche ='" & rw(0).ToString & "'"
-                '            Dim dt3 As DataTable = ExcecuteSelectQuery(query)
-                '            For Each rw3 As DataRow In dt3.Rows
-                '                Dim drs = dtdoc.NewRow()
-                '                drs(0) = rw3(0).ToString
-                '                drs(1) = rw3(1).ToString
-                '                dtdoc.Rows.Add(drs)
-                '            Next
-
-                '            Modif_engagement.LgListAct.DataSource = dtdoc
-                '            Modif_engagement.Viewact.OptionsView.ColumnAutoWidth = True
-                '            Modif_engagement.Viewact.OptionsBehavior.AutoExpandAllGroups = True
-                '            Modif_engagement.Viewact.VertScrollVisibility = True
-                '            Modif_engagement.Viewact.HorzScrollVisibility = True
-                '            Modif_engagement.Viewact.BestFitColumns()
-                '            Modif_engagement.Size = New Point(950, 575)
-                '            Modif_engagement.ShowDialog()
-                '        Next
-
-                bool = True
+            If bool = False Then
+                SuccesMsg("Veuillez cocher un bon de commande")
             End If
-
-        Next
-
-        If bool = False Then
-            SuccesMsg("Veuillez cocher un bon de commande")
+        Else
+            SuccesMsg("Veuillez élaborer un bon de commande")
         End If
+
     End Sub
 
     Private Sub BtAjouter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtAjouter.Click

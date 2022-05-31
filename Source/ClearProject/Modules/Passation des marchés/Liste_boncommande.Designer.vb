@@ -35,6 +35,8 @@ Partial Class Liste_boncommande
         Me.BackstageViewTabItem1 = New DevExpress.XtraBars.Ribbon.BackstageViewTabItem()
         Me.BtAjouter = New DevExpress.XtraEditors.SimpleButton()
         Me.PanelControl3 = New DevExpress.XtraEditors.PanelControl()
+        Me.GCListBoncommande = New DevExpress.XtraGrid.GridControl()
+        Me.ViewBoncommande = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
         Me.Checktous = New DevExpress.XtraEditors.CheckEdit()
@@ -43,18 +45,16 @@ Partial Class Liste_boncommande
         Me.BtActualiser = New DevExpress.XtraEditors.SimpleButton()
         Me.BtModifier = New DevExpress.XtraEditors.SimpleButton()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.GCListBoncommande = New DevExpress.XtraGrid.GridControl()
-        Me.ViewBoncommande = New DevExpress.XtraGrid.Views.Grid.GridView()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl3.SuspendLayout()
+        CType(Me.GCListBoncommande, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ViewBoncommande, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl2.SuspendLayout()
         CType(Me.Checktous.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GCListBoncommande, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ViewBoncommande, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelControl1
@@ -158,89 +158,6 @@ Partial Class Liste_boncommande
         Me.PanelControl3.Name = "PanelControl3"
         Me.PanelControl3.Size = New System.Drawing.Size(991, 402)
         Me.PanelControl3.TabIndex = 16
-        '
-        'GroupControl1
-        '
-        Me.GroupControl1.Controls.Add(Me.PanelControl3)
-        Me.GroupControl1.Controls.Add(Me.PanelControl2)
-        Me.GroupControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GroupControl1.Location = New System.Drawing.Point(0, 0)
-        Me.GroupControl1.Name = "GroupControl1"
-        Me.GroupControl1.Size = New System.Drawing.Size(995, 457)
-        Me.GroupControl1.TabIndex = 3
-        Me.GroupControl1.Text = "LISTE DES BONS DE COMMANDE"
-        '
-        'PanelControl2
-        '
-        Me.PanelControl2.Controls.Add(Me.Checktous)
-        Me.PanelControl2.Controls.Add(Me.LblNombre)
-        Me.PanelControl2.Controls.Add(Me.BtImprimer)
-        Me.PanelControl2.Controls.Add(Me.LabelControl1)
-        Me.PanelControl2.Controls.Add(Me.BtSupprimer)
-        Me.PanelControl2.Controls.Add(Me.BtActualiser)
-        Me.PanelControl2.Controls.Add(Me.BtModifier)
-        Me.PanelControl2.Controls.Add(Me.BtAjouter)
-        Me.PanelControl2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelControl2.Location = New System.Drawing.Point(2, 21)
-        Me.PanelControl2.Name = "PanelControl2"
-        Me.PanelControl2.Size = New System.Drawing.Size(991, 32)
-        Me.PanelControl2.TabIndex = 15
-        '
-        'Checktous
-        '
-        Me.Checktous.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.Checktous.Location = New System.Drawing.Point(868, 9)
-        Me.Checktous.Name = "Checktous"
-        Me.Checktous.Properties.Caption = "Tout sélectionner"
-        Me.Checktous.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Checktous.Size = New System.Drawing.Size(116, 19)
-        Me.Checktous.TabIndex = 18
-        Me.Checktous.ToolTip = "Tout sélectionner"
-        '
-        'LblNombre
-        '
-        Me.LblNombre.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LblNombre.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblNombre.Location = New System.Drawing.Point(415, 11)
-        Me.LblNombre.Name = "LblNombre"
-        Me.LblNombre.Size = New System.Drawing.Size(9, 15)
-        Me.LblNombre.TabIndex = 17
-        Me.LblNombre.Text = "..."
-        '
-        'BtImprimer
-        '
-        Me.BtImprimer.Image = Global.ClearProject.My.Resources.Resources.Group_Reports
-        Me.BtImprimer.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.BtImprimer.Location = New System.Drawing.Point(368, 5)
-        Me.BtImprimer.Name = "BtImprimer"
-        Me.BtImprimer.Size = New System.Drawing.Size(28, 23)
-        Me.BtImprimer.TabIndex = 16
-        Me.BtImprimer.ToolTip = "Imprimer"
-        '
-        'BtActualiser
-        '
-        Me.BtActualiser.Image = Global.ClearProject.My.Resources.Resources.vieux_rafraichir_vue_icone_4185_16
-        Me.BtActualiser.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.BtActualiser.Location = New System.Drawing.Point(4, 5)
-        Me.BtActualiser.Name = "BtActualiser"
-        Me.BtActualiser.Size = New System.Drawing.Size(28, 23)
-        Me.BtActualiser.TabIndex = 11
-        Me.BtActualiser.ToolTip = "Actualiser"
-        '
-        'BtModifier
-        '
-        Me.BtModifier.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
-        Me.BtModifier.Location = New System.Drawing.Point(201, 5)
-        Me.BtModifier.Name = "BtModifier"
-        Me.BtModifier.Size = New System.Drawing.Size(86, 23)
-        Me.BtModifier.TabIndex = 10
-        Me.BtModifier.Text = "Modifier"
-        Me.BtModifier.ToolTip = "Modifier"
-        '
-        'OpenFileDialog1
-        '
-        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
         'GCListBoncommande
         '
@@ -384,6 +301,90 @@ Partial Class Liste_boncommande
         Me.ViewBoncommande.OptionsView.ShowVerticalLines = DevExpress.Utils.DefaultBoolean.[False]
         Me.ViewBoncommande.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow
         '
+        'GroupControl1
+        '
+        Me.GroupControl1.Controls.Add(Me.PanelControl3)
+        Me.GroupControl1.Controls.Add(Me.PanelControl2)
+        Me.GroupControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupControl1.Location = New System.Drawing.Point(0, 0)
+        Me.GroupControl1.Name = "GroupControl1"
+        Me.GroupControl1.Size = New System.Drawing.Size(995, 457)
+        Me.GroupControl1.TabIndex = 3
+        Me.GroupControl1.Text = "LISTE DES BONS DE COMMANDE"
+        '
+        'PanelControl2
+        '
+        Me.PanelControl2.Controls.Add(Me.Checktous)
+        Me.PanelControl2.Controls.Add(Me.LblNombre)
+        Me.PanelControl2.Controls.Add(Me.BtImprimer)
+        Me.PanelControl2.Controls.Add(Me.LabelControl1)
+        Me.PanelControl2.Controls.Add(Me.BtSupprimer)
+        Me.PanelControl2.Controls.Add(Me.BtActualiser)
+        Me.PanelControl2.Controls.Add(Me.BtModifier)
+        Me.PanelControl2.Controls.Add(Me.BtAjouter)
+        Me.PanelControl2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.PanelControl2.Location = New System.Drawing.Point(2, 21)
+        Me.PanelControl2.Name = "PanelControl2"
+        Me.PanelControl2.Size = New System.Drawing.Size(991, 32)
+        Me.PanelControl2.TabIndex = 15
+        '
+        'Checktous
+        '
+        Me.Checktous.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.Checktous.Location = New System.Drawing.Point(868, 9)
+        Me.Checktous.Name = "Checktous"
+        Me.Checktous.Properties.Caption = "Tout sélectionner"
+        Me.Checktous.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.Checktous.Size = New System.Drawing.Size(116, 19)
+        Me.Checktous.TabIndex = 18
+        Me.Checktous.ToolTip = "Tout sélectionner"
+        Me.Checktous.Visible = False
+        '
+        'LblNombre
+        '
+        Me.LblNombre.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LblNombre.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblNombre.Location = New System.Drawing.Point(415, 11)
+        Me.LblNombre.Name = "LblNombre"
+        Me.LblNombre.Size = New System.Drawing.Size(9, 15)
+        Me.LblNombre.TabIndex = 17
+        Me.LblNombre.Text = "..."
+        '
+        'BtImprimer
+        '
+        Me.BtImprimer.Image = Global.ClearProject.My.Resources.Resources.Group_Reports
+        Me.BtImprimer.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.BtImprimer.Location = New System.Drawing.Point(368, 5)
+        Me.BtImprimer.Name = "BtImprimer"
+        Me.BtImprimer.Size = New System.Drawing.Size(28, 23)
+        Me.BtImprimer.TabIndex = 16
+        Me.BtImprimer.ToolTip = "Imprimer"
+        '
+        'BtActualiser
+        '
+        Me.BtActualiser.Image = Global.ClearProject.My.Resources.Resources.vieux_rafraichir_vue_icone_4185_16
+        Me.BtActualiser.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.BtActualiser.Location = New System.Drawing.Point(4, 5)
+        Me.BtActualiser.Name = "BtActualiser"
+        Me.BtActualiser.Size = New System.Drawing.Size(28, 23)
+        Me.BtActualiser.TabIndex = 11
+        Me.BtActualiser.ToolTip = "Actualiser"
+        '
+        'BtModifier
+        '
+        Me.BtModifier.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
+        Me.BtModifier.Location = New System.Drawing.Point(201, 5)
+        Me.BtModifier.Name = "BtModifier"
+        Me.BtModifier.Size = New System.Drawing.Size(86, 23)
+        Me.BtModifier.TabIndex = 10
+        Me.BtModifier.Text = "Modifier"
+        Me.BtModifier.ToolTip = "Modifier"
+        '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        '
         'Liste_boncommande
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -396,14 +397,14 @@ Partial Class Liste_boncommande
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl3.ResumeLayout(False)
+        CType(Me.GCListBoncommande, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ViewBoncommande, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl1.ResumeLayout(False)
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl2.ResumeLayout(False)
         Me.PanelControl2.PerformLayout()
         CType(Me.Checktous.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GCListBoncommande, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ViewBoncommande, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

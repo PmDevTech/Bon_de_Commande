@@ -230,9 +230,16 @@ Partial Class BonCommande
         '
         'Txtboncmde
         '
+        Me.Txtboncmde.Enabled = False
         Me.Txtboncmde.Location = New System.Drawing.Point(134, 109)
         Me.Txtboncmde.Margin = New System.Windows.Forms.Padding(2)
         Me.Txtboncmde.Name = "Txtboncmde"
+        Me.Txtboncmde.Properties.Appearance.BackColor = System.Drawing.Color.SeaShell
+        Me.Txtboncmde.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Txtboncmde.Properties.Appearance.Options.UseBackColor = True
+        Me.Txtboncmde.Properties.Appearance.Options.UseFont = True
+        Me.Txtboncmde.Properties.Appearance.Options.UseTextOptions = True
+        Me.Txtboncmde.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.Txtboncmde.Size = New System.Drawing.Size(248, 20)
         Me.Txtboncmde.TabIndex = 4
         '
@@ -395,7 +402,7 @@ Partial Class BonCommande
         '
         Me.TxtNewMont.Location = New System.Drawing.Point(10, 298)
         Me.TxtNewMont.Name = "TxtNewMont"
-        Me.TxtNewMont.Properties.Appearance.BackColor = System.Drawing.SystemColors.Control
+        Me.TxtNewMont.Properties.Appearance.BackColor = System.Drawing.Color.SeaShell
         Me.TxtNewMont.Properties.Appearance.Options.UseBackColor = True
         Me.TxtNewMont.Properties.ReadOnly = True
         Me.TxtNewMont.Size = New System.Drawing.Size(292, 20)
