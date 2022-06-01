@@ -19,7 +19,7 @@ Partial Class Liste_boncommande
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.BackstageViewButtonItem1 = New DevExpress.XtraBars.Ribbon.BackstageViewButtonItem()
@@ -39,13 +39,13 @@ Partial Class Liste_boncommande
         Me.ViewBoncommande = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
+        Me.TxtRechercher = New DevExpress.XtraEditors.TextEdit()
         Me.Checktous = New DevExpress.XtraEditors.CheckEdit()
         Me.LblNombre = New DevExpress.XtraEditors.LabelControl()
         Me.BtImprimer = New DevExpress.XtraEditors.SimpleButton()
         Me.BtActualiser = New DevExpress.XtraEditors.SimpleButton()
         Me.BtModifier = New DevExpress.XtraEditors.SimpleButton()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.TxtRechercher = New DevExpress.XtraEditors.TextEdit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl3.SuspendLayout()
@@ -55,8 +55,8 @@ Partial Class Liste_boncommande
         Me.GroupControl1.SuspendLayout()
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl2.SuspendLayout()
-        CType(Me.Checktous.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TxtRechercher.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Checktous.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelControl1
@@ -165,8 +165,8 @@ Partial Class Liste_boncommande
         '
         Me.GCListBoncommande.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GCListBoncommande.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        GridLevelNode1.RelationName = "Level1"
-        Me.GCListBoncommande.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
+        GridLevelNode2.RelationName = "Level1"
+        Me.GCListBoncommande.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
         Me.GCListBoncommande.Location = New System.Drawing.Point(2, 2)
         Me.GCListBoncommande.MainView = Me.ViewBoncommande
         Me.GCListBoncommande.Name = "GCListBoncommande"
@@ -331,6 +331,16 @@ Partial Class Liste_boncommande
         Me.PanelControl2.Size = New System.Drawing.Size(991, 32)
         Me.PanelControl2.TabIndex = 15
         '
+        'TxtRechercher
+        '
+        Me.TxtRechercher.EditValue = "Rechercher"
+        Me.TxtRechercher.Location = New System.Drawing.Point(610, 7)
+        Me.TxtRechercher.Name = "TxtRechercher"
+        Me.TxtRechercher.Size = New System.Drawing.Size(200, 20)
+        Me.TxtRechercher.TabIndex = 25
+        Me.TxtRechercher.Tag = "Rechercher"
+        Me.TxtRechercher.ToolTip = "Rechercher"
+        '
         'Checktous
         '
         Me.Checktous.Anchor = System.Windows.Forms.AnchorStyles.Right
@@ -388,16 +398,6 @@ Partial Class Liste_boncommande
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
-        'TxtRechercher
-        '
-        Me.TxtRechercher.EditValue = "Rechercher"
-        Me.TxtRechercher.Location = New System.Drawing.Point(457, 7)
-        Me.TxtRechercher.Name = "TxtRechercher"
-        Me.TxtRechercher.Size = New System.Drawing.Size(190, 20)
-        Me.TxtRechercher.TabIndex = 25
-        Me.TxtRechercher.Tag = "Rechercher"
-        Me.TxtRechercher.ToolTip = "Rechercher"
-        '
         'Liste_boncommande
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -417,8 +417,8 @@ Partial Class Liste_boncommande
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl2.ResumeLayout(False)
         Me.PanelControl2.PerformLayout()
-        CType(Me.Checktous.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TxtRechercher.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Checktous.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

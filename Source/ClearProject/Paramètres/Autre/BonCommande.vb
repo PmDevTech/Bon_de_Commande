@@ -194,8 +194,8 @@ Public Class BonCommande
             Dim drS = NewLine.NewRow()
             'cpt += 1
             drS("Choix") = TabTrue(0)
-            drS("Référence") = EnleverApost(rw("RefListeBesoins").ToString)
-            drS("Désignation") = EnleverApost(rw("Designation").ToString)
+            drS("Référence") = MettreApost(rw("RefListeBesoins").ToString)
+            drS("Désignation") = MettreApost(rw("Designation").ToString)
             drS("Quantité") = AfficherMonnaie(rw("Quantite").ToString)
             drS("Prix Unitaire") = AfficherMonnaie(rw("PrixUnitaire").ToString.Replace(",00", ""))
             drS("Montant") = AfficherMonnaie(rw("PrixTotal").ToString)
@@ -302,8 +302,8 @@ Public Class BonCommande
         Dim drS = NewLine.NewRow()
         cpt += 1
         drS("Choix") = TabTrue(cpt - 1)
-        drS("Référence") = EnleverApost(TxtReference.Text)
-        drS("Désignation") = EnleverApost(TxtDesignation.Text)
+        drS("Référence") = MettreApost(TxtReference.Text)
+        drS("Désignation") = MettreApost(TxtDesignation.Text)
         drS("Quantité") = AfficherMonnaie(CDbl(TxtQte.Text))
         drS("Prix Unitaire") = AfficherMonnaie(CDbl(TxtPu.Text))
         drS("Montant") = AfficherMonnaie(CDbl(TxtNewMont.Text))
@@ -645,7 +645,7 @@ Public Class BonCommande
                 Dim verif As String = ""
                 'insertion dans la table t_boncommande
                 verif = "INSERT INTO t_boncommande values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & Annee & "', '" & CInt(CodeFournis.ToString) & "','" & ChoixElabBC.ToString & "','" & CmbNumDAO.Text & "','" & RefLot.ToString & "','" & EnleverApost(TxtIntituleMarche.Text) & "','" & DateBC & "','" & ConditionPaiement & "','" & EnleverApost(TxtDelaiLivraison.Text) & "','"
-                verif &= EnleverApost(TxtLieuLivraison.Text) & "','" & EnleverApost(TxtIsntructionSpec.Text) & "', '" & CDbl(MontantHT) & "','" & TVA.ToString & "','" & MontantTVA.ToString.Replace(",", ".") & "','" & Remise.ToString & "','" & MontantRemise.ToString.Replace(",", ".") & "','" & EnleverApost(TxtLibAutreTaxe.Text) & "','" & AutreTaxe.ToString & "','" & MontantAutreTaxe.ToString.Replace(",", ".") & "','" & MontantNetHT.ToString.Replace(",", ".") & "','" & MontantTOTAL.ToString.Replace(",", ".") & "','" & MontantTotalTTC.ToString.Replace(",", ".") & "','" & cur_User & "','" & ProjetEnCours & "')"
+                verif &= EnleverApost(TxtLieuLivraison.Text) & "','" & EnleverApost(TxtIsntructionSpec.Text) & "', '" & CDbl(MontantHT) & "','" & TVA.ToString & "','" & MontantTVA.ToString.Replace(",", ".") & "','" & Remise.ToString & "','" & MontantRemise.ToString.Replace(",", ".") & "','" & EnleverApost(TxtLibAutreTaxe.Text) & "','" & AutreTaxe.ToString & "','" & MontantAutreTaxe.ToString.Replace(",", ".") & "','" & MontantNetHT.ToString.Replace(",", ".") & "','" & MontantTOTAL.ToString.Replace(",", ".") & "','" & MontantTotalTTC.ToString.Replace(",", ".") & "', 'OUI','" & cur_User & "','" & ProjetEnCours & "')"
                 ExecuteNonQuery(verif)
 
                 SuccesMsg("Elaboration du Bon de commande enregistré avec succès")
@@ -752,7 +752,7 @@ Public Class BonCommande
                     Dim verif As String = ""
                     'insertion dans la table t_boncommande
                     verif = "INSERT INTO t_boncommande values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & Annee & "','" & CInt(CodeFournis.ToString) & "','" & ChoixElabBC.ToString & "','" & "" & "','" & "" & "','" & EnleverApost(TxtIntituleMarche.Text) & "','" & DateBC & "','" & ConditionPaiement & "','" & EnleverApost(TxtDelaiLivraison.Text) & "','"
-                    verif &= EnleverApost(TxtLieuLivraison.Text) & "','" & EnleverApost(TxtIsntructionSpec.Text) & "', '" & CDbl(MontantHT) & "','" & TVA.ToString & "','" & MontantTVA.ToString.Replace(",", ".") & "','" & Remise.ToString & "','" & MontantRemise.ToString.Replace(",", ".") & "','" & EnleverApost(TxtLibAutreTaxe.Text) & "','" & AutreTaxe.ToString & "','" & MontantAutreTaxe.ToString.Replace(",", ".") & "','" & MontantNetHT.ToString.Replace(",", ".") & "','" & MontantTOTAL.ToString.Replace(",", ".") & "','" & MontantTotalTTC.ToString.Replace(",", ".") & "','" & cur_User & "','" & ProjetEnCours & "')"
+                    verif &= EnleverApost(TxtLieuLivraison.Text) & "','" & EnleverApost(TxtIsntructionSpec.Text) & "', '" & CDbl(MontantHT) & "','" & TVA.ToString & "','" & MontantTVA.ToString.Replace(",", ".") & "','" & Remise.ToString & "','" & MontantRemise.ToString.Replace(",", ".") & "','" & EnleverApost(TxtLibAutreTaxe.Text) & "','" & AutreTaxe.ToString & "','" & MontantAutreTaxe.ToString.Replace(",", ".") & "','" & MontantNetHT.ToString.Replace(",", ".") & "','" & MontantTOTAL.ToString.Replace(",", ".") & "','" & MontantTotalTTC.ToString.Replace(",", ".") & "', 'OUI','" & cur_User & "','" & ProjetEnCours & "')"
                     ExecuteNonQuery(verif)
 
                     SuccesMsg("Elaboration du Bon de commande enregistré avec succès")

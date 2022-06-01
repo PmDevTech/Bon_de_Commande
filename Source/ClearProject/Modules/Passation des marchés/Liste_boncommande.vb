@@ -40,6 +40,7 @@ Public Class Liste_boncommande
         dtListeBonCommande.Columns.Add("PcrtAutreTaxe", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Editeur", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Date d'édition", Type.GetType("System.String"))
+        dtListeBonCommande.Columns.Add("BonValider", Type.GetType("System.String"))
 
         GCListBoncommande.DataSource = dtListeBonCommande
 
@@ -61,6 +62,7 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("PcrtAutreTaxe").Visible = False
         ViewBoncommande.Columns("Editeur").Width = 350
         ViewBoncommande.Columns("Date d'édition").Width = 220
+        ViewBoncommande.Columns("BonValider").Visible = False
 
         ViewBoncommande.Columns("Montant").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         ViewBoncommande.Columns("Editeur").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
@@ -71,7 +73,7 @@ Public Class Liste_boncommande
 
     Private Sub RemplirDataGrid()
 
-        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,EMP_ID FROM t_boncommande "
+        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,BonValider,EMP_ID FROM t_boncommande "
         query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User.ToString() & "'"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         Dim cptr As Integer = 0
@@ -113,6 +115,7 @@ Public Class Liste_boncommande
             drS("LibelleAutreTaxe") = MettreApost(rw("AutreTaxe"))
             drS("PcrtAutreTaxe") = rw("PcrtAutreTaxe")
             drS("Editeur") = NomEditeur.ToString
+            drS("BonValider") = rw("BonValider").ToString
             NewLine.Rows.Add(drS)
         Next
 
@@ -141,6 +144,7 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("PcrtAutreTaxe").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Editeur").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Date d'édition").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("BonValider").OptionsColumn.AllowEdit = False
 
         Dim nbre As Integer = cptr.ToString
         If nbre = 0 Then
@@ -231,37 +235,50 @@ Public Class Liste_boncommande
 
         If ViewBoncommande.RowCount > 0 Then
 
-            Dim supp As Boolean = False
+            Dim supp As String = "FAUX"
+            Dim VerifSupBon As String = ""
             For i = 0 To ViewBoncommande.RowCount - 1
 
                 If CBool(ViewBoncommande.GetRowCellValue(i, "Choix")) = True Then
 
-                    If ConfirmMsg("Voulez-vous vraiment supprimer?") = DialogResult.Yes Then
-                        Dim NumBC As String = ""
-                        Dim NumDAO As String = ""
-                        Dim TypeElab As String = ""
-                        NumBC = ViewBoncommande.GetRowCellValue(i, "N° Bon Commande").ToString
-                        NumDAO = ViewBoncommande.GetRowCellValue(i, "NumeroDAO").ToString
-                        TypeElab = ViewBoncommande.GetRowCellValue(i, "TypeElabBC").ToString
+                    VerifSupBon = ViewBoncommande.GetRowCellValue(i, "BonValider")
 
-                        query = "delete from t_bc_listebesoins where RefBonCommande='" & NumBC & "'"
-                        ExecuteNonQuery(query)
+                    If VerifSupBon.ToUpper = "OUI" Then
+                        If ConfirmMsg("Voulez-vous vraiment supprimer ?") = DialogResult.Yes Then
+                            Dim NumBC As String = ""
+                            'Dim NumDAO As String = ""
+                            Dim TypeElab As String = ""
+                            Dim CodeFournisseur As String = ""
+                            NumBC = ViewBoncommande.GetRowCellValue(i, "N° Bon Commande").ToString
+                            'NumDAO = ViewBoncommande.GetRowCellValue(i, "NumeroDAO").ToString
+                            TypeElab = ViewBoncommande.GetRowCellValue(i, "TypeElabBC").ToString
+                            CodeFournisseur = ViewBoncommande.GetRowCellValue(i, "CodeFournisseur").ToString
 
-                        If TypeElab = "Sans Passation de Marché" Then
-                            query = "delete from t_fournisseur where NumeroDAO='" & NumDAO & "'"
+                            query = "delete from t_bc_listebesoins where RefBonCommande='" & NumBC & "'"
                             ExecuteNonQuery(query)
+
+                            If TypeElab = "Sans Passation de Marché" Then
+                                query = "delete from t_fournisseur where CodeFournis = '" & CodeFournisseur & "'"
+                                ExecuteNonQuery(query)
+                            End If
+
+                            query = "delete from t_boncommande where RefBonCommande='" & NumBC & "'"
+                            ExecuteNonQuery(query)
+
+                            supp = "VRAI"
+                        Else
+                            supp = ""
                         End If
-
-                        query = "delete from t_boncommande where RefBonCommande='" & NumBC & "'"
-                        ExecuteNonQuery(query)
-
-                        supp = True
+                    Else
+                        SuccesMsg("Ce bon de commande a été validé au niveau des engagements. Suppression impossible.")
+                        Exit Sub
                     End If
+
                 End If
 
-                If supp = False Then
+                If supp = "FAUX" Then
                     SuccesMsg("Veuillez cocher un bon de commande")
-                Else
+                ElseIf supp = "VRAI" Then
                     SuccesMsg("Suppression effectuée avec succès")
                     BtActualiser_Click(sender, e)
                 End If
@@ -274,16 +291,23 @@ Public Class Liste_boncommande
     Private Sub BtModifier_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtModifier.Click
         If ViewBoncommande.RowCount > 0 Then
             Dim bool As Boolean = False
+            Dim VerifModifBon As String = ""
+
             For i = 0 To ViewBoncommande.RowCount - 1
+                VerifModifBon = ViewBoncommande.GetRowCellValue(i, "BonValider")
 
-                If CBool(ViewBoncommande.GetRowCellValue(i, "Choix")) = True Then
-                    BonCommande.Size = New Point(1071, 786)
-                    AjoutModif = "Modifier"
-                    j = i
-                    Dialog_form(BonCommande)
-                    bool = True
+                If VerifModifBon.ToUpper = "OUI" Then
+                    If CBool(ViewBoncommande.GetRowCellValue(i, "Choix")) = True Then
+                        BonCommande.Size = New Point(1071, 786)
+                        AjoutModif = "Modifier"
+                        j = i
+                        Dialog_form(BonCommande)
+                        bool = True
+                    End If
+                Else
+                    SuccesMsg("Ce bon de commande a été validé au niveau des engagements. Modification impossible.")
+                    Exit Sub
                 End If
-
             Next
 
             If bool = False Then
@@ -332,5 +356,115 @@ Public Class Liste_boncommande
         Catch ex As Exception
             FailMsg("Erreur : Information non disponible : " & ex.ToString())
         End Try
+    End Sub
+
+    Private Sub RemplirdatagridRechercher()
+        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,EMP_ID FROM t_boncommande "
+        query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User.ToString() & "' AND RefBonCommande LIKE'" & TxtRechercher.Text & "%'"
+        Dim dt As DataTable = ExcecuteSelectQuery(query)
+        Dim cptr As Integer = 0
+        Dim NomEditeur As String = ""
+        'Dim cpt As Decimal = 0
+        Dim NewLine As DataTable = GCListBoncommande.DataSource
+        NewLine.Rows.Clear()
+
+        For Each rw As DataRow In dt.Rows
+            query = "SELECT NomFournis FROM t_fournisseur WHERE CodeFournis = '" & rw("CodeFournisseur") & "'"
+            Dim NomFournisseur As String = MettreApost(ExecuteScallar(query))
+
+            query = "SELECT EMP_NOM, EMP_PRENOMS FROM t_grh_employe WHERE EMP_ID = '" & rw("EMP_ID") & "'"
+            dt = ExcecuteSelectQuery(query)
+            For Each rwNom As DataRow In dt.Rows
+                NomEditeur = MettreApost(rwNom("EMP_NOM") & " " & rwNom("EMP_PRENOMS"))
+            Next
+
+            cptr += 1
+            'cpt += 1
+            Dim drS = NewLine.NewRow()
+            'drS("Choix") = TabTrue(cpt - 1)
+            drS("Choix") = TabTrue(0)
+            drS("N° Bon Commande") = rw("RefBonCommande").ToString
+            drS("CodeFournisseur") = rw("CodeFournisseur").ToString
+            drS("Fournisseur") = NomFournisseur.ToString
+            drS("TypeElabBC") = rw("TypeElabBC").ToString
+            drS("NumeroDAO") = rw("NumeroDAO").ToString
+            drS("RefLot") = rw("RefLot").ToString
+            drS("Intitulé du marché") = MettreApost(rw("IntituleMarche").ToString)
+            drS("Date d'édition") = CDate(rw("DateCommande")).ToString("dd/MM/yyyy")
+            drS("ConditionPaiement") = rw("ConditionsPaiement")
+            drS("DelaiLivraison") = MettreApost(rw("DelaiLivraison"))
+            drS("LieuLivraison") = MettreApost(rw("LieuLivraison"))
+            drS("InstructionSpeciale") = MettreApost(rw("InstructionSpeciale"))
+            drS("Montant") = AfficherMonnaie(rw("MontantTotalTTC"))
+            drS("PcrtTVA") = rw("PcrtTVA")
+            drS("PcrtREMISE") = rw("PcrtRemise")
+            drS("LibelleAutreTaxe") = MettreApost(rw("AutreTaxe"))
+            drS("PcrtAutreTaxe") = rw("PcrtAutreTaxe")
+            drS("Editeur") = NomEditeur.ToString
+            drS("BonValider") = rw("BonValider").ToString
+            NewLine.Rows.Add(drS)
+        Next
+
+        Dim edit As RepositoryItemCheckEdit = New RepositoryItemCheckEdit()
+        edit.ValueChecked = True
+        edit.ValueUnchecked = False
+        ViewBoncommande.Columns("Choix").ColumnEdit = edit
+        GCListBoncommande.RepositoryItems.Add(edit)
+        ViewBoncommande.OptionsBehavior.Editable = True
+
+        ViewBoncommande.Columns("N° Bon Commande").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("CodeFournisseur").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("TypeElabBC").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("NumeroDAO").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("RefLot").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Intitulé du marché").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Fournisseur").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("ConditionPaiement").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("DelaiLivraison").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("LieuLivraison").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("InstructionSpeciale").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Montant").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("PcrtTVA").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("PcrtREMISE").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("LibelleAutreTaxe").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("PcrtAutreTaxe").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Editeur").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Date d'édition").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("BonValider").OptionsColumn.AllowEdit = False
+
+        Dim nbre As Integer = cptr.ToString
+        If nbre = 0 Then
+            LblNombre.Text = "Aucun enregistrement"
+        ElseIf nbre = 1 Then
+            LblNombre.Text = nbre & " enregistrement"
+        Else
+            LblNombre.Text = nbre & " enregistrements"
+        End If
+    End Sub
+
+    Private Sub TxtRechercher_TextChanged(sender As Object, e As EventArgs) Handles TxtRechercher.TextChanged
+        Try
+            If TxtRechercher.Text = "" Or TxtRechercher.Text = "Rechercher" Then
+                RemplirDataGrid()
+            Else
+                RemplirdatagridRechercher()
+                'ViewBoncommande.Columns(0).Visible = False
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub TxtRechercher_Enter(sender As Object, e As EventArgs) Handles TxtRechercher.Enter
+        If TxtRechercher.Text = "Rechercher" Then
+            TxtRechercher.Text = ""
+            RemplirDataGrid()
+        End If
+    End Sub
+
+    Private Sub TxtRechercher_Leave(sender As Object, e As EventArgs) Handles TxtRechercher.Leave
+        If TxtRechercher.Text <> "Rechercher" Then
+            TxtRechercher.Text = "Rechercher"
+        End If
     End Sub
 End Class

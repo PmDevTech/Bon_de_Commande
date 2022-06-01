@@ -48,3 +48,7 @@ ALTER TABLE `t_boncommande` CHANGE `MontantAutreTaxe` `MontantAutreTaxe` DOUBLE(
 ALTER TABLE `t_boncommande` ADD `ID_BC` BIGINT(19) NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`ID_BC`);
 ALTER TABLE `t_boncommande` ADD `Annee` VARCHAR(10) NOT NULL AFTER `RefBonCommande`;
 
+---01/06/2022----
+ALTER TABLE `t_boncommande` ADD `BonValider` VARCHAR(3) NOT NULL AFTER `MontantTotalTTC`;
+ALTER TABLE `t_bc_listebesoins` CHANGE `PrixTotal` `PrixTotal` DOUBLE(19,2) NOT NULL;
+
