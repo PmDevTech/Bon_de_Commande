@@ -72,6 +72,9 @@ Partial Class BonCommande
         Me.TxtMontLettre = New DevExpress.XtraEditors.MemoEdit()
         Me.TxtIntituleMarche = New DevExpress.XtraEditors.MemoEdit()
         Me.GroupControl3 = New DevExpress.XtraEditors.GroupControl()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ModifierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SupprimerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListBonCmde = New DevExpress.XtraGrid.GridControl()
         Me.ViewLstCmde = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GCChoixBonCommande = New DevExpress.XtraEditors.GroupControl()
@@ -92,9 +95,6 @@ Partial Class BonCommande
         Me.GroupControl5 = New DevExpress.XtraEditors.GroupControl()
         Me.GroupControl6 = New DevExpress.XtraEditors.GroupControl()
         Me.lc4 = New DevExpress.XtraEditors.LabelControl()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ModifierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SupprimerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
         CType(Me.CmbCodeLot.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -121,6 +121,7 @@ Partial Class BonCommande
         CType(Me.TxtIntituleMarche.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl3.SuspendLayout()
+        Me.ContextMenuStrip1.SuspendLayout()
         CType(Me.ListBonCmde, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ViewLstCmde, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GCChoixBonCommande, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -143,7 +144,6 @@ Partial Class BonCommande
         Me.GroupControl5.SuspendLayout()
         CType(Me.GroupControl6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl6.SuspendLayout()
-        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'BtAnnuler
@@ -195,7 +195,7 @@ Partial Class BonCommande
         'lc2
         '
         Me.lc2.Appearance.ForeColor = System.Drawing.Color.Red
-        Me.lc2.Location = New System.Drawing.Point(103, 55)
+        Me.lc2.Location = New System.Drawing.Point(47, 55)
         Me.lc2.Name = "lc2"
         Me.lc2.Size = New System.Drawing.Size(6, 13)
         Me.lc2.TabIndex = 278
@@ -215,16 +215,16 @@ Partial Class BonCommande
         Me.CmbCodeLot.Location = New System.Drawing.Point(134, 54)
         Me.CmbCodeLot.Name = "CmbCodeLot"
         Me.CmbCodeLot.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.CmbCodeLot.Size = New System.Drawing.Size(72, 20)
+        Me.CmbCodeLot.Size = New System.Drawing.Size(62, 20)
         Me.CmbCodeLot.TabIndex = 277
         '
         'LabelControl1
         '
         Me.LabelControl1.Location = New System.Drawing.Point(12, 57)
         Me.LabelControl1.Name = "LabelControl1"
-        Me.LabelControl1.Size = New System.Drawing.Size(87, 13)
+        Me.LabelControl1.Size = New System.Drawing.Size(30, 13)
         Me.LabelControl1.TabIndex = 276
-        Me.LabelControl1.Text = "N° Lot / Libelle Lot"
+        Me.LabelControl1.Text = "N° Lot"
         '
         'LabelNumDAO
         '
@@ -644,6 +644,26 @@ Partial Class BonCommande
         Me.GroupControl3.TabIndex = 23
         Me.GroupControl3.Text = "Liste des besoins"
         '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ModifierToolStripMenuItem, Me.SupprimerToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(130, 48)
+        '
+        'ModifierToolStripMenuItem
+        '
+        Me.ModifierToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
+        Me.ModifierToolStripMenuItem.Name = "ModifierToolStripMenuItem"
+        Me.ModifierToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
+        Me.ModifierToolStripMenuItem.Text = "Modifier"
+        '
+        'SupprimerToolStripMenuItem
+        '
+        Me.SupprimerToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.Delete_16x16
+        Me.SupprimerToolStripMenuItem.Name = "SupprimerToolStripMenuItem"
+        Me.SupprimerToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
+        Me.SupprimerToolStripMenuItem.Text = "Supprimer"
+        '
         'ListBonCmde
         '
         Me.ListBonCmde.Dock = System.Windows.Forms.DockStyle.Fill
@@ -800,7 +820,7 @@ Partial Class BonCommande
         '
         Me.RdSansPassMarche.Location = New System.Drawing.Point(547, 31)
         Me.RdSansPassMarche.Name = "RdSansPassMarche"
-        Me.RdSansPassMarche.Properties.Caption = "Sans Passation de Marché"
+        Me.RdSansPassMarche.Properties.Caption = "Saisir Bon commande"
         Me.RdSansPassMarche.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio
         Me.RdSansPassMarche.Size = New System.Drawing.Size(194, 19)
         Me.RdSansPassMarche.TabIndex = 2
@@ -809,7 +829,7 @@ Partial Class BonCommande
         '
         Me.RdParPassMarche.Location = New System.Drawing.Point(303, 31)
         Me.RdParPassMarche.Name = "RdParPassMarche"
-        Me.RdParPassMarche.Properties.Caption = "Par Passation de Marché"
+        Me.RdParPassMarche.Properties.Caption = "Générer Bon de commande"
         Me.RdParPassMarche.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio
         Me.RdParPassMarche.Size = New System.Drawing.Size(179, 19)
         Me.RdParPassMarche.TabIndex = 1
@@ -962,26 +982,6 @@ Partial Class BonCommande
         Me.lc4.TabIndex = 280
         Me.lc4.Text = "*"
         '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ModifierToolStripMenuItem, Me.SupprimerToolStripMenuItem})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(181, 70)
-        '
-        'ModifierToolStripMenuItem
-        '
-        Me.ModifierToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
-        Me.ModifierToolStripMenuItem.Name = "ModifierToolStripMenuItem"
-        Me.ModifierToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.ModifierToolStripMenuItem.Text = "Modifier"
-        '
-        'SupprimerToolStripMenuItem
-        '
-        Me.SupprimerToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.Delete_16x16
-        Me.SupprimerToolStripMenuItem.Name = "SupprimerToolStripMenuItem"
-        Me.SupprimerToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.SupprimerToolStripMenuItem.Text = "Supprimer"
-        '
         'BonCommande
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1032,6 +1032,7 @@ Partial Class BonCommande
         CType(Me.TxtIntituleMarche.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl3.ResumeLayout(False)
+        Me.ContextMenuStrip1.ResumeLayout(False)
         CType(Me.ListBonCmde, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ViewLstCmde, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GCChoixBonCommande, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1056,7 +1057,6 @@ Partial Class BonCommande
         CType(Me.GroupControl6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl6.ResumeLayout(False)
         Me.GroupControl6.PerformLayout()
-        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub

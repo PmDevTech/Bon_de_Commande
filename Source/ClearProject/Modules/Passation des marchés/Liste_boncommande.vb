@@ -359,7 +359,7 @@ Public Class Liste_boncommande
     End Sub
 
     Private Sub RemplirdatagridRechercher()
-        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,EMP_ID FROM t_boncommande "
+        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,BonValider,EMP_ID FROM t_boncommande "
         query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User.ToString() & "' AND RefBonCommande LIKE'" & TxtRechercher.Text & "%'"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         Dim cptr As Integer = 0
@@ -448,7 +448,8 @@ Public Class Liste_boncommande
                 RemplirDataGrid()
             Else
                 RemplirdatagridRechercher()
-                'ViewBoncommande.Columns(0).Visible = False
+                'ViewBoncommande.Columns("Choix").Visible = False
+                'ViewBoncommande.Columns("Date d'édition").Width = 294
             End If
         Catch ex As Exception
 

@@ -324,6 +324,66 @@ Public Class BonCommande
 
     End Sub
 
+    Private Sub RechargerSpecifications()
+
+        Dim TypeMarche As String = ""
+        Dim Reference As String = ""
+        Dim Designation As String = ""
+        Dim QTE As String = ""
+        Dim PU As String = ""
+        dtboncommande.Rows.clear()
+
+        'récupération du type de marché
+        query = "SELECT TypeMarche FROM t_dao WHERE CodeProjet = '" & ProjetEnCours & "' AND NumeroDAO = '" & ID_NumDAO(CmbNumDAO.SelectedIndex) & "'"
+        TypeMarche = ExecuteScallar(query)
+
+        If TypeMarche = "Fournitures" Or TypeMarche = "Services autres que les services de consultants" Then
+            query = "SELECT sp.RefSpecFournit, sp.PrixUnitaire, sf.CodeCategorie, sf.DescripFournit, sf.QteFournit FROM t_soumissionfournisseur s, t_soumisprixfourniture sp, t_spectechfourniture sf WHERE s.RefSoumis = sp.RefSoumis AND sp.RefSpecFournit = sf.RefSpecFournit AND sp.RefSoumis in (select RefSoumis FROM t_soumissionfournisseur WHERE CodeFournis = '" & CodeFournis.ToString & "') AND sp.RefSpecFournit in (select RefSpecFournit FROM t_spectechfourniture)"
+        ElseIf TypeMarche = "Travaux" Then
+            query = "SELECT DISTINCT d.NumeroItem, d.Designation, d.QteItem, sp.MontantItem FROM t_dqeitem d, t_soumisprixitemdqe sp, t_soumissionfournisseur s WHERE d.RefItem = sp.RefItem AND sp.RefSoumis = s.RefSoumis AND s.CodeFournis = '" & CodeFournis.ToString & "' AND s.CodeLot = '" & ID_CodeLot(CmbCodeLot.SelectedIndex) & "'"
+        End If
+
+        Dim dt As DataTable = ExcecuteSelectQuery(query)
+        Dim NewLine As DataTable = ListBonCmde.DataSource
+
+        For Each rw As DataRow In dt.Rows
+
+            If TypeMarche = "Fournitures" Or TypeMarche = "Services autres que les services de consultants" Then
+                Reference = rw("CodeCategorie").ToString
+                Designation = rw("DescripFournit").ToString
+                QTE = rw("QteFournit").ToString
+                PU = rw("PrixUnitaire").ToString
+            ElseIf TypeMarche = "Travaux" Then
+                Reference = rw("NumeroItem").ToString
+                Designation = rw("Designation").ToString
+                QTE = rw("QteItem").ToString
+                PU = rw("MontantItem").ToString
+            End If
+
+            Dim drS = NewLine.NewRow()
+            drS("Choix") = TabTrue(0)
+            drS("Référence") = Reference
+            drS("Désignation") = Designation
+            drS("Quantité") = QTE
+            drS("Prix Unitaire") = PU
+            drS("Montant") = CDbl(QTE) * CDbl(PU)
+            NewLine.Rows.Add(drS)
+        Next
+
+        Dim edit As RepositoryItemCheckEdit = New RepositoryItemCheckEdit()
+        edit.ValueChecked = True
+        edit.ValueUnchecked = False
+        ViewLstCmde.Columns("Choix").ColumnEdit = edit
+        ListBonCmde.RepositoryItems.Add(edit)
+        ViewLstCmde.OptionsBehavior.Editable = True
+
+        ViewLstCmde.Columns("Référence").OptionsColumn.AllowEdit = False
+        ViewLstCmde.Columns("Désignation").OptionsColumn.AllowEdit = False
+        ViewLstCmde.Columns("Quantité").OptionsColumn.AllowEdit = False
+        ViewLstCmde.Columns("Prix Unitaire").OptionsColumn.AllowEdit = False
+        ViewLstCmde.Columns("Montant").OptionsColumn.AllowEdit = False
+    End Sub
+
     Private Sub TxtQte_TextChanged(sender As Object, e As EventArgs) Handles TxtQte.TextChanged, TxtPu.TextChanged
         If TxtQte.Text <> "" And TxtPu.Text <> "" Then
             Dim qte As Double = 0
@@ -334,7 +394,7 @@ Public Class BonCommande
             Try
                 TxtMontLettre.Text = MontantLettre(TxtNewMont.Text)
             Catch ex As Exception
-                AlertMsg("Dépassement de caractère!")
+                AlertMsg("Attention dépassement de caractère. Chiffre trop énorme!")
             End Try
         End If
     End Sub
@@ -344,15 +404,22 @@ Public Class BonCommande
             Case ControlChars.CrLf
                 If TxtIntituleMarche.Text = "" Then
                     SuccesMsg("Veuillez saisir l'intitulé du marché")
+                    TxtIntituleMarche.Focus()
                 ElseIf TxtDesignation.Text = "" Then
                     SuccesMsg("Veuillez saisir la désignation")
+                    TxtDesignation.Focus()
                 ElseIf TxtQte.Text = "" Then
                     SuccesMsg("Veuillez saisir la quantité")
+                    TxtQte.Focus()
                 ElseIf TxtPu.Text = "" Then
                     SuccesMsg("Veuillez saisir le prix unitaire")
+                    TxtPu.Focus()
+                ElseIf TxtNewMont.Text = "" Then
+                    SuccesMsg("Le montant à payer n'a pas été calculé. Veuillez renseigner la quantité ou le prix unitaire.")
                 Else
                     GridBonCommande()
                     InitFormulaireListeBesoins()
+                    TxtReference.Focus()
                 End If
             Case Else
         End Select
@@ -385,12 +452,6 @@ Public Class BonCommande
             TxtDesignation.Enabled = False
             lc1.Visible = True
             lc2.Visible = True
-            'lc3.Visible = True
-            'lc4.Visible = True
-            'lc5.Visible = True
-            'lc6.Visible = True
-            'lc7.Visible = True
-            'lc8.Visible = True
 
             Initialiser()
             ChargerNumDAO()
@@ -412,12 +473,6 @@ Public Class BonCommande
             TxtDesignation.Enabled = True
             lc1.Visible = False
             lc2.Visible = False
-            'lc3.Visible = True
-            'lc4.Visible = True
-            'lc5.Visible = True
-            'lc6.Visible = True
-            'lc7.Visible = True
-            'lc8.Visible = True
 
             Initialiser()
         End If
@@ -523,26 +578,10 @@ Public Class BonCommande
 
         query = "SELECT LibelleLot from t_lotdao WHERE NumeroDAO = '" & ID_NumDAO(CmbNumDAO.SelectedIndex) & "' AND CodeLot = '" & ID_CodeLot(CmbCodeLot.SelectedIndex) & "'"
         LibelleLot = ExecuteScallar(query)
-        TxtDesignation.Text = MettreApost(LibelleLot.ToString)
+        TxtDesignation.Text = MettreApost(LibelleLot)
 
-        'dt = ExcecuteSelectQuery(query)
-        'For Each rw1 As DataRow In dt.Rows
-        '    TxtNewMont.Text = AfficherMonnaie(rw1("PrixCorrigeOffre").ToString)
-        'Next
+        RechargerSpecifications()
 
-
-        'query = "SELECT l.LibelleLot, SUM(s.QteFournit) as Qte FROM t_lotdao l, t_spectechfourniture s WHERE l.NumeroDAO = s.NumeroDAO and l.CodeLot = s.CodeLot and l.NumeroDAO = '" & CmbNumDAO.Text & "' and l.CodeLot = '" & CmbCodeLot.Text & "'"
-        'dt = ExcecuteSelectQuery(query)
-        'For Each rw As DataRow In dt.Rows
-        '    TxtDesignation.Text = EnleverApost(rw("LibelleLot").ToString)
-        '    TxtQte.Text = AfficherMonnaie(rw("QteFournit").ToString)
-        'Next
-
-        'query = "SELECT RefSoumis FROM t_soumissionfournisseur WHERE CodeFournis = '" & CodeFournis.ToString & "' and CodeLot = '" & CmbCodeLot.SelectedIndex & "'"
-        'dt = ExcecuteSelectQuery(query)
-        'For Each rw As DataRow In dt.Rows
-        '    query = ""
-        'Next
     End Sub
 
     Private Sub TxtNewMont_TextChanged(sender As Object, e As EventArgs) Handles TxtNewMont.TextChanged
@@ -550,7 +589,7 @@ Public Class BonCommande
             Try
                 TxtMontLettre.Text = MontantLettre(TxtNewMont.Text)
             Catch ex As Exception
-                AlertMsg("Dépassement de caractère. Chiffre trop énorme!")
+                AlertMsg("Attention dépassement de caractère. Chiffre trop énorme!")
             End Try
         End If
     End Sub
@@ -648,7 +687,7 @@ Public Class BonCommande
                 verif &= EnleverApost(TxtLieuLivraison.Text) & "','" & EnleverApost(TxtIsntructionSpec.Text) & "', '" & CDbl(MontantHT) & "','" & TVA.ToString & "','" & MontantTVA.ToString.Replace(",", ".") & "','" & Remise.ToString & "','" & MontantRemise.ToString.Replace(",", ".") & "','" & EnleverApost(TxtLibAutreTaxe.Text) & "','" & AutreTaxe.ToString & "','" & MontantAutreTaxe.ToString.Replace(",", ".") & "','" & MontantNetHT.ToString.Replace(",", ".") & "','" & MontantTOTAL.ToString.Replace(",", ".") & "','" & MontantTotalTTC.ToString.Replace(",", ".") & "', 'OUI','" & cur_User & "','" & ProjetEnCours & "')"
                 ExecuteNonQuery(verif)
 
-                SuccesMsg("Elaboration du Bon de commande enregistré avec succès")
+                SuccesMsg("Enregistrement effectué avec succès")
                 Initialiser()
                 ChargerNumDAO()
             End If
@@ -755,7 +794,7 @@ Public Class BonCommande
                     verif &= EnleverApost(TxtLieuLivraison.Text) & "','" & EnleverApost(TxtIsntructionSpec.Text) & "', '" & CDbl(MontantHT) & "','" & TVA.ToString & "','" & MontantTVA.ToString.Replace(",", ".") & "','" & Remise.ToString & "','" & MontantRemise.ToString.Replace(",", ".") & "','" & EnleverApost(TxtLibAutreTaxe.Text) & "','" & AutreTaxe.ToString & "','" & MontantAutreTaxe.ToString.Replace(",", ".") & "','" & MontantNetHT.ToString.Replace(",", ".") & "','" & MontantTOTAL.ToString.Replace(",", ".") & "','" & MontantTotalTTC.ToString.Replace(",", ".") & "', 'OUI','" & cur_User & "','" & ProjetEnCours & "')"
                     ExecuteNonQuery(verif)
 
-                    SuccesMsg("Elaboration du Bon de commande enregistré avec succès")
+                    SuccesMsg("Enregistrement effectué avec succès")
                     dtboncommande.Rows.clear()
                     Initialiser()
                 Else
