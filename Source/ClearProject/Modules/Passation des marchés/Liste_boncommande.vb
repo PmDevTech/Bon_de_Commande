@@ -33,6 +33,11 @@ Public Class Liste_boncommande
         dtListeBonCommande.Columns.Add("DelaiLivraison", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("LieuLivraison", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("InstructionSpeciale", Type.GetType("System.String"))
+        dtListeBonCommande.Columns.Add("Référence", Type.GetType("System.String"))
+        dtListeBonCommande.Columns.Add("Désignation", Type.GetType("System.String"))
+        dtListeBonCommande.Columns.Add("Quantité", Type.GetType("System.String"))
+        dtListeBonCommande.Columns.Add("Prix Unitaire", Type.GetType("System.String"))
+        dtListeBonCommande.Columns.Add("MontantBCHT", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Montant", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("PcrtTVA", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("PcrtREMISE", Type.GetType("System.String"))
@@ -55,6 +60,11 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("DelaiLivraison").Visible = False
         ViewBoncommande.Columns("LieuLivraison").Visible = False
         ViewBoncommande.Columns("InstructionSpeciale").Visible = False
+        ViewBoncommande.Columns("Référence").Visible = False
+        ViewBoncommande.Columns("Désignation").Visible = False
+        ViewBoncommande.Columns("Quantité").Visible = False
+        ViewBoncommande.Columns("Prix Unitaire").Visible = False
+        ViewBoncommande.Columns("MontantBCHT").Visible = False
         ViewBoncommande.Columns("Montant").Width = 200
         ViewBoncommande.Columns("PcrtTVA").Visible = False
         ViewBoncommande.Columns("PcrtREMISE").Visible = False
@@ -73,7 +83,7 @@ Public Class Liste_boncommande
 
     Private Sub RemplirDataGrid()
 
-        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,BonValider,EMP_ID FROM t_boncommande "
+        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,Quantite,PrixUnitaire,MontantBCHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,BonValider,EMP_ID FROM t_boncommande "
         query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User.ToString() & "'"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         Dim cptr As Integer = 0
@@ -109,6 +119,11 @@ Public Class Liste_boncommande
             drS("DelaiLivraison") = MettreApost(rw("DelaiLivraison"))
             drS("LieuLivraison") = MettreApost(rw("LieuLivraison"))
             drS("InstructionSpeciale") = MettreApost(rw("InstructionSpeciale"))
+            drS("Référence") = MettreApost(rw("RefArticle"))
+            drS("Désignation") = MettreApost(rw("Designation"))
+            drS("Quantité") = AfficherMonnaie(rw("Quantite"))
+            drS("Prix Unitaire") = AfficherMonnaie(rw("PrixUnitaire"))
+            drS("MontantBCHT") = rw("MontantBCHT")
             drS("Montant") = AfficherMonnaie(rw("MontantTotalTTC"))
             drS("PcrtTVA") = rw("PcrtTVA")
             drS("PcrtREMISE") = rw("PcrtRemise")
@@ -137,6 +152,11 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("DelaiLivraison").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("LieuLivraison").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("InstructionSpeciale").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Référence").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Désignation").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Quantité").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Prix Unitaire").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("MontantBCHT").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Montant").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("PcrtTVA").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("PcrtREMISE").OptionsColumn.AllowEdit = False
@@ -257,6 +277,9 @@ Public Class Liste_boncommande
                             query = "delete from t_bc_listebesoins where RefBonCommande='" & NumBC & "'"
                             ExecuteNonQuery(query)
 
+                            query = "delete from t_bc_signataire where RefBonCommande ='" & NumBC & "'"
+                            ExecuteNonQuery(query)
+
                             If TypeElab = "Sans Passation de Marché" Then
                                 query = "delete from t_fournisseur where CodeFournis = '" & CodeFournisseur & "'"
                                 ExecuteNonQuery(query)
@@ -275,17 +298,19 @@ Public Class Liste_boncommande
                     End If
 
                 End If
-
-                If supp = "FAUX" Then
-                    SuccesMsg("Veuillez cocher un bon de commande")
-                ElseIf supp = "VRAI" Then
-                    SuccesMsg("Suppression effectuée avec succès")
-                    BtActualiser_Click(sender, e)
-                End If
             Next
+
+            If supp = "FAUX" Then
+                SuccesMsg("Veuillez cocher un bon de commande")
+            ElseIf supp = "VRAI" Then
+                SuccesMsg("Suppression effectuée avec succès")
+                BtActualiser_Click(sender, e)
+            End If
+
         Else
             SuccesMsg("Vous n'avez pas encore élaboré de bon de commande.")
         End If
+
     End Sub
 
     Private Sub BtModifier_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtModifier.Click
@@ -359,7 +384,7 @@ Public Class Liste_boncommande
     End Sub
 
     Private Sub RemplirdatagridRechercher()
-        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,BonValider,EMP_ID FROM t_boncommande "
+        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,Quantite,PrixUnitaire,MontantBCHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,BonValider,EMP_ID FROM t_boncommande "
         query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User.ToString() & "' AND RefBonCommande LIKE'" & TxtRechercher.Text & "%'"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         Dim cptr As Integer = 0
@@ -395,6 +420,11 @@ Public Class Liste_boncommande
             drS("DelaiLivraison") = MettreApost(rw("DelaiLivraison"))
             drS("LieuLivraison") = MettreApost(rw("LieuLivraison"))
             drS("InstructionSpeciale") = MettreApost(rw("InstructionSpeciale"))
+            drS("Référence") = MettreApost(rw("RefArticle"))
+            drS("Désignation") = MettreApost(rw("Designation"))
+            drS("Quantité") = AfficherMonnaie(rw("Quantite"))
+            drS("Prix Unitaire") = AfficherMonnaie(rw("PrixUnitaire"))
+            drS("MontantBCHT") = rw("MontantBCHT")
             drS("Montant") = AfficherMonnaie(rw("MontantTotalTTC"))
             drS("PcrtTVA") = rw("PcrtTVA")
             drS("PcrtREMISE") = rw("PcrtRemise")
@@ -423,6 +453,11 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("DelaiLivraison").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("LieuLivraison").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("InstructionSpeciale").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Référence").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Désignation").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Quantité").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Prix Unitaire").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("MontantBCHT").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Montant").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("PcrtTVA").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("PcrtREMISE").OptionsColumn.AllowEdit = False

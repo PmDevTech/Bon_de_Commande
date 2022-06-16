@@ -19,6 +19,10 @@ ALTER TABLE `t_bc_listebesoins` CHANGE `PrixUnitaire` `PrixUnitaire` VARCHAR(20)
 ---01/06/2022----
 ALTER TABLE `t_bc_listebesoins` CHANGE `PrixTotal` `PrixTotal` DOUBLE(19,2) NOT NULL;
 
----03/06/2022---
+---16/06/2022---
+ALTER TABLE `t_boncommande` ADD `RefArticle` VARCHAR(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `InstructionSpeciale`, ADD `Designation` VARCHAR(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `RefArticle`, ADD `Quantite` BIGINT(19) NULL AFTER `Designation`, ADD `PrixUnitaire` BIGINT(19) NULL AFTER `Quantite`;
+ALTER TABLE `t_boncommande` CHANGE `Quantite` `Quantite` VARCHAR(300) NULL DEFAULT NULL;
+ALTER TABLE `t_boncommande` CHANGE `PrixUnitaire` `PrixUnitaire` VARCHAR(300) NULL DEFAULT NULL;
+ALTER TABLE `t_bc_signataire` ADD `RangEnregistrement` VARCHAR(2) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `NomPren`;
 
 

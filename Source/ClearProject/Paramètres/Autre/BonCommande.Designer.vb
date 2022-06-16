@@ -20,6 +20,7 @@ Partial Class BonCommande
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.BtAnnuler = New DevExpress.XtraEditors.SimpleButton()
         Me.BtEnregistrer = New DevExpress.XtraEditors.SimpleButton()
@@ -95,6 +96,15 @@ Partial Class BonCommande
         Me.GroupControl5 = New DevExpress.XtraEditors.GroupControl()
         Me.GroupControl6 = New DevExpress.XtraEditors.GroupControl()
         Me.lc4 = New DevExpress.XtraEditors.LabelControl()
+        Me.GroupControl7 = New DevExpress.XtraEditors.GroupControl()
+        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.CmbSignataire = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.BtnAjouter = New DevExpress.XtraEditors.SimpleButton()
+        Me.GCSignataire = New DevExpress.XtraGrid.GridControl()
+        Me.GVSignataire = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.SupprimerLaLigneToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
         CType(Me.CmbCodeLot.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -144,6 +154,12 @@ Partial Class BonCommande
         Me.GroupControl5.SuspendLayout()
         CType(Me.GroupControl6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl6.SuspendLayout()
+        CType(Me.GroupControl7, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl7.SuspendLayout()
+        CType(Me.CmbSignataire.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GCSignataire, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GVSignataire, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip2.SuspendLayout()
         Me.SuspendLayout()
         '
         'BtAnnuler
@@ -398,13 +414,13 @@ Partial Class BonCommande
         Me.Panel1.Controls.Add(Me.TxtIntituleMarche)
         Me.Panel1.Location = New System.Drawing.Point(407, 77)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(312, 585)
+        Me.Panel1.Size = New System.Drawing.Size(312, 427)
         Me.Panel1.TabIndex = 6
         '
         'lc5
         '
         Me.lc5.Appearance.ForeColor = System.Drawing.Color.Red
-        Me.lc5.Location = New System.Drawing.Point(105, 11)
+        Me.lc5.Location = New System.Drawing.Point(105, 6)
         Me.lc5.Name = "lc5"
         Me.lc5.Size = New System.Drawing.Size(6, 13)
         Me.lc5.TabIndex = 274
@@ -413,7 +429,7 @@ Partial Class BonCommande
         'lc6
         '
         Me.lc6.Appearance.ForeColor = System.Drawing.Color.Red
-        Me.lc6.Location = New System.Drawing.Point(73, 160)
+        Me.lc6.Location = New System.Drawing.Point(73, 114)
         Me.lc6.Name = "lc6"
         Me.lc6.Size = New System.Drawing.Size(6, 13)
         Me.lc6.TabIndex = 273
@@ -422,7 +438,7 @@ Partial Class BonCommande
         'lc8
         '
         Me.lc8.Appearance.ForeColor = System.Drawing.Color.Red
-        Me.lc8.Location = New System.Drawing.Point(223, 218)
+        Me.lc8.Location = New System.Drawing.Point(223, 161)
         Me.lc8.Name = "lc8"
         Me.lc8.Size = New System.Drawing.Size(6, 13)
         Me.lc8.TabIndex = 272
@@ -431,7 +447,7 @@ Partial Class BonCommande
         'lc7
         '
         Me.lc7.Appearance.ForeColor = System.Drawing.Color.Red
-        Me.lc7.Location = New System.Drawing.Point(57, 216)
+        Me.lc7.Location = New System.Drawing.Point(57, 159)
         Me.lc7.Name = "lc7"
         Me.lc7.Size = New System.Drawing.Size(6, 13)
         Me.lc7.TabIndex = 24
@@ -439,7 +455,7 @@ Partial Class BonCommande
         '
         'TxtAutreTaxe
         '
-        Me.TxtAutreTaxe.Location = New System.Drawing.Point(237, 525)
+        Me.TxtAutreTaxe.Location = New System.Drawing.Point(237, 396)
         Me.TxtAutreTaxe.Name = "TxtAutreTaxe"
         Me.TxtAutreTaxe.Properties.Mask.EditMask = "P0"
         Me.TxtAutreTaxe.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
@@ -448,7 +464,7 @@ Partial Class BonCommande
         '
         'TxtLibAutreTaxe
         '
-        Me.TxtLibAutreTaxe.Location = New System.Drawing.Point(10, 525)
+        Me.TxtLibAutreTaxe.Location = New System.Drawing.Point(10, 396)
         Me.TxtLibAutreTaxe.Name = "TxtLibAutreTaxe"
         Me.TxtLibAutreTaxe.Size = New System.Drawing.Size(221, 20)
         Me.TxtLibAutreTaxe.TabIndex = 28
@@ -457,7 +473,7 @@ Partial Class BonCommande
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(10, 107)
+        Me.Label16.Location = New System.Drawing.Point(10, 72)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(52, 14)
         Me.Label16.TabIndex = 271
@@ -465,7 +481,7 @@ Partial Class BonCommande
         '
         'TxtRemise
         '
-        Me.TxtRemise.Location = New System.Drawing.Point(161, 468)
+        Me.TxtRemise.Location = New System.Drawing.Point(161, 355)
         Me.TxtRemise.Name = "TxtRemise"
         Me.TxtRemise.Properties.Mask.EditMask = "P0"
         Me.TxtRemise.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
@@ -474,7 +490,7 @@ Partial Class BonCommande
         '
         'TxtTVA
         '
-        Me.TxtTVA.Location = New System.Drawing.Point(10, 468)
+        Me.TxtTVA.Location = New System.Drawing.Point(10, 355)
         Me.TxtTVA.Name = "TxtTVA"
         Me.TxtTVA.Properties.Mask.EditMask = "P0"
         Me.TxtTVA.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
@@ -483,7 +499,7 @@ Partial Class BonCommande
         '
         'TxtNewMont
         '
-        Me.TxtNewMont.Location = New System.Drawing.Point(10, 298)
+        Me.TxtNewMont.Location = New System.Drawing.Point(10, 226)
         Me.TxtNewMont.Name = "TxtNewMont"
         Me.TxtNewMont.Properties.Appearance.BackColor = System.Drawing.Color.SeaShell
         Me.TxtNewMont.Properties.Appearance.Options.UseBackColor = True
@@ -493,21 +509,21 @@ Partial Class BonCommande
         '
         'TxtReference
         '
-        Me.TxtReference.Location = New System.Drawing.Point(10, 123)
+        Me.TxtReference.Location = New System.Drawing.Point(10, 88)
         Me.TxtReference.Name = "TxtReference"
         Me.TxtReference.Size = New System.Drawing.Size(292, 20)
         Me.TxtReference.TabIndex = 20
         '
         'TxtDesignation
         '
-        Me.TxtDesignation.Location = New System.Drawing.Point(10, 178)
+        Me.TxtDesignation.Location = New System.Drawing.Point(10, 132)
         Me.TxtDesignation.Name = "TxtDesignation"
         Me.TxtDesignation.Size = New System.Drawing.Size(292, 20)
         Me.TxtDesignation.TabIndex = 21
         '
         'TxtPu
         '
-        Me.TxtPu.Location = New System.Drawing.Point(158, 235)
+        Me.TxtPu.Location = New System.Drawing.Point(158, 178)
         Me.TxtPu.Name = "TxtPu"
         Me.TxtPu.Properties.Mask.EditMask = "d"
         Me.TxtPu.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
@@ -517,7 +533,7 @@ Partial Class BonCommande
         '
         'TxtQte
         '
-        Me.TxtQte.Location = New System.Drawing.Point(10, 235)
+        Me.TxtQte.Location = New System.Drawing.Point(10, 178)
         Me.TxtQte.Name = "TxtQte"
         Me.TxtQte.Properties.Mask.EditMask = "d"
         Me.TxtQte.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
@@ -529,7 +545,7 @@ Partial Class BonCommande
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Italic)
-        Me.Label15.Location = New System.Drawing.Point(161, 451)
+        Me.Label15.Location = New System.Drawing.Point(161, 338)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(40, 14)
         Me.Label15.TabIndex = 20
@@ -539,7 +555,7 @@ Partial Class BonCommande
         '
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Italic)
-        Me.Label17.Location = New System.Drawing.Point(10, 508)
+        Me.Label17.Location = New System.Drawing.Point(10, 379)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(54, 14)
         Me.Label17.TabIndex = 20
@@ -549,7 +565,7 @@ Partial Class BonCommande
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Italic)
-        Me.Label14.Location = New System.Drawing.Point(10, 451)
+        Me.Label14.Location = New System.Drawing.Point(10, 338)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(25, 14)
         Me.Label14.TabIndex = 20
@@ -559,7 +575,7 @@ Partial Class BonCommande
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Italic)
-        Me.Label9.Location = New System.Drawing.Point(10, 330)
+        Me.Label9.Location = New System.Drawing.Point(10, 252)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(90, 14)
         Me.Label9.TabIndex = 20
@@ -569,7 +585,7 @@ Partial Class BonCommande
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(96, 279)
+        Me.Label6.Location = New System.Drawing.Point(96, 206)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(125, 15)
         Me.Label6.TabIndex = 8
@@ -579,7 +595,7 @@ Partial Class BonCommande
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(10, 12)
+        Me.Label10.Location = New System.Drawing.Point(10, 7)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(93, 14)
         Me.Label10.TabIndex = 10
@@ -589,7 +605,7 @@ Partial Class BonCommande
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Italic)
-        Me.Label5.Location = New System.Drawing.Point(10, 218)
+        Me.Label5.Location = New System.Drawing.Point(10, 161)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(47, 14)
         Me.Label5.TabIndex = 6
@@ -599,7 +615,7 @@ Partial Class BonCommande
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Italic)
-        Me.Label4.Location = New System.Drawing.Point(158, 219)
+        Me.Label4.Location = New System.Drawing.Point(158, 162)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(65, 14)
         Me.Label4.TabIndex = 4
@@ -609,7 +625,7 @@ Partial Class BonCommande
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(10, 161)
+        Me.Label2.Location = New System.Drawing.Point(10, 115)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(63, 14)
         Me.Label2.TabIndex = 0
@@ -617,21 +633,21 @@ Partial Class BonCommande
         '
         'TxtMontLettre
         '
-        Me.TxtMontLettre.Location = New System.Drawing.Point(10, 349)
+        Me.TxtMontLettre.Location = New System.Drawing.Point(10, 270)
         Me.TxtMontLettre.Name = "TxtMontLettre"
         Me.TxtMontLettre.Properties.Appearance.BackColor = System.Drawing.Color.White
         Me.TxtMontLettre.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtMontLettre.Properties.Appearance.Options.UseBackColor = True
         Me.TxtMontLettre.Properties.Appearance.Options.UseFont = True
         Me.TxtMontLettre.Properties.ReadOnly = True
-        Me.TxtMontLettre.Size = New System.Drawing.Size(292, 82)
+        Me.TxtMontLettre.Size = New System.Drawing.Size(292, 61)
         Me.TxtMontLettre.TabIndex = 25
         '
         'TxtIntituleMarche
         '
-        Me.TxtIntituleMarche.Location = New System.Drawing.Point(10, 29)
+        Me.TxtIntituleMarche.Location = New System.Drawing.Point(10, 25)
         Me.TxtIntituleMarche.Name = "TxtIntituleMarche"
-        Me.TxtIntituleMarche.Size = New System.Drawing.Size(292, 69)
+        Me.TxtIntituleMarche.Size = New System.Drawing.Size(292, 43)
         Me.TxtIntituleMarche.TabIndex = 19
         '
         'GroupControl3
@@ -666,10 +682,11 @@ Partial Class BonCommande
         '
         'ListBonCmde
         '
+        Me.ListBonCmde.ContextMenuStrip = Me.ContextMenuStrip1
         Me.ListBonCmde.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ListBonCmde.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        GridLevelNode2.RelationName = "Level1"
-        Me.ListBonCmde.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
+        GridLevelNode1.RelationName = "Level1"
+        Me.ListBonCmde.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
         Me.ListBonCmde.Location = New System.Drawing.Point(2, 21)
         Me.ListBonCmde.MainView = Me.ViewLstCmde
         Me.ListBonCmde.Name = "ListBonCmde"
@@ -982,11 +999,97 @@ Partial Class BonCommande
         Me.lc4.TabIndex = 280
         Me.lc4.Text = "*"
         '
+        'GroupControl7
+        '
+        Me.GroupControl7.Controls.Add(Me.GCSignataire)
+        Me.GroupControl7.Controls.Add(Me.LabelControl2)
+        Me.GroupControl7.Controls.Add(Me.Label20)
+        Me.GroupControl7.Controls.Add(Me.CmbSignataire)
+        Me.GroupControl7.Controls.Add(Me.BtnAjouter)
+        Me.GroupControl7.Location = New System.Drawing.Point(408, 507)
+        Me.GroupControl7.Name = "GroupControl7"
+        Me.GroupControl7.Size = New System.Drawing.Size(311, 153)
+        Me.GroupControl7.TabIndex = 114
+        Me.GroupControl7.Text = "Signataire(s)"
+        '
+        'LabelControl2
+        '
+        Me.LabelControl2.Appearance.ForeColor = System.Drawing.Color.Red
+        Me.LabelControl2.Location = New System.Drawing.Point(116, 30)
+        Me.LabelControl2.Name = "LabelControl2"
+        Me.LabelControl2.Size = New System.Drawing.Size(6, 13)
+        Me.LabelControl2.TabIndex = 275
+        Me.LabelControl2.Text = "*"
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Italic)
+        Me.Label20.Location = New System.Drawing.Point(10, 31)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(107, 14)
+        Me.Label20.TabIndex = 275
+        Me.Label20.Text = "Nom Prénoms et Titre"
+        '
+        'CmbSignataire
+        '
+        Me.CmbSignataire.Location = New System.Drawing.Point(11, 52)
+        Me.CmbSignataire.Name = "CmbSignataire"
+        Me.CmbSignataire.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.CmbSignataire.Size = New System.Drawing.Size(221, 20)
+        Me.CmbSignataire.TabIndex = 116
+        '
+        'BtnAjouter
+        '
+        Me.BtnAjouter.Image = Global.ClearProject.My.Resources.Resources.Add_16x16
+        Me.BtnAjouter.Location = New System.Drawing.Point(236, 49)
+        Me.BtnAjouter.Name = "BtnAjouter"
+        Me.BtnAjouter.Size = New System.Drawing.Size(69, 27)
+        Me.BtnAjouter.TabIndex = 115
+        Me.BtnAjouter.Text = "Ajouter"
+        '
+        'GCSignataire
+        '
+        Me.GCSignataire.ContextMenuStrip = Me.ContextMenuStrip2
+        Me.GCSignataire.Dock = System.Windows.Forms.DockStyle.Bottom
+        GridLevelNode2.RelationName = "Level1"
+        Me.GCSignataire.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
+        Me.GCSignataire.Location = New System.Drawing.Point(2, 82)
+        Me.GCSignataire.MainView = Me.GVSignataire
+        Me.GCSignataire.Name = "GCSignataire"
+        Me.GCSignataire.Size = New System.Drawing.Size(307, 69)
+        Me.GCSignataire.TabIndex = 276
+        Me.GCSignataire.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GVSignataire})
+        '
+        'GVSignataire
+        '
+        Me.GVSignataire.GridControl = Me.GCSignataire
+        Me.GVSignataire.Name = "GVSignataire"
+        Me.GVSignataire.OptionsBehavior.Editable = False
+        Me.GVSignataire.OptionsBehavior.ReadOnly = True
+        Me.GVSignataire.OptionsMenu.ShowAutoFilterRowItem = False
+        Me.GVSignataire.OptionsView.ShowGroupExpandCollapseButtons = False
+        Me.GVSignataire.OptionsView.ShowGroupPanel = False
+        '
+        'ContextMenuStrip2
+        '
+        Me.ContextMenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SupprimerLaLigneToolStripMenuItem})
+        Me.ContextMenuStrip2.Name = "ContextMenuStrip2"
+        Me.ContextMenuStrip2.Size = New System.Drawing.Size(181, 48)
+        '
+        'SupprimerLaLigneToolStripMenuItem
+        '
+        Me.SupprimerLaLigneToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.Delete_16x16
+        Me.SupprimerLaLigneToolStripMenuItem.Name = "SupprimerLaLigneToolStripMenuItem"
+        Me.SupprimerLaLigneToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SupprimerLaLigneToolStripMenuItem.Text = "Supprimer la ligne"
+        '
         'BonCommande
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1055, 747)
+        Me.Controls.Add(Me.GroupControl7)
         Me.Controls.Add(Me.GroupControl6)
         Me.Controls.Add(Me.GroupControl5)
         Me.Controls.Add(Me.GroupControl4)
@@ -1057,6 +1160,13 @@ Partial Class BonCommande
         CType(Me.GroupControl6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl6.ResumeLayout(False)
         Me.GroupControl6.PerformLayout()
+        CType(Me.GroupControl7, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl7.ResumeLayout(False)
+        Me.GroupControl7.PerformLayout()
+        CType(Me.CmbSignataire.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GCSignataire, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GVSignataire, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -1134,4 +1244,13 @@ Partial Class BonCommande
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents ModifierToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SupprimerToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents GroupControl7 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents Label20 As Label
+    Friend WithEvents CmbSignataire As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents BtnAjouter As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents GCSignataire As DevExpress.XtraGrid.GridControl
+    Friend WithEvents GVSignataire As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents ContextMenuStrip2 As ContextMenuStrip
+    Friend WithEvents SupprimerLaLigneToolStripMenuItem As ToolStripMenuItem
 End Class
