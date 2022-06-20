@@ -16,10 +16,9 @@ Public Class Liste_boncommande
         Me.Icon = My.Resources.Logo_ClearProject_Valide
         LoadColonneBonCommande()
         RemplirDataGrid()
-
     End Sub
 
-    Private Sub LoadColonneBonCommande()
+    Public Sub LoadColonneBonCommande()
         dtListeBonCommande.Columns.Clear()
         dtListeBonCommande.Columns.Add("Choix", Type.GetType("System.Boolean"))
         dtListeBonCommande.Columns.Add("N° Bon Commande", Type.GetType("System.String"))
@@ -37,6 +36,11 @@ Public Class Liste_boncommande
         dtListeBonCommande.Columns.Add("Désignation", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Quantité", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Prix Unitaire", Type.GetType("System.String"))
+
+        dtListeBonCommande.Columns.Add("Montant Rabais", Type.GetType("System.String"))
+        dtListeBonCommande.Columns.Add("Ajustement", Type.GetType("System.String"))
+
+
         dtListeBonCommande.Columns.Add("MontantBCHT", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Montant", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("PcrtTVA", Type.GetType("System.String"))
@@ -64,6 +68,8 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("Désignation").Visible = False
         ViewBoncommande.Columns("Quantité").Visible = False
         ViewBoncommande.Columns("Prix Unitaire").Visible = False
+        ViewBoncommande.Columns("Montant Rabais").Visible = False
+        ViewBoncommande.Columns("Ajustement").Visible = False
         ViewBoncommande.Columns("MontantBCHT").Visible = False
         ViewBoncommande.Columns("Montant").Width = 200
         ViewBoncommande.Columns("PcrtTVA").Visible = False
@@ -81,14 +87,13 @@ Public Class Liste_boncommande
         ColorRowGrid(ViewBoncommande, "[Code]='x'", Color.LightGray, "Times New Roman", 12, FontStyle.Regular, Color.Black)
     End Sub
 
-    Private Sub RemplirDataGrid()
+    Public Sub RemplirDataGrid()
 
-        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,Quantite,PrixUnitaire,MontantBCHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,BonValider,EMP_ID FROM t_boncommande "
+        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,Quantite,PrixUnitaire,MontantRabais,Ajustement,MontantBCHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,BonValider,EMP_ID FROM t_boncommande "
         query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User.ToString() & "'"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         Dim cptr As Integer = 0
         Dim NomEditeur As String = ""
-        'Dim cpt As Decimal = 0
         Dim NewLine As DataTable = GCListBoncommande.DataSource
         NewLine.Rows.Clear()
 
@@ -103,7 +108,6 @@ Public Class Liste_boncommande
             Next
 
             cptr += 1
-            'cpt += 1
             Dim drS = NewLine.NewRow()
             'drS("Choix") = TabTrue(cpt - 1)
             drS("Choix") = TabTrue(0)
@@ -121,8 +125,10 @@ Public Class Liste_boncommande
             drS("InstructionSpeciale") = MettreApost(rw("InstructionSpeciale"))
             drS("Référence") = MettreApost(rw("RefArticle"))
             drS("Désignation") = MettreApost(rw("Designation"))
-            drS("Quantité") = AfficherMonnaie(rw("Quantite"))
-            drS("Prix Unitaire") = AfficherMonnaie(rw("PrixUnitaire"))
+            drS("Quantité") = rw("Quantite").ToString
+            drS("Prix Unitaire") = rw("PrixUnitaire").ToString
+            drS("Montant Rabais") = rw("MontantRabais").ToString
+            drS("Ajustement") = rw("Ajustement").ToString
             drS("MontantBCHT") = rw("MontantBCHT")
             drS("Montant") = AfficherMonnaie(rw("MontantTotalTTC"))
             drS("PcrtTVA") = rw("PcrtTVA")
@@ -156,6 +162,8 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("Désignation").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Quantité").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Prix Unitaire").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Montant Rabais").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Ajustement").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("MontantBCHT").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Montant").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("PcrtTVA").OptionsColumn.AllowEdit = False
@@ -198,19 +206,26 @@ Public Class Liste_boncommande
                     Dim CrTables As Tables
                     Dim CrTable As Table
 
-                    'If TxtRechercher.Text <> "" And TxtRechercher.Text <> "Rechercher" Then
-                    '    curMisID = TxtRechercher.Text
-                    'ElseIf (GvRapportEnr.RowCount > 0) And TxtRechercher.Text = "Rechercher" Then
-                    '    drx = GvRapportEnr.GetDataRow(GvRapportEnr.FocusedRowHandle)
-                    '    query = "select d.MIS_ID from t_grh_rapport r, t_grh_demande d where r.DEM_NUM_ORD= d.DEM_NUM_ORD and d.DEM_NUM_ORD='" & drx(2).ToString & "'"
-                    '    curMisID = ExecuteScallar(query)
-                    'End If
-
+                    'récupération du numéro du bon de commande
                     Dim NumBonCommande As String = ""
                     NumBonCommande = ViewBoncommande.GetRowCellValue(i, "N° Bon Commande")
 
+                    'récupération du type de marché
+                    Dim TypeMarche As String = ""
+                    Dim NumDAO As String = ""
+                    NumDAO = ViewBoncommande.GetRowCellValue(i, "NumeroDAO")
+                    query = "SELECT TypeMarche FROM t_dao WHERE CodeProjet = '" & ProjetEnCours & "' AND NumeroDAO = '" & NumDAO & "'"
+                    TypeMarche = ExecuteScallar(query)
+
                     DebutChargement(True, "Le traitement de votre demande est en cours...")
-                    Dim Chemin As String = lineEtat & "\Bon_Commande\Etat_BonCommande.rpt"
+                    Dim Chemin As String = ""
+                    If TypeMarche = "Fournitures" Or TypeMarche.ToLower.Contains("Service") Then
+                        Chemin = lineEtat & "\Bon_Commande\Etat_BonCommande_Fournitures.rpt"
+                    ElseIf TypeMarche = "Travaux" Then
+                        Chemin = lineEtat & "\Bon_Commande\Etat_BonCommande_Travaux.rpt"
+                    Else
+                        Chemin = lineEtat & "\Bon_Commande\Etat_BonCommande.rpt"
+                    End If
 
                     Dim DatSet = New DataSet
                     reportfeuilletps.Load(Chemin)
@@ -323,7 +338,7 @@ Public Class Liste_boncommande
 
                 If VerifModifBon.ToUpper = "OUI" Then
                     If CBool(ViewBoncommande.GetRowCellValue(i, "Choix")) = True Then
-                        BonCommande.Size = New Point(1071, 786)
+                        BonCommande.Size = New Point(1130, 822)
                         AjoutModif = "Modifier"
                         j = i
                         Dialog_form(BonCommande)
@@ -345,7 +360,7 @@ Public Class Liste_boncommande
     End Sub
 
     Private Sub BtAjouter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtAjouter.Click
-        BonCommande.Size = New Point(1071, 786)
+        BonCommande.Size = New Point(1130, 822)
         AjoutModif = "Ajout"
         Dialog_form(BonCommande)
     End Sub
@@ -384,7 +399,7 @@ Public Class Liste_boncommande
     End Sub
 
     Private Sub RemplirdatagridRechercher()
-        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,Quantite,PrixUnitaire,MontantBCHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,BonValider,EMP_ID FROM t_boncommande "
+        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,Quantite,PrixUnitaire,MontantRabais,Ajustement,MontantBCHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,BonValider,EMP_ID FROM t_boncommande "
         query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User.ToString() & "' AND RefBonCommande LIKE'" & TxtRechercher.Text & "%'"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         Dim cptr As Integer = 0
@@ -422,8 +437,10 @@ Public Class Liste_boncommande
             drS("InstructionSpeciale") = MettreApost(rw("InstructionSpeciale"))
             drS("Référence") = MettreApost(rw("RefArticle"))
             drS("Désignation") = MettreApost(rw("Designation"))
-            drS("Quantité") = AfficherMonnaie(rw("Quantite"))
-            drS("Prix Unitaire") = AfficherMonnaie(rw("PrixUnitaire"))
+            drS("Quantité") = rw("Quantite").ToString
+            drS("Prix Unitaire") = rw("PrixUnitaire").ToString
+            drS("Montant Rabais") = rw("MontantRabais").ToString
+            drS("Ajustement") = rw("Ajustement").ToString
             drS("MontantBCHT") = rw("MontantBCHT")
             drS("Montant") = AfficherMonnaie(rw("MontantTotalTTC"))
             drS("PcrtTVA") = rw("PcrtTVA")
@@ -457,6 +474,8 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("Désignation").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Quantité").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Prix Unitaire").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Montant Rabais").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Ajustement").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("MontantBCHT").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Montant").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("PcrtTVA").OptionsColumn.AllowEdit = False

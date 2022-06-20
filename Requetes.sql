@@ -25,4 +25,9 @@ ALTER TABLE `t_boncommande` CHANGE `Quantite` `Quantite` VARCHAR(300) NULL DEFAU
 ALTER TABLE `t_boncommande` CHANGE `PrixUnitaire` `PrixUnitaire` VARCHAR(300) NULL DEFAULT NULL;
 ALTER TABLE `t_bc_signataire` ADD `RangEnregistrement` VARCHAR(2) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `NomPren`;
 
+--20/06/2022--
+ALTER TABLE `t_boncommande` ADD `MontantRabais` DOUBLE NOT NULL AFTER `PrixUnitaire`, ADD `Ajustement` DOUBLE NOT NULL AFTER `MontantRabais`;
+ALTER TABLE `t_boncommande` CHANGE `MontantRabais` `MontantRabais` VARCHAR(300) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, CHANGE `Ajustement` `Ajustement` VARCHAR(300) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
+
+
 
