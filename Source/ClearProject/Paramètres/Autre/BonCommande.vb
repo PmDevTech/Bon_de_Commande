@@ -11,6 +11,7 @@ Public Class BonCommande
     Dim ID_NumDAO() As String
     Dim ID_CodeLot() As String
     Dim CodeFournis As String = ""
+    Dim MontantTotalDossier As String = ""
     Dim NumeroBonCommande As String = ""
     Dim NumDAO As String = ""
     Dim RefLot As String = ""
@@ -122,6 +123,13 @@ Public Class BonCommande
         CodeFournisseur = Liste_boncommande.ViewBoncommande.GetRowCellValue(Liste_boncommande.j, "CodeFournisseur").ToString
         ConditionPaiement = Liste_boncommande.ViewBoncommande.GetRowCellValue(Liste_boncommande.j, "ConditionPaiement").ToString
 
+        CmbNumDAO.Text = NumDAO
+
+        'Récupération du code du lot
+        query = "select CodeLot from t_lotdao where NumeroDAO = '" & NumDAO & "' and RefLot = '" & RefLot & "'"
+        Dim CodeLot As String = ExecuteScallar(query)
+        CmbCodeLot.Text = CodeLot
+
         Dim dt As DataTable = New DataTable()
 
         'vérification du choix d'élaboration enregistré
@@ -134,18 +142,17 @@ Public Class BonCommande
             RdSansPassMarche.Enabled = False
             CmbNumDAO.Enabled = False
             CmbCodeLot.Enabled = False
+
+            query = "SELECT PrixOffreCorrigerRabaiCompris FROM t_soumissionfournisseurclassement WHERE CodeFournis = '" & CodeFournisseur & "' and CodeLot = '" & CmbCodeLot.Text & "' AND Selectionne = 'OUI' AND Attribue = 'OUI'"
+            Dim dt1 As DataTable = ExcecuteSelectQuery(query)
+            For Each rw As DataRow In dt1.Rows
+                MontantTotalDossier = rw("PrixOffreCorrigerRabaiCompris").ToString
+            Next
         Else
             RdSansPassMarche.Checked = True
             RdSansPassMarche.Enabled = True
             RdParPassMarche.Enabled = False
         End If
-
-        CmbNumDAO.Text = NumDAO
-
-        'Récupération du code du lot
-        query = "select CodeLot from t_lotdao where NumeroDAO = '" & NumDAO & "' and RefLot = '" & RefLot & "'"
-        Dim CodeLot As String = ExecuteScallar(query)
-        CmbCodeLot.Text = CodeLot.ToString
 
         Dateboncmde.Text = Liste_boncommande.ViewBoncommande.GetRowCellValue(Liste_boncommande.j, "Date d'édition").ToString
         Txtboncmde.Text = Liste_boncommande.ViewBoncommande.GetRowCellValue(Liste_boncommande.j, "N° Bon Commande").ToString
@@ -687,13 +694,13 @@ Public Class BonCommande
             TxtRCCM.Text = MettreApost(rw("RegistreCommerceFournis").ToString)
         Next
 
-        query = "SELECT PrixCorrigeOffre, MontantRabais, (AjoutOmission + Ajustements + VariationMineure) as Ajustements FROM t_soumissionfournisseurclassement WHERE CodeFournis = '" & CodeFournis & "' and CodeLot = '" & CmbCodeLot.Text & "' AND Selectionne = 'OUI' AND Attribue = 'OUI'"
+        query = "SELECT PrixCorrigeOffre, PrixOffreCorrigerRabaiCompris, MontantRabais, (AjoutOmission + Ajustements + VariationMineure) as Ajustements FROM t_soumissionfournisseurclassement WHERE CodeFournis = '" & CodeFournis & "' and CodeLot = '" & CmbCodeLot.Text & "' AND Selectionne = 'OUI' AND Attribue = 'OUI'"
         Dim dt1 As DataTable = ExcecuteSelectQuery(query)
         For Each rw As DataRow In dt1.Rows
             TxtNewMont.Text = AfficherMonnaie(rw("PrixCorrigeOffre").ToString)
             TxtMontRabais.Text = AfficherMonnaie(rw("MontantRabais").ToString)
             TxtAjustement.Text = AfficherMonnaie(rw("Ajustements").ToString)
-
+            MontantTotalDossier = rw("PrixOffreCorrigerRabaiCompris").ToString
         Next
 
         query = "SELECT LibelleLot from t_lotdao WHERE NumeroDAO = '" & ID_NumDAO(CmbNumDAO.SelectedIndex) & "' AND CodeLot = '" & ID_CodeLot(CmbCodeLot.SelectedIndex) & "'"
@@ -792,12 +799,13 @@ Public Class BonCommande
                     If TxtRemise.Text = "" Then
                         Remise = ""
                         MontantRemise = 0
-                    Else
-                        Remise = TxtRemise.Text
-                        MontantRemise = Math.Round(CDbl(MontantHT) * (CDbl(Remise) / 100))
+                        'Else
+                        '    Remise = TxtRemise.Text
+                        '    MontantRemise = Math.Round(CDbl(MontantHT) * (CDbl(Remise) / 100))
                     End If
 
-                    MontantNetHT = CDbl(MontantHT) - MontantRemise
+                    'MontantNetHT = CDbl(MontantHT) - MontantRemise
+                    MontantNetHT = CDbl(TxtNewMont.Text)
 
                     If TxtTVA.Text = "" Then
                         TVA = ""
@@ -807,17 +815,22 @@ Public Class BonCommande
                         MontantTVA = Math.Round(MontantNetHT * (CDbl(TVA) / 100))
                     End If
 
-                    MontantTOTAL = MontantNetHT - MontantTVA
-
                     If TxtLibAutreTaxe.Text = "" Then
                         AutreTaxe = ""
                         MontantAutreTaxe = 0
+                        'Else
+                        '    AutreTaxe = TxtAutreTaxe.Text
+                        '    MontantAutreTaxe = Math.Round(MontantTOTAL * (CDbl(AutreTaxe) / 100))
+                    End If
+                    'MontantTotalTTC = MontantTOTAL - MontantAutreTaxe
+
+                    If MontantTotalDossier = "" Then
+                        MontantTOTAL = 0
                     Else
-                        AutreTaxe = TxtAutreTaxe.Text
-                        MontantAutreTaxe = Math.Round(MontantTOTAL * (CDbl(AutreTaxe) / 100))
+                        MontantTOTAL = CDbl(MontantTotalDossier)
                     End If
 
-                    MontantTotalTTC = MontantTOTAL - MontantAutreTaxe
+                    MontantTotalTTC = MontantNetHT - MontantTVA
 
                     'récupération de la référence du lot
                     query = "SELECT RefLot FROM t_lotdao WHERE CodeLot = '" & ID_CodeLot(CmbCodeLot.SelectedIndex) & "' AND NumeroDAO = '" & ID_NumDAO(CmbNumDAO.SelectedIndex) & "'"
@@ -1046,12 +1059,13 @@ Public Class BonCommande
                     If TxtRemise.Text = "" Then
                         Remise = ""
                         MontantRemise = 0
-                    Else
-                        Remise = TxtRemise.Text
-                        MontantRemise = Math.Round(CDbl(MontantHT) * (CDbl(Remise) / 100))
+                        'Else
+                        '    Remise = TxtRemise.Text
+                        '    MontantRemise = Math.Round(CDbl(MontantHT) * (CDbl(Remise) / 100))
                     End If
 
-                    MontantNetHT = CDbl(MontantHT) - MontantRemise
+                    'MontantNetHT = CDbl(MontantHT) - MontantRemise
+                    MontantNetHT = CDbl(TxtNewMont.Text)
 
                     If TxtTVA.Text = "" Then
                         TVA = ""
@@ -1061,17 +1075,22 @@ Public Class BonCommande
                         MontantTVA = Math.Round(MontantNetHT * (CDbl(TVA) / 100))
                     End If
 
-                    MontantTOTAL = MontantNetHT - MontantTVA
-
                     If TxtLibAutreTaxe.Text = "" Then
                         AutreTaxe = ""
                         MontantAutreTaxe = 0
+                        'Else
+                        '    AutreTaxe = TxtAutreTaxe.Text
+                        '    MontantAutreTaxe = Math.Round(MontantTOTAL * (CDbl(AutreTaxe) / 100))
+                    End If
+                    'MontantTotalTTC = MontantTOTAL - MontantAutreTaxe
+
+                    If MontantTotalDossier = "" Then
+                        MontantTOTAL = 0
                     Else
-                        AutreTaxe = TxtAutreTaxe.Text
-                        MontantAutreTaxe = Math.Round(MontantTOTAL * (CDbl(AutreTaxe) / 100))
+                        MontantTOTAL = CDbl(MontantTotalDossier)
                     End If
 
-                    MontantTotalTTC = MontantTOTAL - MontantAutreTaxe
+                    MontantTotalTTC = MontantNetHT - MontantTVA
 
                     'Mise à jour dans la table t_fournisseur
                     query = "UPDATE t_fournisseur SET AdresseCompleteFournis = '" & EnleverApost(TxtAdresseFour.Text) & "', TelFournis = '" & EnleverApost(TxtTelFour.Text) & "', CompteContribuableFournis = '" & EnleverApost(TxtCCFour.Text) & "', RegistreCommerceFournis = '" & EnleverApost(TxtRCCM.Text) & "' WHERE CodeFournis = '" & CodeFournisseur & "'"

@@ -20,8 +20,8 @@ Partial Class BonCommande
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode3 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.BtAnnuler = New DevExpress.XtraEditors.SimpleButton()
         Me.BtEnregistrer = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
@@ -735,8 +735,8 @@ Partial Class BonCommande
         Me.ListBonCmde.ContextMenuStrip = Me.ContextMenuStrip1
         Me.ListBonCmde.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ListBonCmde.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        GridLevelNode2.RelationName = "Level1"
-        Me.ListBonCmde.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
+        GridLevelNode1.RelationName = "Level1"
+        Me.ListBonCmde.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
         Me.ListBonCmde.Location = New System.Drawing.Point(2, 21)
         Me.ListBonCmde.MainView = Me.ViewLstCmde
         Me.ListBonCmde.Name = "ListBonCmde"
@@ -887,9 +887,9 @@ Partial Class BonCommande
         '
         Me.RdSansPassMarche.Location = New System.Drawing.Point(606, 31)
         Me.RdSansPassMarche.Name = "RdSansPassMarche"
-        Me.RdSansPassMarche.Properties.Caption = "Saisir Bon commande"
+        Me.RdSansPassMarche.Properties.Caption = " Élaborer Bon de commande"
         Me.RdSansPassMarche.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio
-        Me.RdSansPassMarche.Size = New System.Drawing.Size(130, 19)
+        Me.RdSansPassMarche.Size = New System.Drawing.Size(166, 19)
         Me.RdSansPassMarche.TabIndex = 2
         '
         'RdParPassMarche
@@ -1066,8 +1066,8 @@ Partial Class BonCommande
         '
         Me.GCSignataire.ContextMenuStrip = Me.ContextMenuStrip2
         Me.GCSignataire.Dock = System.Windows.Forms.DockStyle.Bottom
-        GridLevelNode3.RelationName = "Level1"
-        Me.GCSignataire.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode3})
+        GridLevelNode2.RelationName = "Level1"
+        Me.GCSignataire.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
         Me.GCSignataire.Location = New System.Drawing.Point(2, 82)
         Me.GCSignataire.MainView = Me.GVSignataire
         Me.GCSignataire.Name = "GCSignataire"
