@@ -36,11 +36,8 @@ Public Class Liste_boncommande
         dtListeBonCommande.Columns.Add("Désignation", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Quantité", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Prix Unitaire", Type.GetType("System.String"))
-
         dtListeBonCommande.Columns.Add("Montant Rabais", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Ajustement", Type.GetType("System.String"))
-
-
         dtListeBonCommande.Columns.Add("MontantBCHT", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Montant", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("PcrtTVA", Type.GetType("System.String"))
@@ -90,7 +87,7 @@ Public Class Liste_boncommande
     Public Sub RemplirDataGrid()
 
         query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,Quantite,PrixUnitaire,MontantRabais,Ajustement,MontantBCHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,BonValider,EMP_ID FROM t_boncommande "
-        query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User.ToString() & "'"
+        query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User & "'"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         Dim cptr As Integer = 0
         Dim NomEditeur As String = ""
@@ -174,7 +171,7 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("Date d'édition").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("BonValider").OptionsColumn.AllowEdit = False
 
-        Dim nbre As Integer = cptr.ToString
+        Dim nbre As Integer = cptr
         If nbre = 0 Then
             LblNombre.Text = "Aucun enregistrement"
         ElseIf nbre = 1 Then
@@ -368,30 +365,114 @@ Public Class Liste_boncommande
     Private Sub BtActualiser_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtActualiser.Click
         LoadColonneBonCommande()
         RemplirDataGrid()
+
+        If Checktous.Checked Then
+            Checktous.Checked = False
+        End If
+    End Sub
+
+    Private Sub RemplirDataGridCocherTous()
+        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,Quantite,PrixUnitaire,MontantRabais,Ajustement,MontantBCHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,BonValider,EMP_ID FROM t_boncommande "
+        query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User & "'"
+        Dim dt As DataTable = ExcecuteSelectQuery(query)
+        Dim cptr As Integer = 0
+        Dim NomEditeur As String = ""
+        Dim NewLine As DataTable = GCListBoncommande.DataSource
+        NewLine.Rows.Clear()
+
+        For Each rw As DataRow In dt.Rows
+            query = "SELECT NomFournis FROM t_fournisseur WHERE CodeFournis = '" & rw("CodeFournisseur") & "'"
+            Dim NomFournisseur As String = MettreApost(ExecuteScallar(query))
+
+            query = "SELECT EMP_NOM, EMP_PRENOMS FROM t_grh_employe WHERE EMP_ID = '" & rw("EMP_ID") & "'"
+            dt = ExcecuteSelectQuery(query)
+            For Each rwNom As DataRow In dt.Rows
+                NomEditeur = MettreApost(rwNom("EMP_NOM") & " " & rwNom("EMP_PRENOMS"))
+            Next
+
+            cptr += 1
+            Dim drS = NewLine.NewRow()
+            'drS("Choix") = TabTrue(cpt - 1)
+            drS("Choix") = TabTrue(1)
+            drS("N° Bon Commande") = rw("RefBonCommande").ToString
+            drS("CodeFournisseur") = rw("CodeFournisseur").ToString
+            drS("Fournisseur") = NomFournisseur.ToString
+            drS("TypeElabBC") = rw("TypeElabBC").ToString
+            drS("NumeroDAO") = rw("NumeroDAO").ToString
+            drS("RefLot") = rw("RefLot").ToString
+            drS("Intitulé du marché") = MettreApost(rw("IntituleMarche").ToString)
+            drS("Date d'édition") = CDate(rw("DateCommande")).ToString("dd/MM/yyyy")
+            drS("ConditionPaiement") = rw("ConditionsPaiement")
+            drS("DelaiLivraison") = MettreApost(rw("DelaiLivraison"))
+            drS("LieuLivraison") = MettreApost(rw("LieuLivraison"))
+            drS("InstructionSpeciale") = MettreApost(rw("InstructionSpeciale"))
+            drS("Référence") = MettreApost(rw("RefArticle"))
+            drS("Désignation") = MettreApost(rw("Designation"))
+            drS("Quantité") = rw("Quantite").ToString
+            drS("Prix Unitaire") = rw("PrixUnitaire").ToString
+            drS("Montant Rabais") = rw("MontantRabais").ToString
+            drS("Ajustement") = rw("Ajustement").ToString
+            drS("MontantBCHT") = rw("MontantBCHT")
+            drS("Montant") = AfficherMonnaie(rw("MontantTotalTTC"))
+            drS("PcrtTVA") = rw("PcrtTVA")
+            drS("PcrtREMISE") = rw("PcrtRemise")
+            drS("LibelleAutreTaxe") = MettreApost(rw("AutreTaxe"))
+            drS("PcrtAutreTaxe") = rw("PcrtAutreTaxe")
+            drS("Editeur") = NomEditeur.ToString
+            drS("BonValider") = rw("BonValider").ToString
+            NewLine.Rows.Add(drS)
+        Next
+
+        Dim edit As RepositoryItemCheckEdit = New RepositoryItemCheckEdit()
+        edit.ValueChecked = True
+        edit.ValueUnchecked = False
+        ViewBoncommande.Columns("Choix").ColumnEdit = edit
+        GCListBoncommande.RepositoryItems.Add(edit)
+        ViewBoncommande.OptionsBehavior.Editable = True
+
+        ViewBoncommande.Columns("N° Bon Commande").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("CodeFournisseur").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("TypeElabBC").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("NumeroDAO").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("RefLot").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Intitulé du marché").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Fournisseur").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("ConditionPaiement").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("DelaiLivraison").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("LieuLivraison").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("InstructionSpeciale").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Référence").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Désignation").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Quantité").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Prix Unitaire").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Montant Rabais").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Ajustement").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("MontantBCHT").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Montant").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("PcrtTVA").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("PcrtREMISE").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("LibelleAutreTaxe").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("PcrtAutreTaxe").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Editeur").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Date d'édition").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("BonValider").OptionsColumn.AllowEdit = False
+
+        Dim nbre As Integer = cptr
+        If nbre = 0 Then
+            LblNombre.Text = "Aucun enregistrement"
+        ElseIf nbre = 1 Then
+            LblNombre.Text = nbre & " enregistrement"
+        Else
+            LblNombre.Text = nbre & " enregistrements"
+        End If
     End Sub
 
     Private Sub Checktous_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles Checktous.CheckedChanged
         Try
-            If (ViewBoncommande.RowCount > 0 And Checktous.Checked = True) Then
-                Dim edit As RepositoryItemCheckEdit = New RepositoryItemCheckEdit()
-                edit.ValueChecked = True
-                edit.ValueUnchecked = False
-                ViewBoncommande.Columns("Choix").ColumnEdit = edit
-                GCListBoncommande.RepositoryItems.Add(edit)
-
-                'For k As Integer = 0 To ViewBoncommande.RowCount - 1
-                '    TabTrue(k) = Checktous.Checked
-                'Next
-
-                'If (Checktous.Checked = True) Then
-                '    nbTab = ViewBoncommande.RowCount
-                'Else
-                '    nbTab = 0
-                'End If
-
-                'query = "select * from t_boncommande where CodeProjet='" & ProjetEnCours & "' ORDER BY length(CodeBon), CodeBon"
-                'remplirDataGridimmo4(query, LgListBoncommande, LblNombre, ViewBoncommande)
-
+            If ViewBoncommande.RowCount > 0 Then
+                For k = 0 To ViewBoncommande.RowCount - 1
+                    ViewBoncommande.SetRowCellValue(k, "Choix", Checktous.Checked)
+                Next
             End If
         Catch ex As Exception
             FailMsg("Erreur : Information non disponible : " & ex.ToString())
@@ -400,7 +481,7 @@ Public Class Liste_boncommande
 
     Private Sub RemplirdatagridRechercher()
         query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,Quantite,PrixUnitaire,MontantRabais,Ajustement,MontantBCHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,BonValider,EMP_ID FROM t_boncommande "
-        query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User.ToString() & "' AND RefBonCommande LIKE'" & TxtRechercher.Text & "%'"
+        query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User & "' AND RefBonCommande LIKE'" & TxtRechercher.Text & "%'"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         Dim cptr As Integer = 0
         Dim NomEditeur As String = ""

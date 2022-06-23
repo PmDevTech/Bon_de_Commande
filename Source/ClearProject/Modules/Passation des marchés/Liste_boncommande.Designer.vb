@@ -46,6 +46,7 @@ Partial Class Liste_boncommande
         Me.BtActualiser = New DevExpress.XtraEditors.SimpleButton()
         Me.BtModifier = New DevExpress.XtraEditors.SimpleButton()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl3.SuspendLayout()
@@ -74,7 +75,7 @@ Partial Class Liste_boncommande
         'LabelControl1
         '
         Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl1.Location = New System.Drawing.Point(349, 6)
+        Me.LabelControl1.Location = New System.Drawing.Point(339, 6)
         Me.LabelControl1.Name = "LabelControl1"
         Me.LabelControl1.Size = New System.Drawing.Size(6, 19)
         Me.LabelControl1.TabIndex = 14
@@ -316,6 +317,7 @@ Partial Class Liste_boncommande
         '
         'PanelControl2
         '
+        Me.PanelControl2.Controls.Add(Me.LabelControl2)
         Me.PanelControl2.Controls.Add(Me.TxtRechercher)
         Me.PanelControl2.Controls.Add(Me.Checktous)
         Me.PanelControl2.Controls.Add(Me.LblNombre)
@@ -351,14 +353,13 @@ Partial Class Liste_boncommande
         Me.Checktous.Size = New System.Drawing.Size(116, 19)
         Me.Checktous.TabIndex = 18
         Me.Checktous.ToolTip = "Tout sélectionner"
-        Me.Checktous.Visible = False
         '
         'LblNombre
         '
         Me.LblNombre.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LblNombre.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblNombre.Location = New System.Drawing.Point(415, 11)
+        Me.LblNombre.Location = New System.Drawing.Point(398, 11)
         Me.LblNombre.Name = "LblNombre"
         Me.LblNombre.Size = New System.Drawing.Size(9, 15)
         Me.LblNombre.TabIndex = 17
@@ -368,7 +369,7 @@ Partial Class Liste_boncommande
         '
         Me.BtImprimer.Image = Global.ClearProject.My.Resources.Resources.Group_Reports
         Me.BtImprimer.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.BtImprimer.Location = New System.Drawing.Point(368, 5)
+        Me.BtImprimer.Location = New System.Drawing.Point(351, 5)
         Me.BtImprimer.Name = "BtImprimer"
         Me.BtImprimer.Size = New System.Drawing.Size(28, 23)
         Me.BtImprimer.TabIndex = 16
@@ -397,6 +398,15 @@ Partial Class Liste_boncommande
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        '
+        'LabelControl2
+        '
+        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl2.Location = New System.Drawing.Point(384, 7)
+        Me.LabelControl2.Name = "LabelControl2"
+        Me.LabelControl2.Size = New System.Drawing.Size(6, 19)
+        Me.LabelControl2.TabIndex = 26
+        Me.LabelControl2.Text = "|"
         '
         'Liste_boncommande
         '
@@ -449,4 +459,5 @@ Partial Class Liste_boncommande
     Friend WithEvents GCListBoncommande As DevExpress.XtraGrid.GridControl
     Friend WithEvents ViewBoncommande As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents TxtRechercher As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
 End Class

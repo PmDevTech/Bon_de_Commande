@@ -733,9 +733,9 @@ Public Class BonCommande
             ElseIf Dateboncmde.Text = "" Then
                 SuccesMsg("Veuillez choisir la date d'élaboration du bon de commande")
                 Dateboncmde.Focus()
-            ElseIf TxtLibAutreTaxe.Text <> "" And TxtAutreTaxe.Text = "" Then
-                SuccesMsg("Veuillez saisir le pourcentage de la taxe correspondant aux autres taxes")
-                TxtAutreTaxe.Focus()
+                'ElseIf TxtLibAutreTaxe.Text <> "" And TxtAutreTaxe.Text = "" Then
+                '    SuccesMsg("Veuillez saisir le pourcentage de la taxe correspondant aux autres taxes")
+                '    TxtAutreTaxe.Focus()
             Else
                 If ViewLstCmde.RowCount > 0 Then
                     Dim bool As Boolean = False
