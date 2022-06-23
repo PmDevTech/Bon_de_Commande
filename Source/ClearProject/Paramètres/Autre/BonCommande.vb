@@ -1345,7 +1345,7 @@ Public Class BonCommande
         If GVSignataire.RowCount > 0 Then
             If ConfirmMsg("Voulez-vous vraiment supprimer la ligne?") = DialogResult.Yes Then
                 GVSignataire.GetDataRow(GVSignataire.FocusedRowHandle).Delete()
-                RechargerNumero(GVSignataire, "N°")
+                RechargerNumSignataire(GVSignataire, "N°")
             End If
         End If
     End Sub

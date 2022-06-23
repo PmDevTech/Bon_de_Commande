@@ -315,7 +315,7 @@ Module SuperModule
         End Try
     End Sub
 
-    Public Sub RechargerNumero(gridView As DevExpress.XtraGrid.Views.Grid.GridView, ColumnName As String)
+    Public Sub RechargerNumSignataire(gridView As DevExpress.XtraGrid.Views.Grid.GridView, ColumnName As String)
         Dim i = 1
         For j = 0 To gridView.RowCount - 1
             gridView.SetRowCellValue(j, ColumnName, i)
