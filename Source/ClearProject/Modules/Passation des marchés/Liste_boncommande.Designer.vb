@@ -19,7 +19,8 @@ Partial Class Liste_boncommande
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Me.components = New System.ComponentModel.Container()
+        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.BackstageViewButtonItem1 = New DevExpress.XtraBars.Ribbon.BackstageViewButtonItem()
@@ -36,9 +37,14 @@ Partial Class Liste_boncommande
         Me.BtAjouter = New DevExpress.XtraEditors.SimpleButton()
         Me.PanelControl3 = New DevExpress.XtraEditors.PanelControl()
         Me.GCListBoncommande = New DevExpress.XtraGrid.GridControl()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ImprimerBonDeCommandeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AnnulerBonDeCommandeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RejeterBonDeCommandeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewBoncommande = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
+        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         Me.TxtRechercher = New DevExpress.XtraEditors.TextEdit()
         Me.Checktous = New DevExpress.XtraEditors.CheckEdit()
         Me.LblNombre = New DevExpress.XtraEditors.LabelControl()
@@ -46,11 +52,11 @@ Partial Class Liste_boncommande
         Me.BtActualiser = New DevExpress.XtraEditors.SimpleButton()
         Me.BtModifier = New DevExpress.XtraEditors.SimpleButton()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl3.SuspendLayout()
         CType(Me.GCListBoncommande, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip1.SuspendLayout()
         CType(Me.ViewBoncommande, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
@@ -164,16 +170,44 @@ Partial Class Liste_boncommande
         '
         'GCListBoncommande
         '
+        Me.GCListBoncommande.ContextMenuStrip = Me.ContextMenuStrip1
         Me.GCListBoncommande.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GCListBoncommande.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        GridLevelNode2.RelationName = "Level1"
-        Me.GCListBoncommande.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
+        GridLevelNode1.RelationName = "Level1"
+        Me.GCListBoncommande.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
         Me.GCListBoncommande.Location = New System.Drawing.Point(2, 2)
         Me.GCListBoncommande.MainView = Me.ViewBoncommande
         Me.GCListBoncommande.Name = "GCListBoncommande"
         Me.GCListBoncommande.Size = New System.Drawing.Size(987, 398)
         Me.GCListBoncommande.TabIndex = 44
         Me.GCListBoncommande.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ViewBoncommande})
+        '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ImprimerBonDeCommandeToolStripMenuItem, Me.AnnulerBonDeCommandeToolStripMenuItem, Me.RejeterBonDeCommandeToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(230, 70)
+        '
+        'ImprimerBonDeCommandeToolStripMenuItem
+        '
+        Me.ImprimerBonDeCommandeToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.Group_Reports
+        Me.ImprimerBonDeCommandeToolStripMenuItem.Name = "ImprimerBonDeCommandeToolStripMenuItem"
+        Me.ImprimerBonDeCommandeToolStripMenuItem.Size = New System.Drawing.Size(229, 22)
+        Me.ImprimerBonDeCommandeToolStripMenuItem.Text = "Imprimer Bon de Commande"
+        '
+        'AnnulerBonDeCommandeToolStripMenuItem
+        '
+        Me.AnnulerBonDeCommandeToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.Return_16x16
+        Me.AnnulerBonDeCommandeToolStripMenuItem.Name = "AnnulerBonDeCommandeToolStripMenuItem"
+        Me.AnnulerBonDeCommandeToolStripMenuItem.Size = New System.Drawing.Size(229, 22)
+        Me.AnnulerBonDeCommandeToolStripMenuItem.Text = "Annuler Bon de Commande"
+        '
+        'RejeterBonDeCommandeToolStripMenuItem
+        '
+        Me.RejeterBonDeCommandeToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.fleche_modifier_vieux_defaire_icone_5639_16
+        Me.RejeterBonDeCommandeToolStripMenuItem.Name = "RejeterBonDeCommandeToolStripMenuItem"
+        Me.RejeterBonDeCommandeToolStripMenuItem.Size = New System.Drawing.Size(229, 22)
+        Me.RejeterBonDeCommandeToolStripMenuItem.Text = "Rejeter Bon de Commande"
         '
         'ViewBoncommande
         '
@@ -333,6 +367,15 @@ Partial Class Liste_boncommande
         Me.PanelControl2.Size = New System.Drawing.Size(991, 32)
         Me.PanelControl2.TabIndex = 15
         '
+        'LabelControl2
+        '
+        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl2.Location = New System.Drawing.Point(384, 7)
+        Me.LabelControl2.Name = "LabelControl2"
+        Me.LabelControl2.Size = New System.Drawing.Size(6, 19)
+        Me.LabelControl2.TabIndex = 26
+        Me.LabelControl2.Text = "|"
+        '
         'TxtRechercher
         '
         Me.TxtRechercher.EditValue = "Rechercher"
@@ -399,15 +442,6 @@ Partial Class Liste_boncommande
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
-        'LabelControl2
-        '
-        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl2.Location = New System.Drawing.Point(384, 7)
-        Me.LabelControl2.Name = "LabelControl2"
-        Me.LabelControl2.Size = New System.Drawing.Size(6, 19)
-        Me.LabelControl2.TabIndex = 26
-        Me.LabelControl2.Text = "|"
-        '
         'Liste_boncommande
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -421,6 +455,7 @@ Partial Class Liste_boncommande
         CType(Me.PanelControl3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl3.ResumeLayout(False)
         CType(Me.GCListBoncommande, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         CType(Me.ViewBoncommande, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl1.ResumeLayout(False)
@@ -460,4 +495,8 @@ Partial Class Liste_boncommande
     Friend WithEvents ViewBoncommande As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents TxtRechercher As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
+    Friend WithEvents ImprimerBonDeCommandeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AnnulerBonDeCommandeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents RejeterBonDeCommandeToolStripMenuItem As ToolStripMenuItem
 End Class

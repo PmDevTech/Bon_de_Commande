@@ -309,7 +309,7 @@ Module SuperModule
                 nbBonCommande = Val(ExecuteScallar(query).ToString()) + 1
             Catch ex As Exception
             End Try
-            montext.Text = ProjetEnCours & "/" & Now.Year & "/N°" & nbBonCommande
+            montext.Text = ProjetEnCours & "/" & Now.Year & "/" & nbBonCommande
         Catch ex As Exception
             SuccesMsg("Information non disponible : " & ex.ToString())
         End Try

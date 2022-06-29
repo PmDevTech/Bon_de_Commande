@@ -7,7 +7,7 @@ Imports CrystalDecisions.Shared
 Imports DevExpress.XtraEditors.Repository
 
 Public Class Liste_boncommande
-    Dim drx As DataRow
+    Dim DrX As DataRow
     Dim dtListeBonCommande = New DataTable()
     Public AjoutModif As String = String.Empty
     Public j As Integer = 0
@@ -46,11 +46,11 @@ Public Class Liste_boncommande
         dtListeBonCommande.Columns.Add("PcrtAutreTaxe", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Editeur", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Date d'édition", Type.GetType("System.String"))
-        dtListeBonCommande.Columns.Add("BonValider", Type.GetType("System.String"))
+        dtListeBonCommande.Columns.Add("Statut", Type.GetType("System.String"))
 
         GCListBoncommande.DataSource = dtListeBonCommande
 
-        ViewBoncommande.Columns("N° Bon Commande").Width = 300
+        ViewBoncommande.Columns("N° Bon Commande").Width = 150
         ViewBoncommande.Columns("CodeFournisseur").Visible = False
         ViewBoncommande.Columns("TypeElabBC").Visible = False
         ViewBoncommande.Columns("NumeroDAO").Visible = False
@@ -74,8 +74,8 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("LibelleAutreTaxe").Visible = False
         ViewBoncommande.Columns("PcrtAutreTaxe").Visible = False
         ViewBoncommande.Columns("Editeur").Width = 350
-        ViewBoncommande.Columns("Date d'édition").Width = 220
-        ViewBoncommande.Columns("BonValider").Visible = False
+        ViewBoncommande.Columns("Date d'édition").Width = 219
+        ViewBoncommande.Columns("Statut").Width = 150
 
         ViewBoncommande.Columns("Montant").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         ViewBoncommande.Columns("Editeur").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
@@ -86,7 +86,7 @@ Public Class Liste_boncommande
 
     Public Sub RemplirDataGrid()
 
-        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,Quantite,PrixUnitaire,MontantRabais,Ajustement,MontantBCHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,BonValider,EMP_ID FROM t_boncommande "
+        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,Quantite,PrixUnitaire,MontantRabais,Ajustement,MontantBCHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,Statut,EMP_ID FROM t_boncommande "
         query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User & "'"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         Dim cptr As Integer = 0
@@ -133,7 +133,7 @@ Public Class Liste_boncommande
             drS("LibelleAutreTaxe") = MettreApost(rw("AutreTaxe"))
             drS("PcrtAutreTaxe") = rw("PcrtAutreTaxe")
             drS("Editeur") = NomEditeur.ToString
-            drS("BonValider") = rw("BonValider").ToString
+            drS("Statut") = rw("Statut").ToString
             NewLine.Rows.Add(drS)
         Next
 
@@ -169,7 +169,7 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("PcrtAutreTaxe").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Editeur").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Date d'édition").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("BonValider").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Statut").OptionsColumn.AllowEdit = False
 
         Dim nbre As Integer = cptr
         If nbre = 0 Then
@@ -186,80 +186,83 @@ Public Class Liste_boncommande
     End Sub
 
     Private Sub BtImprimer_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtImprimer.Click
+
+        ImprimerBonDeCommandeToolStripMenuItem_Click(sender, e)
+
         'Dialog_form(Etat_eng)
 
-        If ViewBoncommande.RowCount > 0 Then
+        'If ViewBoncommande.RowCount > 0 Then
 
-            Dim impr As Boolean = False
+        '    Dim impr As Boolean = False
 
-            For i = 0 To ViewBoncommande.RowCount - 1
+        '    For i = 0 To ViewBoncommande.RowCount - 1
 
-                If CBool(ViewBoncommande.GetRowCellValue(i, "Choix")) = True Then
+        '        If CBool(ViewBoncommande.GetRowCellValue(i, "Choix")) = True Then
 
-                    Dim reportfeuilletps As New ReportDocument
-                    Dim crtableLogoninfos As New TableLogOnInfos
-                    Dim crtableLogoninfo As New TableLogOnInfo
-                    Dim crConnectionInfo As New ConnectionInfo
-                    Dim CrTables As Tables
-                    Dim CrTable As Table
+        '            Dim reportfeuilletps As New ReportDocument
+        '            Dim crtableLogoninfos As New TableLogOnInfos
+        '            Dim crtableLogoninfo As New TableLogOnInfo
+        '            Dim crConnectionInfo As New ConnectionInfo
+        '            Dim CrTables As Tables
+        '            Dim CrTable As Table
 
-                    'récupération du numéro du bon de commande
-                    Dim NumBonCommande As String = ""
-                    NumBonCommande = ViewBoncommande.GetRowCellValue(i, "N° Bon Commande")
+        '            'récupération du numéro du bon de commande
+        '            Dim NumBonCommande As String = ""
+        '            NumBonCommande = ViewBoncommande.GetRowCellValue(i, "N° Bon Commande")
 
-                    'récupération du type de marché
-                    Dim TypeMarche As String = ""
-                    Dim NumDAO As String = ""
-                    NumDAO = ViewBoncommande.GetRowCellValue(i, "NumeroDAO")
-                    query = "SELECT TypeMarche FROM t_dao WHERE CodeProjet = '" & ProjetEnCours & "' AND NumeroDAO = '" & NumDAO & "'"
-                    TypeMarche = ExecuteScallar(query)
+        '            'récupération du type de marché
+        '            Dim TypeMarche As String = ""
+        '            Dim NumDAO As String = ""
+        '            NumDAO = ViewBoncommande.GetRowCellValue(i, "NumeroDAO")
+        '            query = "SELECT TypeMarche FROM t_dao WHERE CodeProjet = '" & ProjetEnCours & "' AND NumeroDAO = '" & NumDAO & "'"
+        '            TypeMarche = ExecuteScallar(query)
 
-                    DebutChargement(True, "Le traitement de votre demande est en cours...")
-                    Dim Chemin As String = ""
-                    If TypeMarche = "Fournitures" Or TypeMarche.ToLower.Contains("Service") Then
-                        Chemin = lineEtat & "\Bon_Commande\Etat_BonCommande_Fournitures.rpt"
-                    ElseIf TypeMarche = "Travaux" Then
-                        Chemin = lineEtat & "\Bon_Commande\Etat_BonCommande_Travaux.rpt"
-                    Else
-                        Chemin = lineEtat & "\Bon_Commande\Etat_BonCommande.rpt"
-                    End If
+        '            DebutChargement(True, "Le traitement de votre demande est en cours...")
+        '            Dim Chemin As String = ""
+        '            If TypeMarche = "Fournitures" Or TypeMarche.ToLower.Contains("Service") Then
+        '                Chemin = lineEtat & "\Bon_Commande\Etat_BonCommande_Fournitures.rpt"
+        '            ElseIf TypeMarche = "Travaux" Then
+        '                Chemin = lineEtat & "\Bon_Commande\Etat_BonCommande_Travaux.rpt"
+        '            Else
+        '                Chemin = lineEtat & "\Bon_Commande\Etat_BonCommande.rpt"
+        '            End If
 
-                    Dim DatSet = New DataSet
-                    reportfeuilletps.Load(Chemin)
+        '            Dim DatSet = New DataSet
+        '            reportfeuilletps.Load(Chemin)
 
-                    With crConnectionInfo
-                        .ServerName = ODBCNAME
-                        .DatabaseName = DB
-                        .UserID = USERNAME
-                        .Password = PWD
-                    End With
+        '            With crConnectionInfo
+        '                .ServerName = ODBCNAME
+        '                .DatabaseName = DB
+        '                .UserID = USERNAME
+        '                .Password = PWD
+        '            End With
 
-                    CrTables = reportfeuilletps.Database.Tables
-                    For Each CrTable In CrTables
-                        crtableLogoninfo = CrTable.LogOnInfo
-                        crtableLogoninfo.ConnectionInfo = crConnectionInfo
-                        CrTable.ApplyLogOnInfo(crtableLogoninfo)
-                    Next
+        '            CrTables = reportfeuilletps.Database.Tables
+        '            For Each CrTable In CrTables
+        '                crtableLogoninfo = CrTable.LogOnInfo
+        '                crtableLogoninfo.ConnectionInfo = crConnectionInfo
+        '                CrTable.ApplyLogOnInfo(crtableLogoninfo)
+        '            Next
 
-                    reportfeuilletps.SetDataSource(DatSet)
-                    reportfeuilletps.SetParameterValue("NumBonCommande", NumBonCommande)
-                    reportfeuilletps.SetParameterValue("CodeProjet", ProjetEnCours)
-                    FullScreenReport.FullView.ReportSource = reportfeuilletps
-                    FinChargement()
-                    FullScreenReport.ShowDialog()
+        '            reportfeuilletps.SetDataSource(DatSet)
+        '            reportfeuilletps.SetParameterValue("NumBonCommande", NumBonCommande)
+        '            reportfeuilletps.SetParameterValue("CodeProjet", ProjetEnCours)
+        '            FullScreenReport.FullView.ReportSource = reportfeuilletps
+        '            FinChargement()
+        '            FullScreenReport.ShowDialog()
 
-                    impr = True
-                End If
+        '            impr = True
+        '        End If
 
-            Next
+        '    Next
 
-            If impr = False Then
-                SuccesMsg("Veuillez cocher un bon de commande")
-            End If
+        '    If impr = False Then
+        '        SuccesMsg("Veuillez cocher un bon de commande")
+        '    End If
 
-        Else
-            SuccesMsg("Veuillez élaborer un bon de commande")
-        End If
+        'Else
+        '    SuccesMsg("Veuillez élaborer un bon de commande")
+        'End If
 
     End Sub
 
@@ -267,22 +270,23 @@ Public Class Liste_boncommande
 
         If ViewBoncommande.RowCount > 0 Then
 
-            Dim supp As String = "FAUX"
+            Dim supp As String = ""
+            Dim compteur As Integer = 0
             Dim VerifSupBon As String = ""
+
             For i = 0 To ViewBoncommande.RowCount - 1
 
                 If CBool(ViewBoncommande.GetRowCellValue(i, "Choix")) = True Then
 
-                    VerifSupBon = ViewBoncommande.GetRowCellValue(i, "BonValider")
+                    VerifSupBon = ViewBoncommande.GetRowCellValue(i, "Statut")
+                    compteur += 1
 
-                    If VerifSupBon.ToUpper = "OUI" Then
-                        If ConfirmMsg("Voulez-vous vraiment supprimer ?") = DialogResult.Yes Then
+                    If VerifSupBon = "En cours" Then
+                        If ConfirmMsg("Voulez-vous vraiment supprimer le Bon de Commande " & ViewBoncommande.GetRowCellValue(i, "N° Bon Commande") & " ?") = DialogResult.Yes Then
                             Dim NumBC As String = ""
-                            'Dim NumDAO As String = ""
                             Dim TypeElab As String = ""
                             Dim CodeFournisseur As String = ""
                             NumBC = ViewBoncommande.GetRowCellValue(i, "N° Bon Commande").ToString
-                            'NumDAO = ViewBoncommande.GetRowCellValue(i, "NumeroDAO").ToString
                             TypeElab = ViewBoncommande.GetRowCellValue(i, "TypeElabBC").ToString
                             CodeFournisseur = ViewBoncommande.GetRowCellValue(i, "CodeFournisseur").ToString
 
@@ -300,54 +304,58 @@ Public Class Liste_boncommande
                             query = "delete from t_boncommande where RefBonCommande='" & NumBC & "'"
                             ExecuteNonQuery(query)
 
-                            supp = "VRAI"
+                            supp = "OUI"
                         Else
                             supp = ""
                         End If
                     Else
-                        SuccesMsg("Ce bon de commande a été validé au niveau des engagements. Suppression impossible.")
-                        Exit Sub
+                        SuccesMsg("Suppression impossible pour le Bon de commande " & ViewBoncommande.GetRowCellValue(i, "N° Bon Commande"))
                     End If
 
+                Else
+                    supp = "NON"
                 End If
             Next
 
-            If supp = "FAUX" Then
+            If supp = "NON" And compteur = 0 Then
                 SuccesMsg("Veuillez cocher un bon de commande")
-            ElseIf supp = "VRAI" Then
+            ElseIf supp = "OUI" Then
                 SuccesMsg("Suppression effectuée avec succès")
                 BtActualiser_Click(sender, e)
             End If
 
         Else
-            SuccesMsg("Vous n'avez pas encore élaboré de bon de commande.")
+            SuccesMsg("Veuillez élaborer un bon de commande")
         End If
 
     End Sub
 
     Private Sub BtModifier_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtModifier.Click
         If ViewBoncommande.RowCount > 0 Then
-            Dim bool As Boolean = False
+            Dim Modif As String = ""
+            Dim compteur As Integer = 0
             Dim VerifModifBon As String = ""
 
             For i = 0 To ViewBoncommande.RowCount - 1
-                VerifModifBon = ViewBoncommande.GetRowCellValue(i, "BonValider")
+                If CBool(ViewBoncommande.GetRowCellValue(i, "Choix")) = True Then
 
-                If VerifModifBon.ToUpper = "OUI" Then
-                    If CBool(ViewBoncommande.GetRowCellValue(i, "Choix")) = True Then
-                        BonCommande.Size = New Point(1130, 822)
+                    VerifModifBon = ViewBoncommande.GetRowCellValue(i, "Statut")
+                    compteur += 1
+
+                    If VerifModifBon = "En cours" Then
+                        BonCommande.Size = New Point(1130, 788)
                         AjoutModif = "Modifier"
                         j = i
                         Dialog_form(BonCommande)
-                        bool = True
+                    Else
+                        SuccesMsg("Modification impossible pour le Bon de commande " & ViewBoncommande.GetRowCellValue(i, "N° Bon Commande"))
                     End If
                 Else
-                    SuccesMsg("Ce bon de commande a été validé au niveau des engagements. Modification impossible.")
-                    Exit Sub
+                    Modif = "NON"
                 End If
             Next
 
-            If bool = False Then
+            If Modif = "NON" And compteur = 0 Then
                 SuccesMsg("Veuillez cocher un bon de commande")
             End If
         Else
@@ -357,7 +365,7 @@ Public Class Liste_boncommande
     End Sub
 
     Private Sub BtAjouter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtAjouter.Click
-        BonCommande.Size = New Point(1130, 822)
+        BonCommande.Size = New Point(1130, 788)
         AjoutModif = "Ajout"
         Dialog_form(BonCommande)
     End Sub
@@ -368,102 +376,6 @@ Public Class Liste_boncommande
 
         If Checktous.Checked Then
             Checktous.Checked = False
-        End If
-    End Sub
-
-    Private Sub RemplirDataGridCocherTous()
-        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,Quantite,PrixUnitaire,MontantRabais,Ajustement,MontantBCHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,BonValider,EMP_ID FROM t_boncommande "
-        query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User & "'"
-        Dim dt As DataTable = ExcecuteSelectQuery(query)
-        Dim cptr As Integer = 0
-        Dim NomEditeur As String = ""
-        Dim NewLine As DataTable = GCListBoncommande.DataSource
-        NewLine.Rows.Clear()
-
-        For Each rw As DataRow In dt.Rows
-            query = "SELECT NomFournis FROM t_fournisseur WHERE CodeFournis = '" & rw("CodeFournisseur") & "'"
-            Dim NomFournisseur As String = MettreApost(ExecuteScallar(query))
-
-            query = "SELECT EMP_NOM, EMP_PRENOMS FROM t_grh_employe WHERE EMP_ID = '" & rw("EMP_ID") & "'"
-            dt = ExcecuteSelectQuery(query)
-            For Each rwNom As DataRow In dt.Rows
-                NomEditeur = MettreApost(rwNom("EMP_NOM") & " " & rwNom("EMP_PRENOMS"))
-            Next
-
-            cptr += 1
-            Dim drS = NewLine.NewRow()
-            'drS("Choix") = TabTrue(cpt - 1)
-            drS("Choix") = TabTrue(1)
-            drS("N° Bon Commande") = rw("RefBonCommande").ToString
-            drS("CodeFournisseur") = rw("CodeFournisseur").ToString
-            drS("Fournisseur") = NomFournisseur.ToString
-            drS("TypeElabBC") = rw("TypeElabBC").ToString
-            drS("NumeroDAO") = rw("NumeroDAO").ToString
-            drS("RefLot") = rw("RefLot").ToString
-            drS("Intitulé du marché") = MettreApost(rw("IntituleMarche").ToString)
-            drS("Date d'édition") = CDate(rw("DateCommande")).ToString("dd/MM/yyyy")
-            drS("ConditionPaiement") = rw("ConditionsPaiement")
-            drS("DelaiLivraison") = MettreApost(rw("DelaiLivraison"))
-            drS("LieuLivraison") = MettreApost(rw("LieuLivraison"))
-            drS("InstructionSpeciale") = MettreApost(rw("InstructionSpeciale"))
-            drS("Référence") = MettreApost(rw("RefArticle"))
-            drS("Désignation") = MettreApost(rw("Designation"))
-            drS("Quantité") = rw("Quantite").ToString
-            drS("Prix Unitaire") = rw("PrixUnitaire").ToString
-            drS("Montant Rabais") = rw("MontantRabais").ToString
-            drS("Ajustement") = rw("Ajustement").ToString
-            drS("MontantBCHT") = rw("MontantBCHT")
-            drS("Montant") = AfficherMonnaie(rw("MontantTotalTTC"))
-            drS("PcrtTVA") = rw("PcrtTVA")
-            drS("PcrtREMISE") = rw("PcrtRemise")
-            drS("LibelleAutreTaxe") = MettreApost(rw("AutreTaxe"))
-            drS("PcrtAutreTaxe") = rw("PcrtAutreTaxe")
-            drS("Editeur") = NomEditeur.ToString
-            drS("BonValider") = rw("BonValider").ToString
-            NewLine.Rows.Add(drS)
-        Next
-
-        Dim edit As RepositoryItemCheckEdit = New RepositoryItemCheckEdit()
-        edit.ValueChecked = True
-        edit.ValueUnchecked = False
-        ViewBoncommande.Columns("Choix").ColumnEdit = edit
-        GCListBoncommande.RepositoryItems.Add(edit)
-        ViewBoncommande.OptionsBehavior.Editable = True
-
-        ViewBoncommande.Columns("N° Bon Commande").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("CodeFournisseur").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("TypeElabBC").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("NumeroDAO").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("RefLot").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("Intitulé du marché").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("Fournisseur").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("ConditionPaiement").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("DelaiLivraison").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("LieuLivraison").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("InstructionSpeciale").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("Référence").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("Désignation").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("Quantité").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("Prix Unitaire").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("Montant Rabais").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("Ajustement").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("MontantBCHT").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("Montant").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("PcrtTVA").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("PcrtREMISE").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("LibelleAutreTaxe").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("PcrtAutreTaxe").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("Editeur").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("Date d'édition").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("BonValider").OptionsColumn.AllowEdit = False
-
-        Dim nbre As Integer = cptr
-        If nbre = 0 Then
-            LblNombre.Text = "Aucun enregistrement"
-        ElseIf nbre = 1 Then
-            LblNombre.Text = nbre & " enregistrement"
-        Else
-            LblNombre.Text = nbre & " enregistrements"
         End If
     End Sub
 
@@ -480,7 +392,7 @@ Public Class Liste_boncommande
     End Sub
 
     Private Sub RemplirdatagridRechercher()
-        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,Quantite,PrixUnitaire,MontantRabais,Ajustement,MontantBCHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,BonValider,EMP_ID FROM t_boncommande "
+        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,Quantite,PrixUnitaire,MontantRabais,Ajustement,MontantBCHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,Statut,EMP_ID FROM t_boncommande "
         query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User & "' AND RefBonCommande LIKE'" & TxtRechercher.Text & "%'"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         Dim cptr As Integer = 0
@@ -529,7 +441,7 @@ Public Class Liste_boncommande
             drS("LibelleAutreTaxe") = MettreApost(rw("AutreTaxe"))
             drS("PcrtAutreTaxe") = rw("PcrtAutreTaxe")
             drS("Editeur") = NomEditeur.ToString
-            drS("BonValider") = rw("BonValider").ToString
+            drS("Statut") = rw("Statut").ToString
             NewLine.Rows.Add(drS)
         Next
 
@@ -565,7 +477,7 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("PcrtAutreTaxe").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Editeur").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Date d'édition").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("BonValider").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Statut").OptionsColumn.AllowEdit = False
 
         Dim nbre As Integer = cptr.ToString
         If nbre = 0 Then
@@ -601,6 +513,152 @@ Public Class Liste_boncommande
     Private Sub TxtRechercher_Leave(sender As Object, e As EventArgs) Handles TxtRechercher.Leave
         If TxtRechercher.Text <> "Rechercher" Then
             TxtRechercher.Text = "Rechercher"
+        End If
+    End Sub
+
+    Private Sub ImprimerBonDeCommandeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImprimerBonDeCommandeToolStripMenuItem.Click
+        If ViewBoncommande.RowCount > 0 Then
+
+            'Dim impr As Boolean = False
+
+            'For i = 0 To ViewBoncommande.RowCount - 1
+
+            'If CBool(ViewBoncommande.GetRowCellValue(i, "Choix")) = True Then
+            DrX = ViewBoncommande.GetDataRow(ViewBoncommande.FocusedRowHandle)
+
+            Dim reportfeuilletps As New ReportDocument
+            Dim crtableLogoninfos As New TableLogOnInfos
+            Dim crtableLogoninfo As New TableLogOnInfo
+            Dim crConnectionInfo As New ConnectionInfo
+            Dim CrTables As Tables
+            Dim CrTable As Table
+
+            'récupération du numéro du bon de commande
+            Dim NumBonCommande As String = ""
+            'NumBonCommande = ViewBoncommande.GetRowCellValue(i, "N° Bon Commande")
+            NumBonCommande = DrX("N° Bon Commande").ToString
+
+            'récupération du type de marché
+            Dim TypeMarche As String = ""
+            Dim NumDAO As String = ""
+            'NumDAO = ViewBoncommande.GetRowCellValue(i, "NumeroDAO")
+            NumDAO = DrX("NumeroDAO").ToString
+
+            query = "SELECT TypeMarche FROM t_dao WHERE CodeProjet = '" & ProjetEnCours & "' AND NumeroDAO = '" & NumDAO & "'"
+            TypeMarche = ExecuteScallar(query)
+
+            DebutChargement(True, "Le traitement de votre demande est en cours...")
+            Dim Chemin As String = ""
+            If TypeMarche = "Fournitures" Or TypeMarche.ToLower.Contains("Service") Then
+                Chemin = lineEtat & "\Bon_Commande\Etat_BonCommande_Fournitures.rpt"
+            ElseIf TypeMarche = "Travaux" Then
+                Chemin = lineEtat & "\Bon_Commande\Etat_BonCommande_Travaux.rpt"
+            Else
+                Chemin = lineEtat & "\Bon_Commande\Etat_BonCommande.rpt"
+            End If
+
+            Dim DatSet = New DataSet
+            reportfeuilletps.Load(Chemin)
+
+            With crConnectionInfo
+                .ServerName = ODBCNAME
+                .DatabaseName = DB
+                .UserID = USERNAME
+                .Password = PWD
+            End With
+
+            CrTables = reportfeuilletps.Database.Tables
+            For Each CrTable In CrTables
+                crtableLogoninfo = CrTable.LogOnInfo
+                crtableLogoninfo.ConnectionInfo = crConnectionInfo
+                CrTable.ApplyLogOnInfo(crtableLogoninfo)
+            Next
+
+            reportfeuilletps.SetDataSource(DatSet)
+            reportfeuilletps.SetParameterValue("NumBonCommande", NumBonCommande)
+            reportfeuilletps.SetParameterValue("CodeProjet", ProjetEnCours)
+            FullScreenReport.FullView.ReportSource = reportfeuilletps
+            FinChargement()
+            FullScreenReport.ShowDialog()
+
+            'impr = True
+            'End If
+
+            'Next
+
+            'If impr = False Then
+            '    SuccesMsg("Veuillez cocher un bon de commande")
+            'End If
+
+        Else
+            SuccesMsg("Veuillez élaborer un bon de commande")
+        End If
+    End Sub
+
+    Private Sub AnnulerBonDeCommandeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AnnulerBonDeCommandeToolStripMenuItem.Click
+        If ViewBoncommande.RowCount > 0 Then
+            DrX = ViewBoncommande.GetDataRow(ViewBoncommande.FocusedRowHandle)
+            Dim VerifStatut As String = ""
+
+            VerifStatut = DrX("Statut").ToString
+
+            If VerifStatut = "Annulé" Then
+                SuccesMsg("Ce Bon de commande a été annulé. Impossible de l'annuler à nouveau.")
+                Exit Sub
+            ElseIf VerifStatut = "Rejeté" Then
+                SuccesMsg("Ce Bon de commande a été rejeté. Impossible de l'annuler.")
+                Exit Sub
+            ElseIf VerifStatut = "Signé" Then
+                SuccesMsg("Ce Bon de commande a été saisi dans la Saisie des engagements. Impossible de l'annuler.")
+                Exit Sub
+            Else
+                If ConfirmMsg("Voulez-vous vraiment annuler le bon de commande ?") = DialogResult.Yes Then
+                    Dim NumBonCommande As String = ""
+                    NumBonCommande = DrX("N° Bon Commande").ToString
+
+                    'mise à jour dans la table bon de commande
+                    query = "UPDATE t_boncommande set Statut = 'Annulé' where RefBonCommande = '" & NumBonCommande & "'"
+                    ExecuteNonQuery(query)
+                    SuccesMsg("Bon de commande annulé avec succès")
+                    BtActualiser_Click(sender, e)
+                End If
+            End If
+        Else
+            SuccesMsg("Veuillez générer ou élaborer un bon de commande")
+        End If
+
+    End Sub
+
+    Private Sub RejeterBonDeCommandeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RejeterBonDeCommandeToolStripMenuItem.Click
+        If ViewBoncommande.RowCount > 0 Then
+            DrX = ViewBoncommande.GetDataRow(ViewBoncommande.FocusedRowHandle)
+            Dim VerifStatut As String = ""
+
+            VerifStatut = DrX("Statut").ToString
+
+            If VerifStatut = "Rejeté" Then
+                SuccesMsg("Ce Bon de commande a été rejeté. Impossible de le rejeter à nouveau.")
+                Exit Sub
+            ElseIf VerifStatut = "Annulé" Then
+                SuccesMsg("Ce Bon de commande a été annulé. Impossible de le rejeter.")
+                Exit Sub
+            ElseIf VerifStatut = "Signé" Then
+                SuccesMsg("Ce Bon de commande a été saisi dans la Saisie des engagements. Impossible de le rejeter.")
+                Exit Sub
+            Else
+                If ConfirmMsg("Voulez-vous vraiment rejeter le bon de commande ?") = DialogResult.Yes Then
+                    Dim NumBonCommande As String = ""
+                    NumBonCommande = DrX("N° Bon Commande").ToString
+
+                    'mise à jour dans la table bon de commande
+                    query = "UPDATE t_boncommande set Statut = 'Rejeté' where RefBonCommande = '" & NumBonCommande & "'"
+                    ExecuteNonQuery(query)
+                    SuccesMsg("Bon de commande rejeté avec succès")
+                    BtActualiser_Click(sender, e)
+                End If
+            End If
+        Else
+            SuccesMsg("Veuillez générer ou élaborer un bon de commande")
         End If
     End Sub
 End Class
