@@ -311,7 +311,6 @@ Public Class Liste_boncommande
                     Else
                         SuccesMsg("Suppression impossible pour le Bon de commande " & ViewBoncommande.GetRowCellValue(i, "N° Bon Commande"))
                     End If
-
                 Else
                     supp = "NON"
                 End If
@@ -343,7 +342,7 @@ Public Class Liste_boncommande
                     compteur += 1
 
                     If VerifModifBon = "En cours" Then
-                        BonCommande.Size = New Point(1130, 788)
+                        BonCommande.Size = New Point(1130, 803)
                         AjoutModif = "Modifier"
                         j = i
                         Dialog_form(BonCommande)
@@ -365,7 +364,7 @@ Public Class Liste_boncommande
     End Sub
 
     Private Sub BtAjouter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtAjouter.Click
-        BonCommande.Size = New Point(1130, 788)
+        BonCommande.Size = New Point(1130, 803)
         AjoutModif = "Ajout"
         Dialog_form(BonCommande)
     End Sub
@@ -608,9 +607,6 @@ Public Class Liste_boncommande
             ElseIf VerifStatut = "Rejeté" Then
                 SuccesMsg("Ce Bon de commande a été rejeté. Impossible de l'annuler.")
                 Exit Sub
-            ElseIf VerifStatut = "Signé" Then
-                SuccesMsg("Ce Bon de commande a été saisi dans la Saisie des engagements. Impossible de l'annuler.")
-                Exit Sub
             Else
                 If ConfirmMsg("Voulez-vous vraiment annuler le bon de commande ?") = DialogResult.Yes Then
                     Dim NumBonCommande As String = ""
@@ -626,7 +622,6 @@ Public Class Liste_boncommande
         Else
             SuccesMsg("Veuillez générer ou élaborer un bon de commande")
         End If
-
     End Sub
 
     Private Sub RejeterBonDeCommandeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RejeterBonDeCommandeToolStripMenuItem.Click
@@ -642,9 +637,6 @@ Public Class Liste_boncommande
             ElseIf VerifStatut = "Annulé" Then
                 SuccesMsg("Ce Bon de commande a été annulé. Impossible de le rejeter.")
                 Exit Sub
-            ElseIf VerifStatut = "Signé" Then
-                SuccesMsg("Ce Bon de commande a été saisi dans la Saisie des engagements. Impossible de le rejeter.")
-                Exit Sub
             Else
                 If ConfirmMsg("Voulez-vous vraiment rejeter le bon de commande ?") = DialogResult.Yes Then
                     Dim NumBonCommande As String = ""
@@ -659,6 +651,74 @@ Public Class Liste_boncommande
             End If
         Else
             SuccesMsg("Veuillez générer ou élaborer un bon de commande")
+        End If
+    End Sub
+
+    Private Sub SignerBonDeCommandeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SignerBonDeCommandeToolStripMenuItem.Click
+        If ViewBoncommande.RowCount > 0 Then
+            DrX = ViewBoncommande.GetDataRow(ViewBoncommande.FocusedRowHandle)
+            Dim VerifStatut As String = ""
+
+            VerifStatut = DrX("Statut").ToString
+
+            If VerifStatut = "Signé" Then
+                SuccesMsg("Ce Bon de commande a été signé. Impossible de le signer à nouveau.")
+                Exit Sub
+            ElseIf VerifStatut = "Annulé" Then
+                SuccesMsg("Ce Bon de commande a été annulé. Impossible de le signer.")
+                Exit Sub
+            ElseIf VerifStatut = "Rejeté" Then
+                SuccesMsg("Ce Bon de commande a été rejeté. Impossible de le signer.")
+                Exit Sub
+            Else
+                If ConfirmMsg("Voulez-vous vraiment signer le bon de commande ?") = DialogResult.Yes Then
+                    Dim NumBonCommande As String = ""
+                    NumBonCommande = DrX("N° Bon Commande").ToString
+
+                    'mise à jour dans la table bon de commande
+                    query = "UPDATE t_boncommande set Statut = 'Signé' where RefBonCommande = '" & NumBonCommande & "'"
+                    ExecuteNonQuery(query)
+                    SuccesMsg("Bon de commande signé avec succès")
+                    BtActualiser_Click(sender, e)
+                End If
+            End If
+        Else
+            SuccesMsg("Veuillez générer ou élaborer un bon de commande")
+        End If
+    End Sub
+
+    Private Sub ContextMenuStrip1_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip1.Opening
+        If ViewBoncommande.RowCount > 0 Then
+            DrX = ViewBoncommande.GetDataRow(ViewBoncommande.FocusedRowHandle)
+            Dim VerifStatut As String = ""
+            VerifStatut = DrX("Statut").ToString
+
+            If VerifStatut = "Annulé" Then
+                ImprimerBonDeCommandeToolStripMenuItem.Enabled = True
+                AnnulerBonDeCommandeToolStripMenuItem.Enabled = False
+                RejeterBonDeCommandeToolStripMenuItem.Enabled = False
+                SignerBonDeCommandeToolStripMenuItem.Enabled = False
+            ElseIf VerifStatut = "Rejeté" Then
+                ImprimerBonDeCommandeToolStripMenuItem.Enabled = True
+                AnnulerBonDeCommandeToolStripMenuItem.Enabled = False
+                RejeterBonDeCommandeToolStripMenuItem.Enabled = False
+                SignerBonDeCommandeToolStripMenuItem.Enabled = False
+            ElseIf VerifStatut = "Signé" Then
+                ImprimerBonDeCommandeToolStripMenuItem.Enabled = True
+                AnnulerBonDeCommandeToolStripMenuItem.Enabled = True
+                RejeterBonDeCommandeToolStripMenuItem.Enabled = False
+                SignerBonDeCommandeToolStripMenuItem.Enabled = False
+            Else
+                ImprimerBonDeCommandeToolStripMenuItem.Enabled = True
+                AnnulerBonDeCommandeToolStripMenuItem.Enabled = True
+                RejeterBonDeCommandeToolStripMenuItem.Enabled = True
+                SignerBonDeCommandeToolStripMenuItem.Enabled = True
+            End If
+        Else
+            ImprimerBonDeCommandeToolStripMenuItem.Enabled = False
+            AnnulerBonDeCommandeToolStripMenuItem.Enabled = False
+            RejeterBonDeCommandeToolStripMenuItem.Enabled = False
+            SignerBonDeCommandeToolStripMenuItem.Enabled = False
         End If
     End Sub
 End Class

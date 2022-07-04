@@ -52,6 +52,7 @@ Partial Class Liste_boncommande
         Me.BtActualiser = New DevExpress.XtraEditors.SimpleButton()
         Me.BtModifier = New DevExpress.XtraEditors.SimpleButton()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.SignerBonDeCommandeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl3.SuspendLayout()
@@ -184,9 +185,9 @@ Partial Class Liste_boncommande
         '
         'ContextMenuStrip1
         '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ImprimerBonDeCommandeToolStripMenuItem, Me.AnnulerBonDeCommandeToolStripMenuItem, Me.RejeterBonDeCommandeToolStripMenuItem})
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ImprimerBonDeCommandeToolStripMenuItem, Me.AnnulerBonDeCommandeToolStripMenuItem, Me.RejeterBonDeCommandeToolStripMenuItem, Me.SignerBonDeCommandeToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(230, 70)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(230, 114)
         '
         'ImprimerBonDeCommandeToolStripMenuItem
         '
@@ -442,6 +443,13 @@ Partial Class Liste_boncommande
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
+        'SignerBonDeCommandeToolStripMenuItem
+        '
+        Me.SignerBonDeCommandeToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.ActiveRents_16x16
+        Me.SignerBonDeCommandeToolStripMenuItem.Name = "SignerBonDeCommandeToolStripMenuItem"
+        Me.SignerBonDeCommandeToolStripMenuItem.Size = New System.Drawing.Size(229, 22)
+        Me.SignerBonDeCommandeToolStripMenuItem.Text = "Signer Bon de Commande"
+        '
         'Liste_boncommande
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -499,4 +507,5 @@ Partial Class Liste_boncommande
     Friend WithEvents ImprimerBonDeCommandeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AnnulerBonDeCommandeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents RejeterBonDeCommandeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SignerBonDeCommandeToolStripMenuItem As ToolStripMenuItem
 End Class

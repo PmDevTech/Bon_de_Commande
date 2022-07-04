@@ -80,6 +80,7 @@ Partial Class BonCommande
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ModifierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SupprimerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Checktous = New DevExpress.XtraEditors.CheckEdit()
         Me.ListBonCmde = New DevExpress.XtraGrid.GridControl()
         Me.ViewLstCmde = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GCChoixBonCommande = New DevExpress.XtraEditors.GroupControl()
@@ -138,6 +139,7 @@ Partial Class BonCommande
         CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl3.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
+        CType(Me.Checktous.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ListBonCmde, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ViewLstCmde, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GCChoixBonCommande, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -171,18 +173,18 @@ Partial Class BonCommande
         'BtAnnuler
         '
         Me.BtAnnuler.Image = Global.ClearProject.My.Resources.Resources.fleche_modifier_vieux_defaire_icone_5639_161
-        Me.BtAnnuler.Location = New System.Drawing.Point(326, 11)
+        Me.BtAnnuler.Location = New System.Drawing.Point(319, 7)
         Me.BtAnnuler.Name = "BtAnnuler"
-        Me.BtAnnuler.Size = New System.Drawing.Size(135, 39)
+        Me.BtAnnuler.Size = New System.Drawing.Size(110, 34)
         Me.BtAnnuler.TabIndex = 30
         Me.BtAnnuler.Text = "Annuler"
         '
         'BtEnregistrer
         '
         Me.BtEnregistrer.Image = Global.ClearProject.My.Resources.Resources.Ribbon_Save_16x16
-        Me.BtEnregistrer.Location = New System.Drawing.Point(495, 11)
+        Me.BtEnregistrer.Location = New System.Drawing.Point(489, 7)
         Me.BtEnregistrer.Name = "BtEnregistrer"
-        Me.BtEnregistrer.Size = New System.Drawing.Size(135, 39)
+        Me.BtEnregistrer.Size = New System.Drawing.Size(110, 34)
         Me.BtEnregistrer.TabIndex = 31
         Me.BtEnregistrer.Text = "Enregistrer"
         '
@@ -703,6 +705,7 @@ Partial Class BonCommande
         'GroupControl3
         '
         Me.GroupControl3.ContextMenuStrip = Me.ContextMenuStrip1
+        Me.GroupControl3.Controls.Add(Me.Checktous)
         Me.GroupControl3.Controls.Add(Me.ListBonCmde)
         Me.GroupControl3.Location = New System.Drawing.Point(726, 77)
         Me.GroupControl3.Name = "GroupControl3"
@@ -729,6 +732,17 @@ Partial Class BonCommande
         Me.SupprimerToolStripMenuItem.Name = "SupprimerToolStripMenuItem"
         Me.SupprimerToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
         Me.SupprimerToolStripMenuItem.Text = "Supprimer"
+        '
+        'Checktous
+        '
+        Me.Checktous.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.Checktous.Location = New System.Drawing.Point(175, 0)
+        Me.Checktous.Name = "Checktous"
+        Me.Checktous.Properties.Caption = "Tout sélectionner"
+        Me.Checktous.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.Checktous.Size = New System.Drawing.Size(116, 19)
+        Me.Checktous.TabIndex = 44
+        Me.Checktous.ToolTip = "Tout sélectionner"
         '
         'ListBonCmde
         '
@@ -894,7 +908,7 @@ Partial Class BonCommande
         '
         'RdParPassMarche
         '
-        Me.RdParPassMarche.Location = New System.Drawing.Point(324, 31)
+        Me.RdParPassMarche.Location = New System.Drawing.Point(323, 31)
         Me.RdParPassMarche.Name = "RdParPassMarche"
         Me.RdParPassMarche.Properties.Caption = "Générer Bon de commande"
         Me.RdParPassMarche.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio
@@ -908,15 +922,15 @@ Partial Class BonCommande
         Me.PanelControl3.Controls.Add(Me.BtEnregistrer)
         Me.PanelControl3.Location = New System.Drawing.Point(9, 714)
         Me.PanelControl3.Name = "PanelControl3"
-        Me.PanelControl3.Size = New System.Drawing.Size(1099, 63)
+        Me.PanelControl3.Size = New System.Drawing.Size(1099, 47)
         Me.PanelControl3.TabIndex = 7
         '
         'BtModifier
         '
         Me.BtModifier.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
-        Me.BtModifier.Location = New System.Drawing.Point(662, 11)
+        Me.BtModifier.Location = New System.Drawing.Point(654, 7)
         Me.BtModifier.Name = "BtModifier"
-        Me.BtModifier.Size = New System.Drawing.Size(135, 39)
+        Me.BtModifier.Size = New System.Drawing.Size(110, 34)
         Me.BtModifier.TabIndex = 32
         Me.BtModifier.Text = "Modifier"
         '
@@ -1138,7 +1152,7 @@ Partial Class BonCommande
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1114, 783)
+        Me.ClientSize = New System.Drawing.Size(1114, 764)
         Me.Controls.Add(Me.GroupControl7)
         Me.Controls.Add(Me.GroupControl6)
         Me.Controls.Add(Me.GroupControl5)
@@ -1188,6 +1202,7 @@ Partial Class BonCommande
         CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl3.ResumeLayout(False)
         Me.ContextMenuStrip1.ResumeLayout(False)
+        CType(Me.Checktous.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ListBonCmde, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ViewLstCmde, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GCChoixBonCommande, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1309,4 +1324,5 @@ Partial Class BonCommande
     Friend WithEvents TxtMontRabais As DevExpress.XtraEditors.TextEdit
     Friend WithEvents GCSignataire As DevExpress.XtraGrid.GridControl
     Friend WithEvents GVSignataire As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents Checktous As DevExpress.XtraEditors.CheckEdit
 End Class

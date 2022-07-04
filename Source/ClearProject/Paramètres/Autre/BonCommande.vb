@@ -67,7 +67,7 @@ Public Class BonCommande
                 Continue For
             End If
 
-            query = "SELECT count(RefBonCommande) as Result from t_boncommande WHERE NumeroDAO = '" & rw("NumeroDAO").ToString & "' and RefLot = '" & rw("RefLot").ToString & "' and CodeProjet = '" & ProjetEnCours & "'"
+            query = "SELECT count(RefBonCommande) as Result from t_boncommande WHERE NumeroDAO = '" & rw("NumeroDAO").ToString & "' and RefLot = '" & rw("RefLot").ToString & "' and CodeProjet = '" & ProjetEnCours & "' and (Statut = 'Signé' or Statut = 'En cours')"
             VerifBonCommande = Val(ExecuteScallar(query))
             If VerifBonCommande > 0 Then
                 Continue For
@@ -104,8 +104,8 @@ Public Class BonCommande
             BtEnregistrer.Enabled = True
             BtModifier.Enabled = False
             Initialiser()
-            'NumBonCommande_Auto(Txtboncmde)
             LoadColonneListeBesoins()
+            ChargerNumDAO()
             LoadColonneSignataire()
         ElseIf Liste_boncommande.AjoutModif = "Modifier" Then
             BtEnregistrer.Enabled = False
@@ -113,7 +113,6 @@ Public Class BonCommande
             Txtboncmde.Enabled = False
             Chargement()
         End If
-
     End Sub
 
     Private Sub Chargement()
@@ -142,6 +141,7 @@ Public Class BonCommande
             RdSansPassMarche.Enabled = False
             CmbNumDAO.Enabled = False
             CmbCodeLot.Enabled = False
+            Checktous.Visible = False
 
             query = "SELECT PrixOffreCorrigerRabaiCompris FROM t_soumissionfournisseurclassement WHERE CodeFournis = '" & CodeFournisseur & "' and CodeLot = '" & CmbCodeLot.Text & "' AND Selectionne = 'OUI' AND Attribue = 'OUI'"
             Dim dt1 As DataTable = ExcecuteSelectQuery(query)
@@ -152,6 +152,7 @@ Public Class BonCommande
             RdSansPassMarche.Checked = True
             RdSansPassMarche.Enabled = True
             RdParPassMarche.Enabled = False
+            Checktous.Visible = True
         End If
 
         Dateboncmde.Text = Liste_boncommande.ViewBoncommande.GetRowCellValue(Liste_boncommande.j, "Date d'édition").ToString
@@ -338,7 +339,11 @@ Public Class BonCommande
         dtboncommande.Columns.Add("Montant", Type.GetType("System.String"))
         ListBonCmde.DataSource = dtboncommande
 
-        'ViewLstCmde.Columns("Désignation").Width = 400
+        If RdParPassMarche.Checked Then
+            ViewLstCmde.Columns("Choix").Visible = False
+        ElseIf RdSansPassMarche.Checked Then
+            ViewLstCmde.Columns("Choix").Visible = True
+        End If
 
         ViewLstCmde.Columns("Quantité").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         ViewLstCmde.Columns("Prix Unitaire").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
@@ -562,6 +567,7 @@ Public Class BonCommande
             TxtDesignation.Enabled = False
             TxtRemise.Enabled = False
             TxtLibAutreTaxe.Enabled = False
+            Checktous.Visible = False
             lc1.Visible = True
             lc2.Visible = True
             lc7.Visible = False
@@ -570,6 +576,7 @@ Public Class BonCommande
             Initialiser()
             ChargerNumDAO()
             ChargerSignataire()
+            LoadColonneListeBesoins()
         End If
     End Sub
 
@@ -588,6 +595,7 @@ Public Class BonCommande
             TxtDesignation.Enabled = True
             TxtRemise.Enabled = True
             TxtLibAutreTaxe.Enabled = True
+            Checktous.Visible = True
             lc1.Visible = False
             lc2.Visible = False
             lc7.Visible = True
@@ -595,6 +603,7 @@ Public Class BonCommande
 
             Initialiser()
             ChargerSignataire()
+            LoadColonneListeBesoins()
         End If
     End Sub
 
@@ -653,7 +662,7 @@ Public Class BonCommande
                     Continue For
                 End If
 
-                query = "SELECT count(RefBonCommande) as Result from t_boncommande WHERE NumeroDAO = '" & rw("NumeroDAO").ToString & "' and RefLot = '" & rw("RefLot").ToString & "' and CodeProjet = '" & ProjetEnCours & "'"
+                query = "SELECT count(RefBonCommande) as Result from t_boncommande WHERE NumeroDAO = '" & rw("NumeroDAO").ToString & "' and RefLot = '" & rw("RefLot").ToString & "' and CodeProjet = '" & ProjetEnCours & "' and (Statut = 'Signé' or Statut = 'En cours')"
                 VerifBonCommande = Val(ExecuteScallar(query))
                 If VerifBonCommande > 0 Then
                     Continue For
@@ -738,20 +747,10 @@ Public Class BonCommande
                 '    TxtAutreTaxe.Focus()
             Else
                 If ViewLstCmde.RowCount > 0 Then
-                    Dim bool As Boolean = False
                     For i = 0 To ViewLstCmde.RowCount - 1
-                        If CBool(ViewLstCmde.GetRowCellValue(i, "Choix")) = True Then
-                            query = "insert into t_bc_listebesoins values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Référence")) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Désignation")) & "','" & ViewLstCmde.GetRowCellValue(i, "Quantité") & "','" & ViewLstCmde.GetRowCellValue(i, "Prix Unitaire") & "','" & CDbl(ViewLstCmde.GetRowCellValue(i, "Montant")) & "')"
-                            ExecuteNonQuery(query)
-
-                            bool = True
-                        End If
+                        query = "insert into t_bc_listebesoins values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Référence")) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Désignation")) & "','" & ViewLstCmde.GetRowCellValue(i, "Quantité") & "','" & ViewLstCmde.GetRowCellValue(i, "Prix Unitaire") & "','" & CDbl(ViewLstCmde.GetRowCellValue(i, "Montant")) & "')"
+                        ExecuteNonQuery(query)
                     Next
-
-                    If bool = False Then
-                        SuccesMsg("Veuillez cocher une ligne dans la liste des besoins")
-                        Exit Sub
-                    End If
 
                     If GVSignataire.RowCount > 0 Then
                         For i = 0 To GVSignataire.RowCount - 1
@@ -830,7 +829,7 @@ Public Class BonCommande
                         MontantTOTAL = CDbl(MontantTotalDossier)
                     End If
 
-                    MontantTotalTTC = MontantNetHT - MontantTVA
+                    MontantTotalTTC = MontantNetHT + MontantTVA
 
                     'récupération de la référence du lot
                     query = "SELECT RefLot FROM t_lotdao WHERE CodeLot = '" & ID_CodeLot(CmbCodeLot.SelectedIndex) & "' AND NumeroDAO = '" & ID_NumDAO(CmbNumDAO.SelectedIndex) & "'"
@@ -843,7 +842,7 @@ Public Class BonCommande
                     Dim verif As String = ""
                     'insertion dans la table t_boncommande
                     verif = "INSERT INTO t_boncommande values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & Annee & "', '" & CInt(CodeFournis) & "','" & ChoixElabBC & "','" & EnleverApost(CmbNumDAO.Text) & "','" & RefLot & "','" & EnleverApost(TxtIntituleMarche.Text) & "','" & DateBC & "','" & ConditionPaiement & "','" & EnleverApost(TxtDelaiLivraison.Text) & "','"
-                    verif &= EnleverApost(TxtLieuLivraison.Text) & "','" & EnleverApost(TxtIsntructionSpec.Text) & "','" & EnleverApost(TxtReference.Text) & "','" & EnleverApost(TxtDesignation.Text) & "','" & TxtQte.Text & "','" & TxtPu.Text & "','" & TxtMontRabais.Text & "','" & TxtAjustement.Text & "','" & CDbl(MontantHT) & "','" & TVA & "','" & MontantTVA.ToString.Replace(",", ".") & "','" & Remise & "','" & MontantRemise.ToString.Replace(",", ".") & "','" & EnleverApost(TxtLibAutreTaxe.Text) & "','" & AutreTaxe & "','" & MontantAutreTaxe.ToString.Replace(",", ".") & "','" & MontantNetHT.ToString.Replace(",", ".") & "','" & MontantTOTAL.ToString.Replace(",", ".") & "','" & MontantTotalTTC.ToString.Replace(",", ".") & "', 'OUI','" & cur_User & "','" & ProjetEnCours & "')"
+                    verif &= EnleverApost(TxtLieuLivraison.Text) & "','" & EnleverApost(TxtIsntructionSpec.Text) & "','" & EnleverApost(TxtReference.Text) & "','" & EnleverApost(TxtDesignation.Text) & "','" & TxtQte.Text & "','" & TxtPu.Text & "','" & TxtMontRabais.Text & "','" & TxtAjustement.Text & "','" & CDbl(MontantHT) & "','" & TVA & "','" & MontantTVA.ToString.Replace(",", ".") & "','" & Remise & "','" & MontantRemise.ToString.Replace(",", ".") & "','" & EnleverApost(TxtLibAutreTaxe.Text) & "','" & AutreTaxe & "','" & MontantAutreTaxe.ToString.Replace(",", ".") & "','" & MontantNetHT.ToString.Replace(",", ".") & "','" & MontantTOTAL.ToString.Replace(",", ".") & "','" & MontantTotalTTC.ToString.Replace(",", ".") & "', 'En cours','" & cur_User & "','" & ProjetEnCours & "')"
                     ExecuteNonQuery(verif)
 
                     SuccesMsg("Enregistrement effectué avec succès")
@@ -945,7 +944,7 @@ Public Class BonCommande
                         MontantTVA = Math.Round(MontantNetHT * (CDbl(TVA) / 100))
                     End If
 
-                    MontantTOTAL = MontantNetHT - MontantTVA
+                    MontantTOTAL = MontantNetHT + MontantTVA
 
                     If TxtLibAutreTaxe.Text = "" Then
                         AutreTaxe = ""
@@ -955,7 +954,7 @@ Public Class BonCommande
                         MontantAutreTaxe = Math.Round(MontantTOTAL * (CDbl(AutreTaxe) / 100))
                     End If
 
-                    MontantTotalTTC = MontantTOTAL - MontantAutreTaxe
+                    MontantTotalTTC = MontantTOTAL + MontantAutreTaxe
 
                     'Enregistrement du Fournisseur
                     query = "INSERT INTO t_fournisseur (CodeFournis,NomFournis,AdresseCompleteFournis,TelFournis,CompteContribuableFournis,RegistreCommerceFournis,NumeroDAO,NomAch,CodeProjet) VALUES (NULL,'" & EnleverApost(TxtFournisseur.Text) & "','" & EnleverApost(TxtAdresseFour.Text) & "','" & EnleverApost(TxtTelFour.Text) & "','" & EnleverApost(TxtCCFour.Text) & "','" & EnleverApost(TxtRCCM.Text) & "','" & EnleverApost(Txtboncmde.Text) & "','" & "" & "','" & ProjetEnCours & "')"
@@ -967,7 +966,7 @@ Public Class BonCommande
                     'insertion dans la table t_boncommande
                     Dim verif As String = ""
                     verif = "INSERT INTO t_boncommande values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & Annee & "','" & CInt(CodeFournis) & "','" & ChoixElabBC & "','" & "" & "','" & "" & "','" & EnleverApost(TxtIntituleMarche.Text) & "','" & DateBC & "','" & ConditionPaiement & "','" & EnleverApost(TxtDelaiLivraison.Text) & "','"
-                    verif &= EnleverApost(TxtLieuLivraison.Text) & "','" & EnleverApost(TxtIsntructionSpec.Text) & "','" & "" & "','" & "" & "','" & "" & "','" & "" & "','" & "" & "','" & "" & "','" & CDbl(MontantHT) & "','" & TVA & "','" & MontantTVA.ToString.Replace(",", ".") & "','" & Remise & "','" & MontantRemise.ToString.Replace(",", ".") & "','" & EnleverApost(TxtLibAutreTaxe.Text) & "','" & AutreTaxe & "','" & MontantAutreTaxe.ToString.Replace(",", ".") & "','" & MontantNetHT.ToString.Replace(",", ".") & "','" & MontantTOTAL.ToString.Replace(",", ".") & "','" & MontantTotalTTC.ToString.Replace(",", ".") & "', 'OUI','" & cur_User & "','" & ProjetEnCours & "')"
+                    verif &= EnleverApost(TxtLieuLivraison.Text) & "','" & EnleverApost(TxtIsntructionSpec.Text) & "','" & "" & "','" & "" & "','" & "" & "','" & "" & "','" & "" & "','" & "" & "','" & CDbl(MontantHT) & "','" & TVA & "','" & MontantTVA.ToString.Replace(",", ".") & "','" & Remise & "','" & MontantRemise.ToString.Replace(",", ".") & "','" & EnleverApost(TxtLibAutreTaxe.Text) & "','" & AutreTaxe & "','" & MontantAutreTaxe.ToString.Replace(",", ".") & "','" & MontantNetHT.ToString.Replace(",", ".") & "','" & MontantTOTAL.ToString.Replace(",", ".") & "','" & MontantTotalTTC.ToString.Replace(",", ".") & "', 'En cours','" & cur_User & "','" & ProjetEnCours & "')"
                     ExecuteNonQuery(verif)
 
                     SuccesMsg("Enregistrement effectué avec succès")
@@ -998,20 +997,10 @@ Public Class BonCommande
                     query = "delete from t_bc_listebesoins where RefBonCommande = '" & NumeroBonCommande & "'"
                     ExecuteNonQuery(query)
 
-                    Dim bool As Boolean = False
                     For i = 0 To ViewLstCmde.RowCount - 1
-                        If CBool(ViewLstCmde.GetRowCellValue(i, "Choix")) = True Then
-                            query = "insert into t_bc_listebesoins values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Référence")) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Désignation")) & "','" & ViewLstCmde.GetRowCellValue(i, "Quantité") & "','" & ViewLstCmde.GetRowCellValue(i, "Prix Unitaire") & "','" & CDbl(ViewLstCmde.GetRowCellValue(i, "Montant")) & "')"
-                            ExecuteNonQuery(query)
-
-                            bool = True
-                        End If
+                        query = "insert into t_bc_listebesoins values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Référence")) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Désignation")) & "','" & ViewLstCmde.GetRowCellValue(i, "Quantité") & "','" & ViewLstCmde.GetRowCellValue(i, "Prix Unitaire") & "','" & CDbl(ViewLstCmde.GetRowCellValue(i, "Montant")) & "')"
+                        ExecuteNonQuery(query)
                     Next
-
-                    If bool = False Then
-                        SuccesMsg("Veuillez cocher une ligne dans la liste des besoins")
-                        Exit Sub
-                    End If
 
                     'suppression puis ajout dans la table des signataires
                     query = "delete from t_bc_signataire where RefBonCommande = '" & NumeroBonCommande & "'"
@@ -1090,18 +1079,11 @@ Public Class BonCommande
                         MontantTOTAL = CDbl(MontantTotalDossier)
                     End If
 
-                    MontantTotalTTC = MontantNetHT - MontantTVA
+                    MontantTotalTTC = MontantNetHT + MontantTVA
 
                     'Mise à jour dans la table t_fournisseur
                     query = "UPDATE t_fournisseur SET AdresseCompleteFournis = '" & EnleverApost(TxtAdresseFour.Text) & "', TelFournis = '" & EnleverApost(TxtTelFour.Text) & "', CompteContribuableFournis = '" & EnleverApost(TxtCCFour.Text) & "', RegistreCommerceFournis = '" & EnleverApost(TxtRCCM.Text) & "' WHERE CodeFournis = '" & CodeFournisseur & "'"
                     ExecuteNonQuery(query)
-
-                    'insertion dans la table liste des besoins
-                    query = "update t_bc_listebesoins set RefListeBesoins = '" & EnleverApost(TxtReference.Text) & "' where RefBonCommande = '" & NumeroBonCommande & "'"
-                    ExecuteNonQuery(query)
-
-                    'mise à jour dans la table des signataire
-                    query = "update t_bc_signataire set "
 
                     Dim verif As String = ""
                     'mise à jour dans la table t_boncommande
@@ -1115,7 +1097,7 @@ Public Class BonCommande
                     Liste_boncommande.LoadColonneBonCommande()
                     Liste_boncommande.RemplirDataGrid()
                 Else
-                    SuccesMsg("Veuillez cocher liste des besoins avant la modification")
+                    SuccesMsg("Veuillez ajouter la liste des besoins avant la modification")
                 End If
 
             End If
@@ -1215,7 +1197,7 @@ Public Class BonCommande
                         MontantTVA = Math.Round(MontantNetHT * (CDbl(TVA) / 100))
                     End If
 
-                    MontantTOTAL = MontantNetHT - MontantTVA
+                    MontantTOTAL = MontantNetHT + MontantTVA
 
                     If TxtLibAutreTaxe.Text = "" Then
                         AutreTaxe = ""
@@ -1225,7 +1207,7 @@ Public Class BonCommande
                         MontantAutreTaxe = Math.Round(MontantTOTAL * (CDbl(AutreTaxe) / 100))
                     End If
 
-                    MontantTotalTTC = MontantTOTAL - MontantAutreTaxe
+                    MontantTotalTTC = MontantTOTAL + MontantAutreTaxe
 
                     'modification du Fournisseur
                     query = "UPDATE t_fournisseur set NomFournis='" & EnleverApost(TxtFournisseur.Text) & "',AdresseCompleteFournis='" & EnleverApost(TxtAdresseFour.Text) & "',TelFournis='" & EnleverApost(TxtTelFour.Text) & "',CompteContribuableFournis='" & EnleverApost(TxtCCFour.Text) & "',RegistreCommerceFournis='" & EnleverApost(TxtRCCM.Text) & "',NumeroDAO='" & EnleverApost(Txtboncmde.Text) & "', CodeProjet='" & ProjetEnCours & "' where CodeFournis = '" & CodeFournisseur & "'"
@@ -1250,30 +1232,35 @@ Public Class BonCommande
     End Sub
 
     Private Sub ListBonCmde_DoubleClick(sender As Object, e As EventArgs) Handles ListBonCmde.DoubleClick
-        If ViewLstCmde.RowCount > 0 Then
-            Dim bool As Boolean = False
+        If RdSansPassMarche.Checked Then
+            If ViewLstCmde.RowCount > 0 Then
+                Dim bool As Boolean = False
 
-            For i = 0 To ViewLstCmde.RowCount - 1
+                For i = 0 To ViewLstCmde.RowCount - 1
+                    If CBool(ViewLstCmde.GetRowCellValue(i, "Choix")) = True Then
+                        If TxtReference.Text = "" Then
+                            TxtReference.Text = ViewLstCmde.GetRowCellValue(i, "Référence").ToString()
+                            TxtDesignation.Text = MettreApost(ViewLstCmde.GetRowCellValue(i, "Désignation").ToString())
+                            TxtQte.Text = ViewLstCmde.GetRowCellValue(i, "Quantité").ToString()
+                            TxtPu.Text = ViewLstCmde.GetRowCellValue(i, "Prix Unitaire").ToString()
+                            TxtNewMont.Text = ViewLstCmde.GetRowCellValue(i, "Montant").ToString()
+                            ViewLstCmde.DeleteSelectedRows()
+                            bool = True
+                        Else
+                            SuccesMsg("Veuillez terminer la modification en cours")
+                            Exit Sub
+                        End If
+                    End If
+                Next
 
-                If CBool(ViewLstCmde.GetRowCellValue(i, "Choix")) = True Then
-                    TxtReference.Text = ViewLstCmde.GetRowCellValue(i, "Référence").ToString()
-                    TxtDesignation.Text = MettreApost(ViewLstCmde.GetRowCellValue(i, "Désignation").ToString())
-                    TxtQte.Text = ViewLstCmde.GetRowCellValue(i, "Quantité").ToString()
-                    TxtPu.Text = ViewLstCmde.GetRowCellValue(i, "Prix Unitaire").ToString()
-                    TxtNewMont.Text = ViewLstCmde.GetRowCellValue(i, "Montant").ToString()
-                    ViewLstCmde.DeleteSelectedRows()
-                    bool = True
+                If bool = False Then
+                    SuccesMsg("Veuillez cocher une ligne dans la liste des besoins")
                 End If
-            Next
 
-            If bool = False Then
-                SuccesMsg("Veuillez cocher une ligne dans la liste des besoins")
+            Else
+                SuccesMsg("Veuillez ajouter une ligne dans la liste des besoins")
             End If
-
-        Else
-            SuccesMsg("Veuillez ajouter une ligne dans la liste des besoins")
         End If
-
     End Sub
 
     Private Sub ModifierToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ModifierToolStripMenuItem.Click
@@ -1281,23 +1268,25 @@ Public Class BonCommande
     End Sub
 
     Private Sub SupprimerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SupprimerToolStripMenuItem.Click
-        If ViewLstCmde.RowCount > 0 Then
-            Dim bool As Boolean = False
 
-            For i = 0 To ViewLstCmde.RowCount - 1
+        If RdSansPassMarche.Checked Then
+            If ViewLstCmde.RowCount > 0 Then
+                Dim bool As Boolean = False
 
-                If CBool(ViewLstCmde.GetRowCellValue(i, "Choix")) = True Then
-                    ViewLstCmde.DeleteSelectedRows()
-                    bool = True
+                For i = 0 To ViewLstCmde.RowCount - 1
+
+                    If CBool(ViewLstCmde.GetRowCellValue(i, "Choix")) = True Then
+                        ViewLstCmde.DeleteSelectedRows()
+                        bool = True
+                    End If
+                Next
+
+                If bool = False Then
+                    SuccesMsg("Veuillez cocher une ligne avant la suppression")
                 End If
-            Next
-
-            If bool = False Then
-                SuccesMsg("Veuillez cocher une ligne avant la suppression")
+            Else
+                SuccesMsg("Vous n'avez pas ajouté de ligne dans la liste des besoins")
             End If
-
-        Else
-            SuccesMsg("Vous n'avez pas ajouté de ligne dans la liste des besoins")
         End If
     End Sub
 
@@ -1328,7 +1317,6 @@ Public Class BonCommande
                         End If
                     Next
                 End If
-
             End If
 
             If Ajout = True Then
@@ -1345,7 +1333,7 @@ Public Class BonCommande
         If GVSignataire.RowCount > 0 Then
             If ConfirmMsg("Voulez-vous vraiment supprimer la ligne?") = DialogResult.Yes Then
                 GVSignataire.GetDataRow(GVSignataire.FocusedRowHandle).Delete()
-                RechargerNumero(GVSignataire, "N°")
+                RechargerNumSignataire(GVSignataire, "N°")
             End If
         End If
     End Sub
@@ -1356,6 +1344,28 @@ Public Class BonCommande
             Dim IDL = drx("N°").ToString
             ColorRowGrid(GVSignataire, "[N°]='x'", Color.White, "Times New Roman", 10, FontStyle.Regular, Color.Black)
             ColorRowGridAnal(GVSignataire, "[N°]='" & IDL & "'", Color.Navy, "Times New Roman", 10, FontStyle.Bold, Color.White, True)
+        End If
+    End Sub
+
+    Private Sub Checktous_CheckedChanged(sender As Object, e As EventArgs) Handles Checktous.CheckedChanged
+        Try
+            If ViewLstCmde.RowCount > 0 Then
+                For k = 0 To ViewLstCmde.RowCount - 1
+                    ViewLstCmde.SetRowCellValue(k, "Choix", Checktous.Checked)
+                Next
+            End If
+        Catch ex As Exception
+            FailMsg("Erreur : Information non disponible : " & ex.ToString())
+        End Try
+    End Sub
+
+    Private Sub ContextMenuStrip1_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip1.Opening
+        If RdParPassMarche.Checked Then
+            ModifierToolStripMenuItem.Enabled = False
+            SupprimerToolStripMenuItem.Enabled = False
+        Else
+            ModifierToolStripMenuItem.Enabled = True
+            SupprimerToolStripMenuItem.Enabled = True
         End If
     End Sub
 End Class
