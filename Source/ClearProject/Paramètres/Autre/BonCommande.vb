@@ -111,6 +111,7 @@ Public Class BonCommande
             BtEnregistrer.Enabled = False
             BtModifier.Enabled = True
             Txtboncmde.Enabled = False
+            Initialiser()
             Chargement()
         End If
     End Sub
@@ -121,7 +122,6 @@ Public Class BonCommande
         RefLot = Liste_boncommande.ViewBoncommande.GetRowCellValue(Liste_boncommande.j, "RefLot").ToString
         CodeFournisseur = Liste_boncommande.ViewBoncommande.GetRowCellValue(Liste_boncommande.j, "CodeFournisseur").ToString
         ConditionPaiement = Liste_boncommande.ViewBoncommande.GetRowCellValue(Liste_boncommande.j, "ConditionPaiement").ToString
-
         CmbNumDAO.Text = NumDAO
 
         'Récupération du code du lot
@@ -253,7 +253,7 @@ Public Class BonCommande
             Dim drs = NewLine.NewRow()
             cpt += 1
             drs("N°") = cpt
-            drs("Nom Prénoms et Titre") = MettreApost(rw("NomPren").ToString)
+            drs("Nom, Prénoms et Titre") = MettreApost(rw("NomPren").ToString)
             NewLine.Rows.Add(drs)
         Next
     End Sub
@@ -288,6 +288,7 @@ Public Class BonCommande
         TxtRemise.Text = ""
         TxtLibAutreTaxe.Text = ""
         TxtAutreTaxe.Text = ""
+        Checktous.Checked = False
         dtboncommande.Rows.clear()
         dtSignataire.Rows.clear()
     End Sub
@@ -386,7 +387,7 @@ Public Class BonCommande
     Private Sub LoadColonneSignataire()
         dtSignataire.Columns.Clear()
         dtSignataire.Columns.Add("N°", Type.GetType("System.String"))
-        dtSignataire.Columns.Add("Nom Prénoms et Titre", Type.GetType("System.String"))
+        dtSignataire.Columns.Add("Nom, Prénoms et Titre", Type.GetType("System.String"))
         GCSignataire.DataSource = dtSignataire
 
         GVSignataire.Columns("N°").Width = 5
@@ -410,13 +411,8 @@ Public Class BonCommande
         query = "SELECT TypeMarche FROM t_dao WHERE CodeProjet = '" & ProjetEnCours & "' AND NumeroDAO = '" & ID_NumDAO(CmbNumDAO.SelectedIndex) & "'"
         TypeMarche = ExecuteScallar(query)
 
-        If TypeMarche = "Fournitures" Or TypeMarche.ToLower.Contains("Service") Then
+        If TypeMarche = "Fournitures" Or TypeMarche.Contains("Service") Then
             query = "SELECT * FROM t_spectechfourniture WHERE NumeroDAO = '" & EnleverApost(CmbNumDAO.Text) & "' AND CodeLot = '" & CmbCodeLot.Text & "'"
-
-            'ElseIf TypeMarche = "Travaux" Then
-            'query = "SELECT DISTINCT d.NumeroItem, d.Designation, d.QteItem, sp.MontantItem FROM t_dqeitem d, t_soumisprixitemdqe sp, t_soumissionfournisseur s WHERE d.RefItem = sp.RefItem AND sp.RefSoumis = s.RefSoumis AND s.CodeFournis = '" & CodeFournis.ToString & "' AND s.CodeLot = '" & ID_CodeLot(CmbCodeLot.SelectedIndex) & "'"
-            'TxtQte.Text = "1"
-            'TxtPu.Text = TxtNewMont.Text
         End If
 
         Dim dt As DataTable = ExcecuteSelectQuery(query)
@@ -424,7 +420,7 @@ Public Class BonCommande
 
         For Each rw As DataRow In dt.Rows
 
-            If TypeMarche = "Fournitures" Or TypeMarche.ToLower.Contains("Service") Then
+            If TypeMarche = "Fournitures" Or TypeMarche.Contains("Service") Then
                 Reference = rw("CodeCategorie").ToString
                 Designation = MettreApost(rw("DescripFournit").ToString) & " (" & RechargerListeSpecifications(rw("RefSpecFournit").ToString) & ")"
                 QTE = rw("QteFournit").ToString
@@ -641,6 +637,10 @@ Public Class BonCommande
 
         CmbCodeLot.ResetText()
         CmbCodeLot.Properties.Items.Clear()
+        TxtMontRabais.Text = ""
+        TxtAjustement.Text = ""
+        TxtNewMont.Text = ""
+        TxtMontLettre.Text = ""
 
         Dim VerifMarche As Double = 0
         Dim VerifBonCommande As Double = 0
@@ -742,9 +742,6 @@ Public Class BonCommande
             ElseIf Dateboncmde.Text = "" Then
                 SuccesMsg("Veuillez choisir la date d'élaboration du bon de commande")
                 Dateboncmde.Focus()
-                'ElseIf TxtLibAutreTaxe.Text <> "" And TxtAutreTaxe.Text = "" Then
-                '    SuccesMsg("Veuillez saisir le pourcentage de la taxe correspondant aux autres taxes")
-                '    TxtAutreTaxe.Focus()
             Else
                 If ViewLstCmde.RowCount > 0 Then
                     For i = 0 To ViewLstCmde.RowCount - 1
@@ -754,7 +751,7 @@ Public Class BonCommande
 
                     If GVSignataire.RowCount > 0 Then
                         For i = 0 To GVSignataire.RowCount - 1
-                            query = "insert into t_bc_signataire values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(GVSignataire.GetRowCellValue(i, "Nom Prénoms et Titre")) & "','" & GVSignataire.GetRowCellValue(i, "N°") & "','" & ProjetEnCours & "')"
+                            query = "insert into t_bc_signataire values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(GVSignataire.GetRowCellValue(i, "Nom, Prénoms et Titre")) & "','" & GVSignataire.GetRowCellValue(i, "N°") & "','" & ProjetEnCours & "')"
                             ExecuteNonQuery(query)
                         Next
                     Else
@@ -762,7 +759,6 @@ Public Class BonCommande
                         Exit Sub
                     End If
 
-                    'NumBonCommande_Auto(Txtboncmde)
                     Dim Annee As String = CStr(Now.Year)
 
                     Dim ChoixElabBC As String = "Par Passation de Marché"
@@ -779,7 +775,6 @@ Public Class BonCommande
                         ConditionPaiement = "Espèces"
                     End If
 
-                    'Dim MontantHT As String = TxtNewMont.Text
                     Dim MontantHT As String = ""
                     Dim TVA As String = ""
                     Dim Remise As String = ""
@@ -798,12 +793,8 @@ Public Class BonCommande
                     If TxtRemise.Text = "" Then
                         Remise = ""
                         MontantRemise = 0
-                        'Else
-                        '    Remise = TxtRemise.Text
-                        '    MontantRemise = Math.Round(CDbl(MontantHT) * (CDbl(Remise) / 100))
                     End If
 
-                    'MontantNetHT = CDbl(MontantHT) - MontantRemise
                     MontantNetHT = CDbl(TxtNewMont.Text)
 
                     If TxtTVA.Text = "" Then
@@ -817,11 +808,7 @@ Public Class BonCommande
                     If TxtLibAutreTaxe.Text = "" Then
                         AutreTaxe = ""
                         MontantAutreTaxe = 0
-                        'Else
-                        '    AutreTaxe = TxtAutreTaxe.Text
-                        '    MontantAutreTaxe = Math.Round(MontantTOTAL * (CDbl(AutreTaxe) / 100))
                     End If
-                    'MontantTotalTTC = MontantTOTAL - MontantAutreTaxe
 
                     If MontantTotalDossier = "" Then
                         MontantTOTAL = 0
@@ -888,7 +875,7 @@ Public Class BonCommande
 
                     If GVSignataire.RowCount > 0 Then
                         For i = 0 To GVSignataire.RowCount - 1
-                            query = "insert into t_bc_signataire values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(GVSignataire.GetRowCellValue(i, "Nom Prénoms et Titre")) & "','" & GVSignataire.GetRowCellValue(i, "N°") & "','" & ProjetEnCours & "')"
+                            query = "insert into t_bc_signataire values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(GVSignataire.GetRowCellValue(i, "Nom, Prénoms et Titre")) & "','" & GVSignataire.GetRowCellValue(i, "N°") & "','" & ProjetEnCours & "')"
                             ExecuteNonQuery(query)
                         Next
                     Else
@@ -951,10 +938,10 @@ Public Class BonCommande
                         MontantAutreTaxe = 0
                     Else
                         AutreTaxe = TxtAutreTaxe.Text
-                        MontantAutreTaxe = Math.Round(MontantTOTAL * (CDbl(AutreTaxe) / 100))
+                        MontantAutreTaxe = Math.Round(MontantNetHT * (CDbl(AutreTaxe) / 100))
                     End If
 
-                    MontantTotalTTC = MontantTOTAL + MontantAutreTaxe
+                    MontantTotalTTC = MontantNetHT + MontantTVA + MontantAutreTaxe
 
                     'Enregistrement du Fournisseur
                     query = "INSERT INTO t_fournisseur (CodeFournis,NomFournis,AdresseCompleteFournis,TelFournis,CompteContribuableFournis,RegistreCommerceFournis,NumeroDAO,NomAch,CodeProjet) VALUES (NULL,'" & EnleverApost(TxtFournisseur.Text) & "','" & EnleverApost(TxtAdresseFour.Text) & "','" & EnleverApost(TxtTelFour.Text) & "','" & EnleverApost(TxtCCFour.Text) & "','" & EnleverApost(TxtRCCM.Text) & "','" & EnleverApost(Txtboncmde.Text) & "','" & "" & "','" & ProjetEnCours & "')"
@@ -1008,7 +995,7 @@ Public Class BonCommande
 
                     If GVSignataire.RowCount > 0 Then
                         For i = 0 To GVSignataire.RowCount - 1
-                            query = "insert into t_bc_signataire values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(GVSignataire.GetRowCellValue(i, "Nom Prénoms et Titre")) & "','" & GVSignataire.GetRowCellValue(i, "N°") & "','" & ProjetEnCours & "')"
+                            query = "insert into t_bc_signataire values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(GVSignataire.GetRowCellValue(i, "Nom, Prénoms et Titre")) & "','" & GVSignataire.GetRowCellValue(i, "N°") & "','" & ProjetEnCours & "')"
                             ExecuteNonQuery(query)
                         Next
                     Else
@@ -1048,12 +1035,8 @@ Public Class BonCommande
                     If TxtRemise.Text = "" Then
                         Remise = ""
                         MontantRemise = 0
-                        'Else
-                        '    Remise = TxtRemise.Text
-                        '    MontantRemise = Math.Round(CDbl(MontantHT) * (CDbl(Remise) / 100))
                     End If
 
-                    'MontantNetHT = CDbl(MontantHT) - MontantRemise
                     MontantNetHT = CDbl(TxtNewMont.Text)
 
                     If TxtTVA.Text = "" Then
@@ -1067,11 +1050,7 @@ Public Class BonCommande
                     If TxtLibAutreTaxe.Text = "" Then
                         AutreTaxe = ""
                         MontantAutreTaxe = 0
-                        'Else
-                        '    AutreTaxe = TxtAutreTaxe.Text
-                        '    MontantAutreTaxe = Math.Round(MontantTOTAL * (CDbl(AutreTaxe) / 100))
                     End If
-                    'MontantTotalTTC = MontantTOTAL - MontantAutreTaxe
 
                     If MontantTotalDossier = "" Then
                         MontantTOTAL = 0
@@ -1142,7 +1121,7 @@ Public Class BonCommande
 
                     If GVSignataire.RowCount > 0 Then
                         For i = 0 To GVSignataire.RowCount - 1
-                            query = "insert into t_bc_signataire values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(GVSignataire.GetRowCellValue(i, "Nom Prénoms et Titre")) & "','" & GVSignataire.GetRowCellValue(i, "N°") & "','" & ProjetEnCours & "')"
+                            query = "insert into t_bc_signataire values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(GVSignataire.GetRowCellValue(i, "Nom, Prénoms et Titre")) & "','" & GVSignataire.GetRowCellValue(i, "N°") & "','" & ProjetEnCours & "')"
                             ExecuteNonQuery(query)
                         Next
                     Else
@@ -1204,10 +1183,10 @@ Public Class BonCommande
                         MontantAutreTaxe = 0
                     Else
                         AutreTaxe = TxtAutreTaxe.Text
-                        MontantAutreTaxe = Math.Round(MontantTOTAL * (CDbl(AutreTaxe) / 100))
+                        MontantAutreTaxe = Math.Round(MontantNetHT * (CDbl(AutreTaxe) / 100))
                     End If
 
-                    MontantTotalTTC = MontantTOTAL + MontantAutreTaxe
+                    MontantTotalTTC = MontantNetHT + MontantTVA + MontantAutreTaxe
 
                     'modification du Fournisseur
                     query = "UPDATE t_fournisseur set NomFournis='" & EnleverApost(TxtFournisseur.Text) & "',AdresseCompleteFournis='" & EnleverApost(TxtAdresseFour.Text) & "',TelFournis='" & EnleverApost(TxtTelFour.Text) & "',CompteContribuableFournis='" & EnleverApost(TxtCCFour.Text) & "',RegistreCommerceFournis='" & EnleverApost(TxtRCCM.Text) & "',NumeroDAO='" & EnleverApost(Txtboncmde.Text) & "', CodeProjet='" & ProjetEnCours & "' where CodeFournis = '" & CodeFournisseur & "'"
@@ -1309,7 +1288,7 @@ Public Class BonCommande
                     Exit Sub
                 Else
                     For i = 0 To GVSignataire.RowCount - 1
-                        NomSignataire = GVSignataire.GetRowCellValue(i, "Nom Prénoms et Titre")
+                        NomSignataire = GVSignataire.GetRowCellValue(i, "Nom, Prénoms et Titre")
                         If NomSignataire = CmbSignataire.Text Then
                             SuccesMsg("Vous avez déjà ajouté ce nom à la liste des signataires")
                             Ajout = False
@@ -1321,7 +1300,7 @@ Public Class BonCommande
 
             If Ajout = True Then
                 drS("N°") = GVSignataire.RowCount + 1
-                drS("Nom Prénoms et Titre") = CmbSignataire.Text
+                drS("Nom, Prénoms et Titre") = CmbSignataire.Text
                 NewLine.Rows.Add(drS)
                 CmbSignataire.Text = ""
             End If

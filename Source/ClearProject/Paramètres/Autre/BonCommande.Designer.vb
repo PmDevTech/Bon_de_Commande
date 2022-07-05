@@ -1115,7 +1115,7 @@ Partial Class BonCommande
         'LabelControl2
         '
         Me.LabelControl2.Appearance.ForeColor = System.Drawing.Color.Red
-        Me.LabelControl2.Location = New System.Drawing.Point(116, 32)
+        Me.LabelControl2.Location = New System.Drawing.Point(119, 32)
         Me.LabelControl2.Name = "LabelControl2"
         Me.LabelControl2.Size = New System.Drawing.Size(6, 13)
         Me.LabelControl2.TabIndex = 275
@@ -1127,9 +1127,9 @@ Partial Class BonCommande
         Me.Label20.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Italic)
         Me.Label20.Location = New System.Drawing.Point(10, 33)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(107, 14)
+        Me.Label20.Size = New System.Drawing.Size(110, 14)
         Me.Label20.TabIndex = 275
-        Me.Label20.Text = "Nom Prénoms et Titre"
+        Me.Label20.Text = "Nom, Prénoms et Titre"
         '
         'CmbSignataire
         '
