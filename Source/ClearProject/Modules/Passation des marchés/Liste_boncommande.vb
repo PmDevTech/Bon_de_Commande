@@ -342,7 +342,7 @@ Public Class Liste_boncommande
                     compteur += 1
 
                     If VerifModifBon = "En cours" Then
-                        BonCommande.Size = New Point(1130, 803)
+                        BonCommande.Size = New Point(1130, 627)
                         AjoutModif = "Modifier"
                         j = i
                         Dialog_form(BonCommande)
@@ -364,7 +364,7 @@ Public Class Liste_boncommande
     End Sub
 
     Private Sub BtAjouter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtAjouter.Click
-        BonCommande.Size = New Point(1130, 803)
+        BonCommande.Size = New Point(1130, 627)
         AjoutModif = "Ajout"
         Dialog_form(BonCommande)
     End Sub

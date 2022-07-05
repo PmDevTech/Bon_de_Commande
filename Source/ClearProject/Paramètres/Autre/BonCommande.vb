@@ -390,12 +390,11 @@ Public Class BonCommande
         dtSignataire.Columns.Add("Nom, Prénoms et Titre", Type.GetType("System.String"))
         GCSignataire.DataSource = dtSignataire
 
-        GVSignataire.Columns("N°").Width = 5
+        GVSignataire.Columns("N°").Width = 3
 
         GVSignataire.Columns("N°").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         GVSignataire.Appearance.Row.Font = New Font("Times New Roman", 10, FontStyle.Regular)
-        ColorRowGrid(GVSignataire, "[Code]='x'", Color.LightGray, "Times New Roman", 10, FontStyle.Regular, Color.Black)
-
+        ColorRowGrid(GVSignataire, "[N°]='x'", Color.LightGray, "Times New Roman", 10, FontStyle.Regular, Color.Black)
     End Sub
 
     Private Sub RechargerSpecifications()
@@ -756,6 +755,7 @@ Public Class BonCommande
                         Next
                     Else
                         SuccesMsg("Veuillez ajouter au moins un signataire avant l'enregistrement")
+                        CmbSignataire.Focus()
                         Exit Sub
                     End If
 
@@ -880,6 +880,7 @@ Public Class BonCommande
                         Next
                     Else
                         SuccesMsg("Veuillez ajouter au moins un signataire avant l'enregistrement")
+                        CmbSignataire.Focus()
                         Exit Sub
                     End If
 
@@ -1000,6 +1001,7 @@ Public Class BonCommande
                         Next
                     Else
                         SuccesMsg("Veuillez ajouter au moins un signataire avant la modification")
+                        CmbSignataire.Focus()
                         Exit Sub
                     End If
 
@@ -1126,6 +1128,7 @@ Public Class BonCommande
                         Next
                     Else
                         SuccesMsg("Veuillez ajouter au moins un signataire avant la modification")
+                        CmbSignataire.Focus()
                         Exit Sub
                     End If
 
