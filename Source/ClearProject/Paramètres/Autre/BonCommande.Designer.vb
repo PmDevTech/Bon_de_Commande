@@ -20,8 +20,8 @@ Partial Class BonCommande
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim GridLevelNode3 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.BtAnnuler = New DevExpress.XtraEditors.SimpleButton()
         Me.BtEnregistrer = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
@@ -641,11 +641,11 @@ Partial Class BonCommande
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(96, 253)
+        Me.Label6.Location = New System.Drawing.Point(82, 254)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(125, 15)
+        Me.Label6.Size = New System.Drawing.Size(145, 15)
         Me.Label6.TabIndex = 8
-        Me.Label6.Text = "MONTANT À PAYER"
+        Me.Label6.Text = "MONTANT HT À PAYER"
         '
         'Label10
         '
@@ -753,8 +753,8 @@ Partial Class BonCommande
         Me.ListBonCmde.ContextMenuStrip = Me.ContextMenuStrip1
         Me.ListBonCmde.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ListBonCmde.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        GridLevelNode3.RelationName = "Level1"
-        Me.ListBonCmde.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode3})
+        GridLevelNode1.RelationName = "Level1"
+        Me.ListBonCmde.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
         Me.ListBonCmde.Location = New System.Drawing.Point(2, 21)
         Me.ListBonCmde.MainView = Me.ViewLstCmde
         Me.ListBonCmde.Name = "ListBonCmde"
@@ -1084,8 +1084,8 @@ Partial Class BonCommande
         '
         Me.GCSignataire.ContextMenuStrip = Me.ContextMenuStrip2
         Me.GCSignataire.Dock = System.Windows.Forms.DockStyle.Bottom
-        GridLevelNode1.RelationName = "Level1"
-        Me.GCSignataire.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
+        GridLevelNode2.RelationName = "Level1"
+        Me.GCSignataire.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
         Me.GCSignataire.Location = New System.Drawing.Point(2, 73)
         Me.GCSignataire.MainView = Me.GVSignataire
         Me.GCSignataire.Name = "GCSignataire"

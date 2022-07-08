@@ -82,7 +82,7 @@ Public Class Liste_boncommande
 
     Public Sub RemplirDataGrid()
 
-        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,MontantRabais,Ajustement,MontantBCHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,Statut,EMP_ID FROM t_boncommande "
+        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,MontantRabais,Ajustement,MontantTotal,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,Statut,EMP_ID FROM t_boncommande "
         query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User & "'"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         Dim cptr As Integer = 0
@@ -120,7 +120,7 @@ Public Class Liste_boncommande
             drS("Désignation") = MettreApost(rw("Designation"))
             drS("MontantRabais") = rw("MontantRabais").ToString
             drS("Ajustement") = rw("Ajustement").ToString
-            drS("MontantBCHT") = rw("MontantBCHT")
+            drS("MontantBCHT") = rw("MontantTotal")
             drS("Montant") = AfficherMonnaie(rw("MontantTotalTTC"))
             drS("PcrtTVA") = rw("PcrtTVA")
             drS("PcrtREMISE") = rw("PcrtRemise")
@@ -310,7 +310,7 @@ Public Class Liste_boncommande
     End Sub
 
     Private Sub RemplirdatagridRechercher()
-        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,MontantRabais,Ajustement,MontantBCHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,Statut,EMP_ID FROM t_boncommande "
+        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,MontantRabais,Ajustement,MontantTotal,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,Statut,EMP_ID FROM t_boncommande "
         query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User & "' AND RefBonCommande LIKE'" & TxtRechercher.Text & "%'"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         Dim cptr As Integer = 0
@@ -350,7 +350,7 @@ Public Class Liste_boncommande
             drS("Désignation") = MettreApost(rw("Designation"))
             drS("MontantRabais") = rw("MontantRabais").ToString
             drS("Ajustement") = rw("Ajustement").ToString
-            drS("MontantBCHT") = rw("MontantBCHT")
+            drS("MontantBCHT") = rw("MontantTotal")
             drS("Montant") = AfficherMonnaie(rw("MontantTotalTTC"))
             drS("PcrtTVA") = rw("PcrtTVA")
             drS("PcrtREMISE") = rw("PcrtRemise")
