@@ -34,7 +34,6 @@ Public Class Liste_boncommande
         dtListeBonCommande.Columns.Add("InstructionSpeciale", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Référence", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Désignation", Type.GetType("System.String"))
-        'dtListeBonCommande.Columns.Add("Quantité", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Montant Rabais", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Montant Offre", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Ajustement", Type.GetType("System.String"))
@@ -63,8 +62,6 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("InstructionSpeciale").Visible = False
         ViewBoncommande.Columns("Référence").Visible = False
         ViewBoncommande.Columns("Désignation").Visible = False
-        'ViewBoncommande.Columns("Quantité").Visible = False
-        'ViewBoncommande.Columns("Prix Unitaire").Visible = False
         ViewBoncommande.Columns("Montant Rabais").Visible = False
         ViewBoncommande.Columns("Montant Offre").Visible = False
         ViewBoncommande.Columns("Ajustement").Visible = False
@@ -315,7 +312,7 @@ Public Class Liste_boncommande
     End Sub
 
     Private Sub RemplirdatagridRechercher()
-        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,Quantite,PrixUnitaire,MontantRabais,Ajustement,MontantBCHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,Statut,EMP_ID FROM t_boncommande "
+        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,MontantRabais,Ajustement,MontantBCHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,Statut,EMP_ID FROM t_boncommande "
         query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User & "' AND RefBonCommande LIKE'" & TxtRechercher.Text & "%'"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         Dim cptr As Integer = 0
@@ -353,8 +350,6 @@ Public Class Liste_boncommande
             drS("InstructionSpeciale") = MettreApost(rw("InstructionSpeciale"))
             drS("Référence") = MettreApost(rw("RefArticle"))
             drS("Désignation") = MettreApost(rw("Designation"))
-            'drS("Quantité") = rw("Quantite").ToString
-            'drS("Prix Unitaire") = rw("PrixUnitaire").ToString
             drS("Montant Rabais") = rw("MontantRabais").ToString
             drS("Ajustement") = rw("Ajustement").ToString
             drS("MontantBCHT") = rw("MontantBCHT")
@@ -388,8 +383,6 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("InstructionSpeciale").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Référence").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Désignation").OptionsColumn.AllowEdit = False
-        'ViewBoncommande.Columns("Quantité").OptionsColumn.AllowEdit = False
-        'ViewBoncommande.Columns("Prix Unitaire").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Montant Rabais").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Ajustement").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("MontantBCHT").OptionsColumn.AllowEdit = False
@@ -418,11 +411,9 @@ Public Class Liste_boncommande
                 RemplirDataGrid()
             Else
                 RemplirdatagridRechercher()
-                'ViewBoncommande.Columns("Choix").Visible = False
-                'ViewBoncommande.Columns("Date d'édition").Width = 294
             End If
         Catch ex As Exception
-
+            SuccesMsg(ex.ToString)
         End Try
     End Sub
 
@@ -442,11 +433,6 @@ Public Class Liste_boncommande
     Private Sub ImprimerBonDeCommandeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImprimerBonDeCommandeToolStripMenuItem.Click
         If ViewBoncommande.RowCount > 0 Then
 
-            'Dim impr As Boolean = False
-
-            'For i = 0 To ViewBoncommande.RowCount - 1
-
-            'If CBool(ViewBoncommande.GetRowCellValue(i, "Choix")) = True Then
             DrX = ViewBoncommande.GetDataRow(ViewBoncommande.FocusedRowHandle)
 
             Dim reportfeuilletps As New ReportDocument
@@ -458,13 +444,11 @@ Public Class Liste_boncommande
 
             'récupération du numéro du bon de commande
             Dim NumBonCommande As String = ""
-            'NumBonCommande = ViewBoncommande.GetRowCellValue(i, "N° Bon Commande")
             NumBonCommande = DrX("N° Bon Commande").ToString
 
             'récupération du type de marché
             Dim TypeMarche As String = ""
             Dim NumDAO As String = ""
-            'NumDAO = ViewBoncommande.GetRowCellValue(i, "NumeroDAO")
             NumDAO = DrX("NumeroDAO").ToString
 
             query = "SELECT TypeMarche FROM t_dao WHERE CodeProjet = '" & ProjetEnCours & "' AND NumeroDAO = '" & NumDAO & "'"
@@ -503,16 +487,6 @@ Public Class Liste_boncommande
             FullScreenReport.FullView.ReportSource = reportfeuilletps
             FinChargement()
             FullScreenReport.ShowDialog()
-
-            'impr = True
-            'End If
-
-            'Next
-
-            'If impr = False Then
-            '    SuccesMsg("Veuillez cocher un bon de commande")
-            'End If
-
         Else
             SuccesMsg("Veuillez élaborer un bon de commande")
         End If
