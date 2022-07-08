@@ -34,8 +34,7 @@ Public Class Liste_boncommande
         dtListeBonCommande.Columns.Add("InstructionSpeciale", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Référence", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Désignation", Type.GetType("System.String"))
-        dtListeBonCommande.Columns.Add("Montant Rabais", Type.GetType("System.String"))
-        'dtListeBonCommande.Columns.Add("Montant Offre", Type.GetType("System.String"))
+        dtListeBonCommande.Columns.Add("MontantRabais", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Ajustement", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("MontantBCHT", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Montant", Type.GetType("System.String"))
@@ -62,8 +61,7 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("InstructionSpeciale").Visible = False
         ViewBoncommande.Columns("Référence").Visible = False
         ViewBoncommande.Columns("Désignation").Visible = False
-        ViewBoncommande.Columns("Montant Rabais").Visible = False
-        'ViewBoncommande.Columns("Montant Offre").Visible = False
+        ViewBoncommande.Columns("MontantRabais").Visible = False
         ViewBoncommande.Columns("Ajustement").Visible = False
         ViewBoncommande.Columns("MontantBCHT").Visible = False
         ViewBoncommande.Columns("Montant").Width = 200
@@ -120,7 +118,7 @@ Public Class Liste_boncommande
             drS("InstructionSpeciale") = MettreApost(rw("InstructionSpeciale"))
             drS("Référence") = MettreApost(rw("RefArticle"))
             drS("Désignation") = MettreApost(rw("Designation"))
-            drS("Montant Rabais") = rw("MontantRabais").ToString
+            drS("MontantRabais") = rw("MontantRabais").ToString
             drS("Ajustement") = rw("Ajustement").ToString
             drS("MontantBCHT") = rw("MontantBCHT")
             drS("Montant") = AfficherMonnaie(rw("MontantTotalTTC"))
@@ -153,7 +151,7 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("InstructionSpeciale").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Référence").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Désignation").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("Montant Rabais").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("MontantRabais").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Ajustement").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("MontantBCHT").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Montant").OptionsColumn.AllowEdit = False
@@ -350,7 +348,7 @@ Public Class Liste_boncommande
             drS("InstructionSpeciale") = MettreApost(rw("InstructionSpeciale"))
             drS("Référence") = MettreApost(rw("RefArticle"))
             drS("Désignation") = MettreApost(rw("Designation"))
-            drS("Montant Rabais") = rw("MontantRabais").ToString
+            drS("MontantRabais") = rw("MontantRabais").ToString
             drS("Ajustement") = rw("Ajustement").ToString
             drS("MontantBCHT") = rw("MontantBCHT")
             drS("Montant") = AfficherMonnaie(rw("MontantTotalTTC"))
@@ -383,7 +381,7 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("InstructionSpeciale").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Référence").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Désignation").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("Montant Rabais").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("MontantRabais").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Ajustement").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("MontantBCHT").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Montant").OptionsColumn.AllowEdit = False
@@ -413,7 +411,7 @@ Public Class Liste_boncommande
                 RemplirdatagridRechercher()
             End If
         Catch ex As Exception
-            SuccesMsg(ex.ToString)
+            'SuccesMsg(ex.ToString)
         End Try
     End Sub
 

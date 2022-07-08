@@ -204,7 +204,7 @@ Public Class BonCommande
         TxtDesignation.Text = MettreApost(Liste_boncommande.ViewBoncommande.GetRowCellValue(Liste_boncommande.j, "Désignation").ToString)
         'TxtQte.Text = Liste_boncommande.ViewBoncommande.GetRowCellValue(Liste_boncommande.j, "Quantité").ToString
         'TxtPu.Text = Liste_boncommande.ViewBoncommande.GetRowCellValue(Liste_boncommande.j, "Prix Unitaire").ToString
-        TxtMontRabais.Text = Liste_boncommande.ViewBoncommande.GetRowCellValue(Liste_boncommande.j, "Montant Rabais").ToString
+        TxtMontRabais.Text = Liste_boncommande.ViewBoncommande.GetRowCellValue(Liste_boncommande.j, "MontantRabais").ToString
         TxtAjustement.Text = Liste_boncommande.ViewBoncommande.GetRowCellValue(Liste_boncommande.j, "Ajustement").ToString
         TxtNewMont.Text = AfficherMonnaie(Liste_boncommande.ViewBoncommande.GetRowCellValue(Liste_boncommande.j, "MontantBCHT").ToString)
         TxtMontLettre.Text = MontantLettre(TxtNewMont.Text)
