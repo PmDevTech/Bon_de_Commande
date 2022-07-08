@@ -199,6 +199,12 @@
     <Compile Include="Modules\Passation des marchés\AMI\DepotAMI.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modules\Passation des marchés\EtatListeBonCommande.Designer.vb">
+      <DependentUpon>EtatListeBonCommande.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Passation des marchés\EtatListeBonCommande.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modules\Passation des marchés\Fournitures et travaux\ModifLigneDQE.Designer.vb">
       <DependentUpon>ModifLigneDQE.vb</DependentUpon>
     </Compile>
@@ -1364,6 +1370,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Modules\Passation des marchés\AMI\DepotAMI.resx">
       <DependentUpon>DepotAMI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Passation des marchés\EtatListeBonCommande.resx">
+      <DependentUpon>EtatListeBonCommande.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\Passation des marchés\Fournitures et travaux\ModifLigneDQE.resx">
       <DependentUpon>ModifLigneDQE.vb</DependentUpon>

@@ -34,9 +34,9 @@ Public Class Liste_boncommande
         dtListeBonCommande.Columns.Add("InstructionSpeciale", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Référence", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Désignation", Type.GetType("System.String"))
-        dtListeBonCommande.Columns.Add("Quantité", Type.GetType("System.String"))
-        dtListeBonCommande.Columns.Add("Prix Unitaire", Type.GetType("System.String"))
+        'dtListeBonCommande.Columns.Add("Quantité", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Montant Rabais", Type.GetType("System.String"))
+        dtListeBonCommande.Columns.Add("Montant Offre", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Ajustement", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("MontantBCHT", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Montant", Type.GetType("System.String"))
@@ -63,9 +63,10 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("InstructionSpeciale").Visible = False
         ViewBoncommande.Columns("Référence").Visible = False
         ViewBoncommande.Columns("Désignation").Visible = False
-        ViewBoncommande.Columns("Quantité").Visible = False
-        ViewBoncommande.Columns("Prix Unitaire").Visible = False
+        'ViewBoncommande.Columns("Quantité").Visible = False
+        'ViewBoncommande.Columns("Prix Unitaire").Visible = False
         ViewBoncommande.Columns("Montant Rabais").Visible = False
+        ViewBoncommande.Columns("Montant Offre").Visible = False
         ViewBoncommande.Columns("Ajustement").Visible = False
         ViewBoncommande.Columns("MontantBCHT").Visible = False
         ViewBoncommande.Columns("Montant").Width = 200
@@ -86,7 +87,7 @@ Public Class Liste_boncommande
 
     Public Sub RemplirDataGrid()
 
-        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,Quantite,PrixUnitaire,MontantRabais,Ajustement,MontantBCHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,Statut,EMP_ID FROM t_boncommande "
+        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,MontantRabais,Ajustement,MontantBCHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,Statut,EMP_ID FROM t_boncommande "
         query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User & "'"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         Dim cptr As Integer = 0
@@ -122,8 +123,6 @@ Public Class Liste_boncommande
             drS("InstructionSpeciale") = MettreApost(rw("InstructionSpeciale"))
             drS("Référence") = MettreApost(rw("RefArticle"))
             drS("Désignation") = MettreApost(rw("Designation"))
-            drS("Quantité") = rw("Quantite").ToString
-            drS("Prix Unitaire") = rw("PrixUnitaire").ToString
             drS("Montant Rabais") = rw("MontantRabais").ToString
             drS("Ajustement") = rw("Ajustement").ToString
             drS("MontantBCHT") = rw("MontantBCHT")
@@ -157,8 +156,6 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("InstructionSpeciale").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Référence").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Désignation").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("Quantité").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("Prix Unitaire").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Montant Rabais").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Ajustement").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("MontantBCHT").OptionsColumn.AllowEdit = False
@@ -189,81 +186,8 @@ Public Class Liste_boncommande
 
         ImprimerBonDeCommandeToolStripMenuItem_Click(sender, e)
 
-        'Dialog_form(Etat_eng)
-
-        'If ViewBoncommande.RowCount > 0 Then
-
-        '    Dim impr As Boolean = False
-
-        '    For i = 0 To ViewBoncommande.RowCount - 1
-
-        '        If CBool(ViewBoncommande.GetRowCellValue(i, "Choix")) = True Then
-
-        '            Dim reportfeuilletps As New ReportDocument
-        '            Dim crtableLogoninfos As New TableLogOnInfos
-        '            Dim crtableLogoninfo As New TableLogOnInfo
-        '            Dim crConnectionInfo As New ConnectionInfo
-        '            Dim CrTables As Tables
-        '            Dim CrTable As Table
-
-        '            'récupération du numéro du bon de commande
-        '            Dim NumBonCommande As String = ""
-        '            NumBonCommande = ViewBoncommande.GetRowCellValue(i, "N° Bon Commande")
-
-        '            'récupération du type de marché
-        '            Dim TypeMarche As String = ""
-        '            Dim NumDAO As String = ""
-        '            NumDAO = ViewBoncommande.GetRowCellValue(i, "NumeroDAO")
-        '            query = "SELECT TypeMarche FROM t_dao WHERE CodeProjet = '" & ProjetEnCours & "' AND NumeroDAO = '" & NumDAO & "'"
-        '            TypeMarche = ExecuteScallar(query)
-
-        '            DebutChargement(True, "Le traitement de votre demande est en cours...")
-        '            Dim Chemin As String = ""
-        '            If TypeMarche = "Fournitures" Or TypeMarche.ToLower.Contains("Service") Then
-        '                Chemin = lineEtat & "\Bon_Commande\Etat_BonCommande_Fournitures.rpt"
-        '            ElseIf TypeMarche = "Travaux" Then
-        '                Chemin = lineEtat & "\Bon_Commande\Etat_BonCommande_Travaux.rpt"
-        '            Else
-        '                Chemin = lineEtat & "\Bon_Commande\Etat_BonCommande.rpt"
-        '            End If
-
-        '            Dim DatSet = New DataSet
-        '            reportfeuilletps.Load(Chemin)
-
-        '            With crConnectionInfo
-        '                .ServerName = ODBCNAME
-        '                .DatabaseName = DB
-        '                .UserID = USERNAME
-        '                .Password = PWD
-        '            End With
-
-        '            CrTables = reportfeuilletps.Database.Tables
-        '            For Each CrTable In CrTables
-        '                crtableLogoninfo = CrTable.LogOnInfo
-        '                crtableLogoninfo.ConnectionInfo = crConnectionInfo
-        '                CrTable.ApplyLogOnInfo(crtableLogoninfo)
-        '            Next
-
-        '            reportfeuilletps.SetDataSource(DatSet)
-        '            reportfeuilletps.SetParameterValue("NumBonCommande", NumBonCommande)
-        '            reportfeuilletps.SetParameterValue("CodeProjet", ProjetEnCours)
-        '            FullScreenReport.FullView.ReportSource = reportfeuilletps
-        '            FinChargement()
-        '            FullScreenReport.ShowDialog()
-
-        '            impr = True
-        '        End If
-
-        '    Next
-
-        '    If impr = False Then
-        '        SuccesMsg("Veuillez cocher un bon de commande")
-        '    End If
-
-        'Else
-        '    SuccesMsg("Veuillez élaborer un bon de commande")
-        'End If
-
+        'EtatListeBonCommande.Size = New Point(365, 229)
+        'Dialog_form(EtatListeBonCommande)
     End Sub
 
     Private Sub BtSupprimer_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtSupprimer.Click
@@ -342,7 +266,7 @@ Public Class Liste_boncommande
                     compteur += 1
 
                     If VerifModifBon = "En cours" Then
-                        BonCommande.Size = New Point(1130, 627)
+                        BonCommande.Size = New Point(1130, 641)
                         AjoutModif = "Modifier"
                         j = i
                         Dialog_form(BonCommande)
@@ -364,7 +288,7 @@ Public Class Liste_boncommande
     End Sub
 
     Private Sub BtAjouter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtAjouter.Click
-        BonCommande.Size = New Point(1130, 627)
+        BonCommande.Size = New Point(1130, 641)
         AjoutModif = "Ajout"
         Dialog_form(BonCommande)
     End Sub
@@ -429,8 +353,8 @@ Public Class Liste_boncommande
             drS("InstructionSpeciale") = MettreApost(rw("InstructionSpeciale"))
             drS("Référence") = MettreApost(rw("RefArticle"))
             drS("Désignation") = MettreApost(rw("Designation"))
-            drS("Quantité") = rw("Quantite").ToString
-            drS("Prix Unitaire") = rw("PrixUnitaire").ToString
+            'drS("Quantité") = rw("Quantite").ToString
+            'drS("Prix Unitaire") = rw("PrixUnitaire").ToString
             drS("Montant Rabais") = rw("MontantRabais").ToString
             drS("Ajustement") = rw("Ajustement").ToString
             drS("MontantBCHT") = rw("MontantBCHT")
@@ -464,8 +388,8 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("InstructionSpeciale").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Référence").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Désignation").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("Quantité").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("Prix Unitaire").OptionsColumn.AllowEdit = False
+        'ViewBoncommande.Columns("Quantité").OptionsColumn.AllowEdit = False
+        'ViewBoncommande.Columns("Prix Unitaire").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Montant Rabais").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Ajustement").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("MontantBCHT").OptionsColumn.AllowEdit = False
@@ -548,7 +472,7 @@ Public Class Liste_boncommande
 
             DebutChargement(True, "Le traitement de votre demande est en cours...")
             Dim Chemin As String = ""
-            If TypeMarche = "Fournitures" Or TypeMarche.ToLower.Contains("Service") Then
+            If TypeMarche = "Fournitures" Or TypeMarche.Contains("Service") Then
                 Chemin = lineEtat & "\Bon_Commande\Etat_BonCommande_Fournitures.rpt"
             ElseIf TypeMarche = "Travaux" Then
                 Chemin = lineEtat & "\Bon_Commande\Etat_BonCommande_Travaux.rpt"

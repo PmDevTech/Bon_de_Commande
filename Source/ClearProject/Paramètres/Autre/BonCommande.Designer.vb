@@ -111,6 +111,7 @@ Partial Class BonCommande
         Me.CmbSignataire = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.BtnAjouter = New DevExpress.XtraEditors.SimpleButton()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.XtraScrollableControl1 = New DevExpress.XtraEditors.XtraScrollableControl()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
         CType(Me.CmbCodeLot.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -170,6 +171,7 @@ Partial Class BonCommande
         CType(Me.GVSignataire, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CmbSignataire.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
+        Me.XtraScrollableControl1.SuspendLayout()
         Me.SuspendLayout()
         '
         'BtAnnuler
@@ -711,7 +713,7 @@ Partial Class BonCommande
         Me.GroupControl3.Controls.Add(Me.ListBonCmde)
         Me.GroupControl3.Location = New System.Drawing.Point(721, 5)
         Me.GroupControl3.Name = "GroupControl3"
-        Me.GroupControl3.Size = New System.Drawing.Size(375, 623)
+        Me.GroupControl3.Size = New System.Drawing.Size(355, 623)
         Me.GroupControl3.TabIndex = 23
         Me.GroupControl3.Text = "Liste des besoins"
         '
@@ -738,7 +740,7 @@ Partial Class BonCommande
         'Checktous
         '
         Me.Checktous.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.Checktous.Location = New System.Drawing.Point(159, 0)
+        Me.Checktous.Location = New System.Drawing.Point(147, 0)
         Me.Checktous.Name = "Checktous"
         Me.Checktous.Properties.Caption = "Tout sélectionner"
         Me.Checktous.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -756,7 +758,7 @@ Partial Class BonCommande
         Me.ListBonCmde.Location = New System.Drawing.Point(2, 21)
         Me.ListBonCmde.MainView = Me.ViewLstCmde
         Me.ListBonCmde.Name = "ListBonCmde"
-        Me.ListBonCmde.Size = New System.Drawing.Size(371, 600)
+        Me.ListBonCmde.Size = New System.Drawing.Size(351, 600)
         Me.ListBonCmde.TabIndex = 43
         Me.ListBonCmde.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ViewLstCmde})
         '
@@ -922,7 +924,7 @@ Partial Class BonCommande
         Me.PanelControl3.Controls.Add(Me.BtModifier)
         Me.PanelControl3.Controls.Add(Me.BtAnnuler)
         Me.PanelControl3.Controls.Add(Me.BtEnregistrer)
-        Me.PanelControl3.Location = New System.Drawing.Point(9, 538)
+        Me.PanelControl3.Location = New System.Drawing.Point(9, 552)
         Me.PanelControl3.Name = "PanelControl3"
         Me.PanelControl3.Size = New System.Drawing.Size(1099, 47)
         Me.PanelControl3.TabIndex = 2
@@ -1156,7 +1158,6 @@ Partial Class BonCommande
         '
         'Panel2
         '
-        Me.Panel2.AutoScroll = True
         Me.Panel2.Controls.Add(Me.GroupControl1)
         Me.Panel2.Controls.Add(Me.GroupControl6)
         Me.Panel2.Controls.Add(Me.GroupControl2)
@@ -1165,18 +1166,26 @@ Partial Class BonCommande
         Me.Panel2.Controls.Add(Me.GroupControl3)
         Me.Panel2.Controls.Add(Me.GroupControl5)
         Me.Panel2.Controls.Add(Me.Panel1)
-        Me.Panel2.Location = New System.Drawing.Point(8, 75)
+        Me.Panel2.Location = New System.Drawing.Point(0, 2)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1100, 457)
+        Me.Panel2.Size = New System.Drawing.Size(1079, 631)
         Me.Panel2.TabIndex = 1
+        '
+        'XtraScrollableControl1
+        '
+        Me.XtraScrollableControl1.Controls.Add(Me.Panel2)
+        Me.XtraScrollableControl1.Location = New System.Drawing.Point(9, 75)
+        Me.XtraScrollableControl1.Name = "XtraScrollableControl1"
+        Me.XtraScrollableControl1.Size = New System.Drawing.Size(1099, 469)
+        Me.XtraScrollableControl1.TabIndex = 117
         '
         'BonCommande
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1114, 588)
-        Me.Controls.Add(Me.Panel2)
+        Me.ClientSize = New System.Drawing.Size(1114, 637)
         Me.Controls.Add(Me.PanelControl3)
+        Me.Controls.Add(Me.XtraScrollableControl1)
         Me.Controls.Add(Me.GCChoixBonCommande)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
@@ -1250,6 +1259,7 @@ Partial Class BonCommande
         CType(Me.GVSignataire, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CmbSignataire.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
+        Me.XtraScrollableControl1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -1342,4 +1352,5 @@ Partial Class BonCommande
     Friend WithEvents Checktous As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
+    Friend WithEvents XtraScrollableControl1 As DevExpress.XtraEditors.XtraScrollableControl
 End Class
