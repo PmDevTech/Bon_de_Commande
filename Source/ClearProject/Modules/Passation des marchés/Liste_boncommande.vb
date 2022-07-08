@@ -35,7 +35,7 @@ Public Class Liste_boncommande
         dtListeBonCommande.Columns.Add("Référence", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Désignation", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Montant Rabais", Type.GetType("System.String"))
-        dtListeBonCommande.Columns.Add("Montant Offre", Type.GetType("System.String"))
+        'dtListeBonCommande.Columns.Add("Montant Offre", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Ajustement", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("MontantBCHT", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Montant", Type.GetType("System.String"))
@@ -63,7 +63,7 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("Référence").Visible = False
         ViewBoncommande.Columns("Désignation").Visible = False
         ViewBoncommande.Columns("Montant Rabais").Visible = False
-        ViewBoncommande.Columns("Montant Offre").Visible = False
+        'ViewBoncommande.Columns("Montant Offre").Visible = False
         ViewBoncommande.Columns("Ajustement").Visible = False
         ViewBoncommande.Columns("MontantBCHT").Visible = False
         ViewBoncommande.Columns("Montant").Width = 200
