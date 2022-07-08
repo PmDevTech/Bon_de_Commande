@@ -82,7 +82,7 @@ Public Class Liste_boncommande
 
     Public Sub RemplirDataGrid()
 
-        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,MontantRabais,Ajustement,MontantTotal,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,Statut,EMP_ID FROM t_boncommande "
+        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,MontantRabais,Ajustement,MontantBCHT,MontantNetHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,Statut,EMP_ID FROM t_boncommande "
         query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User & "'"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         Dim cptr As Integer = 0
@@ -99,6 +99,10 @@ Public Class Liste_boncommande
             For Each rwNom As DataRow In dt.Rows
                 NomEditeur = MettreApost(rwNom("EMP_NOM") & " " & rwNom("EMP_PRENOMS"))
             Next
+
+            'récupération du type de marché
+            query = "SELECT TypeMarche FROM t_dao WHERE CodeProjet = '" & ProjetEnCours & "' AND NumeroDAO = '" & rw("NumeroDAO").ToString & "'"
+            Dim TypeMarche = ExecuteScallar(query)
 
             cptr += 1
             Dim drS = NewLine.NewRow()
@@ -120,7 +124,13 @@ Public Class Liste_boncommande
             drS("Désignation") = MettreApost(rw("Designation"))
             drS("MontantRabais") = rw("MontantRabais").ToString
             drS("Ajustement") = rw("Ajustement").ToString
-            drS("MontantBCHT") = rw("MontantTotal")
+
+            If TypeMarche = "Fournitures" Or TypeMarche.Contains("Service") Then
+                drS("MontantBCHT") = rw("MontantNetHT")
+            Else
+                drS("MontantBCHT") = rw("MontantBCHT")
+            End If
+
             drS("Montant") = AfficherMonnaie(rw("MontantTotalTTC"))
             drS("PcrtTVA") = rw("PcrtTVA")
             drS("PcrtREMISE") = rw("PcrtRemise")
@@ -310,7 +320,7 @@ Public Class Liste_boncommande
     End Sub
 
     Private Sub RemplirdatagridRechercher()
-        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,MontantRabais,Ajustement,MontantTotal,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,Statut,EMP_ID FROM t_boncommande "
+        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,MontantRabais,Ajustement,MontantBCHT,MontantNetHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,Statut,EMP_ID FROM t_boncommande "
         query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User & "' AND RefBonCommande LIKE'" & TxtRechercher.Text & "%'"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         Dim cptr As Integer = 0
@@ -328,6 +338,10 @@ Public Class Liste_boncommande
             For Each rwNom As DataRow In dt.Rows
                 NomEditeur = MettreApost(rwNom("EMP_NOM") & " " & rwNom("EMP_PRENOMS"))
             Next
+
+            'récupération du type de marché
+            query = "SELECT TypeMarche FROM t_dao WHERE CodeProjet = '" & ProjetEnCours & "' AND NumeroDAO = '" & rw("NumeroDAO").ToString & "'"
+            Dim TypeMarche = ExecuteScallar(query)
 
             cptr += 1
             'cpt += 1
@@ -350,7 +364,13 @@ Public Class Liste_boncommande
             drS("Désignation") = MettreApost(rw("Designation"))
             drS("MontantRabais") = rw("MontantRabais").ToString
             drS("Ajustement") = rw("Ajustement").ToString
-            drS("MontantBCHT") = rw("MontantTotal")
+
+            If TypeMarche = "Fournitures" Or TypeMarche.Contains("Service") Then
+                drS("MontantBCHT") = rw("MontantNetHT")
+            Else
+                drS("MontantBCHT") = rw("MontantBCHT")
+            End If
+
             drS("Montant") = AfficherMonnaie(rw("MontantTotalTTC"))
             drS("PcrtTVA") = rw("PcrtTVA")
             drS("PcrtREMISE") = rw("PcrtRemise")

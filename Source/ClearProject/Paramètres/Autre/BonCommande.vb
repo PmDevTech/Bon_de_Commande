@@ -1260,6 +1260,8 @@ Public Class BonCommande
 
                     If CBool(ViewLstCmde.GetRowCellValue(i, "Choix")) = True Then
                         ViewLstCmde.DeleteSelectedRows()
+                        TxtNewMont.Text = ""
+                        TxtMontLettre.Text = ""
                         bool = True
                     End If
                 Next
