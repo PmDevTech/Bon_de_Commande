@@ -6,6 +6,8 @@ Imports CrystalDecisions.Shared
 Imports Microsoft.Office.Interop
 
 Module SuperModule
+    Public nbBonCommande As Decimal = 1
+
     Public Function DateSansJourWeekEnd(ladate As Date, nbreJour As Decimal) As String
         If nbreJour > 0 Then
             If ladate.DayOfWeek = DayOfWeek.Saturday Then
@@ -303,8 +305,9 @@ Module SuperModule
 
     Sub NumBonCommande_Auto(ByVal montext As DevExpress.XtraEditors.TextEdit)
         Try
-            query = "SELECT COUNT(ID_BC) as Nbre FROM t_boncommande WHERE Annee=YEAR(NOW())"
-            Dim nbBonCommande As Decimal = 1
+            'query = "SELECT COUNT(ID_BC) as Nbre FROM t_boncommande WHERE Annee=YEAR(NOW())"
+            query = "SELECT MAX(ID_BC) as Nbre FROM t_boncommande WHERE Annee=YEAR(NOW())"
+            'Dim nbBonCommande As Decimal = 1
             Try
                 nbBonCommande = Val(ExecuteScallar(query).ToString()) + 1
             Catch ex As Exception

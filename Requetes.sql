@@ -5,3 +5,6 @@ ALTER TABLE `t_boncommande` CHANGE `BonValider` `Statut` VARCHAR(100) CHARACTER 
 ALTER TABLE `t_boncommande` DROP `PrixUnitaire`
 ALTER TABLE `t_boncommande` ADD `MontantOffre` DOUBLE NOT NULL AFTER `MontantRabais`;
 ALTER TABLE `t_boncommande` DROP `Quantite`
+
+--11/07/2022--
+ALTER TABLE `t_boncommande` CHANGE `ID_BC` `ID_BC` BIGINT(19) NOT NULL;

@@ -232,8 +232,8 @@ Public Class Liste_boncommande
 
                             query = "delete from t_boncommande where RefBonCommande='" & NumBC & "'"
                             ExecuteNonQuery(query)
-
-                            supp = "OUI"
+                            SuccesMsg("Suppression effectuée avec succès")
+                            BtActualiser_Click(sender, e)
                         Else
                             supp = ""
                         End If
@@ -247,9 +247,6 @@ Public Class Liste_boncommande
 
             If supp = "NON" And compteur = 0 Then
                 SuccesMsg("Veuillez cocher un bon de commande")
-            ElseIf supp = "OUI" Then
-                SuccesMsg("Suppression effectuée avec succès")
-                BtActualiser_Click(sender, e)
             End If
 
         Else
