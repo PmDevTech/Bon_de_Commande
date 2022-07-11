@@ -116,8 +116,8 @@ Public Class BonCommande
             Checktous.Visible = False
 
             query = "SELECT PrixOffreCorrigerRabaiCompris FROM t_soumissionfournisseurclassement WHERE CodeFournis = '" & CodeFournisseur & "' and CodeLot = '" & CmbCodeLot.Text & "' AND Selectionne = 'OUI' AND Attribue = 'OUI'"
-            Dim dt1 As DataTable = ExcecuteSelectQuery(query)
-            For Each rw As DataRow In dt1.Rows
+            dt = ExcecuteSelectQuery(query)
+            For Each rw As DataRow In dt.Rows
                 MontantTotalDossier = rw("PrixOffreCorrigerRabaiCompris").ToString
             Next
         Else

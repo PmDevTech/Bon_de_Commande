@@ -82,8 +82,8 @@ Public Class Liste_boncommande
 
     Public Sub RemplirDataGrid()
 
-        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,MontantRabais,Ajustement,MontantBCHT,MontantNetHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,Statut,EMP_ID FROM t_boncommande "
-        query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User & "'"
+        query = "SELECT ID_BC,RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,MontantRabais,Ajustement,MontantBCHT,MontantNetHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,Statut,EMP_ID FROM t_boncommande "
+        query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User & "' ORDER BY ID_BC DESC"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         Dim cptr As Integer = 0
         Dim NomEditeur As String = ""
