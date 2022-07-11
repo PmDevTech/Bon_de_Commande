@@ -20,8 +20,8 @@ Partial Class BonCommande
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim GridLevelNode3 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.BtAnnuler = New DevExpress.XtraEditors.SimpleButton()
         Me.BtEnregistrer = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
@@ -176,19 +176,23 @@ Partial Class BonCommande
         '
         'BtAnnuler
         '
+        Me.BtAnnuler.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtAnnuler.Appearance.Options.UseFont = True
         Me.BtAnnuler.Image = Global.ClearProject.My.Resources.Resources.fleche_modifier_vieux_defaire_icone_5639_161
-        Me.BtAnnuler.Location = New System.Drawing.Point(325, 7)
+        Me.BtAnnuler.Location = New System.Drawing.Point(322, 7)
         Me.BtAnnuler.Name = "BtAnnuler"
-        Me.BtAnnuler.Size = New System.Drawing.Size(110, 34)
+        Me.BtAnnuler.Size = New System.Drawing.Size(120, 34)
         Me.BtAnnuler.TabIndex = 30
         Me.BtAnnuler.Text = "Annuler"
         '
         'BtEnregistrer
         '
+        Me.BtEnregistrer.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtEnregistrer.Appearance.Options.UseFont = True
         Me.BtEnregistrer.Image = Global.ClearProject.My.Resources.Resources.Ribbon_Save_16x16
-        Me.BtEnregistrer.Location = New System.Drawing.Point(488, 7)
+        Me.BtEnregistrer.Location = New System.Drawing.Point(478, 7)
         Me.BtEnregistrer.Name = "BtEnregistrer"
-        Me.BtEnregistrer.Size = New System.Drawing.Size(110, 34)
+        Me.BtEnregistrer.Size = New System.Drawing.Size(120, 34)
         Me.BtEnregistrer.TabIndex = 31
         Me.BtEnregistrer.Text = "Enregistrer"
         '
@@ -753,8 +757,8 @@ Partial Class BonCommande
         Me.ListBonCmde.ContextMenuStrip = Me.ContextMenuStrip1
         Me.ListBonCmde.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ListBonCmde.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        GridLevelNode1.RelationName = "Level1"
-        Me.ListBonCmde.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
+        GridLevelNode3.RelationName = "Level1"
+        Me.ListBonCmde.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode3})
         Me.ListBonCmde.Location = New System.Drawing.Point(2, 21)
         Me.ListBonCmde.MainView = Me.ViewLstCmde
         Me.ListBonCmde.Name = "ListBonCmde"
@@ -895,7 +899,7 @@ Partial Class BonCommande
         '
         Me.GCChoixBonCommande.Controls.Add(Me.RdSansPassMarche)
         Me.GCChoixBonCommande.Controls.Add(Me.RdParPassMarche)
-        Me.GCChoixBonCommande.Location = New System.Drawing.Point(9, 5)
+        Me.GCChoixBonCommande.Location = New System.Drawing.Point(9, 7)
         Me.GCChoixBonCommande.Name = "GCChoixBonCommande"
         Me.GCChoixBonCommande.Size = New System.Drawing.Size(1099, 64)
         Me.GCChoixBonCommande.TabIndex = 0
@@ -924,17 +928,19 @@ Partial Class BonCommande
         Me.PanelControl3.Controls.Add(Me.BtModifier)
         Me.PanelControl3.Controls.Add(Me.BtAnnuler)
         Me.PanelControl3.Controls.Add(Me.BtEnregistrer)
-        Me.PanelControl3.Location = New System.Drawing.Point(9, 552)
+        Me.PanelControl3.Location = New System.Drawing.Point(9, 553)
         Me.PanelControl3.Name = "PanelControl3"
         Me.PanelControl3.Size = New System.Drawing.Size(1099, 47)
         Me.PanelControl3.TabIndex = 2
         '
         'BtModifier
         '
+        Me.BtModifier.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtModifier.Appearance.Options.UseFont = True
         Me.BtModifier.Image = Global.ClearProject.My.Resources.Resources.Edit_16x16
-        Me.BtModifier.Location = New System.Drawing.Point(646, 7)
+        Me.BtModifier.Location = New System.Drawing.Point(631, 7)
         Me.BtModifier.Name = "BtModifier"
-        Me.BtModifier.Size = New System.Drawing.Size(110, 34)
+        Me.BtModifier.Size = New System.Drawing.Size(120, 34)
         Me.BtModifier.TabIndex = 32
         Me.BtModifier.Text = "Modifier"
         '
@@ -1084,8 +1090,8 @@ Partial Class BonCommande
         '
         Me.GCSignataire.ContextMenuStrip = Me.ContextMenuStrip2
         Me.GCSignataire.Dock = System.Windows.Forms.DockStyle.Bottom
-        GridLevelNode2.RelationName = "Level1"
-        Me.GCSignataire.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
+        GridLevelNode1.RelationName = "Level1"
+        Me.GCSignataire.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
         Me.GCSignataire.Location = New System.Drawing.Point(2, 73)
         Me.GCSignataire.MainView = Me.GVSignataire
         Me.GCSignataire.Name = "GCSignataire"
@@ -1183,7 +1189,7 @@ Partial Class BonCommande
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1114, 637)
+        Me.ClientSize = New System.Drawing.Size(1114, 602)
         Me.Controls.Add(Me.PanelControl3)
         Me.Controls.Add(Me.XtraScrollableControl1)
         Me.Controls.Add(Me.GCChoixBonCommande)

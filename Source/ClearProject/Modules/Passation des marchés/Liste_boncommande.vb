@@ -253,7 +253,7 @@ Public Class Liste_boncommande
             End If
 
         Else
-            SuccesMsg("Veuillez élaborer un bon de commande")
+            SuccesMsg("Veuillez générer ou élaborer un bon de commande")
         End If
 
     End Sub
@@ -287,7 +287,7 @@ Public Class Liste_boncommande
                 SuccesMsg("Veuillez cocher un bon de commande")
             End If
         Else
-            SuccesMsg("Veuillez élaborer un bon de commande")
+            SuccesMsg("Veuillez générer ou élaborer un bon de commande")
         End If
 
     End Sub
@@ -506,7 +506,7 @@ Public Class Liste_boncommande
             FinChargement()
             FullScreenReport.ShowDialog()
         Else
-            SuccesMsg("Veuillez élaborer un bon de commande")
+            SuccesMsg("Veuillez générer ou élaborer un bon de commande")
         End If
     End Sub
 

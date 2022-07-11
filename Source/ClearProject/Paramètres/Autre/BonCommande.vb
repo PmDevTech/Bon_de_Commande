@@ -47,11 +47,9 @@ Public Class BonCommande
             ID_NumDAO(i) = rw("NumeroDAO").ToString
             i += 1
         Next
-
     End Sub
 
     Private Sub ChargerSignataire()
-
         CmbSignataire.ResetText()
         CmbSignataire.Properties.Items.Clear()
 
@@ -180,7 +178,6 @@ Public Class BonCommande
         TxtRemise.Text = MettreApost(Liste_boncommande.ViewBoncommande.GetRowCellValue(Liste_boncommande.j, "PcrtREMISE").ToString)
         TxtLibAutreTaxe.Text = MettreApost(Liste_boncommande.ViewBoncommande.GetRowCellValue(Liste_boncommande.j, "LibelleAutreTaxe").ToString)
         TxtAutreTaxe.Text = MettreApost(Liste_boncommande.ViewBoncommande.GetRowCellValue(Liste_boncommande.j, "PcrtAutreTaxe").ToString)
-
     End Sub
 
     Private Sub RemplirDatagridListeBesoins()
@@ -331,11 +328,8 @@ Public Class BonCommande
         drS("Choix") = TabTrue(cpt - 1)
         drS("Référence") = MettreApost(TxtReference.Text)
         drS("Désignation") = MettreApost(TxtDesignation.Text)
-        'drS("Quantité") = AfficherMonnaie(CDbl(TxtQte.Text))
         drS("Quantité") = AfficherMonnaie(TxtQte.Text)
-        'drS("Prix Unitaire") = AfficherMonnaie(CDbl(TxtPu.Text))
         drS("Prix Unitaire") = AfficherMonnaie(TxtPu.Text)
-        'drS("Montant") = AfficherMonnaie(CDbl(TxtNewMont.Text))
         drS("Montant") = AfficherMonnaie(TxtNewMont.Text)
         NewLine.Rows.Add(drS)
 
