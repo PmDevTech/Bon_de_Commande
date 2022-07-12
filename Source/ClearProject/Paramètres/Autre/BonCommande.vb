@@ -468,7 +468,7 @@ Public Class BonCommande
             Try
                 TxtMontLettre.Text = MontantLettre(TxtNewMont.Text)
             Catch ex As Exception
-                AlertMsg("Attention dépassement de caractère. Chiffre trop énorme!")
+                AlertMsg("Attention chiffre trop énorme!")
             End Try
         End If
     End Sub
@@ -702,9 +702,9 @@ Public Class BonCommande
                 Dateboncmde.Focus()
             Else
                 If ViewLstCmde.RowCount > 0 Then
-                    Dim sauver As String = ""
+                    'Dim sauver As String
                     For i = 0 To ViewLstCmde.RowCount - 1
-                        sauver = "insert into t_bc_listebesoins values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Référence")) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Désignation")) & "','" & ViewLstCmde.GetRowCellValue(i, "Quantité") & "','" & ViewLstCmde.GetRowCellValue(i, "Prix Unitaire") & "','" & CDbl(ViewLstCmde.GetRowCellValue(i, "Montant")) & "')"
+                        Dim sauver As String = "insert into t_bc_listebesoins values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Référence")) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Désignation")) & "','" & ViewLstCmde.GetRowCellValue(i, "Quantité") & "','" & ViewLstCmde.GetRowCellValue(i, "Prix Unitaire") & "','" & CDbl(ViewLstCmde.GetRowCellValue(i, "Montant")) & "')"
                         'ExecuteNonQuery("insert into t_bc_listebesoins values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Référence")) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Désignation")) & "','" & ViewLstCmde.GetRowCellValue(i, "Quantité") & "','" & ViewLstCmde.GetRowCellValue(i, "Prix Unitaire") & "','" & CDbl(ViewLstCmde.GetRowCellValue(i, "Montant")) & "')")
                         ExecuteNonQuery(sauver)
                         'InputBox("", "", Saver)
@@ -833,10 +833,10 @@ Public Class BonCommande
 
                 If ViewLstCmde.RowCount > 0 Then
                     Dim bool As Boolean = False
-                    Dim sauvegarde As String = ""
+                    'Dim sauvegarde As String = ""
                     For i = 0 To ViewLstCmde.RowCount - 1
                         If CBool(ViewLstCmde.GetRowCellValue(i, "Choix")) = True Then
-                            sauvegarde = "insert into t_bc_listebesoins values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Référence")) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Désignation")) & "','" & ViewLstCmde.GetRowCellValue(i, "Quantité") & "','" & ViewLstCmde.GetRowCellValue(i, "Prix Unitaire") & "','" & CDbl(ViewLstCmde.GetRowCellValue(i, "Montant")) & "')"
+                            Dim sauvegarde As String = "insert into t_bc_listebesoins values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Référence")) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Désignation")) & "','" & ViewLstCmde.GetRowCellValue(i, "Quantité") & "','" & ViewLstCmde.GetRowCellValue(i, "Prix Unitaire") & "','" & CDbl(ViewLstCmde.GetRowCellValue(i, "Montant")) & "')"
                             ExecuteNonQuery(sauvegarde)
 
                             bool = True

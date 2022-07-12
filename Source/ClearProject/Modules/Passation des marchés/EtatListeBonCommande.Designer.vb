@@ -75,7 +75,7 @@ Partial Class EtatListeBonCommande
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(25, 48)
+        Me.Label1.Location = New System.Drawing.Point(41, 48)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(45, 13)
         Me.Label1.TabIndex = 118
@@ -84,7 +84,7 @@ Partial Class EtatListeBonCommande
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(25, 85)
+        Me.Label2.Location = New System.Drawing.Point(49, 85)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(37, 13)
         Me.Label2.TabIndex = 119

@@ -25,6 +25,7 @@ Public Class EtatListeBonCommande
 
         query = "SELECT DISTINCT Statut FROM t_boncommande WHERE CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User & "'"
         dt = ExcecuteSelectQuery(query)
+        CmbStatut.Properties.Items.Add("Tous")
         For Each rw As DataRow In dt.Rows
             CmbStatut.Properties.Items.Add(rw("Statut").ToString)
         Next

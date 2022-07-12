@@ -20,7 +20,7 @@ Partial Class Liste_boncommande
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.BackstageViewButtonItem1 = New DevExpress.XtraBars.Ribbon.BackstageViewButtonItem()
@@ -41,6 +41,7 @@ Partial Class Liste_boncommande
         Me.ImprimerBonDeCommandeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AnnulerBonDeCommandeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RejeterBonDeCommandeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SignerBonDeCommandeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewBoncommande = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
@@ -52,7 +53,7 @@ Partial Class Liste_boncommande
         Me.BtActualiser = New DevExpress.XtraEditors.SimpleButton()
         Me.BtModifier = New DevExpress.XtraEditors.SimpleButton()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.SignerBonDeCommandeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl3.SuspendLayout()
@@ -174,8 +175,8 @@ Partial Class Liste_boncommande
         Me.GCListBoncommande.ContextMenuStrip = Me.ContextMenuStrip1
         Me.GCListBoncommande.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GCListBoncommande.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        GridLevelNode1.RelationName = "Level1"
-        Me.GCListBoncommande.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
+        GridLevelNode2.RelationName = "Level1"
+        Me.GCListBoncommande.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
         Me.GCListBoncommande.Location = New System.Drawing.Point(2, 2)
         Me.GCListBoncommande.MainView = Me.ViewBoncommande
         Me.GCListBoncommande.Name = "GCListBoncommande"
@@ -187,7 +188,7 @@ Partial Class Liste_boncommande
         '
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ImprimerBonDeCommandeToolStripMenuItem, Me.AnnulerBonDeCommandeToolStripMenuItem, Me.RejeterBonDeCommandeToolStripMenuItem, Me.SignerBonDeCommandeToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(230, 114)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(230, 92)
         '
         'ImprimerBonDeCommandeToolStripMenuItem
         '
@@ -209,6 +210,13 @@ Partial Class Liste_boncommande
         Me.RejeterBonDeCommandeToolStripMenuItem.Name = "RejeterBonDeCommandeToolStripMenuItem"
         Me.RejeterBonDeCommandeToolStripMenuItem.Size = New System.Drawing.Size(229, 22)
         Me.RejeterBonDeCommandeToolStripMenuItem.Text = "Rejeter Bon de Commande"
+        '
+        'SignerBonDeCommandeToolStripMenuItem
+        '
+        Me.SignerBonDeCommandeToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.ActiveRents_16x16
+        Me.SignerBonDeCommandeToolStripMenuItem.Name = "SignerBonDeCommandeToolStripMenuItem"
+        Me.SignerBonDeCommandeToolStripMenuItem.Size = New System.Drawing.Size(229, 22)
+        Me.SignerBonDeCommandeToolStripMenuItem.Text = "Signer Bon de Commande"
         '
         'ViewBoncommande
         '
@@ -352,6 +360,7 @@ Partial Class Liste_boncommande
         '
         'PanelControl2
         '
+        Me.PanelControl2.Controls.Add(Me.LabelControl3)
         Me.PanelControl2.Controls.Add(Me.LabelControl2)
         Me.PanelControl2.Controls.Add(Me.TxtRechercher)
         Me.PanelControl2.Controls.Add(Me.Checktous)
@@ -403,7 +412,7 @@ Partial Class Liste_boncommande
         Me.LblNombre.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LblNombre.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblNombre.Location = New System.Drawing.Point(398, 11)
+        Me.LblNombre.Location = New System.Drawing.Point(412, 11)
         Me.LblNombre.Name = "LblNombre"
         Me.LblNombre.Size = New System.Drawing.Size(9, 15)
         Me.LblNombre.TabIndex = 17
@@ -443,12 +452,14 @@ Partial Class Liste_boncommande
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
-        'SignerBonDeCommandeToolStripMenuItem
+        'LabelControl3
         '
-        Me.SignerBonDeCommandeToolStripMenuItem.Image = Global.ClearProject.My.Resources.Resources.ActiveRents_16x16
-        Me.SignerBonDeCommandeToolStripMenuItem.Name = "SignerBonDeCommandeToolStripMenuItem"
-        Me.SignerBonDeCommandeToolStripMenuItem.Size = New System.Drawing.Size(229, 22)
-        Me.SignerBonDeCommandeToolStripMenuItem.Text = "Signer Bon de Commande"
+        Me.LabelControl3.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl3.Location = New System.Drawing.Point(598, 7)
+        Me.LabelControl3.Name = "LabelControl3"
+        Me.LabelControl3.Size = New System.Drawing.Size(6, 19)
+        Me.LabelControl3.TabIndex = 27
+        Me.LabelControl3.Text = "|"
         '
         'Liste_boncommande
         '
@@ -508,4 +519,5 @@ Partial Class Liste_boncommande
     Friend WithEvents AnnulerBonDeCommandeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents RejeterBonDeCommandeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SignerBonDeCommandeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
 End Class

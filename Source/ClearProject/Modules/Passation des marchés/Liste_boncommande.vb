@@ -191,8 +191,12 @@ Public Class Liste_boncommande
 
         ImprimerBonDeCommandeToolStripMenuItem_Click(sender, e)
 
-        'EtatListeBonCommande.Size = New Point(365, 229)
-        'Dialog_form(EtatListeBonCommande)
+        'If ViewBoncommande.RowCount > 0 Then
+        '    EtatListeBonCommande.Size = New Point(365, 229)
+        '    Dialog_form(EtatListeBonCommande)
+        'Else
+        '    SuccesMsg("Veuillez générer ou élaborer un bon de commande")
+        'End If
     End Sub
 
     Private Sub BtSupprimer_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtSupprimer.Click
