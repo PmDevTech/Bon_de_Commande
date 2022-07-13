@@ -844,7 +844,7 @@ Public Class BonCommande
                     Next
 
                     If bool = False Then
-                        SuccesMsg("Veuillez cocher une ligne dans la liste des besoins")
+                        SuccesMsg("Veuillez cocher au moins une ligne dans la liste des besoins")
                         Exit Sub
                     End If
                 Else
@@ -1103,7 +1103,7 @@ Public Class BonCommande
                     Next
 
                     If bool = False Then
-                        SuccesMsg("Veuillez cocher une ligne dans la liste des besoins")
+                        SuccesMsg("Veuillez cocher au moins une ligne dans la liste des besoins")
                         Exit Sub
                     End If
                 Else
