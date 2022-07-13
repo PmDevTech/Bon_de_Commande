@@ -20,8 +20,8 @@ Partial Class BonCommande
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.BtAnnuler = New DevExpress.XtraEditors.SimpleButton()
         Me.BtEnregistrer = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
@@ -80,6 +80,8 @@ Partial Class BonCommande
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ModifierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SupprimerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ListBonCmde = New DevExpress.XtraGrid.GridControl()
+        Me.ViewLstCmde = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.Checktous = New DevExpress.XtraEditors.CheckEdit()
         Me.GCChoixBonCommande = New DevExpress.XtraEditors.GroupControl()
         Me.RdSansPassMarche = New DevExpress.XtraEditors.CheckEdit()
@@ -110,8 +112,6 @@ Partial Class BonCommande
         Me.BtnAjouter = New DevExpress.XtraEditors.SimpleButton()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.XtraScrollableControl1 = New DevExpress.XtraEditors.XtraScrollableControl()
-        Me.ListBonCmde = New DevExpress.XtraGrid.GridControl()
-        Me.ViewLstCmde = New DevExpress.XtraGrid.Views.Grid.GridView()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
         CType(Me.CmbCodeLot.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -141,6 +141,8 @@ Partial Class BonCommande
         CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl3.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
+        CType(Me.ListBonCmde, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ViewLstCmde, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Checktous.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GCChoixBonCommande, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GCChoixBonCommande.SuspendLayout()
@@ -170,8 +172,6 @@ Partial Class BonCommande
         CType(Me.CmbSignataire.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.XtraScrollableControl1.SuspendLayout()
-        CType(Me.ListBonCmde, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ViewLstCmde, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BtAnnuler
@@ -321,28 +321,28 @@ Partial Class BonCommande
         '
         'TxtFournisseur
         '
-        Me.TxtFournisseur.Location = New System.Drawing.Point(136, 31)
+        Me.TxtFournisseur.Location = New System.Drawing.Point(134, 31)
         Me.TxtFournisseur.Name = "TxtFournisseur"
         Me.TxtFournisseur.Size = New System.Drawing.Size(248, 20)
         Me.TxtFournisseur.TabIndex = 7
         '
         'TxtRCCM
         '
-        Me.TxtRCCM.Location = New System.Drawing.Point(136, 149)
+        Me.TxtRCCM.Location = New System.Drawing.Point(134, 149)
         Me.TxtRCCM.Name = "TxtRCCM"
         Me.TxtRCCM.Size = New System.Drawing.Size(248, 20)
         Me.TxtRCCM.TabIndex = 11
         '
         'TxtCCFour
         '
-        Me.TxtCCFour.Location = New System.Drawing.Point(136, 118)
+        Me.TxtCCFour.Location = New System.Drawing.Point(134, 118)
         Me.TxtCCFour.Name = "TxtCCFour"
         Me.TxtCCFour.Size = New System.Drawing.Size(248, 20)
         Me.TxtCCFour.TabIndex = 10
         '
         'TxtTelFour
         '
-        Me.TxtTelFour.Location = New System.Drawing.Point(136, 88)
+        Me.TxtTelFour.Location = New System.Drawing.Point(134, 88)
         Me.TxtTelFour.Name = "TxtTelFour"
         Me.TxtTelFour.Properties.Mask.EditMask = "\d?\d:\d\d:\d\d>[AP]M"
         Me.TxtTelFour.Size = New System.Drawing.Size(248, 20)
@@ -350,7 +350,7 @@ Partial Class BonCommande
         '
         'TxtAdresseFour
         '
-        Me.TxtAdresseFour.Location = New System.Drawing.Point(136, 59)
+        Me.TxtAdresseFour.Location = New System.Drawing.Point(134, 59)
         Me.TxtAdresseFour.Name = "TxtAdresseFour"
         Me.TxtAdresseFour.Size = New System.Drawing.Size(248, 20)
         Me.TxtAdresseFour.TabIndex = 8
@@ -741,6 +741,149 @@ Partial Class BonCommande
         Me.SupprimerToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
         Me.SupprimerToolStripMenuItem.Text = "Supprimer"
         '
+        'ListBonCmde
+        '
+        Me.ListBonCmde.ContextMenuStrip = Me.ContextMenuStrip1
+        Me.ListBonCmde.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ListBonCmde.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        GridLevelNode1.RelationName = "Level1"
+        Me.ListBonCmde.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
+        Me.ListBonCmde.Location = New System.Drawing.Point(2, 21)
+        Me.ListBonCmde.MainView = Me.ViewLstCmde
+        Me.ListBonCmde.Name = "ListBonCmde"
+        Me.ListBonCmde.Size = New System.Drawing.Size(351, 600)
+        Me.ListBonCmde.TabIndex = 45
+        Me.ListBonCmde.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ViewLstCmde})
+        '
+        'ViewLstCmde
+        '
+        Me.ViewLstCmde.ActiveFilterEnabled = False
+        Me.ViewLstCmde.Appearance.ColumnFilterButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.ViewLstCmde.Appearance.ColumnFilterButton.BorderColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.ViewLstCmde.Appearance.ColumnFilterButton.ForeColor = System.Drawing.Color.Black
+        Me.ViewLstCmde.Appearance.ColumnFilterButton.Options.UseBackColor = True
+        Me.ViewLstCmde.Appearance.ColumnFilterButton.Options.UseBorderColor = True
+        Me.ViewLstCmde.Appearance.ColumnFilterButton.Options.UseForeColor = True
+        Me.ViewLstCmde.Appearance.ColumnFilterButtonActive.BackColor = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(216, Byte), Integer))
+        Me.ViewLstCmde.Appearance.ColumnFilterButtonActive.BorderColor = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(216, Byte), Integer))
+        Me.ViewLstCmde.Appearance.ColumnFilterButtonActive.ForeColor = System.Drawing.Color.Black
+        Me.ViewLstCmde.Appearance.ColumnFilterButtonActive.Options.UseBackColor = True
+        Me.ViewLstCmde.Appearance.ColumnFilterButtonActive.Options.UseBorderColor = True
+        Me.ViewLstCmde.Appearance.ColumnFilterButtonActive.Options.UseForeColor = True
+        Me.ViewLstCmde.Appearance.Empty.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
+        Me.ViewLstCmde.Appearance.Empty.BackColor2 = System.Drawing.Color.White
+        Me.ViewLstCmde.Appearance.Empty.Options.UseBackColor = True
+        Me.ViewLstCmde.Appearance.EvenRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(221, Byte), Integer), CType(CType(227, Byte), Integer), CType(CType(245, Byte), Integer))
+        Me.ViewLstCmde.Appearance.EvenRow.BorderColor = System.Drawing.Color.FromArgb(CType(CType(221, Byte), Integer), CType(CType(227, Byte), Integer), CType(CType(245, Byte), Integer))
+        Me.ViewLstCmde.Appearance.EvenRow.ForeColor = System.Drawing.Color.Black
+        Me.ViewLstCmde.Appearance.EvenRow.Options.UseBackColor = True
+        Me.ViewLstCmde.Appearance.EvenRow.Options.UseBorderColor = True
+        Me.ViewLstCmde.Appearance.EvenRow.Options.UseForeColor = True
+        Me.ViewLstCmde.Appearance.FilterCloseButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.ViewLstCmde.Appearance.FilterCloseButton.BorderColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.ViewLstCmde.Appearance.FilterCloseButton.ForeColor = System.Drawing.Color.Black
+        Me.ViewLstCmde.Appearance.FilterCloseButton.Options.UseBackColor = True
+        Me.ViewLstCmde.Appearance.FilterCloseButton.Options.UseBorderColor = True
+        Me.ViewLstCmde.Appearance.FilterCloseButton.Options.UseForeColor = True
+        Me.ViewLstCmde.Appearance.FilterPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
+        Me.ViewLstCmde.Appearance.FilterPanel.BackColor2 = System.Drawing.Color.White
+        Me.ViewLstCmde.Appearance.FilterPanel.ForeColor = System.Drawing.Color.Black
+        Me.ViewLstCmde.Appearance.FilterPanel.Options.UseBackColor = True
+        Me.ViewLstCmde.Appearance.FilterPanel.Options.UseForeColor = True
+        Me.ViewLstCmde.Appearance.FixedLine.BackColor = System.Drawing.Color.FromArgb(CType(CType(117, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(122, Byte), Integer))
+        Me.ViewLstCmde.Appearance.FixedLine.Options.UseBackColor = True
+        Me.ViewLstCmde.Appearance.FocusedCell.BackColor = System.Drawing.Color.White
+        Me.ViewLstCmde.Appearance.FocusedCell.ForeColor = System.Drawing.Color.Black
+        Me.ViewLstCmde.Appearance.FocusedCell.Options.UseBackColor = True
+        Me.ViewLstCmde.Appearance.FocusedCell.Options.UseForeColor = True
+        Me.ViewLstCmde.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(171, Byte), Integer), CType(CType(177, Byte), Integer))
+        Me.ViewLstCmde.Appearance.FocusedRow.ForeColor = System.Drawing.Color.White
+        Me.ViewLstCmde.Appearance.FocusedRow.Options.UseBackColor = True
+        Me.ViewLstCmde.Appearance.FocusedRow.Options.UseForeColor = True
+        Me.ViewLstCmde.Appearance.FooterPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.ViewLstCmde.Appearance.FooterPanel.BorderColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.ViewLstCmde.Appearance.FooterPanel.ForeColor = System.Drawing.Color.Black
+        Me.ViewLstCmde.Appearance.FooterPanel.Options.UseBackColor = True
+        Me.ViewLstCmde.Appearance.FooterPanel.Options.UseBorderColor = True
+        Me.ViewLstCmde.Appearance.FooterPanel.Options.UseForeColor = True
+        Me.ViewLstCmde.Appearance.GroupButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(178, Byte), Integer), CType(CType(209, Byte), Integer), CType(CType(188, Byte), Integer))
+        Me.ViewLstCmde.Appearance.GroupButton.BorderColor = System.Drawing.Color.FromArgb(CType(CType(178, Byte), Integer), CType(CType(209, Byte), Integer), CType(CType(188, Byte), Integer))
+        Me.ViewLstCmde.Appearance.GroupButton.Options.UseBackColor = True
+        Me.ViewLstCmde.Appearance.GroupButton.Options.UseBorderColor = True
+        Me.ViewLstCmde.Appearance.GroupFooter.BackColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(221, Byte), Integer))
+        Me.ViewLstCmde.Appearance.GroupFooter.BorderColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(221, Byte), Integer))
+        Me.ViewLstCmde.Appearance.GroupFooter.ForeColor = System.Drawing.Color.Black
+        Me.ViewLstCmde.Appearance.GroupFooter.Options.UseBackColor = True
+        Me.ViewLstCmde.Appearance.GroupFooter.Options.UseBorderColor = True
+        Me.ViewLstCmde.Appearance.GroupFooter.Options.UseForeColor = True
+        Me.ViewLstCmde.Appearance.GroupPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
+        Me.ViewLstCmde.Appearance.GroupPanel.BackColor2 = System.Drawing.Color.White
+        Me.ViewLstCmde.Appearance.GroupPanel.ForeColor = System.Drawing.Color.Black
+        Me.ViewLstCmde.Appearance.GroupPanel.Options.UseBackColor = True
+        Me.ViewLstCmde.Appearance.GroupPanel.Options.UseForeColor = True
+        Me.ViewLstCmde.Appearance.GroupRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(221, Byte), Integer))
+        Me.ViewLstCmde.Appearance.GroupRow.BorderColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(221, Byte), Integer))
+        Me.ViewLstCmde.Appearance.GroupRow.ForeColor = System.Drawing.Color.Black
+        Me.ViewLstCmde.Appearance.GroupRow.Options.UseBackColor = True
+        Me.ViewLstCmde.Appearance.GroupRow.Options.UseBorderColor = True
+        Me.ViewLstCmde.Appearance.GroupRow.Options.UseForeColor = True
+        Me.ViewLstCmde.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(216, Byte), Integer))
+        Me.ViewLstCmde.Appearance.HeaderPanel.BorderColor = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(216, Byte), Integer))
+        Me.ViewLstCmde.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.Black
+        Me.ViewLstCmde.Appearance.HeaderPanel.Options.UseBackColor = True
+        Me.ViewLstCmde.Appearance.HeaderPanel.Options.UseBorderColor = True
+        Me.ViewLstCmde.Appearance.HeaderPanel.Options.UseForeColor = True
+        Me.ViewLstCmde.Appearance.HideSelectionRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(186, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(215, Byte), Integer))
+        Me.ViewLstCmde.Appearance.HideSelectionRow.ForeColor = System.Drawing.Color.FromArgb(CType(CType(104, Byte), Integer), CType(CType(130, Byte), Integer), CType(CType(134, Byte), Integer))
+        Me.ViewLstCmde.Appearance.HideSelectionRow.Options.UseBackColor = True
+        Me.ViewLstCmde.Appearance.HideSelectionRow.Options.UseForeColor = True
+        Me.ViewLstCmde.Appearance.HorzLine.BackColor = System.Drawing.Color.FromArgb(CType(CType(172, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(180, Byte), Integer))
+        Me.ViewLstCmde.Appearance.HorzLine.BorderColor = System.Drawing.Color.FromArgb(CType(CType(117, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(122, Byte), Integer))
+        Me.ViewLstCmde.Appearance.HorzLine.Options.UseBackColor = True
+        Me.ViewLstCmde.Appearance.HorzLine.Options.UseBorderColor = True
+        Me.ViewLstCmde.Appearance.OddRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
+        Me.ViewLstCmde.Appearance.OddRow.BorderColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
+        Me.ViewLstCmde.Appearance.OddRow.ForeColor = System.Drawing.Color.Black
+        Me.ViewLstCmde.Appearance.OddRow.Options.UseBackColor = True
+        Me.ViewLstCmde.Appearance.OddRow.Options.UseBorderColor = True
+        Me.ViewLstCmde.Appearance.OddRow.Options.UseForeColor = True
+        Me.ViewLstCmde.Appearance.Preview.BackColor = System.Drawing.Color.FromArgb(CType(CType(250, Byte), Integer), CType(CType(250, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.ViewLstCmde.Appearance.Preview.Font = New System.Drawing.Font("Verdana", 7.5!)
+        Me.ViewLstCmde.Appearance.Preview.ForeColor = System.Drawing.Color.FromArgb(CType(CType(104, Byte), Integer), CType(CType(130, Byte), Integer), CType(CType(134, Byte), Integer))
+        Me.ViewLstCmde.Appearance.Preview.Options.UseBackColor = True
+        Me.ViewLstCmde.Appearance.Preview.Options.UseFont = True
+        Me.ViewLstCmde.Appearance.Preview.Options.UseForeColor = True
+        Me.ViewLstCmde.Appearance.Row.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
+        Me.ViewLstCmde.Appearance.Row.ForeColor = System.Drawing.Color.Black
+        Me.ViewLstCmde.Appearance.Row.Options.UseBackColor = True
+        Me.ViewLstCmde.Appearance.Row.Options.UseForeColor = True
+        Me.ViewLstCmde.Appearance.RowSeparator.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
+        Me.ViewLstCmde.Appearance.RowSeparator.BackColor2 = System.Drawing.Color.White
+        Me.ViewLstCmde.Appearance.RowSeparator.Options.UseBackColor = True
+        Me.ViewLstCmde.Appearance.SelectedRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(159, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(207, Byte), Integer))
+        Me.ViewLstCmde.Appearance.SelectedRow.ForeColor = System.Drawing.Color.Black
+        Me.ViewLstCmde.Appearance.SelectedRow.Options.UseBackColor = True
+        Me.ViewLstCmde.Appearance.SelectedRow.Options.UseForeColor = True
+        Me.ViewLstCmde.Appearance.TopNewRow.BackColor = System.Drawing.Color.White
+        Me.ViewLstCmde.Appearance.TopNewRow.Options.UseBackColor = True
+        Me.ViewLstCmde.Appearance.VertLine.BackColor = System.Drawing.Color.FromArgb(CType(CType(172, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(180, Byte), Integer))
+        Me.ViewLstCmde.Appearance.VertLine.BorderColor = System.Drawing.Color.FromArgb(CType(CType(117, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(122, Byte), Integer))
+        Me.ViewLstCmde.Appearance.VertLine.Options.UseBackColor = True
+        Me.ViewLstCmde.Appearance.VertLine.Options.UseBorderColor = True
+        Me.ViewLstCmde.GridControl = Me.ListBonCmde
+        Me.ViewLstCmde.Name = "ViewLstCmde"
+        Me.ViewLstCmde.OptionsCustomization.AllowFilter = False
+        Me.ViewLstCmde.OptionsPrint.AutoWidth = False
+        Me.ViewLstCmde.OptionsSelection.EnableAppearanceHideSelection = False
+        Me.ViewLstCmde.OptionsView.ColumnAutoWidth = False
+        Me.ViewLstCmde.OptionsView.EnableAppearanceEvenRow = True
+        Me.ViewLstCmde.OptionsView.EnableAppearanceOddRow = True
+        Me.ViewLstCmde.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never
+        Me.ViewLstCmde.OptionsView.ShowGroupExpandCollapseButtons = False
+        Me.ViewLstCmde.OptionsView.ShowGroupPanel = False
+        Me.ViewLstCmde.OptionsView.ShowVerticalLines = DevExpress.Utils.DefaultBoolean.[False]
+        Me.ViewLstCmde.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow
+        '
         'Checktous
         '
         Me.Checktous.Anchor = System.Windows.Forms.AnchorStyles.Right
@@ -872,14 +1015,14 @@ Partial Class BonCommande
         '
         'TxtLieuLivraison
         '
-        Me.TxtLieuLivraison.Location = New System.Drawing.Point(133, 57)
+        Me.TxtLieuLivraison.Location = New System.Drawing.Point(134, 57)
         Me.TxtLieuLivraison.Name = "TxtLieuLivraison"
         Me.TxtLieuLivraison.Size = New System.Drawing.Size(248, 20)
         Me.TxtLieuLivraison.TabIndex = 16
         '
         'TxtDelaiLivraison
         '
-        Me.TxtDelaiLivraison.Location = New System.Drawing.Point(133, 28)
+        Me.TxtDelaiLivraison.Location = New System.Drawing.Point(134, 28)
         Me.TxtDelaiLivraison.Name = "TxtDelaiLivraison"
         Me.TxtDelaiLivraison.Size = New System.Drawing.Size(248, 20)
         Me.TxtDelaiLivraison.TabIndex = 15
@@ -1042,149 +1185,6 @@ Partial Class BonCommande
         Me.XtraScrollableControl1.Size = New System.Drawing.Size(1099, 469)
         Me.XtraScrollableControl1.TabIndex = 117
         '
-        'ListBonCmde
-        '
-        Me.ListBonCmde.ContextMenuStrip = Me.ContextMenuStrip1
-        Me.ListBonCmde.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ListBonCmde.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        GridLevelNode1.RelationName = "Level1"
-        Me.ListBonCmde.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
-        Me.ListBonCmde.Location = New System.Drawing.Point(2, 21)
-        Me.ListBonCmde.MainView = Me.ViewLstCmde
-        Me.ListBonCmde.Name = "ListBonCmde"
-        Me.ListBonCmde.Size = New System.Drawing.Size(351, 600)
-        Me.ListBonCmde.TabIndex = 45
-        Me.ListBonCmde.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ViewLstCmde})
-        '
-        'ViewLstCmde
-        '
-        Me.ViewLstCmde.ActiveFilterEnabled = False
-        Me.ViewLstCmde.Appearance.ColumnFilterButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.ViewLstCmde.Appearance.ColumnFilterButton.BorderColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.ViewLstCmde.Appearance.ColumnFilterButton.ForeColor = System.Drawing.Color.Black
-        Me.ViewLstCmde.Appearance.ColumnFilterButton.Options.UseBackColor = True
-        Me.ViewLstCmde.Appearance.ColumnFilterButton.Options.UseBorderColor = True
-        Me.ViewLstCmde.Appearance.ColumnFilterButton.Options.UseForeColor = True
-        Me.ViewLstCmde.Appearance.ColumnFilterButtonActive.BackColor = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(216, Byte), Integer))
-        Me.ViewLstCmde.Appearance.ColumnFilterButtonActive.BorderColor = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(216, Byte), Integer))
-        Me.ViewLstCmde.Appearance.ColumnFilterButtonActive.ForeColor = System.Drawing.Color.Black
-        Me.ViewLstCmde.Appearance.ColumnFilterButtonActive.Options.UseBackColor = True
-        Me.ViewLstCmde.Appearance.ColumnFilterButtonActive.Options.UseBorderColor = True
-        Me.ViewLstCmde.Appearance.ColumnFilterButtonActive.Options.UseForeColor = True
-        Me.ViewLstCmde.Appearance.Empty.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
-        Me.ViewLstCmde.Appearance.Empty.BackColor2 = System.Drawing.Color.White
-        Me.ViewLstCmde.Appearance.Empty.Options.UseBackColor = True
-        Me.ViewLstCmde.Appearance.EvenRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(221, Byte), Integer), CType(CType(227, Byte), Integer), CType(CType(245, Byte), Integer))
-        Me.ViewLstCmde.Appearance.EvenRow.BorderColor = System.Drawing.Color.FromArgb(CType(CType(221, Byte), Integer), CType(CType(227, Byte), Integer), CType(CType(245, Byte), Integer))
-        Me.ViewLstCmde.Appearance.EvenRow.ForeColor = System.Drawing.Color.Black
-        Me.ViewLstCmde.Appearance.EvenRow.Options.UseBackColor = True
-        Me.ViewLstCmde.Appearance.EvenRow.Options.UseBorderColor = True
-        Me.ViewLstCmde.Appearance.EvenRow.Options.UseForeColor = True
-        Me.ViewLstCmde.Appearance.FilterCloseButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.ViewLstCmde.Appearance.FilterCloseButton.BorderColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.ViewLstCmde.Appearance.FilterCloseButton.ForeColor = System.Drawing.Color.Black
-        Me.ViewLstCmde.Appearance.FilterCloseButton.Options.UseBackColor = True
-        Me.ViewLstCmde.Appearance.FilterCloseButton.Options.UseBorderColor = True
-        Me.ViewLstCmde.Appearance.FilterCloseButton.Options.UseForeColor = True
-        Me.ViewLstCmde.Appearance.FilterPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
-        Me.ViewLstCmde.Appearance.FilterPanel.BackColor2 = System.Drawing.Color.White
-        Me.ViewLstCmde.Appearance.FilterPanel.ForeColor = System.Drawing.Color.Black
-        Me.ViewLstCmde.Appearance.FilterPanel.Options.UseBackColor = True
-        Me.ViewLstCmde.Appearance.FilterPanel.Options.UseForeColor = True
-        Me.ViewLstCmde.Appearance.FixedLine.BackColor = System.Drawing.Color.FromArgb(CType(CType(117, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(122, Byte), Integer))
-        Me.ViewLstCmde.Appearance.FixedLine.Options.UseBackColor = True
-        Me.ViewLstCmde.Appearance.FocusedCell.BackColor = System.Drawing.Color.White
-        Me.ViewLstCmde.Appearance.FocusedCell.ForeColor = System.Drawing.Color.Black
-        Me.ViewLstCmde.Appearance.FocusedCell.Options.UseBackColor = True
-        Me.ViewLstCmde.Appearance.FocusedCell.Options.UseForeColor = True
-        Me.ViewLstCmde.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(171, Byte), Integer), CType(CType(177, Byte), Integer))
-        Me.ViewLstCmde.Appearance.FocusedRow.ForeColor = System.Drawing.Color.White
-        Me.ViewLstCmde.Appearance.FocusedRow.Options.UseBackColor = True
-        Me.ViewLstCmde.Appearance.FocusedRow.Options.UseForeColor = True
-        Me.ViewLstCmde.Appearance.FooterPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.ViewLstCmde.Appearance.FooterPanel.BorderColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.ViewLstCmde.Appearance.FooterPanel.ForeColor = System.Drawing.Color.Black
-        Me.ViewLstCmde.Appearance.FooterPanel.Options.UseBackColor = True
-        Me.ViewLstCmde.Appearance.FooterPanel.Options.UseBorderColor = True
-        Me.ViewLstCmde.Appearance.FooterPanel.Options.UseForeColor = True
-        Me.ViewLstCmde.Appearance.GroupButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(178, Byte), Integer), CType(CType(209, Byte), Integer), CType(CType(188, Byte), Integer))
-        Me.ViewLstCmde.Appearance.GroupButton.BorderColor = System.Drawing.Color.FromArgb(CType(CType(178, Byte), Integer), CType(CType(209, Byte), Integer), CType(CType(188, Byte), Integer))
-        Me.ViewLstCmde.Appearance.GroupButton.Options.UseBackColor = True
-        Me.ViewLstCmde.Appearance.GroupButton.Options.UseBorderColor = True
-        Me.ViewLstCmde.Appearance.GroupFooter.BackColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(221, Byte), Integer))
-        Me.ViewLstCmde.Appearance.GroupFooter.BorderColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(221, Byte), Integer))
-        Me.ViewLstCmde.Appearance.GroupFooter.ForeColor = System.Drawing.Color.Black
-        Me.ViewLstCmde.Appearance.GroupFooter.Options.UseBackColor = True
-        Me.ViewLstCmde.Appearance.GroupFooter.Options.UseBorderColor = True
-        Me.ViewLstCmde.Appearance.GroupFooter.Options.UseForeColor = True
-        Me.ViewLstCmde.Appearance.GroupPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
-        Me.ViewLstCmde.Appearance.GroupPanel.BackColor2 = System.Drawing.Color.White
-        Me.ViewLstCmde.Appearance.GroupPanel.ForeColor = System.Drawing.Color.Black
-        Me.ViewLstCmde.Appearance.GroupPanel.Options.UseBackColor = True
-        Me.ViewLstCmde.Appearance.GroupPanel.Options.UseForeColor = True
-        Me.ViewLstCmde.Appearance.GroupRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(221, Byte), Integer))
-        Me.ViewLstCmde.Appearance.GroupRow.BorderColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(221, Byte), Integer))
-        Me.ViewLstCmde.Appearance.GroupRow.ForeColor = System.Drawing.Color.Black
-        Me.ViewLstCmde.Appearance.GroupRow.Options.UseBackColor = True
-        Me.ViewLstCmde.Appearance.GroupRow.Options.UseBorderColor = True
-        Me.ViewLstCmde.Appearance.GroupRow.Options.UseForeColor = True
-        Me.ViewLstCmde.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(216, Byte), Integer))
-        Me.ViewLstCmde.Appearance.HeaderPanel.BorderColor = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(216, Byte), Integer))
-        Me.ViewLstCmde.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.Black
-        Me.ViewLstCmde.Appearance.HeaderPanel.Options.UseBackColor = True
-        Me.ViewLstCmde.Appearance.HeaderPanel.Options.UseBorderColor = True
-        Me.ViewLstCmde.Appearance.HeaderPanel.Options.UseForeColor = True
-        Me.ViewLstCmde.Appearance.HideSelectionRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(186, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(215, Byte), Integer))
-        Me.ViewLstCmde.Appearance.HideSelectionRow.ForeColor = System.Drawing.Color.FromArgb(CType(CType(104, Byte), Integer), CType(CType(130, Byte), Integer), CType(CType(134, Byte), Integer))
-        Me.ViewLstCmde.Appearance.HideSelectionRow.Options.UseBackColor = True
-        Me.ViewLstCmde.Appearance.HideSelectionRow.Options.UseForeColor = True
-        Me.ViewLstCmde.Appearance.HorzLine.BackColor = System.Drawing.Color.FromArgb(CType(CType(172, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(180, Byte), Integer))
-        Me.ViewLstCmde.Appearance.HorzLine.BorderColor = System.Drawing.Color.FromArgb(CType(CType(117, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(122, Byte), Integer))
-        Me.ViewLstCmde.Appearance.HorzLine.Options.UseBackColor = True
-        Me.ViewLstCmde.Appearance.HorzLine.Options.UseBorderColor = True
-        Me.ViewLstCmde.Appearance.OddRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
-        Me.ViewLstCmde.Appearance.OddRow.BorderColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
-        Me.ViewLstCmde.Appearance.OddRow.ForeColor = System.Drawing.Color.Black
-        Me.ViewLstCmde.Appearance.OddRow.Options.UseBackColor = True
-        Me.ViewLstCmde.Appearance.OddRow.Options.UseBorderColor = True
-        Me.ViewLstCmde.Appearance.OddRow.Options.UseForeColor = True
-        Me.ViewLstCmde.Appearance.Preview.BackColor = System.Drawing.Color.FromArgb(CType(CType(250, Byte), Integer), CType(CType(250, Byte), Integer), CType(CType(240, Byte), Integer))
-        Me.ViewLstCmde.Appearance.Preview.Font = New System.Drawing.Font("Verdana", 7.5!)
-        Me.ViewLstCmde.Appearance.Preview.ForeColor = System.Drawing.Color.FromArgb(CType(CType(104, Byte), Integer), CType(CType(130, Byte), Integer), CType(CType(134, Byte), Integer))
-        Me.ViewLstCmde.Appearance.Preview.Options.UseBackColor = True
-        Me.ViewLstCmde.Appearance.Preview.Options.UseFont = True
-        Me.ViewLstCmde.Appearance.Preview.Options.UseForeColor = True
-        Me.ViewLstCmde.Appearance.Row.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
-        Me.ViewLstCmde.Appearance.Row.ForeColor = System.Drawing.Color.Black
-        Me.ViewLstCmde.Appearance.Row.Options.UseBackColor = True
-        Me.ViewLstCmde.Appearance.Row.Options.UseForeColor = True
-        Me.ViewLstCmde.Appearance.RowSeparator.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(236, Byte), Integer))
-        Me.ViewLstCmde.Appearance.RowSeparator.BackColor2 = System.Drawing.Color.White
-        Me.ViewLstCmde.Appearance.RowSeparator.Options.UseBackColor = True
-        Me.ViewLstCmde.Appearance.SelectedRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(159, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(207, Byte), Integer))
-        Me.ViewLstCmde.Appearance.SelectedRow.ForeColor = System.Drawing.Color.Black
-        Me.ViewLstCmde.Appearance.SelectedRow.Options.UseBackColor = True
-        Me.ViewLstCmde.Appearance.SelectedRow.Options.UseForeColor = True
-        Me.ViewLstCmde.Appearance.TopNewRow.BackColor = System.Drawing.Color.White
-        Me.ViewLstCmde.Appearance.TopNewRow.Options.UseBackColor = True
-        Me.ViewLstCmde.Appearance.VertLine.BackColor = System.Drawing.Color.FromArgb(CType(CType(172, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(180, Byte), Integer))
-        Me.ViewLstCmde.Appearance.VertLine.BorderColor = System.Drawing.Color.FromArgb(CType(CType(117, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(122, Byte), Integer))
-        Me.ViewLstCmde.Appearance.VertLine.Options.UseBackColor = True
-        Me.ViewLstCmde.Appearance.VertLine.Options.UseBorderColor = True
-        Me.ViewLstCmde.GridControl = Me.ListBonCmde
-        Me.ViewLstCmde.Name = "ViewLstCmde"
-        Me.ViewLstCmde.OptionsCustomization.AllowFilter = False
-        Me.ViewLstCmde.OptionsPrint.AutoWidth = False
-        Me.ViewLstCmde.OptionsSelection.EnableAppearanceHideSelection = False
-        Me.ViewLstCmde.OptionsView.ColumnAutoWidth = False
-        Me.ViewLstCmde.OptionsView.EnableAppearanceEvenRow = True
-        Me.ViewLstCmde.OptionsView.EnableAppearanceOddRow = True
-        Me.ViewLstCmde.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never
-        Me.ViewLstCmde.OptionsView.ShowGroupExpandCollapseButtons = False
-        Me.ViewLstCmde.OptionsView.ShowGroupPanel = False
-        Me.ViewLstCmde.OptionsView.ShowVerticalLines = DevExpress.Utils.DefaultBoolean.[False]
-        Me.ViewLstCmde.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow
-        '
         'BonCommande
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1232,6 +1232,8 @@ Partial Class BonCommande
         CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl3.ResumeLayout(False)
         Me.ContextMenuStrip1.ResumeLayout(False)
+        CType(Me.ListBonCmde, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ViewLstCmde, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Checktous.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GCChoixBonCommande, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GCChoixBonCommande.ResumeLayout(False)
@@ -1264,8 +1266,6 @@ Partial Class BonCommande
         CType(Me.CmbSignataire.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.XtraScrollableControl1.ResumeLayout(False)
-        CType(Me.ListBonCmde, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ViewLstCmde, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

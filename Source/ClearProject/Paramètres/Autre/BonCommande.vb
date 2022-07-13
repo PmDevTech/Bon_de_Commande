@@ -1209,14 +1209,14 @@ Public Class BonCommande
         End If
     End Sub
 
-    Private Sub ListBonCmde_DoubleClick(sender As Object, e As EventArgs)
+    Private Sub ModifierToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ModifierToolStripMenuItem.Click
         If RdSansPassMarche.Checked Then
             If ViewLstCmde.RowCount > 0 Then
                 Dim bool As Boolean = False
 
                 For i = 0 To ViewLstCmde.RowCount - 1
                     If CBool(ViewLstCmde.GetRowCellValue(i, "Choix")) = True Then
-                        If TxtReference.Text = "" Then
+                        If TxtDesignation.Text = "" And TxtQte.Text = "" And TxtPu.Text = "" And TxtNewMont.Text = "" Then
                             TxtReference.Text = ViewLstCmde.GetRowCellValue(i, "Référence").ToString()
                             TxtDesignation.Text = MettreApost(ViewLstCmde.GetRowCellValue(i, "Désignation").ToString())
                             TxtQte.Text = ViewLstCmde.GetRowCellValue(i, "Quantité").ToString()
@@ -1225,7 +1225,7 @@ Public Class BonCommande
                             ViewLstCmde.DeleteSelectedRows()
                             bool = True
                         Else
-                            SuccesMsg("Veuillez terminer la modification en cours")
+                            SuccesMsg("Veuillez terminer l'ajout du besoin en cours")
                             Exit Sub
                         End If
                     End If
@@ -1236,13 +1236,9 @@ Public Class BonCommande
                 End If
 
             Else
-                SuccesMsg("Veuillez ajouter une ligne dans la liste des besoins")
+                SuccesMsg("Veuillez ajouter au moins un besoin dans la liste des besoins")
             End If
         End If
-    End Sub
-
-    Private Sub ModifierToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ModifierToolStripMenuItem.Click
-        ListBonCmde_DoubleClick(sender, e)
     End Sub
 
     Private Sub SupprimerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SupprimerToolStripMenuItem.Click
@@ -1254,10 +1250,13 @@ Public Class BonCommande
                 For i = 0 To ViewLstCmde.RowCount - 1
 
                     If CBool(ViewLstCmde.GetRowCellValue(i, "Choix")) = True Then
-                        ViewLstCmde.DeleteSelectedRows()
-                        TxtNewMont.Text = ""
-                        TxtMontLettre.Text = ""
-                        bool = True
+                        If TxtDesignation.Text = "" And TxtQte.Text = "" And TxtPu.Text = "" And TxtNewMont.Text = "" Then
+                            ViewLstCmde.DeleteSelectedRows()
+                            bool = True
+                        Else
+                            SuccesMsg("Veuillez terminer l'ajout du besoin en cours")
+                            Exit Sub
+                        End If
                     End If
                 Next
 
@@ -1265,7 +1264,7 @@ Public Class BonCommande
                     SuccesMsg("Veuillez cocher une ligne avant la suppression")
                 End If
             Else
-                SuccesMsg("Vous n'avez pas ajouté de ligne dans la liste des besoins")
+                SuccesMsg("Veuillez ajouter au moins un besoin dans la liste des besoins")
             End If
         End If
     End Sub
