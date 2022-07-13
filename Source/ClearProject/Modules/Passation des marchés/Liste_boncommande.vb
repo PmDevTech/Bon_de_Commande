@@ -504,7 +504,7 @@ Public Class Liste_boncommande
             reportfeuilletps.SetParameterValue("NumBonCommande", NumBonCommande)
             reportfeuilletps.SetParameterValue("CodeProjet", ProjetEnCours)
             FullScreenReport.FullView.ReportSource = reportfeuilletps
-            FullScreenReport.Text = ""
+            FullScreenReport.Text = "Bon de commande"
             FinChargement()
             FullScreenReport.ShowDialog()
         Else

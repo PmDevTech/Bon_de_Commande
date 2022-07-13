@@ -1209,7 +1209,7 @@ Public Class BonCommande
         End If
     End Sub
 
-    Private Sub ListBonCmde_DoubleClick(sender As Object, e As EventArgs) Handles ListBonCmde.DoubleClick
+    Private Sub ListBonCmde_DoubleClick(sender As Object, e As EventArgs)
         If RdSansPassMarche.Checked Then
             If ViewLstCmde.RowCount > 0 Then
                 Dim bool As Boolean = False
