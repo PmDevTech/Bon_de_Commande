@@ -136,7 +136,7 @@ Public Class BonCommande
         For Each rw As DataRow In dt.Rows
             TxtFournisseur.Text = MettreApost(rw("NomFournis").ToString)
             TxtAdresseFour.Text = MettreApost(rw("AdresseCompleteFournis").ToString)
-            TxtTelFour.Text = rw("TelFournis").ToString
+            TxtTelFour.Text = MettreApost(rw("TelFournis").ToString)
             TxtCCFour.Text = MettreApost(rw("CompteContribuableFournis").ToString)
             TxtRCCM.Text = MettreApost(rw("RegistreCommerceFournis").ToString)
         Next
@@ -378,8 +378,8 @@ Public Class BonCommande
             query = "SELECT * FROM t_spectechfourniture WHERE NumeroDAO = '" & EnleverApost(CmbNumDAO.Text) & "' AND CodeLot = '" & CmbCodeLot.Text & "'"
         End If
 
-        Dim dt As DataTable = ExcecuteSelectQuery(query)
         Dim NewLine As DataTable = ListBonCmde.DataSource
+        Dim dt As DataTable = ExcecuteSelectQuery(query)
 
         For Each rw As DataRow In dt.Rows
 
@@ -635,7 +635,6 @@ Public Class BonCommande
     End Sub
 
     Private Sub CmbCodeLot_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbCodeLot.SelectedIndexChanged
-        On Error Resume Next
 
         TxtFournisseur.Text = ""
         TxtAdresseFour.Text = ""
@@ -650,7 +649,7 @@ Public Class BonCommande
         Dim MontantRabais As Double = 0
         Dim Ajustements As Double = 0
 
-        query = "SELECT CodeFournis, NomFournis, AdresseCompleteFournis, TelFournis, CompteContribuableFournis, RegistreCommerceFournis FROM t_fournisseur WHERE CodeProjet = '" & ProjetEnCours & "' and CodeFournis IN (SELECT CodeFournis FROM t_soumissionfournisseurclassement where CodeLot = '" & ID_CodeLot(CmbCodeLot.SelectedIndex) & "' and NumeroDAO = '" & ID_NumDAO(CmbNumDAO.SelectedIndex) & "' and Selectionne = 'OUI' and Attribue = 'OUI')"
+        query = "SELECT CodeFournis, NomFournis, AdresseCompleteFournis, TelFournis, CompteContribuableFournis, RegistreCommerceFournis FROM t_fournisseur WHERE CodeProjet = '" & ProjetEnCours & "' and CodeFournis IN (SELECT CodeFournis FROM t_soumissionfournisseurclassement where CodeLot = '" & CmbCodeLot.Text & "' and NumeroDAO = '" & ID_NumDAO(CmbNumDAO.SelectedIndex) & "' and Selectionne = 'OUI' and Attribue = 'OUI')"
         Dim dt0 As DataTable = ExcecuteSelectQuery(query)
         For Each rw As DataRow In dt0.Rows
             CodeFournis = rw("CodeFournis").ToString
@@ -670,7 +669,7 @@ Public Class BonCommande
             MontantTotalDossier = rw("PrixOffreCorrigerRabaiCompris").ToString
         Next
 
-        query = "SELECT LibelleLot from t_lotdao WHERE NumeroDAO = '" & ID_NumDAO(CmbNumDAO.SelectedIndex) & "' AND CodeLot = '" & ID_CodeLot(CmbCodeLot.SelectedIndex) & "'"
+        query = "SELECT LibelleLot from t_lotdao WHERE NumeroDAO = '" & ID_NumDAO(CmbNumDAO.SelectedIndex) & "' AND CodeLot = '" & CmbCodeLot.Text & "'"
         LibelleLot = ExecuteScallar(query)
         TxtDesignation.Text = MettreApost(LibelleLot)
 
@@ -705,9 +704,9 @@ Public Class BonCommande
                     'Dim sauver As String
                     For i = 0 To ViewLstCmde.RowCount - 1
                         Dim sauver As String = "insert into t_bc_listebesoins values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Référence")) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Désignation")) & "','" & ViewLstCmde.GetRowCellValue(i, "Quantité") & "','" & ViewLstCmde.GetRowCellValue(i, "Prix Unitaire") & "','" & CDbl(ViewLstCmde.GetRowCellValue(i, "Montant")) & "')"
-                        'ExecuteNonQuery("insert into t_bc_listebesoins values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Référence")) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Désignation")) & "','" & ViewLstCmde.GetRowCellValue(i, "Quantité") & "','" & ViewLstCmde.GetRowCellValue(i, "Prix Unitaire") & "','" & CDbl(ViewLstCmde.GetRowCellValue(i, "Montant")) & "')")
                         ExecuteNonQuery(sauver)
-                        'InputBox("", "", Saver)
+                        'ExecuteNonQuery("insert into t_bc_listebesoins values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Référence")) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Désignation")) & "','" & ViewLstCmde.GetRowCellValue(i, "Quantité") & "','" & ViewLstCmde.GetRowCellValue(i, "Prix Unitaire") & "','" & CDbl(ViewLstCmde.GetRowCellValue(i, "Montant")) & "')")
+                        'InputBox("", "", sauver)
                     Next
                 Else
                     SuccesMsg("Veuillez ajouter la liste des besoins avant l'enregistrement")
@@ -961,7 +960,6 @@ Public Class BonCommande
                 SuccesMsg("Veuillez saisir le pourcentage de la taxe correspondant aux autres taxes")
                 TxtAutreTaxe.Focus()
             Else
-
                 If ViewLstCmde.RowCount > 0 Then
                     Dim Supp As String = ""
                     'suppression puis ajout dans la table des besoins 
