@@ -540,7 +540,6 @@ Public Class BonCommande
     End Sub
 
     Private Sub RdSansPassMarche_CheckedChanged(sender As Object, e As EventArgs) Handles RdSansPassMarche.CheckedChanged
-        On Error Resume Next
         If RdSansPassMarche.Checked Then
             RdParPassMarche.Checked = False
             TxtIntituleMarche.Enabled = True
@@ -700,18 +699,6 @@ Public Class BonCommande
                 SuccesMsg("Veuillez choisir la date d'élaboration du bon de commande")
                 Dateboncmde.Focus()
             Else
-                If ViewLstCmde.RowCount > 0 Then
-                    'Dim sauver As String
-                    For i = 0 To ViewLstCmde.RowCount - 1
-                        Dim sauver As String = "insert into t_bc_listebesoins values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Référence")) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Désignation")) & "','" & ViewLstCmde.GetRowCellValue(i, "Quantité") & "','" & ViewLstCmde.GetRowCellValue(i, "Prix Unitaire") & "','" & CDbl(ViewLstCmde.GetRowCellValue(i, "Montant")) & "')"
-                        ExecuteNonQuery(sauver)
-                        'ExecuteNonQuery("insert into t_bc_listebesoins values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Référence")) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Désignation")) & "','" & ViewLstCmde.GetRowCellValue(i, "Quantité") & "','" & ViewLstCmde.GetRowCellValue(i, "Prix Unitaire") & "','" & CDbl(ViewLstCmde.GetRowCellValue(i, "Montant")) & "')")
-                        'InputBox("", "", sauver)
-                    Next
-                Else
-                    SuccesMsg("Veuillez ajouter la liste des besoins avant l'enregistrement")
-                    Exit Sub
-                End If
 
                 If GVSignataire.RowCount > 0 Then
                     Dim Save2 As String = ""
@@ -722,6 +709,19 @@ Public Class BonCommande
                 Else
                     SuccesMsg("Veuillez ajouter au moins un signataire avant l'enregistrement")
                     CmbSignataire.Focus()
+                    Exit Sub
+                End If
+
+                If ViewLstCmde.RowCount > 0 Then
+                    'Dim sauver As String
+                    For i = 0 To ViewLstCmde.RowCount - 1
+                        Dim sauver As String = "insert into t_bc_listebesoins values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Référence")) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Désignation")) & "','" & ViewLstCmde.GetRowCellValue(i, "Quantité") & "','" & ViewLstCmde.GetRowCellValue(i, "Prix Unitaire") & "','" & CDbl(ViewLstCmde.GetRowCellValue(i, "Montant")) & "')"
+                        ExecuteNonQuery(sauver)
+                        'ExecuteNonQuery("insert into t_bc_listebesoins values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Référence")) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Désignation")) & "','" & ViewLstCmde.GetRowCellValue(i, "Quantité") & "','" & ViewLstCmde.GetRowCellValue(i, "Prix Unitaire") & "','" & CDbl(ViewLstCmde.GetRowCellValue(i, "Montant")) & "')")
+                        'InputBox("", "", sauver)
+                    Next
+                Else
+                    SuccesMsg("Veuillez ajouter la liste des besoins avant l'enregistrement")
                     Exit Sub
                 End If
 
@@ -1214,7 +1214,7 @@ Public Class BonCommande
 
                 For i = 0 To ViewLstCmde.RowCount - 1
                     If CBool(ViewLstCmde.GetRowCellValue(i, "Choix")) = True Then
-                        If TxtDesignation.Text = "" And TxtQte.Text = "" And TxtPu.Text = "" And TxtNewMont.Text = "" Then
+                        If TxtDesignation.Text = "" And TxtQte.Text = "" And TxtPu.Text = "" Then
                             TxtReference.Text = ViewLstCmde.GetRowCellValue(i, "Référence").ToString()
                             TxtDesignation.Text = MettreApost(ViewLstCmde.GetRowCellValue(i, "Désignation").ToString())
                             TxtQte.Text = ViewLstCmde.GetRowCellValue(i, "Quantité").ToString()
@@ -1248,7 +1248,7 @@ Public Class BonCommande
                 For i = 0 To ViewLstCmde.RowCount - 1
 
                     If CBool(ViewLstCmde.GetRowCellValue(i, "Choix")) = True Then
-                        If TxtDesignation.Text = "" And TxtQte.Text = "" And TxtPu.Text = "" And TxtNewMont.Text = "" Then
+                        If TxtDesignation.Text = "" And TxtQte.Text = "" And TxtPu.Text = "" Then
                             ViewLstCmde.DeleteSelectedRows()
                             bool = True
                         Else
