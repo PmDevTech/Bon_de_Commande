@@ -45,6 +45,7 @@ Public Class Liste_boncommande
         dtListeBonCommande.Columns.Add("Editeur", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Date d'édition", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Statut", Type.GetType("System.String"))
+        dtListeBonCommande.Columns.Add("TypeDossier", Type.GetType("System.String"))
 
         GCListBoncommande.DataSource = dtListeBonCommande
 
@@ -72,6 +73,7 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("Editeur").Width = 350
         ViewBoncommande.Columns("Date d'édition").Width = 219
         ViewBoncommande.Columns("Statut").Width = 150
+        ViewBoncommande.Columns("TypeDossier").Visible = False
 
         ViewBoncommande.Columns("Montant").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         ViewBoncommande.Columns("Editeur").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
@@ -82,7 +84,7 @@ Public Class Liste_boncommande
 
     Public Sub RemplirDataGrid()
 
-        query = "SELECT ID_BC,RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,MontantRabais,Ajustement,MontantBCHT,MontantNetHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,Statut,EMP_ID FROM t_boncommande "
+        query = "SELECT ID_BC,RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,MontantRabais,Ajustement,MontantBCHT,MontantNetHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,Statut,EMP_ID,TypeDossier FROM t_boncommande "
         query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User & "' ORDER BY ID_BC DESC"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         Dim cptr As Integer = 0
@@ -138,6 +140,7 @@ Public Class Liste_boncommande
             drS("PcrtAutreTaxe") = rw("PcrtAutreTaxe")
             drS("Editeur") = NomEditeur.ToString
             drS("Statut") = rw("Statut").ToString
+            drS("TypeDossier") = rw("TypeDossier").ToString
             NewLine.Rows.Add(drS)
         Next
 
@@ -172,6 +175,7 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("Editeur").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Date d'édition").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Statut").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("TypeDossier").OptionsColumn.AllowEdit = False
 
         Dim nbre As Integer = cptr
         If nbre = 0 Then
@@ -218,9 +222,11 @@ Public Class Liste_boncommande
                         If ConfirmMsg("Voulez-vous vraiment supprimer le Bon de Commande " & ViewBoncommande.GetRowCellValue(i, "N° Bon Commande") & " ?") = DialogResult.Yes Then
                             Dim NumBC As String = ""
                             Dim TypeElab As String = ""
+                            Dim TypeDossier As String = ""
                             Dim CodeFournisseur As String = ""
                             NumBC = ViewBoncommande.GetRowCellValue(i, "N° Bon Commande").ToString
                             TypeElab = ViewBoncommande.GetRowCellValue(i, "TypeElabBC").ToString
+                            TypeDossier = ViewBoncommande.GetRowCellValue(i, "TypeDossier").ToString
                             CodeFournisseur = ViewBoncommande.GetRowCellValue(i, "CodeFournisseur").ToString
 
                             query = "delete from t_bc_listebesoins where RefBonCommande='" & NumBC & "'"
@@ -229,7 +235,12 @@ Public Class Liste_boncommande
                             query = "delete from t_bc_signataire where RefBonCommande ='" & NumBC & "'"
                             ExecuteNonQuery(query)
 
-                            If TypeElab = "Sans Passation de Marché" Then
+                            If TypeElab = "Par Passation de Marché" Then
+                                If TypeDossier = "AMI" Or TypeDossier = "DP" Then
+                                    query = "DELETE from t_fournisseur WHERE CodeFournis = '" & CodeFournisseur & "'"
+                                    ExecuteNonQuery(query)
+                                End If
+                            Else
                                 query = "delete from t_fournisseur where CodeFournis = '" & CodeFournisseur & "'"
                                 ExecuteNonQuery(query)
                             End If
@@ -321,7 +332,7 @@ Public Class Liste_boncommande
     End Sub
 
     Private Sub RemplirdatagridRechercher()
-        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,MontantRabais,Ajustement,MontantBCHT,MontantNetHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,Statut,EMP_ID FROM t_boncommande "
+        query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,MontantRabais,Ajustement,MontantBCHT,MontantNetHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,Statut,EMP_ID,TypeDossier FROM t_boncommande "
         query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User & "' AND RefBonCommande LIKE'" & TxtRechercher.Text & "%'"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         Dim cptr As Integer = 0
@@ -379,6 +390,7 @@ Public Class Liste_boncommande
             drS("PcrtAutreTaxe") = rw("PcrtAutreTaxe")
             drS("Editeur") = NomEditeur.ToString
             drS("Statut") = rw("Statut").ToString
+            drS("TypeDossier") = rw("TypeDossier").ToString
             NewLine.Rows.Add(drS)
         Next
 
@@ -413,6 +425,7 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("Editeur").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Date d'édition").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Statut").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("TypeDossier").OptionsColumn.AllowEdit = False
 
         Dim nbre As Integer = cptr.ToString
         If nbre = 0 Then
@@ -468,17 +481,24 @@ Public Class Liste_boncommande
             'récupération du type de marché
             Dim TypeMarche As String = ""
             Dim NumDAO As String = ""
+            Dim TypeDossier As String = ""
             NumDAO = DrX("NumeroDAO").ToString
-
-            query = "SELECT TypeMarche FROM t_dao WHERE CodeProjet = '" & ProjetEnCours & "' AND NumeroDAO = '" & NumDAO & "'"
-            TypeMarche = ExecuteScallar(query)
+            TypeDossier = DrX("TypeDossier").ToString
 
             DebutChargement(True, "Le traitement de votre demande est en cours...")
             Dim Chemin As String = ""
-            If TypeMarche = "Fournitures" Or TypeMarche.Contains("Service") Then
-                Chemin = lineEtat & "\Bon_Commande\Etat_BonCommande_Fournitures.rpt"
-            ElseIf TypeMarche = "Travaux" Then
-                Chemin = lineEtat & "\Bon_Commande\Etat_BonCommande_Travaux.rpt"
+
+            If TypeDossier = "DAO" Then
+                query = "SELECT TypeMarche FROM t_dao WHERE CodeProjet = '" & ProjetEnCours & "' AND NumeroDAO = '" & NumDAO & "'"
+                TypeMarche = ExecuteScallar(query)
+
+                If TypeMarche = "Fournitures" Or TypeMarche.Contains("Service") Then
+                    Chemin = lineEtat & "\Bon_Commande\Etat_BonCommande_Fournitures.rpt"
+                ElseIf TypeMarche = "Travaux" Then
+                    Chemin = lineEtat & "\Bon_Commande\Etat_BonCommande_Travaux.rpt"
+                End If
+            ElseIf TypeDossier = "AMI" Or TypeDossier = "DP" Then
+                Chemin = lineEtat & "\Bon_Commande\Etat_BonCommande_Consultant.rpt"
             Else
                 Chemin = lineEtat & "\Bon_Commande\Etat_BonCommande.rpt"
             End If

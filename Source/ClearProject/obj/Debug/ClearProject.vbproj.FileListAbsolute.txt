@@ -5560,3 +5560,4 @@ C:\Users\steph\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\Cl
 C:\Users\steph\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\ClearProject.xml
 C:\Users\steph\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\ClearProject.pdb
 C:\Users\steph\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\ClearProject.EtatListeBonCommande.resources
+C:\Users\steph\Documents\GitHub\Bon_de_Commande\Source\ClearProject\obj\Debug\ClearProject.exe.licenses
