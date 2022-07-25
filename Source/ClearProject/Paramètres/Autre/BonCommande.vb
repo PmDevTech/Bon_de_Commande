@@ -32,15 +32,15 @@ Public Class BonCommande
         TypeDossier.Clear()
         RefSoumis.Clear()
 
-        'DAO (Fournitures, Travaux, Autres Services)
+        'Récupération DAO (Fournitures, Travaux, Autres Services)
         query = "SELECT d.NumeroDAO, l.RefLot FROM t_dao d, t_lotdao l, t_soumissionfournisseurclassement s WHERE d.NumeroDAO = l.NumeroDAO AND l.NumeroDAO = s.NumeroDAO AND d.DateFinJugement is not null AND d.statut_DAO <> 'Annulé' and d.CodeProjet = '" & ProjetEnCours & "' and s.Selectionne = 'OUI' and s.Attribue = 'OUI' GROUP by l.RefLot ORDER BY d.NumeroDAO"
         VerifExist_DAO_AMI_DP("DAO", query)
 
-        'AMI
+        'Récupération AMI
         query = "select N.NumeroDp, N.RefSoumis from t_ami A, t_consultant as C, t_soumissionconsultant as S, t_dp_negociation as N where C.NumeroDp = A.NumeroDAMI and C.RefConsult=S.RefConsult and S.RefSoumis=N.RefSoumis and S.Negociation='OUI' and S.RangConsult IS NOT NULL and S.EvalTechOk='OUI' and S.ConsultDisqualifie IS NULL and A.MethodeSelection = '3CV' ORDER BY S.RangConsult ASC LIMIT 3"
         VerifExist_DAO_AMI_DP("AMI", query)
 
-        'DP
+        'Récupération DP
         query = "select N.NumeroDp, N.RefSoumis from t_consultant as C, t_soumissionconsultant as S, t_dp_negociation as N where C.RefConsult=S.RefConsult and S.RefSoumis=N.RefSoumis and S.Negociation='OUI' and S.RangFinal IS NOT NULL and S.EvalFinOk='OUI' and S.ConsultDisqualifie IS NULL ORDER BY S.RangFinal ASC"
         VerifExist_DAO_AMI_DP("DP", query)
     End Sub
