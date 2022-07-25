@@ -20,6 +20,7 @@ Public Class BonCommande
     Dim CodeFournisseur As String = ""
     Dim ConditionPaiement As String = ""
     Dim init As Integer = 0
+    Dim TypeSaveDossier As String = ""
 
     Private Sub ChargerNumDAO()
         CmbNumDAO.ResetText()
@@ -134,6 +135,7 @@ Public Class BonCommande
         RefLot = Liste_boncommande.ViewBoncommande.GetRowCellValue(Liste_boncommande.j, "RefLot").ToString
         CodeFournisseur = Liste_boncommande.ViewBoncommande.GetRowCellValue(Liste_boncommande.j, "CodeFournisseur").ToString
         ConditionPaiement = Liste_boncommande.ViewBoncommande.GetRowCellValue(Liste_boncommande.j, "ConditionPaiement").ToString
+        TypeSaveDossier = Liste_boncommande.ViewBoncommande.GetRowCellValue(Liste_boncommande.j, "TypeDossier").ToString
         CmbNumDAO.Text = NumDAO
 
         'Vérification du type de marché : Fournitures, Travaux, Services autres, Consultants
@@ -162,6 +164,16 @@ Public Class BonCommande
             CmbNumDAO.Enabled = False
             CmbCodeLot.Enabled = False
             Checktous.Visible = False
+
+            If TypeSaveDossier = "DAO" Then
+                TxtTVA.Enabled = True
+                TxtLibAutreTaxe.Enabled = True
+                TxtRemise.Enabled = False
+            Else
+                TxtTVA.Enabled = False
+                TxtRemise.Enabled = False
+                TxtLibAutreTaxe.Enabled = True
+            End If
 
             query = "SELECT PrixOffreCorrigerRabaiCompris FROM t_soumissionfournisseurclassement WHERE CodeFournis = '" & CodeFournisseur & "' and CodeLot = '" & CmbCodeLot.Text & "' AND Selectionne = 'OUI' AND Attribue = 'OUI'"
             dt = ExcecuteSelectQuery(query)
@@ -609,6 +621,7 @@ Public Class BonCommande
             lc2.Visible = True
             lc7.Visible = False
             lc8.Visible = False
+            lc6.Visible = False
 
             Initialiser()
             ChargerNumDAO()
@@ -630,12 +643,14 @@ Public Class BonCommande
             TxtPu.Enabled = True
             TxtDesignation.Enabled = True
             TxtRemise.Enabled = True
+            TxtTVA.Enabled = True
             TxtLibAutreTaxe.Enabled = True
             Checktous.Visible = True
             lc1.Visible = False
             lc2.Visible = False
             lc7.Visible = True
             lc8.Visible = True
+            lc6.Visible = True
 
             Initialiser()
             ChargerSignataire()
@@ -686,11 +701,11 @@ Public Class BonCommande
             If TypeDossier(CmbNumDAO.SelectedIndex) = "DAO" Then
                 CmbCodeLot.Enabled = True
                 TxtTVA.Enabled = True
-                TxtLibAutreTaxe.Enabled = True
+                TxtLibAutreTaxe.Enabled = False
             Else
                 CmbCodeLot.Enabled = False
                 TxtTVA.Enabled = False
-                TxtLibAutreTaxe.Enabled = False
+                TxtLibAutreTaxe.Enabled = True
             End If
 
             Dim VerifTypeDossier As String = TypeDossier(CmbNumDAO.SelectedIndex)
@@ -831,155 +846,165 @@ Public Class BonCommande
             If CmbNumDAO.SelectedIndex = -1 Then
                 SuccesMsg("Veuillez sélectionner le numéro du DAO")
                 CmbNumDAO.Focus()
-            ElseIf CmbCodeLot.Enabled = True Then
+                Exit Sub
+            End If
+
+            If TypeDossier(CmbNumDAO.SelectedIndex) = "DAO" Then
                 If CmbCodeLot.SelectedIndex = -1 Then
                     SuccesMsg("Veuillez sélectionner le code du lot")
                     CmbCodeLot.Focus()
+                    Exit Sub
                 End If
-            ElseIf Dateboncmde.Text = "" Then
+            End If
+
+            If Dateboncmde.Text = "" Then
                 SuccesMsg("Veuillez choisir la date d'élaboration du bon de commande")
                 Dateboncmde.Focus()
-            ElseIf TxtLibAutreTaxe.Text <> "" And TxtAutreTaxe.Text = "" Then
+                Exit Sub
+            End If
+
+            If TxtLibAutreTaxe.Text <> "" And TxtAutreTaxe.Text = "" Then
                 SuccesMsg("Veuillez saisir le pourcentage de la taxe correspondant aux autres taxes")
                 TxtAutreTaxe.Focus()
-            Else
-
-                If GVSignataire.RowCount > 0 Then
-                    Dim Save2 As String = ""
-                    For i = 0 To GVSignataire.RowCount - 1
-                        Save2 = "insert into t_bc_signataire values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(GVSignataire.GetRowCellValue(i, "Nom, Prénoms et Titre")) & "','" & GVSignataire.GetRowCellValue(i, "N°") & "','" & ProjetEnCours & "')"
-                        ExecuteNonQuery(Save2)
-                    Next
-                Else
-                    SuccesMsg("Veuillez ajouter au moins un signataire avant l'enregistrement")
-                    CmbSignataire.Focus()
-                    Exit Sub
-                End If
-
-                If ViewLstCmde.RowCount > 0 Then
-                    'Dim sauver As String
-                    For i = 0 To ViewLstCmde.RowCount - 1
-                        Dim sauver As String = "insert into t_bc_listebesoins values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Référence")) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Désignation")) & "','" & ViewLstCmde.GetRowCellValue(i, "Quantité") & "','" & ViewLstCmde.GetRowCellValue(i, "Prix Unitaire") & "','" & CDbl(ViewLstCmde.GetRowCellValue(i, "Montant")) & "')"
-                        ExecuteNonQuery(sauver)
-                        'ExecuteNonQuery("insert into t_bc_listebesoins values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Référence")) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Désignation")) & "','" & ViewLstCmde.GetRowCellValue(i, "Quantité") & "','" & ViewLstCmde.GetRowCellValue(i, "Prix Unitaire") & "','" & CDbl(ViewLstCmde.GetRowCellValue(i, "Montant")) & "')")
-                        'InputBox("", "", sauver)
-                    Next
-                Else
-                    SuccesMsg("Veuillez ajouter la liste des besoins avant l'enregistrement")
-                    Exit Sub
-                End If
-
-                Dim Annee As String = CStr(Now.Year)
-                Dim Dossier As String = TypeDossier(CmbNumDAO.SelectedIndex)
-
-                Dim ChoixElabBC As String = "Par Passation de Marché"
-                Dim dd As String = CDate(Dateboncmde.Text).ToString("dd/MM/yyy")
-                Dim DateBC As String = dateconvert(dd)
-                Dim RefLot As String = ""
-
-                Dim ConditionPaiement As String = ""
-                If RdCheque.Checked Then
-                    ConditionPaiement = "Chèque"
-                ElseIf RdVirement.Checked Then
-                    ConditionPaiement = "Virement"
-                Else
-                    ConditionPaiement = "Espèces"
-                End If
-
-                Dim MontantHT As String = ""
-                Dim TVA As String = ""
-                Dim Remise As String = ""
-                Dim AutreTaxe As String = ""
-                Dim MontantTVA As Double = 0
-                Dim MontantRemise As Double = 0
-                Dim MontantAutreTaxe As Double = 0
-                Dim MontantNetHT As Double = 0
-                Dim MontantTOTAL As Double = 0
-                Dim MontantTotalTTC As Double = 0
-                Dim MontantOffre As Double = 0
-                Dim MontantRabais As Double = 0
-
-                'récupération du montant hors taxe
-                Dim Requete As String = ""
-                Requete = "SELECT SUM(PrixTotal) as MontantHT FROM t_bc_listebesoins WHERE RefBonCommande = '" & EnleverApost(Txtboncmde.Text) & "'"
-                MontantHT = ExecuteScallar(Requete)
-
-                If TxtMontRabais.Text = "" Then
-                    MontantOffre = MontantHT - MontantRabais
-                Else
-                    MontantOffre = MontantHT - CDbl(TxtMontRabais.Text)
-                End If
-
-                If TxtRemise.Text = "" Then
-                    Remise = ""
-                    MontantRemise = 0
-                End If
-
-                MontantNetHT = CDbl(TxtNewMont.Text)
-
-                If TxtTVA.Text = "" Then
-                    TVA = ""
-                    MontantTVA = 0
-                Else
-                    TVA = TxtTVA.Text
-                    MontantTVA = Math.Round(MontantNetHT * (CDbl(TVA) / 100))
-                End If
-
-                If TxtLibAutreTaxe.Text = "" Then
-                    AutreTaxe = ""
-                    MontantAutreTaxe = 0
-                Else
-                    AutreTaxe = TxtAutreTaxe.Text
-                    MontantAutreTaxe = Math.Round(MontantNetHT * (CDbl(AutreTaxe) / 100))
-                End If
-
-                If MontantTotalDossier = "" Then
-                    MontantTOTAL = 0
-                Else
-                    MontantTOTAL = CDbl(MontantTotalDossier)
-                End If
-
-                MontantTotalTTC = MontantNetHT + MontantTVA + MontantAutreTaxe
-
-                'Vérification du type de marché : Fournitures, Travaux, Services autres, Consultants
-                query = "SELECT TypeMarche FROM t_dao WHERE CodeProjet = '" & ProjetEnCours & "' AND NumeroDAO = '" & EnleverApost(CmbNumDAO.Text) & "'"
-                Dim TypeMarche As String = ExecuteScallar(query)
-
-                If Dossier = "DAO" Then
-                    'récupération de la référence du lot
-                    Dim Receive1 As String = ""
-                    Receive1 = "SELECT RefLot FROM t_lotdao WHERE CodeLot = '" & EnleverApost(CmbCodeLot.Text) & "' AND NumeroDAO = '" & EnleverApost(CmbNumDAO.Text) & "'"
-                    RefLot = ExecuteScallar(Receive1)
-
-                    'Mise à jour dans la table t_fournisseur
-                    Dim Modif As String = ""
-                    Modif = "UPDATE t_fournisseur SET AdresseCompleteFournis = '" & EnleverApost(TxtAdresseFour.Text) & "', TelFournis = '" & EnleverApost(TxtTelFour.Text) & "', CompteContribuableFournis = '" & EnleverApost(TxtCCFour.Text) & "', RegistreCommerceFournis = '" & EnleverApost(TxtRCCM.Text) & "' WHERE CodeFournis = '" & CodeFournis.ToString & "'"
-                    ExecuteNonQuery(Modif)
-                Else
-                    RefLot = RefSoumis(CmbNumDAO.SelectedIndex)
-
-                    'Enregistrement du Fournisseur
-                    Dim Save4 As String = ""
-                    Save4 = "INSERT INTO t_fournisseur (CodeFournis,NomFournis,AdresseCompleteFournis,TelFournis,CompteContribuableFournis,RegistreCommerceFournis,NumeroDAO,NomAch,CodeProjet) VALUES (NULL,'" & EnleverApost(TxtFournisseur.Text) & "','" & EnleverApost(TxtAdresseFour.Text) & "','" & EnleverApost(TxtTelFour.Text) & "','" & EnleverApost(TxtCCFour.Text) & "','" & EnleverApost(TxtRCCM.Text) & "','" & EnleverApost(Txtboncmde.Text) & "','" & "" & "','" & ProjetEnCours & "')"
-                    ExecuteNonQuery(Save4)
-
-                    Dim Receive2 As String = ""
-                    Receive2 = "SELECT CodeFournis FROM t_fournisseur WHERE NumeroDAO = '" & EnleverApost(Txtboncmde.Text) & "' and CodeProjet = '" & ProjetEnCours & "'"
-                    CodeFournis = ExecuteScallar(Receive2)
-                End If
-
-                Dim Save3 As String = ""
-                'insertion dans la table t_boncommande
-                Save3 = "INSERT INTO t_boncommande values('" & nbBonCommande & "','" & EnleverApost(Txtboncmde.Text) & "','" & annee & "', '" & CInt(CodeFournis) & "','" & ChoixElabBC & "','" & EnleverApost(CmbNumDAO.Text) & "','" & RefLot & "','" & EnleverApost(TxtIntituleMarche.Text) & "','" & DateBC & "','" & ConditionPaiement & "','" & EnleverApost(TxtDelaiLivraison.Text) & "','"
-                Save3 &= EnleverApost(TxtLieuLivraison.Text) & "','" & EnleverApost(TxtIsntructionSpec.Text) & "','" & EnleverApost(TxtReference.Text) & "','" & EnleverApost(TxtDesignation.Text) & "','" & TxtMontRabais.Text & "','" & MontantOffre & "','" & TxtAjustement.Text & "','" & CDbl(MontantHT) & "','" & TVA & "','" & MontantTVA.ToString.Replace(",", ".") & "','" & Remise & "','" & MontantRemise.ToString.Replace(",", ".") & "','" & EnleverApost(TxtLibAutreTaxe.Text) & "','" & AutreTaxe & "','" & MontantAutreTaxe.ToString.Replace(",", ".") & "','" & MontantNetHT.ToString.Replace(",", ".") & "','" & MontantTOTAL.ToString.Replace(",", ".") & "','" & MontantTotalTTC.ToString.Replace(",", ".") & "', 'En cours','" & cur_User & "','" & ProjetEnCours & "','" & Dossier & "')"
-                ExecuteNonQuery(Save3)
-
-                SuccesMsg("Enregistrement effectué avec succès")
-                Initialiser()
-                ChargerNumDAO()
-                Liste_boncommande.LoadColonneBonCommande()
-                Liste_boncommande.RemplirDataGrid()
+                Exit Sub
             End If
+
+            If GVSignataire.RowCount > 0 Then
+                Dim Save2 As String = ""
+                For i = 0 To GVSignataire.RowCount - 1
+                    Save2 = "insert into t_bc_signataire values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(GVSignataire.GetRowCellValue(i, "Nom, Prénoms et Titre")) & "','" & GVSignataire.GetRowCellValue(i, "N°") & "','" & ProjetEnCours & "')"
+                    ExecuteNonQuery(Save2)
+                Next
+            Else
+                SuccesMsg("Veuillez ajouter au moins un signataire avant l'enregistrement")
+                CmbSignataire.Focus()
+                Exit Sub
+            End If
+
+            If ViewLstCmde.RowCount > 0 Then
+                'Dim sauver As String
+                For i = 0 To ViewLstCmde.RowCount - 1
+                    Dim sauver As String = "insert into t_bc_listebesoins values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Référence")) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Désignation")) & "','" & ViewLstCmde.GetRowCellValue(i, "Quantité") & "','" & ViewLstCmde.GetRowCellValue(i, "Prix Unitaire") & "','" & CDbl(ViewLstCmde.GetRowCellValue(i, "Montant")) & "')"
+                    ExecuteNonQuery(sauver)
+                    'ExecuteNonQuery("insert into t_bc_listebesoins values(NULL,'" & EnleverApost(Txtboncmde.Text) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Référence")) & "','" & EnleverApost(ViewLstCmde.GetRowCellValue(i, "Désignation")) & "','" & ViewLstCmde.GetRowCellValue(i, "Quantité") & "','" & ViewLstCmde.GetRowCellValue(i, "Prix Unitaire") & "','" & CDbl(ViewLstCmde.GetRowCellValue(i, "Montant")) & "')")
+                    'InputBox("", "", sauver)
+                Next
+            Else
+                SuccesMsg("Veuillez ajouter la liste des besoins avant l'enregistrement")
+                Exit Sub
+            End If
+
+            Dim Annee As String = CStr(Now.Year)
+            Dim Dossier As String = TypeDossier(CmbNumDAO.SelectedIndex)
+
+            Dim ChoixElabBC As String = "Par Passation de Marché"
+            Dim dd As String = CDate(Dateboncmde.Text).ToString("dd/MM/yyy")
+            Dim DateBC As String = dateconvert(dd)
+            Dim RefLot As String = ""
+
+            Dim ConditionPaiement As String = ""
+            If RdCheque.Checked Then
+                ConditionPaiement = "Chèque"
+            ElseIf RdVirement.Checked Then
+                ConditionPaiement = "Virement"
+            Else
+                ConditionPaiement = "Espèces"
+            End If
+
+            Dim MontantHT As String = ""
+            Dim TVA As String = ""
+            Dim Remise As String = ""
+            Dim AutreTaxe As String = ""
+            Dim MontantTVA As Double = 0
+            Dim MontantRemise As Double = 0
+            Dim MontantAutreTaxe As Double = 0
+            Dim MontantNetHT As Double = 0
+            Dim MontantTOTAL As Double = 0
+            Dim MontantTotalTTC As Double = 0
+            Dim MontantOffre As Double = 0
+            Dim MontantRabais As Double = 0
+
+            'récupération du montant hors taxe
+            Dim Requete As String = ""
+            Requete = "SELECT SUM(PrixTotal) as MontantHT FROM t_bc_listebesoins WHERE RefBonCommande = '" & EnleverApost(Txtboncmde.Text) & "'"
+            MontantHT = ExecuteScallar(Requete)
+
+            If TxtMontRabais.Text = "" Then
+                MontantOffre = MontantHT - MontantRabais
+            Else
+                MontantOffre = MontantHT - CDbl(TxtMontRabais.Text)
+            End If
+
+            If TxtRemise.Text = "" Then
+                Remise = ""
+                MontantRemise = 0
+            End If
+
+            MontantNetHT = CDbl(TxtNewMont.Text)
+
+            If TxtTVA.Text = "" Then
+                TVA = ""
+                MontantTVA = 0
+            Else
+                TVA = TxtTVA.Text
+                MontantTVA = Math.Round(MontantNetHT * (CDbl(TVA) / 100))
+            End If
+
+            If TxtLibAutreTaxe.Text = "" Then
+                AutreTaxe = ""
+                MontantAutreTaxe = 0
+            Else
+                AutreTaxe = TxtAutreTaxe.Text
+                MontantAutreTaxe = Math.Round(MontantNetHT * (CDbl(AutreTaxe) / 100))
+            End If
+
+            If MontantTotalDossier = "" Then
+                MontantTOTAL = 0
+            Else
+                MontantTOTAL = CDbl(MontantTotalDossier)
+            End If
+
+            MontantTotalTTC = MontantNetHT + MontantTVA + MontantAutreTaxe
+
+            'Vérification du type de marché : Fournitures, Travaux, Services autres, Consultants
+            query = "SELECT TypeMarche FROM t_dao WHERE CodeProjet = '" & ProjetEnCours & "' AND NumeroDAO = '" & EnleverApost(CmbNumDAO.Text) & "'"
+            Dim TypeMarche As String = ExecuteScallar(query)
+
+            If Dossier = "DAO" Then
+                'récupération de la référence du lot
+                Dim Receive1 As String = ""
+                Receive1 = "SELECT RefLot FROM t_lotdao WHERE CodeLot = '" & EnleverApost(CmbCodeLot.Text) & "' AND NumeroDAO = '" & EnleverApost(CmbNumDAO.Text) & "'"
+                RefLot = ExecuteScallar(Receive1)
+
+                'Mise à jour dans la table t_fournisseur
+                Dim Modif As String = ""
+                Modif = "UPDATE t_fournisseur SET AdresseCompleteFournis = '" & EnleverApost(TxtAdresseFour.Text) & "', TelFournis = '" & EnleverApost(TxtTelFour.Text) & "', CompteContribuableFournis = '" & EnleverApost(TxtCCFour.Text) & "', RegistreCommerceFournis = '" & EnleverApost(TxtRCCM.Text) & "' WHERE CodeFournis = '" & CodeFournis.ToString & "'"
+                ExecuteNonQuery(Modif)
+            Else
+                RefLot = RefSoumis(CmbNumDAO.SelectedIndex)
+
+                'Enregistrement du Fournisseur
+                Dim Save4 As String = ""
+                Save4 = "INSERT INTO t_fournisseur (CodeFournis,NomFournis,AdresseCompleteFournis,TelFournis,CompteContribuableFournis,RegistreCommerceFournis,NumeroDAO,NomAch,CodeProjet) VALUES (NULL,'" & EnleverApost(TxtFournisseur.Text) & "','" & EnleverApost(TxtAdresseFour.Text) & "','" & EnleverApost(TxtTelFour.Text) & "','" & EnleverApost(TxtCCFour.Text) & "','" & EnleverApost(TxtRCCM.Text) & "','" & EnleverApost(Txtboncmde.Text) & "','" & "" & "','" & ProjetEnCours & "')"
+                ExecuteNonQuery(Save4)
+
+                Dim Receive2 As String = ""
+                Receive2 = "SELECT CodeFournis FROM t_fournisseur WHERE NumeroDAO = '" & EnleverApost(Txtboncmde.Text) & "' and CodeProjet = '" & ProjetEnCours & "'"
+                CodeFournis = ExecuteScallar(Receive2)
+            End If
+
+            Dim Save3 As String = ""
+            'insertion dans la table t_boncommande
+            Save3 = "INSERT INTO t_boncommande values('" & nbBonCommande & "','" & EnleverApost(Txtboncmde.Text) & "','" & Annee & "', '" & CInt(CodeFournis) & "','" & ChoixElabBC & "','" & EnleverApost(CmbNumDAO.Text) & "','" & RefLot & "','" & EnleverApost(TxtIntituleMarche.Text) & "','" & DateBC & "','" & ConditionPaiement & "','" & EnleverApost(TxtDelaiLivraison.Text) & "','"
+            Save3 &= EnleverApost(TxtLieuLivraison.Text) & "','" & EnleverApost(TxtIsntructionSpec.Text) & "','" & EnleverApost(TxtReference.Text) & "','" & EnleverApost(TxtDesignation.Text) & "','" & TxtMontRabais.Text & "','" & MontantOffre & "','" & TxtAjustement.Text & "','" & CDbl(MontantHT) & "','" & TVA & "','" & MontantTVA.ToString.Replace(",", ".") & "','" & Remise & "','" & MontantRemise.ToString.Replace(",", ".") & "','" & EnleverApost(TxtLibAutreTaxe.Text) & "','" & AutreTaxe & "','" & MontantAutreTaxe.ToString.Replace(",", ".") & "','" & MontantNetHT.ToString.Replace(",", ".") & "','" & MontantTOTAL.ToString.Replace(",", ".") & "','" & MontantTotalTTC.ToString.Replace(",", ".") & "', 'En cours','" & cur_User & "','" & ProjetEnCours & "','" & Dossier & "')"
+            ExecuteNonQuery(Save3)
+
+            SuccesMsg("Enregistrement effectué avec succès")
+            Initialiser()
+            ChargerNumDAO()
+            Liste_boncommande.LoadColonneBonCommande()
+            Liste_boncommande.RemplirDataGrid()
+
         Else
             If Dateboncmde.Text = "" Then
                 SuccesMsg("Veuillez choisir la date d'élaboration du bon de commande")
