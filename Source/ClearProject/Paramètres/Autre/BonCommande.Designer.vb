@@ -396,9 +396,9 @@ Partial Class BonCommande
         Me.Label11.AutoSize = True
         Me.Label11.Location = New System.Drawing.Point(9, 34)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(63, 13)
+        Me.Label11.Size = New System.Drawing.Size(62, 13)
         Me.Label11.TabIndex = 10
-        Me.Label11.Text = "Fournisseur"
+        Me.Label11.Text = "Attributaire"
         '
         'Panel1
         '
@@ -1062,12 +1062,12 @@ Partial Class BonCommande
         Me.GroupControl6.Name = "GroupControl6"
         Me.GroupControl6.Size = New System.Drawing.Size(390, 182)
         Me.GroupControl6.TabIndex = 2
-        Me.GroupControl6.Text = "Identification du Fournisseur"
+        Me.GroupControl6.Text = "Identification de l'Attributaire"
         '
         'lc4
         '
         Me.lc4.Appearance.ForeColor = System.Drawing.Color.Red
-        Me.lc4.Location = New System.Drawing.Point(72, 33)
+        Me.lc4.Location = New System.Drawing.Point(71, 33)
         Me.lc4.Name = "lc4"
         Me.lc4.Size = New System.Drawing.Size(6, 13)
         Me.lc4.TabIndex = 280

@@ -27,7 +27,7 @@ Public Class Liste_boncommande
         dtListeBonCommande.Columns.Add("NumeroDAO", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("RefLot", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("Intitulé du marché", Type.GetType("System.String"))
-        dtListeBonCommande.Columns.Add("Fournisseur", Type.GetType("System.String"))
+        dtListeBonCommande.Columns.Add("Attributaire", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("ConditionPaiement", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("DelaiLivraison", Type.GetType("System.String"))
         dtListeBonCommande.Columns.Add("LieuLivraison", Type.GetType("System.String"))
@@ -55,7 +55,7 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("NumeroDAO").Visible = False
         ViewBoncommande.Columns("RefLot").Visible = False
         ViewBoncommande.Columns("Intitulé du marché").Width = 350
-        ViewBoncommande.Columns("Fournisseur").Width = 350
+        ViewBoncommande.Columns("Attributaire").Width = 350
         ViewBoncommande.Columns("ConditionPaiement").Visible = False
         ViewBoncommande.Columns("DelaiLivraison").Visible = False
         ViewBoncommande.Columns("LieuLivraison").Visible = False
@@ -112,7 +112,7 @@ Public Class Liste_boncommande
             drS("Choix") = TabTrue(0)
             drS("N° Bon Commande") = rw("RefBonCommande").ToString
             drS("CodeFournisseur") = rw("CodeFournisseur").ToString
-            drS("Fournisseur") = NomFournisseur.ToString
+            drS("Attributaire") = NomFournisseur.ToString
             drS("TypeElabBC") = rw("TypeElabBC").ToString
             drS("NumeroDAO") = rw("NumeroDAO").ToString
             drS("RefLot") = rw("RefLot").ToString
@@ -157,7 +157,7 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("NumeroDAO").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("RefLot").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Intitulé du marché").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("Fournisseur").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Attributaire").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("ConditionPaiement").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("DelaiLivraison").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("LieuLivraison").OptionsColumn.AllowEdit = False
@@ -362,7 +362,7 @@ Public Class Liste_boncommande
             drS("Choix") = TabTrue(0)
             drS("N° Bon Commande") = rw("RefBonCommande").ToString
             drS("CodeFournisseur") = rw("CodeFournisseur").ToString
-            drS("Fournisseur") = NomFournisseur.ToString
+            drS("Attributaire") = NomFournisseur.ToString
             drS("TypeElabBC") = rw("TypeElabBC").ToString
             drS("NumeroDAO") = rw("NumeroDAO").ToString
             drS("RefLot") = rw("RefLot").ToString
@@ -407,7 +407,7 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("NumeroDAO").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("RefLot").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("Intitulé du marché").OptionsColumn.AllowEdit = False
-        ViewBoncommande.Columns("Fournisseur").OptionsColumn.AllowEdit = False
+        ViewBoncommande.Columns("Attributaire").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("ConditionPaiement").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("DelaiLivraison").OptionsColumn.AllowEdit = False
         ViewBoncommande.Columns("LieuLivraison").OptionsColumn.AllowEdit = False

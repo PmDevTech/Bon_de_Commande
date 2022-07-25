@@ -99,7 +99,7 @@ Public Class EtatListeBonCommande
         reportEtatBonCommande.SetParameterValue("DateFin", tempdt1)
 
         FullScreenReport.FullView.ReportSource = reportEtatBonCommande
-        FullScreenReport.Text = ""
+        FullScreenReport.Text = "Etat récapitulatif des bons de commande"
         FinChargement()
         FullScreenReport.ShowDialog()
     End Sub

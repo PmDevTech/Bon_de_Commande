@@ -733,8 +733,6 @@ Public Class BonCommande
             Else
                 CmbCodeLot.Text = ""
                 CmbCodeLot.Enabled = False
-                GroupControl6.Text = "Identification du Consultant"
-                Label11.Text = "Consultant"
                 TxtTVA.Enabled = False
                 TxtLibAutreTaxe.Enabled = True
 
