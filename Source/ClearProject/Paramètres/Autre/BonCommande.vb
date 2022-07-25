@@ -11,7 +11,6 @@ Public Class BonCommande
     Dim ID_NumDAO() As String
     Dim TypeDossier As New List(Of String)
     Dim RefSoumis As New List(Of String)
-    Dim ID_CodeLot() As String
     Dim CodeFournis As String = ""
     Dim MontantTotalDossier As String = ""
     Dim NumeroBonCommande As String = ""
@@ -30,6 +29,8 @@ Public Class BonCommande
         Dim VerifBonCommande As Double = 0
         Dim VerifResult As Integer = 0
         init = 0
+        TypeDossier.Clear()
+        RefSoumis.Clear()
 
         'DAO (Fournitures, Travaux, Autres Services)
         query = "SELECT d.NumeroDAO, l.RefLot FROM t_dao d, t_lotdao l, t_soumissionfournisseurclassement s WHERE d.NumeroDAO = l.NumeroDAO AND l.NumeroDAO = s.NumeroDAO AND d.DateFinJugement is not null AND d.statut_DAO <> 'Annulé' and d.CodeProjet = '" & ProjetEnCours & "' and s.Selectionne = 'OUI' and s.Attribue = 'OUI' GROUP by l.RefLot ORDER BY d.NumeroDAO"
@@ -42,7 +43,6 @@ Public Class BonCommande
         'DP
         query = "select N.NumeroDp, N.RefSoumis from t_consultant as C, t_soumissionconsultant as S, t_dp_negociation as N where C.RefConsult=S.RefConsult and S.RefSoumis=N.RefSoumis and S.Negociation='OUI' and S.RangFinal IS NOT NULL and S.EvalFinOk='OUI' and S.ConsultDisqualifie IS NULL ORDER BY S.RangFinal ASC"
         VerifExist_DAO_AMI_DP("DP", query)
-
     End Sub
 
     Private Sub VerifExist_DAO_AMI_DP(TypeRequete As String, requete As String)
@@ -54,7 +54,6 @@ Public Class BonCommande
             ReDim Preserve ID_NumDAO(dt.Rows.Count)
 
             For Each rw As DataRow In dt.Rows
-
                 If TypeRequete = "DAO" Then
                     query = "SELECT count(NumeroMarche) as Result from t_marchesigne WHERE NumeroDAO = '" & rw("NumeroDAO").ToString & "' and RefLot = '" & rw("RefLot").ToString & "' and CodeProjet = '" & ProjetEnCours & "'"
                 Else
@@ -83,11 +82,9 @@ Public Class BonCommande
                 End If
                 init += 1
             Next
-
         Catch ex As Exception
             SuccesMsg(ex.ToString)
         End Try
-
     End Sub
 
     Private Sub ChargerSignataire()
@@ -697,8 +694,9 @@ Public Class BonCommande
         Dim TypeMarche As String = ""
 
         If CmbNumDAO.SelectedIndex <> -1 Then
+            Dim VerifTypeDossier As String = TypeDossier(CmbNumDAO.SelectedIndex)
 
-            If TypeDossier(CmbNumDAO.SelectedIndex) = "DAO" Then
+            If VerifTypeDossier = "DAO" Then
                 CmbCodeLot.Enabled = True
                 TxtTVA.Enabled = True
                 TxtLibAutreTaxe.Enabled = False
@@ -708,41 +706,29 @@ Public Class BonCommande
                 TxtLibAutreTaxe.Enabled = True
             End If
 
-            Dim VerifTypeDossier As String = TypeDossier(CmbNumDAO.SelectedIndex)
-
             If VerifTypeDossier = "DAO" Then
 
-                query = "SELECT TypeMarche FROM t_dao WHERE CodeProjet = '" & ProjetEnCours & "' AND NumeroDAO = '" & EnleverApost(CmbNumDAO.Text) & "'"
-                TypeMarche = ExecuteScallar(query)
+                query = "SELECT IntituleDAO FROM t_dao WHERE CodeProjet = '" & ProjetEnCours & "' AND NumeroDAO = '" & EnleverApost(CmbNumDAO.Text) & "'"
+                Dim Intitule = ExecuteScallar(query)
+                TxtIntituleMarche.Text = MettreApost(Intitule.ToString)
 
-                If TypeMarche = "Fournitures" Or TypeMarche = "Travaux" Or TypeMarche.Contains("Service") Then
-                    query = "SELECT IntituleDAO FROM t_dao WHERE CodeProjet = '" & ProjetEnCours & "' AND NumeroDAO = '" & EnleverApost(CmbNumDAO.Text) & "'"
-                    Dim Intitule = ExecuteScallar(query)
-                    TxtIntituleMarche.Text = MettreApost(Intitule.ToString)
+                query = "SELECT * from t_lotdao WHERE NumeroDAO = '" & EnleverApost(CmbNumDAO.Text) & "'"
+                Dim dt As DataTable = ExcecuteSelectQuery(query)
+                For Each rw As DataRow In dt.Rows
+                    query = "SELECT count(NumeroMarche) as Result from t_marchesigne WHERE NumeroDAO = '" & rw("NumeroDAO").ToString & "' and RefLot = '" & rw("RefLot").ToString & "' and CodeProjet = '" & ProjetEnCours & "'"
+                    VerifMarche = Val(ExecuteScallar(query))
+                    If VerifMarche > 0 Then
+                        Continue For
+                    End If
 
-                    query = "SELECT * from t_lotdao WHERE NumeroDAO = '" & EnleverApost(CmbNumDAO.Text) & "'"
-                    Dim dt As DataTable = ExcecuteSelectQuery(query)
-                    ReDim ID_CodeLot(dt.Rows.Count)
-                    Dim i As Integer = 0
-                    For Each rw As DataRow In dt.Rows
-                        query = "SELECT count(NumeroMarche) as Result from t_marchesigne WHERE NumeroDAO = '" & rw("NumeroDAO").ToString & "' and RefLot = '" & rw("RefLot").ToString & "' and CodeProjet = '" & ProjetEnCours & "'"
-                        VerifMarche = Val(ExecuteScallar(query))
-                        If VerifMarche > 0 Then
-                            Continue For
-                        End If
+                    query = "SELECT count(RefBonCommande) as Result from t_boncommande WHERE NumeroDAO = '" & rw("NumeroDAO").ToString & "' and RefLot = '" & rw("RefLot").ToString & "' and CodeProjet = '" & ProjetEnCours & "' and (Statut = 'Signé' or Statut = 'En cours')"
+                    VerifBonCommande = Val(ExecuteScallar(query))
+                    If VerifBonCommande > 0 Then
+                        Continue For
+                    End If
 
-                        query = "SELECT count(RefBonCommande) as Result from t_boncommande WHERE NumeroDAO = '" & rw("NumeroDAO").ToString & "' and RefLot = '" & rw("RefLot").ToString & "' and CodeProjet = '" & ProjetEnCours & "' and (Statut = 'Signé' or Statut = 'En cours')"
-                        VerifBonCommande = Val(ExecuteScallar(query))
-                        If VerifBonCommande > 0 Then
-                            Continue For
-                        End If
-
-                        CmbCodeLot.Properties.Items.Add(rw("CodeLot").ToString)
-                        ID_CodeLot(i) = rw("CodeLot").ToString
-                        i += 1
-                    Next
-
-                End If
+                    CmbCodeLot.Properties.Items.Add(rw("CodeLot").ToString)
+                Next
 
             Else
                 CmbCodeLot.Text = ""
@@ -1205,6 +1191,8 @@ Public Class BonCommande
                 Dim MontantRemise As Double = 0
                 Dim MontantAutreTaxe As Double = 0
                 Dim MontantNetHT As Double = 0
+                Dim MontantOffre As Double = 0
+                Dim MontantRabais As Double = 0
                 Dim MontantTOTAL As Double = 0
                 Dim MontantTotalTTC As Double = 0
 
@@ -1212,6 +1200,12 @@ Public Class BonCommande
                 Dim Receive1 As String = ""
                 Receive1 = "SELECT SUM(PrixTotal) as MontantHT FROM t_bc_listebesoins WHERE RefBonCommande = '" & EnleverApost(Txtboncmde.Text) & "'"
                 MontantHT = ExecuteScallar(Receive1)
+
+                If TxtMontRabais.Text = "" Then
+                    MontantOffre = MontantHT - MontantRabais
+                Else
+                    MontantOffre = MontantHT - CDbl(TxtMontRabais.Text)
+                End If
 
                 If TxtRemise.Text = "" Then
                     Remise = ""
@@ -1231,6 +1225,9 @@ Public Class BonCommande
                 If TxtLibAutreTaxe.Text = "" Then
                     AutreTaxe = ""
                     MontantAutreTaxe = 0
+                Else
+                    AutreTaxe = TxtAutreTaxe.Text
+                    MontantAutreTaxe = Math.Round(MontantNetHT * (CDbl(AutreTaxe) / 100))
                 End If
 
                 If MontantTotalDossier = "" Then
@@ -1239,7 +1236,7 @@ Public Class BonCommande
                     MontantTOTAL = CDbl(MontantTotalDossier)
                 End If
 
-                MontantTotalTTC = MontantNetHT + MontantTVA
+                MontantTotalTTC = MontantNetHT + MontantTVA + MontantAutreTaxe
 
                 'Mise à jour dans la table t_fournisseur
                 Dim Modif As String = ""
