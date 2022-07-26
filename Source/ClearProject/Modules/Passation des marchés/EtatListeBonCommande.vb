@@ -23,7 +23,7 @@ Public Class EtatListeBonCommande
             DateFin.Text = CDate(rw("DateFin")).ToString("dd/MM/yyyy")
         Next
 
-        query = "SELECT DISTINCT Statut FROM t_boncommande WHERE CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User & "'"
+        query = "SELECT DISTINCT Statut FROM t_boncommande WHERE CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User & "' ORDER by Statut ASC"
         dt = ExcecuteSelectQuery(query)
         CmbStatut.Properties.Items.Add("Tous")
         For Each rw As DataRow In dt.Rows

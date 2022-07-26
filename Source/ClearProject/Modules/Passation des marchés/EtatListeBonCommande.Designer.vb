@@ -42,7 +42,7 @@ Partial Class EtatListeBonCommande
         'DateDebut
         '
         Me.DateDebut.EditValue = Nothing
-        Me.DateDebut.Location = New System.Drawing.Point(99, 9)
+        Me.DateDebut.Location = New System.Drawing.Point(95, 9)
         Me.DateDebut.Name = "DateDebut"
         Me.DateDebut.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.DateDebut.Properties.Mask.EditMask = ""
@@ -54,7 +54,7 @@ Partial Class EtatListeBonCommande
         'DateFin
         '
         Me.DateFin.EditValue = Nothing
-        Me.DateFin.Location = New System.Drawing.Point(99, 45)
+        Me.DateFin.Location = New System.Drawing.Point(95, 45)
         Me.DateFin.Name = "DateFin"
         Me.DateFin.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.DateFin.Properties.Mask.EditMask = ""
@@ -66,7 +66,7 @@ Partial Class EtatListeBonCommande
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(25, 12)
+        Me.Label3.Location = New System.Drawing.Point(21, 12)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(61, 13)
         Me.Label3.TabIndex = 117
@@ -75,7 +75,7 @@ Partial Class EtatListeBonCommande
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(41, 48)
+        Me.Label1.Location = New System.Drawing.Point(37, 48)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(45, 13)
         Me.Label1.TabIndex = 118
@@ -84,7 +84,7 @@ Partial Class EtatListeBonCommande
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(49, 85)
+        Me.Label2.Location = New System.Drawing.Point(45, 85)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(37, 13)
         Me.Label2.TabIndex = 119
@@ -92,7 +92,7 @@ Partial Class EtatListeBonCommande
         '
         'CmbStatut
         '
-        Me.CmbStatut.Location = New System.Drawing.Point(99, 82)
+        Me.CmbStatut.Location = New System.Drawing.Point(95, 82)
         Me.CmbStatut.Name = "CmbStatut"
         Me.CmbStatut.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.CmbStatut.Size = New System.Drawing.Size(207, 20)
@@ -100,6 +100,8 @@ Partial Class EtatListeBonCommande
         '
         'BtnImprimer
         '
+        Me.BtnImprimer.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnImprimer.Appearance.Options.UseFont = True
         Me.BtnImprimer.Image = Global.ClearProject.My.Resources.Resources.Group_Reports
         Me.BtnImprimer.Location = New System.Drawing.Point(98, 10)
         Me.BtnImprimer.Name = "BtnImprimer"
