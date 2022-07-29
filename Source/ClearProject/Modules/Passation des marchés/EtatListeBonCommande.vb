@@ -16,14 +16,14 @@ Public Class EtatListeBonCommande
 
         Dim dt As DataTable = New DataTable()
 
-        query = "SELECT Min(DateCommande) as DateDebut, Max(DateCommande) as DateFin FROM t_boncommande WHERE CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User & "'"
+        query = "SELECT Min(DateCommande) as DateDebut, Max(DateCommande) as DateFin FROM t_boncommande WHERE CodeProjet = '" & ProjetEnCours & "'"
         dt = ExcecuteSelectQuery(query)
         For Each rw As DataRow In dt.Rows
             DateDebut.Text = CDate(rw("DateDebut")).ToString("dd/MM/yyyy")
             DateFin.Text = CDate(rw("DateFin")).ToString("dd/MM/yyyy")
         Next
 
-        query = "SELECT DISTINCT Statut FROM t_boncommande WHERE CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User & "' ORDER by Statut ASC"
+        query = "SELECT DISTINCT Statut FROM t_boncommande WHERE CodeProjet = '" & ProjetEnCours & "' ORDER by Statut ASC"
         dt = ExcecuteSelectQuery(query)
         CmbStatut.Properties.Items.Add("Tous")
         For Each rw As DataRow In dt.Rows

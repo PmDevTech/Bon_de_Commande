@@ -85,7 +85,7 @@ Public Class Liste_boncommande
     Public Sub RemplirDataGrid()
 
         query = "SELECT ID_BC,RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,MontantRabais,Ajustement,MontantBCHT,MontantNetHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,Statut,EMP_ID,TypeDossier FROM t_boncommande "
-        query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User & "' ORDER BY ID_BC DESC"
+        query &= "where CodeProjet = '" & ProjetEnCours & "' ORDER BY ID_BC DESC"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         Dim cptr As Integer = 0
         Dim NomEditeur As String = ""
@@ -193,14 +193,14 @@ Public Class Liste_boncommande
 
     Private Sub BtImprimer_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtImprimer.Click
 
-        'ImprimerBonDeCommandeToolStripMenuItem_Click(sender, e)
+        ImprimerBonDeCommandeToolStripMenuItem_Click(sender, e)
 
-        If ViewBoncommande.RowCount > 0 Then
-            EtatListeBonCommande.Size = New Point(365, 229)
-            Dialog_form(EtatListeBonCommande)
-        Else
-            SuccesMsg("Veuillez générer ou élaborer un bon de commande")
-        End If
+        'If ViewBoncommande.RowCount > 0 Then
+        '    EtatListeBonCommande.Size = New Point(365, 229)
+        '    Dialog_form(EtatListeBonCommande)
+        'Else
+        '    SuccesMsg("Veuillez générer ou élaborer un bon de commande")
+        'End If
     End Sub
 
     Private Sub BtSupprimer_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtSupprimer.Click
