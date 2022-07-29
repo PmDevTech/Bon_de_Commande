@@ -596,7 +596,12 @@ Public Class BonCommande
     End Sub
 
     Private Sub BtAnnuler_Click(sender As Object, e As EventArgs) Handles BtAnnuler.Click
-        Initialiser()
+        If BtEnregistrer.Enabled = True Then
+            Initialiser()
+        ElseIf BtModifier.Enabled = True Then
+            Initialiser()
+            Me.Close()
+        End If
     End Sub
 
     Private Sub RdParPassMarche_CheckedChanged(sender As Object, e As EventArgs) Handles RdParPassMarche.CheckedChanged
@@ -1257,6 +1262,7 @@ Public Class BonCommande
                 Initialiser()
                 Liste_boncommande.LoadColonneBonCommande()
                 Liste_boncommande.RemplirDataGrid()
+                Me.Close()
             End If
         Else
             If Dateboncmde.Text = "" Then
@@ -1393,6 +1399,7 @@ Public Class BonCommande
                 Initialiser()
                 Liste_boncommande.LoadColonneBonCommande()
                 Liste_boncommande.RemplirDataGrid()
+                Me.Close()
             End If
         End If
     End Sub
