@@ -125,7 +125,7 @@ Partial Class EtatListeBonCommande
         'PanelControl1
         '
         Me.PanelControl1.Controls.Add(Me.BtnImprimer)
-        Me.PanelControl1.Location = New System.Drawing.Point(8, 127)
+        Me.PanelControl1.Location = New System.Drawing.Point(8, 124)
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(333, 55)
         Me.PanelControl1.TabIndex = 2
@@ -134,7 +134,7 @@ Partial Class EtatListeBonCommande
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(349, 190)
+        Me.ClientSize = New System.Drawing.Size(350, 188)
         Me.Controls.Add(Me.PanelControl1)
         Me.Controls.Add(Me.PanelControl3)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog

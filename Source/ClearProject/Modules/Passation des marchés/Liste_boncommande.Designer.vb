@@ -20,7 +20,7 @@ Partial Class Liste_boncommande
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.BackstageViewButtonItem1 = New DevExpress.XtraBars.Ribbon.BackstageViewButtonItem()
@@ -45,6 +45,7 @@ Partial Class Liste_boncommande
         Me.ViewBoncommande = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
+        Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         Me.TxtRechercher = New DevExpress.XtraEditors.TextEdit()
         Me.Checktous = New DevExpress.XtraEditors.CheckEdit()
@@ -53,7 +54,6 @@ Partial Class Liste_boncommande
         Me.BtActualiser = New DevExpress.XtraEditors.SimpleButton()
         Me.BtModifier = New DevExpress.XtraEditors.SimpleButton()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl3.SuspendLayout()
@@ -175,8 +175,8 @@ Partial Class Liste_boncommande
         Me.GCListBoncommande.ContextMenuStrip = Me.ContextMenuStrip1
         Me.GCListBoncommande.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GCListBoncommande.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        GridLevelNode2.RelationName = "Level1"
-        Me.GCListBoncommande.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
+        GridLevelNode1.RelationName = "Level1"
+        Me.GCListBoncommande.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
         Me.GCListBoncommande.Location = New System.Drawing.Point(2, 2)
         Me.GCListBoncommande.MainView = Me.ViewBoncommande
         Me.GCListBoncommande.Name = "GCListBoncommande"
@@ -221,15 +221,17 @@ Partial Class Liste_boncommande
         'ViewBoncommande
         '
         Me.ViewBoncommande.ActiveFilterEnabled = False
-        Me.ViewBoncommande.Appearance.ColumnFilterButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.ViewBoncommande.Appearance.ColumnFilterButton.BorderColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.ViewBoncommande.Appearance.ColumnFilterButton.ForeColor = System.Drawing.Color.Black
+        Me.ViewBoncommande.Appearance.ColumnFilterButton.BackColor = System.Drawing.Color.Silver
+        Me.ViewBoncommande.Appearance.ColumnFilterButton.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(212, Byte), Integer), CType(CType(212, Byte), Integer), CType(CType(212, Byte), Integer))
+        Me.ViewBoncommande.Appearance.ColumnFilterButton.BorderColor = System.Drawing.Color.Silver
+        Me.ViewBoncommande.Appearance.ColumnFilterButton.ForeColor = System.Drawing.Color.Gray
         Me.ViewBoncommande.Appearance.ColumnFilterButton.Options.UseBackColor = True
         Me.ViewBoncommande.Appearance.ColumnFilterButton.Options.UseBorderColor = True
         Me.ViewBoncommande.Appearance.ColumnFilterButton.Options.UseForeColor = True
-        Me.ViewBoncommande.Appearance.ColumnFilterButtonActive.BackColor = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(216, Byte), Integer))
-        Me.ViewBoncommande.Appearance.ColumnFilterButtonActive.BorderColor = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(216, Byte), Integer))
-        Me.ViewBoncommande.Appearance.ColumnFilterButtonActive.ForeColor = System.Drawing.Color.Black
+        Me.ViewBoncommande.Appearance.ColumnFilterButtonActive.BackColor = System.Drawing.Color.FromArgb(CType(CType(212, Byte), Integer), CType(CType(212, Byte), Integer), CType(CType(212, Byte), Integer))
+        Me.ViewBoncommande.Appearance.ColumnFilterButtonActive.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(223, Byte), Integer))
+        Me.ViewBoncommande.Appearance.ColumnFilterButtonActive.BorderColor = System.Drawing.Color.FromArgb(CType(CType(212, Byte), Integer), CType(CType(212, Byte), Integer), CType(CType(212, Byte), Integer))
+        Me.ViewBoncommande.Appearance.ColumnFilterButtonActive.ForeColor = System.Drawing.Color.Blue
         Me.ViewBoncommande.Appearance.ColumnFilterButtonActive.Options.UseBackColor = True
         Me.ViewBoncommande.Appearance.ColumnFilterButtonActive.Options.UseBorderColor = True
         Me.ViewBoncommande.Appearance.ColumnFilterButtonActive.Options.UseForeColor = True
@@ -377,6 +379,15 @@ Partial Class Liste_boncommande
         Me.PanelControl2.Size = New System.Drawing.Size(991, 32)
         Me.PanelControl2.TabIndex = 15
         '
+        'LabelControl3
+        '
+        Me.LabelControl3.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl3.Location = New System.Drawing.Point(598, 7)
+        Me.LabelControl3.Name = "LabelControl3"
+        Me.LabelControl3.Size = New System.Drawing.Size(6, 19)
+        Me.LabelControl3.TabIndex = 27
+        Me.LabelControl3.Text = "|"
+        '
         'LabelControl2
         '
         Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -451,15 +462,6 @@ Partial Class Liste_boncommande
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
-        '
-        'LabelControl3
-        '
-        Me.LabelControl3.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl3.Location = New System.Drawing.Point(598, 7)
-        Me.LabelControl3.Name = "LabelControl3"
-        Me.LabelControl3.Size = New System.Drawing.Size(6, 19)
-        Me.LabelControl3.TabIndex = 27
-        Me.LabelControl3.Text = "|"
         '
         'Liste_boncommande
         '

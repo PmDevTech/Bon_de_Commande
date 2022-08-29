@@ -78,8 +78,8 @@ Public Class Liste_boncommande
         ViewBoncommande.Columns("Montant").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         ViewBoncommande.Columns("Editeur").AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
 
-        ViewBoncommande.Appearance.Row.Font = New Font("Times New Roman", 12, FontStyle.Regular)
-        ColorRowGrid(ViewBoncommande, "[Code]='x'", Color.LightGray, "Times New Roman", 12, FontStyle.Regular, Color.Black)
+        ViewBoncommande.Appearance.Row.Font = New Font("Times New Roman", 11, FontStyle.Regular)
+        ColorRowGrid(ViewBoncommande, "[Code]='x'", Color.LightGray, "Times New Roman", 11, FontStyle.Regular, Color.Black)
     End Sub
 
     Public Sub RemplirDataGrid()
@@ -192,15 +192,13 @@ Public Class Liste_boncommande
     End Sub
 
     Private Sub BtImprimer_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtImprimer.Click
-
-        ImprimerBonDeCommandeToolStripMenuItem_Click(sender, e)
-
-        'If ViewBoncommande.RowCount > 0 Then
-        '    EtatListeBonCommande.Size = New Point(365, 229)
-        '    Dialog_form(EtatListeBonCommande)
-        'Else
-        '    SuccesMsg("Veuillez générer ou élaborer un bon de commande")
-        'End If
+        If ViewBoncommande.RowCount > 0 Then
+            'EtatListeBonCommande.Size = New Point(365, 229)
+            'EtatListeBonCommande.Size = New Point(361, 224)
+            Dialog_form(EtatListeBonCommande)
+        Else
+            SuccesMsg("Veuillez générer ou élaborer un bon de commande")
+        End If
     End Sub
 
     Private Sub BtSupprimer_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtSupprimer.Click
@@ -333,7 +331,7 @@ Public Class Liste_boncommande
 
     Private Sub RemplirdatagridRechercher()
         query = "SELECT RefBonCommande,CodeFournisseur,TypeElabBC,NumeroDAO,RefLot,IntituleMarche,DateCommande,ConditionsPaiement,DelaiLivraison,LieuLivraison,InstructionSpeciale,RefArticle,Designation,MontantRabais,Ajustement,MontantBCHT,MontantNetHT,PcrtTVA,PcrtRemise,AutreTaxe,PcrtAutreTaxe,MontantTotalTTC,Statut,EMP_ID,TypeDossier FROM t_boncommande "
-        query &= "where CodeProjet = '" & ProjetEnCours & "' AND EMP_ID = '" & cur_User & "' AND RefBonCommande LIKE'" & TxtRechercher.Text & "%'"
+        query &= "where CodeProjet = '" & ProjetEnCours & "' AND RefBonCommande LIKE'" & TxtRechercher.Text & "%'"
         Dim dt As DataTable = ExcecuteSelectQuery(query)
         Dim cptr As Integer = 0
         Dim NomEditeur As String = ""
