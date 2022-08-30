@@ -64,6 +64,7 @@ Public Class EtatListeBonCommande
         Dim tempdt = dateconvert(str)
         Dim str2 As String = DateFin.Text
         Dim tempdt1 = dateconvert(str2)
+        Dim ReceiveDate As Integer = 0
 
         Dim reportEtatBonCommande As New ReportDocument
         Dim crtableLogoninfos As New TableLogOnInfos
@@ -71,6 +72,14 @@ Public Class EtatListeBonCommande
         Dim crConnectionInfo As New ConnectionInfo
         Dim CrTables As Tables
         Dim CrTable As Table
+
+        'vérification de la plage de date saisie
+        query = "SELECT count(RefBonCommande) as VerifDate FROM t_boncommande WHERE DateCommande BETWEEN '" & tempdt & "' AND '" & tempdt1 & "'"
+        ReceiveDate = CInt(ExecuteScallar(query))
+        If ReceiveDate = 0 Then
+            SuccesMsg("Aucun bon de commande élaboré ou généré au cours de la période de date sélectionnée. Impression impossible.")
+            Exit Sub
+        End If
 
         DebutChargement(True, "Le traitement de votre demande est en cours...")
 
