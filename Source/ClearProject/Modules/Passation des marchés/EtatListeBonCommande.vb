@@ -15,7 +15,6 @@ Public Class EtatListeBonCommande
         CmbStatut.Properties.Items.Clear()
 
         Dim dt As DataTable = New DataTable()
-
         query = "SELECT Min(DateCommande) as DateDebut, Max(DateCommande) as DateFin FROM t_boncommande WHERE CodeProjet = '" & ProjetEnCours & "'"
         dt = ExcecuteSelectQuery(query)
         For Each rw As DataRow In dt.Rows
@@ -77,15 +76,30 @@ Public Class EtatListeBonCommande
         query = "SELECT count(RefBonCommande) as VerifDate FROM t_boncommande WHERE DateCommande BETWEEN '" & tempdt & "' AND '" & tempdt1 & "'"
         ReceiveDate = Val(ExecuteScallar(query))
         If ReceiveDate = 0 Then
-            SuccesMsg("Aucun bon de commande élaboré ou généré au cours de la période de date sélectionnée. Impression impossible.")
+            SuccesMsg("Aucune données sur la période sélectionnée")
             Exit Sub
         End If
 
         DebutChargement(True, "Le traitement de votre demande est en cours...")
 
-        Dim Chemin As String = lineEtat & "\Bon_Commande\ListeBonCommande.rpt"
         Dim DatSet = New DataSet
-        reportEtatBonCommande.Load(Chemin)
+
+        If CmbStatut.Text = "Tous" Then
+            Dim Chemin As String = lineEtat & "\Bon_Commande\ListeBonCommande_Tous.rpt"
+            reportEtatBonCommande.Load(Chemin)
+        ElseIf CmbStatut.Text = "Annulé" Then
+            Dim Chemin As String = lineEtat & "\Bon_Commande\ListeBonCommande_Annuler.rpt"
+            reportEtatBonCommande.Load(Chemin)
+        ElseIf CmbStatut.Text = "En cours" Then
+            Dim Chemin As String = lineEtat & "\Bon_Commande\ListeBonCommande_EnCours.rpt"
+            reportEtatBonCommande.Load(Chemin)
+        ElseIf CmbStatut.Text = "Rejeté" Then
+            Dim Chemin As String = lineEtat & "\Bon_Commande\ListeBonCommande_Rejeter.rpt"
+            reportEtatBonCommande.Load(Chemin)
+        ElseIf CmbStatut.Text = "Signé" Then
+            Dim Chemin As String = lineEtat & "\Bon_Commande\ListeBonCommande_Signer.rpt"
+            reportEtatBonCommande.Load(Chemin)
+        End If
 
         With crConnectionInfo
             .ServerName = ODBCNAME
@@ -103,7 +117,6 @@ Public Class EtatListeBonCommande
 
         reportEtatBonCommande.SetDataSource(DatSet)
         reportEtatBonCommande.SetParameterValue("CodeProjet", ProjetEnCours)
-        reportEtatBonCommande.SetParameterValue("Statut", CmbStatut.Text)
         reportEtatBonCommande.SetParameterValue("DateDeb", tempdt)
         reportEtatBonCommande.SetParameterValue("DateFin", tempdt1)
 
