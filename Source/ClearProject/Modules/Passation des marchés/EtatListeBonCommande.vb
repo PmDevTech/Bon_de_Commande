@@ -73,10 +73,14 @@ Public Class EtatListeBonCommande
         Dim CrTable As Table
 
         'vérification de la plage de date saisie
-        query = "SELECT count(RefBonCommande) as VerifDate FROM t_boncommande WHERE DateCommande BETWEEN '" & tempdt & "' AND '" & tempdt1 & "'"
+        If CmbStatut.Text = "Tous" Then
+            query = "SELECT COUNT(RefBonCommande) as VerifDate FROM t_boncommande WHERE DateCommande BETWEEN '" & tempdt & "' AND '" & tempdt1 & "'"
+        Else
+            query = "SELECT COUNT(RefBonCommande) as VerifDate FROM t_boncommande WHERE DateCommande BETWEEN '" & tempdt & "' AND '" & tempdt1 & "' AND Statut = '" & CmbStatut.Text & "'"
+        End If
         ReceiveDate = Val(ExecuteScallar(query))
         If ReceiveDate = 0 Then
-            SuccesMsg("Aucune données sur la période sélectionnée")
+            SuccesMsg("Aucune donnée!")
             Exit Sub
         End If
 
